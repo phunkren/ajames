@@ -1,9 +1,13 @@
-import Layout from "../components/Layout/Layout";
+import { NextPage } from "next";
+import { memo } from "react";
+import Layout from "../components/Layout";
 
-export default function CV() {
+const Cv: NextPage = memo(() => {
   return (
     <Layout>
       <h1>CV</h1>
     </Layout>
   );
-}
+});
+
+export default Cv;
