@@ -1,9 +1,8 @@
 import { GetStaticProps, NextPage } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { memo } from "react";
 import { Container, Preview } from "../../components/Blog";
-import Layout from "../../components/Layout";
+import { Layout } from "../../components/Layout";
 import { getDatabase } from "../../lib/notion";
 import { BlogPost } from "../../types/notion";
 
@@ -29,7 +28,7 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-const Blog: NextPage<Props> = memo(function Blog(props) {
+function Blog(props: Props) {
   const {
     query: { tab },
   } = useRouter();
@@ -58,13 +57,13 @@ const Blog: NextPage<Props> = memo(function Blog(props) {
 
       <main>
         <Container>
-          {posts.map((post) => (
-            <Preview post={post} />
+          {posts.map((post, i) => (
+            <Preview key={i} post={post} />
           ))}
         </Container>
       </main>
     </Layout>
   );
-});
+}
 
 export default Blog;
