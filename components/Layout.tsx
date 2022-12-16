@@ -1,10 +1,12 @@
 import { Navigation } from "./Navigation";
+import { Social } from "./Social";
 
-export default function Layout({ children }) {
+export function Layout({ children }) {
   return (
     <>
       <Navigation />
       <main>{children}</main>
+      <Social />
     </>
   );
 }

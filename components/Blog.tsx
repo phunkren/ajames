@@ -1,4 +1,4 @@
-import { Children, memo, ReactNode } from "react";
+import { Children, ReactNode } from "react";
 import { BlogPost } from "../types/notion";
 
 type ContainerProps = {
@@ -9,16 +9,16 @@ type PreviewProps = {
   post: BlogPost;
 };
 
-export const Container = memo(function Container({ children }: ContainerProps) {
+export function Container({ children }: ContainerProps) {
   return (
     <ul>
-      {Children.map(children, (child) => (
-        <li>{child}</li>
+      {Children.map(children, (child, i) => (
+        <li key={i}>{child}</li>
       ))}
     </ul>
   );
-});
+}
 
-export const Preview = memo(function Preview(post: PreviewProps) {
+export function Preview(post: PreviewProps) {
   return <div>{JSON.stringify(post)}</div>;
-});
+}
