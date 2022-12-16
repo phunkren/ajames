@@ -7,7 +7,9 @@
   },
   "dependencies": {
     "@notionhq/client": "^2.2.2",
-    "next": "latest",
+    "@radix-ui/colors": "^0.1.8",
+    "@stitches/react": "^1.2.8",
+    "next": "^13.0.6",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
