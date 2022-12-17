@@ -8,7 +8,9 @@
   "dependencies": {
     "@notionhq/client": "^2.2.2",
     "@radix-ui/colors": "^0.1.8",
+    "@radix-ui/react-icons": "^1.1.1",
     "@stitches/react": "^1.2.8",
+    "@svgr/webpack": "^6.5.1",
     "next": "^13.0.6",
     "react": "18.2.0",
     "react-dom": "18.2.0"
