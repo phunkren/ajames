@@ -45,7 +45,7 @@ export const globalStyles = globalCss({
   },
 
   "body[data-theme='dark']": {
-    background: "linear-gradient(to bottom, #212121, #373737, #0E0E0E)",
+    background: "radial-gradient(circle at top, #2b2b2b 0%, #1e1e1e 100%)",
   },
 
   /* A elements that don't have a class get default styles */
