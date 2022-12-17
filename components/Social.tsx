@@ -6,38 +6,79 @@ import {
   TwitterLogoIcon,
   VideoIcon,
 } from "@radix-ui/react-icons";
+import { SOCIAL } from "../data/social";
 
 export function Social() {
   return (
-    <HStack as="ul" role="list" gap={4} alignItems="center">
-      <li>
-        <Link variant="secondary" href="/twitter">
-          <Box spacing={0.5}>
-            <TwitterLogoIcon width={32} height={32} />
-          </Box>
-        </Link>
-      </li>
-      <li>
-        <Link variant="secondary" href="/youtube">
-          <Box spacing={0.5}>
-            <VideoIcon width={32} height={32} />
-          </Box>
-        </Link>
-      </li>
-      <li>
-        <Link variant="secondary" href="/linkedin">
-          <Box spacing={1}>
-            <LinkedInLogoIcon width={30} height={30} />
-          </Box>
-        </Link>
-      </li>
-      <li>
-        <Link variant="secondary" href="/github">
-          <Box spacing={1}>
-            <GitHubLogoIcon width={28} height={28} />
-          </Box>
-        </Link>
-      </li>
-    </HStack>
+    <Box as="nav" aria-label="Social Media">
+      <HStack as="ul" role="list" gap={4} alignItems="center">
+        <li>
+          <Link
+            target="_blank"
+            variant="secondary"
+            title={SOCIAL.twitter.displayName}
+            href={SOCIAL.twitter.url}
+          >
+            <Box spacing={1}>
+              <TwitterLogoIcon
+                width={32}
+                height={32}
+                aria-hidden
+                focusable={false}
+              />
+            </Box>
+          </Link>
+        </li>
+
+        <li>
+          <Link
+            target="_blank"
+            variant="secondary"
+            title={SOCIAL.youtube.displayName}
+            href={SOCIAL.youtube.url}
+          >
+            <Box spacing={1}>
+              <VideoIcon width={32} height={32} aria-hidden focusable={false} />
+            </Box>
+          </Link>
+        </li>
+
+        <li>
+          <Link
+            target="_blank"
+            variant="secondary"
+            title={SOCIAL.linkedin.displayName}
+            href={SOCIAL.linkedin.url}
+          >
+            <Box spacing={1}>
+              <LinkedInLogoIcon
+                width={30}
+                height={30}
+                aria-hidden
+                focusable={false}
+              />
+            </Box>
+          </Link>
+        </li>
+
+        <li>
+          <Link
+            target="_blank"
+            variant="secondary"
+            title={SOCIAL.github.displayName}
+            href={SOCIAL.github.url}
+          >
+            <Box spacing={1}>
+              <GitHubLogoIcon
+                width={28}
+                height={28}
+                aria-hidden
+                focusable={false}
+              />
+            </Box>
+          </Link>
+        </li>
+      </HStack>
+    </Box>
   );
 }
