@@ -30,7 +30,7 @@ export const globalStyles = globalCss({
     textRendering: "optimizeSpeed",
     lineHeight: "1.5",
     width: "100%",
-    minHeight: "100vh",
+    minHeight: "100dvh",
   },
 
   "div#__next, div#__root": {

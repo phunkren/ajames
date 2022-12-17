@@ -6,6 +6,28 @@ import { Navigation } from "./Navigation";
 import { Social } from "./Social";
 import { ThemeToggle } from "./Theme";
 
+const StyledHStack = styled("div", {
+  display: "flex",
+  flexDirection: "row",
+
+  variants: { ...FLEX_VARIANTS, ...SPACING_VARIANTS },
+});
+
+const StyledVStack = styled("div", {
+  display: "flex",
+  flexDirection: "column",
+  width: "100%",
+
+  variants: { ...FLEX_VARIANTS, ...SPACING_VARIANTS },
+});
+
+const StyledBox = styled("div", {
+  display: "flex",
+  flexDirection: "row",
+
+  variants: { ...FLEX_VARIANTS, ...SPACING_VARIANTS },
+});
+
 export function RootLayout({ children }) {
   const theme = useTheme();
 
@@ -45,35 +67,13 @@ export function Layout({ children }) {
   );
 }
 
-const StyledHStack = styled("div", {
-  display: "flex",
-  flexDirection: "row",
-
-  variants: { ...FLEX_VARIANTS, ...SPACING_VARIANTS },
-});
-
 export function HStack(props) {
   return <StyledHStack {...props} />;
 }
 
-const StyledVStack = styled("div", {
-  display: "flex",
-  flexDirection: "column",
-  width: "100%",
-
-  variants: { ...FLEX_VARIANTS, ...SPACING_VARIANTS },
-});
-
 export function VStack(props) {
   return <StyledVStack {...props} />;
 }
-
-const StyledBox = styled("div", {
-  display: "flex",
-  flexDirection: "row",
-
-  variants: { ...FLEX_VARIANTS, ...SPACING_VARIANTS },
-});
 
 export function Box(props) {
   return <StyledBox {...props} />;
