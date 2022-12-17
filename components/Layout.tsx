@@ -2,6 +2,8 @@ import { useTheme } from "../hooks/useTheme";
 import { styled } from "../stitches.config";
 import { FLEX_VARIANTS } from "../styles/flex";
 import { SPACING_VARIANTS } from "../styles/spacing";
+import { Avatar } from "./Avatar";
+import { Link } from "./Link";
 import { Navigation } from "./Navigation";
 import { Social } from "./Social";
 import { ThemeToggle } from "./Theme";
@@ -35,7 +37,7 @@ export function RootLayout({ children }) {
     <VStack
       id="__root"
       className={theme}
-      css={{ maxWidth: "1440px", margin: "0 auto" }}
+      css={{ maxWidth: "1400px", margin: "0 auto" }}
     >
       {children}
     </VStack>
@@ -45,22 +47,35 @@ export function RootLayout({ children }) {
 export function Layout({ children }) {
   return (
     <VStack css={{ flexGrow: 1 }}>
-      <HStack as="header" spacing={3} gap={2} justifyContent="space-between">
-        <Navigation />
+      <HStack
+        as="header"
+        spacingHorizontal={3}
+        spacingVertical={7}
+        gap={7}
+        justifyContent="space-between"
+        alignItems="center"
+      >
+        <HStack gap={7} alignItems="center">
+          <Link href="/">
+            <Avatar />
+          </Link>
+
+          <Navigation />
+        </HStack>
+
         <ThemeToggle />
       </HStack>
 
-      <VStack
-        as="main"
-        justifyContent="center"
-        alignItems="center"
-        spacing={3}
-        css={{ flexGrow: 1 }}
-      >
+      <VStack as="main" css={{ flexGrow: 1 }}>
         {children}
       </VStack>
 
-      <HStack as="footer" spacing={3} justifyContent="center">
+      <HStack
+        as="footer"
+        spacingHorizontal={3}
+        spacingVertical={7}
+        justifyContent="center"
+      >
         <Social />
       </HStack>
     </VStack>

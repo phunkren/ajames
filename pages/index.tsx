@@ -1,9 +1,30 @@
-import { Layout } from "../components/Layout";
+import { HStack, Layout, VStack } from "../components/Layout";
+import { Link } from "../components/Link";
+import { TextBody, TextHeadline, TextTitle1 } from "../components/Text";
+import { PERSONAL } from "../data/personal";
 
 function Home() {
   return (
     <Layout>
-      <h1>AJAMES.DEV</h1>
+      <VStack
+        justifyContent="center"
+        alignItems="center"
+        spacingHorizontal={3}
+        spacingVertical={7}
+        css={{ flexGrow: 1 }}
+      >
+        <TextTitle1>AJAMES.DEV</TextTitle1>
+
+        <HStack gap={2} alignItems="center">
+          <TextHeadline>{PERSONAL.occupation.title}</TextHeadline>
+
+          <TextBody as="span">@</TextBody>
+
+          <Link href={PERSONAL.occupation.url} variant="primary">
+            <TextHeadline>{PERSONAL.occupation.employer}</TextHeadline>
+          </Link>
+        </HStack>
+      </VStack>
     </Layout>
   );
 }
