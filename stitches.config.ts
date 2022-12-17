@@ -4,11 +4,16 @@ import {
   blue,
   red,
   green,
+  orange,
+  slate,
   grayDark,
   blueDark,
   redDark,
   greenDark,
+  orangeDark,
+  slateDark,
 } from "@radix-ui/colors";
+import { SPACING_UTILS } from "./styles/spacing";
 
 export const {
   styled,
@@ -34,42 +39,40 @@ export const {
       9: "40px",
       10: "48px",
     },
-    fonts: {
-      untitled: "'Impact', sans-serif",
-    },
   },
   media: {
     phone: "(min-width: 480px)",
     tablet: "(min-width: 720px)",
     desktop: "(min-width: 1080px)",
     reducedMotion: "(prefers-reduced-motion: reduce)",
-    darkMode: "(prefers-color-scheme: dark)",
-    lightMode: "(prefers-color-scheme: light)",
   },
   utils: {
-    spacingX: (value) => ({ paddingLeft: value, paddingRight: value }),
-    spacingY: (value) => ({ paddingTop: value, paddingBottom: value }),
+    ...SPACING_UTILS,
   },
 });
 
 export const lightTheme = createTheme({
   colors: {
+    white: "#fefefe",
+    black: "#010101",
     ...gray,
     ...blue,
     ...red,
     ...green,
-    ...grayDark,
-    ...blueDark,
-    ...redDark,
-    ...greenDark,
+    ...orange,
+    ...slate,
   },
 });
 
 export const darkTheme = createTheme({
   colors: {
+    white: "#fefefe",
+    black: "#010101",
     ...grayDark,
     ...blueDark,
     ...redDark,
     ...greenDark,
+    ...orangeDark,
+    ...slateDark,
   },
 });

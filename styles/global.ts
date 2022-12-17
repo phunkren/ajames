@@ -1,5 +1,4 @@
 import { globalCss } from "../stitches.config";
-import { Theme } from "../types/theme";
 
 /* https://piccalil.li/blog/a-modern-css-reset/ */
 export const globalStyles = globalCss({
@@ -26,13 +25,23 @@ export const globalStyles = globalCss({
 
   /* Set core body defaults */
   body: {
-    minHeight: "100vh",
+    display: "flex",
+    flexDirection: "column",
     textRendering: "optimizeSpeed",
     lineHeight: "1.5",
+    width: "100%",
+    minHeight: "100vh",
+  },
+
+  "div#__next, div#__root": {
+    flexGrow: 1,
+    display: "flex",
+    flexDirection: "column",
+    width: "100%",
   },
 
   "body[data-theme='light']": {
-    background: "radial-gradient(at top, #FEE140, #FA709A, #D5D5D5)",
+    background: "radial-gradient(at top, #ffffff, #fefefe, #ffffff)",
   },
 
   "body[data-theme='dark']": {

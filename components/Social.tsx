@@ -1,6 +1,8 @@
+import { HStack } from "./Layout";
+
 export function Social() {
   return (
-    <ul>
+    <HStack as="ul" role="list" gap={2}>
       <li>
         <a href="/twitter">twitter</a>
       </li>
@@ -13,6 +15,6 @@ export function Social() {
       <li>
         <a href="/rss">RSS</a>
       </li>
-    </ul>
+    </HStack>
   );
 }
