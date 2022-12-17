@@ -34,7 +34,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   // Use effect to update the theme based on system preferences
   useEffect(() => {
     const systemPrefersDark = window.matchMedia?.(
-      "(prefers-color-scheme: dark)"
+      `(prefers-color-scheme: ${Theme.DARK})`
     ).matches;
 
     setTheme(systemPrefersDark ? Theme.DARK : Theme.LIGHT);
