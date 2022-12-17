@@ -33,9 +33,6 @@ export const FLEX_VARIANTS = {
     },
   },
   gap: {
-    [0.5]: {
-      gap: "$space$0.5",
-    },
     [1]: {
       gap: "$space$1",
     },

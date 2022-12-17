@@ -22,9 +22,6 @@ export const SPACING_UTILS = {
 
 export const SPACING_VARIANTS = {
   spacing: {
-    [0.5]: {
-      spacing: "$space$0.5",
-    },
     [1]: {
       spacing: "$space$1",
     },
@@ -57,9 +54,6 @@ export const SPACING_VARIANTS = {
     },
   },
   spacingHorizontal: {
-    [0.5]: {
-      spacingHorizontal: "$space$0.5",
-    },
     [1]: {
       spacingHorizontal: "$space$1",
     },
@@ -92,9 +86,6 @@ export const SPACING_VARIANTS = {
     },
   },
   spacingVertical: {
-    [0.5]: {
-      spacingVertical: "$space$0.5",
-    },
     [1]: {
       spacingVertical: "$space$1",
     },
@@ -127,9 +118,6 @@ export const SPACING_VARIANTS = {
     },
   },
   spacingStart: {
-    [0.5]: {
-      spacingStart: "$space$0.5",
-    },
     [1]: {
       spacingStart: "$space$1",
     },
@@ -162,9 +150,6 @@ export const SPACING_VARIANTS = {
     },
   },
   spacingEnd: {
-    [0.5]: {
-      spacingEnd: "$space$0.5",
-    },
     [1]: {
       spacingEnd: "$space$1",
     },
