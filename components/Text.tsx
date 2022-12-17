@@ -13,10 +13,44 @@ type SpanProps = HTMLAttributes<HTMLSpanElement> & {
   as?: "span";
 };
 
-type Props = HeaderProps | ParapgraphProps | SpanProps;
+type TextProps = ParapgraphProps | SpanProps;
 
-const StyledText = styled("span", {});
+const StyledTextTitle1 = styled("h1", {
+  fontSize: 72,
+});
 
-export function Text({ as, ...props }: Props) {
-  return <StyledText as={as} {...props} />;
+const StyledTextTitle2 = styled("h2", {
+  fontSize: 48,
+});
+
+const StyledTextTitle3 = styled("h3", {
+  fontSize: 36,
+});
+
+const StyledTextBody = styled("p", {
+  fontSIze: 18,
+});
+
+const StyledTextHeadline = styled("span", {
+  fontSize: 24,
+});
+
+export function TextTitle1({ as, ...props }: HeaderProps) {
+  return <StyledTextTitle1 as={as} {...props} />;
+}
+
+export function TextTitle2({ as, ...props }: HeaderProps) {
+  return <StyledTextTitle2 as={as} {...props} />;
+}
+
+export function TextTitle3({ as, ...props }: HeaderProps) {
+  return <StyledTextTitle3 as={as} {...props} />;
+}
+
+export function TextBody({ as, ...props }: TextProps) {
+  return <StyledTextBody as={as} {...props} />;
+}
+
+export function TextHeadline({ as, ...props }: TextProps) {
+  return <StyledTextHeadline as={as} {...props} />;
 }
