@@ -9,9 +9,9 @@ const THEME_MAP = new Map([
 
 // Create a hook to easily consume the theme context
 export function useTheme() {
-  const { theme: currentTheme } = useContext(ThemeContext);
+  const { theme: themeName } = useContext(ThemeContext);
 
-  const theme = THEME_MAP.get(currentTheme);
+  const theme = THEME_MAP.get(themeName);
 
-  return theme;
+  return { theme, themeName };
 }

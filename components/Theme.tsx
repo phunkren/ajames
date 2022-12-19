@@ -1,4 +1,4 @@
-import { blackA, whiteA, yellow } from "@radix-ui/colors";
+import { blackA, blue, grayDark, yellow } from "@radix-ui/colors";
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import * as ToggleGroup from "@radix-ui/react-toggle-group";
 import React, {
@@ -21,15 +21,12 @@ export const ThemeContext = createContext({
 
 const ToggleGroupRoot = styled(ToggleGroup.Root, {
   display: "inline-flex",
-  backgroundColor: "black",
   borderRadius: 4,
   boxShadow: `0 2px 10px ${blackA.blackA7}`,
 });
 
 const ToggleGroupItem = styled(ToggleGroup.Item, {
   all: "unset",
-  backgroundColor: "white",
-  color: "black",
   height: 35,
   width: 35,
   display: "flex",
@@ -39,45 +36,58 @@ const ToggleGroupItem = styled(ToggleGroup.Item, {
   justifyContent: "center",
   marginLeft: 1,
 
+  backgroundColor: "transparent",
+  opacity: 0.4,
+
   "&:first-child": {
     marginLeft: 0,
     borderTopLeftRadius: 4,
     borderBottomLeftRadius: 4,
   },
 
-  "&:last-child": { borderTopRightRadius: 4, borderBottomRightRadius: 4 },
-
-  "&:hover": { backgroundColor: "black" },
-
   "&[data-state=on]": {
-    backgroundColor: "black",
-    color: "black",
+    opacity: 1,
   },
+
+  "&:last-child": { borderTopRightRadius: 4, borderBottomRightRadius: 4 },
 
   "&:focus": { position: "relative", boxShadow: `0 0 0 2px black` },
 });
 
-// TODO: Fix this (server theme class does not match client)
-const handleSystemTheme = () => {
-  if (typeof window === "undefined") {
-    return Theme.DARK;
-  }
+const LightToggle = styled(ToggleGroupItem, {
+  "&:hover": { backgroundColor: "yellow" },
 
-  const systemPrefersDark = window?.matchMedia?.(
+  "&[data-state=on]": {
+    backgroundColor: blue.blue6,
+    color: yellow.yellow6,
+  },
+});
+
+const DarkToggle = styled(ToggleGroupItem, {
+  "&:hover": { backgroundColor: "black" },
+
+  "&[data-state=on]": {
+    color: grayDark.gray11,
+    backgroundColor: "black",
+  },
+});
+
+const getSystemTheme = () => {
+  const systemPrefersDark = window.matchMedia?.(
     `(prefers-color-scheme: ${Theme.DARK})`
   ).matches;
 
-  // If theme isn't stored in local storage, use system default
   return systemPrefersDark ? Theme.DARK : Theme.LIGHT;
 };
 
 // Create the theme provider component
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const systemTheme = handleSystemTheme();
-  const [theme, setTheme] = useLocalStorage<Theme>("theme", systemTheme);
+  const [storageTheme, setStorageTheme] = useLocalStorage<Theme>("theme");
+  const [theme, setTheme] = useState<Theme>();
 
   const handleThemeChange = useCallback((newTheme: Theme) => {
     setTheme(newTheme);
+    setStorageTheme(newTheme);
   }, []);
 
   const value = useMemo(
@@ -88,11 +98,25 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     [theme]
   );
 
-  // Update the data-theme attribute on the body element
-  // This allows us to set the background gradient on the parent element
   useEffect(() => {
-    document.body.setAttribute("data-theme", theme);
-  }, [theme]);
+    // Set initial theme on local storage
+    if (!theme && storageTheme) {
+      setTheme(storageTheme);
+    }
+
+    // Set initial theme on system preference
+    if (!theme && !storageTheme) {
+      const systemTheme = getSystemTheme();
+      setTheme(systemTheme);
+      setStorageTheme(systemTheme);
+    }
+
+    // Update the data-theme attribute on the body element
+    // This allows us to set the background gradient on the parent element
+    if (theme) {
+      document.body.setAttribute("data-theme", theme);
+    }
+  }, [theme, storageTheme]);
 
   // Return the context provider with the current theme value
   return (
@@ -104,7 +128,9 @@ export function ThemeToggle() {
   const { theme, onThemeChange } = useContext(ThemeContext);
 
   function handleThemeChange(newTheme: Theme) {
-    onThemeChange(newTheme);
+    if (newTheme) {
+      onThemeChange(newTheme);
+    }
   }
 
   return (
@@ -112,14 +138,16 @@ export function ThemeToggle() {
       type="single"
       aria-label="Theme toggle"
       orientation="horizontal"
+      value={theme}
       onValueChange={handleThemeChange}
     >
-      <ToggleGroupItem value={Theme.DARK} aria-label="Dark mode">
-        <MoonIcon color={whiteA.whiteA10} width={28} height={28} />
-      </ToggleGroupItem>
-      <ToggleGroupItem value={Theme.LIGHT} aria-label="Light mode">
-        <SunIcon color={yellow.yellow8} width={28} height={28} />
-      </ToggleGroupItem>
+      <DarkToggle value={Theme.DARK} aria-label="Dark mode">
+        <MoonIcon width={28} height={28} />
+      </DarkToggle>
+
+      <LightToggle value={Theme.LIGHT} aria-label="Light mode">
+        <SunIcon width={28} height={28} />
+      </LightToggle>
     </ToggleGroupRoot>
   );
 }
