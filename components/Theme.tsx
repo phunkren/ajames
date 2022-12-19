@@ -57,9 +57,24 @@ const ToggleGroupItem = styled(ToggleGroup.Item, {
   "&:focus": { position: "relative", boxShadow: `0 0 0 2px black` },
 });
 
+// TODO: Fix this (server theme class does not match client)
+const handleSystemTheme = () => {
+  if (typeof window === "undefined") {
+    return Theme.DARK;
+  }
+
+  const systemPrefersDark = window?.matchMedia?.(
+    `(prefers-color-scheme: ${Theme.DARK})`
+  ).matches;
+
+  // If theme isn't stored in local storage, use system default
+  return systemPrefersDark ? Theme.DARK : Theme.LIGHT;
+};
+
 // Create the theme provider component
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useLocalStorage<Theme>("theme");
+  const systemTheme = handleSystemTheme();
+  const [theme, setTheme] = useLocalStorage<Theme>("theme", systemTheme);
 
   const handleThemeChange = useCallback((newTheme: Theme) => {
     setTheme(newTheme);
@@ -72,18 +87,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     }),
     [theme]
   );
-
-  // Use effect to update the theme based on system preferences
-  useEffect(() => {
-    const systemPrefersDark = window?.matchMedia?.(
-      `(prefers-color-scheme: ${Theme.DARK})`
-    ).matches;
-
-    // If theme isn't stored in local storage, use system default
-    if (!theme) {
-      setTheme(systemPrefersDark ? Theme.DARK : Theme.LIGHT);
-    }
-  }, []);
 
   // Update the data-theme attribute on the body element
   // This allows us to set the background gradient on the parent element
@@ -107,7 +110,6 @@ export function ThemeToggle() {
   return (
     <ToggleGroupRoot
       type="single"
-      defaultValue={theme}
       aria-label="Theme toggle"
       orientation="horizontal"
       onValueChange={handleThemeChange}
