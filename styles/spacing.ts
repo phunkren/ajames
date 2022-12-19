@@ -5,8 +5,8 @@ export const SPACING_UTILS = {
     padding: value,
   }),
   spacingHorizontal: (value: string) => ({
-    paddingTop: value,
-    paddingBottom: value,
+    paddingLeft: value,
+    paddingRight: value,
   }),
   spacingVertical: (value: string) => ({
     paddingTop: value,
