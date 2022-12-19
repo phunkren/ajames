@@ -46,10 +46,9 @@ export function RootLayout({ children }) {
 
 export function Layout({ children }) {
   return (
-    <VStack css={{ flexGrow: 1 }}>
+    <VStack spacingHorizontal={4} flexGrow>
       <HStack
         as="header"
-        spacingHorizontal={3}
         spacingVertical={7}
         gap={7}
         justifyContent="space-between"
@@ -66,7 +65,7 @@ export function Layout({ children }) {
         <ThemeToggle />
       </HStack>
 
-      <VStack as="main" css={{ flexGrow: 1 }}>
+      <VStack as="main" flexGrow>
         {children}
       </VStack>
 

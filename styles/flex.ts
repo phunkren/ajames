@@ -7,6 +7,11 @@ export const FLEX_UTILS = {
 };
 
 export const FLEX_VARIANTS = {
+  flexGrow: {
+    true: {
+      flexGrow: "1",
+    },
+  },
   alignItems: {
     "flex-start": {
       alignItems: "flex-start",

@@ -11,7 +11,7 @@ function Home() {
         alignItems="center"
         spacingHorizontal={3}
         spacingVertical={7}
-        css={{ flexGrow: 1 }}
+        flexGrow
       >
         <TextTitle1>AJAMES.DEV</TextTitle1>
 
