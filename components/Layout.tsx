@@ -31,7 +31,7 @@ const StyledBox = styled("div", {
 });
 
 export function RootLayout({ children }) {
-  const theme = useTheme();
+  const { theme } = useTheme();
 
   return (
     <VStack
@@ -46,11 +46,11 @@ export function RootLayout({ children }) {
 
 export function Layout({ children }) {
   return (
-    <VStack spacingHorizontal={4} flexGrow>
+    <VStack spacingHorizontal={{ "@initial": 2, "@bp2": 4 }} flexGrow>
       <HStack
         as="header"
-        spacingVertical={7}
-        gap={7}
+        spacingVertical={{ "@initial": 4, "@bp2": 7 }}
+        gap={{ "@initial": 4, "@bp2": 7 }}
         justifyContent="space-between"
         alignItems="center"
       >
@@ -71,8 +71,7 @@ export function Layout({ children }) {
 
       <HStack
         as="footer"
-        spacingHorizontal={3}
-        spacingVertical={7}
+        spacingVertical={{ "@initial": 4, "@bp2": 7 }}
         justifyContent="center"
       >
         <Social />
