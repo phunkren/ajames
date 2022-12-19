@@ -30,7 +30,7 @@ export function useLocalStorage<T>(
       window.localStorage.setItem(key, JSON.stringify(storedValue));
     } catch (error) {
       // A more advanced implementation would handle the error case
-      console.log(error);
+      console.error(error);
     }
   }, [storedValue]);
 
