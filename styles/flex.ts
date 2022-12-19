@@ -12,6 +12,17 @@ export const FLEX_VARIANTS = {
       flexGrow: "1",
     },
   },
+  flexWrap: {
+    wrap: {
+      flexWrap: "wrap",
+    },
+    wrapReverse: {
+      flexWrap: "wrap-reverse",
+    },
+    nowrap: {
+      flexWrap: "nowrap",
+    },
+  },
   alignItems: {
     "flex-start": {
       alignItems: "flex-start",
