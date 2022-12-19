@@ -40,9 +40,10 @@ export const {
     },
   },
   media: {
-    phone: "(min-width: 480px)",
-    tablet: "(min-width: 720px)",
-    desktop: "(min-width: 1080px)",
+    bp1: "(min-width: 480px)",
+    bp2: "(min-width: 720px)",
+    bp3: "(min-width: 1080px)",
+    print: "print",
     reducedMotion: "(prefers-reduced-motion: reduce)",
   },
   utils: {
