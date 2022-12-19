@@ -16,23 +16,55 @@ type SpanProps = HTMLAttributes<HTMLSpanElement> & {
 type TextProps = ParapgraphProps | SpanProps;
 
 const StyledTextTitle1 = styled("h1", {
-  fontSize: 72,
+  fontSize: 36,
+
+  "@bp2": {
+    fontSize: 48,
+  },
+
+  "@bp3": {
+    fontSize: 72,
+  },
 });
 
 const StyledTextTitle2 = styled("h2", {
-  fontSize: 48,
+  fontSize: 24,
+
+  "@bp2": {
+    fontSize: 36,
+  },
+
+  "@bp3": {
+    fontSize: 48,
+  },
 });
 
 const StyledTextTitle3 = styled("h3", {
-  fontSize: 36,
+  fontSize: 18,
+
+  "@bp2": {
+    fontSize: 24,
+  },
+
+  "@bp3": {
+    fontSize: 36,
+  },
 });
 
 const StyledTextBody = styled("p", {
-  fontSIze: 18,
+  fontSize: 16,
+
+  "@bp2": {
+    fontSize: 18,
+  },
 });
 
 const StyledTextHeadline = styled("span", {
-  fontSize: 24,
+  fontSize: 18,
+
+  "@bp2": {
+    fontSize: 24,
+  },
 });
 
 export function TextTitle1({ as, ...props }: HeaderProps) {
