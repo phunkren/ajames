@@ -9,10 +9,9 @@ import React, {
   useMemo,
   useCallback,
 } from "react";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 import { styled } from "../stitches.config";
 import { Theme } from "../types/theme";
-import { Button } from "./Button";
-import { Box } from "./Layout";
 
 // Create the theme context
 export const ThemeContext = createContext({
@@ -60,8 +59,7 @@ const ToggleGroupItem = styled(ToggleGroup.Item, {
 
 // Create the theme provider component
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  // State to store the current theme
-  const [theme, setTheme] = useState<Theme>(Theme.LIGHT);
+  const [theme, setTheme] = useLocalStorage<Theme>("theme");
 
   const handleThemeChange = useCallback((newTheme: Theme) => {
     setTheme(newTheme);
@@ -77,13 +75,18 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   // Use effect to update the theme based on system preferences
   useEffect(() => {
-    const systemPrefersDark = window.matchMedia?.(
+    const systemPrefersDark = window?.matchMedia?.(
       `(prefers-color-scheme: ${Theme.DARK})`
     ).matches;
 
-    setTheme(systemPrefersDark ? Theme.DARK : Theme.LIGHT);
+    // If theme isn't stored in local storage, use system default
+    if (!theme) {
+      setTheme(systemPrefersDark ? Theme.DARK : Theme.LIGHT);
+    }
   }, []);
 
+  // Update the data-theme attribute on the body element
+  // This allows us to set the background gradient on the parent element
   useEffect(() => {
     document.body.setAttribute("data-theme", theme);
   }, [theme]);
