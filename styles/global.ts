@@ -9,8 +9,9 @@ export const globalStyles = globalCss({
   },
 
   /* Remove default margin */
-  "body, h1, h2, h3, h4, p, figure, blockquote, dl, dd": {
+  "body, h1, h2, h3, h4, p, figure, blockquote, dl, dd, a": {
     margin: 0,
+    lineHeight: 1.5,
   },
 
   /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
