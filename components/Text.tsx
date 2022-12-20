@@ -67,6 +67,14 @@ const StyledTextHeadline = styled("span", {
   },
 });
 
+const StyledTextAux = styled("span", {
+  fontSize: 14,
+
+  "@bp2": {
+    fontSize: 16,
+  },
+});
+
 export function TextTitle1({ as, ...props }: HeaderProps) {
   return <StyledTextTitle1 as={as} {...props} />;
 }
@@ -85,4 +93,8 @@ export function TextBody({ as, ...props }: TextProps) {
 
 export function TextHeadline({ as, ...props }: TextProps) {
   return <StyledTextHeadline as={as} {...props} />;
+}
+
+export function TextAux({ as, ...props }: TextProps) {
+  return <StyledTextAux as={as} {...props} />;
 }
