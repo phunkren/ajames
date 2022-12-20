@@ -1,5 +1,6 @@
 import { useTheme } from "../hooks/useTheme";
 import { styled } from "../stitches.config";
+import { DISPLAY_VARIANTS } from "../styles/display";
 import { FLEX_VARIANTS } from "../styles/flex";
 import { SPACING_VARIANTS } from "../styles/spacing";
 import { Avatar } from "./Avatar";
@@ -12,7 +13,7 @@ const StyledHStack = styled("div", {
   display: "flex",
   flexDirection: "row",
 
-  variants: { ...FLEX_VARIANTS, ...SPACING_VARIANTS },
+  variants: { ...FLEX_VARIANTS, ...SPACING_VARIANTS, ...DISPLAY_VARIANTS },
 });
 
 const StyledVStack = styled("div", {
@@ -20,14 +21,14 @@ const StyledVStack = styled("div", {
   flexDirection: "column",
   width: "100%",
 
-  variants: { ...FLEX_VARIANTS, ...SPACING_VARIANTS },
+  variants: { ...FLEX_VARIANTS, ...SPACING_VARIANTS, ...DISPLAY_VARIANTS },
 });
 
 const StyledBox = styled("div", {
   display: "flex",
   flexDirection: "row",
 
-  variants: { ...FLEX_VARIANTS, ...SPACING_VARIANTS },
+  variants: { ...FLEX_VARIANTS, ...SPACING_VARIANTS, ...DISPLAY_VARIANTS },
 });
 
 export function RootLayout({ children }) {
