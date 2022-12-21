@@ -1,8 +1,9 @@
-import { GetStaticProps, NextPage } from "next";
+import { GetStaticProps } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Container, Preview } from "../../components/Blog";
-import { Layout } from "../../components/Layout";
+import { HStack, Layout, VStack } from "../../components/Layout";
+import { TextTitle1 } from "../../components/Text";
 import { getDatabase } from "../../lib/notion";
 import { BlogPost } from "../../types/notion";
 
@@ -39,29 +40,37 @@ function Blog(props: Props) {
 
   return (
     <Layout>
-      <h1>BLOG</h1>
+      <VStack
+        gap={10}
+        alignItems="center"
+        css={{ maxWidth: 720, margin: "0 auto" }}
+      >
+        <TextTitle1>BLOG</TextTitle1>
 
-      <ul>
-        <li>
-          <Link href={{ pathname: "/blog", query: { tab: "professional" } }}>
-            Professional
-          </Link>
-        </li>
+        <nav aria-label="Blog categories">
+          <HStack as="ul" role="list" gap={5}>
+            <li>
+              <Link
+                href={{ pathname: "/blog", query: { tab: "professional" } }}
+              >
+                Professional
+              </Link>
+            </li>
 
-        <li>
-          <Link href={{ pathname: "/blog", query: { tab: "personal" } }}>
-            Personal
-          </Link>
-        </li>
-      </ul>
+            <li>
+              <Link href={{ pathname: "/blog", query: { tab: "personal" } }}>
+                Personal
+              </Link>
+            </li>
+          </HStack>
+        </nav>
 
-      <main>
         <Container>
           {posts.map((post, i) => (
             <Preview key={i} post={post} />
           ))}
         </Container>
-      </main>
+      </VStack>
     </Layout>
   );
 }
