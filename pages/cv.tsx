@@ -306,10 +306,7 @@ function Cv() {
                       flexWrap="wrap"
                       gap={{ "@initial": 1, "@bp2": 2 }}
                     >
-                      <HStack
-                        gap={{ "@initial": 2, "@bp2": 4 }}
-                        alignItems="flex-end"
-                      >
+                      <HStack gap={2} alignItems="flex-end">
                         <Link href={employer.url} variant="primary">
                           <TextBody>{employer.displayName}</TextBody>
                         </Link>
