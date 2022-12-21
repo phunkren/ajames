@@ -69,6 +69,7 @@ const StyledTextHeadline = styled("span", {
 
 const StyledTextAux = styled("span", {
   fontSize: 14,
+  textTransform: "uppercase",
 
   "@bp2": {
     fontSize: 16,
