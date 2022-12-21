@@ -1,8 +1,7 @@
 export const INTERESTS = [
-  "skill 1",
-  "skill 2",
-  "skill 3",
-  "skill 4",
-  "skill 5",
-  "skill 6",
+  "Design Systems",
+  "Accessibility",
+  "Livestreams",
+  "Learning in Public",
+  "Technical writing",
 ];

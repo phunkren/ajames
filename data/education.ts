@@ -3,32 +3,31 @@ type Education = {
   qualification?: string;
   course: string;
   institution: string;
-  startDate: string;
+  startDate?: string;
   endDate: string;
 };
 
-export const EDUCATION = [
+export const EDUCATION: Education[] = [
   {
-    id: "institution-1",
-    qualification: "Qualification",
-    course: "Course",
-    institution: "Institution 1",
-    startDate: "MMMM YY",
-    endDate: "MMMM YY ",
+    id: "gcal-uk",
+    qualification: "BSc (Hons) 2.1",
+    course: "Audio Technology",
+    institution: "Glasgow Caledonian University",
+    startDate: "2010",
+    endDate: "2014",
   },
   {
-    id: "institution-2",
-    course: "Course",
-    institution: "Institution 2",
-    startDate: "MMMM YY",
-    endDate: "MMMM YY ",
+    id: "gcal-usa",
+    course: "Erasmus+ Study Abroad",
+    institution: "UMass Boston",
+    startDate: "2011",
+    endDate: "2012",
   },
   {
-    id: "institution-3",
-    qualification: "Qualification",
-    course: "Course",
-    institution: "Institution 3",
-    startDate: "MMMM YY",
-    endDate: "MMMM YY ",
+    id: "udacity",
+    qualification: "Graduate",
+    course: "Frontend Nanodegree",
+    institution: "Udacity",
+    endDate: "2016",
   },
 ];

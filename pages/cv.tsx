@@ -8,7 +8,6 @@ import {
   LinkedInLogoIcon,
 } from "@radix-ui/react-icons";
 import * as Separator from "@radix-ui/react-separator";
-import { Fragment } from "react";
 import { Button } from "../components/Button";
 import { Box, HStack, Layout, VStack } from "../components/Layout";
 import { Link } from "../components/Link";
@@ -22,6 +21,7 @@ import {
 } from "../components/Text";
 import { EDUCATION } from "../data/education";
 import { EMPLOYMENT } from "../data/employment";
+import { EXPERTISE } from "../data/expertise";
 import { INTERESTS } from "../data/interests";
 import { styled } from "../stitches.config";
 
@@ -190,7 +190,8 @@ function Cv() {
                     <TextHeadline>{education.course}</TextHeadline>
                     <TextHeadline>{education.institution}</TextHeadline>
                     <TextAux>
-                      {education.startDate} - {education.endDate}
+                      {education.startDate ? `${education.startDate} - ` : null}
+                      {education.endDate}
                     </TextAux>
                   </VStack>
                 ))}
@@ -207,8 +208,8 @@ function Cv() {
                 <SeparatorRoot orientation="horizontal" decorative />
               </Box>
               <GridRoot>
-                {INTERESTS.map((interest) => (
-                  <GridItem key={interest}>{interest}</GridItem>
+                {EXPERTISE.map((topic) => (
+                  <GridItem key={topic}>{topic}</GridItem>
                 ))}
               </GridRoot>
             </VStack>
@@ -316,7 +317,10 @@ function Cv() {
 
                       <Box>
                         <TextAux as="span">
-                          {employer.startDate} - {employer.endDate}
+                          {employer.startDate
+                            ? `${employer.startDate} - `
+                            : null}
+                          {employer.endDate}
                         </TextAux>
                       </Box>
                     </HStack>
