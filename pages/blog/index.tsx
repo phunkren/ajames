@@ -4,27 +4,20 @@ import { useRouter } from "next/router";
 import { Container, Preview } from "../../components/Blog";
 import { HStack, Layout, VStack } from "../../components/Layout";
 import { TextTitle1 } from "../../components/Text";
-import { getDatabase } from "../../lib/notion";
+import { getDatabase, getPosts } from "../../lib/notion";
 import { BlogPost } from "../../types/notion";
 
 type Props = {
-  professionalPosts: BlogPost[];
-  personalPosts: BlogPost[];
+  professional: BlogPost[];
+  personal: BlogPost[];
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const personalPosts = await getDatabase(
-    process.env.NOTION_PERSONAL_DATABASE_ID
-  );
-
-  const professionalPosts = await getDatabase(
-    process.env.NOTION_PROFESSIONAL_DATABASE_ID
-  );
+  const posts = await getPosts();
 
   return {
     props: {
-      personalPosts,
-      professionalPosts,
+      ...posts,
     },
   };
 };
@@ -34,9 +27,9 @@ function Blog(props: Props) {
     query: { tab },
   } = useRouter();
 
-  const { personalPosts, professionalPosts } = props;
+  const { personal, professional } = props;
 
-  const posts = tab === "personal" ? personalPosts : professionalPosts;
+  const posts = tab === "personal" ? personal : professional;
 
   return (
     <Layout>

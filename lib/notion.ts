@@ -26,3 +26,18 @@ export const getBlocks = async (blockId: string) => {
 
   return response.results;
 };
+
+export const getPosts = async () => {
+  const personalPosts = await getDatabase(
+    process.env.NOTION_PERSONAL_DATABASE_ID
+  );
+
+  const professionalPosts = await getDatabase(
+    process.env.NOTION_PROFESSIONAL_DATABASE_ID
+  );
+
+  return {
+    personal: personalPosts,
+    professional: professionalPosts,
+  };
+};
