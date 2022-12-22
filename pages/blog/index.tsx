@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { Container, Preview } from "../../components/Blog";
 import { HStack, Layout, VStack } from "../../components/Layout";
 import { TextTitle1 } from "../../components/Text";
-import { getDatabase, getPosts } from "../../lib/notion";
+import { getPosts } from "../../lib/notion";
 import { BlogPost } from "../../types/notion";
 
 type Props = {
