@@ -14,7 +14,9 @@
     "@radix-ui/react-toggle-group": "^1.0.1",
     "@stitches/react": "^1.2.8",
     "@svgr/webpack": "^6.5.1",
+    "@types/node": "^18.11.17",
     "next": "^13.0.6",
+    "notion-to-md": "^2.5.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-error-boundary": "^3.1.4"
