@@ -33,7 +33,7 @@ export async function getStaticProps({ params }) {
 
   const frontmatter = {
     title: pageData.properties.page.title[0].plain_text,
-    image: pageData.cover?.file.url,
+    image: pageData.cover?.file.url ?? "",
     date: pageData.properties.date.created_time,
     tags: pageData.properties.tags.multi_select,
   };
