@@ -1,6 +1,7 @@
 export const INTERESTS = [
-  "Design Systems",
+  "User Interface Design",
   "Accessibility",
+  "Design Systems",
   "Livestreams",
   "Learning in Public",
   "Technical writing",
