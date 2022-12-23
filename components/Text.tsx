@@ -1,5 +1,6 @@
 import { HTMLAttributes } from "react";
 import { styled } from "../stitches.config";
+import { H1_STYLES, H2_STYLES, H3_STYLES, P_STYLES } from "../styles/text";
 
 type HeaderProps = HTMLAttributes<HTMLHeadingElement> & {
   as?: "h1" | "h2" | "h3";
@@ -16,47 +17,19 @@ type SpanProps = HTMLAttributes<HTMLSpanElement> & {
 type TextProps = ParapgraphProps | SpanProps;
 
 const StyledTextTitle1 = styled("h1", {
-  fontSize: 36,
-
-  "@bp2": {
-    fontSize: 48,
-  },
-
-  "@bp3": {
-    fontSize: 72,
-  },
+  ...H1_STYLES,
 });
 
 const StyledTextTitle2 = styled("h2", {
-  fontSize: 24,
-
-  "@bp2": {
-    fontSize: 36,
-  },
-
-  "@bp3": {
-    fontSize: 48,
-  },
+  ...H2_STYLES,
 });
 
 const StyledTextTitle3 = styled("h3", {
-  fontSize: 18,
-
-  "@bp2": {
-    fontSize: 24,
-  },
-
-  "@bp3": {
-    fontSize: 36,
-  },
+  ...H3_STYLES,
 });
 
 const StyledTextBody = styled("p", {
-  fontSize: 16,
-
-  "@bp2": {
-    fontSize: 18,
-  },
+  ...P_STYLES,
 });
 
 const StyledTextHeadline = styled("span", {

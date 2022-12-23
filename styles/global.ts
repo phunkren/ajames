@@ -1,4 +1,5 @@
 import { globalCss } from "../stitches.config";
+import { H1_STYLES, H2_STYLES, H3_STYLES, P_STYLES } from "./text";
 
 /* https://piccalil.li/blog/a-modern-css-reset/ */
 export const globalStyles = globalCss({
@@ -61,6 +62,28 @@ export const globalStyles = globalCss({
   /* Inherit fonts for inputs and buttons */
   "input, button, textarea, select": {
     font: "inherit",
+  },
+
+  // Blog post styling
+  article: {
+    h1: H1_STYLES,
+    h2: H2_STYLES,
+    h3: H3_STYLES,
+    p: P_STYLES,
+  },
+
+  // Default code block styling
+  pre: {
+    code: {
+      display: "block",
+      background: "none",
+      whiteSpace: "pre-wrap",
+      webkitOverflowScrolling: "touch",
+      overflowX: "auto",
+      maxWidth: "100%",
+      minWidth: "100px",
+      padding: 0,
+    },
   },
 
   /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
