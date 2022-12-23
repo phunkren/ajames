@@ -30,7 +30,7 @@ export const EMPLOYMENT: Employer[] = [
     content1:
       "As a member of the Coinbase Prime team, I'm dedicated to delivering intuitive and trustworthy user experiences for our institutional customers by efficiently executing and maintaining frontend features on the platform and the admin interface.",
     content2:
-      "My favourite achievement to date was being a part of the team that developed and successfully launched the Data Marketplace MVP, where I had the opportunity to work with people from various disciplines across the company.",
+      "My latest achievement was being a part of the team that developed and successfully launched the Data Marketplace MVP, where I had the opportunity to work with people from various disciplines across the company to provide historical datasets from the Coinbase Exchange.",
     notableWork: [
       {
         id: "insto-prime",
@@ -78,9 +78,9 @@ export const EMPLOYMENT: Employer[] = [
     endDate: "Oct 20",
     location: "London, UK",
     content1:
-      "I played a key role in the development and launch of several successful startup ventures. My responsibilities included leading small engineering teams through key deliverables, and collaborating with cross-functional teams to engineer a robust and well-documented product.",
+      "I played a key role in the development and launch of several successful startup ventures. My responsibilities included leading small engineering teams through scoped deliverables, and collaborating with cross-functional teams to engineer a robust and well-documented product that could be taken to market.",
     content2:
-      "I also participated in the Code First Girls program, which aims to reduce the gender diversity gap by giving women the opportunity to pursue a career in tech. Mentoring aspiring female engineers allowed me to directly contribute to the engineering community and support the growth and development of future engineers.",
+      "I also participated in the Code First Girls program, which aims to reduce the gender diversity gap by giving women the opportunity to pursue a career in tech. Mentoring  allowed me to directly contribute to the community and support the growth and development of future engineers.",
     notableWork: [
       {
         id: "vanguard",
@@ -108,7 +108,7 @@ export const EMPLOYMENT: Employer[] = [
     endDate: "Mar 19",
     location: "London, UK",
     content1:
-      "During my time at Fathom, I worked on challenging data visualization and trading platform projects for fintech clients and major banks. I was also involved in delivering a React Native prototype to an international business planning software company.",
+      "During my time at Fathom, I worked on challenging data visualization and trading platform projects for fintech clients and major banks. I was also involved in delivering a React Native prototype of an international business planning software company's desktop offerings.",
     content2:
       "Alongside client work, I was also involved in the redesign of the company's website, and regularly participated in hackathons and technical live streams in the office.",
     notableWork: [
@@ -120,7 +120,7 @@ export const EMPLOYMENT: Employer[] = [
       {
         id: "anaplan",
         displayName: "Anaplan",
-        url: "https://www.commerzbank.com/",
+        url: "https://help.anaplan.com/0f66645c-06a5-49f8-8660-8993653f8974",
       },
       {
         id: "fathom",
