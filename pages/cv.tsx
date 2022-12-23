@@ -336,6 +336,19 @@ function Cv() {
                     {employer.content3 ? (
                       <TextBody>{employer.content3}</TextBody>
                     ) : null}
+
+                    {employer.notableWork?.length > 0 ? (
+                      <VStack>
+                        <TextAux>Notable Work</TextAux>
+                        {employer.notableWork.map((work) => (
+                          <li key={work.id}>
+                            <Link href={work.url}>
+                              <TextBody as="span">{work.displayName}</TextBody>
+                            </Link>
+                          </li>
+                        ))}
+                      </VStack>
+                    ) : null}
                   </VStack>
                 </VStack>
               ))}
