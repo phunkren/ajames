@@ -49,19 +49,19 @@ The HTML might look something like this:
 
 ```html
 <nav>
-		<ul>
-				<li>
-					  <a href="/#about">About</a>
-				</li>
+	<ul>
+		<li>
+			<a href="/#about">About</a>
+		</li>
 				
-				<li>
-					  <a href="/#admissions">Admissions</a>
-				</li>
+		<li>
+			<a href="/#admissions">Admissions</a>
+		</li>
 				
-				<li>
-					  <a href="/#academics">Academics</a>
-				</li>
-		</ul>
+		<li>
+			<a href="/#academics">Academics</a>
+		</li>
+	</ul>
 </nav>
 ```
 
@@ -83,14 +83,14 @@ The parent `Menubar` returns an unordered list element. Since it's the widget's 
 
 ```javascript
 function Menubar({ children, ...props }) {
-  const listProps = {
-	    ...props,
-	    "aria-orientation": "horizontal",
-			"data-menubar-list": "",
-	    role: "menubar",
-  };
+	const listProps = {
+		...props,
+		"aria-orientation": "horizontal",
+		"data-menubar-list": "",
+		role: "menubar",
+	};
 
-  return <ul {...listProps}>{children}</ul>;
+	return <ul {...listProps}>{children}</ul>;
 };
 ```
 

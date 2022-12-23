@@ -92,10 +92,10 @@ if (process.env.REACT_APP_BUILD_TARGET === 'test')
 We used [Netlify](https://www.netlify.com/) to create a production environment for each application. Both sites will be virtually identical. They'll both point to the same [GitHub repository](https://github.com/phunkren/multiple-entry-points) and have master set as the production branch. The only difference will be their respective `BUILD_TARGET` environment variable: `test` is assigned to the [testing site](https://multiple-entry-points-test.netlify.app/), and `app` for the [main application](https://multiple-entry-points-app.netlify.app/).
 
 
-![Netlify: Test production environment](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/6e42ed82-330d-4c77-a82e-4869c4e24e83/test.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221222%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221222T162259Z&X-Amz-Expires=3600&X-Amz-Signature=3436827ad60e873b5e975a82256cfffb381ee15c2f24eeba0e7759dccefce103&X-Amz-SignedHeaders=host&x-id=GetObject)
+![Netlify: Test production environment](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/6e42ed82-330d-4c77-a82e-4869c4e24e83/test.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221223%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221223T091854Z&X-Amz-Expires=3600&X-Amz-Signature=488d18f3edc1f24ca7719f40c93ef6c539ee28d74edaf818d98293903b5cff43&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 
-![Netlify: App production environment](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/53e8be84-5be5-41e5-823c-c37b07408c66/app.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221222%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221222T162259Z&X-Amz-Expires=3600&X-Amz-Signature=86cd512d36dee9a4507291d7f2621f63745e3e6786adb4d08f0d3d66660def0f&X-Amz-SignedHeaders=host&x-id=GetObject)
+![Netlify: App production environment](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/53e8be84-5be5-41e5-823c-c37b07408c66/app.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221223%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221223T091854Z&X-Amz-Expires=3600&X-Amz-Signature=5eea815191cacff8895147e45d24642f6f09f159c8e5a9d584410389b1241fa1&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 
 We now have two production environments with the correct build target and free from human error. All that's left is to ensure that only the code from the defined container appears in the bundled build. Due to the nature of tree-shaking, all of the imported containers in the application's current `index.js` file would appear in the production build files, regardless of our build target. To remedy this we can use CommonJS to conditionally require the desired container based on the `BUILD_TARGET` environment variable.
@@ -106,47 +106,11 @@ We now have two production environments with the correct build target and free f
 require(process.env.REACT_APP_BUILD_TARGET === "test" 
   ? "./test" 
   : "./app"
-);
+)
 ```
-
-
-~~This works. However, adding multiple entry points would quickly make the conditional logic unwieldy. It also means that setting the environment variable to anything other than~~ ~~`test`~~ ~~will render the main application. We refined this by refactoring the current solution to utilise ES6~~ [~~dynamic imports~~](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#Dynamic_Imports)~~. We define a collection of build targets,~~ [~~find~~](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find) ~~the desired target based on our environment variable and render the target's default export whenever the imported container's promise is resolved.~~ 
 
 
 This works, but setting the environment variable to anything other than `test` will import the main application. We can fix this with an `if/else` statement, and further refine the solution with ES6 [dynamic imports](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#Dynamic_Imports). The `importBuildTarget()` function below will return a promise for each entry point, and a fallback error in the event that the specified build target is not found. Once the `import` promise has resolved it will render the requested build target with none of the other entry point files in the bundled build. 💥
-
-
-```javascript
-~~/* index.js */
-import React from "react";
-import ReactDOM from "react-dom";
-
-const BUILD_TARGETS = [
-  {
-    name: "app",
-    path: "./app",
-  },
-  {
-    name: "test",
-    path: "./test",
-  },
-];
-
-// Determine which entry point to import
-const { path } = BUILD_TARGETS.find(
-  ({ name }) => process.env.REACT_APP_BUILD_TARGET === name
-);
-
-// Import the entry point and render it's default export
-import(`${path}`).then(({ default: BuildTarget }) =>
-  ReactDOM.render(
-    <React.StrictMode>
-      <BuildTarget />
-    </React.StrictMode>,
-    document.getElementById("root")
-  )
-);~~
-```
 
 
 ```javascript
@@ -193,9 +157,6 @@ Entry point A: [https://multiple-entry-points-app.netlify.app](https://multiple-
 
 
 Entry point B: [https://multiple-entry-points-test.netlify.app](https://multiple-entry-points-test.netlify.app/)
-
-
-~~Special thanks to~~ [~~Stephen Taylor~~](https://twitter.com/meandmycode) ~~and~~ [~~Robin Weston~~](https://twitter.com/robinweston) ~~for their valuable input.~~
 
 
 Special thanks to [Stephen Taylor](https://twitter.com/meandmycode) and [Robin Weston](https://twitter.com/robinweston) for their valuable input, and to [Jonathan Hawkes](https://twitter.com/jonathanhawkes) for his solution to all build target files appearing in the bundle.
