@@ -38,6 +38,6 @@ export const P_STYLES = {
   fontSize: 18,
 
   "@bp2": {
-    fontSize: 22,
+    fontSize: 20,
   },
 };

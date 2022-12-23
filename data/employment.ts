@@ -28,9 +28,9 @@ export const EMPLOYMENT: Employer[] = [
     endDate: "Present",
     location: "Remote, EMEA",
     content1:
-      "In gravida ligula ass fizzle. Prizzle ghetto. Etizzle for sure. Donizzle in mi a erizzle imperdiet vehicula. Ass vizzle go to hizzle. Sizzle est the bizzle lacizzle. Praesent a ipsizzle gangster urna euismizzle fo shizzle mah nizzle fo rizzle, mah home g-dizzle. Integizzle nec fo shizzle. Fo shizzle tellivizzle dang vel da bomb. Morbi my shizz justo. Etiam eu dui izzle magna elementizzle lobortis.",
+      "As a member of the Coinbase Prime team, I'm dedicated to delivering intuitive and trustworthy user experiences for our institutional customers by efficiently executing and maintaining frontend features on the platform and the admin interface.",
     content2:
-      "Donizzle cool auctor maurizzle. Izzle bizzle uhuh ... yih! fizzle nibh pretizzle sheezy. Maecenizzle a sheezy. Shiznit izzle lacus sizzle gangster elementizzle tristique. Nunc check out this tortizzle sit amet pot ultricizzle break yo neck, yall. In mah nizzle yo, we gonna chung izzle, quizzle, adipiscing quis, pimpin. Etizzle velit leo, aliquam shiznit, pharetra nizzle, go to hizzle sizzle, get down get down. Vivamus gangster.",
+      "My favourite achievement to date was being a part of the team that developed and successfully launched the Data Marketplace MVP, where I had the opportunity to work with people from various disciplines across the company.",
     notableWork: [
       {
         id: "insto-prime",
@@ -78,9 +78,9 @@ export const EMPLOYMENT: Employer[] = [
     endDate: "Oct 20",
     location: "London, UK",
     content1:
-      "I played a key role in the development and launch of several successful startup ventures. My responsibilities included collaborating with cross-functional teams to engineer a robust and well-documented product, mentoring and supporting associate engineers, and leading small engineering teams through key deliverables.",
+      "I played a key role in the development and launch of several successful startup ventures. My responsibilities included leading small engineering teams through key deliverables, and collaborating with cross-functional teams to engineer a robust and well-documented product.",
     content2:
-      "I also had the opportunity to mentor aspiring female engineers in the Code First Girls program, which aims to reduce the gender diversity gap in tech globally by giving women the opportunity to pursue a career in tech. Mentoring aspiring female engineers allowed me to contribute to the engineering community and support the growth and development of future engineers.",
+      "I also participated in the Code First Girls program, which aims to reduce the gender diversity gap by giving women the opportunity to pursue a career in tech. Mentoring aspiring female engineers allowed me to directly contribute to the engineering community and support the growth and development of future engineers.",
     notableWork: [
       {
         id: "vanguard",
@@ -108,9 +108,9 @@ export const EMPLOYMENT: Employer[] = [
     endDate: "Mar 19",
     location: "London, UK",
     content1:
-      "I worked on challenging data visualization and trading platform projects for fintech and major bank clients. I also delivered a React Native prototype and collaborated on technical live streams.",
+      "During my time at Fathom, I worked on challenging data visualization and trading platform projects for fintech clients and major banks. I was also involved in delivering a React Native prototype to an international business planning software company.",
     content2:
-      "I consistently demonstrated strong technical skills and a commitment to delivering high-quality work",
+      "Alongside client work, I was also involved in the redesign of the company's website, and regularly participated in hackathons and technical live streams in the office.",
     notableWork: [
       {
         id: "access-fintech",
@@ -138,11 +138,26 @@ export const EMPLOYMENT: Employer[] = [
     endDate: "Jun 17",
     location: "London, UK",
     content1:
-      "Prizzle vitae erat black libero shizzlin dizzle adipiscing. Fusce ac augue eu shizznit ullamcorpizzle sure. Shiznit fermentizzle sapizzle ass erat. Suspendisse lorizzle leo, sollicitudizzle dang, mattizzle ass, commodo pimpin', justo. Break yo neck, yall boom shackalack porttitor ligula. Check it out for sure, doggy a ornare da bomb, sapizzle metizzle ante, egizzle boofron my shizz enim fo shizzle lorizzle. Phasellus quam shiznit, imperdizzle hizzle, tempizzle shut the shizzle up, sempizzle in, sapien.",
+      "Cohaesus is a commercial advertising agency where I had the opportunity to learn the fundamentals of frontend web development while working on a variety of projects both in-house and at some of the top advertising agencies in and around London.",
     content2:
-      "Yo eu bling bling. Break it down porta its fo rizzle tellus. Gizzle viverra, doggy izzle away hendrerizzle, libero urna sheezy leo, fizzle doggy my shizz sapizzle cool daahng dawg. Donizzle sheezy dolizzle. Vestibulizzle shit felizzle. ",
-    content3:
-      "Tellivizzle elementum mammasay mammasa mamma oo sa nizzle. Nizzle nulla gangster, shiz izzle, volutpizzle sheezy, auctor eget, things. Sed pharetra. Mah nizzle nisi. Pot amizzle leo fo shizzle my nizzle shizznit blandit dignissim. Quisque laorizzle dizzle sit enim. Aenizzle tempizzle dignissim felizzle.",
+      "I gained valuable experience working with both green field and legacy codebases, which helped me to develop a well-rounded foundational skill set in web development.",
+    notableWork: [
+      {
+        id: "WWF",
+        displayName: "WWF (#EndangeredEmoji)",
+        url: "https://cohaesus.co.uk/work/wwf/",
+      },
+      {
+        id: "highland-park",
+        displayName: "Highland Park",
+        url: "https://www.highlandparkwhisky.com/",
+      },
+      {
+        id: "fatface",
+        displayName: "FatFace",
+        url: "https://www.fatface.com/",
+      },
+    ],
   },
   {
     id: "rockstar-qa",
@@ -153,10 +168,15 @@ export const EMPLOYMENT: Employer[] = [
     endDate: "Feb 15",
     location: "Edinburgh, UK",
     content1:
-      "Prizzle vitae erat black libero shizzlin dizzle adipiscing. Fusce ac augue eu shizznit ullamcorpizzle sure. Shiznit fermentizzle sapizzle ass erat. Suspendisse lorizzle leo, sollicitudizzle dang, mattizzle ass, commodo pimpin', justo. Break yo neck, yall boom shackalack porttitor ligula. Check it out for sure, doggy a ornare da bomb, sapizzle metizzle ante, egizzle boofron my shizz enim fo shizzle lorizzle. Phasellus quam shiznit, imperdizzle hizzle, tempizzle shut the shizzle up, sempizzle in, sapien.",
+      "Credited as a QA Tester (and later a software engineer) on Grand Theft Auto V, I played a crucial role in ensuring the overall quality of the game. It was a rewarding and challenging experience that allowed me to make a meaningful contribution to the development of one of the best-selling games of all time.",
     content2:
-      "Yo eu bling bling. Break it down porta its fo rizzle tellus. Gizzle viverra, doggy izzle away hendrerizzle, libero urna sheezy leo, fizzle doggy my shizz sapizzle cool daahng dawg. Donizzle sheezy dolizzle. Vestibulizzle shit felizzle. ",
-    content3:
-      "Tellivizzle elementum mammasay mammasa mamma oo sa nizzle. Nizzle nulla gangster, shiz izzle, volutpizzle sheezy, auctor eget, things. Sed pharetra. Mah nizzle nisi. Pot amizzle leo fo shizzle my nizzle shizznit blandit dignissim. Quisque laorizzle dizzle sit enim. Aenizzle tempizzle dignissim felizzle.",
+      "Responsibilities included finding and accurately reporting issues through detailed bug reports, providing critical analysis and feedback, and executing various types of testing across multiple platforms.",
+    notableWork: [
+      {
+        id: "gtav-credits",
+        displayName: "Grand Theft Auto V (credits)",
+        url: "https://www.rockstargames.com/gta-v/thankyou",
+      },
+    ],
   },
 ];
