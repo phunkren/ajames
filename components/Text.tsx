@@ -1,18 +1,22 @@
 import { HTMLAttributes } from "react";
+import type * as Stitches from "@stitches/react";
 import { styled } from "../stitches.config";
 import { H1_STYLES, H2_STYLES, H3_STYLES, P_STYLES } from "../styles/text";
 
-type HeaderProps = HTMLAttributes<HTMLHeadingElement> & {
-  as?: "h1" | "h2" | "h3";
-};
+type HeaderProps = HTMLAttributes<HTMLHeadingElement> &
+  Stitches.CSS & {
+    as?: "h1" | "h2" | "h3";
+  };
 
-type ParapgraphProps = HTMLAttributes<HTMLParagraphElement> & {
-  as?: "p";
-};
+type ParapgraphProps = HTMLAttributes<HTMLParagraphElement> &
+  Stitches.CSS & {
+    as?: "p";
+  };
 
-type SpanProps = HTMLAttributes<HTMLSpanElement> & {
-  as?: "span";
-};
+type SpanProps = HTMLAttributes<HTMLSpanElement> &
+  Stitches.CSS & {
+    as?: "span";
+  };
 
 type TextProps = ParapgraphProps | SpanProps;
 
@@ -50,7 +54,7 @@ const StyledTextAux = styled("span", {
 });
 
 export function TextTitle1({ as, ...props }: HeaderProps) {
-  return <StyledTextTitle1 as={as} {...props} />;
+  return <StyledTextTitle1 as={as} css={} {...props} />;
 }
 
 export function TextTitle2({ as, ...props }: HeaderProps) {
