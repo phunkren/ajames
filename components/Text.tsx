@@ -54,7 +54,7 @@ const StyledTextAux = styled("span", {
 });
 
 export function TextTitle1({ as, ...props }: HeaderProps) {
-  return <StyledTextTitle1 as={as} css={} {...props} />;
+  return <StyledTextTitle1 as={as} {...props} />;
 }
 
 export function TextTitle2({ as, ...props }: HeaderProps) {
