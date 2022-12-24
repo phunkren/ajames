@@ -1,9 +1,13 @@
 import { HStack, Layout, VStack } from "../components/Layout";
 import { Link } from "../components/Link";
 import { TextBody, TextHeadline, TextTitle1 } from "../components/Text";
+import { EMPLOYMENT } from "../data/employment";
 import { PERSONAL } from "../data/personal";
+import { SITE } from "../data/site";
 
 function Home() {
+  const currentEmployer = EMPLOYMENT[0];
+
   return (
     <Layout>
       <VStack
@@ -13,15 +17,17 @@ function Home() {
         spacingVertical={7}
         flexGrow
       >
-        <TextTitle1>AJAMES.DEV</TextTitle1>
+        <TextTitle1 css={{ textTransform: "uppercase" }}>
+          {SITE.displayName}
+        </TextTitle1>
 
         <HStack gap={2} alignItems="center">
-          <TextHeadline>{PERSONAL.occupation.title}</TextHeadline>
+          <TextHeadline>{PERSONAL.occupation}</TextHeadline>
 
           <TextBody as="span">@</TextBody>
 
-          <Link href={PERSONAL.occupation.url} variant="primary">
-            <TextHeadline>{PERSONAL.occupation.employer}</TextHeadline>
+          <Link href={currentEmployer.url} variant="primary">
+            <TextHeadline>{currentEmployer.displayName}</TextHeadline>
           </Link>
         </HStack>
       </VStack>
