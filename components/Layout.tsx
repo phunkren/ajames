@@ -5,7 +5,7 @@ import { FLEX_VARIANTS } from "../styles/flex";
 import { SPACING_VARIANTS } from "../styles/spacing";
 import { Avatar } from "./Avatar";
 import { Link } from "./Link";
-import { Navigation } from "./Navigation";
+import { Navigation, NavigationMobile } from "./Navigation";
 import { Social } from "./Social";
 import { ThemeToggle } from "./Theme";
 
@@ -51,6 +51,7 @@ export function Layout({ children }) {
       <HStack
         as="header"
         spacingVertical={{ "@initial": 4, "@bp2": 7 }}
+        spacingHorizontal={2}
         gap={{ "@initial": 4, "@bp2": 7 }}
         justifyContent="space-between"
         alignItems="center"
@@ -60,10 +61,18 @@ export function Layout({ children }) {
             <Avatar />
           </Link>
 
-          <Navigation />
+          <Box display={{ "@initial": "none", "@bp2": "flex" }}>
+            <Navigation />
+          </Box>
         </HStack>
 
-        <ThemeToggle />
+        <Box display={{ "@initial": "none", "@bp2": "flex" }}>
+          <ThemeToggle />
+        </Box>
+
+        <Box display={{ "@initial": "flex", "@bp2": "none" }}>
+          <NavigationMobile />
+        </Box>
       </HStack>
 
       <VStack as="main" flexGrow>
