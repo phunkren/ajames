@@ -1,9 +1,8 @@
-import { ButtonHTMLAttributes } from "react";
+import { ButtonHTMLAttributes, forwardRef, Ref } from "react";
 import { styled } from "../stitches.config";
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: "primary" | "secondary";
-  transparent?: boolean;
 };
 
 const StyledButton = styled("button", {
@@ -19,6 +18,8 @@ const StyledButton = styled("button", {
   "-moz-appearance": "none",
 });
 
-export function Button(props: ButtonProps) {
-  return <StyledButton type="button" {...props} />;
-}
+export const Button = forwardRef(
+  (props: ButtonProps, ref: Ref<HTMLButtonElement>) => {
+    return <StyledButton ref={ref} type="button" {...props} />;
+  }
+);
