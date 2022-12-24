@@ -21,7 +21,7 @@ function Home() {
           {SITE.displayName}
         </TextTitle1>
 
-        <HStack gap={2} alignItems="center">
+        <HStack gap={2} alignItems="flex-end">
           <TextHeadline>{PERSONAL.occupation}</TextHeadline>
 
           <TextBody as="span">@</TextBody>
