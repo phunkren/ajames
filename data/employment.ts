@@ -28,9 +28,9 @@ export const EMPLOYMENT: Employer[] = [
     endDate: "Present",
     location: "Remote, EMEA",
     content1:
-      "As a member of the Coinbase Prime team, I'm dedicated to delivering intuitive and trustworthy user experiences for our institutional customers by efficiently executing and maintaining frontend features on the platform and the admin interface.",
+      "As a member of Coinbase Prime, I collaborate with people from various disciplines across the company to deliver intuitive and trustworthy user experiences for institutional customers by efficiently executing and maintaining frontend features on the platform and admin interface.",
     content2:
-      "My latest achievement was being a part of the team that developed and successfully launched the Data Marketplace MVP, where I had the opportunity to work with people from various disciplines across the company to provide historical datasets from the Coinbase Exchange.",
+      "I was also recently part of a team that developed and successfully launched the Data Marketplace. This gave me the opportunity to lead the UI development for the inital launch of a product that provides a collection of historical datasets from the Coinbase Exchange.",
     notableWork: [
       {
         id: "insto-prime",
@@ -53,9 +53,9 @@ export const EMPLOYMENT: Employer[] = [
     endDate: "Feb 22",
     location: "Edinburgh, UK",
     content1:
-      "I collaborated with other technology teams at Rockstar's worldwide studios to develop front-end features and applications for the company's online services. My responsibilities included maintaining legacy architecture and delivering feature-flagged content under time-sensitive release cycles.",
+      "I worked with other technology teams at Rockstar's worldwide studios to develop frontend features and applications for the company's online services. Responsibilities were to deliver feature-flagged content under time-sensitive release cycles, and maintain legacy architecture.",
     content2:
-      "My key achievements at Rockstar included working with other engineers to update the Social Club website to meet AA accessibility standards, as well as developing the foundations of an accessible design system with designers and product managers that could be used across all Rockstar-branded sites.",
+      "Key achievements at Rockstar involved working with other engineers to update the Social Club to meet AA accessibility standards, and developing the foundations of an accessible design system that could be used across all Rockstar-branded websites.",
     notableWork: [
       {
         id: "social-club",
@@ -78,7 +78,7 @@ export const EMPLOYMENT: Employer[] = [
     endDate: "Oct 20",
     location: "London, UK",
     content1:
-      "I played a key role in the development and launch of several successful startup ventures. My responsibilities included leading small engineering teams through scoped deliverables, and collaborating with cross-functional teams to engineer a robust and well-documented product that could be taken to market.",
+      "I played a key role in the development and launch of several successful startup businesses. Responsibilities at BCGDV included leading a small engineering team through scoped deliverables, collaborating with cross-functional teams, and engineering a robust and well-documented product that could be taken to market.",
     content2:
       "I also participated in the Code First Girls program, which aims to reduce the gender diversity gap by giving women the opportunity to pursue a career in tech. Mentoring  allowed me to directly contribute to the community and support the growth and development of future engineers.",
     notableWork: [
@@ -110,7 +110,7 @@ export const EMPLOYMENT: Employer[] = [
     content1:
       "During my time at Fathom, I worked on challenging data visualization and trading platform projects for fintech clients and major banks. I was also involved in delivering a React Native prototype of an international business planning software company's desktop offerings.",
     content2:
-      "Alongside client work, I was also involved in the redesign of the company's website, and regularly participated in hackathons and technical live streams in the office.",
+      "Alongside client work, I was also involved in the redesign of the company's website, and regularly hosted and participated in hackathons, live streams, and technical presentations in the office.",
     notableWork: [
       {
         id: "access-fintech",
@@ -168,13 +168,13 @@ export const EMPLOYMENT: Employer[] = [
     endDate: "Feb 15",
     location: "Edinburgh, UK",
     content1:
-      "Credited as a QA Tester (and later a software engineer) on Grand Theft Auto V, I played a crucial role in ensuring the overall quality of the game. It was a rewarding and challenging experience that allowed me to make a meaningful contribution to the development of one of the best-selling games of all time.",
+      "Credited as a QA Tester on Grand Theft Auto V, I helped ensure the overall quality of the existing game and any upcoming features. It was a rewarding and challenging experience that allowed me to make a meaningful contribution to the development of one of the best-selling video games of all time.",
     content2:
       "Responsibilities included finding and accurately reporting issues through detailed bug reports, providing critical analysis and feedback, and executing various types of testing across multiple platforms.",
     notableWork: [
       {
         id: "gtav-credits",
-        displayName: "Grand Theft Auto V (credits)",
+        displayName: "Grand Theft Auto V",
         url: "https://www.rockstargames.com/gta-v/thankyou",
       },
     ],

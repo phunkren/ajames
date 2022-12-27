@@ -243,7 +243,13 @@ function Cv() {
                 <SeparatorRoot orientation="horizontal" decorative />
               </Box>
 
-              <TextBody>Written references available upon request.</TextBody>
+              <Link href="https://www.linkedin.com/in/phunkren/details/recommendations/">
+                LinkedIn Recommendations
+              </Link>
+
+              <TextBody>
+                Written references are also available upon request.
+              </TextBody>
             </VStack>
           </VStack>
 
@@ -267,12 +273,12 @@ function Cv() {
               </Box>
 
               <TextBody>
-                I'm a frontend software engineer based in Glasgow, Scotland. My
-                passion for digital technology continually drives me to advance
-                my technical skill set and adopt the latest industry best
-                practices. An analytical mindset and strong communication skills
-                enable me to excel in technical environments where I can learn
-                from others and inspire my peers.
+                I'm a software engineer based in Glasgow, Scotland. My passion
+                for frontend web technology continually drives me to advance my
+                skill set and adopt the latest industry best practices. An
+                analytical mindset and strong communication skills allow me to
+                excel in environments where I can learn from others and inspire
+                my peers.
               </TextBody>
 
               <TextBody>
