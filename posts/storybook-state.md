@@ -109,13 +109,10 @@ storiesOf('Input', module)
 ```
 
 
-You can find the repository on GitHub, and here’s a quick look at it in action:
+You can find the repository on [GitHub](https://github.com/phunkren/storybook-state), and here’s a quick look at it in action:
 
 
-![](../src/assets/images/storybook-state-example.gif)
-
-
-Adding state to Storybook
+![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/40c35762-69fb-4a12-af02-35a48d4b4866/storybook-state-example.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221228%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221228T214355Z&X-Amz-Expires=3600&X-Amz-Signature=3e896dfe2761416111da881c4a0ec9f109160b4928d493cdc44333940b51a808&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 
 1.1: Test both controlled and uncontrolled inputs in Storybook
