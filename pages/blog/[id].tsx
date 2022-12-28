@@ -1,4 +1,3 @@
-import { GetPageResponse } from "@notionhq/client/build/src/api-endpoints";
 import Image from "next/image";
 import { HStack, Layout, VStack } from "../../components/Layout";
 import { TextAux, TextTitle1 } from "../../components/Text";
@@ -34,7 +33,7 @@ export async function getStaticProps({ params }) {
   const frontmatter = {
     title: pageData.properties.page.title[0].plain_text,
     image: pageData.cover?.file.url ?? "",
-    date: pageData.properties.date.created_time,
+    date: pageData.properties.date.date.start,
     tags: pageData.properties.tags.multi_select,
   };
 
@@ -42,6 +41,7 @@ export async function getStaticProps({ params }) {
     props: {
       frontmatter,
       postData,
+      pageData,
     },
   };
 }

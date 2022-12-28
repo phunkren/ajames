@@ -16,9 +16,9 @@ type Authors = {
 };
 
 type Date = {
+  date: Record<string, unknown>;
   id: string;
   type: string;
-  created_time: string;
 };
 
 type Page = {
