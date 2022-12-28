@@ -28,7 +28,7 @@ export const EMPLOYMENT: Employer[] = [
     endDate: "Present",
     location: "Remote, EMEA",
     content1:
-      "As a member of Coinbase Prime, I collaborate with people from various disciplines across the company to deliver intuitive and trustworthy user experiences for institutional customers by efficiently executing and maintaining frontend features on the platform and admin interface.",
+      "I'm curently working on Coinbase Prime with team members from various disciplines to create intuitive and trustworthy user experiences for institutional customers. I primarily focus on efficiently executing and maintaining frontend features on the platform and admin interface.",
     content2:
       "I was also recently part of a team that developed and successfully launched the Data Marketplace. This gave me the opportunity to lead the UI development for the inital launch of a product that provides a collection of historical datasets from the Coinbase Exchange.",
     notableWork: [
@@ -78,9 +78,9 @@ export const EMPLOYMENT: Employer[] = [
     endDate: "Oct 20",
     location: "London, UK",
     content1:
-      "I played a key role in the development and launch of several successful startup businesses. Responsibilities at BCGDV included leading a small engineering team through scoped deliverables, collaborating with cross-functional teams, and engineering a robust and well-documented product that could be taken to market.",
+      "I played a key role in the development and launch of several successful startup businesses. At BCG I was responsible for leading a small engineering team through scoped deliverables, collaborating with cross-functional teams, and engineering a robust and well-documented product that could be taken to market.",
     content2:
-      "I also participated in the Code First Girls program, which aims to reduce the gender diversity gap by giving women the opportunity to pursue a career in tech. Mentoring  allowed me to directly contribute to the community and support the growth and development of future engineers.",
+      "I also participated in the Code First Girls program, which aims to reduce the gender diversity gap by giving women the opportunity to pursue a career in tech. Mentoring  allowed me to directly contribute to the community by supporting the growth and development of future engineers.",
     notableWork: [
       {
         id: "vanguard",
@@ -91,11 +91,6 @@ export const EMPLOYMENT: Employer[] = [
         id: "beema",
         displayName: "Beema",
         url: "https://www.beema.ae/en",
-      },
-      {
-        id: "code-first-girls",
-        displayName: "Code First Girls",
-        url: "https://codefirstgirls.com/about-us/",
       },
     ],
   },
@@ -108,9 +103,9 @@ export const EMPLOYMENT: Employer[] = [
     endDate: "Mar 19",
     location: "London, UK",
     content1:
-      "During my time at Fathom, I worked on challenging data visualization and trading platform projects for fintech clients and major banks. I was also involved in delivering a React Native prototype of an international business planning software company's desktop offerings.",
+      "During my time at Fathom, I had the opportunity to work on exciting data visualization and trading platform projects for fintech clients and major banks. I was also involved in creating a React Native prototype for an international business planning software company, bringing their desktop offerings to mobile.",
     content2:
-      "Alongside client work, I was also involved in the redesign of the company's website, and regularly hosted and participated in hackathons, live streams, and technical presentations in the office.",
+      "In addition to client projects, I had the opportunity to contribute to the redesign of the company's website and participate in various internal events such as hackathons, live streams, and technical presentations. These experiences allowed me to not only stay up to date with the latest technologies and practices, but also to share my knowledge and insights with my colleagues.",
     notableWork: [
       {
         id: "access-fintech",
@@ -132,15 +127,15 @@ export const EMPLOYMENT: Employer[] = [
   {
     id: "cohaeseus",
     displayName: "Cohaesus",
-    url: "https://employer5.com",
+    url: "https://cohaesus.co.uk/",
     position: "Associate Engineer",
     startDate: "Feb 15",
     endDate: "Jun 17",
     location: "London, UK",
     content1:
-      "Cohaesus is a commercial advertising agency where I had the opportunity to learn the fundamentals of frontend web development while working on a variety of projects both in-house and at some of the top advertising agencies in and around London.",
+      "Cohaesus is a commercial advertising agency where I had the opportunity to learn the fundamentals of frontend web development while working on a variety of projects, both in-house and at some of the top advertising agencies in and around London.",
     content2:
-      "I gained valuable experience working with both green field and legacy codebases, which helped me to develop a well-rounded foundational skill set in web development.",
+      "Working with both green field and legacy codebases gave me the chance to not only learn new technologies and approaches, but also to gain a deeper understanding of how to maintain and improve existing systems. This diverse range of experience was invaluable in helping me to become a well-rounded engineer.",
     notableWork: [
       {
         id: "WWF",

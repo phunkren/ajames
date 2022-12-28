@@ -4,5 +4,5 @@ export const INTERESTS = [
   "Design Systems",
   "Livestreams",
   "Learning in Public",
-  "Technical writing",
+  "Technical Writing",
 ];

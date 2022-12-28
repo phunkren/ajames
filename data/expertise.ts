@@ -1,1 +1,1 @@
-export const EXPERTISE = ["JavaScript", "React JS", "HTML", "CSS"];
+export const EXPERTISE = ["React JS", "JavaScript", "HTML", "CSS"];
