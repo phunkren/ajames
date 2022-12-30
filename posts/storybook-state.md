@@ -112,7 +112,7 @@ storiesOf('Input', module)
 You can find the repository on [GitHub](https://github.com/phunkren/storybook-state), and here’s a quick look at it in action:
 
 
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/40c35762-69fb-4a12-af02-35a48d4b4866/storybook-state-example.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221230%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221230T132207Z&X-Amz-Expires=3600&X-Amz-Signature=51fb883f1142fd26556b856e2a849bb76c81b0130b056d766e6526f4f7901080&X-Amz-SignedHeaders=host&x-id=GetObject)
+![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/40c35762-69fb-4a12-af02-35a48d4b4866/storybook-state-example.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221230%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221230T164901Z&X-Amz-Expires=3600&X-Amz-Signature=9c177e69ce36f657a5444481b1910278e6619f6ef823c957a56e6e4aaa866286&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 
 1.1: Test both controlled and uncontrolled inputs in Storybook

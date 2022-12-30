@@ -2,7 +2,7 @@
 One of my favourite talks to come out of ReactFest London was Siddharth Kshetrapal’s [presentation on the frontend workflow](https://www.youtube.com/watch?v=bLgZwFRYTJ4). As he explained that design systems can fall short due to miscommunication amongst the project disciplines, I was reminded of a similar experience with a designer on a React project. We were discussing the inconsistencies in vertical rhythm between his design and the application’s frontend build. To illustrate his point, he opened the design in Sketch and enabled the grid view.
 
 
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/765c189a-0577-457d-9c77-e53b963fa3df/sketch-design-grid.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221230%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221230T132206Z&X-Amz-Expires=3600&X-Amz-Signature=8264da2f9c66c8a98028028116a054df760319d7feda73eeafa52c833eb4bb14&X-Amz-SignedHeaders=host&x-id=GetObject)
+![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/765c189a-0577-457d-9c77-e53b963fa3df/sketch-design-grid.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221230%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221230T164901Z&X-Amz-Expires=3600&X-Amz-Signature=20985fbb429d6b1262f5f2542964b82b7ae2781e263e22648ba7b00b04be0bc3&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 
 1.1: Sketch’s design grid
@@ -11,7 +11,7 @@ One of my favourite talks to come out of ReactFest London was Siddharth Kshetrap
 Sketch’s grid is a visual overlay allowing designers to create a high precision layout. I assumed that constant spacing between components would result in consistent vertical rhythm, yet the demonstration highlighted that despite the components being evenly distributed on the page, their respective content was not.
 
 
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/08652dc5-a3f7-4a09-8ac9-ebcd82ba1075/vertical-rhythm.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221230%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221230T132206Z&X-Amz-Expires=3600&X-Amz-Signature=c5a847c5f8e1ab0479109d27f290a78b0746b27a7fbc617cda77050d4524d378&X-Amz-SignedHeaders=host&x-id=GetObject)
+![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/08652dc5-a3f7-4a09-8ac9-ebcd82ba1075/vertical-rhythm.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221230%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221230T164901Z&X-Amz-Expires=3600&X-Amz-Signature=6c765e6cbeedf707124b119f0e32fded422e1d70b6cf1130e8bfe04f49a1bd2b&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 
 1.2: Vertical rhythm example
@@ -52,13 +52,13 @@ export const GridOverlay = styled.div(
 With the overlay in place, we can now accurately compare the vertical rhythm of our Sketch design with the production build, and edge a little closer to pixel perfect design (if that’s your bag). To demonstrate the output, I quickly added the overlay to a personal site. `direction="horizontal"` emulates Sketch’s regular grid, where `direction="vertical"` resembles the layout grid.
 
 
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/4cf79f51-282d-4a78-8823-8689b2c20879/grid-overlay-horizontal.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221230%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221230T132206Z&X-Amz-Expires=3600&X-Amz-Signature=d1b33f8f1fef9865c8c6d5255eeb8a99f7d852e00ab927c4a5d90a612b51393a&X-Amz-SignedHeaders=host&x-id=GetObject)
+![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/4cf79f51-282d-4a78-8823-8689b2c20879/grid-overlay-horizontal.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221230%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221230T164901Z&X-Amz-Expires=3600&X-Amz-Signature=58b54b11d80c6874e9135e993710680b0f274ccd2f358b95a69000c1efd625ce&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 
 1.3: Grid overlay (horizontal)
 
 
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/1d064ef9-c647-4e87-a8ba-e6bf6e150b95/grid-overlay-vertical.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221230%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221230T132206Z&X-Amz-Expires=3600&X-Amz-Signature=7740c1f7b37bcdad09eb79896efe4adfdbe5511189d8b6bb7dfe0d8648aef01c&X-Amz-SignedHeaders=host&x-id=GetObject)
+![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/1d064ef9-c647-4e87-a8ba-e6bf6e150b95/grid-overlay-vertical.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221230%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221230T164901Z&X-Amz-Expires=3600&X-Amz-Signature=9f905f97558fbd124d3f3e8ce5886b770682bcba8ace1393ac40c85affe9d792&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 
 1.4: Grid overlay (vertical)
