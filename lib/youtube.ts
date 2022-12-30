@@ -1,7 +1,7 @@
 import { buildUrl } from "../helpers/url";
 import { PlaylistPreview, VideoPreview } from "../types/youtube";
 
-const YOUTUBE_URL = "https://www.youtube.com/";
+const YOUTUBE_URL = "https://www.youtube.com";
 
 const YOUTUBE_API_URL = "https://youtube.googleapis.com/youtube/v3";
 
