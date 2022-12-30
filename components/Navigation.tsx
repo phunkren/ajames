@@ -26,7 +26,10 @@ export function NavigationLinks() {
   return (
     <>
       <li>
-        <Link variant="secondary" href="/">
+        <Link
+          variant="secondary"
+          href={{ pathname: "/", query: { tab: "about" } }}
+        >
           <TextHeadline>About</TextHeadline>
         </Link>
       </li>
