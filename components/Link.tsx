@@ -1,9 +1,11 @@
 import NextLink, { LinkProps as NextLinkProps } from "next/link";
-import { ReactNode } from "react";
+import { AnchorHTMLAttributes, ReactNode } from "react";
+import { UrlObject } from "url";
 import { darkTheme, lightTheme, styled } from "../stitches.config";
 
-type LinkProps = NextLinkProps & {
-  children: ReactNode;
+type LinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href"> & {
+  href: string | UrlObject;
+  nextLinkProps?: Omit<NextLinkProps, "href">;
   variant?: "primary" | "secondary";
 };
 
@@ -37,10 +39,10 @@ const StyledLink = styled("a", {
   },
 });
 
-export function Link({ href, children, variant, ...props }: LinkProps) {
+export function Link({ href, nextLinkProps, ...props }: LinkProps) {
   return (
-    <NextLink href={href} passHref legacyBehavior {...props}>
-      <StyledLink variant={variant}>{children}</StyledLink>
+    <NextLink href={href} passHref legacyBehavior {...nextLinkProps}>
+      <StyledLink {...props} />
     </NextLink>
   );
 }
