@@ -27,7 +27,7 @@ export function NavigationLinks() {
     <>
       <li>
         <Link variant="secondary" href="/">
-          <TextHeadline>Home</TextHeadline>
+          <TextHeadline>About</TextHeadline>
         </Link>
       </li>
       <li>
@@ -36,13 +36,13 @@ export function NavigationLinks() {
         </Link>
       </li>
       <li>
-        <Link variant="secondary" href="/cv">
-          <TextHeadline>CV</TextHeadline>
+        <Link variant="secondary" href="/youtube">
+          <TextHeadline>YouTube</TextHeadline>
         </Link>
       </li>
       <li>
-        <Link variant="secondary" href="/learning">
-          <TextHeadline>Learning</TextHeadline>
+        <Link variant="secondary" href="/cv">
+          <TextHeadline>CV</TextHeadline>
         </Link>
       </li>
     </>
