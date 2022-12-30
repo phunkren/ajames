@@ -73,7 +73,9 @@ export function Preview({ post }: PreviewProps) {
           ))}
         </HStack>
       ) : null}
-      <Link href={`/blog/${url}`}>Read </Link>
+      <Link href={`/blog/${url}`}>
+        <TextHeadline>Read</TextHeadline>
+      </Link>
     </VStack>
   );
 }
