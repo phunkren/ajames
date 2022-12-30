@@ -33,6 +33,7 @@ export const globalStyles = globalCss({
     lineHeight: "1.5",
     width: "100%",
     minHeight: "100dvh",
+    overflowX: "hidden",
   },
 
   "div#__next, div#__root": {
