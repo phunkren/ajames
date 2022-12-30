@@ -40,6 +40,11 @@ export function NavigationLinks() {
           <TextHeadline>CV</TextHeadline>
         </Link>
       </li>
+      <li>
+        <Link variant="secondary" href="/learning">
+          <TextHeadline>Learning</TextHeadline>
+        </Link>
+      </li>
     </>
   );
 }
