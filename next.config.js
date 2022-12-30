@@ -3,7 +3,11 @@ module.exports = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "s3.us-west-2.amazonaws.com",
+        hostname: "s3.us-west-2.amazonaws.com", // Notion
+      },
+      {
+        protocol: "https",
+        hostname: "i.ytimg.com", // YouTube
       },
     ],
   },
