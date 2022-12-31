@@ -39,8 +39,8 @@ export function NavigationLinks() {
         </Link>
       </li>
       <li>
-        <Link variant="secondary" href="/youtube">
-          <TextHeadline>YouTube</TextHeadline>
+        <Link variant="secondary" href="/streaming">
+          <TextHeadline>Streaming</TextHeadline>
         </Link>
       </li>
       <li>

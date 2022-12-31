@@ -33,7 +33,7 @@ export async function getServerSideProps() {
   };
 }
 
-function YouTube({ latestVideo, playlists }: Props) {
+function Streaming({ latestVideo, playlists }: Props) {
   const videoPreview = formatLatestResponse(latestVideo);
   const playlistsPreview = formatPlaylistsResponse(playlists);
 
@@ -44,7 +44,7 @@ function YouTube({ latestVideo, playlists }: Props) {
         gap={10}
         css={{ maxWidth: 720, margin: "0 auto" }}
       >
-        <TextTitle1>YouTube</TextTitle1>
+        <TextTitle1>Streaming</TextTitle1>
 
         <Link href={YOUTUBE_SUBSCRIBE_URL}>
           <TextHeadline>Subscribe to ajames.dev</TextHeadline>
@@ -99,4 +99,4 @@ function YouTube({ latestVideo, playlists }: Props) {
   );
 }
 
-export default YouTube;
+export default Streaming;
