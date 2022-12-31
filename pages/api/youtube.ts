@@ -32,10 +32,6 @@ export async function getYoutubeData() {
     type: ["video"],
   });
 
-  const d = await getLatestLivestream;
-
-  console.log({ d });
-
   const getLatestVideo = youtube.search.list({
     part: ["snippet"],
     fields:
