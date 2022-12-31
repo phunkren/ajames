@@ -35,7 +35,6 @@ export async function getServerSideProps() {
 
 function YouTube({ latestVideo, playlists }: Props) {
   const videoPreview = formatLatestResponse(latestVideo);
-
   const playlistsPreview = formatPlaylistsResponse(playlists);
 
   return (
