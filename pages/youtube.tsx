@@ -1,6 +1,5 @@
-import { GetStaticProps } from "next";
+import { youtube_v3 } from "googleapis";
 import Image from "next/image";
-import { Button } from "../components/Button";
 import { Layout, VStack } from "../components/Layout";
 import { Link } from "../components/Link";
 import {
@@ -11,109 +10,73 @@ import {
   TextTitle2,
   TextTitle3,
 } from "../components/Text";
+import { YOUTUBE_SUBSCRIBE_URL } from "../constants/youtube";
 import {
   formatLatestResponse,
   formatPlaylistsResponse,
-  getLatestLiveStream,
-  getLatestVideo,
-  getPlaylists,
-  getSubscriptionUrl,
-} from "../lib/youtube";
-import { PlaylistPreview, VideoPreview } from "../types/youtube";
+} from "../helpers/youtube";
+import { getYoutubeData } from "./api/youtube";
 
 type Props = {
-  video: VideoPreview | null;
-  liveStream: VideoPreview | null;
-  playlists: PlaylistPreview[] | null;
-  subscriptionUrl: string;
+  latestVideo: youtube_v3.Schema$SearchResult;
+  playlists: youtube_v3.Schema$Playlist[];
 };
 
-export const getStaticProps: GetStaticProps = async () => {
-  const latestLiveStreamResponse = await getLatestLiveStream();
-  const latestLiveStream = !latestLiveStreamResponse
-    ? formatLatestResponse(latestLiveStreamResponse)
-    : null;
-
-  const latestVideoResponse = await getLatestVideo();
-  const latestVideo = !latestVideoResponse.error
-    ? formatLatestResponse(latestVideoResponse)
-    : null;
-
-  const playlistsResponse = await getPlaylists();
-
-  const playlists = !playlistsResponse.error
-    ? formatPlaylistsResponse(playlistsResponse)
-    : null;
-
-  const subscriptionUrl = getSubscriptionUrl();
+export async function getServerSideProps() {
+  const { latestVideo, playlists } = await getYoutubeData();
 
   return {
     props: {
-      liveStream: latestLiveStream,
-      video: latestVideo,
+      latestVideo,
       playlists,
-      subscriptionUrl,
     },
   };
-};
+}
 
-function YouTube({ video, liveStream, playlists, subscriptionUrl }: Props) {
+function YouTube({ latestVideo, playlists }: Props) {
+  const videoPreview = formatLatestResponse(latestVideo);
+
+  const playlistsPreview = formatPlaylistsResponse(playlists);
+
   return (
     <Layout>
-      <VStack alignItems="center" gap={10}>
+      <VStack
+        alignItems="center"
+        gap={10}
+        css={{ maxWidth: 720, margin: "0 auto" }}
+      >
         <TextTitle1>YouTube</TextTitle1>
 
-        <Link href={subscriptionUrl}>
+        <Link href={YOUTUBE_SUBSCRIBE_URL}>
           <TextHeadline>Subscribe to ajames.dev</TextHeadline>
         </Link>
 
-        {liveStream ? (
-          <>
-            <TextTitle2>Latest Live Stream</TextTitle2>
-
-            <VStack>
-              <Image
-                src={liveStream.thumbnail.src}
-                width={liveStream.thumbnail.width}
-                height={liveStream.thumbnail.height}
-                alt={liveStream.thumbnail.alt}
-              />
-              <TextTitle3>{liveStream.title}</TextTitle3>
-              <TextBody>{liveStream.description}</TextBody>
-              <TextAux>{liveStream.publishedAt}</TextAux>
-              <Link href={liveStream.url}>
-                <TextHeadline>Watch</TextHeadline>
-              </Link>
-            </VStack>
-          </>
-        ) : null}
-
-        {video ? (
+        {videoPreview ? (
           <>
             <TextTitle2>Latest Video</TextTitle2>
 
             <VStack>
               <Image
-                src={video.thumbnail.src}
-                width={video.thumbnail.width}
-                height={video.thumbnail.height}
-                alt={video.thumbnail.alt}
+                src={videoPreview.thumbnail.src}
+                width={videoPreview.thumbnail.width}
+                height={videoPreview.thumbnail.height}
+                alt={videoPreview.thumbnail.alt}
               />
-              <TextTitle3>{video.title}</TextTitle3>
-              <TextBody>{video.description}</TextBody>
-              <TextAux>{video.publishedAt}</TextAux>
-              <Link href={video.url}>
+              <TextTitle3>{videoPreview.title}</TextTitle3>
+              <TextBody>{videoPreview.description}</TextBody>
+              <TextAux>{videoPreview.publishedAt}</TextAux>
+              <Link href={videoPreview.url}>
                 <TextHeadline>Watch</TextHeadline>
               </Link>
             </VStack>
           </>
         ) : null}
 
-        {playlists ? (
+        {playlistsPreview ? (
           <>
             <TextTitle2>Playlists</TextTitle2>
 
-            {playlists.map((playlist) => {
+            {playlistsPreview.map((playlist) => {
               return (
                 <VStack key={playlist.id}>
                   <Image
