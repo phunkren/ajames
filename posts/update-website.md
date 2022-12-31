@@ -1,12 +1,10 @@
 
 ## Logic
 
-- [ ] Refactor logo & Home nav to short / long About
-- [ ] Create YouTube / Streaming page layout
-- [ ] Replace blog images with non-expiring variants
+- [x] Refactor logo & Home nav to short / long About
+- [x] Create YouTube / Streaming page layout
 - [ ] Add download and print CV functionality
 - [ ] Add [React Wrap Balancer](https://react-wrap-balancer.vercel.app/) to blog post titles
-- [ ] Add `external` variant to Link component
 
 ## Styles
 
@@ -32,3 +30,4 @@
 ## Bugs
 
 - [ ] Fix FOUC when page initially loads
+- [ ] Replace blog images with non-expiring variants

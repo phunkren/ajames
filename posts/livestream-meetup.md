@@ -5,7 +5,7 @@ One of the favourite parts of my job is being surrounded by creative professiona
 Like most digital professions, remote work is now becomingly increasingly commonplace. The natural progression of the meet-up was to extend it to employees unable to attend the event for whatever reason. The original implementation involved recording the talks with a laptop perched on a coffee table facing the presenter and a television, which would then be uploaded to YouTube for later viewing. A means to an end, but not without its fair share of problems.
 
 
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/d68f5c8b-095b-4cea-b46c-f127439468c2/livestream-presentation.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221230%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221230T164901Z&X-Amz-Expires=3600&X-Amz-Signature=eaf0fde225993b6b89496d507e7f90298857d8869851e109a0a64cbbac087544&X-Amz-SignedHeaders=host&x-id=GetObject)
+![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/d68f5c8b-095b-4cea-b46c-f127439468c2/livestream-presentation.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221230%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221230T173809Z&X-Amz-Expires=3600&X-Amz-Signature=67a376ab3fb59ca755f0bcb5b891d8121d50d3e2754839000810515b3fe013f6&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 
 1.1: One of the original Egg talk recordings
@@ -26,7 +26,7 @@ Since it’s not currently possible to live stream via QuickTime, third-party br
 With the inputs configured, we constructed scenes in OBS and added the inputs as sources. In OBS, a source can be any audiovisual input. A scene is simply a collection of sources. To muddy the water somewhat, you can also add scenes as a source. I like to split my scenes into two distinct categories: input and broadcasting. A broadcasting scene is what the end user will eventually see on the live stream, and is composed of sources and input scenes. An input scene contains one of the hardware inputs and any related sources, which can then be imported into a broadcasting scene. Creating a scene for each input is similar to the grouping functionality within a scene, but it also allows you the ability to distribute the group across multiple scenes whilst retaining complete control from a single source of truth.
 
 
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/0dcc46e2-8a42-4fe4-a023-75247cfe68da/livestream-config-options.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221230%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221230T164901Z&X-Amz-Expires=3600&X-Amz-Signature=294b0b04c9efec662b34ba9cda86f75a0f3e253fee15b4d7690b40df3126a4ad&X-Amz-SignedHeaders=host&x-id=GetObject)
+![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/0dcc46e2-8a42-4fe4-a023-75247cfe68da/livestream-config-options.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221230%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221230T173809Z&X-Amz-Expires=3600&X-Amz-Signature=acd6ccecfa7f50321d2cda77ec8d85cccad2acd096a764eb8c1d5c3e10d29961&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 
 1.2: A list of scenes and sources in OBS (input scenes as sources are highlighted green)
@@ -35,7 +35,7 @@ With the inputs configured, we constructed scenes in OBS and added the inputs as
 A list of scenes and the Primary scene’s sources in OBS (input scenes as sources are highlighted green) The Primary broadcasting scene contains the live cam shot, the presenter’s slides and the microphone. For a touch of branding, a makeshift border background and a small logo were added to the live cam view, and a placeholder image of the company logo replaces the background shot whenever slides are unavailable. We also added a Placeholder scene for when the stream begins, ends, or during an intermission. This scene is a simple background image of our Egg poster with no audio-visual inputs.
 
 
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/fa032e5f-38ec-489c-9e2d-07c8782b8aa3/livestream-overlay.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221230%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221230T164901Z&X-Amz-Expires=3600&X-Amz-Signature=564f48a4753af2b3cef7f0adff2eea7010353d87c34cd9cc76ef5e3db70f84be&X-Amz-SignedHeaders=host&x-id=GetObject)
+![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/fa032e5f-38ec-489c-9e2d-07c8782b8aa3/livestream-overlay.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221230%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221230T173809Z&X-Amz-Expires=3600&X-Amz-Signature=123a12bd1b0760ac3b923d5025ec7d2e363335acc43bb559bab88682e00282a2&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 
 1.3: Broadcasting scene overlay in OBS
@@ -44,13 +44,13 @@ A list of scenes and the Primary scene’s sources in OBS (input scenes as sourc
 All that remains is somewhere to host the live stream. We chose YouTube, which required us to enable our account for live streaming. This was a one-time process and took around 24hours for YouTube to approve the request. Once enabled, an event was scheduled for the upcoming Egg talk. Events provide a greater degree of control over our broadcast in a number of ways. For instance, it generates an event URL that we can distribute ahead of time to anyone we’ve invited to watch the stream. A countdown to the scheduled start time will be displayed if the URL is accessed before the event has gone live. We can also restrict access to the event. We’ve chosen to host our talks privately (for now), which means the stream is only accessible by the host and those invited and will never show in search results or public playlists. Default event settings and a reusable stream key were also configured. The default settings allow presets to be used for any future events, including privacy options, video categorisation, and advanced broadcasting configurations (stream optimisations, licensing and rights, etc). Doing so enforces consistency across the channel and ensures that any future events will require little to no setup before going live. To connect the event with our broadcasting software, we simply paste the reusable stream key and the server URL from the event into the OBS stream settings. Note that anyone with this key can stream to your channel, so it’s important to keep it secret and distribute with caution.
 
 
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/460016fa-0b96-4885-a596-a3c8dcb73d4b/livestream-encoder-settings.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221230%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221230T164901Z&X-Amz-Expires=3600&X-Amz-Signature=316da7563a272f3954e9341bd5330c86c296f3085d21572c866f7eee22ba9c52&X-Amz-SignedHeaders=host&x-id=GetObject)
+![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/460016fa-0b96-4885-a596-a3c8dcb73d4b/livestream-encoder-settings.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221230%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221230T173809Z&X-Amz-Expires=3600&X-Amz-Signature=5c1afaa3c70c8a45fcd70e73a415326924e8a1df4d7c64ddcc267953651920c3&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 
 1.4: YouTube encoder settings
 
 
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/277c08a6-c70a-4eea-b2d5-ce903b75fb9a/livestream-encoder-selection.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221230%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221230T164901Z&X-Amz-Expires=3600&X-Amz-Signature=f0bd375b8ed27afbd7f896ddf889a99395d7cc6ea87923690626fe47fd6295d9&X-Amz-SignedHeaders=host&x-id=GetObject)
+![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/277c08a6-c70a-4eea-b2d5-ce903b75fb9a/livestream-encoder-selection.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221230%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221230T173809Z&X-Amz-Expires=3600&X-Amz-Signature=0359e42ba9a302d22cfa0c8f95a59dac094ab1f7b22cb1babcadec2d7e4f39d4&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 
 1.5: OBS stream settings
