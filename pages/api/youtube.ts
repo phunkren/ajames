@@ -1,10 +1,8 @@
 import { google } from "googleapis";
 import { YOUTUBE_CHANNEL_ID } from "../../constants/youtube";
 
-let googleAuth;
-
 export async function getYoutubeData() {
-  googleAuth = new google.auth.GoogleAuth({
+  const googleAuth = new google.auth.GoogleAuth({
     credentials: {
       client_email: process.env.GOOGLE_CLIENT_EMAIL,
       private_key: process.env.GOOGLE_PRIVATE_KEY,
@@ -53,6 +51,8 @@ export async function getYoutubeData() {
   const [latestLivestreamRes, latestVideoRes, playlistsRes] = await Promise.all(
     [getLatestLivestream, getLatestVideo, getPlaylists]
   );
+
+  console.log({ latestLivestreamRes, latestVideoRes, playlistsRes });
 
   const latestLivestream = latestLivestreamRes.data.items[0];
   const latestVideo = latestVideoRes.data.items[0];
