@@ -19,17 +19,6 @@ export async function getYoutubeData() {
     version: "v3",
   });
 
-  const getLatestLivestream = youtube.search.list({
-    part: ["snippet"],
-    fields:
-      "items(id(videoId), snippet(thumbnails(high), title, publishedAt, description))",
-    channelId: YOUTUBE_CHANNEL_ID,
-    eventType: "live",
-    maxResults: 1,
-    order: "date",
-    type: ["video"],
-  });
-
   const getLatestVideo = youtube.search.list({
     part: ["snippet"],
     fields:
@@ -48,28 +37,24 @@ export async function getYoutubeData() {
     maxResults: 5,
   });
 
-  const [latestLivestreamRes, latestVideoRes, playlistsRes] = await Promise.all(
-    [getLatestLivestream, getLatestVideo, getPlaylists]
-  );
+  const [latestVideoRes, playlistsRes] = await Promise.all([
+    getLatestVideo,
+    getPlaylists,
+  ]);
 
-  console.log({ latestLivestreamRes, latestVideoRes, playlistsRes });
-
-  const latestLivestream = latestLivestreamRes.data.items[0];
   const latestVideo = latestVideoRes.data.items[0];
   const playlists = playlistsRes.data.items;
 
   return {
-    latestLivestream,
     latestVideo,
     playlists,
   };
 }
 
 export default async (_, res) => {
-  const { latestLivestream, latestVideo, playlists } = await getYoutubeData();
+  const { latestVideo, playlists } = await getYoutubeData();
 
   return res.status(200).json({
-    latestLivestream,
     latestVideo,
     playlists,
   });
