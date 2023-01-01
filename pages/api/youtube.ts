@@ -1,4 +1,5 @@
 import { google } from "googleapis";
+import { GOOGLE_SERVICE_ACCOUNT } from "../../constants/google";
 import {
   YOUTUBE_CHANNEL_ID,
   YOUTUBE_PLAYLIST_ID,
@@ -7,10 +8,8 @@ import {
 export async function getYoutubeData() {
   const googleAuth = new google.auth.GoogleAuth({
     credentials: {
-      client_email: process.env.GOOGLE_CLIENT_EMAIL,
-      private_key: process.env.GOOGLE_PRIVATE_KEY.split(String.raw`\n`).join(
-        "\n"
-      ),
+      client_email: GOOGLE_SERVICE_ACCOUNT.client_email,
+      private_key: GOOGLE_SERVICE_ACCOUNT.private_key,
     },
     scopes: [
       "https://www.googleapis.com/auth/youtube",
