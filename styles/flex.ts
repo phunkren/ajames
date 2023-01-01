@@ -80,4 +80,12 @@ export const FLEX_VARIANTS = {
       gap: "$space$10",
     },
   },
+  direction: {
+    row: {
+      flexDirection: "row",
+    },
+    column: {
+      flexDirection: "column",
+    },
+  },
 };
