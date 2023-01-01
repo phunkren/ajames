@@ -288,62 +288,70 @@ function Cv() {
                 <SeparatorRoot orientation="horizontal" decorative />
               </Box>
 
-              {EMPLOYMENT.map((employer) => (
-                <VStack gap={{ "@initial": 2, "@bp2": 4 }} key={employer.id}>
-                  <VStack gap={{ "@initial": 1, "@bp2": 2 }}>
-                    <TextTitle3>{employer.position}</TextTitle3>
+              <VStack gap={8}>
+                {EMPLOYMENT.map((employer) => (
+                  <VStack gap={{ "@initial": 2, "@bp2": 4 }} key={employer.id}>
+                    <VStack gap={{ "@initial": 1, "@bp2": 2 }}>
+                      <TextTitle3>{employer.position}</TextTitle3>
 
-                    <HStack
-                      alignItems="center"
-                      justifyContent="space-between"
-                      flexWrap="wrap"
-                      gap={{ "@initial": 1, "@bp2": 2 }}
-                    >
-                      <HStack gap={2} alignItems="flex-end">
-                        <Link href={employer.url} variant="primary">
-                          <TextBody>{employer.displayName}</TextBody>
-                        </Link>
-                        <TextBody as="span">/</TextBody>
-                        <TextBody as="span">{employer.location}</TextBody>
-                      </HStack>
+                      <Box
+                        direction={{ "@initial": "column", "@bp2": "row" }}
+                        alignItems={{
+                          "@bp2": "flex-end",
+                        }}
+                        justifyContent={{
+                          "@bp2": "space-between",
+                        }}
+                        gap={1}
+                      >
+                        <HStack gap={2} alignItems="flex-end">
+                          <Link href={employer.url} variant="primary">
+                            <TextBody>{employer.displayName}</TextBody>
+                          </Link>
+                          <TextBody as="span">/</TextBody>
+                          <TextBody as="span">{employer.location}</TextBody>
+                        </HStack>
 
-                      <Box>
-                        <TextAux as="span">
-                          {employer.startDate
-                            ? `${employer.startDate} - `
-                            : null}
-                          {employer.endDate}
-                        </TextAux>
+                        <Box>
+                          <TextAux as="span">
+                            {employer.startDate
+                              ? `${employer.startDate} - `
+                              : null}
+                            {employer.endDate}
+                          </TextAux>
+                        </Box>
                       </Box>
-                    </HStack>
+                    </VStack>
+
+                    <VStack gap={{ "@initial": 2, "@bp2": 4 }}>
+                      <TextBody>{employer.content1}</TextBody>
+
+                      {employer.content2 ? (
+                        <TextBody>{employer.content2}</TextBody>
+                      ) : null}
+
+                      {employer.content3 ? (
+                        <TextBody>{employer.content3}</TextBody>
+                      ) : null}
+
+                      {employer.notableWork?.length > 0 ? (
+                        <VStack>
+                          <TextAux>Notable Work</TextAux>
+                          {employer.notableWork.map((work) => (
+                            <li key={work.id}>
+                              <Link href={work.url}>
+                                <TextBody as="span">
+                                  {work.displayName}
+                                </TextBody>
+                              </Link>
+                            </li>
+                          ))}
+                        </VStack>
+                      ) : null}
+                    </VStack>
                   </VStack>
-
-                  <VStack gap={{ "@initial": 2, "@bp2": 4 }}>
-                    <TextBody>{employer.content1}</TextBody>
-
-                    {employer.content2 ? (
-                      <TextBody>{employer.content2}</TextBody>
-                    ) : null}
-
-                    {employer.content3 ? (
-                      <TextBody>{employer.content3}</TextBody>
-                    ) : null}
-
-                    {employer.notableWork?.length > 0 ? (
-                      <VStack>
-                        <TextAux>Notable Work</TextAux>
-                        {employer.notableWork.map((work) => (
-                          <li key={work.id}>
-                            <Link href={work.url}>
-                              <TextBody as="span">{work.displayName}</TextBody>
-                            </Link>
-                          </li>
-                        ))}
-                      </VStack>
-                    ) : null}
-                  </VStack>
-                </VStack>
-              ))}
+                ))}
+              </VStack>
             </VStack>
           </VStack>
         </HStack>
