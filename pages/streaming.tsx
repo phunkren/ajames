@@ -11,10 +11,7 @@ import {
   TextTitle3,
 } from "../components/Text";
 import { YOUTUBE_SUBSCRIBE_URL } from "../constants/youtube";
-import {
-  formatLatestResponse,
-  formatPlaylistsResponse,
-} from "../helpers/youtube";
+import { formatPlaylist, formatPlaylistItem } from "../helpers/youtube";
 import { PlaylistPreview, VideoPreview } from "../types/youtube";
 import { getYoutubeData } from "./api/youtube";
 
@@ -26,8 +23,8 @@ type Props = {
 export async function getServerSideProps() {
   const { latestVideo, playlists } = await getYoutubeData();
 
-  const videoPreview = formatLatestResponse(latestVideo);
-  const playlistsPreview = formatPlaylistsResponse(playlists);
+  const videoPreview = formatPlaylistItem(latestVideo);
+  const playlistsPreview = formatPlaylist(playlists);
 
   return {
     props: {
