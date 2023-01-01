@@ -9,7 +9,6 @@ import {
 } from "../components/Text";
 import { EMPLOYMENT } from "../data/employment";
 import { PERSONAL } from "../data/personal";
-import { SITE } from "../data/site";
 
 function Home() {
   const {

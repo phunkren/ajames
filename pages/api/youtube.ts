@@ -8,7 +8,9 @@ export async function getYoutubeData() {
   const googleAuth = new google.auth.GoogleAuth({
     credentials: {
       client_email: process.env.GOOGLE_CLIENT_EMAIL,
-      private_key: process.env.GOOGLE_PRIVATE_KEY,
+      private_key: process.env.GOOGLE_PRIVATE_KEY.split(String.raw`\n`).join(
+        "\n"
+      ),
     },
     scopes: [
       "https://www.googleapis.com/auth/youtube",
