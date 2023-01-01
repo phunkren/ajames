@@ -15,28 +15,29 @@ import {
   formatLatestResponse,
   formatPlaylistsResponse,
 } from "../helpers/youtube";
+import { PlaylistPreview, VideoPreview } from "../types/youtube";
 import { getYoutubeData } from "./api/youtube";
 
 type Props = {
-  latestVideo: youtube_v3.Schema$SearchResult;
-  playlists: youtube_v3.Schema$Playlist[];
+  videoPreview: VideoPreview;
+  playlistsPreview: PlaylistPreview[];
 };
 
 export async function getServerSideProps() {
   const { latestVideo, playlists } = await getYoutubeData();
 
+  const videoPreview = formatLatestResponse(latestVideo);
+  const playlistsPreview = formatPlaylistsResponse(playlists);
+
   return {
     props: {
-      latestVideo,
-      playlists,
+      videoPreview,
+      playlistsPreview,
     },
   };
 }
 
-function Streaming({ latestVideo, playlists }: Props) {
-  const videoPreview = formatLatestResponse(latestVideo);
-  const playlistsPreview = formatPlaylistsResponse(playlists);
-
+function Streaming({ videoPreview, playlistsPreview }: Props) {
   return (
     <Layout>
       <VStack

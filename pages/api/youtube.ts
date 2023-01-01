@@ -1,5 +1,8 @@
 import { google } from "googleapis";
-import { YOUTUBE_CHANNEL_ID } from "../../constants/youtube";
+import {
+  YOUTUBE_CHANNEL_ID,
+  YOUTUBE_PLAYLIST_ID,
+} from "../../constants/youtube";
 
 export async function getYoutubeData() {
   const googleAuth = new google.auth.GoogleAuth({
@@ -19,15 +22,10 @@ export async function getYoutubeData() {
     version: "v3",
   });
 
-  const getLatestVideo = youtube.search.list({
+  const getLatestVideo = youtube.playlistItems.list({
     part: ["snippet"],
-    fields:
-      "items(id(videoId), snippet(thumbnails(high), title, publishedAt, description))",
-    channelId: YOUTUBE_CHANNEL_ID,
-    eventType: "completed",
+    playlistId: YOUTUBE_PLAYLIST_ID,
     maxResults: 1,
-    order: "date",
-    type: ["video"],
   });
 
   const getPlaylists = youtube.playlists.list({
