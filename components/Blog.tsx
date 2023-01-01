@@ -69,7 +69,7 @@ export function Preview({ post }: PreviewProps) {
       {blogTags.length ? (
         <HStack gap={2}>
           {blogTags.map((blogTag) => (
-            <TextAux>{blogTag.name}</TextAux>
+            <TextAux key={blogTag.id}>{blogTag.name}</TextAux>
           ))}
         </HStack>
       ) : null}

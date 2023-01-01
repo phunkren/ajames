@@ -59,8 +59,8 @@ function Blog(props: Props) {
         </nav>
 
         <Container>
-          {posts.map((post, i) => (
-            <Preview key={i} post={post} />
+          {posts.map((post) => (
+            <Preview key={`${post.properties.slug}`} post={post} />
           ))}
         </Container>
       </VStack>
