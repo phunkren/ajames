@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Balancer from "react-wrap-balancer";
 import { HStack, Layout, VStack } from "../../components/Layout";
 import { TextAux, TextTitle1 } from "../../components/Text";
 import { getPageData } from "../../lib/notion";
@@ -57,7 +58,9 @@ export default function BlogPost({ frontmatter, postData }: Props) {
           height={100}
         />
 
-        <TextTitle1>{frontmatter.title}</TextTitle1>
+        <TextTitle1>
+          <Balancer>{frontmatter.title}</Balancer>
+        </TextTitle1>
 
         <TextAux>{frontmatter.date}</TextAux>
 
