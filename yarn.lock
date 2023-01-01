@@ -2642,6 +2642,11 @@ react-style-singleton@^2.2.1:
     invariant "^2.2.4"
     tslib "^2.0.0"
 
+react-wrap-balancer@^0.2.4:
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/react-wrap-balancer/-/react-wrap-balancer-0.2.4.tgz#1f112df575958400f253186aa9a7fd5ee9528ed1"
+  integrity sha512-MVL9/Tw1X72t0i5Y/2j3YmSx1vkJJ22b5Vb+vZ/IOEdq7r9JPNzTfnfkB8wrl98Jwx+F6VCwJXmU7a1lT5PtCA==
+
 react@18.2.0:
   version "18.2.0"
   resolved "https://registry.yarnpkg.com/react/-/react-18.2.0.tgz#555bd98592883255fa00de14f1151a917b5d77d5"
@@ -2853,13 +2858,6 @@ svgo@^2.8.0:
     picocolors "^1.0.0"
     stable "^0.1.8"
 
-swr@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/swr/-/swr-2.0.0.tgz#91d999359e2be92de1a41f6b6711d72be20ffdbd"
-  integrity sha512-IhUx5yPkX+Fut3h0SqZycnaNLXLXsb2ECFq0Y29cxnK7d8r7auY2JWNbCW3IX+EqXUg3rwNJFlhrw5Ye/b6k7w==
-  dependencies:
-    use-sync-external-store "^1.2.0"
-
 to-fast-properties@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/to-fast-properties/-/to-fast-properties-2.0.0.tgz#dc5e698cbd079265bc73e0377681a4e4e83f616e"
@@ -3001,11 +2999,6 @@ use-sidecar@^1.1.2:
   dependencies:
     detect-node-es "^1.1.0"
     tslib "^2.0.0"
-
-use-sync-external-store@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/use-sync-external-store/-/use-sync-external-store-1.2.0.tgz#7dbefd6ef3fe4e767a0cf5d7287aacfb5846928a"
-  integrity sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==
 
 uuid@^9.0.0:
   version "9.0.0"
