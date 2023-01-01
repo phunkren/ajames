@@ -47,9 +47,9 @@ function Home() {
         </nav>
 
         {currentTab === "home" ? (
-          <>
+          <VStack alignItems="center">
             <TextTitle1 css={{ textTransform: "uppercase" }}>
-              {SITE.displayName}
+              {PERSONAL.name}
             </TextTitle1>
 
             <HStack gap={2} alignItems="flex-end">
@@ -61,7 +61,7 @@ function Home() {
                 <TextHeadline>{currentEmployer.displayName}</TextHeadline>
               </Link>
             </HStack>
-          </>
+          </VStack>
         ) : null}
 
         {currentTab === "about" ? (

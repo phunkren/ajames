@@ -26,14 +26,6 @@ export function NavigationLinks() {
   return (
     <>
       <li>
-        <Link
-          variant="secondary"
-          href={{ pathname: "/", query: { tab: "about" } }}
-        >
-          <TextHeadline>About</TextHeadline>
-        </Link>
-      </li>
-      <li>
         <Link variant="secondary" href="/blog">
           <TextHeadline>Blog</TextHeadline>
         </Link>
