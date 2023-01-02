@@ -1,0 +1,152 @@
+
+Here are some quick tips I discovered when I was researching my wedding speech:
+
+- 8 mins is the sweet spot. Too short and you look unprepared; too long and you’ll lose the crowd
+- Hand out flowers and gifts afterwards. Try to minimise any distractions from the speech itself
+- Thank the bride, parents, wedding party, guests, and those not in attendance
+- Remember to say “On behalf of my wife and I”. Pause for a cheer
+- Shoot from the heart. It always lands easier than a punchline
+- Breathe. Pause between sections, and try to speak slowly. “Um” is a naughty word
+- Rehearse it into the ground. It’ll help keep your eyes off the paper
+
+To help my speech flow, I structured it around a couple of themes:
+
+- [The rule of three](https://www.masterclass.com/articles/how-to-use-the-rule-of-three-in-writing). My inspiration was Dave Chappelle’s three times he met OJ Simpson
+- Increase the level of familiarisation with the bride as the speech went on (start - “her”, middle - “Catriona”, end - “My wife / Mrs. James”)
+- Each section was a period of time in chronological order. It started with the moment I first thought about marrying her, and finished on the day of the wedding
+- Each period of time was there to explain defining moments in our relationship, but it also served as a way to thank everyone who had been along for the ride
+
+I’ll leave my speech below. Maybe it’ll help someone along the way. Good luck!
+
+
+---
+
+
+Hi there. Hi. Good evening!
+
+
+My name is Andrew. This evening I have the privilege of giving thanks to those that not only made today extra special, but in all the moments leading up to it as well. 
+
+
+I also have some gifts that I'd like to hand out to people without which today would not be possible. I'll come round and hand those out at some point after the speeches.
+
+
+I'd like to kick us off with a fresh round of applause for my new _father-in-law._ Thank you for the kind words, Billy. I'll do my best to repay them in kind shortly.
+
+
+12 years, 1 month, 1 week, 5 days, and some change. After all of that I can finally say: Welcome to the wedding! Finally! It’s been a long time. And during that time, there were three distinct moments that I knew I was going to marry this beautiful young...ish woman. (It's been twelve years. Time marches on!)
+
+
+The first time I wanted to marry her was on September 8th, 2011. 
+
+
+I was spending my second year of university studying in Boston Massachusetts. I woke up on my birthday feeling homesick for the first time since I had arrived. 
+
+
+At the bottom of the birthday messages on my social media feed was a video from Catriona. She held out a cupcake with a candle, sang happy birthday to me and blew out the candle. 
+
+
+Not in a weird way like 'Happy birthday, Mr President', but in the thoughtful and endearing manner that only she is truly capable of. I must’ve watched that video a hundred times.
+
+
+My beautiful bride. Doesn't she look wonderful?
+
+
+Catriona. My first thanks is to you. 
+
+
+Thank you for making me the happiest man in the world. I love you. I love you, and I’d choose you. In a hundred lifetimes, in a hundred worlds, in any version of reality, I’d find you, and I’d choose you. I cannot wait to spend the rest of my life with you.
+
+
+For all who are able, I'd like you to join me in raising a glass as I propose my first toast of the evening.
+
+
+**To the beautiful bride!**
+
+
+The second time I wanted to marry Catriona was at Queen Street station in 2013. 
+
+
+She had recently accepted a job in London, and we we about to spent the next two years apart in a long distance relationship, travelling between Glasgow, Edinburgh, and London.
+
+
+Thinking on it, that was probably the make or break moment in our relationship. We did not break. We made it because we're both resilient, we believe in each other, and because we're both as stubborn as they come.
+
+
+We went for lunch on the day she left, and I think for the first time in my life I’d completely lost my appetite. 
+
+
+When she disappeared from sight onto the platform, I made a quiet promise to myself that the next time we found ourselves in the same city, I'd never let her out of my sight again. 
+
+
+What I honestly believe got us through that period of our lives, was the continual love and support from our closest friends and family during that time. 
+
+
+Whether it be a shoulder to cry on when times were tough, lonely lime-lit bus stops at 3am, to simply always being on hand to offer us advice - and having the courage to do so, even if it wasn't necessarily something that we wanted to hear at the time.  
+
+
+Billy and Jennifer. My next thanks is to you.
+
+
+To be honest…I'm just as surprised how I turned out as you probably are! 
+
+
+With that in mind, thank you for welcoming into your family with open arms on day one, regardless. 
+
+
+I’ve cherished your love and generosity over the last twelve years, and I look forward to creating many more happy memories with you both as a member of your family.
+
+
+My Maw and Paw. There are no words. Guess I'll just move on. 
+
+
+Thank you for the unconditional love and support over all these years - both emotional and financial. Both of which are debts that I'll never be able to truly repay. 
+
+
+I love you both dearly. I hope to make you proud as a son, and know that I couldn't have asked for a better set of parents to guide me to where I stand today.
+
+
+Thanks to the Maid of Honour, and my awesome new sister-in-law, Jenny. 
+
+
+Thanks to the bridesmaids Sinead, and my sister Elaine.
+
+
+Thanks to our flower girl and my other sister-in-law, Miss Abigail.
+
+
+Thanks to my best man, my brother, Iain. 
+
+
+And finally thanks to my groomsmen and closest friends Euan, Tony, and Kenny. 
+
+
+I’d like you to join me in raising a glass as I propose my second toast of the evening.
+
+
+**To the wedding party!**
+
+
+The third time I wanted to marry Mrs...Catriona…James, was about four and a half hours ago. And when I first caught her eye as she was walking down the aisle towards me, I knew I was about to make the best decision of my life. 
+
+
+My dog Kiwi was an _incredibly_ close second. But you pipped her at the post, so well done you!
+
+
+What truly made that moment special, was being able to share it with each and every one of you here today. And it is my sincerest hope, that we are able to share many more of these memories with you all in the years to come.
+
+
+And with that I'd like to give my final thanks and propose a final toast. 
+
+
+Thank you for the children our friends and family have recently brought into this world, thank you to all of you here today, and thank you to all of you here with us in spirit.
+
+
+And on behalf of my wife and I …
+
+
+**Slàinte Mhath**
+
+
+Thank you.
+
