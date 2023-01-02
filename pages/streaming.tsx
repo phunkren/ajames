@@ -1,4 +1,3 @@
-import { youtube_v3 } from "googleapis";
 import Image from "next/image";
 import { Layout, VStack } from "../components/Layout";
 import { Link } from "../components/Link";
@@ -10,6 +9,7 @@ import {
   TextTitle2,
   TextTitle3,
 } from "../components/Text";
+import { ONE_HOUR_IN_SECONDS } from "../constants/date";
 import { YOUTUBE_SUBSCRIBE_URL } from "../constants/youtube";
 import { formatPlaylist, formatPlaylistItem } from "../helpers/youtube";
 import { PlaylistPreview, VideoPreview } from "../types/youtube";
@@ -18,23 +18,31 @@ import { getYoutubeData } from "./api/youtube";
 type Props = {
   videoPreview: VideoPreview;
   playlistsPreview: PlaylistPreview[];
+  timestamp: number;
 };
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const { latestVideo, playlists } = await getYoutubeData();
 
   const videoPreview = formatPlaylistItem(latestVideo);
   const playlistsPreview = formatPlaylist(playlists);
 
+  const timestamp = new Date().getTime();
+
   return {
     props: {
       videoPreview,
       playlistsPreview,
+      timestamp,
     },
+    // Next.js will attempt to re-generate the page:
+    // - When a request comes in
+    // - At most once every 10 seconds
+    revalidate: 60, // ONE_HOUR_IN_SECONDS,
   };
 }
 
-function Streaming({ videoPreview, playlistsPreview }: Props) {
+function Streaming({ videoPreview, playlistsPreview, timestamp }: Props) {
   return (
     <Layout>
       <VStack
@@ -43,6 +51,8 @@ function Streaming({ videoPreview, playlistsPreview }: Props) {
         css={{ maxWidth: 720, margin: "0 auto" }}
       >
         <TextTitle1>Streaming</TextTitle1>
+
+        <TextHeadline>{timestamp}</TextHeadline>
 
         <Link href={YOUTUBE_SUBSCRIBE_URL}>
           <TextHeadline>Subscribe to ajames.dev</TextHeadline>
