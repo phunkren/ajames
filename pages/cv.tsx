@@ -9,7 +9,7 @@ import {
 } from "@radix-ui/react-icons";
 import * as Separator from "@radix-ui/react-separator";
 import { Button } from "../components/Button";
-import { Box, HStack, Layout, VStack } from "../components/Layout";
+import { Box, Layout } from "../components/Layout";
 import { Link } from "../components/Link";
 import {
   TextAux,
@@ -73,8 +73,9 @@ const GridItem = styled("div", {
 function Cv() {
   return (
     <Layout>
-      <VStack css={{ backgroundColor: gray.gray4 }}>
-        <HStack
+      <Box direction="vertical" css={{ backgroundColor: gray.gray4 }}>
+        <Box
+          direction="horizontal"
           id="header"
           spacingHorizontal={{ "@initial": 3, "@bp2": 5 }}
           spacingVertical={{ "@initial": 5, "@bp2": 7 }}
@@ -82,12 +83,16 @@ function Cv() {
           justifyContent="space-between"
           css={{ borderBottom: "5px solid black" }}
         >
-          <VStack>
+          <Box direction="vertical">
             <TextTitle1>Andrew James</TextTitle1>
             <TextHeadline>Frontend Engineer / Glasgow, UK</TextHeadline>
-          </VStack>
+          </Box>
 
-          <HStack gap={7} display={{ "@initial": "none", "@bp2": "flex" }}>
+          <Box
+            direction="horizontal"
+            gap={7}
+            display={{ "@initial": "none", "@bp2": "flex" }}
+          >
             <Button
               title="Print CV"
               onClick={() => console.log("Implement Print CV")}
@@ -98,10 +103,11 @@ function Cv() {
             <Link href="/download-cv" download title="Download CV">
               <DownloadIcon width={36} height={36} aria-hidden />
             </Link>
-          </HStack>
-        </HStack>
+          </Box>
+        </Box>
 
-        <HStack
+        <Box
+          direction="horizontal"
           id="cv"
           gap={{ "@initial": 5, "@bp2": 7 }}
           spacingHorizontal={{ "@initial": 3, "@bp2": 5 }}
@@ -109,11 +115,13 @@ function Cv() {
           flexWrap={{ "@initial": "wrapReverse", "@bp3": "nowrap" }}
           flexGrow
         >
-          <VStack
+          <Box
+            direction="vertical"
             gap={5}
             css={{ "@bp3": { flexGrow: 0, flexShrink: 0, flexBasis: 300 } }}
           >
-            <VStack
+            <Box
+              direction="vertical"
               id="contact"
               as="section"
               gap={{ "@initial": 3, "@bp2": 5 }}
@@ -130,10 +138,10 @@ function Cv() {
                   href="mailto:contact@ajames.dev"
                   title="Email"
                 >
-                  <HStack gap={2} alignItems="center">
+                  <Box direction="horizontal" gap={2} alignItems="center">
                     <EnvelopeOpenIcon width={18} height={18} aria-hidden />
                     <TextHeadline>contact@ajames.dev</TextHeadline>
-                  </HStack>
+                  </Box>
                 </Link>
 
                 <Link
@@ -141,10 +149,10 @@ function Cv() {
                   href="https://localhost:3000"
                   title="Website"
                 >
-                  <HStack gap={2} alignItems="center">
+                  <Box direction="horizontal" gap={2} alignItems="center">
                     <HomeIcon width={18} height={18} aria-hidden />
                     <TextHeadline>ajames.dev</TextHeadline>
-                  </HStack>
+                  </Box>
                 </Link>
 
                 <Link
@@ -152,10 +160,10 @@ function Cv() {
                   href="https://www.linkedin.com/in/ajamesdev/"
                   title="LinkedIn"
                 >
-                  <HStack gap={2} alignItems="center">
+                  <Box direction="horizontal" gap={2} alignItems="center">
                     <LinkedInLogoIcon width={18} height={18} aria-hidden />
                     <TextHeadline>Andrew James</TextHeadline>
-                  </HStack>
+                  </Box>
                 </Link>
 
                 <Link
@@ -163,15 +171,16 @@ function Cv() {
                   href="https://github.com/phunkren"
                   title="contact@ajames.dev"
                 >
-                  <HStack gap={2} alignItems="center">
+                  <Box direction="horizontal" gap={2} alignItems="center">
                     <GitHubLogoIcon width={18} height={18} aria-hidden />
                     <TextHeadline>phunkren</TextHeadline>
-                  </HStack>
+                  </Box>
                 </Link>
               </GridRoot>
-            </VStack>
+            </Box>
 
-            <VStack
+            <Box
+              direction="vertical"
               id="education"
               as="section"
               gap={{ "@initial": 3, "@bp2": 5 }}
@@ -184,7 +193,12 @@ function Cv() {
 
               <GridRoot css={{ "@bp2": { gridRowGap: "$5" } }}>
                 {EDUCATION.map((education) => (
-                  <VStack key={education.id} gap={1} justifyContent="flex-end">
+                  <Box
+                    direction="vertical"
+                    key={education.id}
+                    gap={1}
+                    justifyContent="flex-end"
+                  >
                     {education.qualification ? (
                       <TextTitle3>{education.qualification}</TextTitle3>
                     ) : null}
@@ -194,12 +208,13 @@ function Cv() {
                       {education.startDate ? `${education.startDate} - ` : null}
                       {education.endDate}
                     </TextAux>
-                  </VStack>
+                  </Box>
                 ))}
               </GridRoot>
-            </VStack>
+            </Box>
 
-            <VStack
+            <Box
+              direction="vertical"
               id="expertise"
               as="section"
               gap={{ "@initial": 3, "@bp2": 5 }}
@@ -213,9 +228,10 @@ function Cv() {
                   <GridItem key={topic}>{topic}</GridItem>
                 ))}
               </GridRoot>
-            </VStack>
+            </Box>
 
-            <VStack
+            <Box
+              direction="vertical"
               id="interests"
               as="section"
               gap={{ "@initial": 3, "@bp2": 5 }}
@@ -231,9 +247,10 @@ function Cv() {
                   <GridItem key={interest}>{interest}</GridItem>
                 ))}
               </GridRoot>
-            </VStack>
+            </Box>
 
-            <VStack
+            <Box
+              direction="vertical"
               id="references"
               as="section"
               gap={{ "@initial": 3, "@bp2": 5 }}
@@ -251,8 +268,8 @@ function Cv() {
               <TextBody>
                 Written references are also available upon request.
               </TextBody>
-            </VStack>
-          </VStack>
+            </Box>
+          </Box>
 
           <Box
             position={{ "@initial": "absolute", "@bp3": "static" }}
@@ -261,8 +278,9 @@ function Cv() {
             <SeparatorRoot orientation="vertical" decorative />
           </Box>
 
-          <VStack gap={{ "@initial": 5, "@bp2": 7 }} flexGrow>
-            <VStack
+          <Box direction="vertical" gap={{ "@initial": 5, "@bp2": 7 }} flexGrow>
+            <Box
+              direction="vertical"
               id="profile"
               as="section"
               gap={{ "@initial": 3, "@bp2": 5 }}
@@ -275,9 +293,10 @@ function Cv() {
 
               <TextBody>{PERSONAL.profile1}</TextBody>
               <TextBody>{PERSONAL.profile2}</TextBody>
-            </VStack>
+            </Box>
 
-            <VStack
+            <Box
+              direction="vertical"
               id="experience"
               as="section"
               gap={{ "@initial": 3, "@bp2": 5 }}
@@ -288,10 +307,17 @@ function Cv() {
                 <SeparatorRoot orientation="horizontal" decorative />
               </Box>
 
-              <VStack gap={8}>
+              <Box direction="vertical" gap={8}>
                 {EMPLOYMENT.map((employer) => (
-                  <VStack gap={{ "@initial": 2, "@bp2": 4 }} key={employer.id}>
-                    <VStack gap={{ "@initial": 1, "@bp2": 2 }}>
+                  <Box
+                    direction="vertical"
+                    gap={{ "@initial": 2, "@bp2": 4 }}
+                    key={employer.id}
+                  >
+                    <Box
+                      direction="vertical"
+                      gap={{ "@initial": 1, "@bp2": 2 }}
+                    >
                       <TextTitle3>{employer.position}</TextTitle3>
 
                       <Box
@@ -304,13 +330,17 @@ function Cv() {
                         }}
                         gap={1}
                       >
-                        <HStack gap={2} alignItems="flex-end">
+                        <Box
+                          direction="horizontal"
+                          gap={2}
+                          alignItems="flex-end"
+                        >
                           <Link href={employer.url} variant="primary">
                             <TextBody>{employer.displayName}</TextBody>
                           </Link>
                           <TextBody as="span">/</TextBody>
                           <TextBody as="span">{employer.location}</TextBody>
-                        </HStack>
+                        </Box>
 
                         <Box>
                           <TextAux as="span">
@@ -321,9 +351,12 @@ function Cv() {
                           </TextAux>
                         </Box>
                       </Box>
-                    </VStack>
+                    </Box>
 
-                    <VStack gap={{ "@initial": 2, "@bp2": 4 }}>
+                    <Box
+                      direction="vertical"
+                      gap={{ "@initial": 2, "@bp2": 4 }}
+                    >
                       <TextBody>{employer.content1}</TextBody>
 
                       {employer.content2 ? (
@@ -335,7 +368,7 @@ function Cv() {
                       ) : null}
 
                       {employer.notableWork?.length > 0 ? (
-                        <VStack>
+                        <Box direction="vertical">
                           <TextAux>Notable Work</TextAux>
                           {employer.notableWork.map((work) => (
                             <li key={work.id}>
@@ -346,16 +379,16 @@ function Cv() {
                               </Link>
                             </li>
                           ))}
-                        </VStack>
+                        </Box>
                       ) : null}
-                    </VStack>
-                  </VStack>
+                    </Box>
+                  </Box>
                 ))}
-              </VStack>
-            </VStack>
-          </VStack>
-        </HStack>
-      </VStack>
+              </Box>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
     </Layout>
   );
 }

@@ -1,4 +1,4 @@
-import { Box, HStack } from "./Layout";
+import { Box } from "./Layout";
 import { Link } from "./Link";
 import {
   GitHubLogoIcon,
@@ -11,7 +11,13 @@ import { SOCIAL } from "../data/social";
 export function Social() {
   return (
     <Box as="nav" aria-label="Social Media">
-      <HStack as="ul" role="list" gap={4} alignItems="center">
+      <Box
+        direction="horizontal"
+        as="ul"
+        role="list"
+        gap={4}
+        alignItems="center"
+      >
         <li>
           <Link
             target="_blank"
@@ -78,7 +84,7 @@ export function Social() {
             </Box>
           </Link>
         </li>
-      </HStack>
+      </Box>
     </Box>
   );
 }

@@ -1,6 +1,5 @@
 import { blackA } from "@radix-ui/colors";
 import * as ToggleGroup from "@radix-ui/react-toggle-group";
-import { useState } from "react";
 import { styled } from "../stitches.config";
 import { Tag } from "../types/notion";
 

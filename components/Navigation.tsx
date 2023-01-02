@@ -1,14 +1,14 @@
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import * as Dialog from "@radix-ui/react-dialog";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
-import { Box, HStack, VStack } from "./Layout";
+import { gray } from "@radix-ui/colors";
+import { Box } from "./Layout";
 import { Link } from "./Link";
 import { TextHeadline } from "./Text";
 import { Button } from "./Button";
 import { styled } from "../stitches.config";
 import { Social } from "./Social";
 import { ThemeToggle } from "./Theme";
-import { gray } from "@radix-ui/colors";
 
 const StyledDialogContent = styled(Dialog.Content, {
   position: "absolute",
@@ -47,9 +47,9 @@ export function NavigationLinks() {
 export function Navigation() {
   return (
     <Box aria-label="Primary navigation" as="nav">
-      <HStack as="ul" role="list" gap={7}>
+      <Box direction="horizontal" as="ul" role="list" gap={7}>
         <NavigationLinks />
-      </HStack>
+      </Box>
     </Box>
   );
 }
@@ -80,9 +80,9 @@ export function NavigationMobile() {
             <ThemeToggle />
           </Box>
 
-          <VStack>
+          <Box direction="vertical">
             <NavigationLinks />
-          </VStack>
+          </Box>
 
           <Box justifyContent="center" css={{ marginTop: "auto" }}>
             <Social />

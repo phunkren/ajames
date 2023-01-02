@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { HStack, Layout, VStack } from "../components/Layout";
+import { Box, Layout } from "../components/Layout";
 import { Link } from "../components/Link";
 import {
   TextAux,
@@ -21,7 +21,8 @@ function Home() {
 
   return (
     <Layout>
-      <VStack
+      <Box
+        direction="vertical"
         justifyContent="center"
         alignItems="center"
         gap={5}
@@ -30,7 +31,7 @@ function Home() {
         flexGrow
       >
         <nav aria-label="Blog categories">
-          <HStack as="ul" role="list" gap={5}>
+          <Box direction="horizontal" as="ul" role="list" gap={5}>
             <li>
               <Link href={{ pathname: "/", query: { tab: "home" } }}>
                 Short
@@ -42,16 +43,16 @@ function Home() {
                 Long
               </Link>
             </li>
-          </HStack>
+          </Box>
         </nav>
 
         {currentTab === "home" ? (
-          <VStack alignItems="center">
+          <Box direction="vertical" alignItems="center">
             <TextTitle1 css={{ textTransform: "uppercase" }}>
               {PERSONAL.name}
             </TextTitle1>
 
-            <HStack gap={2} alignItems="flex-end">
+            <Box direction="horizontal" gap={2} alignItems="flex-end">
               <TextHeadline>{PERSONAL.occupation}</TextHeadline>
 
               <TextBody as="span">@</TextBody>
@@ -59,18 +60,22 @@ function Home() {
               <Link href={currentEmployer.url} variant="primary">
                 <TextHeadline>{currentEmployer.displayName}</TextHeadline>
               </Link>
-            </HStack>
-          </VStack>
+            </Box>
+          </Box>
         ) : null}
 
         {currentTab === "about" ? (
-          <VStack gap={5} css={{ maxWidth: 720, margin: "0 auto" }}>
+          <Box
+            direction="vertical"
+            gap={5}
+            css={{ maxWidth: 720, margin: "0 auto" }}
+          >
             <TextAux>👋</TextAux>
             <TextBody>{PERSONAL.profile1}</TextBody>
             <TextBody>{PERSONAL.profile2}</TextBody>
-          </VStack>
+          </Box>
         ) : null}
-      </VStack>
+      </Box>
     </Layout>
   );
 }

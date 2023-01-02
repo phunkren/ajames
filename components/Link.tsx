@@ -1,5 +1,5 @@
+import { AnchorHTMLAttributes } from "react";
 import NextLink, { LinkProps as NextLinkProps } from "next/link";
-import { AnchorHTMLAttributes, ReactNode } from "react";
 import { UrlObject } from "url";
 import { darkTheme, lightTheme, styled } from "../stitches.config";
 

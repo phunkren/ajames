@@ -1,10 +1,9 @@
 import { Children, ReactNode } from "react";
 import Image from "next/image";
 import { BlogPost } from "../types/notion";
-import { HStack, VStack } from "./Layout";
+import { Box } from "./Layout";
 import { TextAux, TextBody, TextHeadline, TextTitle2 } from "./Text";
 import { Link } from "./Link";
-import { styled } from "../stitches.config";
 import { FALLBACK_IMAGE_DATA_URL } from "../constants/images";
 
 type ContainerProps = {
@@ -12,16 +11,16 @@ type ContainerProps = {
 };
 
 type PreviewProps = {
-  post: any; // BlogPost;
+  post: BlogPost;
 };
 
 export function Container({ children }: ContainerProps) {
   return (
-    <VStack as="ul" role="list" gap={10}>
+    <Box direction="vertical" as="ul" role="list" gap={10}>
       {Children.map(children, (child, i) => (
         <li key={i}>{child}</li>
       ))}
-    </VStack>
+    </Box>
   );
 }
 
@@ -30,7 +29,7 @@ export function Preview({ post }: PreviewProps) {
   const { date, page, published, slug, tags } = properties;
 
   const title = page.title[0].plain_text;
-  const publishDate = date.date.start;
+  const publishDate = date.date.start as string;
   const url = slug.rich_text[0].plain_text;
   const imageUrl = cover?.file.url ?? "";
   const blogTags = tags.multi_select;
@@ -41,7 +40,7 @@ export function Preview({ post }: PreviewProps) {
   }
 
   return (
-    <VStack>
+    <Box direction="vertical">
       {imageUrl ? (
         <Image
           src={imageUrl}
@@ -62,21 +61,22 @@ export function Preview({ post }: PreviewProps) {
       )}
       <TextTitle2>{title}</TextTitle2>
 
-      <HStack gap={2}>
+      <Box direction="horizontal" gap={2}>
         <TextBody>Published:</TextBody>
         <TextBody>{publishDate}</TextBody>
-      </HStack>
+      </Box>
 
       {blogTags.length ? (
-        <HStack gap={2}>
+        <Box direction="horizontal" gap={2}>
           {blogTags.map((blogTag) => (
             <TextAux key={blogTag.id}>{blogTag.name}</TextAux>
           ))}
-        </HStack>
+        </Box>
       ) : null}
+
       <Link href={`/blog/${url}`}>
         <TextHeadline>Read</TextHeadline>
       </Link>
-    </VStack>
+    </Box>
   );
 }

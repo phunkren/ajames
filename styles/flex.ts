@@ -81,11 +81,12 @@ export const FLEX_VARIANTS = {
     },
   },
   direction: {
-    row: {
+    horizontal: {
       flexDirection: "row",
     },
-    column: {
+    vertical: {
       flexDirection: "column",
+      width: "100%",
     },
   },
 };

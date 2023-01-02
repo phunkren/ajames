@@ -1,6 +1,3 @@
-import { blackA, blue, grayDark, yellow } from "@radix-ui/colors";
-import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
-import * as ToggleGroup from "@radix-ui/react-toggle-group";
 import React, {
   useState,
   useEffect,
@@ -9,6 +6,9 @@ import React, {
   useMemo,
   useCallback,
 } from "react";
+import { blackA, blue, grayDark, yellow } from "@radix-ui/colors";
+import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
+import * as ToggleGroup from "@radix-ui/react-toggle-group";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { styled } from "../stitches.config";
 import { Theme } from "../types/theme";

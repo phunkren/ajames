@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { Container, Preview } from "../../components/Blog";
-import { HStack, Layout, VStack } from "../../components/Layout";
+import { Box, Layout } from "../../components/Layout";
 import { TagToggle } from "../../components/Tags";
 import { TextTitle1 } from "../../components/Text";
 import { ONE_HOUR_IN_SECONDS } from "../../constants/date";
@@ -62,7 +62,8 @@ function Blog(props: Props) {
 
   return (
     <Layout>
-      <VStack
+      <Box
+        direction="vertical"
         gap={10}
         alignItems="center"
         css={{ maxWidth: 720, margin: "0 auto" }}
@@ -70,7 +71,7 @@ function Blog(props: Props) {
         <TextTitle1>BLOG</TextTitle1>
 
         <nav aria-label="Blog categories">
-          <HStack as="ul" role="list" gap={5}>
+          <Box direction="horizontal" as="ul" role="list" gap={5}>
             <li>
               <Link
                 href={{ pathname: "/blog", query: { tab: "professional" } }}
@@ -88,23 +89,23 @@ function Blog(props: Props) {
                 Personal
               </Link>
             </li>
-          </HStack>
+          </Box>
         </nav>
 
-        <HStack>
+        <Box direction="horizontal">
           <TagToggle
             tags={tags}
             value={activeTagId}
             onChange={handleTagChange}
           />
-        </HStack>
+        </Box>
 
         <Container>
           {filteredPosts.map((post) => (
             <Preview key={`${post.properties.slug}`} post={post} />
           ))}
         </Container>
-      </VStack>
+      </Box>
     </Layout>
   );
 }

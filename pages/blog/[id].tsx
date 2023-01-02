@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Balancer from "react-wrap-balancer";
-import { HStack, Layout, VStack } from "../../components/Layout";
+import { Box, Layout } from "../../components/Layout";
 import { TextAux, TextTitle1 } from "../../components/Text";
 import { ONE_HOUR_IN_SECONDS } from "../../constants/date";
 import { getPageData } from "../../lib/notion";
@@ -52,7 +52,7 @@ export async function getStaticProps({ params }) {
 export default function BlogPost({ frontmatter, postData }: Props) {
   return (
     <Layout>
-      <VStack id="frontmatter" alignItems="center">
+      <Box direction="vertical" id="frontmatter" alignItems="center">
         <Image
           src={frontmatter.image}
           alt="cover image"
@@ -67,15 +67,16 @@ export default function BlogPost({ frontmatter, postData }: Props) {
         <TextAux>{frontmatter.date}</TextAux>
 
         {frontmatter.tags?.length > 0 ? (
-          <HStack>
+          <Box direction="horizontal">
             {frontmatter.tags.map((tag) => (
               <TextAux key={tag.id}>{tag.name}</TextAux>
             ))}
-          </HStack>
+          </Box>
         ) : null}
-      </VStack>
+      </Box>
 
-      <VStack
+      <Box
+        direction="vertical"
         id="content"
         as="article"
         css={{ maxWidth: 720, margin: "0 auto" }}

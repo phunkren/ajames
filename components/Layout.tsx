@@ -9,21 +9,6 @@ import { Navigation, NavigationMobile } from "./Navigation";
 import { Social } from "./Social";
 import { ThemeToggle } from "./Theme";
 
-const StyledHStack = styled("div", {
-  display: "flex",
-  flexDirection: "row",
-
-  variants: { ...FLEX_VARIANTS, ...SPACING_VARIANTS, ...DISPLAY_VARIANTS },
-});
-
-const StyledVStack = styled("div", {
-  display: "flex",
-  flexDirection: "column",
-  width: "100%",
-
-  variants: { ...FLEX_VARIANTS, ...SPACING_VARIANTS, ...DISPLAY_VARIANTS },
-});
-
 const StyledBox = styled("div", {
   display: "flex",
   flexDirection: "row",
@@ -35,20 +20,26 @@ export function RootLayout({ children }) {
   const { theme } = useTheme();
 
   return (
-    <VStack
+    <Box
       id="__root"
+      direction="vertical"
       className={theme}
       css={{ maxWidth: "1400px", margin: "0 auto" }}
     >
       {children}
-    </VStack>
+    </Box>
   );
 }
 
 export function Layout({ children }) {
   return (
-    <VStack spacingHorizontal={{ "@initial": 2, "@bp2": 4 }} flexGrow>
-      <HStack
+    <Box
+      direction="vertical"
+      spacingHorizontal={{ "@initial": 2, "@bp2": 4 }}
+      flexGrow
+    >
+      <Box
+        direction="horizontal"
         as="header"
         spacingVertical={{ "@initial": 4, "@bp2": 7 }}
         spacingHorizontal={2}
@@ -56,7 +47,7 @@ export function Layout({ children }) {
         justifyContent="space-between"
         alignItems="center"
       >
-        <HStack gap={7} alignItems="center">
+        <Box direction="horizontal" gap={7} alignItems="center">
           <Link href="/">
             <Avatar />
           </Link>
@@ -64,7 +55,7 @@ export function Layout({ children }) {
           <Box display={{ "@initial": "none", "@bp2": "flex" }}>
             <Navigation />
           </Box>
-        </HStack>
+        </Box>
 
         <Box display={{ "@initial": "none", "@bp2": "flex" }}>
           <ThemeToggle />
@@ -73,29 +64,22 @@ export function Layout({ children }) {
         <Box display={{ "@initial": "flex", "@bp2": "none" }}>
           <NavigationMobile />
         </Box>
-      </HStack>
+      </Box>
 
-      <VStack as="main" flexGrow>
+      <Box direction="vertical" as="main" flexGrow>
         {children}
-      </VStack>
+      </Box>
 
-      <HStack
+      <Box
+        direction="horizontal"
         as="footer"
         spacingVertical={{ "@initial": 4, "@bp2": 7 }}
         justifyContent="center"
       >
         <Social />
-      </HStack>
-    </VStack>
+      </Box>
+    </Box>
   );
-}
-
-export function HStack(props) {
-  return <StyledHStack {...props} />;
-}
-
-export function VStack(props) {
-  return <StyledVStack {...props} />;
 }
 
 export function Box(props) {

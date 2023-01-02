@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Layout, VStack } from "../components/Layout";
+import { Layout, Box } from "../components/Layout";
 import { Link } from "../components/Link";
 import {
   TextAux,
@@ -42,7 +42,8 @@ export async function getStaticProps() {
 function Streaming({ videoPreview, playlistsPreview }: Props) {
   return (
     <Layout>
-      <VStack
+      <Box
+        direction="vertical"
         alignItems="center"
         gap={10}
         css={{ maxWidth: 720, margin: "0 auto" }}
@@ -57,7 +58,7 @@ function Streaming({ videoPreview, playlistsPreview }: Props) {
           <>
             <TextTitle2>Latest Video</TextTitle2>
 
-            <VStack>
+            <Box direction="vertical">
               <Image
                 src={videoPreview.thumbnail.src}
                 width={videoPreview.thumbnail.width}
@@ -70,7 +71,7 @@ function Streaming({ videoPreview, playlistsPreview }: Props) {
               <Link href={videoPreview.url}>
                 <TextHeadline>Watch</TextHeadline>
               </Link>
-            </VStack>
+            </Box>
           </>
         ) : null}
 
@@ -80,7 +81,7 @@ function Streaming({ videoPreview, playlistsPreview }: Props) {
 
             {playlistsPreview.map((playlist) => {
               return (
-                <VStack key={playlist.id}>
+                <Box direction="vertical" key={playlist.id}>
                   <Image
                     src={playlist.thumbnail.src}
                     width={playlist.thumbnail.width}
@@ -92,12 +93,12 @@ function Streaming({ videoPreview, playlistsPreview }: Props) {
                   <Link href={playlist.url}>
                     <TextHeadline>View Playlist</TextHeadline>
                   </Link>
-                </VStack>
+                </Box>
               );
             })}
           </>
         ) : null}
-      </VStack>
+      </Box>
     </Layout>
   );
 }

@@ -1,5 +1,3 @@
-import { SpacingUnit } from "../types/spacing";
-
 export const DISPLAY_UTILS = {
   op: (value: number) => ({
     opacity: value,

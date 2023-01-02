@@ -1,5 +1,3 @@
-import { SpacingUnit } from "../types/spacing";
-
 export const SPACING_UTILS = {
   spacing: (value: string) => ({
     padding: value,
