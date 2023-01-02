@@ -3,8 +3,10 @@
 
 - [x] Refactor logo & Home nav to short / long About
 - [x] Create YouTube / Streaming page layout
+- [x] Add [React Wrap Balancer](https://react-wrap-balancer.vercel.app/) to blog post titles
+- [ ] Add skip to content a11y link
+- [ ] Add scroll to top button on blog posts
 - [ ] Add download and print CV functionality
-- [ ] Add [React Wrap Balancer](https://react-wrap-balancer.vercel.app/) to blog post titles
 
 ## Styles
 
@@ -13,7 +15,7 @@
 - [ ] Blog
 - [ ] Blog Post
 - [ ] CV (include print styles)
-- [ ] YouTube
+- [ ] Streaming
 
 ## Animations
 
@@ -25,9 +27,13 @@
 - [ ] Blog
 - [ ] Blog Post
 - [ ] CV
-- [ ] YouTube
+- [ ] Streaming
 
 ## Bugs
 
 - [ ] Fix FOUC when page initially loads
-- [ ] Replace blog images with non-expiring variants
+- [ ] Replace blog images with non-expiring variants (revalidate?)
+
+## Refactor
+
+- [ ] Consolidate layout components
