@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { Container, Preview } from "../../components/Blog";
 import { HStack, Layout, VStack } from "../../components/Layout";
 import { TextTitle1 } from "../../components/Text";
+import { ONE_HOUR_IN_SECONDS } from "../../constants/date";
 import { getPosts } from "../../lib/notion";
 import { BlogPost } from "../../types/notion";
 
@@ -19,6 +20,7 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       ...posts,
     },
+    revalidate: ONE_HOUR_IN_SECONDS,
   };
 };
 

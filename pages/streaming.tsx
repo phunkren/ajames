@@ -35,14 +35,11 @@ export async function getStaticProps() {
       playlistsPreview,
       timestamp,
     },
-    // Next.js will attempt to re-generate the page:
-    // - When a request comes in
-    // - At most once every 10 seconds
-    revalidate: 60, // ONE_HOUR_IN_SECONDS,
+    revalidate: ONE_HOUR_IN_SECONDS,
   };
 }
 
-function Streaming({ videoPreview, playlistsPreview, timestamp }: Props) {
+function Streaming({ videoPreview, playlistsPreview }: Props) {
   return (
     <Layout>
       <VStack
@@ -51,8 +48,6 @@ function Streaming({ videoPreview, playlistsPreview, timestamp }: Props) {
         css={{ maxWidth: 720, margin: "0 auto" }}
       >
         <TextTitle1>Streaming</TextTitle1>
-
-        <TextHeadline>{timestamp}</TextHeadline>
 
         <Link href={YOUTUBE_SUBSCRIBE_URL}>
           <TextHeadline>Subscribe to ajames.dev</TextHeadline>

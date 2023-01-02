@@ -2,6 +2,7 @@ import Image from "next/image";
 import Balancer from "react-wrap-balancer";
 import { HStack, Layout, VStack } from "../../components/Layout";
 import { TextAux, TextTitle1 } from "../../components/Text";
+import { ONE_HOUR_IN_SECONDS } from "../../constants/date";
 import { getPageData } from "../../lib/notion";
 import { getAllPostIds, getPostData } from "../../lib/posts";
 import { Tag } from "../../types/notion";
@@ -44,6 +45,7 @@ export async function getStaticProps({ params }) {
       postData,
       pageData,
     },
+    revalidate: ONE_HOUR_IN_SECONDS,
   };
 }
 
