@@ -71,10 +71,22 @@ type Slug = {
   }[];
 };
 
+type TagColor =
+  | "red"
+  | "orange"
+  | "yellow"
+  | "green"
+  | "blue"
+  | "pink"
+  | "brown"
+  | "gray"
+  | "default";
+
 export type Tag = {
   id: string;
   name: string;
-  color: string;
+  color: TagColor;
+  count?: number;
 };
 
 type Tags = {
