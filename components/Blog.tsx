@@ -30,7 +30,7 @@ export function Preview({ post }: PreviewProps) {
   const { date, page, published, slug, tags } = properties;
 
   const title = page.title[0].plain_text;
-  const publishDate = date.created_time;
+  const publishDate = date.date.start;
   const url = slug.rich_text[0].plain_text;
   const imageUrl = cover?.file.url ?? "";
   const blogTags = tags.multi_select;
@@ -61,6 +61,7 @@ export function Preview({ post }: PreviewProps) {
         />
       )}
       <TextTitle2>{title}</TextTitle2>
+
       <HStack gap={2}>
         <TextBody>Published:</TextBody>
         <TextBody>{publishDate}</TextBody>
