@@ -39,8 +39,8 @@ export function Layout({ children }) {
       flexGrow
     >
       <Box
-        direction="horizontal"
         as="header"
+        direction="horizontal"
         spacingVertical={{ "@initial": 4, "@bp2": 7 }}
         spacingHorizontal={2}
         gap={{ "@initial": 4, "@bp2": 7 }}
@@ -66,13 +66,13 @@ export function Layout({ children }) {
         </Box>
       </Box>
 
-      <Box direction="vertical" as="main" flexGrow>
+      <Box as="main" direction="vertical" flexGrow>
         {children}
       </Box>
 
       <Box
-        direction="horizontal"
         as="footer"
+        direction="horizontal"
         spacingVertical={{ "@initial": 4, "@bp2": 7 }}
         justifyContent="center"
       >
