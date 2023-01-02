@@ -1,8 +1,8 @@
 
-Modals are a great way to display information on top of your application, and usually used for notifications, alerts, or standalone dialogs such as register and login forms. Before jumping ahead and building a custom modal I’d suggest searching for any pre-existing solutions to see if they fit your needs (both [Reach UI’s Dialog](https://reacttraining.com/reach-ui/dialog/) and [react-modal](http://reactcommunity.org/react-modal/) are popular community choices). Failing that, let’s dive in and create a bespoke modal component in React.
+Modals are a useful tool for displaying information on top of your application, and are often used for notifications, alerts, or standalone dialogs such as registration or login forms. Before building a custom modal, it's a good idea to check if there are any pre-existing solutions that meet your needs ([Reach UI's Dialog](https://reacttraining.com/reach-ui/dialog/) and [react-modal](http://reactcommunity.org/react-modal/) are both popular options). If you don't find a suitable solution, let's explore creating a bespoke modal component in React.
 
 
-Let’s start by creating a basic modal that conditionally renders depending on some local state. Clicking a button in the application root should trigger the modal, and clicking the button inside the modal should close it.
+To get started, we'll create a basic modal that appears and disappears based on some local state in our React app. The process is simple: when a button in the root of the app is clicked, the modal will appear. Then, when the button inside the modal is clicked, the modal will close. Let's start building!
 
 
 [embed](https://codesandbox.io/embed/zen-pare-76gl3?autoresize=1&fontsize=14&hidenavigation=1&theme=dark&view=preview)
@@ -11,7 +11,7 @@ Let’s start by creating a basic modal that conditionally renders depending on 
 1.1: Basic modal implementation
 
 
-This is only really useful if you need to trigger the modal from within `<App/>`, but what if you wanted the same functionality from a nested component? One option would be to pass the `setState` action `setIsModalOpen` as a prop and trigger the modal as a callback whenever a button within the nested component is clicked.
+If you want to trigger the modal from a nested component rather than just from within `<App/>`, you can pass the `setState` action `setIsModalOpen` as a prop. Then, you can call this action as a callback when a button within the nested component is clicked, which will trigger the modal.
 
 
 [embed](https://codesandbox.io/embed/peaceful-bardeen-7jexx?autoresize=1&fontsize=14&hidenavigation=1&theme=dark&view=preview)
@@ -20,10 +20,13 @@ This is only really useful if you need to trigger the modal from within `<App/>`
 1.2: Triggering the modal via a callback prop
 
 
-This works for a single level of nesting, but it probably won’t scale very well. We could continue to pass our callback down through the components, but that quickly becomes laborious, difficult to maintain and creates a lot of excess code. Enter [React Context](https://reactjs.org/docs/context.html).
+This works for a single level of nesting, but it probably won’t scale very well. We could keep passing the callback down through the components, but that could get a bit tedious and create a lot of extra code that's tough to manage. Enter [React Context](https://reactjs.org/docs/context.html).
 
 
-In short, React’s Context API allows you to store a value in a [Provider](https://reactjs.org/docs/context.html#contextprovider) that can be accessed from anywhere in your application via a [Consumer](https://reactjs.org/docs/context.html#contextconsumer). Whenever a Consumer is declared, React will search up the component tree for the first Provider that matches the consumer’s context, return its value, and then subscribe to any further changes. Let’s wrap the previous example with a Provider, set the `setIsModalOpen` callback as its value, then utilise the [useContext()](https://reactjs.org/docs/hooks-reference.html#usecontext) hook to consume it in a nested component.
+Context allows you to store and access a value anywhere in your React app. You can use a Provider to store the value and a Consumer to access it, and the Consumer will search up the component tree for the first Provider that matches its context. This is useful when you want to trigger the modal from a nested component, rather than just from the top-level App component. You can use the `useContext` hook to consume the value in a nested component.
+
+
+Let’s wrap the previous example with a Provider, set the `setIsModalOpen` callback as its value, then utilise the [useContext()](https://reactjs.org/docs/hooks-reference.html#usecontext) hook to consume it in a nested component.
 
 
 [embed](https://codesandbox.io/embed/sweet-brown-yn44i?autoresize=1&fontsize=14&hidenavigation=1&theme=dark&view=preview)
@@ -32,10 +35,13 @@ In short, React’s Context API allows you to store a value in a [Provider](http
 1.3: Triggering the modal via React context
 
 
-Now we have a modal that can be triggered from anywhere in our application, but for the moment can only render static content. In order for the modal to render dynamically it will need refactored to handle children. React’s one-way data flow means that passing data upwards is considered an anti-pattern, so we’ll also need a viable way of passing the data from a nested component back up to the modal on the root.
+We now have a modal that can be opened from anywhere in our app, but it can only display static content for now. If we want it to render dynamic content, we'll need to refactor it to accept children. Plus, since React's data flow only goes one way, we'll need to find a good way to pass data from a nested component back up to the modal at the root level.
 
 
 Enter the coding powerhouse that is [Jenna Smith](https://twitter.com/jjenzz), an incredibly talented frontend developer and former colleague. She proposed [React Portal](https://reactjs.org/docs/portals.html) as a solution, since they are explicitly designed to pass children to a DOM node that exists outside the hierarchy of the parent component. Creating a portal requires two arguments: any renderable React element (our dynamic content) and a DOM element to inject the content into (the modal’s container).
+
+
+My former colleague, [Jenna Smith](https://twitter.com/jjenzz), a highly skilled front-end developer, suggested using [React Portal](https://reactjs.org/docs/portals.html) as a solution. Portal's are designed to pass children to a DOM node outside the hierarchy of the parent component, which is perfect for our needs. To use a portal, we'll need to provide two arguments: a React element (for our dynamic content) and a DOM element to inject the content into (the modal's container). This should allow us to effectively pass the data from the nested component to the modal at the root level.
 
 
 [embed](https://codesandbox.io/embed/7w6mq72l2q?autoresize=1&fontsize=14&hidenavigation=1&theme=dark&view=preview)
@@ -44,8 +50,8 @@ Enter the coding powerhouse that is [Jenna Smith](https://twitter.com/jjenzz), a
 1.4: Jenna Smith’s solution using React’s createPortal method
 
 
-As you can see from the sandbox, she created two functional components to provide the modal with dynamic content. The `<ModalProvider />` component contains a DOM element with a ref attached (`<div ref={modalRef}/>`), and a context Provider that wraps the entire application and distributes the ref’s current value to any relevant Consumers within it. The second component is the modal itself. Whenever a `<Modal/>` component is rendered it will attempt to retrieve the modalRef element through `useContext()`. If a ref exists, instead of the component mounting in its expected position in the DOM tree it will instead create a React Portal and inject the modal’s children into the ref element.
+As demonstrated in the sandbox, Jenna created two functional components to provide dynamic content for the modal. The `<ModalProvider />` component includes a DOM element with a ref attached (`<div ref={modalRef}/>`), as well as a context provider that wraps the entire app and distributes the ref's current value to any relevant consumers within it. The second component is the modal itself. Each time a `<Modal />` component is rendered, it will try to retrieve the `modalRef` element using `useContext()`. If the ref exists, the component will create a React portal and inject the modal's children into the ref element, rather than mounting in its expected position in the DOM tree..
 
 
-The Modal component can now be used anywhere within the ModalProvider to render dynamic content on top of the application. One small caveat to this approach is the body will continue to scroll on iOS whenever the modal is mounted. I highly recommend checking out Will Po’s [article on Body scroll lock](https://medium.com/jsdownunder/locking-body-scroll-for-all-devices-22def9615177) for some solutions.
+With this approach, the `Modal` component can now be used anywhere within the `ModalProvider` to display dynamic content on top of the app. One thing to keep in mind is that the body will still be able to scroll on iOS when the modal is mounted. I highly recommend reading Will Po's article on [body scroll lock](https://medium.com/jsdownunder/locking-body-scroll-for-all-devices-22def9615177) for potential solutions to this issue.
 

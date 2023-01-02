@@ -5,7 +5,7 @@
 I was recently tasked with building a frontend camera component that allows users to upload images of their identification cards to a backend service. In this post I'll demonstrate how I created the component by explaining how to configure a live media stream and capture a snapshot with React hooks, and how to style and position the elements using Styled Components. As such, the article assumes a working knowledge of functional components in React 16.x and the Styled Components library. Below you can see a demo of the component in action, and feel free to play around with the complete solution on my [Code Sandbox](https://codesandbox.io/s/react-camera-component-with-hooks-mf1i2) as you read along. Enjoy!
 
 
-[image](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/ab9918bb-7679-45bd-b9ef-2710d7ef840e/camera-example.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230102T172118Z&X-Amz-Expires=3600&X-Amz-Signature=3dc6d664badf1f4461215992c0c5c1d69e09ab9f445f3995a502976d0d90d583&X-Amz-SignedHeaders=host&x-id=GetObject)
+[image](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/ab9918bb-7679-45bd-b9ef-2710d7ef840e/camera-example.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230102T213645Z&X-Amz-Expires=3600&X-Amz-Signature=90e5ef74a5510ebc0029e699e34640766815fef7b7437be5213284a687e2deae&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 
 ## Configuration

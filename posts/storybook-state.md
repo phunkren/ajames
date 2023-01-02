@@ -1,5 +1,5 @@
 
-Storybook is an incredible open-source sandbox for developing UI components in isolation. One of my current projects is a large multi-screen form with various controlled components that rely on their parent container as the single source of truth. I found that while Storybook is great for testing individual component state, I was writing boilerplate code in each of the stories where a controlled component passed state to a parent container.
+Storybook is an amazing tool for developing UI components in isolation. One of my current projects is a large form with controlled components that rely on their parent container as the source of truth. While Storybook is great for testing individual component state, I found myself writing repetitive code in each story to pass state to a parent container.
 
 
 ```javascript
@@ -44,7 +44,7 @@ storiesOf("Input", module).add("controlled", (state, setState) => (
 ```
 
 
-This can be achieved by creating two components and a custom decorator in the .storybook/config.js file. The first component is a function as child that emulates the parent component from the first example by acting as a render callback. The second is a presentation component that receives the state as a prop and displays the current value below each story. The custom decorator augments each story with these components and the state variables, where the components will wrap the story and the state values will be passed through as arguments.
+To solve this, I created two components and a custom decorator in the .storybook/config.js file. The first component is a function-as-child that acts as a render callback, emulating the parent component from my project. The second is a presentation component that receives state as a prop and displays the current value below each story. The custom decorator adds these components and state variables to each story, where the components wrap the story and the state values are passed as arguments.
 
 
 ```javascript
@@ -87,7 +87,7 @@ configure(loadStories, module);
 ```
 
 
-Now each component has the option of setting and retrieving hoisted state values from the story itself without any boilerplate code 💥
+This allows each component to easily set and retrieve hoisted state values from the story itself, without any extra code. 💥
 
 
 ```javascript
@@ -112,7 +112,7 @@ storiesOf('Input', module)
 You can find the repository on [GitHub](https://github.com/phunkren/storybook-state), and here’s a quick look at it in action:
 
 
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/40c35762-69fb-4a12-af02-35a48d4b4866/storybook-state-example.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230102T172118Z&X-Amz-Expires=3600&X-Amz-Signature=2fbdccf5506fe8af415311ebd7e9c535c2d20d48e0ace20967cc8bb77506cd29&X-Amz-SignedHeaders=host&x-id=GetObject)
+![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/40c35762-69fb-4a12-af02-35a48d4b4866/storybook-state-example.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230102T213645Z&X-Amz-Expires=3600&X-Amz-Signature=ae201c0a19a97e5be068d6fbda6110672e5f7d2866f14b823f3d6264798170d7&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 
 1.1: Test both controlled and uncontrolled inputs in Storybook
