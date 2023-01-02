@@ -37,6 +37,7 @@ export const getStaticProps: GetStaticProps = async () => {
         tags: getTags(posts.professional),
       },
     },
+    revalidate: ONE_HOUR_IN_SECONDS,
   };
 };
 
