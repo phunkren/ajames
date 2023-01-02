@@ -8,7 +8,7 @@ import { TagToggle } from "../../components/Tags";
 import { TextTitle1 } from "../../components/Text";
 import { ONE_HOUR_IN_SECONDS } from "../../constants/date";
 import { getTags } from "../../helpers/notion";
-import { filterPosts } from "../../helpers/posts";
+import { filterPosts, sortPosts } from "../../helpers/posts";
 import { getPosts } from "../../lib/notion";
 import { BlogPost, Tag } from "../../types/notion";
 
@@ -29,11 +29,11 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       personal: {
-        posts: posts.personal,
+        posts: sortPosts(posts.personal),
         tags: getTags(posts.personal),
       },
       professional: {
-        posts: posts.professional,
+        posts: sortPosts(posts.professional),
         tags: getTags(posts.professional),
       },
     },
