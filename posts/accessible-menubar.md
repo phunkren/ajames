@@ -49,19 +49,19 @@ The HTML might look something like this:
 
 ```html
 <nav>
-	<ul>
-		<li>
-			<a href="/#about">About</a>
-		</li>
+    <ul>
+        <li>
+            <a href="/#about">About</a>
+        </li>
 				
-		<li>
-			<a href="/#admissions">Admissions</a>
-		</li>
+        <li>
+            <a href="/#admissions">Admissions</a>
+        </li>
 				
-		<li>
-			<a href="/#academics">Academics</a>
-		</li>
-	</ul>
+        <li>
+            <a href="/#academics">Academics</a>
+        </li>
+    </ul>
 </nav>
 ```
 
