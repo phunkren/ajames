@@ -1,3 +1,4 @@
+import { blackA } from "@radix-ui/colors";
 import { globalCss } from "../stitches.config";
 import { AUX_STYLES, H1_STYLES, H2_STYLES, H3_STYLES, P_STYLES } from "./text";
 
@@ -74,17 +75,26 @@ export const globalStyles = globalCss({
   },
 
   // Default code block styling
+  code: {
+    background: blackA.blackA10,
+    color: "white",
+    paddingTop: 0,
+    paddingRight: "$1",
+    paddingBottom: 0,
+    paddingLeft: "$1",
+    ...AUX_STYLES,
+  },
+
   pre: {
     code: {
       ...AUX_STYLES,
       display: "block",
-      background: "none",
+      boxShadow: `0 4px 6px 0 ${blackA.blackA6}`,
       whiteSpace: "pre-wrap",
-      webkitOverflowScrolling: "touch",
-      overflowX: "auto",
-      maxWidth: "100%",
       minWidth: "100px",
-      padding: 0,
+      maxWidth: "100%",
+      padding: "$4",
+      borderRadius: 4,
     },
   },
 
