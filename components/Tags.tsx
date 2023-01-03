@@ -1,4 +1,3 @@
-import { blackA } from "@radix-ui/colors";
 import * as ToggleGroup from "@radix-ui/react-toggle-group";
 import { styled } from "../stitches.config";
 import { Tag } from "../types/notion";
@@ -51,6 +50,9 @@ const ToggleGroupItem = styled(ToggleGroup.Item, {
       blue: {
         backgroundColor: "blue",
       },
+      purple: {
+        backgroundColor: "purple",
+      },
       pink: {
         backgroundColor: "pink",
       },
@@ -83,7 +85,7 @@ export function TagToggle({ tags, value, onChange }: Props) {
       {tags.map((tag) => (
         <ToggleGroupItem
           key={tag.id}
-          value={tag.id}
+          value={tag.name}
           backgroundColor={tag.color}
         >
           <TextAux>
