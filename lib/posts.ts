@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import path from "path";
 import { remark } from "remark";
-import html from "remark-html";
+import mdx from "remark-mdx";
 import { POSTS_DIR } from "../constants/posts";
 
 export function getAllPostIds() {
@@ -16,17 +16,11 @@ export function getAllPostIds() {
   });
 }
 
-export async function getPostData(id) {
+export async function getPostData(id: string) {
   const fullPath = path.join(POSTS_DIR, `${id}.mdx`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
-
-  // Use remark to convert markdown into HTML string
-  const processedContent = await remark()
-    .use(html, { sanitize: false })
-    .process(fileContents);
-
+  const processedContent = await remark().use(mdx).process(fileContents);
   const contentHtml = processedContent.toString();
 
-  // Combine the data with the id
   return contentHtml;
 }
