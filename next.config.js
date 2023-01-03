@@ -9,6 +9,10 @@ module.exports = {
         protocol: "https",
         hostname: "i.ytimg.com", // YouTube
       },
+      {
+        protocol: "https",
+        hostname: "i.imgur.com", // Notion
+      },
     ],
   },
   webpack(config) {
