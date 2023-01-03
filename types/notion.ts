@@ -1,24 +1,19 @@
 import { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 
-type Authors = {
-  id: string;
-  type: string;
-  people: {
-    object: string;
-    id: string;
-    name: string;
-    avatar_url: string;
-    type: string;
-    person: {
-      email: string;
-    };
-  }[];
+type Cover = {
+  type: "external";
+  file: {
+    url: string;
+  };
 };
 
 type Date = {
-  date: Record<string, unknown>;
   id: string;
   type: string;
+  date: {
+    start: string;
+    end?: string;
+  };
 };
 
 type Page = {
@@ -58,28 +53,21 @@ type Slug = {
       content: string;
       link?: string;
     };
-    annotations: {
-      bold: boolean;
-      italic: boolean;
-      strikethrough: boolean;
-      underline: boolean;
-      code: boolean;
-      color: string;
-    };
     plain_text: string;
     href?: string;
   }[];
 };
 
 type TagColor =
-  | "red"
+  | "gray"
+  | "brown"
   | "orange"
   | "yellow"
   | "green"
   | "blue"
+  | "purple"
   | "pink"
-  | "brown"
-  | "gray"
+  | "red"
   | "default";
 
 export type Tag = {
@@ -96,21 +84,12 @@ type Tags = {
 };
 
 export type BlogPost = PageObjectResponse & {
-  cover: any;
+  cover: Cover;
   properties: {
-    authors: Authors;
-    date: Date;
-    page: Page;
     published: Published;
+    page: Page;
+    date: Date;
     slug: Slug;
     tags: Tags;
   };
 };
-
-// {
-//   type: "file" ;
-//   file: {
-//     url: string;
-//     expiry_time: string;
-//   };
-// };
