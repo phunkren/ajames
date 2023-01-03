@@ -11,11 +11,20 @@ const notionClient = new Client({
 // Ref: https://www.npmjs.com/package/notion-to-md
 const n2m = new NotionToMarkdown({ notionClient });
 
+n2m.setCustomTransformer("embed", async (block) => {
+  const { embed } = block as any;
+
+  if (!embed?.url) return "";
+
+  return `<iframe src="${embed.url}" height='500px'></iframe>`;
+});
+
 // Create markdown file from Notion blog post
 export const createPost = async (uuid: string, slug: string) => {
   const mdblocks = await n2m.pageToMarkdown(uuid);
   const mdString = n2m.toMarkdownString(mdblocks);
-  const filename = `${POSTS_DIR}/${slug}.md`;
+
+  const filename = `${POSTS_DIR}/${slug}.mdx`;
 
   fs.writeFile(filename, mdString, (err) => {
     err !== null && console.log(err);

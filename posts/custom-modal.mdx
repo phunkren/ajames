@@ -5,7 +5,7 @@ Modals are a useful tool for displaying information on top of your application, 
 To get started, we'll create a basic modal that appears and disappears based on some local state in our React app. The process is simple: when a button in the root of the app is clicked, the modal will appear. Then, when the button inside the modal is clicked, the modal will close. Let's start building!
 
 
-[embed](https://codesandbox.io/embed/zen-pare-76gl3?autoresize=1&fontsize=14&hidenavigation=1&theme=dark&view=preview)
+<iframe src="https://codesandbox.io/embed/zen-pare-76gl3?autoresize=1&fontsize=14&hidenavigation=1&theme=dark&view=preview" height='500px'></iframe>
 
 
 1.1: Basic modal implementation
@@ -14,7 +14,7 @@ To get started, we'll create a basic modal that appears and disappears based on 
 If you want to trigger the modal from a nested component rather than just from within `<App/>`, you can pass the `setState` action `setIsModalOpen` as a prop. Then, you can call this action as a callback when a button within the nested component is clicked, which will trigger the modal.
 
 
-[embed](https://codesandbox.io/embed/peaceful-bardeen-7jexx?autoresize=1&fontsize=14&hidenavigation=1&theme=dark&view=preview)
+<iframe src="https://codesandbox.io/embed/peaceful-bardeen-7jexx?autoresize=1&fontsize=14&hidenavigation=1&theme=dark&view=preview" height='500px'></iframe>
 
 
 1.2: Triggering the modal via a callback prop
@@ -29,7 +29,7 @@ Context allows you to store and access a value anywhere in your React app. You c
 Let’s wrap the previous example with a Provider, set the `setIsModalOpen` callback as its value, then utilise the [useContext()](https://reactjs.org/docs/hooks-reference.html#usecontext) hook to consume it in a nested component.
 
 
-[embed](https://codesandbox.io/embed/sweet-brown-yn44i?autoresize=1&fontsize=14&hidenavigation=1&theme=dark&view=preview)
+<iframe src="https://codesandbox.io/embed/sweet-brown-yn44i?autoresize=1&fontsize=14&hidenavigation=1&theme=dark&view=preview" height='500px'></iframe>
 
 
 1.3: Triggering the modal via React context
@@ -41,7 +41,7 @@ We now have a modal that can be opened from anywhere in our app, but it can only
 My former colleague, [Jenna Smith](https://twitter.com/jjenzz), a highly skilled front-end developer, suggested using [React Portal](https://reactjs.org/docs/portals.html) as a solution. Portal's are designed to pass children to a DOM node outside the hierarchy of the parent component, which is perfect for our needs. To use a portal, we'll need to provide two arguments: a React element (for our dynamic content) and a DOM element to inject the content into (the modal's container). This should allow us to effectively pass the data from the nested component to the modal at the root level.
 
 
-[embed](https://codesandbox.io/embed/7w6mq72l2q?autoresize=1&fontsize=14&hidenavigation=1&theme=dark&view=preview)
+<iframe src="https://codesandbox.io/embed/7w6mq72l2q?autoresize=1&fontsize=14&hidenavigation=1&theme=dark&view=preview" height='500px'></iframe>
 
 
 1.4: Jenna Smith’s solution using React’s createPortal method

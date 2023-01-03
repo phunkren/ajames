@@ -7,35 +7,23 @@ import { POSTS_DIR } from "../constants/posts";
 export function getAllPostIds() {
   const fileNames = fs.readdirSync(POSTS_DIR);
 
-  // Returns an array that looks like this:
-  // [
-  //   {
-  //     params: {
-  //       id: 'ssg-ssr'
-  //     }
-  //   },
-  //   {
-  //     params: {
-  //       id: 'pre-rendering'
-  //     }
-  //   }
-  // ]
-
   return fileNames.map((fileName) => {
     return {
       params: {
-        id: fileName.replace(/\.md$/, ""),
+        id: fileName.replace(/\.mdx$/, ""),
       },
     };
   });
 }
 
 export async function getPostData(id) {
-  const fullPath = path.join(POSTS_DIR, `${id}.md`);
+  const fullPath = path.join(POSTS_DIR, `${id}.mdx`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
 
   // Use remark to convert markdown into HTML string
-  const processedContent = await remark().use(html).process(fileContents);
+  const processedContent = await remark()
+    .use(html, { sanitize: false })
+    .process(fileContents);
 
   const contentHtml = processedContent.toString();
 
