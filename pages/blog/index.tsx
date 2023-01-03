@@ -50,11 +50,9 @@ function Blog(props: Props) {
 
   const { personal, professional } = props;
 
-  const posts = tab === "personal" ? personal.posts : professional.posts;
+  const { posts, tags } = tab === "personal" ? personal : professional;
 
   const filteredPosts = activeTagId ? filterPosts(posts, activeTagId) : posts;
-
-  const tags = tab === "personal" ? personal.tags : professional.tags;
 
   function handleTagChange(tagId: string) {
     setActiveTagId(tagId);
