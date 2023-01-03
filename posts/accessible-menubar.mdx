@@ -129,7 +129,7 @@ Finally, let's add a matching `aria-label` to the navigation element.
 The current React markup will look something like this:
 
 
-```markup
+```html
 <nav aria-label="Mythical University">
     <Menubar aria-label="Mythical University">
         <MenuItem>
@@ -478,7 +478,7 @@ We now have a fully-accessible Menubar widget for a collection of navigation lin
 The component API hasn't changed from the previous example...
 
 
-```markup
+```html
 <nav aria-label="Mythical University">
     <Menubar aria-label="Mythical University">
         <MenuItem>
@@ -542,7 +542,7 @@ The previous example is great for a single collection of links, but what if we r
  
 
 
-```markup
+```html
 <nav aria-label="Mythical University">
     <Menubar aria-label="Mythical University">
         <MenuItem>
@@ -958,7 +958,7 @@ There is one final change that we need to make to the `MenuItem` component. Let'
 The `MenuItem` currently clones its `children` prop and appends extra props. In the example below, we can see that `MenuItem`'s child is the `Submenu` component. The `Submenu` returns a context provider as its parent element. The provider returns nothing from render, and so the props are not attached to any DOM node.
 
 
-```markup
+```html
 <Menubar aria-label="Menubar example">
     <MenuItem>
         <SubmenuContext.Provider {...menuItemProps}>
@@ -998,7 +998,7 @@ MenuItem.propTypes = {
 That leaves us with this flexible React markup: 
 
 
-```markup
+```html
 <nav aria-label="Mythical University">
     <Menubar aria-label="Mythical University">
         <MenuItem>
