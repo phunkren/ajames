@@ -1,22 +1,26 @@
 import Image from "next/image";
+import remarkMdx from "remark-mdx";
+import ReactMarkdown from "react-markdown";
 import Balancer from "react-wrap-balancer";
-import { Box, Layout } from "../../components/Layout";
-import { TextAux, TextTitle1 } from "../../components/Text";
-import { ONE_HOUR_IN_SECONDS } from "../../constants/date";
+import { Tag } from "../../types/notion";
 import { getPageData } from "../../lib/notion";
 import { getAllPostIds, getPostData } from "../../lib/posts";
-import { Tag } from "../../types/notion";
+import { ONE_HOUR_IN_SECONDS } from "../../constants/date";
+import { Box, Layout } from "../../components/Layout";
+import { MarkdownLink } from "../../components/Link";
+import { TextAux, TextTitle1 } from "../../components/Text";
+import { Code } from "../../components/Code";
 
 type Frontmatter = {
   title: string;
-  image: string;
+  cover: string;
   date: string;
-  tags?: Tag[];
+  tags: Tag[];
 };
 
 type Props = {
   frontmatter: Frontmatter;
-  postData: Record<string, unknown>;
+  postData: string;
 };
 
 export async function getStaticPaths() {
@@ -32,20 +36,10 @@ export async function getStaticProps({ params }) {
   const pageData = await getPageData(params.id);
   const postData = await getPostData(params.id);
 
-  function getCoverImage() {
-    if (pageData.cover.type === "file") {
-      return pageData.cover.file.url;
-    }
-
-    if (pageData.cover.type === "external") {
-      return pageData.cover.external.url;
-    }
-  }
-
   const frontmatter = {
     title: pageData.properties.page.title[0].plain_text,
-    image: getCoverImage(),
-    date: pageData.properties.date.date.start,
+    cover: pageData.cover.external.url,
+    date: new Date(pageData.properties.date.date.start).toISOString(),
     tags: pageData.properties.tags.multi_select,
   };
 
@@ -53,7 +47,6 @@ export async function getStaticProps({ params }) {
     props: {
       frontmatter,
       postData,
-      pageData,
     },
     revalidate: ONE_HOUR_IN_SECONDS,
   };
@@ -62,13 +55,8 @@ export async function getStaticProps({ params }) {
 export default function BlogPost({ frontmatter, postData }: Props) {
   return (
     <Layout>
-      <Box direction="vertical" id="frontmatter" alignItems="center">
-        <Image
-          src={frontmatter.image}
-          alt="cover image"
-          width={100}
-          height={100}
-        />
+      <Box direction="vertical" alignItems="center">
+        <Image src={frontmatter.cover} alt="" width={100} height={100} />
 
         <TextTitle1>
           <Balancer>{frontmatter.title}</Balancer>
@@ -76,23 +64,28 @@ export default function BlogPost({ frontmatter, postData }: Props) {
 
         <TextAux>{frontmatter.date}</TextAux>
 
-        {frontmatter.tags?.length > 0 ? (
-          <Box direction="horizontal">
-            {frontmatter.tags.map((tag) => (
-              <TextAux key={tag.id}>{tag.name}</TextAux>
-            ))}
-          </Box>
-        ) : null}
+        <Box direction="horizontal">
+          {frontmatter.tags.map((tag) => (
+            <TextAux key={tag.id}>{tag.name}</TextAux>
+          ))}
+        </Box>
       </Box>
 
       <Box
         direction="vertical"
-        id="content"
         as="article"
         css={{ maxWidth: 720, margin: "0 auto" }}
         gap={{ "@initial": 3, "@bp2": 5 }}
-        dangerouslySetInnerHTML={{ __html: postData }}
-      />
+      >
+        <ReactMarkdown
+          children={postData}
+          components={{
+            a: MarkdownLink,
+            code: Code,
+          }}
+          remarkPlugins={[remarkMdx]}
+        />
+      </Box>
     </Layout>
   );
 }
