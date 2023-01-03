@@ -2,11 +2,11 @@ import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import * as Dialog from "@radix-ui/react-dialog";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { gray } from "@radix-ui/colors";
+import { styled } from "../stitches.config";
 import { Box } from "./Layout";
 import { Link } from "./Link";
 import { TextHeadline } from "./Text";
 import { Button } from "./Button";
-import { styled } from "../stitches.config";
 import { Social } from "./Social";
 import { ThemeToggle } from "./Theme";
 

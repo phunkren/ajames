@@ -1,10 +1,10 @@
 import { Children, ReactNode } from "react";
 import Image from "next/image";
+import { FALLBACK_IMAGE_DATA_URL } from "../constants/images";
 import { BlogPost } from "../types/notion";
 import { Box } from "./Layout";
 import { TextAux, TextBody, TextHeadline, TextTitle2 } from "./Text";
 import { Link } from "./Link";
-import { FALLBACK_IMAGE_DATA_URL } from "../constants/images";
 
 type ContainerProps = {
   children: ReactNode;
@@ -28,20 +28,10 @@ export function Preview({ post }: PreviewProps) {
   const { properties, cover } = post;
   const { date, page, published, slug, tags } = properties;
 
-  function getCoverImage() {
-    if (cover.type === "file") {
-      return cover.file.url;
-    }
-
-    if (cover.type === "external") {
-      return cover.external.url;
-    }
-  }
-
   const title = page.title[0].plain_text;
   const publishDate = date.date.start as string;
   const url = slug.rich_text[0].plain_text;
-  const imageUrl = getCoverImage();
+  const imageUrl = cover.external.url;
   const blogTags = tags.multi_select;
   const isPublished = Boolean(published.checkbox);
 

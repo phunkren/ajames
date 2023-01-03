@@ -1,5 +1,3 @@
-import { Box } from "./Layout";
-import { Link } from "./Link";
 import {
   GitHubLogoIcon,
   LinkedInLogoIcon,
@@ -7,6 +5,8 @@ import {
   VideoIcon,
 } from "@radix-ui/react-icons";
 import { SOCIAL } from "../data/social";
+import { Box } from "./Layout";
+import { Link } from "./Link";
 
 export function Social() {
   return (
