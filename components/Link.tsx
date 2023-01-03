@@ -46,3 +46,15 @@ export function Link({ href, nextLinkProps, ...props }: LinkProps) {
     </NextLink>
   );
 }
+
+// 'Notion to Markdown' converts embeds to links
+// Render embeds as iframes, and links with the custom Link component
+export function MarkdownLink({ node, ...props }) {
+  const isEmbedLink = node.children[0].value === "embed";
+
+  if (isEmbedLink) {
+    return <iframe src={props.href} width="100%" height="500px"></iframe>;
+  }
+
+  return <Link href={props.href} variant="secondary" {...props} />;
+}
