@@ -5,7 +5,7 @@
 I was recently tasked with building a frontend camera component that allows users to upload images of their identification cards to a backend service. In this post I'll demonstrate how I created the component by explaining how to configure a live media stream and capture a snapshot with React hooks, and how to style and position the elements using Styled Components. As such, the article assumes a working knowledge of functional components in React 16.x and the Styled Components library. Below you can see a demo of the component in action, and feel free to play around with the complete solution on my [Code Sandbox](https://codesandbox.io/s/react-camera-component-with-hooks-mf1i2) as you read along. Enjoy!
 
 
-[image](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/ab9918bb-7679-45bd-b9ef-2710d7ef840e/camera-example.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230103%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230103T110334Z&X-Amz-Expires=3600&X-Amz-Signature=519a34791f4452c5740449a5df7ae8c4904622c0df208b5617bec40251dba132&X-Amz-SignedHeaders=host&x-id=GetObject)
+![Camera demo](https://i.imgur.com/sfbwXN1.gif)
 
 
 ## Configuration
@@ -16,8 +16,8 @@ Let’s begin by accessing the browser navigator and invoking the [`getUserMedia
 
 ```javascript
 const CAPTURE_OPTIONS = {
-	audio: false,
-	video: { facingMode: "environment" },
+    audio: false,
+    video: { facingMode: "environment" },
 };
 ```
 
@@ -32,30 +32,30 @@ With the stream stored in local state it can then be bound to a `<video />` elem
 import { useState, useEffect } from "react";
 
 export function useUserMedia(requestedMedia) {
-  const [mediaStream, setMediaStream] = useState(null);
+    const [mediaStream, setMediaStream] = useState(null);
 
-  useEffect(() => {
-    async function enableStream() {
-      try {
-        const stream = await navigator.mediaDevices.getUserMedia(requestedMedia);
-        setMediaStream(stream);
-      } catch(err) {
-        // Removed for brevity
-      }
-    }
+    useEffect(() => {
+        async function enableStream() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia(requestedMedia);
+                setMediaStream(stream);
+            } catch(err) {
+                // Removed for brevity
+            }
+        }
 
-    if (!mediaStream) {
-      enableStream();
-    } else {
-      return function cleanup() {
-        mediaStream.getTracks().forEach(track => {
-          track.stop();
-        });
-      }
-    }
-  }, [mediaStream, requestedMedia]);
+        if (!mediaStream) {
+            enableStream();
+        } else {
+            return function cleanup() {
+                mediaStream.getTracks().forEach(track => {
+                    track.stop();
+                });
+            }
+        }
+    }, [mediaStream, requestedMedia]);
 
-  return mediaStream;
+    return mediaStream;
 }
 ```
 
@@ -65,25 +65,25 @@ import React, { useRef, useState } from 'react';
 import { useUserMedia } from './useUserMedia';
 
 const CAPTURE_OPTIONS = {
-	audio: false,
-	video: { facingMode: "environment" },
+    audio: false,
+    video: { facingMode: "environment" },
 };
 
 function Camera() {
-  const videoRef = useRef();
-  const mediaStream = useUserMedia(CAPTURE_OPTIONS);
+    const videoRef = useRef();
+    const mediaStream = useUserMedia(CAPTURE_OPTIONS);
 
-  if (mediaStream && videoRef.current && videoRef.current.srcObject === null) {
-    videoRef.current.srcObject = mediaStream;
-  }
+    if (mediaStream && videoRef.current && videoRef.current.srcObject === null) {
+        videoRef.current.srcObject = mediaStream;
+    }
 
-  function handleCanPlay() {
-    videoRef.current.play();
-  }
+    function handleCanPlay() {
+        videoRef.current.play();
+    }
 
-  return (
-    <video ref={videoRef} onCanPlay={handleCanPlay} autoPlay playsInline muted />
-  );
+    return (
+        <video ref={videoRef} onCanPlay={handleCanPlay} autoPlay playsInline muted />
+    );
 }
 ```
 
@@ -104,18 +104,18 @@ Similar to before, the ratio calculation is abstracted into a custom hook and re
 import { useState, useCallback } from "react";
 
 export function useCardRatio(initialRatio) {
-  const [aspectRatio, setAspectRatio] = useState(initialRatio);
+    const [aspectRatio, setAspectRatio] = useState(initialRatio);
 
-  const calculateRatio = useCallback((height, width) => {
-    if (height && width) {
-      const isLandscape = height <= width;
-      const ratio = isLandscape ? width / height : height / width;
+    const calculateRatio = useCallback((height, width) => {
+        if (height && width) {
+            const isLandscape = height <= width;
+            const ratio = isLandscape ? width / height : height / width;
 
-      setAspectRatio(ratio);
-    }
-  }, []);
+            setAspectRatio(ratio);
+        }
+    }, []);
 
-  return [aspectRatio, calculateRatio];
+    return [aspectRatio, calculateRatio];
 }
 ```
 
@@ -127,46 +127,46 @@ import { useUserMedia } from './useUserMedia';
 import { useCardRatio } from './useCardRatio';
 
 const CAPTURE_OPTIONS = {
-	audio: false,
-	video: { facingMode: "environment" },
+    audio: false,
+    video: { facingMode: "environment" },
 };
 
 function Camera() {
-  const videoRef = useRef();
-  const mediaStream = useUserMedia(CAPTURE_OPTIONS);
-  const [container, setContainer] = useState({ height: 0 });
-  const [aspectRatio, setAspectRatio] = useCardRatio(1.586); // default card ratio
+    const videoRef = useRef();
+    const mediaStream = useUserMedia(CAPTURE_OPTIONS);
+    const [container, setContainer] = useState({ height: 0 });
+    const [aspectRatio, setAspectRatio] = useCardRatio(1.586); // default card ratio
 
-  if (mediaStream && videoRef.current && videoRef.current.srcObject === null) {
-    videoRef.current.srcObject = mediaStream;
-  }
+    if (mediaStream && videoRef.current && videoRef.current.srcObject === null) {
+        videoRef.current.srcObject = mediaStream;
+    }
 
-  function handleCanPlay() {
-    calculateRatio(videoRef.current.videoHeight, videoRef.current.videoWidth);
-    videoRef.current.play();
-  }
+    function handleCanPlay() {
+        calculateRatio(videoRef.current.videoHeight, videoRef.current.videoWidth);
+        videoRef.current.play();
+    }
 
-  function handleResize(contentRect) {
-    setContainer({
-      height: Math.round(contentRect.bounds.width / aspectRatio)
-    });
-  }
+    function handleResize(contentRect) {
+        setContainer({
+            height: Math.round(contentRect.bounds.width / aspectRatio)
+        });
+    }
 
-  function handleCanPlay() {
-    setAspectRatio(videoRef.current.videoHeight, videoRef.current.videoWidth);
-    videoRef.current.play();
-  }
+    function handleCanPlay() {
+        setAspectRatio(videoRef.current.videoHeight, videoRef.current.videoWidth);
+        videoRef.current.play();
+    }
 
-  return (
-		<Measure bounds onResize={handleResize}>
-      {({ measureRef }) => (
-        <div ref={measureRef} style={{ height: `${container.height}px` }}>
-          <video ref={videoRef} onCanPlay={handleCanPlay} autoPlay playsInline muted />
-        </div>
-      )}
-    </Measure>
-  );
-
+    return (
+        <Measure bounds onResize={handleResize}>
+            {({ measureRef }) => (
+                <div ref={measureRef} style={{ height: `${container.height}px` }}>
+                    <video ref={videoRef} onCanPlay={handleCanPlay} autoPlay playsInline muted />
+                </div>
+            )}
+        </Measure>
+    );
+}
 ```
 
 
@@ -186,23 +186,23 @@ We only want to apply the offsets in the event that the video _(v)_ is larger th
 import { useState, useEffect } from "react";
 
 export function useOffsets(vWidth, vHeight, cWidth, cHeight) {
-  const [offsets, setOffsets] = useState({ x: 0, y: 0 });
+    const [offsets, setOffsets] = useState({ x: 0, y: 0 });
 
-  useEffect(() => {
-    if (vWidth && vHeight && cWidth && cHeight) {
-	    const x = vWidth > cWidth
-		    ? Math.round((vWidth - cWidth) / 2)
-	      : 0;
+    useEffect(() => {
+        if (vWidth && vHeight && cWidth && cHeight) {
+            const x = vWidth > cWidth
+                ? Math.round((vWidth - cWidth) / 2)
+                : 0;
 	
-	    const y = vHeight > cHeight
-		    ? Math.round((vHeight - cHeight) / 2)
-		    : 0;
+            const y = vHeight > cHeight
+                ? Math.round((vHeight - cHeight) / 2)
+                : 0;
 	
-	    setOffsets({ x, y });
-		}
-  }, [vWidth, vHeight, cWidth, cHeight]);
+            setOffsets({ x, y });
+        }
+    }, [vWidth, vHeight, cWidth, cHeight]);
 
-  return offsets;
+    return offsets;
 }
 ```
 
@@ -220,49 +220,50 @@ const CAPTURE_OPTIONS = {
 };
 
 function Camera() {
-  const videoRef = useRef();
-  const mediaStream = useUserMedia(CAPTURE_OPTIONS);
-  const [container, setContainer] = useState({ height: 0, width: 0 });
-  const [aspectRatio, calculateRatio] = useCardRatio(1.586);
-  const offsets = useOffsets(
-    videoRef.current && videoRef.current.videoWidth,
-    videoRef.current && videoRef.current.videoHeight,
-    container.width,
-    container.height
-  );
+    const videoRef = useRef();
+    const mediaStream = useUserMedia(CAPTURE_OPTIONS);
+    const [container, setContainer] = useState({ height: 0, width: 0 });
+    const [aspectRatio, calculateRatio] = useCardRatio(1.586);
+    const offsets = useOffsets(
+        videoRef.current && videoRef.current.videoWidth,
+        videoRef.current && videoRef.current.videoHeight,
+        container.width,
+        container.height
+    );
 
-  if (mediaStream && videoRef.current && videoRef.current.srcObject === null) {
-    videoRef.current.srcObject = mediaStream;
-  }
+    if (mediaStream && videoRef.current && videoRef.current.srcObject === null) {
+        videoRef.current.srcObject = mediaStream;
+    }
 
-  function handleResize(contentRect) {
-    setContainer({
-      height: Math.round(contentRect.bounds.width / aspectRatio),
-			width: contentRect.bounds.width
-    });
-  }
+    function handleResize(contentRect) {
+        setContainer({
+            height: Math.round(contentRect.bounds.width / aspectRatio),
+            width: contentRect.bounds.width
+        });
+    }
 
-  function handleCanPlay() {
-    calculateRatio(videoRef.current.videoHeight, videoRef.current.videoWidth);
-    videoRef.current.play();
-  }
+    function handleCanPlay() {
+        calculateRatio(videoRef.current.videoHeight, videoRef.current.videoWidth);
+        videoRef.current.play();
+    }
 
-  return (
-		<Measure bounds onResize={handleResize}>
-      {({ measureRef }) => (
-        <div ref={measureRef} style={{ height: `${container.height}px` }}>
-          <video 
-            ref={videoRef}
-            onCanPlay={handleCanPlay}
-            style={{ top: `-${offsets.y}px`, left: `-${offsets.x}px` }}
-            autoPlay 
-            playsInline 
-            muted
-          />
-        </div>
-      )}
-    </Measure>
-  );
+    return (
+        <Measure bounds onResize={handleResize}>
+            {({ measureRef }) => (
+                <div ref={measureRef} style={{ height: `${container.height}px` }}>
+                    <video 
+                        ref={videoRef}
+                        onCanPlay={handleCanPlay}
+                        style={{ top: `-${offsets.y}px`, left: `-${offsets.x}px` }}
+                        autoPlay 
+                        playsInline 
+                        muted
+                    />
+                </div>
+            )}
+        </Measure>
+    );
+}
 ```
 
 
@@ -274,9 +275,9 @@ To emulate a camera snapshot, a `<canvas/>` element is positioned on top of the 
 
 ```javascript
 function handleCapture() {
-  const context = canvasRef.current.getContext("2d");
-  context.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
-  canvasRef.current.toBlob(blob => onCapture(blob), "image/jpeg", 1);
+    const context = canvasRef.current.getContext("2d");
+    context.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
+    canvasRef.current.toBlob(blob => onCapture(blob), "image/jpeg", 1);
 }
 ```
 
@@ -286,15 +287,15 @@ The arguments supplied to the [`drawImage()`](https://developer.mozilla.org/en-U
 
 ```javascript
 context.drawImage(
-  videoRef.current, // source
-  offsets.x,        // sx  
-  offsets.y,        // sy
-  container.width,  // sWidth
-  container.height, // sHeight
-  0,                // dx
-  0,                // dy
-  container.width,  // dWidth
-  container.height  // dHeight
+    videoRef.current, // source
+    offsets.x,        // sx  
+    offsets.y,        // sy
+    container.width,  // sWidth
+    container.height, // sHeight
+    0,                // dx
+    0,                // dy
+    container.width,  // dWidth
+    container.height  // dHeight
 );
 ```
 
@@ -304,9 +305,9 @@ To discard the image, the canvas is reverted to it's initial state via a `handle
 
 ```javascript
 function handleClear() {
-  const context = canvasRef.current.getContext("2d");
-  context.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-  onClear();
+    const context = canvasRef.current.getContext("2d");
+    context.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+    onClear();
 }
 ```
 
@@ -319,87 +320,88 @@ import { useCardRatio } from './useCardRatio';
 import { useOffsets } from './useOffsets';
 
 const CAPTURE_OPTIONS = {
-	audio: false,
-	video: { facingMode: "environment" },
+    audio: false,
+    video: { facingMode: "environment" },
 };
 
 function Camera() {
-  const videoRef = useRef();
-  const mediaStream = useUserMedia(CAPTURE_OPTIONS);
-  const [container, setContainer] = useState({ height: 0, width: 0 });
-  const [aspectRatio, calculateRatio] = useCardRatio(1.586);
-  const [isCanvasEmpty, setIsCanvasEmpty] = useState(true);
-  const offsets = useOffsets(
-    videoRef.current && videoRef.current.videoWidth,
-    videoRef.current && videoRef.current.videoHeight,
-    container.width,
-    container.height
-  );
-
-  if (mediaStream && videoRef.current && videoRef.current.srcObject === null) {
-    videoRef.current.srcObject = mediaStream;
-  }
-
-  function handleResize(contentRect) {
-    setContainer({
-      height: Math.round(contentRect.bounds.width / aspectRatio),
-			width: contentRect.bounds.width
-    });
-  }
-
-  function handleCanPlay() {
-    calculateRatio(videoRef.current.videoHeight, videoRef.current.videoWidth);
-    videoRef.current.play();
-  }
-
-  function handleCapture() {
-    const context = canvasRef.current.getContext("2d");
-
-    context.drawImage(
-      videoRef.current,
-      offsets.x,
-      offsets.y,
-      container.width,
-      container.height,
-      0,
-      0,
-      container.width,
-      container.height
+    const videoRef = useRef();
+    const mediaStream = useUserMedia(CAPTURE_OPTIONS);
+    const [container, setContainer] = useState({ height: 0, width: 0 });
+    const [aspectRatio, calculateRatio] = useCardRatio(1.586);
+    const [isCanvasEmpty, setIsCanvasEmpty] = useState(true);
+    const offsets = useOffsets(
+        videoRef.current && videoRef.current.videoWidth,
+        videoRef.current && videoRef.current.videoHeight,
+        container.width,
+        container.height
     );
 
-    canvasRef.current.toBlob(blob => onCapture(blob), "image/jpeg", 1);
-    setIsCanvasEmpty(false);
-  }
+    if (mediaStream && videoRef.current && videoRef.current.srcObject === null) {
+        videoRef.current.srcObject = mediaStream;
+    }
 
-  function handleClear() {
-    const context = canvasRef.current.getContext("2d");
-    context.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-    onClear();
-    setIsCanvasEmpty(true);
-  }
+    function handleResize(contentRect) {
+        setContainer({
+            height: Math.round(contentRect.bounds.width / aspectRatio),
+            width: contentRect.bounds.width
+        });
+    }
 
-  return (
-		<Measure bounds onResize={handleResize}>
-      {({ measureRef }) => (
-        <div>
-	        <div ref={measureRef} style={{ height: `${container.height}px` }}>
-	          <video 
-	            ref={videoRef}
-	            onCanPlay={handleCanPlay}
-	            style={{ top: `-${offsets.y}px`, left: `-${offsets.x}px` }} 
-	            autoPlay 
-	            playsInline 
-	            muted
-	          />
-	        </div>
+    function handleCanPlay() {
+        calculateRatio(videoRef.current.videoHeight, videoRef.current.videoWidth);
+        videoRef.current.play();
+    }
 
-          <button onClick={isCanvasEmpty ? handleCapture : handleClear}>
-            {isCanvasEmpty ? "Take a picture" : "Take another picture"}
-          </button>
-        </div>
-      )}
-    </Measure>
-  );
+    function handleCapture() {
+        const context = canvasRef.current.getContext("2d");
+
+        context.drawImage(
+            videoRef.current,
+            offsets.x,
+            offsets.y,
+            container.width,
+            container.height,
+            0,
+            0,
+            container.width,
+            container.height
+        );
+
+        canvasRef.current.toBlob(blob => onCapture(blob), "image/jpeg", 1);
+        setIsCanvasEmpty(false);
+    }
+
+    function handleClear() {
+        const context = canvasRef.current.getContext("2d");
+        context.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+        onClear();
+        setIsCanvasEmpty(true);
+    }
+
+    return (
+        <Measure bounds onResize={handleResize}>
+            {({ measureRef }) => (
+                <div>
+                    <div ref={measureRef} style={{ height: `${container.height}px` }}>
+                        <video 
+                            ref={videoRef}
+                            onCanPlay={handleCanPlay}
+                            style={{ top: `-${offsets.y}px`, left: `-${offsets.x}px` }} 
+                            autoPlay 
+                            playsInline 
+                            muted
+                        />
+                    </div>
+
+                    <button onClick={isCanvasEmpty ? handleCapture : handleClear}>
+                        {isCanvasEmpty ? "Take a picture" : "Take another picture"}
+                    </button>
+                </div>
+            )}
+        </Measure>
+    );
+}
 ```
 
 
@@ -413,81 +415,81 @@ With the ability to capture an image, all that remains is to implement a card-ai
 import styled, { css, keyframes } from 'styled-components';
 
 const flashAnimation = keyframes`
-  from {
-    opacity: 0.75;
-  }
+    from {
+        opacity: 0.75;
+    }
 
-  to {
-    opacity: 0;
-  }
+    to {
+        opacity: 0;
+    }
 `;
 
 export const Wrapper = styled.div`
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    width: 100%;
 `;
 
 export const Container = styled.div`
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  max-width: ${({ maxWidth }) => maxWidth && `${maxWidth}px`};
-  max-height: ${({ maxHeight }) => maxHeight && `${maxHeight}px`};
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: ${({ maxWidth }) => maxWidth && `${maxWidth}px`};
+    max-height: ${({ maxHeight }) => maxHeight && `${maxHeight}px`};
 `;
 
 export const Canvas = styled.canvas`
-  position: absolute;
-  top: 0;
-  left: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
 `;
 
 export const Video = styled.video`
-  position: absolute;
+    position: absolute;
 
-  &::-webkit-media-controls-play-button {
-    display: none !important;
-    -webkit-appearance: none;
-  }
+    &::-webkit-media-controls-play-button {
+        display: none !important;
+        -webkit-appearance: none;
+    }
 `;
 
 export const Overlay = styled.div`
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  bottom: 20px;
-  left: 20px;
-  box-shadow: 0px 0px 20px 56px rgba(0, 0, 0, 0.6);
-  border: 1px solid #ffffff;
-  border-radius: 10px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    bottom: 20px;
+    left: 20px;
+    box-shadow: 0px 0px 20px 56px rgba(0, 0, 0, 0.6);
+    border: 1px solid #ffffff;
+    border-radius: 10px;
 `;
 
 export const Flash = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  opacity: 0;
-  background-color: #ffffff;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    background-color: #ffffff;
 
-  ${({ flash }) => {
-    if (flash) {
-      return css`
-        animation: ${flashAnimation} 750ms ease-out;
-      `;
-    }
-  }}
+    ${({ flash }) => {
+        if (flash) {
+            return css`
+                animation: ${flashAnimation} 750ms ease-out;
+            `;
+        }
+    }}
 `;
 
 export const Button = styled.button`
-  width: 75%;
-  min-width: 100px;
-  max-width: 250px;
-  margin-top: 24px;
-  padding: 12px 24px;
-  background: silver;
+    width: 75%;
+    min-width: 100px;
+    max-width: 250px;
+    margin-top: 24px;
+    padding: 12px 24px;
+    background: silver;
 `;
 ```
 
@@ -499,134 +501,135 @@ import { useUserMedia } from "../hooks/use-user-media";
 import { useCardRatio } from "../hooks/use-card-ratio";
 import { useOffsets } from "../hooks/use-offsets";
 import {
-  Video,
-  Canvas,
-  Wrapper,
-  Container,
-  Flash,
-  Overlay,
-  Button
+    Video,
+    Canvas,
+    Wrapper,
+    Container,
+    Flash,
+    Overlay,
+    Button
 } from "./styles";
 
 const CAPTURE_OPTIONS = {
-  audio: false,
-  video: { facingMode: "environment" }
+    audio: false,
+    video: { facingMode: "environment" }
 };
 
 export function Camera({ onCapture, onClear }) {
-  const canvasRef = useRef();
-  const videoRef = useRef();
+    const canvasRef = useRef();
+    const videoRef = useRef();
 
-  const [container, setContainer] = useState({ width: 0, height: 0 });
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
-  const [isCanvasEmpty, setIsCanvasEmpty] = useState(true);
-  const [isFlashing, setIsFlashing] = useState(false);
+    const [container, setContainer] = useState({ width: 0, height: 0 });
+    const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+    const [isCanvasEmpty, setIsCanvasEmpty] = useState(true);
+    const [isFlashing, setIsFlashing] = useState(false);
 
-  const mediaStream = useUserMedia(CAPTURE_OPTIONS);
-  const [aspectRatio, calculateRatio] = useCardRatio(1.586);
-  const offsets = useOffsets(
-    videoRef.current && videoRef.current.videoWidth,
-    videoRef.current && videoRef.current.videoHeight,
-    container.width,
-    container.height
-  );
-
-  if (videoRef.current && videoRef.current.srcObject === null) {
-    videoRef.current.srcObject = mediaStream;
-  }
-
-  function handleResize(contentRect) {
-    setContainer({
-      width: contentRect.bounds.width,
-      height: Math.round(contentRect.bounds.width / aspectRatio)
-    });
-  }
-
-  function handleCanPlay() {
-    calculateRatio(videoRef.current.videoHeight, videoRef.current.videoWidth);
-    setIsVideoPlaying(true);
-    videoRef.current.play();
-  }
-
-  function handleCapture() {
-    const context = canvasRef.current.getContext("2d");
-
-    context.drawImage(
-      videoRef.current,
-      offsets.x,
-      offsets.y,
-      container.width,
-      container.height,
-      0,
-      0,
-      container.width,
-      container.height
+    const mediaStream = useUserMedia(CAPTURE_OPTIONS);
+    const [aspectRatio, calculateRatio] = useCardRatio(1.586);
+    const offsets = useOffsets(
+        videoRef.current && videoRef.current.videoWidth,
+        videoRef.current && videoRef.current.videoHeight,
+        container.width,
+        container.height
     );
 
-    canvasRef.current.toBlob(blob => onCapture(blob), "image/jpeg", 1);
-    setIsCanvasEmpty(false);
-    setIsFlashing(true);
-  }
+    if (videoRef.current && videoRef.current.srcObject === null) {
+        videoRef.current.srcObject = mediaStream;
+    }
 
-  function handleClear() {
-    const context = canvasRef.current.getContext("2d");
-    context.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-    setIsCanvasEmpty(true);
-    onClear();
-  }
+    function handleResize(contentRect) {
+        setContainer({
+            width: contentRect.bounds.width,
+            height: Math.round(contentRect.bounds.width / aspectRatio)
+        });
+    }
 
-  if (!mediaStream) {
-    return null;
-  }
+    function handleCanPlay() {
+        calculateRatio(videoRef.current.videoHeight, videoRef.current.videoWidth);
+        setIsVideoPlaying(true);
+        videoRef.current.play();
+    }
 
-  return (
-    <Measure bounds onResize={handleResize}>
-      {({ measureRef }) => (
-        <Wrapper>
-          <Container
-            ref={measureRef}
-            maxHeight={videoRef.current && videoRef.current.videoHeight}
-            maxWidth={videoRef.current && videoRef.current.videoWidth}
-            style={{
-              height: `${container.height}px`
-            }}
-          >
-            <Video
-              ref={videoRef}
-              hidden={!isVideoPlaying}
-              onCanPlay={handleCanPlay}
-              autoPlay
-              playsInline
-              muted
-              style={{
-                top: `-${offsets.y}px`,
-                left: `-${offsets.x}px`
-              }}
-            />
+    function handleCapture() {
+        const context = canvasRef.current.getContext("2d");
 
-            <Overlay hidden={!isVideoPlaying} />
+        context.drawImage(
+            videoRef.current,
+            offsets.x,
+            offsets.y,
+            container.width,
+            container.height,
+            0,
+            0,
+            container.width,
+            container.height
+        );
 
-            <Canvas
-              ref={canvasRef}
-              width={container.width}
-              height={container.height}
-            />
+        canvasRef.current.toBlob(blob => onCapture(blob), "image/jpeg", 1);
+        setIsCanvasEmpty(false);
+        setIsFlashing(true);
+    }
 
-            <Flash
-              flash={isFlashing}
-              onAnimationEnd={() => setIsFlashing(false)}
-            />
-          </Container>
+    function handleClear() {
+        const context = canvasRef.current.getContext("2d");
+        context.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+        setIsCanvasEmpty(true);
+        onClear();
+    }
 
-          {isVideoPlaying && (
-            <Button onClick={isCanvasEmpty ? handleCapture : handleClear}>
-              {isCanvasEmpty ? "Take a picture" : "Take another picture"}
-            </Button>
-          )}
-        </Wrapper>
-      )}
-    </Measure>
-  );
+    if (!mediaStream) {
+        return null;
+    }
+
+    return (
+        <Measure bounds onResize={handleResize}>
+            {({ measureRef }) => (
+                <Wrapper>
+                    <Container
+                        ref={measureRef}
+                        maxHeight={videoRef.current && videoRef.current.videoHeight}
+                        maxWidth={videoRef.current && videoRef.current.videoWidth}
+                        style={{
+                            height: `${container.height}px`
+                        }}
+                    >
+
+                        <Video
+                            ref={videoRef}
+                            hidden={!isVideoPlaying}
+                            onCanPlay={handleCanPlay}
+                            autoPlay
+                            playsInline
+                            muted
+                            style={{
+                                top: `-${offsets.y}px`,
+                                left: `-${offsets.x}px`
+                            }}
+                        />
+
+                        <Overlay hidden={!isVideoPlaying} />
+
+                        <Canvas
+                            ref={canvasRef}
+                            width={container.width}
+                            height={container.height}
+                        />
+
+                        <Flash
+                            flash={isFlashing}
+                            onAnimationEnd={() => setIsFlashing(false)}
+                        />
+                    </Container>
+
+                    {isVideoPlaying && (
+                        <Button onClick={isCanvasEmpty ? handleCapture : handleClear}>
+                            {isCanvasEmpty ? "Take a picture" : "Take another picture"}
+                        </Button>
+                    )}
+                </Wrapper>
+            )}
+        </Measure>
+    );
 }
 ```
 

@@ -8,21 +8,21 @@ import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
 
 storiesOf('Input', module).add('controlled', () => {
-  function Parent({ children, ...props }) {
-    const [state, setState] = useState();
-    return <div>{children(state, setState)}</div>;
-  }
+    function Parent({ children, ...props }) {
+        const [state, setState] = useState();
+        return <div>{children(state, setState)}</div>;
+    }
 
-  return (
-    <Parent>
-      {(state, setState) => (
-        <input
-          value={state.value}
-          onChange={e => setState({ value: e.target.value })}
-        />
-      )}
-    </Parent>
-  );
+    return (
+        <Parent>
+            {(state, setState) => (
+                <input
+                    value={state.value}
+                    onChange={e => setState({ value: e.target.value })}
+                />
+            )}
+        </Parent>
+    );
 });
 ```
 
@@ -36,10 +36,10 @@ import React, { useState } from "react";
 import { storiesOf } from "@storybook/react";
 
 storiesOf("Input", module).add("controlled", (state, setState) => (
-  <input
-    value={state.value}
-    onChange={e => setState({ value: e.target.value })}
-  />
+    <input
+        value={state.value}
+        onChange={e => setState({ value: e.target.value })}
+    />
 );
 ```
 
@@ -53,34 +53,34 @@ import React, { useState } from "react";
 import { configure, addDecorator } from "@storybook/react";
 
 function loadStories() {
-  require("../src/stories/index.js");
+    require("../src/stories/index.js");
 }
 
 // Component 1
 function Stage({ children, …props }) {
-  const [state, setState] = useState({});
-  return <div {…props}>{children(state, setState)}</div>;
+    const [state, setState] = useState({});
+    return <div {…props}>{children(state, setState)}</div>;
 }
 
 // Component 2
 function State({ state, …props }) {
-  return (
-    <div {…props}>
-      Parent state: <pre>{JSON.stringify(state)}</pre>
-    </div>
-  );
+    return (
+        <div {…props}>
+            Parent state: <pre>{JSON.stringify(state)}</pre>
+        </div>
+    );
 }
 
 // Custom decorator
 addDecorator(story => (
-  <Stage>
-    {(state, setState) => (
-      <div style={{ display: "flex", flexFlow: "column" }}>
-       {story(state, setState)}
-       <State state={state} />
-      </div>
-    )}
-  </Stage>
+    <Stage>
+        {(state, setState) => (
+            <div style={{ display: "flex", flexFlow: "column" }}>
+                {story(state, setState)}
+                <State state={state} />
+            </div>
+        )}
+    </Stage>
 ));
 
 configure(loadStories, module);
@@ -96,24 +96,21 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 
 storiesOf('Input', module)
-  // stateless
-  .add('uncontrolled', () => <input />)
+    // stateless
+    .add('uncontrolled', () => <input />)
 
-  // stateful
-  .add('controlled', (state, setState) => (
-    <input
-      value={state.value}
-      onChange={e => setState({ value: e.target.value })}
-    />
-  ));
+    // stateful
+    .add('controlled', (state, setState) => (
+        <input
+            value={state.value}
+            onChange={e => setState({ value: e.target.value })}
+        />
+));
 ```
 
 
 You can find the repository on [GitHub](https://github.com/phunkren/storybook-state), and here’s a quick look at it in action:
 
 
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/40c35762-69fb-4a12-af02-35a48d4b4866/storybook-state-example.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230103%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230103T110334Z&X-Amz-Expires=3600&X-Amz-Signature=1f2e1d6fa035ebdf87b5b2f40db2ad5926ff8a7648cc30a325d99b6cdeffae43&X-Amz-SignedHeaders=host&x-id=GetObject)
-
-
-1.1: Test both controlled and uncontrolled inputs in Storybook
+![1.1: Test both controlled and uncontrolled inputs in Storybook](https://i.imgur.com/tqd1QZR.gif)
 

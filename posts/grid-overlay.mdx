@@ -2,19 +2,13 @@
 One of my favourite talks from ReactFest London was Siddharth Kshetrapal's [presentation on the frontend workflow](https://www.youtube.com/watch?v=bLgZwFRYTJ4). Their discussion about how design systems can be undermined by misunderstandings between project disciplines reminded me of a similar experience I had with a designer on a React project. We were discussing the inconsistencies in vertical rhythm between their design and the application's frontend build. To illustrate their point, they opened the design in Sketch and enabled the grid view.
 
 
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/765c189a-0577-457d-9c77-e53b963fa3df/sketch-design-grid.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230103%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230103T110334Z&X-Amz-Expires=3600&X-Amz-Signature=8ea115640b672a6184137f91575132a32565b168b854c4effa5aafa7c593dc56&X-Amz-SignedHeaders=host&x-id=GetObject)
-
-
-1.1: Sketch’s design grid
+![1.1: Sketch’s design grid](https://i.imgur.com/9K1JAct.jpg)
 
 
 Sketch's grid is a visual overlay that enables designers to create a highly precise layout. I had assumed that constant spacing between components would result in consistent vertical rhythm, but the demonstration showed that even though the components were evenly distributed on the page, their respective content was not.
 
 
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/08652dc5-a3f7-4a09-8ac9-ebcd82ba1075/vertical-rhythm.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230103%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230103T110334Z&X-Amz-Expires=3600&X-Amz-Signature=2f6f4de9b1d0b93a9df2436c04bb0efe48af32a157d858e03612ca3e91188676&X-Amz-SignedHeaders=host&x-id=GetObject)
-
-
-1.2: Vertical rhythm example
+![1.2: Vertical rhythm example](https://i.imgur.com/r6xrD6F.png)
 
 
 To address the issue of inconsistent vertical rhythm, I created a similar treatment for the frontend by adding a styled component to the application root. The grid would sit on top of the entire application, fixed to the viewport using **`position: fixed`** with a high **`z-index`** and **`pointer-events`** disabled.
@@ -28,23 +22,23 @@ import styled from 'styled-components';
 import { rgba } from 'polished';
 
 export const GridOverlay = styled.div(
-  ({
-    color = 'black',
-    width = `${100 / 12}%`,
-    interval = `${100 / 12}%`,
-    direction = 'vertical',
-  }) => css`
-    ${position('fixed', '0', '0', '0', '0')};
-    background: repeating-linear-gradient(
-      ${direction === 'vertical' ? '-90deg' : '0'},
-      ${rgba(color, 0.2)},
-      ${rgba(color, 0.2)} ${width},
-      transparent ${width},
-      transparent calc(${width} + ${interval})
-    );
-    pointer-events: none;
-    z-index: 999;
-  `,
+    ({
+        color = 'black',
+        width = `${100 / 12}%`,
+        interval = `${100 / 12}%`,
+        direction = 'vertical',
+    }) => css`
+        ${position('fixed', '0', '0', '0', '0')};
+        background: repeating-linear-gradient(
+            ${direction === 'vertical' ? '-90deg' : '0'},
+            ${rgba(color, 0.2)},
+            ${rgba(color, 0.2)} ${width},
+            transparent ${width},
+            transparent calc(${width} + ${interval})
+        );
+        pointer-events: none;
+        z-index: 999;
+    `,
 );
 ```
 
@@ -52,16 +46,10 @@ export const GridOverlay = styled.div(
 With the overlay in place, we were able to more accurately compare the vertical rhythm of our Sketch design with the production build and edge closer to pixel-perfect design (if that's your goal). To demonstrate the output, I quickly added the overlay to a personal site. Setting **`direction="horizontal"`** emulates Sketch's regular grid, while **`direction="vertical"`** resembles the layout grid.
 
 
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/4cf79f51-282d-4a78-8823-8689b2c20879/grid-overlay-horizontal.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230103%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230103T110334Z&X-Amz-Expires=3600&X-Amz-Signature=34c86b859d090a5258df8bd13fdb753335cc07658fe18d79f3aa8958a8f0c5f7&X-Amz-SignedHeaders=host&x-id=GetObject)
+![1.3: Grid overlay (horizontal)](https://i.imgur.com/43Ltv5X.jpg)
 
 
-1.3: Grid overlay (horizontal)
-
-
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/1d064ef9-c647-4e87-a8ba-e6bf6e150b95/grid-overlay-vertical.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230103%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230103T110334Z&X-Amz-Expires=3600&X-Amz-Signature=4e71dd7ac94435250e146d627a3369a60f213a7ae1f372925df6ba12ab8dbfde&X-Amz-SignedHeaders=host&x-id=GetObject)
-
-
-1.4: Grid overlay (vertical)
+![1.4: Grid overlay (vertical)](https://i.imgur.com/EQGDLbm.jpg)
 
 
 Adding the grid overlay to the application was a rewarding experience. In addition to its practical value, it also helped us to understand each other's approaches to the project and improve the workflow as a result. It's these small progressions that lead to truly collaborative efforts and produce the best results.
