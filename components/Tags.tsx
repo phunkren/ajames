@@ -2,6 +2,7 @@ import { blackA } from "@radix-ui/colors";
 import * as ToggleGroup from "@radix-ui/react-toggle-group";
 import { styled } from "../stitches.config";
 import { Tag } from "../types/notion";
+import { TextAux } from "./Text";
 
 type Props = {
   tags: Tag[];
@@ -9,25 +10,29 @@ type Props = {
   onChange: (tag: any) => void;
 };
 const ToggleGroupRoot = styled(ToggleGroup.Root, {
-  display: "inline-flex",
+  display: "grid",
+  gridTemplateColumns: "repeat(2, 1fr)",
+  gridTemplateRows: "1fr",
+  gridColumnGap: "16px",
+  gridRowGap: "16px",
   borderRadius: 4,
-  boxShadow: `0 2px 10px ${blackA.blackA7}`,
+  width: "100%",
+
+  "@bp2": {
+    gridTemplateColumns: "repeat(4, 1fr)",
+  },
 });
 
 const ToggleGroupItem = styled(ToggleGroup.Item, {
   all: "unset",
-  height: 35,
-  width: 70,
   display: "flex",
-  fontSize: 15,
-  lineHeight: 1,
   alignItems: "center",
   justifyContent: "center",
-  padding: 20,
   color: "white",
-
   backgroundColor: "transparent",
   opacity: 0.4,
+  textTransform: "uppercase",
+  padding: "$2",
 
   variants: {
     backgroundColor: {
@@ -61,27 +66,16 @@ const ToggleGroupItem = styled(ToggleGroup.Item, {
     },
   },
 
-  "&:first-child": {
-    marginLeft: 0,
-    borderTopLeftRadius: 4,
-    borderBottomLeftRadius: 4,
-  },
-
   "&[data-state=on]": {
     opacity: 1,
-    backgroundColor: "red",
   },
-
-  "&:last-child": { borderTopRightRadius: 4, borderBottomRightRadius: 4 },
-
-  "&:focus": { position: "relative", boxShadow: `0 0 0 2px black` },
 });
 
 export function TagToggle({ tags, value, onChange }: Props) {
   return (
     <ToggleGroupRoot
       type="single"
-      aria-label="Tag toggle"
+      aria-label="Blog tag toggle"
       orientation="horizontal"
       value={value}
       onValueChange={onChange}
@@ -92,7 +86,9 @@ export function TagToggle({ tags, value, onChange }: Props) {
           value={tag.id}
           backgroundColor={tag.color}
         >
-          {tag.name} ({tag.count})
+          <TextAux>
+            {tag.name} ({tag.count})
+          </TextAux>
         </ToggleGroupItem>
       ))}
     </ToggleGroupRoot>

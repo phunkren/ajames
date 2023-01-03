@@ -90,13 +90,7 @@ function Blog(props: Props) {
           </Box>
         </nav>
 
-        <Box direction="horizontal">
-          <TagToggle
-            tags={tags}
-            value={activeTagId}
-            onChange={handleTagChange}
-          />
-        </Box>
+        <TagToggle tags={tags} value={activeTagId} onChange={handleTagChange} />
 
         <Container>
           {filteredPosts.map((post) => (
