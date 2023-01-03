@@ -44,18 +44,22 @@ export const getStaticProps: GetStaticProps = async () => {
 function Blog(props: Props) {
   const [activeTagId, setActiveTagId] = useState<string>();
 
-  const {
-    query: { tab },
-  } = useRouter();
+  const { pathname, push, query } = useRouter();
 
   const { personal, professional } = props;
 
-  const { posts, tags } = tab === "personal" ? personal : professional;
+  const { posts, tags } = query.tab === "personal" ? personal : professional;
 
-  const filteredPosts = activeTagId ? filterPosts(posts, activeTagId) : posts;
+  const filteredPosts = query.tag ? filterPosts(posts, query.tag) : posts;
 
-  function handleTagChange(tagId: string) {
-    setActiveTagId(tagId);
+  function handleTagChange(tagName: string) {
+    push({
+      pathname,
+      query: {
+        ...query,
+        tag: tagName,
+      },
+    });
   }
 
   return (
