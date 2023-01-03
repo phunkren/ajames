@@ -4,12 +4,12 @@ import { NotionToMarkdown } from "notion-to-md";
 import { POSTS_DIR } from "../constants/posts";
 import { BlogPost } from "../types/notion";
 
-const notion = new Client({
+const notionClient = new Client({
   auth: process.env.NOTION_TOKEN,
 });
 
 // Ref: https://www.npmjs.com/package/notion-to-md
-const n2m = new NotionToMarkdown({ notionClient: notion });
+const n2m = new NotionToMarkdown({ notionClient });
 
 // Create markdown file from Notion blog post
 export const createPost = async (uuid: string, slug: string) => {
@@ -23,7 +23,7 @@ export const createPost = async (uuid: string, slug: string) => {
 };
 
 export const getDatabase = async (databaseId: string) => {
-  const response = await notion.databases.query({
+  const response = await notionClient.databases.query({
     database_id: databaseId,
   });
 
@@ -57,7 +57,7 @@ export const getPageData = async (slug: string) => {
   return page;
 };
 
-// Generate a markdown file for each blog post in Notion
+// Generate a markdown file for each blog post in Notion on build
 (async () => {
   const { personal, professional } = await getPosts();
   const posts = [...personal, ...professional];

@@ -1,9 +1,6 @@
 import { google } from "googleapis";
-import { GOOGLE_SERVICE_ACCOUNT } from "../../constants/google";
-import {
-  YOUTUBE_CHANNEL_ID,
-  YOUTUBE_PLAYLIST_ID,
-} from "../../constants/youtube";
+import { GOOGLE_SERVICE_ACCOUNT } from "../constants/google";
+import { YOUTUBE_CHANNEL_ID, YOUTUBE_PLAYLIST_ID } from "../constants/youtube";
 
 export async function getYoutubeData() {
   const googleAuth = new google.auth.GoogleAuth({
@@ -11,11 +8,7 @@ export async function getYoutubeData() {
       client_email: GOOGLE_SERVICE_ACCOUNT.client_email,
       private_key: GOOGLE_SERVICE_ACCOUNT.private_key,
     },
-    scopes: [
-      "https://www.googleapis.com/auth/youtube",
-      "https://www.googleapis.com/auth/youtube.readonly",
-      "https://www.googleapis.com/auth/youtube.force-ssl",
-    ],
+    scopes: ["https://www.googleapis.com/auth/youtube.readonly"],
   });
 
   const youtube = google.youtube({
@@ -49,12 +42,3 @@ export async function getYoutubeData() {
     playlists,
   };
 }
-
-export default async (_, res) => {
-  const { latestVideo, playlists } = await getYoutubeData();
-
-  return res.status(200).json({
-    latestVideo,
-    playlists,
-  });
-};

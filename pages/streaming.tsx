@@ -12,8 +12,8 @@ import {
 import { ONE_HOUR_IN_SECONDS } from "../constants/date";
 import { YOUTUBE_SUBSCRIBE_URL } from "../constants/youtube";
 import { formatPlaylist, formatPlaylistItem } from "../helpers/youtube";
+import { getYoutubeData } from "../lib/youtube";
 import { PlaylistPreview, VideoPreview } from "../types/youtube";
-import { getYoutubeData } from "./api/youtube";
 
 type Props = {
   videoPreview: VideoPreview;

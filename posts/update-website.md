@@ -7,6 +7,7 @@
 - [ ] Add skip to content a11y link
 - [ ] Add scroll to top button on blog posts
 - [ ] Add download and print CV functionality
+- [ ] Add external variant to links
 
 ## Styles
 
@@ -36,4 +37,4 @@
 
 ## Refactor
 
-- [ ] Consolidate layout components
+- [x] Consolidate layout components

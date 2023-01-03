@@ -38,9 +38,6 @@ Let’s wrap the previous example with a Provider, set the `setIsModalOpen` call
 We now have a modal that can be opened from anywhere in our app, but it can only display static content for now. If we want it to render dynamic content, we'll need to refactor it to accept children. Plus, since React's data flow only goes one way, we'll need to find a good way to pass data from a nested component back up to the modal at the root level.
 
 
-Enter the coding powerhouse that is [Jenna Smith](https://twitter.com/jjenzz), an incredibly talented frontend developer and former colleague. She proposed [React Portal](https://reactjs.org/docs/portals.html) as a solution, since they are explicitly designed to pass children to a DOM node that exists outside the hierarchy of the parent component. Creating a portal requires two arguments: any renderable React element (our dynamic content) and a DOM element to inject the content into (the modal’s container).
-
-
 My former colleague, [Jenna Smith](https://twitter.com/jjenzz), a highly skilled front-end developer, suggested using [React Portal](https://reactjs.org/docs/portals.html) as a solution. Portal's are designed to pass children to a DOM node outside the hierarchy of the parent component, which is perfect for our needs. To use a portal, we'll need to provide two arguments: a React element (for our dynamic content) and a DOM element to inject the content into (the modal's container). This should allow us to effectively pass the data from the nested component to the modal at the root level.
 
 
