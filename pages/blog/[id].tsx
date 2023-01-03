@@ -34,12 +34,10 @@ export async function getStaticProps({ params }) {
 
   function getCoverImage() {
     if (pageData.cover.type === "file") {
-      console.log({ file: pageData.cover });
       return pageData.cover.file.url;
     }
 
     if (pageData.cover.type === "external") {
-      console.log({ external: pageData.cover });
       return pageData.cover.external.url;
     }
   }

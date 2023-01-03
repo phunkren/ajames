@@ -30,12 +30,10 @@ export function Preview({ post }: PreviewProps) {
 
   function getCoverImage() {
     if (cover.type === "file") {
-      console.log({ file: cover });
       return cover.file.url;
     }
 
     if (cover.type === "external") {
-      console.log({ external: cover });
       return cover.external.url;
     }
   }
