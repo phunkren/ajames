@@ -32,9 +32,21 @@ export async function getStaticProps({ params }) {
   const pageData = await getPageData(params.id);
   const postData = await getPostData(params.id);
 
+  function getCoverImage() {
+    if (pageData.cover.type === "file") {
+      console.log({ file: pageData.cover });
+      return pageData.cover.file.url;
+    }
+
+    if (pageData.cover.type === "external") {
+      console.log({ external: pageData.cover });
+      return pageData.cover.external.url;
+    }
+  }
+
   const frontmatter = {
     title: pageData.properties.page.title[0].plain_text,
-    image: pageData.cover?.file.url ?? "",
+    image: getCoverImage(),
     date: pageData.properties.date.date.start,
     tags: pageData.properties.tags.multi_select,
   };

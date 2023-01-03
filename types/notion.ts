@@ -96,13 +96,7 @@ type Tags = {
 };
 
 export type BlogPost = PageObjectResponse & {
-  cover: {
-    type: "file";
-    file: {
-      url: string;
-      expiry_time: string;
-    };
-  };
+  cover: any;
   properties: {
     authors: Authors;
     date: Date;
@@ -112,3 +106,11 @@ export type BlogPost = PageObjectResponse & {
     tags: Tags;
   };
 };
+
+// {
+//   type: "file" ;
+//   file: {
+//     url: string;
+//     expiry_time: string;
+//   };
+// };

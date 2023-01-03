@@ -28,10 +28,22 @@ export function Preview({ post }: PreviewProps) {
   const { properties, cover } = post;
   const { date, page, published, slug, tags } = properties;
 
+  function getCoverImage() {
+    if (cover.type === "file") {
+      console.log({ file: cover });
+      return cover.file.url;
+    }
+
+    if (cover.type === "external") {
+      console.log({ external: cover });
+      return cover.external.url;
+    }
+  }
+
   const title = page.title[0].plain_text;
   const publishDate = date.date.start as string;
   const url = slug.rich_text[0].plain_text;
-  const imageUrl = cover?.file.url ?? "";
+  const imageUrl = getCoverImage();
   const blogTags = tags.multi_select;
   const isPublished = Boolean(published.checkbox);
 
