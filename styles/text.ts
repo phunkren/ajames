@@ -41,3 +41,11 @@ export const P_STYLES = {
     fontSize: 20,
   },
 };
+
+export const AUX_STYLES = {
+  fontSize: 14,
+
+  "@bp2": {
+    fontSize: 16,
+  },
+};

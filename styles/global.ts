@@ -1,5 +1,5 @@
 import { globalCss } from "../stitches.config";
-import { H1_STYLES, H2_STYLES, H3_STYLES, P_STYLES } from "./text";
+import { AUX_STYLES, H1_STYLES, H2_STYLES, H3_STYLES, P_STYLES } from "./text";
 
 /* https://piccalil.li/blog/a-modern-css-reset/ */
 export const globalStyles = globalCss({
@@ -76,6 +76,7 @@ export const globalStyles = globalCss({
   // Default code block styling
   pre: {
     code: {
+      ...AUX_STYLES,
       display: "block",
       background: "none",
       whiteSpace: "pre-wrap",

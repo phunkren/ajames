@@ -1,7 +1,13 @@
 import { HTMLAttributes } from "react";
 import type * as Stitches from "@stitches/react";
 import { styled } from "../stitches.config";
-import { H1_STYLES, H2_STYLES, H3_STYLES, P_STYLES } from "../styles/text";
+import {
+  AUX_STYLES,
+  H1_STYLES,
+  H2_STYLES,
+  H3_STYLES,
+  P_STYLES,
+} from "../styles/text";
 
 type HeaderProps = HTMLAttributes<HTMLHeadingElement> &
   Stitches.CSS & {
@@ -45,12 +51,8 @@ const StyledTextHeadline = styled("span", {
 });
 
 const StyledTextAux = styled("span", {
-  fontSize: 14,
+  ...AUX_STYLES,
   textTransform: "uppercase",
-
-  "@bp2": {
-    fontSize: 16,
-  },
 });
 
 export function TextTitle1({ as, ...props }: HeaderProps) {
