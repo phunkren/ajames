@@ -38,7 +38,11 @@ export const P_STYLES = {
   fontSize: 18,
 
   "@bp2": {
-    fontSize: 20,
+    fontSize: 22,
+  },
+
+  "@bp3": {
+    fontSize: 24,
   },
 };
 
