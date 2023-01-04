@@ -1,7 +1,9 @@
 import * as fs from "fs";
 import path from "path";
 import { remark } from "remark";
+import { rehype } from "rehype";
 import mdx from "remark-mdx";
+import rehypeInferReadingTimeMeta from "rehype-infer-reading-time-meta";
 import { POSTS_DIR } from "../constants/posts";
 
 export function getAllPostIds() {
@@ -23,4 +25,14 @@ export async function getPostData(id: string) {
   const contentHtml = processedContent.toString();
 
   return contentHtml;
+}
+
+export async function getPostTime(content: string) {
+  const { data } = await rehype()
+    .use(rehypeInferReadingTimeMeta)
+    .process(content);
+
+  const [readingTime] = data.meta.readingTime as [number, number];
+
+  return readingTime;
 }
