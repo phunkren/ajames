@@ -134,7 +134,7 @@ export function BlogLayout({ hero, children }) {
           <StyledImage src={hero} alt="" sizes="100vw" fill />
         </AspectRatio.Root>
 
-        <StyledContent as="main" direction="vertical" flexGrow>
+        <StyledContent as="main" direction="vertical">
           {children}
         </StyledContent>
 
