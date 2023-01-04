@@ -3,7 +3,10 @@ import { BlogPost } from "../types/notion";
 export function filterPosts(posts: BlogPost[], activeTagName) {
   return posts.filter((post) => {
     const postTags = post.properties.tags.multi_select;
-    const isActive = postTags.some((postTag) => postTag.name === activeTagName);
+
+    const isActive = postTags.some(
+      ({ name }) => name.toLowerCase() === activeTagName.toLowerCase()
+    );
 
     return isActive;
   });
@@ -16,4 +19,18 @@ export function sortPosts(posts: BlogPost[]) {
 
     return dateB - dateA;
   });
+}
+
+export function formatReadingTime(time: number) {
+  const roundedTime = Math.ceil(time);
+
+  if (!time) {
+    return "Unknown";
+  }
+
+  if (time === 1) {
+    return `${roundedTime} minute`;
+  }
+
+  return `${roundedTime} minutes`;
 }
