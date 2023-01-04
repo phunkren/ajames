@@ -16,7 +16,13 @@ type PreviewProps = {
 
 export function Container({ children }: ContainerProps) {
   return (
-    <Box direction="vertical" as="ul" role="list" gap={10}>
+    <Box
+      direction="vertical"
+      as="ul"
+      role="list"
+      gap={10}
+      css={{ maxWidth: 720, margin: "0 auto" }}
+    >
       {Children.map(children, (child, i) => (
         <li key={i}>{child}</li>
       ))}

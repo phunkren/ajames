@@ -10,7 +10,9 @@ import { Link } from "./Link";
 import { Navigation, NavigationMobile } from "./Navigation";
 import { Social } from "./Social";
 import { ThemeToggle } from "./Theme";
-import { Button, ScrollToTopButton } from "./Button";
+import { ScrollToTopButton } from "./Button";
+import { TextHeadline } from "./Text";
+import { ArrowLeftIcon } from "@radix-ui/react-icons";
 
 const StyledBox = styled("div", {
   display: "flex",
@@ -46,7 +48,7 @@ export function RootLayout({ children }) {
       id="__root"
       direction="vertical"
       className={theme}
-      css={{ maxWidth: "1200px", margin: "0 auto" }}
+      css={{ maxWidth: "1400px", margin: "0 auto" }}
     >
       {children}
     </Box>
@@ -94,7 +96,12 @@ export function Layout({ children }) {
     >
       <HeaderLayout />
 
-      <Box as="main" direction="vertical" flexGrow>
+      <Box
+        as="main"
+        direction="vertical"
+        css={{ maxWidth: 1200, margin: "0 auto" }}
+        flexGrow
+      >
         {children}
       </Box>
 
@@ -113,26 +120,33 @@ export function Layout({ children }) {
 export function BlogLayout({ hero, children }) {
   return (
     <Box direction="vertical" spacingHorizontal={{ "@initial": 2, "@bp2": 4 }}>
-      <Box direction="vertical">
-        <HeaderLayout />
+      <HeaderLayout />
+
+      <Box direction="vertical" css={{ maxWidth: 1100, margin: "0 auto" }}>
+        <Link href="/blog" variant="secondary">
+          <Box alignItems="center" gap={2} spacingVertical={7}>
+            <ArrowLeftIcon width={28} height={28} aria-hidden />
+            <TextHeadline>Back to blog</TextHeadline>
+          </Box>
+        </Link>
 
         <AspectRatio.Root ratio={16 / 9}>
-          <StyledImage src={hero} alt="" fill />
+          <StyledImage src={hero} alt="" sizes="100vw" fill />
         </AspectRatio.Root>
-      </Box>
 
-      <StyledContent as="main" direction="vertical" flexGrow>
-        {children}
-      </StyledContent>
+        <StyledContent as="main" direction="vertical" flexGrow>
+          {children}
+        </StyledContent>
 
-      <Box
-        as="footer"
-        direction="horizontal"
-        spacingVertical={{ "@initial": 4, "@bp2": 7 }}
-        justifyContent="center"
-      >
-        {/* social sharing (social-media-specific, or copy to clipboard button) */}
-        <Social />
+        <Box
+          as="footer"
+          direction="horizontal"
+          spacingVertical={{ "@initial": 4, "@bp2": 7 }}
+          justifyContent="center"
+        >
+          {/* social sharing (social-media-specific, or copy to clipboard button) */}
+          <Social />
+        </Box>
       </Box>
 
       <ScrollToTopButton />

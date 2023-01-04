@@ -64,12 +64,7 @@ function Blog(props: Props) {
 
   return (
     <Layout>
-      <Box
-        direction="vertical"
-        gap={10}
-        alignItems="center"
-        css={{ maxWidth: 720, margin: "0 auto" }}
-      >
+      <Box direction="vertical" gap={10} alignItems="center">
         <TextTitle1>BLOG</TextTitle1>
 
         <nav aria-label="Blog categories">
