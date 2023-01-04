@@ -321,7 +321,10 @@ function Cv() {
                       <TextTitle3>{employer.position}</TextTitle3>
 
                       <Box
-                        direction={{ "@initial": "column", "@bp2": "row" }}
+                        direction={{
+                          "@initial": "vertical",
+                          "@bp2": "horizontal",
+                        }}
                         alignItems={{
                           "@bp2": "flex-end",
                         }}
