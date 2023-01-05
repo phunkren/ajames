@@ -30,7 +30,7 @@ export function PublishDate({ date, icon = false, ...props }) {
   return (
     <Box alignItems="center" gap={3} {...props}>
       {icon ? <CalendarIcon width={22} height={22} /> : null}
-      <TextAux as="time" datetime={date}>
+      <TextAux as="time" dateTime={date}>
         {formattedDate}
       </TextAux>
     </Box>

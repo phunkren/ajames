@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 import Balancer from "react-wrap-balancer";
 import Image from "next/image";
@@ -8,29 +9,6 @@ import { Emoji, TextTitle3 } from "./Text";
 import { blackA } from "@radix-ui/colors";
 import { H3_STYLES } from "../styles/text";
 import { Link } from "./Link";
-import { useRef } from "react";
-
-export const CardContainer = styled(Box, {
-  display: "grid",
-  gridTemplateColumns: "1fr",
-  gridTemplateRows: "1fr",
-  gridColumnGap: "$2",
-  gridRowGap: "$4",
-  borderRadius: 4,
-  width: "100%",
-
-  "@bp2": {
-    gridTemplateColumns: "repeat(2, 1fr)",
-    gridColumnGap: "$4",
-    gridRowGap: "$8",
-  },
-
-  "@bp3": {
-    gridTemplateColumns: "repeat(3, 1fr)",
-    gridColumnGap: "$5",
-    gridRowGap: "$10",
-  },
-});
 
 const StyledCardOuter = styled(Box, {
   display: "flex",
@@ -95,7 +73,7 @@ export function Card({
   }
 
   return (
-    <StyledCardOuter as="article" tabindex={-1} onClick={handleClick}>
+    <StyledCardOuter as="article" tabIndex={-1} onClick={handleClick}>
       <AspectRatio.Root ratio={16 / 9}>
         <StyledImage
           src={image}

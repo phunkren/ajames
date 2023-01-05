@@ -2,7 +2,7 @@ import { GetStaticProps } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { Card, CardContainer } from "../../components/Card";
+import { Card } from "../../components/Card";
 import { Box, Layout } from "../../components/Layout";
 import { TagToggle } from "../../components/Tags";
 import { TextTitle1 } from "../../components/Text";
@@ -10,6 +10,7 @@ import { ONE_HOUR_IN_SECONDS } from "../../constants/date";
 import { getTags } from "../../helpers/notion";
 import { filterPosts, sortPosts } from "../../helpers/posts";
 import { getPosts } from "../../lib/notion";
+import { styled } from "../../stitches.config";
 import { BlogPost, Tag } from "../../types/notion";
 
 type Props = {
@@ -22,6 +23,28 @@ type Props = {
     tags: Tag[];
   };
 };
+
+const StyledCardContainer = styled(Box, {
+  display: "grid",
+  gridTemplateColumns: "1fr",
+  gridTemplateRows: "1fr",
+  gridColumnGap: "$2",
+  gridRowGap: "$4",
+  borderRadius: 4,
+  width: "100%",
+
+  "@bp2": {
+    gridTemplateColumns: "repeat(2, 1fr)",
+    gridColumnGap: "$4",
+    gridRowGap: "$8",
+  },
+
+  "@bp3": {
+    gridTemplateColumns: "repeat(3, 1fr)",
+    gridColumnGap: "$5",
+    gridRowGap: "$10",
+  },
+});
 
 export const getStaticProps: GetStaticProps = async () => {
   const posts = await getPosts();
@@ -91,9 +114,10 @@ function Blog(props: Props) {
 
         <TagToggle tags={tags} value={activeTagId} onChange={handleTagChange} />
 
-        <CardContainer>
+        <StyledCardContainer>
           {filteredPosts.map((post) => (
             <Card
+              key={post.id}
               url={`/blog/${post.properties.slug.rich_text[0].plain_text}`}
               image={post.cover.external.url}
               emoji={post.icon.type === "emoji" ? post.icon.emoji : "👨‍💻"}
@@ -103,7 +127,7 @@ function Blog(props: Props) {
               tags={post.properties.tags.multi_select}
             />
           ))}
-        </CardContainer>
+        </StyledCardContainer>
       </Box>
     </Layout>
   );
