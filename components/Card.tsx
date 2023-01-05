@@ -15,20 +15,20 @@ export const CardContainer = styled(Box, {
   gridTemplateColumns: "1fr",
   gridTemplateRows: "1fr",
   gridColumnGap: "$2",
-  gridRowGap: "$2",
+  gridRowGap: "$4",
   borderRadius: 4,
   width: "100%",
 
   "@bp2": {
     gridTemplateColumns: "repeat(2, 1fr)",
     gridColumnGap: "$4",
-    gridRowGap: "$4",
+    gridRowGap: "$8",
   },
 
   "@bp3": {
     gridTemplateColumns: "repeat(3, 1fr)",
-    gridColumnGap: "$6",
-    gridRowGap: "$6",
+    gridColumnGap: "$5",
+    gridRowGap: "$10",
   },
 });
 
