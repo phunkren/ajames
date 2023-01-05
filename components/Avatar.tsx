@@ -2,7 +2,7 @@ import * as RadixAvatar from "@radix-ui/react-avatar";
 import { PERSONAL } from "../data/personal";
 import { styled } from "../stitches.config";
 
-const AvatarRoot = styled(RadixAvatar.Root, {
+export const AvatarRoot = styled(RadixAvatar.Root, {
   display: "inline-flex",
   alignItems: "center",
   justifyContent: "center",
@@ -15,14 +15,14 @@ const AvatarRoot = styled(RadixAvatar.Root, {
   backgroundColor: "black",
 });
 
-const AvatarImage = styled(RadixAvatar.Image, {
+export const AvatarImage = styled(RadixAvatar.Image, {
   width: "100%",
   height: "100%",
   objectFit: "cover",
   borderRadius: "inherit",
 });
 
-const AvatarFallback = styled(RadixAvatar.Fallback, {
+export const AvatarFallback = styled(RadixAvatar.Fallback, {
   width: "100%",
   height: "100%",
   display: "flex",
