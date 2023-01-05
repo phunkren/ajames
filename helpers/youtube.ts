@@ -1,17 +1,13 @@
 import { youtube_v3 } from "googleapis";
 import keyBy from "lodash.keyby";
 import { YOUTUBE_URL } from "../constants/youtube";
-import { PlaylistPreview, VideoPreview } from "../types/youtube";
+import {
+  ChannelInfoPreview,
+  PlaylistPreview,
+  PlaylistVideosPreview,
+  VideoPreview,
+} from "../types/youtube";
 import { buildUrl } from "./url";
-
-export function sortVideos(videos: youtube_v3.Schema$PlaylistItem[]) {
-  return videos.sort((a, b) => {
-    let dateA = new Date(a.snippet.publishedAt).getTime();
-    let dateB = new Date(b.snippet.publishedAt).getTime();
-
-    return dateB - dateA;
-  });
-}
 
 export const formatPlaylistVideo = (
   response: youtube_v3.Schema$PlaylistItem
@@ -25,7 +21,10 @@ export const formatPlaylistVideo = (
     playlistId,
   } = response.snippet;
 
-  const url = buildUrl(`${YOUTUBE_URL}/watch`, { v: resourceId.videoId });
+  const url = buildUrl(`${YOUTUBE_URL}/watch`, {
+    v: resourceId.videoId,
+    list: playlistId,
+  });
 
   const thumbnail = {
     src: thumbnails?.high.url,
@@ -35,6 +34,7 @@ export const formatPlaylistVideo = (
   };
 
   return {
+    videoId: resourceId.videoId,
     thumbnail,
     title,
     publishedAt,
@@ -73,16 +73,13 @@ export const formatPlaylist = (
 
 export const formatPlaylistVideos = (
   response: youtube_v3.Schema$PlaylistItem[][]
-) => {
+): PlaylistVideosPreview => {
   // Returns an array of arrays.
   // Outer array - Collection
   // Inner array(s) - Playlist
   // Inner Array Objects - Playlist videos
   const playlistCollection = response.map((playlist) => {
-    const sortedPlaylist = sortVideos(playlist);
-    return sortedPlaylist.map((playlistVideo) =>
-      formatPlaylistVideo(playlistVideo)
-    );
+    return playlist.map((playlistVideo) => formatPlaylistVideo(playlistVideo));
   });
 
   // Formats the collection to assign the playist id as a key for the playlist videos.
@@ -94,4 +91,29 @@ export const formatPlaylistVideos = (
   );
 
   return formattedPlaylistVideos;
+};
+
+export const formatChannelInfo = (
+  info: youtube_v3.Schema$Channel
+): ChannelInfoPreview => {
+  const { snippet, statistics } = info;
+  const { title, description, customUrl, thumbnails } = snippet;
+  const { viewCount, subscriberCount, videoCount } = statistics;
+
+  const thumbnail = {
+    src: thumbnails?.high.url,
+    width: thumbnails?.high.width,
+    height: thumbnails?.high.height,
+    alt: "",
+  };
+
+  return {
+    title,
+    description,
+    thumbnail,
+    customUrl,
+    viewCount,
+    subscriberCount,
+    videoCount,
+  };
 };

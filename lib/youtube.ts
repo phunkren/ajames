@@ -16,6 +16,11 @@ export async function getYoutubeData() {
     version: "v3",
   });
 
+  const getChannelInfo = youtube.channels.list({
+    part: ["snippet", "statistics"],
+    id: [YOUTUBE_CHANNEL_ID],
+  });
+
   const getLatestVideo = youtube.playlistItems.list({
     part: ["snippet"],
     playlistId: YOUTUBE_PLAYLIST_ID,
@@ -30,16 +35,17 @@ export async function getYoutubeData() {
     maxResults: 5,
   });
 
-  const [latestVideoRes, playlistsRes] = await Promise.all([
+  const [latestVideoRes, playlistsRes, channelInfoRes] = await Promise.all([
     getLatestVideo,
     getPlaylists,
+    getChannelInfo,
   ]);
 
   const getPlayListVideos = playlistsRes.data.items.map((item) =>
     youtube.playlistItems.list({
       part: ["snippet"],
       playlistId: item.id,
-      maxResults: 5,
+      maxResults: 12,
     })
   );
 
@@ -47,9 +53,11 @@ export async function getYoutubeData() {
 
   const latestVideo = latestVideoRes.data.items[0];
   const playlists = playlistsRes.data.items;
+  const channelInfo = channelInfoRes.data.items[0];
   const videos = videosRes.map((video) => video.data.items);
 
   return {
+    channelInfo,
     latestVideo,
     playlists,
     videos,

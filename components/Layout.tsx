@@ -52,7 +52,7 @@ export function RootLayout({ children }) {
       id="__root"
       direction="vertical"
       className={theme}
-      css={{ maxWidth: "1400px", margin: "0 auto" }}
+      css={{ maxWidth: "1800px", margin: "0 auto" }}
     >
       {children}
     </Box>
@@ -64,7 +64,7 @@ export function HeaderLayout() {
     <Box
       as="header"
       direction="horizontal"
-      spacingVertical={{ "@initial": 4, "@bp2": 7 }}
+      spacingVertical={{ "@initial": 8, "@bp2": 7 }}
       spacingHorizontal={2}
       gap={{ "@initial": 4, "@bp2": 7 }}
       justifyContent="space-between"

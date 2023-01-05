@@ -2,12 +2,6 @@ import uniqWith from "lodash.uniqwith";
 import isEqual from "lodash.isequal";
 import { BlogPost, Tag } from "../types/notion";
 
-function getTagCount(tags: Tag[], tag: Tag) {
-  return tags.reduce((total, currentTag) => {
-    return isEqual(currentTag, tag) ? total + 1 : total;
-  }, 0);
-}
-
 export function getTags(posts: BlogPost[]): Tag[] {
   const allTags = posts.flatMap((post) => post.properties.tags.multi_select);
 
@@ -20,6 +14,12 @@ export function getTags(posts: BlogPost[]): Tag[] {
       count: getTagCount(allTags, tag),
     };
   });
+
+  function getTagCount(tags: Tag[], tag: Tag) {
+    return tags.reduce((total, currentTag) => {
+      return isEqual(currentTag, tag) ? total + 1 : total;
+    }, 0);
+  }
 
   return formattedTags;
 }

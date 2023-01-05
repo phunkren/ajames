@@ -43,6 +43,7 @@ const StyledCardOuter = styled(Box, {
   flexDirection: "column",
   boxShadow: `0px 2px 4px ${blackA.blackA10}`,
   cursor: "pointer",
+  minWidth: `calc(300px - $space$3)`,
 
   "&:focus-within": {
     outline: "10px solid red",

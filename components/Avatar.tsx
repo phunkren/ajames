@@ -3,14 +3,15 @@ import { PERSONAL } from "../data/personal";
 import { styled } from "../stitches.config";
 
 export const AvatarRoot = styled(RadixAvatar.Root, {
+  flexShrink: 0,
   display: "inline-flex",
   alignItems: "center",
   justifyContent: "center",
   verticalAlign: "middle",
   overflow: "hidden",
   userSelect: "none",
-  width: 48,
-  height: 48,
+  width: 72,
+  height: 72,
   borderRadius: "100%",
   backgroundColor: "black",
 });
@@ -28,11 +29,8 @@ export const AvatarFallback = styled(RadixAvatar.Fallback, {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  backgroundColor: "white",
+  backgroundColor: "black",
   color: "white",
-  fontSize: 15,
-  lineHeight: 1,
-  fontWeight: 500,
 });
 
 export function Avatar() {

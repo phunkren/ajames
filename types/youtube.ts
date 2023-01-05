@@ -14,6 +14,7 @@ export type VideoPreview = {
   description: string;
   url: string;
   playlistId: string;
+  videoId: string;
 };
 
 export type PlaylistPreview = {
@@ -23,4 +24,16 @@ export type PlaylistPreview = {
   thumbnail: Thumbnail;
   url: string;
   publishedAt: string;
+};
+
+export type PlaylistVideosPreview = Record<string, VideoPreview[]>;
+
+export type ChannelInfoPreview = {
+  title: string;
+  description: string;
+  thumbnail: Thumbnail;
+  customUrl: string;
+  viewCount: string;
+  subscriberCount: string;
+  videoCount: string;
 };
