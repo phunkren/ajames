@@ -1,21 +1,15 @@
-import { forwardRef, ReactNode, Ref, useRef } from "react";
+import { ReactNode, Ref, useRef } from "react";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 import Balancer from "react-wrap-balancer";
 import Image from "next/image";
 import { styled } from "../stitches.config";
-import {
-  PlaylistCount,
-  PostTags,
-  PublishDate,
-  ReadingTime,
-} from "./Frontmatter";
+import { PostTags, PublishDate, ReadingTime } from "./Frontmatter";
 import { Box } from "./Layout";
 import { Emoji, TextAux, TextBody, TextTitle3 } from "./Text";
 import { blackA } from "@radix-ui/colors";
 import { H3_STYLES } from "../styles/text";
 import { Link } from "./Link";
 import { Tag } from "../types/notion";
-import { text } from "stream/consumers";
 
 type ChildProps = {
   ref: Ref<HTMLAnchorElement>;
