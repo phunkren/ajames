@@ -8,6 +8,7 @@ type Props = {
   value?: string; // tag.id
   onChange: (tag: any) => void;
 };
+
 const ToggleGroupRoot = styled(ToggleGroup.Root, {
   display: "grid",
   gridTemplateColumns: "repeat(2, 1fr)",
@@ -16,6 +17,8 @@ const ToggleGroupRoot = styled(ToggleGroup.Root, {
   gridRowGap: "$2",
   borderRadius: 4,
   width: "100%",
+  maxWidth: 1100,
+  margin: "0 auto",
 
   "@bp2": {
     gridTemplateColumns: "repeat(4, 1fr)",
@@ -38,38 +41,40 @@ const ToggleGroupItem = styled(ToggleGroup.Item, {
   opacity: 0.4,
   textTransform: "uppercase",
   padding: "$2",
+  borderRadius: 4,
+  border: "1px solid",
 
   variants: {
-    backgroundColor: {
+    borderColor: {
       red: {
-        backgroundColor: "red",
+        borderColor: "red",
       },
       orange: {
-        backgroundColor: "orange",
+        borderColor: "orange",
       },
       yellow: {
-        backgroundColor: "yellow",
+        borderColor: "yellow",
       },
       green: {
-        backgroundColor: "green",
+        borderColor: "green",
       },
       blue: {
-        backgroundColor: "blue",
+        borderColor: "blue",
       },
       purple: {
-        backgroundColor: "purple",
+        borderColor: "purple",
       },
       pink: {
-        backgroundColor: "pink",
+        borderColor: "pink",
       },
       gray: {
-        backgroundColor: "gray",
+        borderColor: "gray",
       },
       brown: {
-        backgroundColor: "brown",
+        borderColor: "brown",
       },
       default: {
-        backgroundColor: "black",
+        borderColor: "black",
       },
     },
   },
@@ -89,11 +94,7 @@ export function TagToggle({ tags, value, onChange }: Props) {
       onValueChange={onChange}
     >
       {tags.map((tag) => (
-        <ToggleGroupItem
-          key={tag.id}
-          value={tag.name}
-          backgroundColor={tag.color}
-        >
+        <ToggleGroupItem key={tag.id} value={tag.name} borderColor={tag.color}>
           <TextAux>
             {tag.name} ({tag.count})
           </TextAux>

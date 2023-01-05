@@ -26,11 +26,11 @@ export const H3_STYLES = {
   fontSize: 18,
 
   "@bp2": {
-    fontSize: 24,
+    fontSize: 22,
   },
 
   "@bp3": {
-    fontSize: 36,
+    fontSize: 24,
   },
 };
 

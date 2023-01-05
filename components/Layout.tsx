@@ -122,7 +122,7 @@ export function BlogLayout({ hero, children }) {
     <Box direction="vertical" spacingHorizontal={{ "@initial": 2, "@bp2": 4 }}>
       <HeaderLayout />
 
-      <Box direction="vertical" css={{ maxWidth: 1100, margin: "0 auto" }}>
+      <Box direction="vertical" css={{ maxWidth: 900, margin: "0 auto" }}>
         <Link href="/blog" variant="secondary">
           <Box alignItems="center" gap={2} spacingVertical={7}>
             <ArrowLeftIcon width={28} height={28} aria-hidden />

@@ -2,7 +2,7 @@ import { GetStaticProps } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { Container, Preview } from "../../components/Blog";
+import { Card, CardContainer } from "../../components/Card";
 import { Box, Layout } from "../../components/Layout";
 import { TagToggle } from "../../components/Tags";
 import { TextTitle1 } from "../../components/Text";
@@ -91,11 +91,19 @@ function Blog(props: Props) {
 
         <TagToggle tags={tags} value={activeTagId} onChange={handleTagChange} />
 
-        <Container>
+        <CardContainer>
           {filteredPosts.map((post) => (
-            <Preview key={`${post.properties.slug}`} post={post} />
+            <Card
+              url={`/blog/${post.properties.slug.rich_text[0].plain_text}`}
+              image={post.cover.external.url}
+              emoji={post.icon.type === "emoji" ? post.icon.emoji : "👨‍💻"}
+              title={post.properties.page.title[0].plain_text}
+              publishDate={post.properties.date.date.start}
+              readingTime={8}
+              tags={post.properties.tags.multi_select}
+            />
           ))}
-        </Container>
+        </CardContainer>
       </Box>
     </Layout>
   );

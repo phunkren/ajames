@@ -24,7 +24,12 @@ type SpanProps = HTMLAttributes<HTMLSpanElement> &
     as?: "span";
   };
 
-type TextProps = ParapgraphProps | SpanProps;
+type TimeProps = HTMLAttributes<HTMLTimeElement> &
+  Stitches.CSS & {
+    as?: "time";
+  };
+
+type TextProps = ParapgraphProps | SpanProps | TimeProps;
 
 const StyledTextTitle1 = styled("h1", {
   ...H1_STYLES,
@@ -43,16 +48,16 @@ const StyledTextBody = styled("p", {
 });
 
 const StyledTextHeadline = styled("span", {
-  fontSize: 18,
-
-  "@bp2": {
-    fontSize: 24,
-  },
+  ...P_STYLES,
 });
 
 const StyledTextAux = styled("span", {
   ...AUX_STYLES,
   textTransform: "uppercase",
+});
+
+const StyledEmoji = styled("span", {
+  display: "block",
 });
 
 export function TextTitle1({ as, ...props }: HeaderProps) {
@@ -77,4 +82,12 @@ export function TextHeadline({ as, ...props }: TextProps) {
 
 export function TextAux({ as, ...props }: TextProps) {
   return <StyledTextAux as={as} {...props} />;
+}
+
+export function Emoji({ emoji, ...props }) {
+  return (
+    <StyledEmoji aria-hidden {...props}>
+      {emoji}
+    </StyledEmoji>
+  );
 }

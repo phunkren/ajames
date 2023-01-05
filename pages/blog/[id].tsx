@@ -7,18 +7,22 @@ import { getAllPostIds, getPostData, getPostTime } from "../../lib/posts";
 import { ONE_HOUR_IN_SECONDS } from "../../constants/date";
 import { BlogLayout, Box } from "../../components/Layout";
 import { MarkdownLink } from "../../components/Link";
-import { TextAux, TextTitle1 } from "../../components/Text";
+import { Emoji, TextTitle1, TextTitle2 } from "../../components/Text";
 import { Code } from "../../components/Code";
-import { CalendarIcon, ClockIcon, ListBulletIcon } from "@radix-ui/react-icons";
 import { Divider } from "../../components/Divider";
-import { formatReadingTime } from "../../helpers/posts";
+import {
+  PostTags,
+  PublishDate,
+  ReadingTime,
+} from "../../components/Frontmatter";
+import { H1_STYLES } from "../../styles/text";
 
 type Frontmatter = {
   title: string;
   cover: string;
   emoji: string;
   date: string;
-  time: string;
+  time: number;
   tags: Tag[];
 };
 
@@ -46,7 +50,7 @@ export async function getStaticProps({ params }) {
     cover: pageData.cover.external.url,
     emoji: pageData.icon.type === "emoji" ? pageData.icon.emoji : "👨‍💻",
     date: new Date(pageData.properties.date.date.start).toISOString(),
-    time: formatReadingTime(postTime),
+    time: postTime,
     tags: pageData.properties.tags.multi_select,
   };
 
@@ -70,42 +74,42 @@ export default function BlogPost({ frontmatter, postData }: Props) {
         gap={{ "@initial": 4, "@bp2": 7 }}
       >
         <Box direction="vertical">
-          <TextTitle1 as="h1">
-            <Box
-              position="relative"
-              spacingBottom={1}
-              css={{ right: "$2" }}
-              aria-hidden
-            >
-              {frontmatter.emoji}
-            </Box>
+          <Box
+            direction="vertical"
+            position="relative"
+            spacingBottom={1}
+            css={{ right: "$2" }}
+            aria-hidden
+          >
+            <Emoji
+              emoji={frontmatter.emoji}
+              css={{ position: "relative", right: "$2", ...H1_STYLES }}
+            />
 
-            <Balancer>{frontmatter.title}</Balancer>
-          </TextTitle1>
+            <TextTitle2>
+              <Balancer>{frontmatter.title}</Balancer>
+            </TextTitle2>
+          </Box>
 
           <Box
             id="frontmatter"
             as="ul"
+            role="list"
             direction="vertical"
             gap={4}
-            spacingTop={7}
           >
-            <Box as="li" alignItems="center" gap={7}>
-              <ListBulletIcon width={28} height={28} />
-              {frontmatter.tags.map((tag) => (
-                <TextAux key={tag.id}>{tag.name}</TextAux>
-              ))}
-            </Box>
-
-            <Box as="li" alignItems="center" gap={4}>
-              <CalendarIcon width={28} height={28} />
-              <TextAux>{frontmatter.date}</TextAux>
-            </Box>
-
-            <Box as="li" alignItems="center" gap={4}>
-              <ClockIcon width={28} height={28} />
-              {/* TODO: Add calculated reading time */}
-              <TextAux>{frontmatter.time}</TextAux>
+            <Box
+              as="ul"
+              role="list"
+              direction="vertical"
+              gap={4}
+              spacingTop={7}
+            >
+              <li>
+                <PostTags tags={frontmatter.tags} icon />
+              </li>
+              <PublishDate as="li" date={frontmatter.date} icon />
+              <ReadingTime as="li" time={frontmatter.time} icon />
             </Box>
           </Box>
         </Box>

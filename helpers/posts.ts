@@ -34,3 +34,9 @@ export function formatReadingTime(time: number) {
 
   return `${roundedTime} minutes`;
 }
+
+export function formatDate(date: string) {
+  const formattedDate = new Date(date).toLocaleDateString();
+
+  return formattedDate;
+}
