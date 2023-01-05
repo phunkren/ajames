@@ -85,7 +85,7 @@ const StyledBlogContent = styled(Box, {
   },
 });
 
-export function Card({ image, children }: CardProps) {
+export function Card({ image, children, ...props }: CardProps) {
   const linkRef = useRef<HTMLAnchorElement>(null);
 
   const childProps = {
@@ -97,7 +97,12 @@ export function Card({ image, children }: CardProps) {
   }
 
   return (
-    <StyledCardOuter as="article" tabIndex={-1} onClick={handleClick}>
+    <StyledCardOuter
+      as="article"
+      tabIndex={-1}
+      onClick={handleClick}
+      {...props}
+    >
       <AspectRatio.Root ratio={16 / 9}>
         <StyledImage
           src={image}
@@ -167,13 +172,14 @@ export function VideoCard({
   image,
   description,
   publishDate,
+  ...props
 }: VideoCardProps) {
   return (
-    <Card image={image}>
+    <Card image={image} {...props}>
       {({ ref }) => (
-        <Box direction="vertical">
-          <StyledLink href={url} ref={ref}>
-            <TextAux id={url}>
+        <Box direction="vertical" spacingTop={3}>
+          <StyledLink href={url} ref={ref} variant="secondary">
+            <TextAux>
               <Balancer>{title}</Balancer>
             </TextAux>
           </StyledLink>
