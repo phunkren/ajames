@@ -1,4 +1,4 @@
-import { AnchorHTMLAttributes } from "react";
+import { AnchorHTMLAttributes, forwardRef, Ref } from "react";
 import NextLink, { LinkProps as NextLinkProps } from "next/link";
 import { UrlObject } from "url";
 import { darkTheme, lightTheme, styled } from "../stitches.config";
@@ -39,13 +39,18 @@ const StyledLink = styled("a", {
   },
 });
 
-export function Link({ href, nextLinkProps, ...props }: LinkProps) {
-  return (
-    <NextLink href={href} passHref legacyBehavior {...nextLinkProps}>
-      <StyledLink {...props} />
-    </NextLink>
-  );
-}
+export const Link = forwardRef(
+  (
+    { href, nextLinkProps, ...props }: LinkProps,
+    ref: Ref<HTMLAnchorElement>
+  ) => {
+    return (
+      <NextLink href={href} passHref legacyBehavior {...nextLinkProps}>
+        <StyledLink ref={ref} {...props} />
+      </NextLink>
+    );
+  }
+);
 
 // 'Notion to Markdown' converts embeds to links
 // Render embeds as iframes, and links with the custom Link component
