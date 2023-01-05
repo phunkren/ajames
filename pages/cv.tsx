@@ -118,7 +118,7 @@ function Cv() {
           <Box
             direction="vertical"
             gap={5}
-            css={{ "@bp3": { flexGrow: 0, flexShrink: 0, flexBasis: 300 } }}
+            css={{ "@bp3": { flexGrow: 0, flexShrink: 0, flexBasis: 250 } }}
           >
             <Box
               direction="vertical"
