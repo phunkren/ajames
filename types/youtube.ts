@@ -13,6 +13,7 @@ export type VideoPreview = {
   publishedAt: string;
   description: string;
   url: string;
+  playlistId: string;
 };
 
 export type PlaylistPreview = {
@@ -21,4 +22,5 @@ export type PlaylistPreview = {
   description: string;
   thumbnail: Thumbnail;
   url: string;
+  publishedAt: string;
 };

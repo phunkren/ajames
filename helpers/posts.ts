@@ -35,6 +35,18 @@ export function formatReadingTime(time: number) {
   return `${roundedTime} minutes`;
 }
 
+export function formatCount(count: number) {
+  if (!count) {
+    return "Unknown";
+  }
+
+  if (count === 1) {
+    return `${count} video`;
+  }
+
+  return `${count} videos`;
+}
+
 export function formatDate(date: string) {
   const formattedDate = new Date(date).toLocaleDateString();
 

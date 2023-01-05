@@ -1,5 +1,5 @@
 import { CalendarIcon, ClockIcon, ListBulletIcon } from "@radix-ui/react-icons";
-import { formatDate, formatReadingTime } from "../helpers/posts";
+import { formatReadingTime } from "../helpers/posts";
 import { styled } from "../stitches.config";
 import { Box } from "./Layout";
 import { TextAux } from "./Text";
@@ -25,7 +25,7 @@ export function PostTags({ tags, icon = false, ...props }) {
 }
 
 export function PublishDate({ date, icon = false, ...props }) {
-  const formattedDate = formatDate(date);
+  const formattedDate = date;
 
   return (
     <Box alignItems="center" gap={3} {...props}>

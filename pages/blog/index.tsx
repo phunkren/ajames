@@ -2,7 +2,7 @@ import { GetStaticProps } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { Card } from "../../components/Card";
+import { BlogCard } from "../../components/Card";
 import { Box, Layout } from "../../components/Layout";
 import { TagToggle } from "../../components/Tags";
 import { TextTitle1 } from "../../components/Text";
@@ -116,7 +116,7 @@ function Blog(props: Props) {
 
         <StyledCardContainer>
           {filteredPosts.map((post) => (
-            <Card
+            <BlogCard
               key={post.id}
               url={`/blog/${post.properties.slug.rich_text[0].plain_text}`}
               image={post.cover.external.url}

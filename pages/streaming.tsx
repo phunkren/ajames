@@ -1,4 +1,6 @@
-import Image from "next/image";
+import { Fragment } from "react";
+import { VideoCard } from "../components/Card";
+import { Divider } from "../components/Divider";
 import { Layout, Box } from "../components/Layout";
 import { Link } from "../components/Link";
 import {
@@ -11,42 +13,69 @@ import {
 } from "../components/Text";
 import { ONE_HOUR_IN_SECONDS } from "../constants/date";
 import { YOUTUBE_SUBSCRIBE_URL } from "../constants/youtube";
-import { formatPlaylist, formatPlaylistItem } from "../helpers/youtube";
+import {
+  formatPlaylist,
+  formatPlaylistVideo,
+  formatPlaylistVideos,
+} from "../helpers/youtube";
 import { getYoutubeData } from "../lib/youtube";
+import { styled } from "../stitches.config";
 import { PlaylistPreview, VideoPreview } from "../types/youtube";
 
 type Props = {
   videoPreview: VideoPreview;
   playlistsPreview: PlaylistPreview[];
+  playlistVideosPreview: Record<string, VideoPreview[]>;
   timestamp: number;
 };
 
-export async function getStaticProps() {
-  const { latestVideo, playlists } = await getYoutubeData();
+const StyledCardContainer = styled(Box, {
+  display: "grid",
+  gridTemplateColumns: "1fr",
+  gridTemplateRows: "1fr",
+  gridColumnGap: "$2",
+  gridRowGap: "$4",
+  borderRadius: 4,
+  width: "100%",
 
-  const videoPreview = formatPlaylistItem(latestVideo);
+  "@bp2": {
+    gridTemplateColumns: "repeat(5, 1fr)",
+    gridColumnGap: "$4",
+    gridRowGap: "$8",
+  },
+});
+
+export async function getStaticProps() {
+  const { latestVideo, playlists, videos } = await getYoutubeData();
+
+  const videoPreview = formatPlaylistVideo(latestVideo);
+
   const playlistsPreview = formatPlaylist(playlists);
 
-  const timestamp = new Date().getTime();
+  const playlistVideosPreview = formatPlaylistVideos(videos);
 
   return {
     props: {
       videoPreview,
       playlistsPreview,
-      timestamp,
+      playlistVideosPreview,
     },
     revalidate: ONE_HOUR_IN_SECONDS,
   };
 }
 
-function Streaming({ videoPreview, playlistsPreview }: Props) {
+function Streaming({
+  videoPreview,
+  playlistsPreview,
+  playlistVideosPreview,
+}: Props) {
   return (
     <Layout>
       <Box
         direction="vertical"
         alignItems="center"
         gap={10}
-        css={{ maxWidth: 720, margin: "0 auto" }}
+        css={{ maxWidth: 900, margin: "0 auto" }}
       >
         <TextTitle1>Streaming</TextTitle1>
 
@@ -54,50 +83,54 @@ function Streaming({ videoPreview, playlistsPreview }: Props) {
           <TextHeadline>Subscribe to ajames.dev</TextHeadline>
         </Link>
 
+        <Divider />
+
         {videoPreview ? (
           <>
             <TextTitle2>Latest Video</TextTitle2>
 
-            <Box direction="vertical">
-              <Image
-                src={videoPreview.thumbnail.src}
-                width={videoPreview.thumbnail.width}
-                height={videoPreview.thumbnail.height}
-                alt={videoPreview.thumbnail.alt}
+            <Box css={{ maxWidth: 720, margin: "0 auto" }}>
+              <VideoCard
+                url={videoPreview.url}
+                image={videoPreview.thumbnail.src}
+                title={videoPreview.title}
+                description={videoPreview.description}
+                publishDate={videoPreview.publishedAt}
               />
-              <TextTitle3>{videoPreview.title}</TextTitle3>
-              <TextBody>{videoPreview.description}</TextBody>
-              <TextAux>{videoPreview.publishedAt}</TextAux>
-              <Link href={videoPreview.url}>
-                <TextHeadline>Watch</TextHeadline>
-              </Link>
             </Box>
           </>
         ) : null}
 
-        {playlistsPreview ? (
-          <>
-            <TextTitle2>Playlists</TextTitle2>
+        <Divider />
 
-            {playlistsPreview.map((playlist) => {
-              return (
-                <Box direction="vertical" key={playlist.id}>
-                  <Image
-                    src={playlist.thumbnail.src}
-                    width={playlist.thumbnail.width}
-                    height={playlist.thumbnail.height}
-                    alt={playlist.thumbnail.alt}
-                  />
-                  <TextTitle3>{playlist.title}</TextTitle3>
-                  <TextBody>{playlist.description}</TextBody>
-                  <Link href={playlist.url}>
-                    <TextHeadline>View Playlist</TextHeadline>
-                  </Link>
+        {playlistsPreview?.map((playlist) => {
+          return (
+            <Box key={playlist.id} direction="vertical" gap={10}>
+              <Box direction="vertical">
+                <Box gap={7} alignItems="center" spacingBottom={2}>
+                  <TextTitle3 as="h2">{playlist.title}</TextTitle3>
+                  <Link href={playlist.url}>Play all</Link>
                 </Box>
-              );
-            })}
-          </>
-        ) : null}
+
+                <TextBody>{playlist.description}</TextBody>
+
+                <StyledCardContainer spacingTop={10}>
+                  {playlistVideosPreview[playlist.id].map((playlistVideo) => (
+                    <VideoCard
+                      key={playlistVideo.title}
+                      url={playlistVideo.url}
+                      image={playlistVideo.thumbnail.src}
+                      title={playlistVideo.title}
+                      publishDate={playlistVideo.publishedAt}
+                    />
+                  ))}
+                </StyledCardContainer>
+              </Box>
+
+              <Divider />
+            </Box>
+          );
+        })}
       </Box>
     </Layout>
   );

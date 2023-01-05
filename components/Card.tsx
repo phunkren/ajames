@@ -1,14 +1,48 @@
-import { useRef } from "react";
+import { forwardRef, ReactNode, Ref, useRef } from "react";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 import Balancer from "react-wrap-balancer";
 import Image from "next/image";
 import { styled } from "../stitches.config";
-import { PostTags, PublishDate, ReadingTime } from "./Frontmatter";
+import {
+  PlaylistCount,
+  PostTags,
+  PublishDate,
+  ReadingTime,
+} from "./Frontmatter";
 import { Box } from "./Layout";
-import { Emoji, TextTitle3 } from "./Text";
+import { Emoji, TextAux, TextBody, TextTitle3 } from "./Text";
 import { blackA } from "@radix-ui/colors";
 import { H3_STYLES } from "../styles/text";
 import { Link } from "./Link";
+import { Tag } from "../types/notion";
+import { text } from "stream/consumers";
+
+type ChildProps = {
+  ref: Ref<HTMLAnchorElement>;
+};
+
+type CardProps = {
+  image: string;
+  children: (props: ChildProps) => ReactNode;
+};
+
+type BlogCardProps = {
+  url: string;
+  image: string;
+  publishDate: string;
+  title: string;
+  emoji: string;
+  readingTime: number;
+  tags: Tag[];
+};
+
+type VideoCardProps = {
+  url: string;
+  image: string;
+  publishDate: string;
+  title: string;
+  description?: string;
+};
 
 const StyledCardOuter = styled(Box, {
   display: "flex",
@@ -44,7 +78,7 @@ const StyledLink = styled(Link, {
   },
 });
 
-const StyledContent = styled(Box, {
+const StyledBlogContent = styled(Box, {
   position: "relative",
   top: -13,
 
@@ -57,16 +91,12 @@ const StyledContent = styled(Box, {
   },
 });
 
-export function Card({
-  url,
-  image,
-  emoji,
-  title,
-  publishDate,
-  readingTime,
-  tags,
-}) {
+export function Card({ image, children }: CardProps) {
   const linkRef = useRef<HTMLAnchorElement>(null);
+
+  const childProps = {
+    ref: linkRef,
+  };
 
   function handleClick() {
     linkRef.current.click();
@@ -91,28 +121,82 @@ export function Card({
         spacingBottom={3}
         flexGrow
       >
-        <StyledContent direction="vertical">
-          <Emoji emoji={emoji} css={{ ...H3_STYLES }} />
-          <StyledLink href={url} ref={linkRef}>
-            <TextTitle3 as="h2" id={url}>
-              <Balancer>{title}</Balancer>
-            </TextTitle3>
-          </StyledLink>
-        </StyledContent>
-
-        <PostTags tags={tags} />
-
-        <Box
-          as="ul"
-          justifyContent="space-between"
-          gap={4}
-          spacingTop={7}
-          css={{ marginTop: "auto" }}
-        >
-          <PublishDate as="li" date={publishDate} icon />
-          <ReadingTime as="li" time={readingTime} icon />
-        </Box>
+        {children(childProps)}
       </StyledCardInner>
     </StyledCardOuter>
+  );
+}
+
+export function BlogCard({
+  url,
+  title,
+  image,
+  emoji,
+  tags,
+  publishDate,
+  readingTime,
+}: BlogCardProps) {
+  return (
+    <Card image={image}>
+      {({ ref }) => (
+        <>
+          <StyledBlogContent direction="vertical">
+            <Emoji emoji={emoji} css={{ ...H3_STYLES }} />
+            <StyledLink href={url} ref={ref}>
+              <TextAux id={url}>
+                <Balancer>{title}</Balancer>
+              </TextAux>
+            </StyledLink>
+          </StyledBlogContent>
+
+          <PostTags tags={tags} />
+
+          <Box
+            as="ul"
+            justifyContent="space-between"
+            gap={4}
+            spacingTop={7}
+            css={{ marginTop: "auto" }}
+          >
+            <PublishDate as="li" date={publishDate} icon />
+            <ReadingTime as="li" time={readingTime} icon />
+          </Box>
+        </>
+      )}
+    </Card>
+  );
+}
+
+export function VideoCard({
+  url,
+  title,
+  image,
+  description,
+  publishDate,
+}: VideoCardProps) {
+  return (
+    <Card image={image}>
+      {({ ref }) => (
+        <Box direction="vertical">
+          <StyledLink href={url} ref={ref}>
+            <TextAux id={url}>
+              <Balancer>{title}</Balancer>
+            </TextAux>
+          </StyledLink>
+
+          {description ? <TextBody>{description}</TextBody> : null}
+
+          <Box
+            as="ul"
+            justifyContent="space-between"
+            gap={4}
+            spacingTop={7}
+            css={{ marginTop: "auto" }}
+          >
+            <PublishDate as="li" date={publishDate} icon />
+          </Box>
+        </Box>
+      )}
+    </Card>
   );
 }
