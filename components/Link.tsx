@@ -6,7 +6,7 @@ import { darkTheme, lightTheme, styled } from "../stitches.config";
 type LinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href"> & {
   href: string | UrlObject;
   nextLinkProps?: Omit<NextLinkProps, "href">;
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "tertiary";
 };
 
 const StyledLink = styled("a", {
@@ -34,6 +34,10 @@ const StyledLink = styled("a", {
         [`${darkTheme.selector} &`]: {
           color: "$white",
         },
+      },
+      tertiary: {
+        textDecoration: "none",
+        color: "inherit",
       },
     },
   },
