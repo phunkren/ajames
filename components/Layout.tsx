@@ -40,6 +40,10 @@ const StyledContent = styled(Box, {
   },
 });
 
+export function Box(props) {
+  return <StyledBox {...props} />;
+}
+
 export function RootLayout({ children }) {
   const { theme } = useTheme();
 
@@ -92,6 +96,7 @@ export function Layout({ children }) {
     <Box
       direction="vertical"
       spacingHorizontal={{ "@initial": 2, "@bp2": 4 }}
+      gap={10}
       flexGrow
     >
       <HeaderLayout />
@@ -119,7 +124,11 @@ export function Layout({ children }) {
 
 export function BlogLayout({ hero, children }) {
   return (
-    <Box direction="vertical" spacingHorizontal={{ "@initial": 2, "@bp2": 4 }}>
+    <Box
+      direction="vertical"
+      spacingHorizontal={{ "@initial": 2, "@bp2": 4 }}
+      gap={10}
+    >
       <HeaderLayout />
 
       <Box direction="vertical" css={{ maxWidth: 900, margin: "0 auto" }}>
@@ -152,8 +161,4 @@ export function BlogLayout({ hero, children }) {
       <ScrollToTopButton />
     </Box>
   );
-}
-
-export function Box(props) {
-  return <StyledBox {...props} />;
 }
