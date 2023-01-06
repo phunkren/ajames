@@ -1,6 +1,9 @@
 import { youtube_v3 } from "googleapis";
 import keyBy from "lodash.keyby";
-import { YOUTUBE_URL } from "../constants/youtube";
+import {
+  YOUTUBE_LIKED_VIDEOS_PLAYLIST_ID,
+  YOUTUBE_URL,
+} from "../constants/youtube";
 import {
   ChannelInfoPreview,
   PlaylistPreview,
@@ -68,7 +71,18 @@ export const formatPlaylist = (
     };
   });
 
-  return playlists;
+  const likeVideosPlaylist = playlists.find(
+    ({ id }) => id === YOUTUBE_LIKED_VIDEOS_PLAYLIST_ID
+  );
+
+  const filteredPlaylists = playlists.filter(
+    ({ id }) => id !== YOUTUBE_LIKED_VIDEOS_PLAYLIST_ID
+  );
+
+  // Ensure the 'Liked Videos' playlist always appears at the end
+  const reorderedPlaylists = filteredPlaylists.concat(likeVideosPlaylist);
+
+  return reorderedPlaylists;
 };
 
 export const formatPlaylistVideos = (

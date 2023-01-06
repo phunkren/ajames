@@ -1,6 +1,9 @@
 import { google } from "googleapis";
 import { GOOGLE_SERVICE_ACCOUNT } from "../constants/google";
-import { YOUTUBE_CHANNEL_ID, YOUTUBE_PLAYLIST_ID } from "../constants/youtube";
+import {
+  YOUTUBE_CHANNEL_ID,
+  YOUTUBE_CHANNEL_PLAYLIST_ID,
+} from "../constants/youtube";
 
 export async function getYoutubeData() {
   const googleAuth = new google.auth.GoogleAuth({
@@ -23,7 +26,7 @@ export async function getYoutubeData() {
 
   const getLatestVideo = youtube.playlistItems.list({
     part: ["snippet"],
-    playlistId: YOUTUBE_PLAYLIST_ID,
+    playlistId: YOUTUBE_CHANNEL_PLAYLIST_ID,
     maxResults: 1,
   });
 
