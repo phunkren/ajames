@@ -96,7 +96,7 @@ export function Layout({ children }) {
     <Box
       direction="vertical"
       spacingHorizontal={{ "@initial": 2, "@bp2": 4 }}
-      gap={10}
+      gap={{ "@bp2": 10 }}
       flexGrow
     >
       <HeaderLayout />
@@ -127,7 +127,7 @@ export function BlogLayout({ hero, children }) {
     <Box
       direction="vertical"
       spacingHorizontal={{ "@initial": 2, "@bp2": 4 }}
-      gap={10}
+      gap={{ "@bp2": 10 }}
     >
       <HeaderLayout />
 
