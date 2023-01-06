@@ -24,17 +24,15 @@ import {
   TextTitle2,
   TextTitle3,
 } from "../components/Text";
-import { ONE_HOUR_IN_SECONDS } from "../constants/date";
-import { YOUTUBE_CHANNEL_URL } from "../constants/youtube";
-import { PERSONAL } from "../data/personal";
-import { SITE } from "../data/site";
-import { buildUrl } from "../helpers/url";
+import { ONE_HOUR_IN_SECONDS } from "../util/date";
 import {
   formatChannelInfo,
   formatPlaylist,
   formatPlaylistVideo,
   formatPlaylistVideos,
-} from "../helpers/youtube";
+  YOUTUBE_CHANNEL_URL,
+} from "../util/youtube";
+import { buildUrl } from "../util/url";
 import { getYoutubeData } from "../lib/youtube";
 import { styled } from "../stitches.config";
 import {
@@ -48,6 +46,7 @@ import {
   ScrollAreaScrollbar,
   ScrollAreaThumb,
 } from "../components/Scroll";
+import { PERSONAL, SITE } from "../util/data";
 
 type Props = {
   videoPreview: VideoPreview;
@@ -57,12 +56,12 @@ type Props = {
   timestamp: number;
 };
 
-const StyledScrollAreaViewport = styled(ScrollAreaViewport, {
+const StyledVideoCardViewport = styled(ScrollAreaViewport, {
   scrollSnapType: "x mandatory",
   scrollPadding: 0,
 });
 
-const StyledCardContainer = styled(Box, {
+const StyledVideoCardContainer = styled(Box, {
   display: "grid",
   gridTemplateColumns: "repeat(12, minmax(auto, 1fr))",
   gridColumnGap: "$3",
@@ -75,7 +74,7 @@ const StyledCardContainer = styled(Box, {
   },
 });
 
-const StyledContent = styled(Box, {
+const StyledContentContainer = styled(Box, {
   position: "relative",
   top: -24,
 
@@ -84,7 +83,7 @@ const StyledContent = styled(Box, {
   },
 });
 
-const StyledYouTube = styled(YouTube, {
+const StyledYouTubePlayer = styled(YouTube, {
   position: "absolute",
   inset: 0,
 });
@@ -135,12 +134,13 @@ function Streaming({
           <StyledImage
             src="/images/banner.png"
             alt={SITE.displayName}
-            fill
             sizes="100vw"
+            priority
+            fill
           />
         </AspectRatio>
 
-        <StyledContent
+        <StyledContentContainer
           direction="vertical"
           spacingHorizontal={{ "@initial": 4, "@bp2": 10 }}
         >
@@ -220,7 +220,7 @@ function Streaming({
                     }}
                   >
                     <AspectRatio ratio={16 / 9}>
-                      <StyledYouTube
+                      <StyledYouTubePlayer
                         videoId={videoPreview.videoId}
                         opts={{
                           width: "100%",
@@ -301,8 +301,8 @@ function Streaming({
                     </TextBody>
 
                     <ScrollAreaRoot>
-                      <StyledScrollAreaViewport>
-                        <StyledCardContainer spacingVertical={7}>
+                      <StyledVideoCardViewport>
+                        <StyledVideoCardContainer spacingVertical={7}>
                           {playlistVideosPreview[playlist.id].map(
                             (playlistVideo) => (
                               <VideoCard
@@ -315,8 +315,8 @@ function Streaming({
                               />
                             )
                           )}
-                        </StyledCardContainer>
-                      </StyledScrollAreaViewport>
+                        </StyledVideoCardContainer>
+                      </StyledVideoCardViewport>
                       <ScrollAreaScrollbar orientation="horizontal">
                         <ScrollAreaThumb />
                       </ScrollAreaScrollbar>
@@ -326,7 +326,7 @@ function Streaming({
               );
             })}
           </Box>
-        </StyledContent>
+        </StyledContentContainer>
       </Box>
     </Layout>
   );

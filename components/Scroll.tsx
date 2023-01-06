@@ -1,7 +1,6 @@
 import * as ScrollArea from "@radix-ui/react-scroll-area";
 import { styled } from "@stitches/react";
 import { blackA } from "@radix-ui/colors";
-import { createContext, useRef } from "react";
 
 const SCROLLBAR_SIZE = 10;
 
@@ -53,59 +52,3 @@ export const ScrollAreaThumb = styled(ScrollArea.Thumb, {
 export const ScrollAreaCorner = styled(ScrollArea.Corner, {
   background: blackA.blackA8,
 });
-
-const ScrollContext = createContext(null);
-
-export function ScrollRoot({ children }) {
-  const containerRef = useRef(null);
-
-  function easeInOutCubic(t) {
-    return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
-  }
-
-  function scrollToStart(container) {
-    const start = container.scrollLeft;
-    const end = 0;
-    const distance = end - start;
-    let currentTime = 0;
-    const duration = 1000; // 1 second
-    const tick = function () {
-      currentTime += 1 / 60;
-      const p = currentTime / duration;
-      const t = easeInOutCubic(p);
-      if (p < 1) {
-        container.scrollLeft = start + distance * t;
-        window.requestAnimationFrame(tick);
-      } else {
-        container.scrollLeft = end;
-      }
-    };
-    tick();
-  }
-
-  function scrollToEnd(container) {
-    const start = container.scrollLeft;
-    const end = container.scrollWidth;
-    const distance = end - start;
-    let currentTime = 0;
-    const duration = 1000; // 1 second
-    const tick = function () {
-      currentTime += 1 / 60;
-      const p = currentTime / duration;
-      const t = easeInOutCubic(p);
-      if (p < 1) {
-        container.scrollLeft = start + distance * t;
-        window.requestAnimationFrame(tick);
-      } else {
-        container.scrollLeft = end;
-      }
-    };
-    tick();
-  }
-
-  return (
-    <ScrollContext.Provider
-      value={{ containerRef, scrollToStart, scrollToEnd }}
-    ></ScrollContext.Provider>
-  );
-}

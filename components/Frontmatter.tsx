@@ -6,8 +6,8 @@ import {
   ListBulletIcon,
   VideoIcon,
 } from "@radix-ui/react-icons";
-import { formatReadingTime } from "../helpers/posts";
 import { styled } from "../stitches.config";
+import { formatReadingTime } from "../util/posts";
 import { Box } from "./Layout";
 import { TextAux } from "./Text";
 

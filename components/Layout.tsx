@@ -1,5 +1,6 @@
 import Image from "next/image";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
+import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import { useTheme } from "../hooks/useTheme";
 import { styled } from "../stitches.config";
 import { DISPLAY_VARIANTS } from "../styles/display";
@@ -12,7 +13,6 @@ import { Social } from "./Social";
 import { ThemeToggle } from "./Theme";
 import { ScrollToTopButton } from "./Button";
 import { TextHeadline } from "./Text";
-import { ArrowLeftIcon } from "@radix-ui/react-icons";
 
 const StyledBox = styled("div", {
   display: "flex",
@@ -64,7 +64,7 @@ export function HeaderLayout() {
     <Box
       as="header"
       direction="horizontal"
-      spacingVertical={{ "@initial": 8, "@bp2": 7 }}
+      spacingVertical={{ "@initial": 4, "@bp2": 7 }}
       spacingHorizontal={2}
       gap={{ "@initial": 4, "@bp2": 7 }}
       justifyContent="space-between"
@@ -130,23 +130,23 @@ export function Layout({ children }) {
 
 export function BlogLayout({ hero, children }) {
   return (
-    <Box
-      direction="vertical"
-      spacingHorizontal={{ "@initial": 2, "@bp2": 4 }}
-      gap={{ "@bp2": 10 }}
-    >
+    <Box direction="vertical" spacingHorizontal={{ "@initial": 2, "@bp2": 4 }}>
       <HeaderLayout />
 
       <Box direction="vertical" css={{ maxWidth: 900, margin: "0 auto" }}>
         <Link href="/blog" variant="secondary">
-          <Box alignItems="center" gap={2} spacingVertical={7}>
+          <Box
+            alignItems="center"
+            gap={2}
+            spacingVertical={{ "@initial": 4, "@bp2": 7 }}
+          >
             <ArrowLeftIcon width={28} height={28} aria-hidden />
             <TextHeadline>Back to blog overview</TextHeadline>
           </Box>
         </Link>
 
-        <AspectRatio.Root ratio={16 / 9}>
-          <StyledImage src={hero} alt="" sizes="100vw" fill />
+        <AspectRatio.Root ratio={3 / 1}>
+          <StyledImage src={hero} alt="" sizes="100vw" fill priority />
         </AspectRatio.Root>
 
         <StyledContent as="main" direction="vertical">

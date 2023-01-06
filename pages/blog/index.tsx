@@ -6,12 +6,11 @@ import { BlogCard } from "../../components/Card";
 import { Box, Layout } from "../../components/Layout";
 import { TagToggle } from "../../components/Tags";
 import { TextTitle1 } from "../../components/Text";
-import { ONE_HOUR_IN_SECONDS } from "../../constants/date";
-import { getTags } from "../../helpers/notion";
-import { filterPosts, sortPosts } from "../../helpers/posts";
-import { getPosts } from "../../lib/notion";
+import { ONE_HOUR_IN_SECONDS } from "../../util/date";
 import { styled } from "../../stitches.config";
 import { BlogPost, Tag } from "../../types/notion";
+import { filterPosts, getTags, sortPosts } from "../../util/posts";
+import { getPosts } from "../../lib/notion";
 
 type Props = {
   professional: {

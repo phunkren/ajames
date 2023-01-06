@@ -1,22 +1,31 @@
-type NoteableWork = {
-  id: string;
-  displayName: string;
-  url?: string;
-};
+import { Education } from "../types/education";
+import { Employer } from "../types/employer";
+import { Social } from "../types/social";
 
-type Employer = {
-  id: string;
-  displayName: string;
-  url: string;
-  position: string;
-  startDate?: string;
-  endDate: string;
-  location: string;
-  content1: string;
-  content2?: string;
-  content3?: string;
-  notableWork?: NoteableWork[];
-};
+export const EDUCATION: Education[] = [
+  {
+    id: "gcal-uk",
+    qualification: "BSc (Hons) 2.1",
+    course: "Audio Technology",
+    institution: "Glasgow Caledonian University",
+    startDate: "2010",
+    endDate: "2014",
+  },
+  {
+    id: "gcal-usa",
+    course: "Erasmus+ Study Abroad",
+    institution: "UMass Boston",
+    startDate: "2011",
+    endDate: "2012",
+  },
+  {
+    id: "udacity",
+    qualification: "Graduate",
+    course: "Frontend Nanodegree",
+    institution: "Udacity",
+    endDate: "2016",
+  },
+];
 
 export const EMPLOYMENT: Employer[] = [
   {
@@ -175,3 +184,53 @@ export const EMPLOYMENT: Employer[] = [
     ],
   },
 ];
+
+export const EXPERTISE = ["React JS", "JavaScript", "HTML", "CSS"];
+
+export const INTERESTS = [
+  "User Interface Design",
+  "Accessibility",
+  "Design Systems",
+  "Livestreams",
+  "Learning in Public",
+  "Technical Writing",
+];
+
+export const PERSONAL = {
+  name: "Andrew James",
+  initials: "AJ",
+  location: "Glasgow, UK",
+  occupation: "Frontend Engineer",
+  profile1:
+    "I'm a software engineer based in Glasgow, Scotland. My passion for frontend web technology continually drives me to advance my skill set and adopt the latest industry best practices. An analytical mindset and strong communication skills allow me to excel in environments where I can learn from others and inspire my peers.",
+  profile2:
+    " Over the years I've refined a set of technical principles to strive towards, namely: complexity should only be introduced when it’s unavoidable; code should be easy to reason with and delete; avoid abstracting too early, and the top priority is always the best possible user experience.",
+};
+
+export const SITE = {
+  url: "https://ajames.vercel.app",
+  displayName: "ajames.dev",
+};
+
+export const SOCIAL: Record<string, Social> = {
+  github: {
+    id: "github",
+    displayName: "GitHub",
+    url: "https://github.com/phunkren",
+  },
+  linkedin: {
+    id: "linkedin",
+    displayName: "LinkedIn",
+    url: "https://www.linkedin.com/in/ajamesdev/",
+  },
+  youtube: {
+    id: "youtube",
+    displayName: "YouTube",
+    url: "https://www.youtube.com/@phunkren",
+  },
+  twitter: {
+    id: "twitter",
+    displayName: "Twitter",
+    url: "https://twitter.com/phunkren",
+  },
+};

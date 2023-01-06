@@ -4,7 +4,7 @@ import {
   TwitterLogoIcon,
   VideoIcon,
 } from "@radix-ui/react-icons";
-import { SOCIAL } from "../data/social";
+import { SOCIAL } from "../util/data";
 import { Box } from "./Layout";
 import { Link } from "./Link";
 

@@ -1,5 +1,3 @@
-import { DetailedHTMLProps, ImgHTMLAttributes } from "react";
-
 type Thumbnail = {
   src: string;
   width: number;

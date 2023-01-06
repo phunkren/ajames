@@ -1,9 +1,12 @@
 import { google } from "googleapis";
-import { GOOGLE_SERVICE_ACCOUNT } from "../constants/google";
 import {
   YOUTUBE_CHANNEL_ID,
   YOUTUBE_CHANNEL_PLAYLIST_ID,
-} from "../constants/youtube";
+} from "../util/youtube";
+
+const GOOGLE_SERVICE_ACCOUNT = JSON.parse(
+  Buffer.from(process.env.GOOGLE_SERVICE_ACCOUNT, "base64").toString()
+);
 
 export async function getYoutubeData() {
   const googleAuth = new google.auth.GoogleAuth({

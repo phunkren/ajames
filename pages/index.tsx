@@ -7,8 +7,7 @@ import {
   TextHeadline,
   TextTitle1,
 } from "../components/Text";
-import { EMPLOYMENT } from "../data/employment";
-import { PERSONAL } from "../data/personal";
+import { EMPLOYMENT, PERSONAL } from "../util/data";
 
 function Home() {
   const {

@@ -19,12 +19,14 @@ import {
   TextTitle2,
   TextTitle3,
 } from "../components/Text";
-import { EDUCATION } from "../data/education";
-import { EMPLOYMENT } from "../data/employment";
-import { EXPERTISE } from "../data/expertise";
-import { INTERESTS } from "../data/interests";
-import { PERSONAL } from "../data/personal";
 import { styled } from "../stitches.config";
+import {
+  EDUCATION,
+  EMPLOYMENT,
+  EXPERTISE,
+  INTERESTS,
+  PERSONAL,
+} from "../util/data";
 
 const SeparatorRoot = styled(Separator.Root, {
   backgroundColor: blue.blue12,

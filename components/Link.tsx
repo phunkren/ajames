@@ -1,16 +1,10 @@
-import { AnchorHTMLAttributes, forwardRef, Ref } from "react";
-import NextLink, { LinkProps as NextLinkProps } from "next/link";
-import { UrlObject } from "url";
+import { forwardRef, Ref } from "react";
+import NextLink from "next/link";
 import { darkTheme, lightTheme, styled } from "../stitches.config";
-import { YOUTUBE_SUBSCRIBE_URL } from "../constants/youtube";
+import { YOUTUBE_SUBSCRIBE_URL } from "../util/youtube";
 import { VideoIcon } from "@radix-ui/react-icons";
 import { TextAux } from "./Text";
-
-type LinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href"> & {
-  href: string | UrlObject;
-  nextLinkProps?: Omit<NextLinkProps, "href">;
-  variant?: "primary" | "secondary" | "tertiary";
-};
+import { LinkProps } from "../types/link";
 
 const StyledLink = styled("a", {
   fontWeight: 500,

@@ -1,5 +1,5 @@
 import * as RadixAvatar from "@radix-ui/react-avatar";
-import { PERSONAL } from "../data/personal";
+import { PERSONAL } from "../util/data";
 import { styled } from "../stitches.config";
 
 export const AvatarRoot = styled(RadixAvatar.Root, {

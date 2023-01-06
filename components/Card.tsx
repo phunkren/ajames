@@ -1,43 +1,15 @@
-import { ReactNode, Ref, useRef } from "react";
+import { useRef } from "react";
+import Image from "next/image";
 import Balancer from "react-wrap-balancer";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 import { blackA } from "@radix-ui/colors";
-import Image from "next/image";
-import { CSS, styled } from "../stitches.config";
+import { styled } from "../stitches.config";
 import { PostTags, PublishDate, ReadingTime } from "./Frontmatter";
 import { Box } from "./Layout";
 import { Emoji, TextAux, TextBody } from "./Text";
 import { H3_STYLES } from "../styles/text";
 import { Link } from "./Link";
-import { Tag } from "../types/notion";
-
-type ChildProps = {
-  ref: Ref<HTMLAnchorElement>;
-};
-
-type CardProps = CSS & {
-  image: string;
-  children: (props: ChildProps) => ReactNode;
-};
-
-type BlogCardProps = CSS & {
-  url: string;
-  image: string;
-  publishDate: string;
-  title: string;
-  emoji: string;
-  readingTime: number;
-  tags: Tag[];
-};
-
-type VideoCardProps = CSS & {
-  url: string;
-  image: string;
-  publishDate: string;
-  title: string;
-  description?: string;
-  css: any;
-};
+import { BlogCardProps, CardProps, VideoCardProps } from "../types/card";
 
 const StyledCardOuter = styled(Box, {
   display: "flex",

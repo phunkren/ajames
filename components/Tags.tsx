@@ -6,7 +6,7 @@ import { TextAux } from "./Text";
 type Props = {
   tags: Tag[];
   value?: string; // tag.id
-  onChange: (tag: any) => void;
+  onChange: (tag: string) => void;
 };
 
 const ToggleGroupRoot = styled(ToggleGroup.Root, {

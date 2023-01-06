@@ -2,9 +2,13 @@ import remarkMdx from "remark-mdx";
 import ReactMarkdown from "react-markdown";
 import Balancer from "react-wrap-balancer";
 import { Tag } from "../../types/notion";
-import { getPageData } from "../../lib/notion";
-import { getAllPostIds, getPostData, getPostTime } from "../../lib/posts";
-import { ONE_HOUR_IN_SECONDS } from "../../constants/date";
+import {
+  getAllPostIds,
+  getPageData,
+  getPostData,
+  getPostTime,
+} from "../../lib/notion";
+import { ONE_HOUR_IN_SECONDS } from "../../util/date";
 import { BlogLayout, Box } from "../../components/Layout";
 import { MarkdownLink } from "../../components/Link";
 import { Emoji, TextTitle2 } from "../../components/Text";
