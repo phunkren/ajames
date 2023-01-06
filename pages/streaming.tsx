@@ -85,6 +85,10 @@ const StyledCardContainer = styled(Box, {
 const StyledContent = styled(Box, {
   position: "relative",
   top: -24,
+
+  "@bp2": {
+    top: -36,
+  },
 });
 
 const StyledYouTube = styled(YouTube, {
@@ -150,7 +154,7 @@ function Streaming({
           <Box direction="vertical">
             <Box direction="vertical">
               <Link href={YOUTUBE_CHANNEL_URL}>
-                <AvatarRoot>
+                <AvatarRoot css={{ "@bp2": { width: 72, height: 72 } }}>
                   <AvatarImage
                     src={channelInfoPreview.thumbnail.src}
                     alt={channelInfoPreview.thumbnail.alt}
