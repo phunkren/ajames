@@ -2,6 +2,8 @@ import { buildUrl } from "../helpers/url";
 
 export const YOUTUBE_URL = "https://www.youtube.com";
 
+export const YOUTUBE_CHANNEL_URL = "https://www.youtube.com/@ajamesdev";
+
 export const YOUTUBE_SUBSCRIBE_URL = buildUrl(`${YOUTUBE_URL}/@ajamesdev`, {
   sub_confirmation: 1,
 });

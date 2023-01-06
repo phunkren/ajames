@@ -13,7 +13,11 @@ import {
   VideosViewsCount,
 } from "../components/Frontmatter";
 import { Layout, Box } from "../components/Layout";
-import { Link } from "../components/Link";
+import {
+  Link,
+  StyledIconLink,
+  YoutubeSubscribeButton,
+} from "../components/Link";
 import {
   TextAux,
   TextBody,
@@ -23,7 +27,10 @@ import {
   TextTitle3,
 } from "../components/Text";
 import { ONE_HOUR_IN_SECONDS } from "../constants/date";
-import { YOUTUBE_SUBSCRIBE_URL } from "../constants/youtube";
+import {
+  YOUTUBE_CHANNEL_URL,
+  YOUTUBE_SUBSCRIBE_URL,
+} from "../constants/youtube";
 import { PERSONAL } from "../data/personal";
 import { SITE } from "../data/site";
 import { buildUrl } from "../helpers/url";
@@ -63,16 +70,6 @@ const StyledCardContainer = styled(Box, {
   bp2: {
     gridTemplateColumns: "repeat(12, 1fr)",
   },
-});
-
-const StyledSubscription = styled(Link, {
-  display: "flex",
-  alignItems: "center",
-  gap: "$2",
-  background: "red",
-  padding: "$2 $4",
-  borderRadius: 4,
-  color: "white",
 });
 
 const StyledContent = styled(Box, {
@@ -142,26 +139,22 @@ function Streaming({
         >
           <Box direction="vertical">
             <Box direction="vertical">
-              <AvatarRoot>
-                <AvatarImage
-                  src={channelInfoPreview.thumbnail.src}
-                  alt={channelInfoPreview.thumbnail.alt}
-                />
-                <AvatarFallback delayMs={600}>
-                  {PERSONAL.initials}
-                </AvatarFallback>
-              </AvatarRoot>
+              <Link href={YOUTUBE_CHANNEL_URL}>
+                <AvatarRoot>
+                  <AvatarImage
+                    src={channelInfoPreview.thumbnail.src}
+                    alt={channelInfoPreview.thumbnail.alt}
+                  />
+                  <AvatarFallback delayMs={600}>
+                    {PERSONAL.initials}
+                  </AvatarFallback>
+                </AvatarRoot>
+              </Link>
 
               <Box justifyContent="space-between" alignItems="center">
                 <TextTitle2>{channelInfoPreview.title}</TextTitle2>
 
-                <StyledSubscription
-                  href={YOUTUBE_SUBSCRIBE_URL}
-                  variant="tertiary"
-                >
-                  <VideoIcon width={24} height={24} />{" "}
-                  <TextAux>Subscribe</TextAux>
-                </StyledSubscription>
+                <YoutubeSubscribeButton />
               </Box>
 
               <Box
