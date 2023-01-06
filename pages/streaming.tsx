@@ -6,7 +6,12 @@ import YouTube from "react-youtube";
 import { AvatarFallback, AvatarImage, AvatarRoot } from "../components/Avatar";
 import { VideoCard } from "../components/Card";
 import { Divider } from "../components/Divider";
-import { PublishDate } from "../components/Frontmatter";
+import {
+  PublishDate,
+  SubscriberCount,
+  VideosTotalCount,
+  VideosViewsCount,
+} from "../components/Frontmatter";
 import { Layout, Box } from "../components/Layout";
 import { Link } from "../components/Link";
 import {
@@ -37,6 +42,8 @@ import {
   VideoPreview,
 } from "../types/youtube";
 import { ScrollAreaRoot, ScrollAreaScrollbar } from "../components/Scroll";
+import Image from "next/image";
+import { blackA } from "@radix-ui/colors";
 
 type Props = {
   videoPreview: VideoPreview;
@@ -68,9 +75,20 @@ const StyledSubscription = styled(Link, {
   color: "white",
 });
 
+const StyledContent = styled(Box, {
+  position: "relative",
+  top: -24,
+});
+
 const StyledYouTube = styled(YouTube, {
   position: "absolute",
   inset: 0,
+});
+
+const StyledImage = styled(Image, {
+  objectFit: "cover",
+  borderRadius: 4,
+  boxShadow: `0px 2px 4px ${blackA.blackA10}`,
 });
 
 export async function getStaticProps() {
@@ -104,162 +122,198 @@ function Streaming({
 }: Props) {
   return (
     <Layout>
-      <Box direction="vertical" alignItems="center" gap={10}>
+      <Box direction="vertical" alignItems="center">
         <VisuallyHidden.Root>
           <TextTitle1>Streaming</TextTitle1>
         </VisuallyHidden.Root>
 
-        <Box
-          justifyContent="space-between"
-          alignItems="center"
-          css={{ width: "100%" }}
+        <AspectRatio ratio={3 / 1}>
+          <StyledImage
+            src="/images/banner.png"
+            alt={SITE.displayName}
+            fill
+            sizes="100vw"
+          />
+        </AspectRatio>
+
+        <StyledContent
+          direction="vertical"
+          spacingHorizontal={{ "@initial": 4, "@bp2": 10 }}
         >
-          <Box gap={4} alignItems="center">
-            <AvatarRoot>
-              <AvatarImage
-                src={channelInfoPreview.thumbnail.src}
-                alt={channelInfoPreview.thumbnail.alt}
-              />
-              <AvatarFallback delayMs={600}>{PERSONAL.initials}</AvatarFallback>
-            </AvatarRoot>
-
-            <Box direction="vertical">
-              <TextHeadline>{channelInfoPreview.title}</TextHeadline>
-              <TextAux>
-                {channelInfoPreview.subscriberCount} subscribers
-              </TextAux>
-            </Box>
-          </Box>
-
-          <StyledSubscription href={YOUTUBE_SUBSCRIBE_URL} variant="tertiary">
-            <VideoIcon width={24} height={24} /> <TextAux>Subscribe</TextAux>
-          </StyledSubscription>
-        </Box>
-
-        <Divider />
-
-        {videoPreview ? (
           <Box direction="vertical">
-            <Box
-              justifyContent={{
-                "@initial": "space-between",
-                "@bp2": "flex-start",
-              }}
-              gap={7}
-              alignItems="center"
-              spacingBottom={2}
-            >
-              <TextTitle3 as="h2">Latest Video</TextTitle3>
-              <Link href={videoPreview.url} variant="secondary">
-                <PlayIcon aria-hidden /> Watch video
-              </Link>
+            <Box direction="vertical">
+              <AvatarRoot>
+                <AvatarImage
+                  src={channelInfoPreview.thumbnail.src}
+                  alt={channelInfoPreview.thumbnail.alt}
+                />
+                <AvatarFallback delayMs={600}>
+                  {PERSONAL.initials}
+                </AvatarFallback>
+              </AvatarRoot>
+
+              <Box justifyContent="space-between" alignItems="center">
+                <TextTitle2>{channelInfoPreview.title}</TextTitle2>
+
+                <StyledSubscription
+                  href={YOUTUBE_SUBSCRIBE_URL}
+                  variant="tertiary"
+                >
+                  <VideoIcon width={24} height={24} />{" "}
+                  <TextAux>Subscribe</TextAux>
+                </StyledSubscription>
+              </Box>
+
+              <Box
+                as="ul"
+                role="list"
+                direction="vertical"
+                gap={4}
+                spacingTop={7}
+              >
+                <VideosViewsCount views={channelInfoPreview.viewCount} icon />
+                <SubscriberCount
+                  subscribers={channelInfoPreview.subscriberCount}
+                  icon
+                />
+                <VideosTotalCount total={channelInfoPreview.videoCount} icon />
+              </Box>
             </Box>
 
-            <Box
-              gap={{ "@initial": 2, "@bp3": 10 }}
-              flexWrap={{ "@initial": "wrap", "@bp3": "nowrap" }}
-            >
-              <Box
-                position="relative"
-                direction="vertical"
-                spacingVertical={2}
-                css={{
-                  "@bp3": { flexGrow: 0, flexShrink: 0, flexBasis: 480 },
-                }}
-              >
-                <AspectRatio ratio={16 / 9}>
-                  <StyledYouTube
-                    videoId={videoPreview.videoId}
-                    opts={{
-                      width: "100%",
-                      height: "100%",
-                      playerVars: {
-                        autoplay: 1,
-                        mute: 1,
-                        modestbranding: 1,
-                        rel: 0,
-                        widget_referrer: SITE.url,
-                        controls: 0,
-                      },
-                    }}
-                  />
-                </AspectRatio>
-              </Box>
-
-              <Box direction="vertical" gap={2}>
-                <Link href={videoPreview.url} variant="secondary">
-                  <TextHeadline>{videoPreview.title}</TextHeadline>
-                </Link>
-                <PublishDate date={videoPreview.publishedAt} />
-                <TextBody>{videoPreview.description}</TextBody>
-                <Link href={videoPreview.url} variant="secondary">
-                  <TextAux>Read more </TextAux>
-                </Link>
-              </Box>
+            <Box spacingVertical={10}>
+              <Divider />
             </Box>
           </Box>
-        ) : null}
 
-        {playlistsPreview?.map((playlist) => {
-          const firstVideo = playlistVideosPreview[playlist.id][0];
-
-          const playlistUrl = buildUrl("https://youtube.com/playlist", {
-            list: playlist.id,
-          });
-
-          const watchAllUrl = buildUrl("https://youtube.com/watch", {
-            v: firstVideo.videoId,
-            list: playlist.id,
-          });
-
-          return (
-            <Box key={playlist.id} direction="vertical" gap={10}>
-              <Divider />
-
-              <Box direction="vertical" css={{ overflowX: "hidden" }}>
+          <Box direction="vertical" gap={10}>
+            {videoPreview ? (
+              <Box direction="vertical">
                 <Box
-                  gap={7}
                   justifyContent={{
                     "@initial": "space-between",
                     "@bp2": "flex-start",
                   }}
-                  alignItems="center"
+                  gap={7}
+                  alignItems="flex-end"
                   spacingBottom={2}
                 >
-                  <Link href={playlistUrl} variant="tertiary">
-                    <TextTitle3 as="h2">{playlist.title}</TextTitle3>
-                  </Link>
+                  <TextTitle3>Latest Video</TextTitle3>
 
-                  <Link href={watchAllUrl} variant="secondary">
-                    <PlayIcon aria-hidden /> Watch all
+                  <Link href={videoPreview.url} variant="secondary">
+                    <Box gap={2} alignItems="center">
+                      <PlayIcon aria-hidden />
+                      <TextAux>Watch video</TextAux>
+                    </Box>
                   </Link>
                 </Box>
 
-                <TextBody>{playlist.description}</TextBody>
+                <Box
+                  gap={{ "@initial": 2, "@bp3": 10 }}
+                  flexWrap={{ "@initial": "wrap", "@bp3": "nowrap" }}
+                >
+                  <Box
+                    position="relative"
+                    direction="vertical"
+                    spacingVertical={2}
+                    css={{
+                      "@bp3": { flexGrow: 0, flexShrink: 0, flexBasis: 480 },
+                    }}
+                  >
+                    <AspectRatio ratio={16 / 9}>
+                      <StyledYouTube
+                        videoId={videoPreview.videoId}
+                        opts={{
+                          width: "100%",
+                          height: "100%",
+                          playerVars: {
+                            autoplay: 1,
+                            mute: 1,
+                            modestbranding: 1,
+                            rel: 0,
+                            widget_referrer: SITE.url,
+                            controls: 0,
+                          },
+                        }}
+                      />
+                    </AspectRatio>
+                  </Box>
 
-                <ScrollAreaRoot>
-                  <ScrollAreaViewport>
-                    <StyledCardContainer spacingVertical={7}>
-                      {playlistVideosPreview[playlist.id].map(
-                        (playlistVideo) => (
-                          <VideoCard
-                            key={playlistVideo.title}
-                            url={playlistVideo.url}
-                            image={playlistVideo.thumbnail.src}
-                            title={playlistVideo.title}
-                            publishDate={playlistVideo.publishedAt}
-                          />
-                        )
-                      )}
-                    </StyledCardContainer>
-                  </ScrollAreaViewport>
-
-                  <ScrollAreaScrollbar orientation="horizontal" />
-                </ScrollAreaRoot>
+                  <Box direction="vertical" gap={2}>
+                    <Link href={videoPreview.url} variant="secondary">
+                      <TextHeadline>{videoPreview.title}</TextHeadline>
+                    </Link>
+                    <PublishDate date={videoPreview.publishedAt} />
+                    <TextBody>{videoPreview.description}</TextBody>
+                    <Link href={videoPreview.url} variant="secondary">
+                      <TextAux>Read more </TextAux>
+                    </Link>
+                  </Box>
+                </Box>
               </Box>
-            </Box>
-          );
-        })}
+            ) : null}
+
+            {playlistsPreview?.map((playlist) => {
+              const firstVideo = playlistVideosPreview[playlist.id][0];
+
+              const playlistUrl = buildUrl("https://youtube.com/playlist", {
+                list: playlist.id,
+              });
+
+              const watchAllUrl = buildUrl("https://youtube.com/watch", {
+                v: firstVideo.videoId,
+                list: playlist.id,
+              });
+
+              return (
+                <Box key={playlist.id} direction="vertical" gap={10}>
+                  <Divider />
+
+                  <Box direction="vertical" css={{ overflowX: "hidden" }}>
+                    <Box
+                      gap={7}
+                      justifyContent={{
+                        "@initial": "space-between",
+                        "@bp2": "flex-start",
+                      }}
+                      alignItems="center"
+                      spacingBottom={2}
+                    >
+                      <Link href={playlistUrl} variant="tertiary">
+                        <TextTitle3>{playlist.title}</TextTitle3>
+                      </Link>
+
+                      <Link href={watchAllUrl} variant="secondary">
+                        <PlayIcon aria-hidden /> Watch all
+                      </Link>
+                    </Box>
+
+                    <TextBody>{playlist.description}</TextBody>
+
+                    <ScrollAreaRoot>
+                      <ScrollAreaViewport>
+                        <StyledCardContainer spacingVertical={7}>
+                          {playlistVideosPreview[playlist.id].map(
+                            (playlistVideo) => (
+                              <VideoCard
+                                key={playlistVideo.title}
+                                url={playlistVideo.url}
+                                image={playlistVideo.thumbnail.src}
+                                title={playlistVideo.title}
+                                publishDate={playlistVideo.publishedAt}
+                              />
+                            )
+                          )}
+                        </StyledCardContainer>
+                      </ScrollAreaViewport>
+
+                      <ScrollAreaScrollbar orientation="horizontal" />
+                    </ScrollAreaRoot>
+                  </Box>
+                </Box>
+              );
+            })}
+          </Box>
+        </StyledContent>
       </Box>
     </Layout>
   );

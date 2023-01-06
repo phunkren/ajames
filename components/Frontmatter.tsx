@@ -1,4 +1,11 @@
-import { CalendarIcon, ClockIcon, ListBulletIcon } from "@radix-ui/react-icons";
+import {
+  AvatarIcon,
+  CalendarIcon,
+  ClockIcon,
+  EyeOpenIcon,
+  ListBulletIcon,
+  VideoIcon,
+} from "@radix-ui/react-icons";
 import { formatReadingTime } from "../helpers/posts";
 import { styled } from "../stitches.config";
 import { Box } from "./Layout";
@@ -44,6 +51,39 @@ export function ReadingTime({ time, icon = false, ...props }) {
     <Box alignItems="center" gap={3} {...props}>
       {icon ? <ClockIcon width={22} height={22} /> : null}
       <TextAux>{formattedTime}</TextAux>
+    </Box>
+  );
+}
+
+export function SubscriberCount({ subscribers, icon = false, ...props }) {
+  const formattedSubscribers = `${subscribers} subscribers`;
+
+  return (
+    <Box alignItems="center" gap={3} {...props}>
+      {icon ? <AvatarIcon width={22} height={22} /> : null}
+      <TextAux>{formattedSubscribers}</TextAux>
+    </Box>
+  );
+}
+
+export function VideosViewsCount({ views, icon = false, ...props }) {
+  const formattedViews = `${views} total views`;
+
+  return (
+    <Box alignItems="center" gap={3} {...props}>
+      {icon ? <EyeOpenIcon width={22} height={22} /> : null}
+      <TextAux>{formattedViews}</TextAux>
+    </Box>
+  );
+}
+
+export function VideosTotalCount({ total, icon = false, ...props }) {
+  const formattedTotal = `${total} videos`;
+
+  return (
+    <Box alignItems="center" gap={3} {...props}>
+      {icon ? <VideoIcon width={22} height={22} /> : null}
+      <TextAux>{formattedTotal}</TextAux>
     </Box>
   );
 }
