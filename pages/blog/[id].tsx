@@ -7,7 +7,7 @@ import { getAllPostIds, getPostData, getPostTime } from "../../lib/posts";
 import { ONE_HOUR_IN_SECONDS } from "../../constants/date";
 import { BlogLayout, Box } from "../../components/Layout";
 import { MarkdownLink } from "../../components/Link";
-import { Emoji, TextTitle1, TextTitle2 } from "../../components/Text";
+import { Emoji, TextTitle2 } from "../../components/Text";
 import { Code } from "../../components/Code";
 import { Divider } from "../../components/Divider";
 import {

@@ -1,7 +1,7 @@
 import * as ScrollArea from "@radix-ui/react-scroll-area";
 import { styled } from "@stitches/react";
-import { violet, mauve, blackA } from "@radix-ui/colors";
-import { createContext, useMemo, useRef } from "react";
+import { blackA } from "@radix-ui/colors";
+import { createContext, useRef } from "react";
 
 const SCROLLBAR_SIZE = 10;
 
@@ -33,7 +33,7 @@ export const ScrollAreaScrollbar = styled(ScrollArea.Scrollbar, {
 
 export const ScrollAreaThumb = styled(ScrollArea.Thumb, {
   flex: 1,
-  background: 'white',
+  background: "white",
   borderRadius: SCROLLBAR_SIZE,
   // increase target size for touch devices https://www.w3.org/WAI/WCAG21/Understanding/target-size.html
   position: "relative",

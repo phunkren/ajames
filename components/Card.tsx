@@ -1,12 +1,12 @@
 import { ReactNode, Ref, useRef } from "react";
-import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 import Balancer from "react-wrap-balancer";
+import * as AspectRatio from "@radix-ui/react-aspect-ratio";
+import { blackA } from "@radix-ui/colors";
 import Image from "next/image";
 import { CSS, styled } from "../stitches.config";
 import { PostTags, PublishDate, ReadingTime } from "./Frontmatter";
 import { Box } from "./Layout";
-import { Emoji, TextAux, TextBody, TextTitle3 } from "./Text";
-import { blackA } from "@radix-ui/colors";
+import { Emoji, TextAux, TextBody } from "./Text";
 import { H3_STYLES } from "../styles/text";
 import { Link } from "./Link";
 import { Tag } from "../types/notion";

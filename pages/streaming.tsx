@@ -1,7 +1,9 @@
+import Image from "next/image";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { ScrollAreaViewport } from "@radix-ui/react-scroll-area";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
-import { PlayIcon, VideoIcon } from "@radix-ui/react-icons";
+import { PlayIcon } from "@radix-ui/react-icons";
+import { blackA } from "@radix-ui/colors";
 import YouTube from "react-youtube";
 import { AvatarFallback, AvatarImage, AvatarRoot } from "../components/Avatar";
 import { VideoCard } from "../components/Card";
@@ -13,11 +15,7 @@ import {
   VideosViewsCount,
 } from "../components/Frontmatter";
 import { Layout, Box } from "../components/Layout";
-import {
-  Link,
-  StyledIconLink,
-  YoutubeSubscribeButton,
-} from "../components/Link";
+import { Link, YoutubeSubscribeButton } from "../components/Link";
 import {
   TextAux,
   TextBody,
@@ -27,10 +25,7 @@ import {
   TextTitle3,
 } from "../components/Text";
 import { ONE_HOUR_IN_SECONDS } from "../constants/date";
-import {
-  YOUTUBE_CHANNEL_URL,
-  YOUTUBE_SUBSCRIBE_URL,
-} from "../constants/youtube";
+import { YOUTUBE_CHANNEL_URL } from "../constants/youtube";
 import { PERSONAL } from "../data/personal";
 import { SITE } from "../data/site";
 import { buildUrl } from "../helpers/url";
@@ -53,8 +48,6 @@ import {
   ScrollAreaScrollbar,
   ScrollAreaThumb,
 } from "../components/Scroll";
-import Image from "next/image";
-import { blackA } from "@radix-ui/colors";
 
 type Props = {
   videoPreview: VideoPreview;
