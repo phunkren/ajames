@@ -29,14 +29,14 @@ const StyledImage = styled(Image, {
 // The computed value is (fontSize * lineHeight) / 2.
 const StyledContent = styled(Box, {
   position: "relative",
-  top: -27,
+  top: -18,
 
   "@bp2": {
-    top: -36,
+    top: -27,
   },
 
   "@bp3": {
-    top: -54,
+    top: -36,
   },
 });
 
@@ -91,6 +91,19 @@ export function HeaderLayout() {
   );
 }
 
+export function FooterLayout() {
+  return (
+    <Box
+      as="footer"
+      direction="horizontal"
+      spacingVertical={{ "@initial": 4, "@bp2": 7 }}
+      justifyContent="center"
+    >
+      <Social />
+    </Box>
+  );
+}
+
 export function Layout({ children }) {
   return (
     <Box
@@ -110,14 +123,7 @@ export function Layout({ children }) {
         {children}
       </Box>
 
-      <Box
-        as="footer"
-        direction="horizontal"
-        spacingVertical={{ "@initial": 4, "@bp2": 7 }}
-        justifyContent="center"
-      >
-        <Social />
-      </Box>
+      <FooterLayout />
     </Box>
   );
 }
@@ -147,15 +153,7 @@ export function BlogLayout({ hero, children }) {
           {children}
         </StyledContent>
 
-        <Box
-          as="footer"
-          direction="horizontal"
-          spacingVertical={{ "@initial": 4, "@bp2": 7 }}
-          justifyContent="center"
-        >
-          {/* social sharing (social-media-specific, or copy to clipboard button) */}
-          <Social />
-        </Box>
+        <FooterLayout />
       </Box>
 
       <ScrollToTopButton />
