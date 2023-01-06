@@ -10,8 +10,8 @@ export const AvatarRoot = styled(RadixAvatar.Root, {
   verticalAlign: "middle",
   overflow: "hidden",
   userSelect: "none",
-  width: 72,
-  height: 72,
+  width: 48,
+  height: 48,
   borderRadius: "100%",
   backgroundColor: "black",
 });
