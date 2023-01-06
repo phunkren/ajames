@@ -48,7 +48,11 @@ import {
   PlaylistVideosPreview,
   VideoPreview,
 } from "../types/youtube";
-import { ScrollAreaRoot, ScrollAreaScrollbar } from "../components/Scroll";
+import {
+  ScrollAreaRoot,
+  ScrollAreaScrollbar,
+  ScrollAreaThumb,
+} from "../components/Scroll";
 import Image from "next/image";
 import { blackA } from "@radix-ui/colors";
 
@@ -60,12 +64,18 @@ type Props = {
   timestamp: number;
 };
 
+const StyledScrollAreaViewport = styled(ScrollAreaViewport, {
+  scrollSnapType: "x mandatory",
+  scrollPadding: 0,
+});
+
 const StyledCardContainer = styled(Box, {
   display: "grid",
   gridTemplateColumns: "repeat(12, minmax(auto, 1fr))",
   gridColumnGap: "$3",
   borderRadius: 4,
   padding: "$2",
+  width: "100%",
 
   bp2: {
     gridTemplateColumns: "repeat(12, 1fr)",
@@ -187,7 +197,7 @@ function Streaming({
                     "@bp2": "flex-start",
                   }}
                   gap={7}
-                  alignItems="flex-end"
+                  alignItems="center"
                   spacingBottom={2}
                 >
                   <TextTitle3>Latest Video</TextTitle3>
@@ -236,7 +246,16 @@ function Streaming({
                       <TextHeadline>{videoPreview.title}</TextHeadline>
                     </Link>
                     <PublishDate date={videoPreview.publishedAt} />
-                    <TextBody>{videoPreview.description}</TextBody>
+                    <TextBody
+                      css={{
+                        display: "-webkit-box",
+                        ["-webkit-line-clamp"]: "4",
+                        ["-webkit-box-orient"]: "vertical",
+                        overflow: "hidden",
+                      }}
+                    >
+                      {videoPreview.description}
+                    </TextBody>
                     <Link href={videoPreview.url} variant="secondary">
                       <TextAux>Read more </TextAux>
                     </Link>
@@ -280,10 +299,12 @@ function Streaming({
                       </Link>
                     </Box>
 
-                    <TextBody>{playlist.description}</TextBody>
+                    <TextBody css={{ maxWidth: 900 }}>
+                      {playlist.description}
+                    </TextBody>
 
                     <ScrollAreaRoot>
-                      <ScrollAreaViewport>
+                      <StyledScrollAreaViewport>
                         <StyledCardContainer spacingVertical={7}>
                           {playlistVideosPreview[playlist.id].map(
                             (playlistVideo) => (
@@ -293,13 +314,15 @@ function Streaming({
                                 image={playlistVideo.thumbnail.src}
                                 title={playlistVideo.title}
                                 publishDate={playlistVideo.publishedAt}
+                                css={{ scrollSnapAlign: "start" }}
                               />
                             )
                           )}
                         </StyledCardContainer>
-                      </ScrollAreaViewport>
-
-                      <ScrollAreaScrollbar orientation="horizontal" />
+                      </StyledScrollAreaViewport>
+                      <ScrollAreaScrollbar orientation="horizontal">
+                        <ScrollAreaThumb />
+                      </ScrollAreaScrollbar>
                     </ScrollAreaRoot>
                   </Box>
                 </Box>

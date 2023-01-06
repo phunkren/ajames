@@ -33,7 +33,7 @@ export const ScrollAreaScrollbar = styled(ScrollArea.Scrollbar, {
 
 export const ScrollAreaThumb = styled(ScrollArea.Thumb, {
   flex: 1,
-  background: mauve.mauve10,
+  background: 'white',
   borderRadius: SCROLLBAR_SIZE,
   // increase target size for touch devices https://www.w3.org/WAI/WCAG21/Understanding/target-size.html
   position: "relative",
