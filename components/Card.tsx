@@ -2,7 +2,7 @@ import { ReactNode, Ref, useRef } from "react";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 import Balancer from "react-wrap-balancer";
 import Image from "next/image";
-import { styled } from "../stitches.config";
+import { CSS, styled } from "../stitches.config";
 import { PostTags, PublishDate, ReadingTime } from "./Frontmatter";
 import { Box } from "./Layout";
 import { Emoji, TextAux, TextBody, TextTitle3 } from "./Text";
@@ -15,12 +15,12 @@ type ChildProps = {
   ref: Ref<HTMLAnchorElement>;
 };
 
-type CardProps = {
+type CardProps = CSS & {
   image: string;
   children: (props: ChildProps) => ReactNode;
 };
 
-type BlogCardProps = {
+type BlogCardProps = CSS & {
   url: string;
   image: string;
   publishDate: string;
@@ -30,12 +30,13 @@ type BlogCardProps = {
   tags: Tag[];
 };
 
-type VideoCardProps = {
+type VideoCardProps = CSS & {
   url: string;
   image: string;
   publishDate: string;
   title: string;
   description?: string;
+  css: any;
 };
 
 const StyledCardOuter = styled(Box, {

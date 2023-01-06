@@ -1,6 +1,5 @@
 import { HTMLAttributes } from "react";
-import type * as Stitches from "@stitches/react";
-import { styled } from "../stitches.config";
+import { styled, CSS } from "../stitches.config";
 import {
   AUX_STYLES,
   H1_STYLES,
@@ -10,22 +9,22 @@ import {
 } from "../styles/text";
 
 type HeaderProps = HTMLAttributes<HTMLHeadingElement> &
-  Stitches.CSS & {
+  CSS & {
     as?: "h1" | "h2" | "h3";
   };
 
 type ParapgraphProps = HTMLAttributes<HTMLParagraphElement> &
-  Stitches.CSS & {
+  CSS & {
     as?: "p";
   };
 
 type SpanProps = HTMLAttributes<HTMLSpanElement> &
-  Stitches.CSS & {
+  CSS & {
     as?: "span";
   };
 
 type TimeProps = HTMLAttributes<HTMLTimeElement> &
-  Stitches.CSS & {
+  CSS & {
     as?: "time";
   };
 

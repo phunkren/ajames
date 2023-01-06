@@ -78,3 +78,5 @@ export const darkTheme = createTheme({
     ...slateDark,
   },
 });
+
+export type { CSS } from "@stitches/react";
