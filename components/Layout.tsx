@@ -135,7 +135,7 @@ export function BlogLayout({ hero, children }) {
         <Link href="/blog" variant="secondary">
           <Box alignItems="center" gap={2} spacingVertical={7}>
             <ArrowLeftIcon width={28} height={28} aria-hidden />
-            <TextHeadline>Back to blog</TextHeadline>
+            <TextHeadline>Back to blog overview</TextHeadline>
           </Box>
         </Link>
 
