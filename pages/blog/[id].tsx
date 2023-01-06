@@ -15,7 +15,7 @@ import {
   PublishDate,
   ReadingTime,
 } from "../../components/Frontmatter";
-import { H1_STYLES } from "../../styles/text";
+import { H2_STYLES } from "../../styles/text";
 
 type Frontmatter = {
   title: string;
@@ -71,19 +71,12 @@ export default function BlogPost({ frontmatter, postData }: Props) {
         as="article"
         direction="vertical"
         spacingHorizontal={{ "@initial": 4, "@bp2": 10 }}
-        gap={{ "@initial": 4, "@bp2": 7 }}
       >
         <Box direction="vertical">
-          <Box
-            direction="vertical"
-            position="relative"
-            spacingBottom={1}
-            css={{ right: "$2" }}
-            aria-hidden
-          >
+          <Box direction="vertical">
             <Emoji
               emoji={frontmatter.emoji}
-              css={{ position: "relative", right: "$2", ...H1_STYLES }}
+              css={{ position: "relative", right: "$2", ...H2_STYLES }}
             />
 
             <TextTitle2>
@@ -112,13 +105,13 @@ export default function BlogPost({ frontmatter, postData }: Props) {
               <ReadingTime as="li" time={frontmatter.time} icon />
             </Box>
           </Box>
+
+          <Box spacingVertical={7}>
+            <Divider />
+          </Box>
         </Box>
 
         <Box direction="vertical" gap={7}>
-          <Box spacingVertical={10}>
-            <Divider />
-          </Box>
-
           <ReactMarkdown
             children={postData}
             components={{
