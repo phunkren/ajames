@@ -14,6 +14,10 @@ export const YOUTUBE_URL = "https://www.youtube.com";
 
 export const YOUTUBE_CHANNEL_URL = `${YOUTUBE_URL}/@ajamesdev`;
 
+export const YOUTUBE_CHANNEL_TITLE = "AJAMES.DEV";
+
+export const YOUTUBE_SHARE_TEXT = "Check out AJAMES.DEV on YouTube!";
+
 export const YOUTUBE_SUBSCRIBE_URL = buildUrl(YOUTUBE_CHANNEL_URL, {
   sub_confirmation: 1,
 });
