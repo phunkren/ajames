@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import remarkMdx from "remark-mdx";
 import ReactMarkdown from "react-markdown";
 import Balancer from "react-wrap-balancer";
@@ -26,7 +27,6 @@ import {
 import { H2_STYLES } from "../../styles/text";
 import { SITE, SOCIAL } from "../../util/data";
 import { ShareButton } from "../../components/Button";
-import { Router, useRouter } from "next/router";
 
 type Frontmatter = {
   title: string;
@@ -78,7 +78,6 @@ export async function getStaticProps({ params }) {
 export default function BlogPost({ frontmatter, postData }: Props) {
   const router = useRouter();
   const shareUrl = `${SITE.url}${router.asPath}`;
-  const shareText = `Check out ${frontmatter.title} by ${SOCIAL.twitter.displayName}`;
 
   return (
     <BlogLayout hero={frontmatter.cover}>
@@ -89,17 +88,27 @@ export default function BlogPost({ frontmatter, postData }: Props) {
       >
         <Box direction="vertical">
           <Box direction="vertical">
-            <Emoji
-              emoji={frontmatter.emoji}
-              css={{ position: "relative", right: "$2", ...H2_STYLES }}
-            />
+            <Emoji emoji={frontmatter.emoji} css={{ ...H2_STYLES }} />
 
-            <TextTitle2>
-              <Balancer>{frontmatter.title}</Balancer>
-            </TextTitle2>
+            <Box
+              justifyContent="space-between"
+              alignItems="flex-start"
+              spacingTop={{ "@initial": 2, "@bp2": 0 }}
+            >
+              <TextTitle2>
+                <Balancer>{frontmatter.title}</Balancer>
+              </TextTitle2>
+
+              <BlogSubscribeLink
+                css={{
+                  display: "none",
+                  "@bp2": { display: "flex", position: "relative", top: 18 },
+                }}
+              />
+            </Box>
           </Box>
 
-          <Box justifyContent="space-between" alignItems="flex-end">
+          <Box gap={4} spacingTop={7}>
             <Box
               id="frontmatter"
               as="ul"
@@ -107,13 +116,7 @@ export default function BlogPost({ frontmatter, postData }: Props) {
               direction="vertical"
               gap={4}
             >
-              <Box
-                as="ul"
-                role="list"
-                direction="vertical"
-                gap={4}
-                spacingTop={7}
-              >
+              <Box as="ul" role="list" direction="vertical" gap={4}>
                 <li>
                   <PostTags tags={frontmatter.tags} icon />
                 </li>
@@ -122,27 +125,39 @@ export default function BlogPost({ frontmatter, postData }: Props) {
               </Box>
             </Box>
 
-            <Box direction="vertical" gap={2} css={{ width: "auto" }}>
-              <BlogSubscribeLink />
+            <Box
+              gap={4}
+              direction="vertical"
+              justifyContent="flex-end"
+              alignItems="flex-end"
+              css={{ width: "auto" }}
+            >
               <TwitterShareLink
                 url={shareUrl}
                 emoji={frontmatter.emoji}
                 text={frontmatter.title}
               />
-              <ShareButton
-                url={shareUrl}
-                emoji={frontmatter.emoji}
-                text={frontmatter.title}
-              />
-            </Box>
-          </Box>
 
-          <Box spacingVertical={7}>
-            <Divider />
+              <Box>
+                <ShareButton
+                  url={shareUrl}
+                  emoji={frontmatter.emoji}
+                  text={frontmatter.title}
+                />
+              </Box>
+            </Box>
           </Box>
         </Box>
 
-        <Box direction="vertical" gap={7} css={{ textAlign: "justify" }}>
+        <Box spacingVertical={10}>
+          <Divider />
+        </Box>
+
+        <Box
+          direction="vertical"
+          gap={7}
+          css={{ maxWidth: 900, margin: "0 auto", textAlign: "justify" }}
+        >
           <ReactMarkdown
             children={postData}
             components={{

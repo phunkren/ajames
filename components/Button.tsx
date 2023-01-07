@@ -7,13 +7,13 @@ import {
   useState,
 } from "react";
 import * as Toast from "@radix-ui/react-toast";
-import { Share1Icon } from "@radix-ui/react-icons";
+import { Share2Icon } from "@radix-ui/react-icons";
 import { usePrevious } from "../hooks/usePrevious";
 import { styled } from "../stitches.config";
 import { Box } from "./Layout";
-import { TextAux, TextBody, TextHeadline } from "./Text";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { PERSONAL } from "../util/data";
+import { whiteA } from "@radix-ui/colors";
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: "primary" | "secondary";
@@ -132,16 +132,16 @@ export function ScrollToTopButton() {
 }
 
 const StyledShareButton = styled(Button, {
-  background: "white",
-  color: "black",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
   borderRadius: "50%",
   spacing: "$2",
-
-  "@bp2": {
-    gap: "$2",
-    padding: "$2 $4",
-    borderRadius: 4,
-  },
+  borderWidth: 1,
+  borderStyle: "solid",
+  borderColor: whiteA.whiteA10,
+  minWidth: 44,
+  minHeight: 44,
 });
 
 export function ShareButton({ url, text, emoji = "👀" }) {
@@ -159,29 +159,21 @@ export function ShareButton({ url, text, emoji = "👀" }) {
 
     const copy = `${formattedText}\n${formattedAuthor}\n\n${formattedUrl}`;
 
-    navigator.clipboard.writeText(copy).then(
-      () =>
-        (timerRef.current = window.setTimeout(() => {
-          setOpen(true);
-        }, 100)),
-      () => window.alert("Uh-oh! Something went wrong! Please try again.")
-    );
+    navigator.clipboard.writeText(copy).then(() => {
+      timerRef.current = window.setTimeout(() => {
+        setOpen(true);
+      }, 100);
+    });
   }
 
-  useEffect(() => {
-    return () => clearTimeout(timerRef.current);
-  }, []);
+  useEffect(() => () => clearTimeout(timerRef.current), []);
 
   return (
     <Toast.Provider label="Share notification" duration={2000}>
-      <StyledShareButton onClick={handleClick}>
-        <Share1Icon width={18} height={18} aria-hidden />
+      <StyledShareButton title="Share" onClick={handleClick}>
+        <Share2Icon width={18} height={18} aria-hidden />
 
         <VisuallyHidden.Root>Share</VisuallyHidden.Root>
-
-        <TextAux css={{ display: "none", "@bp2": { display: "initial" } }}>
-          Share
-        </TextAux>
       </StyledShareButton>
 
       <StyledToastRoot open={open} onOpenChange={setOpen}>

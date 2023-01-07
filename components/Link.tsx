@@ -8,6 +8,7 @@ import { TextAux } from "./Text";
 import { LinkProps } from "../types/link";
 import { buildUrl } from "../util/url";
 import { SITE, SOCIAL } from "../util/data";
+import { whiteA } from "@radix-ui/colors";
 
 type TwitterShareProps = {
   url: string;
@@ -68,6 +69,11 @@ export const StyledIconLink = styled(Link, {
   justifyContent: "center",
   borderRadius: "50%",
   spacing: "$2",
+  borderWidth: 1,
+  borderStyle: "solid",
+  borderColor: whiteA.whiteA10,
+  minWidth: 44,
+  minHeight: 44,
 });
 
 const StyledYoutubeSubscription = styled(StyledIconLink, {
@@ -81,16 +87,7 @@ const StyledYoutubeSubscription = styled(StyledIconLink, {
   },
 });
 
-const StyledTwitterShare = styled(StyledIconLink, {
-  background: "blue",
-  color: "white",
-
-  "@bp2": {
-    gap: "$2",
-    padding: "$2 $4",
-    borderRadius: 4,
-  },
-});
+const StyledTwitterShare = styled(StyledIconLink, {});
 
 const StyledBlogSubscription = styled(StyledIconLink, {
   background: "white",
@@ -115,9 +112,13 @@ export function MarkdownLink({ node, ...props }) {
   return <Link href={props.href} variant="secondary" {...props} />;
 }
 
-export function YoutubeSubscribeLink() {
+export function YoutubeSubscribeLink(props: LinkProps) {
   return (
-    <StyledYoutubeSubscription href={YOUTUBE_SUBSCRIBE_URL} variant="tertiary">
+    <StyledYoutubeSubscription
+      href={YOUTUBE_SUBSCRIBE_URL}
+      variant="tertiary"
+      {...props}
+    >
       <VideoIcon width={18} height={18} aria-hidden />
 
       <VisuallyHidden.Root>Subscribe</VisuallyHidden.Root>
@@ -126,6 +127,22 @@ export function YoutubeSubscribeLink() {
         Subscribe
       </TextAux>
     </StyledYoutubeSubscription>
+  );
+}
+
+export function BlogSubscribeLink(props: LinkProps) {
+  const rssFeedUrl = `${SITE.url}/rss`;
+
+  return (
+    <StyledBlogSubscription href={rssFeedUrl} variant="tertiary" {...props}>
+      <RocketIcon width={18} height={18} aria-hidden />
+
+      <VisuallyHidden.Root>Subscribe</VisuallyHidden.Root>
+
+      <TextAux css={{ display: "none", "@bp2": { display: "initial" } }}>
+        Subscribe
+      </TextAux>
+    </StyledBlogSubscription>
   );
 }
 
@@ -148,29 +165,9 @@ export function TwitterShareLink({
   });
 
   return (
-    <StyledTwitterShare href={href} variant="tertiary">
+    <StyledTwitterShare href={href} title="Share on Twitter" variant="tertiary">
       <TwitterLogoIcon width={18} height={18} aria-hidden />
       <VisuallyHidden.Root>Tweet</VisuallyHidden.Root>
-
-      <TextAux css={{ display: "none", "@bp2": { display: "initial" } }}>
-        Tweet
-      </TextAux>
     </StyledTwitterShare>
-  );
-}
-
-export function BlogSubscribeLink() {
-  const rssFeedUrl = `${SITE.url}/rss`;
-
-  return (
-    <StyledBlogSubscription href={rssFeedUrl} variant="tertiary">
-      <RocketIcon width={18} height={18} aria-hidden />
-
-      <VisuallyHidden.Root>Subscribe</VisuallyHidden.Root>
-
-      <TextAux css={{ display: "none", "@bp2": { display: "initial" } }}>
-        Subscribe
-      </TextAux>
-    </StyledBlogSubscription>
   );
 }

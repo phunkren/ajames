@@ -23,6 +23,7 @@ const StyledBox = styled("div", {
 
 const StyledImage = styled(Image, {
   objectFit: "cover",
+  borderRadius: 4,
 });
 
 // These magic numbers are calculated based on the font size of the TextTitle1 component
@@ -135,19 +136,19 @@ export function BlogLayout({ hero, children }) {
     <Box direction="vertical" spacingHorizontal={{ "@initial": 2, "@bp2": 4 }}>
       <HeaderLayout />
 
-      <Box direction="vertical" css={{ maxWidth: 900, margin: "0 auto" }}>
+      <Box direction="vertical" css={{ maxWidth: 1200, margin: "0 auto" }}>
         <Link href="/blog" variant="secondary">
           <Box
             alignItems="center"
             gap={2}
-            spacingVertical={{ "@initial": 4, "@bp2": 7 }}
+            spacingBottom={{ "@initial": 4, "@bp2": 7 }}
           >
             <ArrowLeftIcon width={28} height={28} aria-hidden />
             <TextHeadline>Back to blog overview</TextHeadline>
           </Box>
         </Link>
 
-        <AspectRatio.Root ratio={3 / 1}>
+        <AspectRatio.Root ratio={2.84 / 1}>
           <StyledImage src={hero} alt="" sizes="100vw" fill priority />
         </AspectRatio.Root>
 

@@ -2,6 +2,7 @@ import Image from "next/image";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { ScrollAreaViewport } from "@radix-ui/react-scroll-area";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
+import Balancer from "react-wrap-balancer";
 import { PlayIcon } from "@radix-ui/react-icons";
 import { blackA } from "@radix-ui/colors";
 import YouTube from "react-youtube";
@@ -53,7 +54,6 @@ import {
 } from "../components/Scroll";
 import { PERSONAL, SITE } from "../util/data";
 import { ShareButton } from "../components/Button";
-import { useRouter } from "next/router";
 
 type Props = {
   videoPreview: VideoPreview;
@@ -141,7 +141,7 @@ function Streaming({
           <TextTitle1>Streaming</TextTitle1>
         </VisuallyHidden.Root>
 
-        <AspectRatio ratio={3 / 1}>
+        <AspectRatio ratio={2.84 / 1}>
           <StyledImage
             src="/images/banner.png"
             alt={SITE.displayName}
@@ -171,42 +171,49 @@ function Streaming({
 
               <Box justifyContent="space-between" alignItems="flex-end">
                 <Box direction="vertical">
-                  <Box spacingTop={7}>
+                  <Box justifyContent="space-between" alignItems="center">
                     <TextTitle2>{channelInfoPreview.title}</TextTitle2>
+
+                    <YoutubeSubscribeLink
+                      css={{
+                        display: "none",
+                        "@bp2": {
+                          display: "flex",
+                        },
+                      }}
+                    />
                   </Box>
 
-                  <Box
-                    as="ul"
-                    role="list"
-                    direction="vertical"
-                    gap={4}
-                    spacingTop={7}
-                  >
-                    <VideosViewsCount
-                      views={channelInfoPreview.viewCount}
-                      icon
-                    />
-                    <SubscriberCount
-                      subscribers={channelInfoPreview.subscriberCount}
-                      icon
-                    />
-                    <VideosTotalCount
-                      total={channelInfoPreview.videoCount}
-                      icon
-                    />
-                  </Box>
-                </Box>
+                  <Box alignItems="flex-end" spacingTop={7}>
+                    <Box as="ul" role="list" direction="vertical" gap={4}>
+                      <VideosViewsCount
+                        views={channelInfoPreview.viewCount}
+                        icon
+                      />
+                      <SubscriberCount
+                        subscribers={channelInfoPreview.subscriberCount}
+                        icon
+                      />
+                      <VideosTotalCount
+                        total={channelInfoPreview.videoCount}
+                        icon
+                      />
+                    </Box>
 
-                <Box direction="vertical" gap={2} css={{ width: "auto" }}>
-                  <YoutubeSubscribeLink />
-                  <TwitterShareLink
-                    url={YOUTUBE_CHANNEL_URL}
-                    text={YOUTUBE_SHARE_TEXT}
-                  />
-                  <ShareButton
-                    url={YOUTUBE_CHANNEL_URL}
-                    text={YOUTUBE_SHARE_TEXT}
-                  />
+                    <Box direction="vertical" gap={4} css={{ width: "auto" }}>
+                      <TwitterShareLink
+                        url={YOUTUBE_CHANNEL_URL}
+                        text={YOUTUBE_SHARE_TEXT}
+                      />
+
+                      <Box>
+                        <ShareButton
+                          url={YOUTUBE_CHANNEL_URL}
+                          text={YOUTUBE_SHARE_TEXT}
+                        />
+                      </Box>
+                    </Box>
+                  </Box>
                 </Box>
               </Box>
             </Box>
@@ -271,15 +278,20 @@ function Streaming({
 
                   <Box direction="vertical" gap={2}>
                     <Link href={videoPreview.url} variant="secondary">
-                      <TextHeadline>{videoPreview.title}</TextHeadline>
+                      <TextHeadline>
+                        <Balancer>{videoPreview.title}</Balancer>
+                      </TextHeadline>
                     </Link>
+
                     <PublishDate date={videoPreview.publishedAt} />
+
                     <TextBody
                       css={{
                         display: "-webkit-box",
                         ["-webkit-line-clamp"]: "4",
                         ["-webkit-box-orient"]: "vertical",
                         overflow: "hidden",
+                        textAlign: "justify",
                       }}
                     >
                       {videoPreview.description}
@@ -327,7 +339,7 @@ function Streaming({
                       </Link>
                     </Box>
 
-                    <TextBody css={{ maxWidth: 900 }}>
+                    <TextBody css={{ maxWidth: "66%", textAlign: "justify" }}>
                       {playlist.description}
                     </TextBody>
 
