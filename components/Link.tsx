@@ -112,7 +112,7 @@ export function MarkdownLink({ node, ...props }) {
   return <Link href={props.href} variant="secondary" {...props} />;
 }
 
-export function YoutubeSubscribeLink(props: LinkProps) {
+export function YoutubeSubscribeLink(props) {
   return (
     <StyledYoutubeSubscription
       href={YOUTUBE_SUBSCRIBE_URL}
@@ -130,7 +130,7 @@ export function YoutubeSubscribeLink(props: LinkProps) {
   );
 }
 
-export function BlogSubscribeLink(props: LinkProps) {
+export function BlogSubscribeLink(props) {
   const rssFeedUrl = `${SITE.url}/rss`;
 
   return (
