@@ -13,10 +13,16 @@ import { ONE_HOUR_IN_SECONDS } from "../../util/date";
 import { BlogLayout, Box } from "../../components/Layout";
 import {
   BlogSubscribeLink,
+  Link,
   MarkdownLink,
   TwitterShareLink,
 } from "../../components/Link";
-import { Emoji, TextTitle2 } from "../../components/Text";
+import {
+  Emoji,
+  TextHeadline,
+  TextTitle2,
+  TextTitle3,
+} from "../../components/Text";
 import { Code } from "../../components/Code";
 import { Divider } from "../../components/Divider";
 import {
@@ -27,6 +33,7 @@ import {
 import { H2_STYLES } from "../../styles/text";
 import { SITE, SOCIAL } from "../../util/data";
 import { ShareButton } from "../../components/Button";
+import { RocketIcon, Share2Icon, TwitterLogoIcon } from "@radix-ui/react-icons";
 
 type Frontmatter = {
   title: string;
@@ -166,6 +173,43 @@ export default function BlogPost({ frontmatter, postData }: Props) {
             }}
             remarkPlugins={[remarkMdx]}
           />
+
+          <Box spacingVertical={10}>
+            <Divider />
+          </Box>
+
+          <Box direction="vertical" gap={7} spacingBottom={10}>
+            <TextTitle3 css={{ textAlign: "center" }}>
+              Enjoy the article?
+            </TextTitle3>
+
+            <Box
+              direction={{ "@initial": "vertical", "@bp2": "horizontal" }}
+              justifyContent="space-between"
+              alignItems="center"
+              spacingHorizontal={7}
+              gap={4}
+            >
+              <Link href="/" variant="secondary">
+                <Box alignItems="center" gap={4} spacingVertical={2}>
+                  <TwitterLogoIcon width={18} height={18} aria-hidden />
+                  <TextHeadline>Tweet</TextHeadline>
+                </Box>
+              </Link>
+              <Link href="/" variant="secondary">
+                <Box alignItems="center" gap={4} spacingVertical={2}>
+                  <Share2Icon width={18} height={18} aria-hidden />{" "}
+                  <TextHeadline>Share</TextHeadline>
+                </Box>
+              </Link>
+              <Link href="/" variant="secondary">
+                <Box alignItems="center" gap={4} spacingVertical={2}>
+                  <RocketIcon width={18} height={18} aria-hidden />{" "}
+                  <TextHeadline>Subscribe</TextHeadline>
+                </Box>
+              </Link>
+            </Box>
+          </Box>
         </Box>
       </Box>
     </BlogLayout>
