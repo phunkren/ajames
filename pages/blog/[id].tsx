@@ -10,7 +10,11 @@ import {
 } from "../../lib/notion";
 import { ONE_HOUR_IN_SECONDS } from "../../util/date";
 import { BlogLayout, Box } from "../../components/Layout";
-import { MarkdownLink } from "../../components/Link";
+import {
+  BlogSubscribeLink,
+  MarkdownLink,
+  TwitterShareLink,
+} from "../../components/Link";
 import { Emoji, TextTitle2 } from "../../components/Text";
 import { Code } from "../../components/Code";
 import { Divider } from "../../components/Divider";
@@ -20,6 +24,9 @@ import {
   ReadingTime,
 } from "../../components/Frontmatter";
 import { H2_STYLES } from "../../styles/text";
+import { SITE, SOCIAL } from "../../util/data";
+import { ShareButton } from "../../components/Button";
+import { Router, useRouter } from "next/router";
 
 type Frontmatter = {
   title: string;
@@ -69,6 +76,10 @@ export async function getStaticProps({ params }) {
 }
 
 export default function BlogPost({ frontmatter, postData }: Props) {
+  const router = useRouter();
+  const shareUrl = `${SITE.url}${router.asPath}`;
+  const shareText = `Check out ${frontmatter.title} by ${SOCIAL.twitter.displayName}`;
+
   return (
     <BlogLayout hero={frontmatter.cover}>
       <Box
@@ -88,25 +99,41 @@ export default function BlogPost({ frontmatter, postData }: Props) {
             </TextTitle2>
           </Box>
 
-          <Box
-            id="frontmatter"
-            as="ul"
-            role="list"
-            direction="vertical"
-            gap={4}
-          >
+          <Box justifyContent="space-between" alignItems="flex-end">
             <Box
+              id="frontmatter"
               as="ul"
               role="list"
               direction="vertical"
               gap={4}
-              spacingTop={7}
             >
-              <li>
-                <PostTags tags={frontmatter.tags} icon />
-              </li>
-              <PublishDate as="li" date={frontmatter.date} icon />
-              <ReadingTime as="li" time={frontmatter.time} icon />
+              <Box
+                as="ul"
+                role="list"
+                direction="vertical"
+                gap={4}
+                spacingTop={7}
+              >
+                <li>
+                  <PostTags tags={frontmatter.tags} icon />
+                </li>
+                <PublishDate as="li" date={frontmatter.date} icon />
+                <ReadingTime as="li" time={frontmatter.time} icon />
+              </Box>
+            </Box>
+
+            <Box direction="vertical" gap={2} css={{ width: "auto" }}>
+              <BlogSubscribeLink />
+              <TwitterShareLink
+                url={shareUrl}
+                emoji={frontmatter.emoji}
+                text={frontmatter.title}
+              />
+              <ShareButton
+                url={shareUrl}
+                emoji={frontmatter.emoji}
+                text={frontmatter.title}
+              />
             </Box>
           </Box>
 

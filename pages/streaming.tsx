@@ -15,7 +15,11 @@ import {
   VideosViewsCount,
 } from "../components/Frontmatter";
 import { Layout, Box } from "../components/Layout";
-import { Link, YoutubeSubscribeButton } from "../components/Link";
+import {
+  Link,
+  YoutubeSubscribeLink,
+  TwitterShareLink,
+} from "../components/Link";
 import {
   TextAux,
   TextBody,
@@ -31,6 +35,7 @@ import {
   formatPlaylistVideo,
   formatPlaylistVideos,
   YOUTUBE_CHANNEL_URL,
+  YOUTUBE_SHARE_TEXT,
 } from "../util/youtube";
 import { buildUrl } from "../util/url";
 import { getYoutubeData } from "../lib/youtube";
@@ -47,6 +52,8 @@ import {
   ScrollAreaThumb,
 } from "../components/Scroll";
 import { PERSONAL, SITE } from "../util/data";
+import { ShareButton } from "../components/Button";
+import { useRouter } from "next/router";
 
 type Props = {
   videoPreview: VideoPreview;
@@ -162,29 +169,45 @@ function Streaming({
                 </AvatarRoot>
               </Link>
 
-              <Box
-                justifyContent="space-between"
-                alignItems="center"
-                spacingTop={7}
-              >
-                <TextTitle2>{channelInfoPreview.title}</TextTitle2>
+              <Box justifyContent="space-between" alignItems="flex-end">
+                <Box direction="vertical">
+                  <Box spacingTop={7}>
+                    <TextTitle2>{channelInfoPreview.title}</TextTitle2>
+                  </Box>
 
-                <YoutubeSubscribeButton />
-              </Box>
+                  <Box
+                    as="ul"
+                    role="list"
+                    direction="vertical"
+                    gap={4}
+                    spacingTop={7}
+                  >
+                    <VideosViewsCount
+                      views={channelInfoPreview.viewCount}
+                      icon
+                    />
+                    <SubscriberCount
+                      subscribers={channelInfoPreview.subscriberCount}
+                      icon
+                    />
+                    <VideosTotalCount
+                      total={channelInfoPreview.videoCount}
+                      icon
+                    />
+                  </Box>
+                </Box>
 
-              <Box
-                as="ul"
-                role="list"
-                direction="vertical"
-                gap={4}
-                spacingTop={7}
-              >
-                <VideosViewsCount views={channelInfoPreview.viewCount} icon />
-                <SubscriberCount
-                  subscribers={channelInfoPreview.subscriberCount}
-                  icon
-                />
-                <VideosTotalCount total={channelInfoPreview.videoCount} icon />
+                <Box direction="vertical" gap={2} css={{ width: "auto" }}>
+                  <YoutubeSubscribeLink />
+                  <TwitterShareLink
+                    url={YOUTUBE_CHANNEL_URL}
+                    text={YOUTUBE_SHARE_TEXT}
+                  />
+                  <ShareButton
+                    url={YOUTUBE_CHANNEL_URL}
+                    text={YOUTUBE_SHARE_TEXT}
+                  />
+                </Box>
               </Box>
             </Box>
 
