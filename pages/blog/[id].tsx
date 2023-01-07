@@ -115,7 +115,7 @@ export default function BlogPost({ frontmatter, postData }: Props) {
           </Box>
         </Box>
 
-        <Box direction="vertical" gap={7}>
+        <Box direction="vertical" gap={7} css={{ textAlign: "justify" }}>
           <ReactMarkdown
             children={postData}
             components={{

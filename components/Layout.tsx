@@ -64,7 +64,8 @@ export function HeaderLayout() {
     <Box
       as="header"
       direction="horizontal"
-      spacingVertical={{ "@initial": 4, "@bp2": 7 }}
+      spacingTop={{ "@initial": 4, "@bp2": 7 }}
+      spacingBottom={10}
       spacingHorizontal={2}
       gap={{ "@initial": 4, "@bp2": 7 }}
       justifyContent="space-between"
@@ -96,7 +97,9 @@ export function FooterLayout() {
     <Box
       as="footer"
       direction="horizontal"
-      spacingVertical={{ "@initial": 4, "@bp2": 7 }}
+      spacingTop={10}
+      spacingBottom={{ "@initial": 4, "@bp2": 7 }}
+      spacingHorizontal={2}
       justifyContent="center"
     >
       <Social />
@@ -109,7 +112,6 @@ export function Layout({ children }) {
     <Box
       direction="vertical"
       spacingHorizontal={{ "@initial": 2, "@bp2": 4 }}
-      gap={{ "@bp2": 10 }}
       flexGrow
     >
       <HeaderLayout />

@@ -1,16 +1,21 @@
-import { GetStaticProps } from "next";
-import Link from "next/link";
-import { useRouter } from "next/router";
 import { useState } from "react";
+import { GetStaticProps } from "next";
+import { useRouter } from "next/router";
+import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { BlogCard } from "../../components/Card";
 import { Box, Layout } from "../../components/Layout";
 import { TagToggle } from "../../components/Tags";
-import { TextTitle1 } from "../../components/Text";
+import { TextTitle1, TextTitle2 } from "../../components/Text";
 import { ONE_HOUR_IN_SECONDS } from "../../util/date";
 import { styled } from "../../stitches.config";
 import { BlogPost, Tag } from "../../types/notion";
 import { filterPosts, getTags, sortPosts } from "../../util/posts";
 import { getPosts } from "../../lib/notion";
+import { Link } from "../../components/Link";
+import { Divider } from "../../components/Divider";
+import { AspectRatio } from "@radix-ui/react-aspect-ratio";
+import { blackA } from "@radix-ui/colors";
+import Image from "next/image";
 
 type Props = {
   professional: {
@@ -28,14 +33,14 @@ const StyledCardContainer = styled(Box, {
   gridTemplateColumns: "1fr",
   gridTemplateRows: "1fr",
   gridColumnGap: "$2",
-  gridRowGap: "$4",
+  gridRowGap: "$7",
   borderRadius: 4,
   width: "100%",
 
   "@bp2": {
     gridTemplateColumns: "repeat(2, 1fr)",
-    gridColumnGap: "$4",
-    gridRowGap: "$8",
+    gridColumnGap: "$7",
+    gridRowGap: "$7",
   },
 
   "@bp3": {
@@ -43,6 +48,12 @@ const StyledCardContainer = styled(Box, {
     gridColumnGap: "$5",
     gridRowGap: "$10",
   },
+});
+
+const StyledImage = styled(Image, {
+  objectFit: "cover",
+  borderRadius: 4,
+  boxShadow: `0px 2px 4px ${blackA.blackA10}`,
 });
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -86,32 +97,55 @@ function Blog(props: Props) {
 
   return (
     <Layout>
-      <Box direction="vertical" gap={10} alignItems="center">
-        <TextTitle1>BLOG</TextTitle1>
+      <Box
+        direction="vertical"
+        gap={10}
+        alignItems="center"
+        spacingTop={{ "@initial": 4, "@bp2": 7 }}
+      >
+        <VisuallyHidden.Root>
+          <TextTitle1>Blog</TextTitle1>
+        </VisuallyHidden.Root>
 
-        <nav aria-label="Blog categories">
-          <Box direction="horizontal" as="ul" role="list" gap={5}>
+        <AspectRatio ratio={3 / 1}>
+          <StyledImage
+            src="/images/blog.jpg"
+            alt=""
+            sizes="100vw"
+            priority
+            fill
+          />
+        </AspectRatio>
+
+        <Box as="nav" aria-label="Blog categories">
+          <Box as="ul" role="list" gap={10}>
             <li>
               <Link
                 href={{ pathname: "/blog", query: { tab: "professional" } }}
+                variant="secondary"
                 onClick={() => setActiveTagId(undefined)}
               >
-                Professional
+                <TextTitle2>Professional</TextTitle2>
               </Link>
             </li>
 
             <li>
               <Link
                 href={{ pathname: "/blog", query: { tab: "personal" } }}
+                variant="secondary"
                 onClick={() => setActiveTagId(undefined)}
               >
-                Personal
+                <TextTitle2>Personal</TextTitle2>
               </Link>
             </li>
           </Box>
-        </nav>
+        </Box>
+
+        <Divider />
 
         <TagToggle tags={tags} value={activeTagId} onChange={handleTagChange} />
+
+        <Divider />
 
         <StyledCardContainer>
           {filteredPosts.map((post) => (

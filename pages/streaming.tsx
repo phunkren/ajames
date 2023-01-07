@@ -125,7 +125,11 @@ function Streaming({
 }: Props) {
   return (
     <Layout>
-      <Box direction="vertical" alignItems="center">
+      <Box
+        direction="vertical"
+        alignItems="center"
+        spacingTop={{ "@initial": 4, "@bp2": 7 }}
+      >
         <VisuallyHidden.Root>
           <TextTitle1>Streaming</TextTitle1>
         </VisuallyHidden.Root>
@@ -158,7 +162,11 @@ function Streaming({
                 </AvatarRoot>
               </Link>
 
-              <Box justifyContent="space-between" alignItems="center">
+              <Box
+                justifyContent="space-between"
+                alignItems="center"
+                spacingTop={7}
+              >
                 <TextTitle2>{channelInfoPreview.title}</TextTitle2>
 
                 <YoutubeSubscribeButton />
