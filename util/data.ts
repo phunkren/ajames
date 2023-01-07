@@ -216,21 +216,25 @@ export const SOCIAL: Record<string, Social> = {
   github: {
     id: "github",
     displayName: "GitHub",
+    handle: "@phunkren",
     url: "https://github.com/phunkren",
   },
   linkedin: {
     id: "linkedin",
     displayName: "LinkedIn",
+    handle: "@ajamesdev",
     url: "https://www.linkedin.com/in/ajamesdev/",
   },
   youtube: {
     id: "youtube",
     displayName: "YouTube",
-    url: "https://www.youtube.com/@phunkren",
+    handle: "@ajamesdev",
+    url: "https://www.youtube.com/@ajamesdev",
   },
   twitter: {
     id: "twitter",
     displayName: "Twitter",
+    handle: "@phunkren",
     url: "https://twitter.com/phunkren",
   },
 };
