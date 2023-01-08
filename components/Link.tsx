@@ -1,24 +1,32 @@
 import { forwardRef, Ref } from "react";
 import NextLink from "next/link";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
-import { darkTheme, lightTheme, styled } from "../stitches.config";
+import { CSS, darkTheme, lightTheme, styled } from "../stitches.config";
 import { YOUTUBE_SUBSCRIBE_URL } from "../util/youtube";
 import { RocketIcon, TwitterLogoIcon, VideoIcon } from "@radix-ui/react-icons";
-import { TextAux } from "./Text";
+import { TextAux, TextHeadline } from "./Text";
 import { LinkProps } from "../types/link";
 import { buildUrl } from "../util/url";
 import { SITE, SOCIAL } from "../util/data";
 import { whiteA } from "@radix-ui/colors";
+import { Box } from "./Layout";
 
 type TwitterShareProps = {
   url: string;
   text: string;
   emoji?: string;
+  variant?: "default" | "icon";
+};
+
+type SubscribeProps = CSS & {
+  variant?: "link" | "button";
 };
 
 const StyledLink = styled("a", {
   fontWeight: 500,
   letterSpacing: 0.2,
+  color: "inherit",
+  textDecoration: "none",
 
   variants: {
     variant: {
@@ -32,8 +40,6 @@ const StyledLink = styled("a", {
         },
       },
       secondary: {
-        textDecoration: "none",
-
         [`${lightTheme.selector} &`]: {
           color: "$gray11",
         },
@@ -41,10 +47,6 @@ const StyledLink = styled("a", {
         [`${darkTheme.selector} &`]: {
           color: "$white",
         },
-      },
-      tertiary: {
-        textDecoration: "none",
-        color: "inherit",
       },
     },
   },
@@ -76,27 +78,41 @@ export const StyledIconLink = styled(Link, {
   minHeight: 44,
 });
 
-const StyledYoutubeSubscription = styled(StyledIconLink, {
-  background: "red",
-  color: "white",
+const StyledYoutubeSubscription = styled(Link, {
+  display: "flex",
+  alignItems: "center",
 
-  "@bp2": {
-    gap: "$2",
-    padding: "$2 $4",
-    borderRadius: 4,
+  variants: {
+    variant: {
+      button: {
+        padding: "$2 $4",
+        background: "red",
+        borderRadius: 4,
+        color: "white",
+      },
+      link: {
+        color: "white",
+      },
+    },
   },
 });
 
-const StyledTwitterShare = styled(StyledIconLink, {});
+const StyledBlogSubscription = styled(Link, {
+  display: "flex",
+  alignItems: "center",
 
-const StyledBlogSubscription = styled(StyledIconLink, {
-  background: "white",
-  color: "black",
-
-  "@bp2": {
-    gap: "$2",
-    padding: "$2 $4",
-    borderRadius: 4,
+  variants: {
+    variant: {
+      button: {
+        padding: "$2 $4",
+        background: "white",
+        borderRadius: 4,
+        color: "black",
+      },
+      link: {
+        color: "white",
+      },
+    },
   },
 });
 
@@ -112,36 +128,38 @@ export function MarkdownLink({ node, ...props }) {
   return <Link href={props.href} variant="secondary" {...props} />;
 }
 
-export function YoutubeSubscribeLink(props) {
+export function YoutubeSubscribeLink({
+  variant = "link",
+  ...props
+}: SubscribeProps) {
   return (
     <StyledYoutubeSubscription
       href={YOUTUBE_SUBSCRIBE_URL}
-      variant="tertiary"
+      variant={variant}
       {...props}
     >
-      <VideoIcon width={18} height={18} aria-hidden />
-
-      <VisuallyHidden.Root>Subscribe</VisuallyHidden.Root>
-
-      <TextAux css={{ display: "none", "@bp2": { display: "initial" } }}>
-        Subscribe
-      </TextAux>
+      <Box alignItems="center" gap={2}>
+        <VideoIcon width={18} height={18} aria-hidden />
+        {variant === "button" && <TextAux>Subscribe</TextAux>}
+        {variant === "link" && <TextHeadline>Subscribe</TextHeadline>}
+      </Box>
     </StyledYoutubeSubscription>
   );
 }
 
-export function BlogSubscribeLink(props) {
+export function BlogSubscribeLink({
+  variant = "link",
+  ...props
+}: SubscribeProps) {
   const rssFeedUrl = `${SITE.url}/rss`;
 
   return (
-    <StyledBlogSubscription href={rssFeedUrl} variant="tertiary" {...props}>
-      <RocketIcon width={18} height={18} aria-hidden />
-
-      <VisuallyHidden.Root>Subscribe</VisuallyHidden.Root>
-
-      <TextAux css={{ display: "none", "@bp2": { display: "initial" } }}>
-        Subscribe
-      </TextAux>
+    <StyledBlogSubscription href={rssFeedUrl} variant={variant} {...props}>
+      <Box alignItems="center" gap={2}>
+        <RocketIcon width={18} height={18} aria-hidden />
+        {variant === "button" && <TextAux>Subscribe</TextAux>}
+        {variant === "link" && <TextHeadline>Subscribe</TextHeadline>}
+      </Box>
     </StyledBlogSubscription>
   );
 }
@@ -150,9 +168,11 @@ export function TwitterShareLink({
   url,
   text,
   emoji = "👀",
+  variant = "default",
 }: TwitterShareProps) {
   const formattedText = `${emoji} ${text}`;
   const formattedAuthor = `🙋‍♂️ ${SOCIAL.twitter.handle}`;
+
   const sanitisedText = encodeURIComponent(
     `${formattedText}\n${formattedAuthor}\n\n`
   );
@@ -164,10 +184,21 @@ export function TwitterShareLink({
     text: sanitisedText,
   });
 
+  if (variant === "icon") {
+    return (
+      <StyledIconLink href={href} title="Share on Twitter">
+        <TwitterLogoIcon width={18} height={18} aria-hidden />
+        <VisuallyHidden.Root>Tweet</VisuallyHidden.Root>
+      </StyledIconLink>
+    );
+  }
+
   return (
-    <StyledTwitterShare href={href} title="Share on Twitter" variant="tertiary">
-      <TwitterLogoIcon width={18} height={18} aria-hidden />
-      <VisuallyHidden.Root>Tweet</VisuallyHidden.Root>
-    </StyledTwitterShare>
+    <Link href={href} title="Share on Twitter">
+      <Box alignItems="center" gap={2}>
+        <TwitterLogoIcon width={18} height={18} aria-hidden />
+        <TextHeadline>Tweet</TextHeadline>
+      </Box>
+    </Link>
   );
 }

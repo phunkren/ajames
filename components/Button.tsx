@@ -13,7 +13,8 @@ import { styled } from "../stitches.config";
 import { Box } from "./Layout";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { PERSONAL } from "../util/data";
-import { whiteA } from "@radix-ui/colors";
+import { blackA, whiteA } from "@radix-ui/colors";
+import { TextHeadline } from "./Text";
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: "primary" | "secondary";
@@ -39,8 +40,8 @@ const StyledButton = styled("button", {
 
 const StyledToastViewport = styled(Toast.Viewport, {
   position: "fixed",
-  top: "10vh",
-  right: 0,
+  bottom: "$7",
+  right: "50%",
   display: "flex",
   flexDirection: "column",
   padding: "$2",
@@ -51,18 +52,16 @@ const StyledToastViewport = styled(Toast.Viewport, {
   listStyle: "none",
   zIndex: 2147483647,
   outline: "none",
+  transform: "translateX(50%)",
 });
 
 const StyledToastRoot = styled(Toast.Root, {
   backgroundColor: "white",
   borderRadius: 6,
-  boxShadow:
-    "hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px",
+  boxShadow: `0px 2px 4px ${blackA.blackA10}`,
   padding: 15,
-  display: "grid",
-  gridTemplateAreas: '"title action" "description action"',
-  gridTemplateColumns: "auto max-content",
-  columnGap: 15,
+  display: "flex",
+  justifyContent: "center",
   alignItems: "center",
 
   '&[data-swipe="move"]': {
@@ -144,7 +143,7 @@ const StyledShareButton = styled(Button, {
   minHeight: 44,
 });
 
-export function ShareButton({ url, text, emoji = "👀" }) {
+export function ShareButton({ url, text, emoji = "👀", variant = "default" }) {
   const [open, setOpen] = useState(false);
   const timerRef = useRef(0);
 
@@ -170,11 +169,20 @@ export function ShareButton({ url, text, emoji = "👀" }) {
 
   return (
     <Toast.Provider label="Share notification" duration={2000}>
-      <StyledShareButton title="Share" onClick={handleClick}>
-        <Share2Icon width={18} height={18} aria-hidden />
+      {variant === "icon" ? (
+        <StyledShareButton title="Share" onClick={handleClick}>
+          <Share2Icon width={18} height={18} aria-hidden />
 
-        <VisuallyHidden.Root>Share</VisuallyHidden.Root>
-      </StyledShareButton>
+          <VisuallyHidden.Root>Share</VisuallyHidden.Root>
+        </StyledShareButton>
+      ) : (
+        <Button title="Share" onClick={handleClick}>
+          <Box alignItems="center" gap={4} spacingVertical={2}>
+            <Share2Icon width={18} height={18} aria-hidden />
+            <TextHeadline>Share</TextHeadline>
+          </Box>
+        </Button>
+      )}
 
       <StyledToastRoot open={open} onOpenChange={setOpen}>
         <Toast.Description>Copied to clipboard!</Toast.Description>

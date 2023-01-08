@@ -175,6 +175,7 @@ function Streaming({
                     <TextTitle2>{channelInfoPreview.title}</TextTitle2>
 
                     <YoutubeSubscribeLink
+                      variant="button"
                       css={{
                         display: "none",
                         "@bp2": {
@@ -204,12 +205,14 @@ function Streaming({
                       <TwitterShareLink
                         url={YOUTUBE_CHANNEL_URL}
                         text={YOUTUBE_SHARE_TEXT}
+                        variant="icon"
                       />
 
                       <Box>
                         <ShareButton
                           url={YOUTUBE_CHANNEL_URL}
                           text={YOUTUBE_SHARE_TEXT}
+                          variant="icon"
                         />
                       </Box>
                     </Box>
@@ -368,6 +371,33 @@ function Streaming({
                 </Box>
               );
             })}
+
+            <Box spacingVertical={10}>
+              <Divider />
+            </Box>
+
+            <Box
+              direction={{ "@initial": "vertical", "@bp2": "horizontal" }}
+              justifyContent="space-between"
+              alignItems="center"
+              spacingHorizontal={7}
+              spacingBottom={10}
+              gap={4}
+            >
+              <TwitterShareLink
+                url={YOUTUBE_CHANNEL_URL}
+                text={YOUTUBE_SHARE_TEXT}
+              />
+
+              <YoutubeSubscribeLink />
+
+              <Box>
+                <ShareButton
+                  url={YOUTUBE_CHANNEL_URL}
+                  text={YOUTUBE_SHARE_TEXT}
+                />
+              </Box>
+            </Box>
           </Box>
         </StyledContentContainer>
       </Box>

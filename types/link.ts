@@ -7,5 +7,5 @@ export type LinkProps = CSS &
   Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href"> & {
     href: string | UrlObject;
     nextLinkProps?: Omit<NextLinkProps, "href">;
-    variant?: "primary" | "secondary" | "tertiary";
+    variant?: "primary" | "secondary";
   };

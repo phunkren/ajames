@@ -107,6 +107,7 @@ export default function BlogPost({ frontmatter, postData }: Props) {
               </TextTitle2>
 
               <BlogSubscribeLink
+                variant="button"
                 css={{
                   display: "none",
                   "@bp2": { display: "flex", position: "relative", top: 18 },
@@ -143,6 +144,7 @@ export default function BlogPost({ frontmatter, postData }: Props) {
                 url={shareUrl}
                 emoji={frontmatter.emoji}
                 text={frontmatter.title}
+                variant="icon"
               />
 
               <Box>
@@ -150,6 +152,7 @@ export default function BlogPost({ frontmatter, postData }: Props) {
                   url={shareUrl}
                   emoji={frontmatter.emoji}
                   text={frontmatter.title}
+                  variant="icon"
                 />
               </Box>
             </Box>
@@ -178,36 +181,28 @@ export default function BlogPost({ frontmatter, postData }: Props) {
             <Divider />
           </Box>
 
-          <Box direction="vertical" gap={7} spacingBottom={10}>
-            <TextTitle3 css={{ textAlign: "center" }}>
-              Enjoy the article?
-            </TextTitle3>
+          <Box
+            direction={{ "@initial": "vertical", "@bp2": "horizontal" }}
+            justifyContent="space-between"
+            alignItems="center"
+            spacingHorizontal={7}
+            spacingBottom={10}
+            gap={4}
+          >
+            <TwitterShareLink
+              url={shareUrl}
+              emoji={frontmatter.emoji}
+              text={frontmatter.title}
+            />
 
-            <Box
-              direction={{ "@initial": "vertical", "@bp2": "horizontal" }}
-              justifyContent="space-between"
-              alignItems="center"
-              spacingHorizontal={7}
-              gap={4}
-            >
-              <Link href="/" variant="secondary">
-                <Box alignItems="center" gap={4} spacingVertical={2}>
-                  <TwitterLogoIcon width={18} height={18} aria-hidden />
-                  <TextHeadline>Tweet</TextHeadline>
-                </Box>
-              </Link>
-              <Link href="/" variant="secondary">
-                <Box alignItems="center" gap={4} spacingVertical={2}>
-                  <Share2Icon width={18} height={18} aria-hidden />{" "}
-                  <TextHeadline>Share</TextHeadline>
-                </Box>
-              </Link>
-              <Link href="/" variant="secondary">
-                <Box alignItems="center" gap={4} spacingVertical={2}>
-                  <RocketIcon width={18} height={18} aria-hidden />{" "}
-                  <TextHeadline>Subscribe</TextHeadline>
-                </Box>
-              </Link>
+            <BlogSubscribeLink />
+
+            <Box>
+              <ShareButton
+                url={shareUrl}
+                emoji={frontmatter.emoji}
+                text={frontmatter.title}
+              />
             </Box>
           </Box>
         </Box>
