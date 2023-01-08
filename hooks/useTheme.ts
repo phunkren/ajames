@@ -13,5 +13,7 @@ export function useTheme() {
 
   const theme = THEME_MAP.get(themeName);
 
-  return { theme, themeName };
+  const themeColor = theme?.colors.background.value;
+
+  return { theme, themeName, themeColor };
 }
