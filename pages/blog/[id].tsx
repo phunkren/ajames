@@ -69,7 +69,7 @@ export async function getStaticProps({ params }) {
     description: pageData.properties.abstract.rich_text[0].plain_text,
     cover: pageData.cover.external.url,
     emoji: pageData.icon.type === "emoji" ? pageData.icon.emoji : "👨‍💻",
-    date: formatLongDate(new Date(pageData.properties.date.date.start)),
+    date: pageData.properties.date.date.start,
     time: postTime,
     tags: pageData.properties.tags.multi_select,
   };

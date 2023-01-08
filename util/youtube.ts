@@ -28,8 +28,7 @@ export const YOUTUBE_CHANNEL_ID = "UCCp_G-IprVFee-tBabTROsw";
 // Identical to `YOUTUBE_CHANNEL_ID`, except with a `UU` prefix instead of `UC`.
 export const YOUTUBE_CHANNEL_PLAYLIST_ID = "UUCp_G-IprVFee-tBabTROsw";
 
-export const YOUTUBE_LIKED_VIDEOS_PLAYLIST_ID =
-  "PL7_TxhdAmdDK57ehEHD5heYSmpi2IICvo";
+export const YOUTUBE_LIKED_VIDEOS_PLAYLIST_ID = "LL";
 
 export const formatPlaylistVideo = (
   response: youtube_v3.Schema$PlaylistItem
@@ -90,18 +89,7 @@ export const formatPlaylist = (
     };
   });
 
-  const likeVideosPlaylist = playlists.find(
-    ({ id }) => id === YOUTUBE_LIKED_VIDEOS_PLAYLIST_ID
-  );
-
-  const filteredPlaylists = playlists.filter(
-    ({ id }) => id !== YOUTUBE_LIKED_VIDEOS_PLAYLIST_ID
-  );
-
-  // Ensure the 'Liked Videos' playlist always appears at the end
-  const reorderedPlaylists = filteredPlaylists.concat(likeVideosPlaylist);
-
-  return reorderedPlaylists;
+  return playlists;
 };
 
 export const formatPlaylistVideos = (
