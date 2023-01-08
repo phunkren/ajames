@@ -151,10 +151,17 @@ export function VideoCard({
   return (
     <Card image={image} {...props}>
       {({ ref }) => (
-        <Box direction="vertical" spacingTop={3}>
+        <Box direction="vertical" spacingTop={3} flexGrow>
           <StyledLink href={url} ref={ref} variant="secondary">
-            <TextAux>
-              <Balancer>{title}</Balancer>
+            <TextAux
+              css={{
+                display: "-webkit-box",
+                ["-webkit-line-clamp"]: "3",
+                ["-webkit-box-orient"]: "vertical",
+                overflow: "hidden",
+              }}
+            >
+              {title}
             </TextAux>
           </StyledLink>
 
