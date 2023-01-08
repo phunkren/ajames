@@ -17,12 +17,7 @@ import {
   MarkdownLink,
   TwitterShareLink,
 } from "../../components/Link";
-import {
-  Emoji,
-  TextHeadline,
-  TextTitle2,
-  TextTitle3,
-} from "../../components/Text";
+import { Emoji, TextTitle2 } from "../../components/Text";
 import { Code } from "../../components/Code";
 import { Divider } from "../../components/Divider";
 import {
@@ -31,17 +26,19 @@ import {
   ReadingTime,
 } from "../../components/Frontmatter";
 import { H2_STYLES } from "../../styles/text";
-import { SITE, SOCIAL } from "../../util/data";
+import { PERSONAL, SITE, SOCIAL } from "../../util/data";
 import { ShareButton } from "../../components/Button";
-import { RocketIcon, Share2Icon, TwitterLogoIcon } from "@radix-ui/react-icons";
+import Head from "next/head";
 
 type Frontmatter = {
   title: string;
+  description: string;
   cover: string;
   emoji: string;
   date: string;
   time: number;
   tags: Tag[];
+  canonical?: string;
 };
 
 type Props = {
@@ -63,8 +60,13 @@ export async function getStaticProps({ params }) {
   const postData = await getPostData(params.id);
   const postTime = await getPostTime(postData);
 
+  const slug = pageData.properties.slug.rich_text[0].plain_text;
+  const pageUrl = `${SITE.url}/blog/${slug}`;
+
   const frontmatter: Frontmatter = {
     title: pageData.properties.page.title[0].plain_text,
+    canonical: pageData.properties.canonical.url ?? pageUrl,
+    description: pageData.properties.abstract.rich_text[0].plain_text,
     cover: pageData.cover.external.url,
     emoji: pageData.icon.type === "emoji" ? pageData.icon.emoji : "👨‍💻",
     date: new Date(pageData.properties.date.date.start).toISOString(),
@@ -87,7 +89,7 @@ export default function BlogPost({ frontmatter, postData }: Props) {
   const shareUrl = `${SITE.url}${router.asPath}`;
 
   return (
-    <BlogLayout hero={frontmatter.cover}>
+    <BlogLayout frontmatter={frontmatter}>
       <Box
         as="article"
         direction="vertical"

@@ -13,6 +13,9 @@ import { Social } from "./Social";
 import { ThemeToggle } from "./Theme";
 import { ScrollToTopButton } from "./Button";
 import { TextHeadline } from "./Text";
+import Head from "next/head";
+import { PERSONAL, SITE, SOCIAL } from "../util/data";
+import { useRouter } from "next/router";
 
 const StyledBox = styled("div", {
   display: "flex",
@@ -109,57 +112,140 @@ export function FooterLayout() {
 }
 
 export function Layout({ children }) {
+  const router = useRouter();
+  const { themeName, themeColor } = useTheme();
+  const metaUrl = `${SITE.url}${router.asPath}`;
+  const metaTitle = `${PERSONAL.name} | ${PERSONAL.occupation}`;
+  const metaImage = `${SITE.url}/images/banner.png`;
+  const metaDescription = `${PERSONAL.profile1}\n${PERSONAL.profile2}`;
+  const metaKeywords = PERSONAL.keywords.join(",");
+
   return (
-    <Box
-      direction="vertical"
-      spacingHorizontal={{ "@initial": 2, "@bp2": 4 }}
-      flexGrow
-    >
-      <HeaderLayout />
+    <>
+      <Head>
+        <title>{metaTitle}</title>
+
+        <link rel="canonical" href={metaUrl} />
+
+        <meta name="description" content={metaDescription} />
+        <meta name="author" content={PERSONAL.name} />
+        <meta name="keywords" content={metaKeywords} />
+        <meta name="image" content={metaImage} />
+        <meta name="theme-color" content={themeColor} />
+        <meta name="color-scheme" content={themeName} />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content={SOCIAL.twitter.handle} />
+        <meta name="twitter:creator" content={SOCIAL.twitter.handle} />
+        <meta name="twitter:title" content={metaTitle} />
+        <meta name="twitter:description" content={metaDescription} />
+        <meta name="twitter:image" content={metaImage} />
+
+        {/* OG */}
+        <meta name="og:locale" content="en_GB" />
+        <meta name="og:type" content="website" />
+        <meta name="og:url" content={metaUrl} />
+        <meta name="og:title" content={metaTitle} />
+        <meta name="og:description" content={metaDescription} />
+        <meta name="og:image" content={metaImage} />
+      </Head>
 
       <Box
-        as="main"
         direction="vertical"
-        css={{ maxWidth: 1200, margin: "0 auto" }}
+        spacingHorizontal={{ "@initial": 2, "@bp2": 4 }}
         flexGrow
       >
-        {children}
-      </Box>
+        <HeaderLayout />
 
-      <FooterLayout />
-    </Box>
-  );
-}
-
-export function BlogLayout({ hero, children }) {
-  return (
-    <Box direction="vertical" spacingHorizontal={{ "@initial": 2, "@bp2": 4 }}>
-      <HeaderLayout />
-
-      <Box direction="vertical" css={{ maxWidth: 1200, margin: "0 auto" }}>
-        <Link href="/blog" variant="secondary">
-          <Box
-            alignItems="center"
-            gap={2}
-            spacingBottom={{ "@initial": 4, "@bp2": 7 }}
-          >
-            <ArrowLeftIcon width={28} height={28} aria-hidden />
-            <TextHeadline>Back to blog overview</TextHeadline>
-          </Box>
-        </Link>
-
-        <AspectRatio.Root ratio={2.84 / 1}>
-          <StyledImage src={hero} alt="" sizes="100vw" fill priority />
-        </AspectRatio.Root>
-
-        <StyledContent as="main" direction="vertical">
+        <Box
+          as="main"
+          direction="vertical"
+          css={{ maxWidth: 1200, margin: "0 auto" }}
+          flexGrow
+        >
           {children}
-        </StyledContent>
+        </Box>
 
         <FooterLayout />
       </Box>
+    </>
+  );
+}
 
-      <ScrollToTopButton />
-    </Box>
+export function BlogLayout({ frontmatter, children }) {
+  const router = useRouter();
+  const metaUrl = `${SITE.url}${router.asPath}`;
+  const keywords = frontmatter.tags.map((tag) => tag.name).join(",");
+
+  return (
+    <>
+      <Head>
+        <title>
+          {frontmatter.emoji} {frontmatter.title}
+        </title>
+
+        <link rel="canonical" href={frontmatter.canonical} />
+
+        <meta name="description" content={frontmatter.description} />
+        <meta name="author" content={PERSONAL.name} />
+        <meta name="keywords" content={keywords} />
+        <meta name="image" content={frontmatter.cover} />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content={SOCIAL.twitter.handle} />
+        <meta name="twitter:creator" content={SOCIAL.twitter.handle} />
+        <meta name="twitter:title" content={frontmatter.title} />
+        <meta name="twitter:description" content={frontmatter.description} />
+        <meta name="twitter:image" content={frontmatter.cover} />
+
+        {/* OG */}
+        <meta name="og:locale" content="en_GB" />
+        <meta name="og:type" content="article" />
+        <meta name="og:url" content={metaUrl} />
+        <meta name="og:title" content={frontmatter.title} />
+        <meta name="og:description" content={frontmatter.description} />
+        <meta name="og:image" content={frontmatter.cover} />
+      </Head>
+
+      <Box
+        direction="vertical"
+        spacingHorizontal={{ "@initial": 2, "@bp2": 4 }}
+      >
+        <HeaderLayout />
+
+        <Box direction="vertical" css={{ maxWidth: 1200, margin: "0 auto" }}>
+          <Link href="/blog" variant="secondary">
+            <Box
+              alignItems="center"
+              gap={2}
+              spacingBottom={{ "@initial": 4, "@bp2": 7 }}
+            >
+              <ArrowLeftIcon width={28} height={28} aria-hidden />
+              <TextHeadline>Back to blog overview</TextHeadline>
+            </Box>
+          </Link>
+
+          <AspectRatio.Root ratio={2.84 / 1}>
+            <StyledImage
+              src={frontmatter.cover}
+              alt=""
+              sizes="100vw"
+              fill
+              priority
+            />
+          </AspectRatio.Root>
+
+          <StyledContent as="main" direction="vertical">
+            {children}
+          </StyledContent>
+
+          <FooterLayout />
+        </Box>
+
+        <ScrollToTopButton />
+      </Box>
+    </>
   );
 }
