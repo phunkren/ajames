@@ -73,7 +73,7 @@ export const globalStyles = globalCss({
     h3: H3_STYLES,
     p: P_STYLES,
     img: {
-      alignSelf: "center",
+      margin: "0 auto",
     },
   },
 
