@@ -44,6 +44,26 @@ type Published = {
   checkbox: boolean;
 };
 
+type Canonical = {
+  id: string;
+  type: string;
+  url: string;
+};
+
+type Abstract = {
+  id: string;
+  type: string;
+  rich_text: {
+    type: string;
+    text: {
+      content: string;
+      link?: string;
+    };
+    plain_text: string;
+    href?: string;
+  }[];
+};
+
 type Slug = {
   id: string;
   type: string;
@@ -87,6 +107,8 @@ export type BlogPost = PageObjectResponse & {
   cover: Cover;
   properties: {
     published: Published;
+    canonical: Canonical;
+    abstract: Abstract;
     page: Page;
     date: Date;
     slug: Slug;
