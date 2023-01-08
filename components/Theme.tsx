@@ -114,7 +114,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     // Update the data-theme attribute on the body element
     // This allows us to set the background gradient on the parent element
     if (theme) {
-      document.body.setAttribute("data-theme", theme);
+      document.documentElement.setAttribute("data-theme", theme);
     }
   }, [theme, storageTheme]);
 
