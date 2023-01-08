@@ -7,7 +7,8 @@ import {
   useState,
 } from "react";
 import * as Toast from "@radix-ui/react-toast";
-import { Share2Icon } from "@radix-ui/react-icons";
+import debounce from "lodash.debounce";
+import { DoubleArrowUpIcon, Share2Icon } from "@radix-ui/react-icons";
 import { usePrevious } from "../hooks/usePrevious";
 import { styled } from "../stitches.config";
 import { Box } from "./Layout";
@@ -73,12 +74,25 @@ const StyledToastRoot = styled(Toast.Root, {
   },
 });
 
-const StyledScrollToTop = styled(Box, {
+export const Button = forwardRef(
+  (props: ButtonProps, ref: Ref<HTMLButtonElement>) => {
+    return <StyledButton ref={ref} type="button" {...props} />;
+  }
+);
+
+const StyledScrollToTop = styled(Button, {
   position: "fixed",
   left: "50%",
-  background: "red",
   transform: "translateX(-50%)",
+  display: "flex",
+  alignitems: "center",
+  justifyContent: "center",
+  boxShadow: `0px 2px 4px ${blackA.blackA10}`,
+  background: "white",
   padding: "$4",
+  gap: "$2",
+  borderRadius: 4,
+  border: "none",
 
   variants: {
     active: {
@@ -91,12 +105,6 @@ const StyledScrollToTop = styled(Box, {
     },
   },
 });
-
-export const Button = forwardRef(
-  (props: ButtonProps, ref: Ref<HTMLButtonElement>) => {
-    return <StyledButton ref={ref} type="button" {...props} />;
-  }
-);
 
 export function ScrollToTopButton() {
   const [scrollY, setScrollY] = useState<number>();
@@ -111,21 +119,27 @@ export function ScrollToTopButton() {
   }
 
   useEffect(() => {
-    function handleScroll() {
+    const debouncedScroll = debounce(() => {
       const scrollPositionY = window.pageYOffset;
       setScrollY(scrollPositionY);
-    }
+    }, 500);
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", debouncedScroll);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", debouncedScroll);
     };
   });
 
   return (
-    <StyledScrollToTop aria-hidden active={isButtonActive}>
-      <Button onClick={handleScrollToTop}>Scroll to top</Button>
+    <StyledScrollToTop
+      aria-hidden
+      active={isButtonActive}
+      onClick={handleScrollToTop}
+      tabIndex={-1}
+    >
+      <DoubleArrowUpIcon width={18} height={18} />
+      <TextHeadline>Scroll to top</TextHeadline>
     </StyledScrollToTop>
   );
 }
