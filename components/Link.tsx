@@ -90,9 +90,7 @@ const StyledYoutubeSubscription = styled(Link, {
         borderRadius: 4,
         color: "white",
       },
-      link: {
-        color: "white",
-      },
+      link: {},
     },
   },
 });
