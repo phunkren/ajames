@@ -72,6 +72,9 @@ export const globalStyles = globalCss({
     h2: H2_STYLES,
     h3: H3_STYLES,
     p: P_STYLES,
+    img: {
+      alignSelf: "center",
+    },
   },
 
   // Default code block styling
@@ -95,6 +98,7 @@ export const globalStyles = globalCss({
       maxWidth: "100%",
       padding: "$4",
       borderRadius: 4,
+      textAlign: "left",
     },
   },
 

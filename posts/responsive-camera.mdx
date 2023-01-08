@@ -37,7 +37,7 @@ export function useUserMedia(requestedMedia) {
     useEffect(() => {
         async function enableStream() {
             try {
-                const stream = await navigator.mediaDevices.getUserMedia(requestedMedia);
+              const stream = await navigator.mediaDevices.getUserMedia(requestedMedia);
                 setMediaStream(stream);
             } catch(err) {
                 // Removed for brevity
@@ -638,7 +638,4 @@ export function Camera({ onCapture, onClear }) {
 
 
 For the moment the component serves to provide images as proof of authenticity, and is used alongside a form where users manually input field information from the identification cards. I'm hoping to follow this post up with an integration with [OCR technology](https://en.wikipedia.org/wiki/Optical_character_recognition) to scrape the fields from the images and remove the requirement for the form altogether. Thanks for reading along, and special thanks to [Pete Correia](https://twitter.com/petecorreia) for taking the time to review the component code.
-
-
-Like the article? [Say thanks on Twitter](https://twitter.com/phunkren) 🐦
 
