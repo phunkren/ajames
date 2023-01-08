@@ -44,11 +44,11 @@ export const globalStyles = globalCss({
     width: "100%",
   },
 
-  "html[data-theme='light']": {
+  "body[data-theme='light']": {
     background: "radial-gradient(at top, #ffffff, #fefefe, #ffffff)",
   },
 
-  "html[data-theme='dark']": {
+  "body[data-theme='dark']": {
     background: "radial-gradient(circle at top, #2b2b2b 0%, #1e1e1e 100%)",
   },
 
