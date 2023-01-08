@@ -390,7 +390,7 @@ function Streaming({
               alignItems="center"
               spacingHorizontal={7}
               spacingBottom={10}
-              gap={4}
+              gap={7}
             >
               <TwitterShareLink
                 url={YOUTUBE_CHANNEL_URL}
