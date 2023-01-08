@@ -102,6 +102,7 @@ function Blog(props: Props) {
         gap={10}
         alignItems="center"
         spacingTop={{ "@initial": 4, "@bp2": 7 }}
+        spacingBottom={10}
       >
         <VisuallyHidden.Root>
           <TextTitle1>Blog</TextTitle1>
