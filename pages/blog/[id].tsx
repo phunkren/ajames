@@ -9,7 +9,7 @@ import {
   getPostData,
   getPostTime,
 } from "../../lib/notion";
-import { ONE_HOUR_IN_SECONDS } from "../../util/date";
+import { formatLongDate, ONE_HOUR_IN_SECONDS } from "../../util/date";
 import { BlogLayout, Box } from "../../components/Layout";
 import {
   BlogSubscribeLink,
@@ -69,7 +69,7 @@ export async function getStaticProps({ params }) {
     description: pageData.properties.abstract.rich_text[0].plain_text,
     cover: pageData.cover.external.url,
     emoji: pageData.icon.type === "emoji" ? pageData.icon.emoji : "👨‍💻",
-    date: new Date(pageData.properties.date.date.start).toISOString(),
+    date: formatLongDate(new Date(pageData.properties.date.date.start)),
     time: postTime,
     tags: pageData.properties.tags.multi_select,
   };

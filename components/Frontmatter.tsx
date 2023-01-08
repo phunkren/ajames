@@ -7,6 +7,7 @@ import {
   VideoIcon,
 } from "@radix-ui/react-icons";
 import { styled } from "../stitches.config";
+import { formatShortDate } from "../util/date";
 import { formatReadingTime } from "../util/posts";
 import { Box } from "./Layout";
 import { TextAux } from "./Text";
@@ -30,12 +31,13 @@ export function PostTags({ tags, icon = false, ...props }) {
 }
 
 export function PublishDate({ date, icon = false, ...props }) {
-  const formattedDate = date;
+  const dateObject = new Date(date);
+  const formattedDate = formatShortDate(dateObject);
 
   return (
     <Box alignItems="center" gap={4} {...props}>
       {icon ? <CalendarIcon width={24} height={24} /> : null}
-      <TextAux as="time" dateTime={date}>
+      <TextAux as="time" dateTime={dateObject}>
         {formattedDate}
       </TextAux>
     </Box>
