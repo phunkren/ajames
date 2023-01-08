@@ -171,7 +171,11 @@ function Streaming({
 
               <Box justifyContent="space-between" alignItems="flex-end">
                 <Box direction="vertical">
-                  <Box justifyContent="space-between" alignItems="center">
+                  <Box
+                    justifyContent="space-between"
+                    alignItems="center"
+                    spacingTop={{ "@initial": 3, "@bp2": 0 }}
+                  >
                     <TextTitle2>{channelInfoPreview.title}</TextTitle2>
 
                     <YoutubeSubscribeLink
@@ -185,8 +189,8 @@ function Streaming({
                     />
                   </Box>
 
-                  <Box alignItems="flex-end" spacingTop={7}>
-                    <Box as="ul" role="list" direction="vertical" gap={4}>
+                  <Box alignItems="center" spacingTop={7}>
+                    <Box as="ul" role="list" direction="vertical" gap={5}>
                       <VideosViewsCount
                         views={channelInfoPreview.viewCount}
                         icon
@@ -342,7 +346,12 @@ function Streaming({
                       </Link>
                     </Box>
 
-                    <TextBody css={{ maxWidth: "66%", textAlign: "justify" }}>
+                    <TextBody
+                      css={{
+                        textAlign: "justify",
+                        "@bp2": { maxWidth: "66%" },
+                      }}
+                    >
                       {playlist.description}
                     </TextBody>
 
@@ -377,7 +386,6 @@ function Streaming({
             </Box>
 
             <Box
-              direction={{ "@initial": "vertical", "@bp2": "horizontal" }}
               justifyContent="space-between"
               alignItems="center"
               spacingHorizontal={7}

@@ -100,7 +100,7 @@ export default function BlogPost({ frontmatter, postData }: Props) {
             <Box
               justifyContent="space-between"
               alignItems="flex-start"
-              spacingTop={{ "@initial": 2, "@bp2": 0 }}
+              spacingTop={{ "@initial": 3, "@bp2": 0 }}
             >
               <TextTitle2>
                 <Balancer>{frontmatter.title}</Balancer>
@@ -116,13 +116,13 @@ export default function BlogPost({ frontmatter, postData }: Props) {
             </Box>
           </Box>
 
-          <Box gap={4} spacingTop={7}>
+          <Box gap={4} spacingTop={7} alignItems="center">
             <Box
               id="frontmatter"
               as="ul"
               role="list"
               direction="vertical"
-              gap={4}
+              gap={5}
             >
               <Box as="ul" role="list" direction="vertical" gap={4}>
                 <li>
@@ -186,7 +186,6 @@ export default function BlogPost({ frontmatter, postData }: Props) {
           </Box>
 
           <Box
-            direction={{ "@initial": "vertical", "@bp2": "horizontal" }}
             justifyContent="space-between"
             alignItems="center"
             spacingHorizontal={7}
