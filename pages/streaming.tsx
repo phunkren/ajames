@@ -224,13 +224,13 @@ function Streaming({
                 </Box>
               </Box>
             </Box>
-
-            <Box spacingVertical={10}>
-              <Divider />
-            </Box>
           </Box>
 
-          <Box direction="vertical" gap={10}>
+          <Box spacingVertical={10}>
+            <Divider />
+          </Box>
+
+          <Box direction="vertical" gap={10} spacingTop={10}>
             {videoPreview ? (
               <Box direction="vertical">
                 <Box
@@ -325,7 +325,9 @@ function Streaming({
 
               return (
                 <Box key={playlist.id} direction="vertical" gap={10}>
-                  <Divider />
+                  <Box spacingVertical={10}>
+                    <Divider />
+                  </Box>
 
                   <Box direction="vertical" css={{ overflowX: "hidden" }}>
                     <Box
@@ -357,7 +359,7 @@ function Streaming({
 
                     <ScrollAreaRoot>
                       <StyledVideoCardViewport>
-                        <StyledVideoCardContainer spacingVertical={7}>
+                        <StyledVideoCardContainer spacingVertical={10}>
                           {playlistVideosPreview[playlist.id].map(
                             (playlistVideo) => (
                               <VideoCard
@@ -385,25 +387,30 @@ function Streaming({
               <Divider />
             </Box>
 
-            <Box
-              justifyContent="space-between"
-              alignItems="center"
-              spacingHorizontal={7}
-              spacingBottom={10}
-              gap={7}
-            >
-              <TwitterShareLink
-                url={YOUTUBE_CHANNEL_URL}
-                text={YOUTUBE_SHARE_TEXT}
-              />
-
-              <YoutubeSubscribeLink />
-
-              <Box>
-                <ShareButton
+            <Box direction="vertical" gap={5}>
+              <TextTitle3 css={{ textAlign: "center" }}>
+                Enjoying the videos?
+              </TextTitle3>
+              <Box
+                justifyContent="space-between"
+                alignItems="center"
+                spacingHorizontal={7}
+                spacingBottom={10}
+                gap={7}
+              >
+                <TwitterShareLink
                   url={YOUTUBE_CHANNEL_URL}
                   text={YOUTUBE_SHARE_TEXT}
                 />
+
+                <YoutubeSubscribeLink />
+
+                <Box>
+                  <ShareButton
+                    url={YOUTUBE_CHANNEL_URL}
+                    text={YOUTUBE_SHARE_TEXT}
+                  />
+                </Box>
               </Box>
             </Box>
           </Box>

@@ -82,10 +82,7 @@ function Cv() {
   return (
     <Layout>
       <Box spacingTop={{ "@initial": 4, "@bp2": 7 }}>
-        <Box
-          direction="vertical"
-          css={{ backgroundColor: gray.gray10, borderRadius: 4 }}
-        >
+        <Box direction="vertical" css={{ borderRadius: 4 }}>
           <VisuallyHidden.Root>
             <TextTitle1>CV</TextTitle1>
           </VisuallyHidden.Root>

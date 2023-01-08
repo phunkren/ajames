@@ -9,15 +9,14 @@ import {
   getPostData,
   getPostTime,
 } from "../../lib/notion";
-import { formatLongDate, ONE_HOUR_IN_SECONDS } from "../../util/date";
+import { ONE_HOUR_IN_SECONDS } from "../../util/date";
 import { BlogLayout, Box } from "../../components/Layout";
 import {
   BlogSubscribeLink,
-  Link,
   MarkdownLink,
   TwitterShareLink,
 } from "../../components/Link";
-import { Emoji, TextTitle2 } from "../../components/Text";
+import { Emoji, TextTitle2, TextTitle3 } from "../../components/Text";
 import { Code } from "../../components/Code";
 import { Divider } from "../../components/Divider";
 import {
@@ -26,9 +25,8 @@ import {
   ReadingTime,
 } from "../../components/Frontmatter";
 import { H2_STYLES } from "../../styles/text";
-import { PERSONAL, SITE, SOCIAL } from "../../util/data";
+import { SITE } from "../../util/data";
 import { ShareButton } from "../../components/Button";
-import Head from "next/head";
 
 type Frontmatter = {
   title: string;
@@ -167,7 +165,7 @@ export default function BlogPost({ frontmatter, postData }: Props) {
 
         <Box
           direction="vertical"
-          gap={7}
+          gap={10}
           css={{
             maxWidth: 900,
             margin: "0 auto",
@@ -187,27 +185,32 @@ export default function BlogPost({ frontmatter, postData }: Props) {
             <Divider />
           </Box>
 
-          <Box
-            justifyContent="space-between"
-            alignItems="center"
-            spacingHorizontal={7}
-            spacingBottom={10}
-            gap={4}
-          >
-            <TwitterShareLink
-              url={shareUrl}
-              emoji={frontmatter.emoji}
-              text={frontmatter.title}
-            />
+          <Box direction="vertical" gap={5} alignItems="center">
+            <TextTitle3>Enjoying the articles?</TextTitle3>
 
-            <BlogSubscribeLink />
-
-            <Box>
-              <ShareButton
+            <Box
+              justifyContent="space-between"
+              alignItems="center"
+              spacingHorizontal={10}
+              spacingBottom={10}
+              gap={10}
+              css={{ width: "100%" }}
+            >
+              <TwitterShareLink
                 url={shareUrl}
                 emoji={frontmatter.emoji}
                 text={frontmatter.title}
               />
+
+              <BlogSubscribeLink />
+
+              <Box>
+                <ShareButton
+                  url={shareUrl}
+                  emoji={frontmatter.emoji}
+                  text={frontmatter.title}
+                />
+              </Box>
             </Box>
           </Box>
         </Box>

@@ -48,6 +48,10 @@ const StyledLink = styled("a", {
           color: "$white",
         },
       },
+      tertiary: {
+        textDecoration: "underline",
+        textDecorationStyle: "dotted",
+      },
     },
   },
 });
@@ -123,7 +127,7 @@ export function MarkdownLink({ node, ...props }) {
     return <iframe src={props.href} width="100%" height="500px"></iframe>;
   }
 
-  return <Link href={props.href} variant="secondary" {...props} />;
+  return <Link href={props.href} variant="tertiary" {...props} />;
 }
 
 export function YoutubeSubscribeLink({
