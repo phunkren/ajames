@@ -55,6 +55,8 @@ export const {
 
 export const lightTheme = createTheme({
   colors: {
+    foreground: "#010101",
+    background: "#fefefe",
     white: "#fefefe",
     black: "#010101",
     ...gray,
@@ -68,6 +70,8 @@ export const lightTheme = createTheme({
 
 export const darkTheme = createTheme({
   colors: {
+    foreground: "#fefefe",
+    background: "#010101",
     white: "#fefefe",
     black: "#010101",
     ...grayDark,
