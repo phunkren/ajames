@@ -7,12 +7,12 @@ import {
   useState,
 } from "react";
 import * as Toast from "@radix-ui/react-toast";
+import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import debounce from "lodash.debounce";
 import { DoubleArrowUpIcon, Share2Icon } from "@radix-ui/react-icons";
 import { usePrevious } from "../hooks/usePrevious";
 import { styled } from "../stitches.config";
 import { Box } from "./Layout";
-import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { PERSONAL } from "../util/data";
 import { blackA, whiteA } from "@radix-ui/colors";
 import { TextHeadline } from "./Text";
