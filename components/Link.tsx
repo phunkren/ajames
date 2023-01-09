@@ -196,12 +196,7 @@ export function TwitterShareLink({
 
   if (variant === "icon") {
     return (
-      <StyledIconLink
-        href={href}
-        title="Share on Twitter"
-        target="_blank"
-        onClick={(e) => e.stopPropagation()}
-      >
+      <StyledIconLink href={href} title="Share on Twitter" target="_blank">
         <TwitterLogoIcon width={18} height={18} aria-hidden />
         <VisuallyHidden.Root>Tweet</VisuallyHidden.Root>
       </StyledIconLink>

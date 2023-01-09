@@ -119,15 +119,15 @@ export function ScrollToTopButton() {
   }
 
   useEffect(() => {
-    const debouncedScroll = debounce(() => {
+    function handleScroll() {
       const scrollPositionY = window.pageYOffset;
       setScrollY(scrollPositionY);
-    }, 500);
+    }
 
-    window.addEventListener("scroll", debouncedScroll);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener("scroll", debouncedScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   });
 
@@ -191,7 +191,7 @@ export function ShareButton({ url, text, emoji = "👀", variant = "default" }) 
         </StyledShareButton>
       ) : (
         <Button title="Share" onClick={handleClick}>
-          <Box alignItems="center" gap={4} spacingVertical={2}>
+          <Box alignItems="center" gap={2}>
             <Share2Icon width={18} height={18} aria-hidden />
             <TextHeadline>Share</TextHeadline>
           </Box>
