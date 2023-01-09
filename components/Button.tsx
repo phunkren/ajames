@@ -89,6 +89,7 @@ const StyledScrollToTop = styled(Button, {
   justifyContent: "center",
   boxShadow: `0px 2px 4px ${blackA.blackA10}`,
   background: "white",
+  color: "black",
   padding: "$4",
   gap: "$2",
   borderRadius: 4,
