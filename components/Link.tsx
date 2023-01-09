@@ -3,7 +3,12 @@ import NextLink from "next/link";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { CSS, darkTheme, lightTheme, styled } from "../stitches.config";
 import { YOUTUBE_SUBSCRIBE_URL } from "../util/youtube";
-import { RocketIcon, TwitterLogoIcon, VideoIcon } from "@radix-ui/react-icons";
+import {
+  ArrowRightIcon,
+  RocketIcon,
+  TwitterLogoIcon,
+  VideoIcon,
+} from "@radix-ui/react-icons";
 import { TextAux, TextHeadline } from "./Text";
 import { LinkProps } from "../types/link";
 import { buildUrl } from "../util/url";
@@ -23,6 +28,9 @@ type SubscribeProps = CSS & {
 };
 
 const StyledLink = styled("a", {
+  display: "inline-flex",
+  alignItems: "center",
+  gap: "$3",
   fontWeight: 500,
   letterSpacing: 0.2,
   color: "inherit",
@@ -188,7 +196,12 @@ export function TwitterShareLink({
 
   if (variant === "icon") {
     return (
-      <StyledIconLink href={href} title="Share on Twitter">
+      <StyledIconLink
+        href={href}
+        title="Share on Twitter"
+        target="_blank"
+        onClick={(e) => e.stopPropagation()}
+      >
         <TwitterLogoIcon width={18} height={18} aria-hidden />
         <VisuallyHidden.Root>Tweet</VisuallyHidden.Root>
       </StyledIconLink>
@@ -202,5 +215,14 @@ export function TwitterShareLink({
         <TextHeadline>Tweet</TextHeadline>
       </Box>
     </Link>
+  );
+}
+
+export function ReadMoreLink(props) {
+  return (
+    <Box gap={2} alignItems="center" {...props}>
+      <TextAux>Read more</TextAux>
+      <ArrowRightIcon width={18} height={18} />
+    </Box>
   );
 }

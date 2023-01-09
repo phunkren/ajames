@@ -6,22 +6,46 @@ import {
   ListBulletIcon,
   VideoIcon,
 } from "@radix-ui/react-icons";
+import { useRouter } from "next/router";
 import { styled } from "../stitches.config";
+import { NOTION_TAG_VARIANTS } from "../styles/tag";
+import { Tag } from "../types/notion";
 import { formatShortDate } from "../util/date";
 import { formatReadingTime } from "../util/posts";
 import { Box } from "./Layout";
 import { TextAux } from "./Text";
 
-const StyledTag = styled(Box, {});
+type PostTagProps = {
+  tags: Tag[];
+  icon?: boolean;
+};
 
-export function PostTags({ tags, icon = false, ...props }) {
+const StyledTag = styled(Box, {
+  padding: "0 $2",
+  borderRadius: 4,
+  borderStyle: "solid",
+  borderWidth: 1,
+
+  variants: {
+    ...NOTION_TAG_VARIANTS,
+  },
+});
+
+export function PostTags({ tags, icon = false, ...props }: PostTagProps) {
+  const { query } = useRouter();
+
   return (
     <Box alignItems="center" gap={4} {...props}>
       {icon ? <ListBulletIcon width={24} height={24} /> : null}
 
       <Box as="ul" role="list" gap={4}>
         {tags.map((tag) => (
-          <StyledTag as="li" key={tag.id}>
+          <StyledTag
+            as="li"
+            key={tag.id}
+            borderColor={tag.color}
+            active={query?.tag === tag.name}
+          >
             <TextAux>{tag.name}</TextAux>
           </StyledTag>
         ))}

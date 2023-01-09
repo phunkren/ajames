@@ -1,5 +1,6 @@
 import * as ToggleGroup from "@radix-ui/react-toggle-group";
 import { styled } from "../stitches.config";
+import { NOTION_TAG_VARIANTS } from "../styles/tag";
 import { Tag } from "../types/notion";
 import { TextAux } from "./Text";
 
@@ -15,10 +16,7 @@ const ToggleGroupRoot = styled(ToggleGroup.Root, {
   gridTemplateRows: "1fr",
   gridColumnGap: "$2",
   gridRowGap: "$2",
-  borderRadius: 4,
   width: "100%",
-  maxWidth: 1100,
-  margin: "0 auto",
 
   "@bp2": {
     gridTemplateColumns: "repeat(4, 1fr)",
@@ -44,43 +42,16 @@ const ToggleGroupItem = styled(ToggleGroup.Item, {
   borderRadius: 4,
   border: "1px solid",
 
-  variants: {
-    borderColor: {
-      red: {
-        borderColor: "red",
-      },
-      orange: {
-        borderColor: "orange",
-      },
-      yellow: {
-        borderColor: "yellow",
-      },
-      green: {
-        borderColor: "green",
-      },
-      blue: {
-        borderColor: "blue",
-      },
-      purple: {
-        borderColor: "purple",
-      },
-      pink: {
-        borderColor: "pink",
-      },
-      gray: {
-        borderColor: "gray",
-      },
-      brown: {
-        borderColor: "brown",
-      },
-      default: {
-        borderColor: "black",
-      },
-    },
-  },
-
   "&[data-state=on]": {
     opacity: 1,
+  },
+
+  "&:hover": {
+    opacity: 0.75,
+  },
+
+  variants: {
+    ...NOTION_TAG_VARIANTS,
   },
 });
 

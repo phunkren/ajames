@@ -14,10 +14,9 @@ export type CardProps = CSS & {
 export type BlogCardProps = CSS & {
   url: string;
   image: string;
-  publishDate: string;
+  description: string;
   title: string;
   emoji: string;
-  readingTime: number;
   tags: Tag[];
 };
 
@@ -26,6 +25,5 @@ export type VideoCardProps = CSS & {
   image: string;
   publishDate: string;
   title: string;
-  description?: string;
   css: any;
 };

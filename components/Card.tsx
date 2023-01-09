@@ -1,12 +1,11 @@
 import { useRef } from "react";
 import Image from "next/image";
-import Balancer from "react-wrap-balancer";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 import { blackA } from "@radix-ui/colors";
 import { styled } from "../stitches.config";
-import { PostTags, PublishDate, ReadingTime } from "./Frontmatter";
+import { PostTags, PublishDate } from "./Frontmatter";
 import { Box } from "./Layout";
-import { Emoji, TextAux, TextBody } from "./Text";
+import { Emoji, TextAux, TextTitle3 } from "./Text";
 import { H3_STYLES } from "../styles/text";
 import { Link } from "./Link";
 import { BlogCardProps, CardProps, VideoCardProps } from "../types/card";
@@ -90,8 +89,8 @@ export function Card({ image, children, ...props }: CardProps) {
 
       <StyledCardInner
         direction="vertical"
-        spacingHorizontal={3}
-        spacingBottom={3}
+        spacingHorizontal={4}
+        spacingBottom={4}
         flexGrow
       >
         {children(childProps)}
@@ -100,15 +99,7 @@ export function Card({ image, children, ...props }: CardProps) {
   );
 }
 
-export function BlogCard({
-  url,
-  title,
-  image,
-  emoji,
-  tags,
-  publishDate,
-  readingTime,
-}: BlogCardProps) {
+export function BlogCard({ url, title, image, emoji, tags }: BlogCardProps) {
   return (
     <Card image={image}>
       {({ ref }) => (
@@ -116,23 +107,22 @@ export function BlogCard({
           <StyledBlogContent direction="vertical">
             <Emoji emoji={emoji} css={{ ...H3_STYLES }} />
             <StyledLink href={url} ref={ref}>
-              <TextAux id={url}>
-                <Balancer>{title}</Balancer>
-              </TextAux>
+              <TextTitle3
+                id={url}
+                css={{
+                  display: "-webkit-box",
+                  ["-webkit-line-clamp"]: "3",
+                  ["-webkit-box-orient"]: "vertical",
+                  overflow: "hidden",
+                }}
+              >
+                {title}
+              </TextTitle3>
             </StyledLink>
           </StyledBlogContent>
 
-          <PostTags tags={tags} />
-
-          <Box
-            as="ul"
-            justifyContent="space-between"
-            gap={4}
-            spacingTop={7}
-            css={{ marginTop: "auto" }}
-          >
-            <PublishDate as="li" date={publishDate} icon />
-            <ReadingTime as="li" time={readingTime} icon />
+          <Box direction="vertical" css={{ marginTop: "auto" }}>
+            <PostTags tags={tags} />
           </Box>
         </>
       )}
@@ -144,7 +134,6 @@ export function VideoCard({
   url,
   title,
   image,
-  description,
   publishDate,
   ...props
 }: VideoCardProps) {
@@ -164,8 +153,6 @@ export function VideoCard({
               {title}
             </TextAux>
           </StyledLink>
-
-          {description ? <TextBody>{description}</TextBody> : null}
 
           <Box
             as="ul"

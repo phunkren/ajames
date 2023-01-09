@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
@@ -6,26 +5,18 @@ import { BlogCard } from "../../components/Card";
 import { Box, Layout } from "../../components/Layout";
 import { TagToggle } from "../../components/Tags";
 import { TextTitle1, TextTitle2 } from "../../components/Text";
-import { ONE_HOUR_IN_SECONDS } from "../../util/date";
 import { styled } from "../../stitches.config";
 import { BlogPost, Tag } from "../../types/notion";
 import { filterPosts, getTags, sortPosts } from "../../util/posts";
 import { getPosts } from "../../lib/notion";
-import { Link } from "../../components/Link";
 import { Divider } from "../../components/Divider";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import { blackA } from "@radix-ui/colors";
 import Image from "next/image";
 
 type Props = {
-  professional: {
-    posts: BlogPost[];
-    tags: Tag[];
-  };
-  personal: {
-    posts: BlogPost[];
-    tags: Tag[];
-  };
+  posts: BlogPost[];
+  tags: Tag[];
 };
 
 const StyledCardContainer = styled(Box, {
@@ -57,31 +48,20 @@ const StyledImage = styled(Image, {
 });
 
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = await getPosts();
+  const { personal, professional } = await getPosts();
+
+  const posts = [...professional, ...personal];
 
   return {
     props: {
-      personal: {
-        posts: sortPosts(posts.personal),
-        tags: getTags(posts.personal),
-      },
-      professional: {
-        posts: sortPosts(posts.professional),
-        tags: getTags(posts.professional),
-      },
+      posts: sortPosts(posts),
+      tags: getTags(posts),
     },
-    revalidate: ONE_HOUR_IN_SECONDS,
   };
 };
 
-function Blog(props: Props) {
-  const [activeTagId, setActiveTagId] = useState<string>();
-
+function Blog({ posts, tags }: Props) {
   const { pathname, push, query } = useRouter();
-
-  const { personal, professional } = props;
-
-  const { posts, tags } = query.tab === "personal" ? personal : professional;
 
   const filteredPosts = query.tag ? filterPosts(posts, query.tag) : posts;
 
@@ -99,10 +79,10 @@ function Blog(props: Props) {
     <Layout>
       <Box
         direction="vertical"
-        gap={10}
         alignItems="center"
         spacingTop={{ "@initial": 4, "@bp2": 7 }}
         spacingBottom={10}
+        gap={10}
       >
         <VisuallyHidden.Root>
           <TextTitle1>Blog</TextTitle1>
@@ -118,50 +98,45 @@ function Blog(props: Props) {
           />
         </AspectRatio>
 
-        <Box as="nav" aria-label="Blog categories">
-          <Box as="ul" role="list" gap={10}>
-            <li>
-              <Link
-                href={{ pathname: "/blog", query: { tab: "professional" } }}
-                variant="secondary"
-                onClick={() => setActiveTagId(undefined)}
-              >
-                <TextTitle2>Professional</TextTitle2>
-              </Link>
-            </li>
+        <Box
+          direction="vertical"
+          gap={10}
+          spacingHorizontal={{ "@initial": 4, "@bp2": 10 }}
+          spacingVertical={10}
+        >
+          <VisuallyHidden.Root>
+            <TextTitle2>Filters</TextTitle2>
+          </VisuallyHidden.Root>
 
-            <li>
-              <Link
-                href={{ pathname: "/blog", query: { tab: "personal" } }}
-                variant="secondary"
-                onClick={() => setActiveTagId(undefined)}
-              >
-                <TextTitle2>Personal</TextTitle2>
-              </Link>
-            </li>
+          <TagToggle
+            tags={tags}
+            value={query.tag as string}
+            onChange={handleTagChange}
+          />
+
+          <Box spacingVertical={10}>
+            <Divider />
           </Box>
+
+          <VisuallyHidden.Root>
+            <TextTitle2>Articles</TextTitle2>
+          </VisuallyHidden.Root>
+
+          <StyledCardContainer>
+            {filteredPosts.map((post) => (
+              <BlogCard
+                key={post.id}
+                url={`/blog/${post.properties.slug.rich_text[0].plain_text}`}
+                image={post.cover.external.url}
+                emoji={post.icon.type === "emoji" ? post.icon.emoji : "👨‍💻"}
+                title={post.properties.page.title[0].plain_text}
+                description={post.properties.abstract.rich_text[0].plain_text}
+                publishDate={post.properties.date.date.start}
+                tags={post.properties.tags.multi_select}
+              />
+            ))}
+          </StyledCardContainer>
         </Box>
-
-        <Divider />
-
-        <TagToggle tags={tags} value={activeTagId} onChange={handleTagChange} />
-
-        <Divider />
-
-        <StyledCardContainer>
-          {filteredPosts.map((post) => (
-            <BlogCard
-              key={post.id}
-              url={`/blog/${post.properties.slug.rich_text[0].plain_text}`}
-              image={post.cover.external.url}
-              emoji={post.icon.type === "emoji" ? post.icon.emoji : "👨‍💻"}
-              title={post.properties.page.title[0].plain_text}
-              publishDate={post.properties.date.date.start}
-              readingTime={8}
-              tags={post.properties.tags.multi_select}
-            />
-          ))}
-        </StyledCardContainer>
       </Box>
     </Layout>
   );
