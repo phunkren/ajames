@@ -47,6 +47,9 @@ export const FLEX_VARIANTS = {
     "space-between": {
       justifyContent: "space-between",
     },
+    "space-around": {
+      justifyContent: "space-around",
+    },
   },
   gap: {
     [1]: {

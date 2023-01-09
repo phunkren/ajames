@@ -30,7 +30,7 @@ type SubscribeProps = CSS & {
 const StyledLink = styled("a", {
   display: "inline-flex",
   alignItems: "center",
-  gap: "$3",
+  gap: "$2",
   fontWeight: 500,
   letterSpacing: 0.2,
   color: "inherit",

@@ -155,7 +155,7 @@ function Streaming({
           direction="vertical"
           spacingHorizontal={{ "@initial": 4, "@bp2": 10 }}
         >
-          <Box direction="vertical">
+          <Box direction="vertical" spacingBottom={10}>
             <Box direction="vertical">
               <Link href={YOUTUBE_CHANNEL_URL}>
                 <AvatarRoot css={{ "@bp2": { width: 72, height: 72 } }}>
@@ -174,7 +174,7 @@ function Streaming({
                   <Box
                     justifyContent="space-between"
                     alignItems="center"
-                    spacingTop={{ "@initial": 3, "@bp2": 0 }}
+                    spacingTop={10}
                   >
                     <TextTitle2>{channelInfoPreview.title}</TextTitle2>
 
@@ -189,8 +189,11 @@ function Streaming({
                     />
                   </Box>
 
-                  <Box alignItems="center" spacingTop={7}>
-                    <Box as="ul" role="list" direction="vertical" gap={5}>
+                  <Box
+                    alignItems={{ "@initial": "center", "@bp2": "flex-end" }}
+                    spacingTop={6}
+                  >
+                    <Box as="ul" role="list" direction="vertical" gap={4}>
                       <VideosViewsCount
                         views={channelInfoPreview.viewCount}
                         icon
@@ -205,7 +208,14 @@ function Streaming({
                       />
                     </Box>
 
-                    <Box direction="vertical" gap={4} css={{ width: "auto" }}>
+                    <Box
+                      direction={{
+                        "@initial": "vertical",
+                        "@bp2": "horizontal",
+                      }}
+                      gap={4}
+                      css={{ width: "auto" }}
+                    >
                       <TwitterShareLink
                         url={YOUTUBE_CHANNEL_URL}
                         text={YOUTUBE_SHARE_TEXT}
@@ -238,28 +248,25 @@ function Streaming({
                     "@initial": "space-between",
                     "@bp2": "flex-start",
                   }}
-                  gap={7}
+                  gap={10}
                   alignItems="center"
-                  spacingBottom={2}
+                  spacingBottom={6}
                 >
                   <TextTitle3>Latest Video</TextTitle3>
 
                   <Link href={videoPreview.url} variant="secondary">
-                    <Box gap={2} alignItems="center">
-                      <PlayIcon aria-hidden />
-                      <TextAux>Watch video</TextAux>
-                    </Box>
+                    <PlayIcon aria-hidden />
+                    <TextAux>Watch video</TextAux>
                   </Link>
                 </Box>
 
                 <Box
-                  gap={{ "@initial": 2, "@bp3": 10 }}
-                  flexWrap={{ "@initial": "wrap", "@bp3": "nowrap" }}
+                  gap={{ "@initial": 0, "@bp3": 10 }}
+                  direction={{ "@initial": "vertical", "@bp3": "horizontal" }}
                 >
                   <Box
-                    position="relative"
                     direction="vertical"
-                    spacingVertical={2}
+                    spacingBottom={4}
                     css={{
                       "@bp3": { flexGrow: 0, flexShrink: 0, flexBasis: 480 },
                     }}
@@ -283,19 +290,23 @@ function Streaming({
                     </AspectRatio>
                   </Box>
 
-                  <Box direction="vertical" gap={2}>
+                  <Box direction="vertical">
                     <Link href={videoPreview.url} variant="secondary">
                       <TextHeadline>
                         <Balancer>{videoPreview.title}</Balancer>
                       </TextHeadline>
                     </Link>
 
-                    <PublishDate date={videoPreview.publishedAt} />
+                    <PublishDate
+                      date={videoPreview.publishedAt}
+                      spacingTop={2}
+                      spacingBottom={6}
+                    />
 
                     <TextBody
                       css={{
                         display: "-webkit-box",
-                        ["-webkit-line-clamp"]: "4",
+                        ["-webkit-line-clamp"]: "3",
                         ["-webkit-box-orient"]: "vertical",
                         overflow: "hidden",
                         textAlign: "justify",
@@ -303,9 +314,12 @@ function Streaming({
                     >
                       {videoPreview.description}
                     </TextBody>
-                    <Link href={videoPreview.url} variant="secondary">
-                      <TextAux>Read more </TextAux>
-                    </Link>
+
+                    <Box spacingTop={2}>
+                      <Link href={videoPreview.url} variant="secondary">
+                        <TextAux>Read more</TextAux>
+                      </Link>
+                    </Box>
                   </Box>
                 </Box>
               </Box>
@@ -324,34 +338,40 @@ function Streaming({
               });
 
               return (
-                <Box key={playlist.id} direction="vertical" gap={10}>
+                <Box key={playlist.id} direction="vertical">
                   <Box spacingVertical={10}>
                     <Divider />
                   </Box>
 
-                  <Box direction="vertical" css={{ overflowX: "hidden" }}>
+                  <Box
+                    direction="vertical"
+                    spacingTop={10}
+                    css={{ overflowX: "hidden" }}
+                  >
                     <Box
-                      gap={7}
+                      gap={10}
                       justifyContent={{
                         "@initial": "space-between",
                         "@bp2": "flex-start",
                       }}
                       alignItems="center"
-                      spacingBottom={2}
+                      spacingBottom={6}
                     >
                       <Link href={playlistUrl} variant="tertiary">
                         <TextTitle3>{playlist.title}</TextTitle3>
                       </Link>
 
                       <Link href={watchAllUrl} variant="secondary">
-                        <PlayIcon aria-hidden /> Watch all
+                        <PlayIcon aria-hidden />
+                        <TextAux>Watch all</TextAux>
                       </Link>
                     </Box>
 
                     <TextBody
                       css={{
                         textAlign: "justify",
-                        "@bp2": { maxWidth: "66%" },
+                        maxWidth: "none",
+                        "@bp3": { maxWidth: "66%" },
                       }}
                     >
                       {playlist.description}
@@ -359,7 +379,7 @@ function Streaming({
 
                     <ScrollAreaRoot>
                       <StyledVideoCardViewport>
-                        <StyledVideoCardContainer spacingVertical={10}>
+                        <StyledVideoCardContainer spacingTop={10}>
                           {playlistVideosPreview[playlist.id].map(
                             (playlistVideo) => (
                               <VideoCard
@@ -387,14 +407,14 @@ function Streaming({
               <Divider />
             </Box>
 
-            <Box direction="vertical" gap={5}>
+            <Box direction="vertical" gap={6}>
               <TextTitle3 css={{ textAlign: "center" }}>
                 Enjoying the videos?
               </TextTitle3>
+
               <Box
-                justifyContent="space-between"
+                justifyContent="space-around"
                 alignItems="center"
-                spacingHorizontal={7}
                 spacingBottom={10}
                 gap={7}
               >
