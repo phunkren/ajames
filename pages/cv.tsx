@@ -41,12 +41,10 @@ const StyledPageHeader = styled(Box, {
 });
 
 const StyledPrintHeader = styled(Box, {
-  position: "relative",
   display: "none",
 
   "@print": {
     display: "block",
-    height: 100,
   },
 });
 
@@ -71,6 +69,11 @@ const GridRoot = styled("div", {
   "@bp3": {
     gridTemplateColumns: "1fr",
   },
+
+  "@print": {
+    gridTemplateColumns: "1fr",
+    gridColumnGap: "$1",
+  },
 });
 
 const GridItem = styled("div", {
@@ -78,45 +81,19 @@ const GridItem = styled("div", {
   border: "1px solid black",
   textAlign: "center",
   borderRadius: 4,
+
+  "@print": {
+    padding: 0,
+    border: "none",
+    textAlign: "left",
+    lineHeight: 1,
+  },
 });
-
-function CVHeader() {
-  return (
-    <StyledHero
-      spacingHorizontal={{ "@print": 3, "@initial": 3, "@bp2": 5 }}
-      spacingVertical={{ "@print": 5, "@initial": 5, "@bp2": 7 }}
-      alignItems="flex-end"
-      justifyContent="space-between"
-    >
-      <Box direction="vertical">
-        <TextTitle1>Andrew James</TextTitle1>
-        <TextHeadline>Frontend Engineer / Glasgow, UK</TextHeadline>
-      </Box>
-
-      <Box
-        direction="horizontal"
-        gap={7}
-        display={{ "@print": "none", "@initial": "none", "@bp2": "flex" }}
-      >
-        <Button
-          title="Print CV"
-          onClick={() => console.log("Implement Print CV")}
-        >
-          <FileTextIcon width={36} height={36} aria-hidden />
-        </Button>
-
-        <Link href="/download-cv" download title="Download CV">
-          <DownloadIcon width={36} height={36} aria-hidden />
-        </Link>
-      </Box>
-    </StyledHero>
-  );
-}
 
 function Cv() {
   return (
     <Layout>
-      <Box spacingTop={{ "@print": 4, "@initial": 4, "@bp2": 7 }}>
+      <Box id="__cv" spacingTop={{ "@print": 4, "@initial": 4, "@bp2": 7 }}>
         <VisuallyHidden.Root>
           <TextTitle1>CV</TextTitle1>
         </VisuallyHidden.Root>
@@ -124,12 +101,53 @@ function Cv() {
         <Box direction="vertical">
           <StyledPageHeader>
             <AspectRatio ratio={2.84 / 1}>
-              <CVHeader />
+              <StyledHero
+                spacingHorizontal={{ "@initial": 3, "@bp2": 5 }}
+                spacingVertical={{ "@initial": 5, "@bp2": 7 }}
+                alignItems="flex-end"
+                justifyContent="space-between"
+              >
+                <Box direction="vertical">
+                  <TextTitle1>{PERSONAL.name}</TextTitle1>
+                  <TextHeadline>
+                    {PERSONAL.occupation} / {PERSONAL.location}
+                  </TextHeadline>
+                </Box>
+
+                <Box
+                  direction="horizontal"
+                  gap={7}
+                  display={{
+                    "@print": "none",
+                    "@initial": "none",
+                    "@bp2": "flex",
+                  }}
+                >
+                  <Button
+                    title="Print CV"
+                    onClick={() => console.log("Implement Print CV")}
+                  >
+                    <FileTextIcon width={36} height={36} aria-hidden />
+                  </Button>
+
+                  <Link href="/download-cv" download title="Download CV">
+                    <DownloadIcon width={36} height={36} aria-hidden />
+                  </Link>
+                </Box>
+              </StyledHero>
             </AspectRatio>
           </StyledPageHeader>
 
           <StyledPrintHeader>
-            <CVHeader />
+            <Box
+              direction="vertical"
+              spacingHorizontal={{ "@print": 3 }}
+              spacingBottom={{ "@print": 3 }}
+              css={{ borderBottom: "2px solid black" }}
+            >
+              <TextTitle1>{PERSONAL.name}</TextTitle1>
+              <TextHeadline>{PERSONAL.occupation} / Glasgow, UK</TextHeadline>
+            </Box>
           </StyledPrintHeader>
 
           <Divider />
@@ -137,13 +155,13 @@ function Cv() {
           <Box
             id="__cv"
             direction="horizontal"
-            gap={{ "@print": 5, "@initial": 5, "@bp2": 7 }}
-            spacingHorizontal={{ "@print": 3, "@initial": 3, "@bp2": 5 }}
-            spacingVertical={{ "@print": 5, "@initial": 5, "@bp2": 10 }}
+            gap={{ "@print": 4, "@initial": 5, "@bp2": 7 }}
+            spacingHorizontal={{ "@print": 3, "@initial": 4, "@bp2": 5 }}
+            spacingVertical={{ "@print": 3, "@initial": 5, "@bp2": 10 }}
             flexWrap={{
+              "@print": "nowrap",
               "@initial": "wrapReverse",
               "@bp3": "nowrap",
-              "@print": "nowrap",
             }}
             flexGrow
           >
@@ -151,14 +169,17 @@ function Cv() {
               direction="vertical"
               gap={10}
               css={{
-                "@print": { flexGrow: 0, flexShrink: 0, flexBasis: 250 },
+                "@print": { flexGrow: 0, flexShrink: 0, flexBasis: 125 },
                 "@bp3": { flexGrow: 0, flexShrink: 0, flexBasis: 250 },
               }}
             >
               <Box direction="vertical" id="contact" as="section">
                 <TextTitle3>Contact</TextTitle3>
 
-                <Box spacingTop={4} spacingBottom={7}>
+                <Box
+                  spacingTop={{ "@print": 1, "@initial": 4 }}
+                  spacingBottom={{ "@print": 2, "@initial": 7 }}
+                >
                   <Divider />
                 </Box>
 
@@ -212,11 +233,19 @@ function Cv() {
               <Box direction="vertical" id="education" as="section">
                 <TextTitle3>Education</TextTitle3>
 
-                <Box spacingTop={4} spacingBottom={7}>
+                <Box
+                  spacingTop={{ "@print": 1, "@initial": 4 }}
+                  spacingBottom={{ "@print": 2, "@initial": 7 }}
+                >
                   <Divider />
                 </Box>
 
-                <GridRoot css={{ "@bp2": { gridRowGap: "$5" } }}>
+                <GridRoot
+                  css={{
+                    "@print": { gridRowGap: "$5" },
+                    "@bp2": { gridRowGap: "$5" },
+                  }}
+                >
                   {EDUCATION.map((education) => (
                     <Box
                       direction="vertical"
@@ -243,7 +272,10 @@ function Cv() {
               <Box direction="vertical" id="expertise" as="section">
                 <TextTitle3>Expertise</TextTitle3>
 
-                <Box spacingTop={4} spacingBottom={7}>
+                <Box
+                  spacingTop={{ "@print": 1, "@initial": 4 }}
+                  spacingBottom={{ "@print": 2, "@initial": 7 }}
+                >
                   <Divider />
                 </Box>
 
@@ -259,7 +291,10 @@ function Cv() {
               <Box direction="vertical" id="interests" as="section">
                 <TextTitle3>Interests</TextTitle3>
 
-                <Box spacingTop={4} spacingBottom={7}>
+                <Box
+                  spacingTop={{ "@print": 1, "@initial": 4 }}
+                  spacingBottom={{ "@print": 2, "@initial": 7 }}
+                >
                   <Divider />
                 </Box>
 
@@ -275,7 +310,10 @@ function Cv() {
               <Box direction="vertical" id="references" as="section">
                 <TextTitle3>References</TextTitle3>
 
-                <Box spacingTop={4} spacingBottom={7}>
+                <Box
+                  spacingTop={{ "@print": 1, "@initial": 4 }}
+                  spacingBottom={{ "@print": 2, "@initial": 7 }}
+                >
                   <Divider />
                 </Box>
 
@@ -290,22 +328,33 @@ function Cv() {
             </Box>
 
             <Box
-              position={{ "@initial": "absolute", "@bp3": "static" }}
-              display={{ "@initial": "none", "@bp3": "flex" }}
+              position={{
+                "@print": "static",
+                "@initial": "absolute",
+                "@bp3": "static",
+              }}
+              display={{ "@print": "flex", "@initial": "none", "@bp3": "flex" }}
             >
               <Divider orientation="vertical" />
             </Box>
 
-            <Box direction="vertical" gap={10} flexGrow>
+            <Box
+              direction="vertical"
+              gap={{ "@print": 5, "@initial": 10 }}
+              flexGrow
+            >
               <Box direction="vertical" id="profile" as="section">
                 <TextTitle3>Profile</TextTitle3>
 
-                <Box spacingTop={4} spacingBottom={7}>
+                <Box
+                  spacingTop={{ "@print": 1, "@initial": 4 }}
+                  spacingBottom={{ "@print": 2, "@initial": 7 }}
+                >
                   <Divider />
                 </Box>
                 <Box
                   direction="vertical"
-                  gap={{ "@initial": 3, "@bp2": 4, "@print": 4 }}
+                  gap={{ "@print": 3, "@initial": 3, "@bp2": 4 }}
                 >
                   <TextBody>{PERSONAL.profile1}</TextBody>
 
@@ -316,36 +365,42 @@ function Cv() {
               <Box direction="vertical" id="experience" as="section">
                 <TextTitle3>Experience</TextTitle3>
 
-                <Box spacingTop={4} spacingBottom={7}>
+                <Box
+                  spacingTop={{ "@print": 1, "@initial": 4 }}
+                  spacingBottom={{ "@print": 2, "@initial": 7 }}
+                >
                   <Divider />
                 </Box>
 
-                <Box direction="vertical" gap={10}>
+                <Box direction="vertical" gap={{ "@print": 5, "@initial": 10 }}>
                   {EMPLOYMENT.map((employer) => (
                     <Box
                       direction="vertical"
-                      gap={{ "@initial": 3, "@bp2": 7, "@print": 7 }}
+                      gap={{ "@print": 2, "@initial": 3, "@bp2": 7 }}
                       key={employer.id}
                     >
-                      <Box direction="vertical" gap={1}>
+                      <Box direction="vertical" gap={2}>
                         <TextTitle3>{employer.position}</TextTitle3>
 
                         <Box
                           direction={{
+                            "@print": "horizontal",
                             "@initial": "vertical",
                             "@bp2": "horizontal",
                           }}
                           alignItems={{
+                            "@print": "flex-end",
                             "@bp2": "flex-end",
                           }}
                           justifyContent={{
+                            "@print": "space-between",
                             "@bp2": "space-between",
                           }}
                           gap={1}
                         >
                           <Box
                             direction="horizontal"
-                            gap={2}
+                            gap={{ "@print": 1, "@initial": 2 }}
                             alignItems="flex-end"
                           >
                             <Link href={employer.url} variant="primary">
@@ -368,7 +423,7 @@ function Cv() {
 
                       <Box
                         direction="vertical"
-                        gap={{ "@initial": 3, "@bp2": 4, "@print": 4 }}
+                        gap={{ "@print": 3, "@initial": 3, "@bp2": 4 }}
                       >
                         <TextBody>{employer.content1}</TextBody>
 
@@ -382,17 +437,37 @@ function Cv() {
                       </Box>
 
                       {employer.notableWork?.length > 0 ? (
-                        <Box direction="vertical">
+                        <Box
+                          direction="vertical"
+                          gap={{
+                            "@print": 0,
+                            "@initial": 3,
+                          }}
+                        >
                           <TextAux>Notable Work</TextAux>
-                          {employer.notableWork.map((work) => (
-                            <li key={work.id}>
-                              <Link href={work.url}>
-                                <TextBody as="span">
-                                  {work.displayName}
-                                </TextBody>
-                              </Link>
-                            </li>
-                          ))}
+                          <Box
+                            as="ul"
+                            direction={{
+                              "@print": "horizontal",
+                              "@initial": "vertical",
+                            }}
+                            spacingHorizontal={5}
+                            gap={{
+                              "@print": 10,
+                              "@initial": 4,
+                            }}
+                            alignItems={{ "@print": "center" }}
+                          >
+                            {employer.notableWork.map((work) => (
+                              <li key={work.id}>
+                                <Link href={work.url}>
+                                  <TextBody as="span">
+                                    {work.displayName}
+                                  </TextBody>
+                                </Link>
+                              </li>
+                            ))}
+                          </Box>
                         </Box>
                       ) : null}
                     </Box>
