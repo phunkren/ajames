@@ -25,7 +25,7 @@ const ToggleGroupRoot = styled(ToggleGroup.Root, {
   },
 
   "@bp3": {
-    gridTemplateColumns: "repeat(6, 1fr)",
+    gridTemplateColumns: "repeat(5, 1fr)",
   },
 });
 
