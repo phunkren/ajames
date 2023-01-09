@@ -68,6 +68,11 @@ export const globalStyles = globalCss({
     font: "inherit",
   },
 
+  /* Come at me bro */
+  "button:hover": {
+    cursor: "pointer",
+  },
+
   // Blog post styling
   article: {
     h1: H1_STYLES,
