@@ -8,6 +8,10 @@ export const H1_STYLES = {
   "@bp3": {
     fontSize: 72,
   },
+
+  "@print": {
+    fontSize: 24,
+  },
 };
 
 export const H2_STYLES = {
@@ -19,6 +23,10 @@ export const H2_STYLES = {
 
   "@bp3": {
     fontSize: 48,
+  },
+
+  "@print": {
+    fontSize: 18,
   },
 };
 
@@ -32,6 +40,10 @@ export const H3_STYLES = {
   "@bp3": {
     fontSize: 24,
   },
+
+  "@print": {
+    fontSize: 16,
+  },
 };
 
 export const P_STYLES = {
@@ -44,6 +56,10 @@ export const P_STYLES = {
   "@bp3": {
     fontSize: 24,
   },
+
+  "@print": {
+    fontSize: 16,
+  },
 };
 
 export const AUX_STYLES = {
@@ -51,5 +67,9 @@ export const AUX_STYLES = {
 
   "@bp2": {
     fontSize: 16,
+  },
+
+  "@print": {
+    fontSize: 14,
   },
 };

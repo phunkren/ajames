@@ -74,6 +74,7 @@ export function HeaderLayout() {
       gap={{ "@initial": 4, "@bp2": 7 }}
       justifyContent="space-between"
       alignItems="center"
+      css={{ "@print": { display: "none" } }}
     >
       <Box direction="horizontal" gap={7} alignItems="center">
         <Link href="/">
@@ -105,6 +106,7 @@ export function FooterLayout() {
       spacingBottom={{ "@initial": 4, "@bp2": 7 }}
       spacingHorizontal={2}
       justifyContent="center"
+      css={{ "@print": { display: "none" } }}
     >
       <Social />
     </Box>
