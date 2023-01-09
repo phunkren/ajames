@@ -1,14 +1,15 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 import { blackA } from "@radix-ui/colors";
 import { styled } from "../stitches.config";
 import { PostTags, PublishDate } from "./Frontmatter";
 import { Box } from "./Layout";
-import { Emoji, TextAux, TextTitle3 } from "./Text";
+import { Emoji, TextAux, TextBody, TextTitle3 } from "./Text";
 import { H3_STYLES } from "../styles/text";
 import { Link } from "./Link";
 import { BlogCardProps, CardProps, VideoCardProps } from "../types/card";
+import { PreviewToggle } from "./Button";
 
 const StyledCardOuter = styled(Box, {
   display: "flex",
@@ -16,10 +17,7 @@ const StyledCardOuter = styled(Box, {
   boxShadow: `0px 2px 4px ${blackA.blackA10}`,
   cursor: "pointer",
   minWidth: `calc(300px - $space$3)`,
-
-  "&:focus-within": {
-    outline: "10px solid red",
-  },
+  minHeight: 420,
 });
 
 const StyledCardInner = styled(Box, {
@@ -39,11 +37,7 @@ const StyledImage = styled(Image, {
   borderTopRightRadius: 4,
 });
 
-const StyledLink = styled(Link, {
-  "&:focus": {
-    outline: "none",
-  },
-});
+const StyledLink = styled(Link, {});
 
 const StyledBlogContent = styled(Box, {
   position: "relative",
@@ -99,30 +93,74 @@ export function Card({ image, children, ...props }: CardProps) {
   );
 }
 
-export function BlogCard({ url, title, image, emoji, tags }: BlogCardProps) {
+export function BlogCard({
+  url,
+  title,
+  description,
+  image,
+  emoji,
+  tags,
+}: BlogCardProps) {
+  const [isPreviewVisible, setIsPreviewVisible] = useState(false);
+
+  function handlePreviewToggle(pressed: boolean) {
+    setIsPreviewVisible(pressed);
+  }
+
   return (
     <Card image={image}>
       {({ ref }) => (
         <>
           <StyledBlogContent direction="vertical">
             <Emoji emoji={emoji} css={{ ...H3_STYLES }} />
+
             <StyledLink href={url} ref={ref}>
-              <TextTitle3
-                id={url}
-                css={{
-                  display: "-webkit-box",
-                  ["-webkit-line-clamp"]: "3",
-                  ["-webkit-box-orient"]: "vertical",
-                  overflow: "hidden",
-                }}
-              >
-                {title}
-              </TextTitle3>
+              {isPreviewVisible ? (
+                <TextAux
+                  css={{
+                    spacingTop: "$2",
+                    lineHeight: 1.75,
+                    display: "-webkit-box",
+                    ["-webkit-line-clamp"]: "4",
+                    ["-webkit-box-orient"]: "vertical",
+                    overflow: "hidden",
+                  }}
+                >
+                  {description}
+                </TextAux>
+              ) : (
+                <TextTitle3
+                  id={url}
+                  css={{
+                    display: "-webkit-box",
+                    ["-webkit-line-clamp"]: "3",
+                    ["-webkit-box-orient"]: "vertical",
+                    overflow: "hidden",
+                  }}
+                >
+                  {title}
+                </TextTitle3>
+              )}
             </StyledLink>
           </StyledBlogContent>
 
-          <Box direction="vertical" css={{ marginTop: "auto" }}>
+          <Box justifyContent="space-between" css={{ marginTop: "auto" }}>
             <PostTags tags={tags} />
+
+            <PreviewToggle
+              css={{
+                "&::before": {
+                  content: "",
+                  width: 80,
+                  height: 80,
+                  background: "transparent",
+                  position: "absolute",
+                  zIndex: -1,
+                },
+              }}
+              pressed={isPreviewVisible}
+              onPressedChange={handlePreviewToggle}
+            />
           </Box>
         </>
       )}

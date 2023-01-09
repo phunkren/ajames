@@ -6,16 +6,22 @@ import {
   useRef,
   useState,
 } from "react";
+import * as Toggle from "@radix-ui/react-toggle";
 import * as Toast from "@radix-ui/react-toast";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
-import debounce from "lodash.debounce";
-import { DoubleArrowUpIcon, Share2Icon } from "@radix-ui/react-icons";
+import {
+  DoubleArrowUpIcon,
+  EyeNoneIcon,
+  EyeOpenIcon,
+  Share2Icon,
+} from "@radix-ui/react-icons";
 import { usePrevious } from "../hooks/usePrevious";
-import { styled } from "../stitches.config";
+import { CSS, styled } from "../stitches.config";
 import { Box } from "./Layout";
 import { PERSONAL } from "../util/data";
 import { blackA, whiteA } from "@radix-ui/colors";
 import { TextHeadline } from "./Text";
+import { ToggleProps } from "@radix-ui/react-toggle-group";
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: "primary" | "secondary";
@@ -205,5 +211,35 @@ export function ShareButton({ url, text, emoji = "👀", variant = "default" }) 
 
       <StyledToastViewport />
     </Toast.Provider>
+  );
+}
+
+const StyledPreviewToggle = styled(Toggle.Root, {
+  all: "unset",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  borderRadius: "50%",
+  spacing: "$3",
+  borderWidth: 1,
+  borderStyle: "solid",
+  borderColor: whiteA.whiteA10,
+  minWidth: 18,
+  minHeight: 18,
+});
+
+export function PreviewToggle(props: ToggleProps & CSS) {
+  return (
+    <StyledPreviewToggle
+      aria-label="Preview toggle"
+      onClick={(e) => e.stopPropagation()}
+      {...props}
+    >
+      {props.pressed ? (
+        <EyeOpenIcon width={18} height={18} focusable={false} />
+      ) : (
+        <EyeNoneIcon width={18} height={18} focusable={false} />
+      )}
+    </StyledPreviewToggle>
   );
 }
