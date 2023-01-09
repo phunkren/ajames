@@ -216,16 +216,13 @@ export function ShareButton({ url, text, emoji = "👀", variant = "default" }) 
 
 const StyledPreviewToggle = styled(Toggle.Root, {
   all: "unset",
-  display: "flex",
+  display: "inline-flex",
   alignItems: "center",
   justifyContent: "center",
   borderRadius: "50%",
-  spacing: "$3",
   borderWidth: 1,
   borderStyle: "solid",
-  borderColor: whiteA.whiteA10,
-  minWidth: 18,
-  minHeight: 18,
+  borderColor: "transparent",
 });
 
 export function PreviewToggle(props: ToggleProps & CSS) {
@@ -234,12 +231,6 @@ export function PreviewToggle(props: ToggleProps & CSS) {
       aria-label="Preview toggle"
       onClick={(e) => e.stopPropagation()}
       {...props}
-    >
-      {props.pressed ? (
-        <EyeOpenIcon width={18} height={18} focusable={false} />
-      ) : (
-        <EyeNoneIcon width={18} height={18} focusable={false} />
-      )}
-    </StyledPreviewToggle>
+    />
   );
 }

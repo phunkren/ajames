@@ -112,7 +112,24 @@ export function BlogCard({
       {({ ref }) => (
         <>
           <StyledBlogContent direction="vertical">
-            <Emoji emoji={emoji} css={{ ...H3_STYLES }} />
+            <PreviewToggle
+              aria-label="Toggle article preview"
+              css={{
+                alignSelf: "flex-start",
+                "&::before": {
+                  content: "",
+                  width: 44,
+                  height: 44,
+                  background: "transparent",
+                  position: "absolute",
+                  zIndex: 0,
+                },
+              }}
+              pressed={isPreviewVisible}
+              onPressedChange={handlePreviewToggle}
+            >
+              <Emoji emoji={emoji} css={{ ...H3_STYLES, zIndex: 1 }} />
+            </PreviewToggle>
 
             <StyledLink href={url} ref={ref}>
               {isPreviewVisible ? (
@@ -144,23 +161,8 @@ export function BlogCard({
             </StyledLink>
           </StyledBlogContent>
 
-          <Box justifyContent="space-between" css={{ marginTop: "auto" }}>
+          <Box css={{ marginTop: "auto" }}>
             <PostTags tags={tags} />
-
-            <PreviewToggle
-              css={{
-                "&::before": {
-                  content: "",
-                  width: 80,
-                  height: 80,
-                  background: "transparent",
-                  position: "absolute",
-                  zIndex: -1,
-                },
-              }}
-              pressed={isPreviewVisible}
-              onPressedChange={handlePreviewToggle}
-            />
           </Box>
         </>
       )}
