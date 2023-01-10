@@ -8,10 +8,10 @@ import {
   LinkedInLogoIcon,
 } from "@radix-ui/react-icons";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
-import { Button } from "../components/Button";
+import { Button, PrintButton } from "../components/Button";
 import { Divider } from "../components/Divider";
 import { Box, Layout } from "../components/Layout";
-import { Link } from "../components/Link";
+import { Link, StyledIconLink } from "../components/Link";
 import { Social } from "../components/Social";
 import {
   TextAux,
@@ -59,8 +59,8 @@ const GridRoot = styled("div", {
   display: "grid",
   gridTemplateColumns: "1fr",
   gridTemplateRows: "repeat(auto, 1fr)",
-  gridColumnGap: "$3",
-  gridRowGap: "$2",
+  gridColumnGap: "$4",
+  gridRowGap: "$4",
 
   "@bp2": {
     gridTemplateColumns: "repeat(2, 1fr)",
@@ -93,16 +93,16 @@ const GridItem = styled("div", {
 function Cv() {
   return (
     <Layout>
-      <Box id="__cv" spacingTop={{ "@print": 4, "@initial": 4, "@bp2": 7 }}>
+      <Box spacingTop={{ "@print": 4, "@initial": 4, "@bp2": 7 }}>
         <VisuallyHidden.Root>
-          <TextTitle1>CV</TextTitle1>
+          <TextTitle1>About</TextTitle1>
         </VisuallyHidden.Root>
 
         <Box direction="vertical">
           <StyledPageHeader>
             <AspectRatio ratio={2.84 / 1}>
               <StyledHero
-                spacingHorizontal={{ "@initial": 3, "@bp2": 5 }}
+                spacingHorizontal={{ "@initial": 4, "@bp2": 10 }}
                 spacingVertical={{ "@initial": 5, "@bp2": 7 }}
                 alignItems="flex-end"
                 justifyContent="space-between"
@@ -116,23 +116,17 @@ function Cv() {
 
                 <Box
                   direction="horizontal"
-                  gap={7}
+                  gap={4}
                   display={{
-                    "@print": "none",
                     "@initial": "none",
                     "@bp2": "flex",
                   }}
                 >
-                  <Button
-                    title="Print CV"
-                    onClick={() => console.log("Implement Print CV")}
-                  >
-                    <FileTextIcon width={36} height={36} aria-hidden />
-                  </Button>
+                  <PrintButton />
 
-                  <Link href="/download-cv" download title="Download CV">
-                    <DownloadIcon width={36} height={36} aria-hidden />
-                  </Link>
+                  <StyledIconLink href="/download-cv" title="Download" download>
+                    <DownloadIcon width={18} height={18} aria-hidden />
+                  </StyledIconLink>
                 </Box>
               </StyledHero>
             </AspectRatio>
@@ -155,9 +149,9 @@ function Cv() {
           <Box
             id="__cv"
             direction="horizontal"
-            gap={{ "@print": 4, "@initial": 5, "@bp2": 7 }}
-            spacingHorizontal={{ "@print": 3, "@initial": 4, "@bp2": 5 }}
-            spacingVertical={{ "@print": 3, "@initial": 5, "@bp2": 10 }}
+            gap={{ "@print": 4, "@initial": 10 }}
+            spacingHorizontal={{ "@print": 3, "@initial": 4, "@bp2": 10 }}
+            spacingVertical={{ "@print": 3, "@initial": 10 }}
             flexWrap={{
               "@print": "nowrap",
               "@initial": "wrapReverse",
@@ -178,12 +172,23 @@ function Cv() {
 
                 <Box
                   spacingTop={{ "@print": 1, "@initial": 4 }}
-                  spacingBottom={{ "@print": 2, "@initial": 7 }}
+                  spacingBottom={{ "@print": 2, "@initial": 6 }}
                 >
                   <Divider />
                 </Box>
 
                 <GridRoot>
+                  <Link
+                    variant="tertiary"
+                    href={SOCIAL.linkedin.url}
+                    title={SOCIAL.linkedin.displayName}
+                  >
+                    <Box direction="horizontal" gap={4} alignItems="center">
+                      <LinkedInLogoIcon width={18} height={18} aria-hidden />
+                      <TextHeadline>Andrew James</TextHeadline>
+                    </Box>
+                  </Link>
+
                   <Link
                     variant="tertiary"
                     href="mailto:contact@ajames.dev"
@@ -208,17 +213,6 @@ function Cv() {
 
                   <Link
                     variant="tertiary"
-                    href={SOCIAL.linkedin.url}
-                    title={SOCIAL.linkedin.displayName}
-                  >
-                    <Box direction="horizontal" gap={4} alignItems="center">
-                      <LinkedInLogoIcon width={18} height={18} aria-hidden />
-                      <TextHeadline>Andrew James</TextHeadline>
-                    </Box>
-                  </Link>
-
-                  <Link
-                    variant="tertiary"
                     href={SOCIAL.github.url}
                     title={SOCIAL.github.displayName}
                   >
@@ -235,7 +229,7 @@ function Cv() {
 
                 <Box
                   spacingTop={{ "@print": 1, "@initial": 4 }}
-                  spacingBottom={{ "@print": 2, "@initial": 7 }}
+                  spacingBottom={{ "@print": 2, "@initial": 6 }}
                 >
                   <Divider />
                 </Box>
@@ -243,21 +237,21 @@ function Cv() {
                 <GridRoot
                   css={{
                     "@print": { gridRowGap: "$5" },
-                    "@bp2": { gridRowGap: "$5" },
+                    "@bp2": { gridRowGap: "$10" },
                   }}
                 >
                   {EDUCATION.map((education) => (
                     <Box
                       direction="vertical"
                       key={education.id}
-                      gap={1}
+                      gap={2}
                       justifyContent="flex-end"
                     >
                       {education.qualification ? (
                         <TextTitle3>{education.qualification}</TextTitle3>
                       ) : null}
                       <TextBody>{education.course}</TextBody>
-                      <TextBody>{education.institution}</TextBody>
+                      <TextAux>{education.institution}</TextAux>
                       <TextAux>
                         {education.startDate
                           ? `${education.startDate} - `
@@ -274,7 +268,7 @@ function Cv() {
 
                 <Box
                   spacingTop={{ "@print": 1, "@initial": 4 }}
-                  spacingBottom={{ "@print": 2, "@initial": 7 }}
+                  spacingBottom={{ "@print": 2, "@initial": 6 }}
                 >
                   <Divider />
                 </Box>
@@ -293,7 +287,7 @@ function Cv() {
 
                 <Box
                   spacingTop={{ "@print": 1, "@initial": 4 }}
-                  spacingBottom={{ "@print": 2, "@initial": 7 }}
+                  spacingBottom={{ "@print": 2, "@initial": 6 }}
                 >
                   <Divider />
                 </Box>
@@ -312,18 +306,20 @@ function Cv() {
 
                 <Box
                   spacingTop={{ "@print": 1, "@initial": 4 }}
-                  spacingBottom={{ "@print": 2, "@initial": 7 }}
+                  spacingBottom={{ "@print": 2, "@initial": 6 }}
                 >
                   <Divider />
                 </Box>
 
-                <Link href="https://www.linkedin.com/in/phunkren/details/recommendations/">
-                  LinkedIn Recommendations
-                </Link>
+                <Box direction="vertical" gap={10}>
+                  <Link href="https://www.linkedin.com/in/phunkren/details/recommendations/">
+                    LinkedIn Recommendations
+                  </Link>
 
-                <TextBody>
-                  Written references are also available upon request.
-                </TextBody>
+                  <TextBody>
+                    Written references are available upon request.
+                  </TextBody>
+                </Box>
               </Box>
             </Box>
 
@@ -348,13 +344,14 @@ function Cv() {
 
                 <Box
                   spacingTop={{ "@print": 1, "@initial": 4 }}
-                  spacingBottom={{ "@print": 2, "@initial": 7 }}
+                  spacingBottom={{ "@print": 2, "@initial": 6 }}
                 >
                   <Divider />
                 </Box>
+
                 <Box
                   direction="vertical"
-                  gap={{ "@print": 3, "@initial": 3, "@bp2": 4 }}
+                  gap={{ "@print": 3, "@initial": 3, "@bp2": 6 }}
                 >
                   <TextBody>{PERSONAL.profile1}</TextBody>
 
@@ -367,7 +364,7 @@ function Cv() {
 
                 <Box
                   spacingTop={{ "@print": 1, "@initial": 4 }}
-                  spacingBottom={{ "@print": 2, "@initial": 7 }}
+                  spacingBottom={{ "@print": 2, "@initial": 6 }}
                 >
                   <Divider />
                 </Box>
@@ -376,7 +373,7 @@ function Cv() {
                   {EMPLOYMENT.map((employer) => (
                     <Box
                       direction="vertical"
-                      gap={{ "@print": 2, "@initial": 3, "@bp2": 7 }}
+                      gap={{ "@print": 2, "@initial": 3, "@bp2": 6 }}
                       key={employer.id}
                     >
                       <Box direction="vertical" gap={2}>
@@ -423,7 +420,7 @@ function Cv() {
 
                       <Box
                         direction="vertical"
-                        gap={{ "@print": 3, "@initial": 3, "@bp2": 4 }}
+                        gap={{ "@print": 3, "@initial": 3, "@bp2": 6 }}
                       >
                         <TextBody>{employer.content1}</TextBody>
 
@@ -441,7 +438,7 @@ function Cv() {
                           direction="vertical"
                           gap={{
                             "@print": 0,
-                            "@initial": 3,
+                            "@initial": 2,
                           }}
                         >
                           <TextAux>Notable Work</TextAux>
@@ -454,13 +451,13 @@ function Cv() {
                             spacingHorizontal={5}
                             gap={{
                               "@print": 10,
-                              "@initial": 4,
+                              "@initial": 0,
                             }}
                             alignItems={{ "@print": "center" }}
                           >
                             {employer.notableWork.map((work) => (
                               <li key={work.id}>
-                                <Link href={work.url}>
+                                <Link href={work.url} variant="tertiary">
                                   <TextBody as="span">
                                     {work.displayName}
                                   </TextBody>

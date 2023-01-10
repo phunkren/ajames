@@ -26,6 +26,11 @@ export function NavigationLinks() {
   return (
     <>
       <li>
+        <Link variant="secondary" href="/about">
+          <TextHeadline>About</TextHeadline>
+        </Link>
+      </li>
+      <li>
         <Link variant="secondary" href="/blog">
           <TextHeadline>Blog</TextHeadline>
         </Link>
@@ -33,11 +38,6 @@ export function NavigationLinks() {
       <li>
         <Link variant="secondary" href="/streaming">
           <TextHeadline>Streaming</TextHeadline>
-        </Link>
-      </li>
-      <li>
-        <Link variant="secondary" href="/cv">
-          <TextHeadline>CV</TextHeadline>
         </Link>
       </li>
     </>
