@@ -169,7 +169,7 @@ function Cv() {
               }}
             >
               <Box direction="vertical" id="contact" as="section">
-                <TextTitle3>Contact</TextTitle3>
+                <TextTitle3 as="h2">Contact</TextTitle3>
 
                 <Box
                   spacingTop={{ "@print": 1, "@initial": 4 }}
@@ -226,7 +226,7 @@ function Cv() {
               </Box>
 
               <Box direction="vertical" id="education" as="section">
-                <TextTitle3>Education</TextTitle3>
+                <TextTitle3 as="h2">Education</TextTitle3>
 
                 <Box
                   spacingTop={{ "@print": 1, "@initial": 4 }}
@@ -265,7 +265,7 @@ function Cv() {
               </Box>
 
               <Box direction="vertical" id="expertise" as="section">
-                <TextTitle3>Expertise</TextTitle3>
+                <TextTitle3 as="h2">Expertise</TextTitle3>
 
                 <Box
                   spacingTop={{ "@print": 1, "@initial": 4 }}
@@ -284,7 +284,7 @@ function Cv() {
               </Box>
 
               <Box direction="vertical" id="interests" as="section">
-                <TextTitle3>Interests</TextTitle3>
+                <TextTitle3 as="h2">Interests</TextTitle3>
 
                 <Box
                   spacingTop={{ "@print": 1, "@initial": 4 }}
@@ -303,7 +303,7 @@ function Cv() {
               </Box>
 
               <Box direction="vertical" id="references" as="section">
-                <TextTitle3>References</TextTitle3>
+                <TextTitle3 as="h2">References</TextTitle3>
 
                 <Box
                   spacingTop={{ "@print": 1, "@initial": 4 }}
@@ -392,7 +392,7 @@ function Cv() {
               flexGrow
             >
               <Box direction="vertical" id="profile" as="section">
-                <TextTitle3>Profile</TextTitle3>
+                <TextTitle3 as="h2">Profile</TextTitle3>
 
                 <Box
                   spacingTop={{ "@print": 1, "@initial": 4 }}
@@ -412,7 +412,7 @@ function Cv() {
               </Box>
 
               <Box direction="vertical" id="experience" as="section">
-                <TextTitle3>Experience</TextTitle3>
+                <TextTitle3 as="h2">Experience</TextTitle3>
 
                 <Box
                   spacingTop={{ "@print": 1, "@initial": 4 }}
