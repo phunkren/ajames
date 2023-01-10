@@ -10,7 +10,13 @@ import * as Toggle from "@radix-ui/react-toggle";
 import * as Toast from "@radix-ui/react-toast";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { ToggleProps } from "@radix-ui/react-toggle-group";
-import { DoubleArrowUpIcon, FileIcon, Share2Icon } from "@radix-ui/react-icons";
+import {
+  DoubleArrowUpIcon,
+  EyeClosedIcon,
+  EyeOpenIcon,
+  FileIcon,
+  Share2Icon,
+} from "@radix-ui/react-icons";
 import { usePrevious } from "../hooks/usePrevious";
 import { CSS, styled } from "../stitches.config";
 import { Box } from "./Layout";
@@ -219,13 +225,26 @@ const StyledPreviewToggle = styled(Toggle.Root, {
   borderColor: "transparent",
 });
 
-export function PreviewToggle(props: ToggleProps & CSS) {
+export function PreviewToggle({ pressed, ...props }: ToggleProps & CSS) {
   return (
     <StyledPreviewToggle
       aria-label="Preview toggle"
+      pressed={pressed}
       onClick={(e) => e.stopPropagation()}
       {...props}
-    />
+    >
+      {pressed ? (
+        <>
+          <EyeOpenIcon width={18} height={18} />
+          <VisuallyHidden.Root>Description Visible</VisuallyHidden.Root>
+        </>
+      ) : (
+        <>
+          <EyeClosedIcon width={18} height={18} />
+          <VisuallyHidden.Root>Description Hidden</VisuallyHidden.Root>
+        </>
+      )}
+    </StyledPreviewToggle>
   );
 }
 

@@ -5,9 +5,8 @@ import { blackA } from "@radix-ui/colors";
 import { styled } from "../stitches.config";
 import { PostTags, PublishDate } from "./Frontmatter";
 import { Box } from "./Layout";
-import { Emoji, TextAux, TextBody, TextTitle3 } from "./Text";
-import { H3_STYLES } from "../styles/text";
-import { Link } from "./Link";
+import { Emoji, TextAux, TextTitle3 } from "./Text";
+import { Link, StyledIconLink } from "./Link";
 import { BlogCardProps, CardProps, VideoCardProps } from "../types/card";
 import { PreviewToggle } from "./Button";
 
@@ -17,7 +16,6 @@ const StyledCardOuter = styled(Box, {
   boxShadow: `0px 2px 4px ${blackA.blackA10}`,
   cursor: "pointer",
   minWidth: `calc(300px - $space$3)`,
-  minHeight: 420,
 });
 
 const StyledCardInner = styled(Box, {
@@ -41,15 +39,7 @@ const StyledLink = styled(Link, {});
 
 const StyledBlogContent = styled(Box, {
   position: "relative",
-  top: -13,
-
-  "@bp2": {
-    top: -15,
-  },
-
-  "@bp3": {
-    top: -18,
-  },
+  top: -24,
 });
 
 export function Card({ image, children, ...props }: CardProps) {
@@ -111,39 +101,37 @@ export function BlogCard({
     <Card image={image}>
       {({ ref }) => (
         <>
-          <StyledBlogContent direction="vertical">
-            <PreviewToggle
-              aria-label="Toggle article preview"
+          <StyledBlogContent
+            direction="vertical"
+            css={{ minHeight: 138, "@bp2": { minHeight: 168 } }}
+          >
+            <Emoji
+              emoji={emoji}
               css={{
-                alignSelf: "flex-start",
-                "&::before": {
-                  content: "",
-                  width: 44,
-                  height: 44,
-                  background: "transparent",
-                  position: "absolute",
-                  zIndex: 0,
-                },
+                zIndex: 1,
+                spacingBottom: "$2",
+                position: "relative",
+                right: "$1",
               }}
-              pressed={isPreviewVisible}
-              onPressedChange={handlePreviewToggle}
-            >
-              <Emoji emoji={emoji} css={{ ...H3_STYLES, zIndex: 1 }} />
-            </PreviewToggle>
+            />
 
             <StyledLink href={url} ref={ref}>
               {isPreviewVisible ? (
                 <TextAux
                   css={{
-                    spacingTop: "$2",
                     lineHeight: 1.75,
                     display: "-webkit-box",
-                    ["-webkit-line-clamp"]: "4",
+                    ["-webkit-line-clamp"]: "3",
                     ["-webkit-box-orient"]: "vertical",
                     overflow: "hidden",
+                    textTransform: "capitalize",
+
+                    "@bp2": {
+                      ["-webkit-line-clamp"]: "4",
+                    },
                   }}
                 >
-                  {description}
+                  {description} {description}
                 </TextAux>
               ) : (
                 <TextTitle3
@@ -161,8 +149,29 @@ export function BlogCard({
             </StyledLink>
           </StyledBlogContent>
 
-          <Box css={{ marginTop: "auto" }}>
+          <Box
+            justifyContent="space-between"
+            alignItems="center"
+            css={{ marginTop: "auto" }}
+          >
             <PostTags tags={tags} />
+
+            <PreviewToggle
+              aria-label="Toggle article preview"
+              css={{
+                "&::before": {
+                  content: "",
+                  width: 44,
+                  height: 44,
+                  background: "transparent",
+                  position: "absolute",
+                  zIndex: 0,
+                },
+              }}
+              title="View description"
+              pressed={isPreviewVisible}
+              onPressedChange={handlePreviewToggle}
+            />
           </Box>
         </>
       )}

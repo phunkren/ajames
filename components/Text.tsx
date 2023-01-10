@@ -57,6 +57,7 @@ const StyledTextAux = styled("span", {
 
 const StyledEmoji = styled("span", {
   display: "block",
+  fontSize: 32,
 });
 
 export function TextTitle1({ as, ...props }: HeaderProps) {
