@@ -1,6 +1,7 @@
 import { Education } from "../types/education";
 import { Employer } from "../types/employer";
 import { Social } from "../types/social";
+import { Testimonial } from "../types/testimonial";
 
 export const EDUCATION: Education[] = [
   {
@@ -13,6 +14,7 @@ export const EDUCATION: Education[] = [
   },
   {
     id: "gcal-usa",
+
     course: "Erasmus+ Study Abroad",
     institution: "UMass Boston",
     startDate: "2011",
@@ -20,7 +22,7 @@ export const EDUCATION: Education[] = [
   },
   {
     id: "udacity",
-    qualification: "Graduate",
+
     course: "Frontend Nanodegree",
     institution: "Udacity",
     endDate: "2016",
@@ -245,3 +247,40 @@ export const SOCIAL: Record<string, Social> = {
     url: "https://twitter.com/phunkren",
   },
 };
+
+export const TESTIMONIALS: Testimonial[] = [
+  {
+    id: "testimonial-matthew-sinclair",
+    name: "Matthew Sinclair",
+    url: "https://www.linkedin.com/in/matthewsinclair/",
+    quote1:
+      "Rarely have I had the opportunity to work with an engineer that combines Andrew's technical calibre, his exceptional citizenship, his ability to communicate and demonstrate his ideas to both team and client, and his commitment to coaching and mentoring the folks he works with.",
+    quote2:
+      "He blogs about some of the most interesting front-end technologies, and on top of all of this, he's an all-round great human. He is a genuine asset to any tech team that has the privilege of his attention, and I have no hesitation recommending him wholeheartedly for any role that he puts his mind to.",
+  },
+  {
+    id: "testimonail-paul-groves",
+    name: "Paul Groves",
+    url: "https://www.linkedin.com/in/-paul-groves/",
+    quote1:
+      "Andrew brings exceptional technical competency to his work, applying the highest levels of detail and clarity to his code. In his role at BCGDV, Andrew took full ownership of the design and implementation of multiple front end systems, driving the direction, performing impressive demos to clients, and mentoring his colleagues.",
+    quote2:
+      "He brings a considered, positive attitude and has been an absolute pleasure to work with. I could not recommend him higher.",
+  },
+  {
+    id: "testimonial-ian-brennan",
+    name: "Ian Brennan",
+    url: "https://www.linkedin.com/in/ian-brennan-474245138/",
+    quote1:
+      "From the moment we interviewed him, through to the many projects we worked on together, Andrew always showed a strong desire and passion for his work and the technologies behind it. He picks up new techniques, approaches, libraries, and languages with ease, delivering on project requirements whilst also taking the time to truly understand how something works.",
+  },
+  {
+    id: "testimonial-don-knox",
+    name: "Don Knox",
+    url: "https://www.linkedin.com/in/don-knox-53902351/",
+    quote1:
+      "I knew Andrew when he was enrolled on the Audio Technology BSc (Hons) degree at GCU, between 2102 and 2014. Throughout his time at GCU, Andrew proved himself to be an enthusiastic and talented student. ",
+    quote2:
+      "He had a clear enthusiasm for his subject, and engaged diligently with several programming-centred and system development activities required in the degree. In addition to his proven professional expertise and knowledge, Andrew is a friendly, personable and conscientious individual.",
+  },
+];
