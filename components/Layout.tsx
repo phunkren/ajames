@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import Image from "next/image";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
@@ -15,7 +16,6 @@ import { ScrollToTopButton } from "./Button";
 import { TextHeadline } from "./Text";
 import Head from "next/head";
 import { PERSONAL, SITE, SOCIAL } from "../util/data";
-import { useRouter } from "next/router";
 
 const StyledBox = styled("div", {
   display: "flex",
