@@ -30,6 +30,7 @@ import {
   PERSONAL,
   SITE,
   SOCIAL,
+  TESTIMONIALS,
 } from "../util/data";
 
 const StyledPageHeader = styled(Box, {
@@ -312,13 +313,42 @@ function Cv() {
                 </Box>
 
                 <Box direction="vertical" gap={10}>
-                  <Link href="https://www.linkedin.com/in/phunkren/details/recommendations/">
-                    LinkedIn Recommendations
-                  </Link>
+                  <Box as="ul" direction="vertical" gap={10} spacingBottom={10}>
+                    {TESTIMONIALS.map((testimonial) => (
+                      <Box as="li" direction="vertical" key={testimonial.id}>
+                        <Box
+                          as="blockquote"
+                          direction="vertical"
+                          cite={SOCIAL.linkedin.url}
+                          gap={{ "@print": 3, "@initial": 3, "@bp2": 6 }}
+                          css={{
+                            fontStyle: "oblique",
+                            textAlign: "justify",
+                          }}
+                        >
+                          <TextAux css={{ textTransform: "capitalize" }}>
+                            {testimonial.quote1}
+                          </TextAux>
 
-                  <TextBody>
-                    Written references are available upon request.
-                  </TextBody>
+                          {testimonial.quote2 ? (
+                            <TextAux css={{ textTransform: "capitalize" }}>
+                              {testimonial.quote2}
+                            </TextAux>
+                          ) : null}
+                        </Box>
+
+                        <Link
+                          variant="secondary"
+                          href={testimonial.url}
+                          css={{ alignSelf: "flex-end" }}
+                        >
+                          <TextHeadline css={{ spacingTop: "$4" }}>
+                            - {testimonial.name}
+                          </TextHeadline>
+                        </Link>
+                      </Box>
+                    ))}
+                  </Box>
                 </Box>
               </Box>
             </Box>
