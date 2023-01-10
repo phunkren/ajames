@@ -19,13 +19,13 @@ const ToggleGroupRoot = styled(ToggleGroup.Root, {
   width: "100%",
 
   "@bp2": {
-    gridTemplateColumns: "repeat(4, 1fr)",
+    gridTemplateColumns: "repeat(3, 1fr)",
     gridColumnGap: "$4",
     gridRowGap: "$4",
   },
 
   "@bp3": {
-    gridTemplateColumns: "repeat(5, 1fr)",
+    gridTemplateColumns: "repeat(4, 1fr)",
   },
 });
 
