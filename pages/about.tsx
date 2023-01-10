@@ -312,10 +312,18 @@ function Cv() {
                   <Divider />
                 </Box>
 
-                <Box direction="vertical" gap={10}>
-                  <Box as="ul" direction="vertical" gap={10} spacingBottom={10}>
-                    {TESTIMONIALS.map((testimonial) => (
-                      <Box as="li" direction="vertical" key={testimonial.id}>
+                <Box direction="vertical" gap={10} spacingBottom={10}>
+                  <Box as="ul" direction="vertical" gap={10}>
+                    {TESTIMONIALS.map((testimonial, i) => (
+                      <Box
+                        as="li"
+                        direction="vertical"
+                        key={testimonial.id}
+                        display={{
+                          "@print": i === 0 ? "flex" : "none",
+                          "@initial": "flex",
+                        }}
+                      >
                         <Box
                           as="blockquote"
                           direction="vertical"
@@ -348,6 +356,20 @@ function Cv() {
                         </Link>
                       </Box>
                     ))}
+                  </Box>
+
+                  <Box
+                    direction="vertical"
+                    gap={10}
+                    display={{ "@print": "flex", "@initial": "none" }}
+                  >
+                    <Link href={SOCIAL.linkedin.url} variant="tertiary">
+                      <TextBody>View all references on LinkedIn</TextBody>
+                    </Link>
+
+                    <TextBody>
+                      Written references are also available upon request
+                    </TextBody>
                   </Box>
                 </Box>
               </Box>

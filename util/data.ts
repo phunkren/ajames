@@ -259,7 +259,7 @@ export const TESTIMONIALS: Testimonial[] = [
       "He blogs about some of the most interesting front-end technologies, and on top of all of this, he's an all-round great human. He is a genuine asset to any tech team that has the privilege of his attention, and I have no hesitation recommending him wholeheartedly for any role that he puts his mind to.",
   },
   {
-    id: "testimonail-paul-groves",
+    id: "testimonial-paul-groves",
     name: "Paul Groves",
     url: "https://www.linkedin.com/in/-paul-groves/",
     quote1:
