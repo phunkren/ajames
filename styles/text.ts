@@ -53,35 +53,20 @@ export const P_STYLES = {
     fontSize: 22,
   },
 
-  "@bp3": {
-    fontSize: 24,
-  },
-
-  "div#__cv &": {
-    fontSize: 20,
-    lineHeight: 1.5,
-
-    "@print": {
-      fontSize: 14,
-      lineHeight: 1.25,
-    },
+  "@print": {
+    fontSize: 14,
+    lineHeight: 1.25,
   },
 };
 
 export const AUX_STYLES = {
   fontSize: 14,
 
-  "div#__cv &": {
-    "@print": {
-      fontSize: 11,
-    },
-  },
-
   "@bp2": {
     fontSize: 16,
   },
 
   "@print": {
-    fontSize: 14,
+    fontSize: 11,
   },
 };
