@@ -9,19 +9,14 @@ import {
 import * as Toggle from "@radix-ui/react-toggle";
 import * as Toast from "@radix-ui/react-toast";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
-import {
-  DoubleArrowUpIcon,
-  EyeNoneIcon,
-  EyeOpenIcon,
-  Share2Icon,
-} from "@radix-ui/react-icons";
+import { ToggleProps } from "@radix-ui/react-toggle-group";
+import { DoubleArrowUpIcon, FileIcon, Share2Icon } from "@radix-ui/react-icons";
 import { usePrevious } from "../hooks/usePrevious";
 import { CSS, styled } from "../stitches.config";
 import { Box } from "./Layout";
 import { PERSONAL } from "../util/data";
 import { blackA, whiteA } from "@radix-ui/colors";
 import { TextHeadline } from "./Text";
-import { ToggleProps } from "@radix-ui/react-toggle-group";
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: "primary" | "secondary";
@@ -43,6 +38,25 @@ const StyledButton = styled("button", {
   "line-height": "normal",
   "-webkit-appearance": "none",
   "-moz-appearance": "none",
+});
+
+export const Button = forwardRef(
+  (props: ButtonProps, ref: Ref<HTMLButtonElement>) => {
+    return <StyledButton ref={ref} type="button" {...props} />;
+  }
+);
+
+const StyledIconButton = styled(Button, {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  borderRadius: "50%",
+  spacing: "$2",
+  borderWidth: 1,
+  borderStyle: "solid",
+  borderColor: whiteA.whiteA10,
+  minWidth: 44,
+  minHeight: 44,
 });
 
 const StyledToastViewport = styled(Toast.Viewport, {
@@ -79,12 +93,6 @@ const StyledToastRoot = styled(Toast.Root, {
     transition: "transform 200ms ease-out",
   },
 });
-
-export const Button = forwardRef(
-  (props: ButtonProps, ref: Ref<HTMLButtonElement>) => {
-    return <StyledButton ref={ref} type="button" {...props} />;
-  }
-);
 
 const StyledScrollToTop = styled(Button, {
   position: "fixed",
@@ -151,19 +159,6 @@ export function ScrollToTopButton() {
   );
 }
 
-const StyledShareButton = styled(Button, {
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  borderRadius: "50%",
-  spacing: "$2",
-  borderWidth: 1,
-  borderStyle: "solid",
-  borderColor: whiteA.whiteA10,
-  minWidth: 44,
-  minHeight: 44,
-});
-
 export function ShareButton({ url, text, emoji = "👀", variant = "default" }) {
   const [open, setOpen] = useState(false);
   const timerRef = useRef(0);
@@ -191,11 +186,10 @@ export function ShareButton({ url, text, emoji = "👀", variant = "default" }) 
   return (
     <Toast.Provider label="Share notification" duration={2000}>
       {variant === "icon" ? (
-        <StyledShareButton title="Share" onClick={handleClick}>
+        <StyledIconButton title="Share" onClick={handleClick}>
           <Share2Icon width={18} height={18} aria-hidden />
-
           <VisuallyHidden.Root>Share</VisuallyHidden.Root>
-        </StyledShareButton>
+        </StyledIconButton>
       ) : (
         <Button title="Share" onClick={handleClick}>
           <Box alignItems="center" gap={2}>
@@ -232,5 +226,14 @@ export function PreviewToggle(props: ToggleProps & CSS) {
       onClick={(e) => e.stopPropagation()}
       {...props}
     />
+  );
+}
+
+export function PrintButton(props) {
+  return (
+    <StyledIconButton title="Print" onClick={() => window?.print()} {...props}>
+      <FileIcon width={18} height={18} />
+      <VisuallyHidden.Root>Print</VisuallyHidden.Root>
+    </StyledIconButton>
   );
 }
