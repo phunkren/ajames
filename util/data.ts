@@ -80,7 +80,7 @@ export const EMPLOYMENT: Employer[] = [
   },
   {
     id: "bcgdv",
-    displayName: "BCG Digital Venues",
+    displayName: "BCG Digital Ventures",
     url: "https://www.bcgdv.com/",
     position: "Senior Frontend Engineer",
     startDate: "Apr 19",
