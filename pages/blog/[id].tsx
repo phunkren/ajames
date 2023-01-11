@@ -128,8 +128,12 @@ export default function BlogPost({ frontmatter, postData }: Props) {
                 <li>
                   <PostTags tags={frontmatter.tags} icon />
                 </li>
-                <PublishDate as="li" date={frontmatter.date} icon />
-                <ReadingTime as="li" time={frontmatter.time} icon />
+                <li>
+                  <PublishDate date={frontmatter.date} icon />
+                </li>
+                <li>
+                  <ReadingTime time={frontmatter.time} icon />
+                </li>
               </Box>
             </Box>
 
@@ -185,16 +189,18 @@ export default function BlogPost({ frontmatter, postData }: Props) {
             <Divider />
           </Box>
 
-          <Box direction="vertical" gap={5} alignItems="center">
-            <TextTitle3>Enjoying the articles?</TextTitle3>
+          <Box direction="vertical" gap={6}>
+            <TextTitle3
+              css={{ textAlign: "center", color: "$foregroundMuted" }}
+            >
+              Enjoying the content?
+            </TextTitle3>
 
             <Box
-              justifyContent="space-between"
+              justifyContent="space-around"
               alignItems="center"
-              spacingHorizontal={10}
               spacingBottom={10}
-              gap={10}
-              css={{ width: "100%" }}
+              gap={7}
             >
               <TwitterShareLink
                 url={shareUrl}

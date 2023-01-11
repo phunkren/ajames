@@ -34,7 +34,6 @@ const ToggleGroupItem = styled(ToggleGroup.Item, {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  color: "white",
   backgroundColor: "transparent",
   opacity: 0.4,
   textTransform: "uppercase",

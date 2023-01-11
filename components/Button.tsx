@@ -60,9 +60,13 @@ const StyledIconButton = styled(Button, {
   spacing: "$2",
   borderWidth: 1,
   borderStyle: "solid",
-  borderColor: whiteA.whiteA10,
+  borderColor: "$foregroundMuted",
   minWidth: 44,
   minHeight: 44,
+
+  "&:hover": {
+    backgroundColor: "$foregroundMuted",
+  },
 });
 
 const StyledToastViewport = styled(Toast.Viewport, {
@@ -108,8 +112,8 @@ const StyledScrollToTop = styled(Button, {
   alignitems: "center",
   justifyContent: "center",
   boxShadow: `0px 2px 4px ${blackA.blackA10}`,
-  background: "white",
-  color: "black",
+  background: "$foreground",
+  color: "$background",
   padding: "$4",
   gap: "$2",
   borderRadius: 4,

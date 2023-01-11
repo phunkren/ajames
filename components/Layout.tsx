@@ -177,6 +177,7 @@ export function Layout({ children }) {
 
 export function BlogLayout({ frontmatter, children }) {
   const router = useRouter();
+  const { themeName, themeColor } = useTheme();
   const metaUrl = `${SITE.url}${router.asPath}`;
   const keywords = frontmatter.tags.map((tag) => tag.name).join(",");
 
@@ -193,6 +194,8 @@ export function BlogLayout({ frontmatter, children }) {
         <meta name="author" content={PERSONAL.name} />
         <meta name="keywords" content={keywords} />
         <meta name="image" content={frontmatter.cover} />
+        <meta name="theme-color" content={themeColor} />
+        <meta name="color-scheme" content={themeName} />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary" />

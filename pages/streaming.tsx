@@ -408,8 +408,10 @@ function Streaming({
             </Box>
 
             <Box direction="vertical" gap={6}>
-              <TextTitle3 css={{ textAlign: "center" }}>
-                Enjoying the videos?
+              <TextTitle3
+                css={{ textAlign: "center", color: "$foregroundMuted" }}
+              >
+                Enjoying the content?
               </TextTitle3>
 
               <Box

@@ -79,7 +79,9 @@ const GridRoot = styled("div", {
 
 const GridItem = styled("div", {
   padding: "$2",
-  border: "1px solid black",
+  borderWidth: 1,
+  borderStyle: "solid",
+  borderColor: "$foregroundMuted",
   textAlign: "center",
   borderRadius: 4,
 
@@ -328,18 +330,18 @@ function Cv() {
                           as="blockquote"
                           direction="vertical"
                           cite={SOCIAL.linkedin.url}
-                          gap={{ "@print": 3, "@initial": 3, "@bp2": 6 }}
+                          gap={{ "@print": 2, "@initial": 3, "@bp2": 6 }}
                           css={{
                             fontStyle: "oblique",
                             textAlign: "justify",
                           }}
                         >
-                          <TextAux css={{ textTransform: "capitalize" }}>
+                          <TextAux css={{ textTransform: "initial" }}>
                             {testimonial.quote1}
                           </TextAux>
 
                           {testimonial.quote2 ? (
-                            <TextAux css={{ textTransform: "capitalize" }}>
+                            <TextAux css={{ textTransform: "initial" }}>
                               {testimonial.quote2}
                             </TextAux>
                           ) : null}
@@ -403,7 +405,7 @@ function Cv() {
 
                 <Box
                   direction="vertical"
-                  gap={{ "@print": 3, "@initial": 3, "@bp2": 6 }}
+                  gap={{ "@print": 2, "@initial": 3, "@bp2": 6 }}
                 >
                   <TextBody>{PERSONAL.profile1}</TextBody>
 
@@ -445,7 +447,7 @@ function Cv() {
                             "@print": "space-between",
                             "@bp2": "space-between",
                           }}
-                          gap={1}
+                          gap={2}
                         >
                           <Box
                             direction="horizontal"
@@ -472,7 +474,7 @@ function Cv() {
 
                       <Box
                         direction="vertical"
-                        gap={{ "@print": 3, "@initial": 3, "@bp2": 6 }}
+                        gap={{ "@print": 2, "@initial": 3, "@bp2": 6 }}
                       >
                         <TextBody>{employer.content1}</TextBody>
 
@@ -488,6 +490,7 @@ function Cv() {
                       {employer.notableWork?.length > 0 ? (
                         <Box
                           direction="vertical"
+                          spacingTop={2}
                           gap={{
                             "@print": 0,
                             "@initial": 2,

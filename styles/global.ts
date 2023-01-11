@@ -1,5 +1,6 @@
 import { blackA } from "@radix-ui/colors";
 import { globalCss } from "../stitches.config";
+import { DARK_THEME_COLORS, LIGHT_THEME_COLORS } from "./color";
 import { AUX_STYLES, H1_STYLES, H2_STYLES, H3_STYLES, P_STYLES } from "./text";
 
 /* https://piccalil.li/blog/a-modern-css-reset/ */
@@ -45,13 +46,13 @@ export const globalStyles = globalCss({
   },
 
   "body[data-theme='light']": {
-    background: "radial-gradient(at top, #ffffff, #fefefe, #ffffff)",
-    color: "#010101",
+    background: `radial-gradient(circle at top, ${LIGHT_THEME_COLORS.background} 0%, ${LIGHT_THEME_COLORS.backgroundMuted} 100%)`,
+    color: LIGHT_THEME_COLORS.foreground,
   },
 
   "body[data-theme='dark']": {
-    background: "radial-gradient(circle at top, #2b2b2b 0%, #1e1e1e 100%)",
-    color: "#fefefe",
+    background: `radial-gradient(circle at top, ${DARK_THEME_COLORS.backgroundMuted} 0%, ${DARK_THEME_COLORS.background} 100%)`,
+    color: DARK_THEME_COLORS.foreground,
   },
 
   /* A elements that don't have a class get default styles */
@@ -71,6 +72,24 @@ export const globalStyles = globalCss({
   /* Come at me bro */
   "button:hover": {
     cursor: "pointer",
+  },
+
+  blockquote: {
+    position: "relative",
+  },
+
+  "blockquote:before": {
+    position: "absolute",
+    content: "open-quote",
+    top: "calc($3 * -1)",
+    left: "calc($3 * -1)",
+  },
+
+  "blockquote:after": {
+    content: "close-quote",
+    position: "absolute",
+    bottom: "calc($3 * -1)",
+    right: "calc($3 * -1)",
   },
 
   // Blog post styling

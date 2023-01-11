@@ -85,9 +85,13 @@ export const StyledIconLink = styled(Link, {
   spacing: "$2",
   borderWidth: 1,
   borderStyle: "solid",
-  borderColor: whiteA.whiteA10,
+  borderColor: "$foregroundMuted",
   minWidth: 44,
   minHeight: 44,
+
+  "&:hover": {
+    backgroundColor: "$foregroundMuted",
+  },
 });
 
 const StyledYoutubeSubscription = styled(Link, {

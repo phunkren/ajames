@@ -103,7 +103,7 @@ export function BlogCard({
         <>
           <StyledBlogContent
             direction="vertical"
-            css={{ minHeight: 138, "@bp2": { minHeight: 168 } }}
+            css={{ minHeight: 155, "@bp2": { minHeight: 168 } }}
           >
             <Emoji
               emoji={emoji}
@@ -203,14 +203,8 @@ export function VideoCard({
             </TextAux>
           </StyledLink>
 
-          <Box
-            as="ul"
-            justifyContent="space-between"
-            gap={4}
-            spacingTop={7}
-            css={{ marginTop: "auto" }}
-          >
-            <PublishDate as="li" date={publishDate} icon />
+          <Box spacingTop={7} css={{ marginTop: "auto" }}>
+            <PublishDate date={publishDate} icon />
           </Box>
         </Box>
       )}
