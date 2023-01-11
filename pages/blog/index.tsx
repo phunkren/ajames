@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import * as Collapsible from "@radix-ui/react-collapsible";
+import { Cross2Icon, DropdownMenuIcon } from "@radix-ui/react-icons";
 import { BlogCard } from "../../components/Card";
 import { Box, Layout } from "../../components/Layout";
 import { TagToggle } from "../../components/Tags";
@@ -15,8 +17,7 @@ import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import { blackA } from "@radix-ui/colors";
 import Image from "next/image";
 import { StyledIconButton } from "../../components/Button";
-import { useState } from "react";
-import { RowSpacingIcon } from "@radix-ui/react-icons";
+import { BlogSubscribeLink } from "../../components/Link";
 
 type Props = {
   posts: BlogPost[];
@@ -124,9 +125,16 @@ function Blog({ posts, tags }: Props) {
               <Collapsible.Trigger asChild>
                 <StyledIconButton title="Filter">
                   <VisuallyHidden.Root>Filters</VisuallyHidden.Root>
-                  <RowSpacingIcon width={24} height={24} />
+
+                  {isFiltersOpen ? (
+                    <Cross2Icon width={24} height={24} />
+                  ) : (
+                    <DropdownMenuIcon width={24} height={24} />
+                  )}
                 </StyledIconButton>
               </Collapsible.Trigger>
+
+              <BlogSubscribeLink type="button" css={{ marginLeft: "auto" }} />
             </Box>
 
             <Box spacingVertical={10}>
