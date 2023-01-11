@@ -72,7 +72,7 @@ export function PublishDate({ date, icon = false, ...props }) {
   return (
     <StyledBox alignItems="center" gap={4} {...props}>
       {icon ? <CalendarIcon width={24} height={24} /> : null}
-      <TextAux as="time" dateTime={dateObject}>
+      <TextAux as="time" dateTime={dateObject.toISOString()}>
         {formattedDate}
       </TextAux>
     </StyledBox>
