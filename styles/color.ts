@@ -1,15 +1,25 @@
-import { whiteA, blackA } from "@radix-ui/colors";
+import {
+  gray,
+  slate,
+  grayDark,
+  slateDark,
+  blueDark,
+  indigoDark,
+  skyDark,
+  pinkDark,
+  whiteA,
+} from "@radix-ui/colors";
 
 export const LIGHT_THEME_COLORS = {
-  foreground: blackA.blackA12,
-  foregroundMuted: blackA.blackA8,
-  background: whiteA.whiteA11,
-  backgroundMuted: whiteA.whiteA8,
+  foreground: slate.slate12,
+  foregroundMuted: gray.gray11,
+  background: gray.gray1,
+  backgroundMuted: slate.slate2,
 };
 
 export const DARK_THEME_COLORS = {
   foreground: whiteA.whiteA12,
-  foregroundMuted: whiteA.whiteA8,
-  background: blackA.blackA11,
-  backgroundMuted: blackA.blackA8,
+  foregroundMuted: grayDark.gray11,
+  background: slateDark.slate1,
+  backgroundMuted: grayDark.gray2,
 };

@@ -73,23 +73,12 @@ export const globalStyles = globalCss({
   "button:hover": {
     cursor: "pointer",
   },
-
-  blockquote: {
-    position: "relative",
-  },
-
   "blockquote:before": {
-    position: "absolute",
     content: "open-quote",
-    top: "calc($3 * -1)",
-    left: "calc($3 * -1)",
   },
 
   "blockquote:after": {
     content: "close-quote",
-    position: "absolute",
-    bottom: "calc($3 * -1)",
-    right: "calc($3 * -1)",
   },
 
   // Blog post styling
@@ -139,6 +128,17 @@ export const globalStyles = globalCss({
       animationIterationCount: "1 !important",
       transitionDuration: "0.01ms !important",
       scrollBehavior: "auto !important",
+    },
+  },
+
+  "@print": {
+    body: {
+      background: "white",
+      color: "red",
+    },
+
+    blockquote: {
+      lineHeight: 1,
     },
   },
 });

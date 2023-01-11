@@ -35,92 +35,92 @@ export const NOTION_TAG_VARIANTS = {
   borderColor: {
     red: {
       [`${lightTheme.selector} &`]: {
-        borderColor: tomato.tomato10,
+        borderColor: tomato.tomato9,
       },
 
       [`${darkTheme.selector} &`]: {
-        borderColor: tomatoDark.tomato10,
+        borderColor: tomatoDark.tomato9,
       },
     },
     orange: {
       [`${lightTheme.selector} &`]: {
-        borderColor: amber.amber10,
+        borderColor: amber.amber9,
       },
 
       [`${darkTheme.selector} &`]: {
-        borderColor: amberDark.amber10,
+        borderColor: amberDark.amber9,
       },
     },
     yellow: {
       [`${lightTheme.selector} &`]: {
-        borderColor: yellow.yellow10,
+        borderColor: yellow.yellow9,
       },
 
       [`${darkTheme.selector} &`]: {
-        borderColor: yellowDark.yellow10,
+        borderColor: yellowDark.yellow9,
       },
     },
     green: {
       [`${lightTheme.selector} &`]: {
-        borderColor: grass.grass10,
+        borderColor: grass.grass9,
       },
 
       [`${darkTheme.selector} &`]: {
-        borderColor: grassDark.grass10,
+        borderColor: grassDark.grass9,
       },
     },
     blue: {
       [`${lightTheme.selector} &`]: {
-        borderColor: sky.sky10,
+        borderColor: sky.sky9,
       },
 
       [`${darkTheme.selector} &`]: {
-        borderColor: skyDark.sky10,
+        borderColor: skyDark.sky9,
       },
     },
     purple: {
       [`${lightTheme.selector} &`]: {
-        borderColor: plum.plum10,
+        borderColor: plum.plum9,
       },
 
       [`${darkTheme.selector} &`]: {
-        borderColor: plumDark.plum10,
+        borderColor: plumDark.plum9,
       },
     },
     pink: {
       [`${lightTheme.selector} &`]: {
-        borderColor: pink.pink10,
+        borderColor: pink.pink9,
       },
 
       [`${darkTheme.selector} &`]: {
-        borderColor: pinkDark.pink10,
+        borderColor: pinkDark.pink9,
       },
     },
     gray: {
       [`${lightTheme.selector} &`]: {
-        borderColor: slate.slate10,
+        borderColor: slate.slate9,
       },
 
       [`${darkTheme.selector} &`]: {
-        borderColor: slateDark.slate10,
+        borderColor: slateDark.slate9,
       },
     },
     brown: {
       [`${lightTheme.selector} &`]: {
-        borderColor: brown.brown10,
+        borderColor: brown.brown9,
       },
 
       [`${darkTheme.selector} &`]: {
-        borderColor: brownDark.brown10,
+        borderColor: brownDark.brown9,
       },
     },
     default: {
       [`${lightTheme.selector} &`]: {
-        borderColor: gold.gold10,
+        borderColor: gold.gold9,
       },
 
       [`${darkTheme.selector} &`]: {
-        borderColor: goldDark.gold10,
+        borderColor: goldDark.gold9,
       },
     },
   },

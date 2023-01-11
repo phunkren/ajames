@@ -65,7 +65,7 @@ export function TagToggle({ tags, value, onChange }: Props) {
     >
       {tags.map((tag) => (
         <ToggleGroupItem key={tag.id} value={tag.name} borderColor={tag.color}>
-          <TextAux>
+          <TextAux textTransform="uppercase">
             {tag.name} ({tag.count})
           </TextAux>
         </ToggleGroupItem>

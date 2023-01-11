@@ -1,58 +1,41 @@
-import { HTMLAttributes } from "react";
-import { styled, CSS } from "../stitches.config";
+import { styled } from "../stitches.config";
 import {
   AUX_STYLES,
   H1_STYLES,
   H2_STYLES,
   H3_STYLES,
   P_STYLES,
+  TEXT_VARIANTS,
 } from "../styles/text";
 
-type HeaderProps = HTMLAttributes<HTMLHeadingElement> &
-  CSS & {
-    as?: "h1" | "h2" | "h3";
-  };
-
-type ParapgraphProps = HTMLAttributes<HTMLParagraphElement> &
-  CSS & {
-    as?: "p";
-  };
-
-type SpanProps = HTMLAttributes<HTMLSpanElement> &
-  CSS & {
-    as?: "span";
-  };
-
-type TimeProps = HTMLAttributes<HTMLTimeElement> &
-  CSS & {
-    as?: "time";
-  };
-
-type TextProps = ParapgraphProps | SpanProps | TimeProps;
-
-const StyledTextTitle1 = styled("h1", {
+export const TextTitle1 = styled("h1", {
   ...H1_STYLES,
+  ...TEXT_VARIANTS,
 });
 
-const StyledTextTitle2 = styled("h2", {
+export const TextTitle2 = styled("h2", {
   ...H2_STYLES,
+  ...TEXT_VARIANTS,
 });
 
-const StyledTextTitle3 = styled("h3", {
+export const TextTitle3 = styled("h3", {
   ...H3_STYLES,
+  ...TEXT_VARIANTS,
 });
 
-const StyledTextBody = styled("p", {
+export const TextBody = styled("p", {
   ...P_STYLES,
+  ...TEXT_VARIANTS,
 });
 
-const StyledTextHeadline = styled("span", {
+export const TextHeadline = styled("span", {
   ...P_STYLES,
+  ...TEXT_VARIANTS,
 });
 
-const StyledTextAux = styled("span", {
+export const TextAux = styled("span", {
   ...AUX_STYLES,
-  textTransform: "uppercase",
+  ...TEXT_VARIANTS,
 });
 
 const StyledEmoji = styled("span", {
@@ -71,30 +54,6 @@ const StyledEmoji = styled("span", {
     },
   },
 });
-
-export function TextTitle1({ as, ...props }: HeaderProps) {
-  return <StyledTextTitle1 as={as} {...props} />;
-}
-
-export function TextTitle2({ as, ...props }: HeaderProps) {
-  return <StyledTextTitle2 as={as} {...props} />;
-}
-
-export function TextTitle3({ as, ...props }: HeaderProps) {
-  return <StyledTextTitle3 as={as} {...props} />;
-}
-
-export function TextBody({ as, ...props }: TextProps) {
-  return <StyledTextBody as={as} {...props} />;
-}
-
-export function TextHeadline({ as, ...props }: TextProps) {
-  return <StyledTextHeadline as={as} {...props} />;
-}
-
-export function TextAux({ as, ...props }: TextProps) {
-  return <StyledTextAux as={as} {...props} />;
-}
 
 export function Emoji({ emoji, ...props }) {
   return (

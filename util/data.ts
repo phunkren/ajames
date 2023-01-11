@@ -35,8 +35,7 @@ export const EMPLOYMENT: Employer[] = [
     displayName: "Coinbase",
     url: "https://www.coinbase.com/",
     position: "IC4 Engineer",
-    startDate: "Mar 22",
-    endDate: "Present",
+    startDate: "03-01-2022",
     location: "Remote, EMEA",
     content1:
       "I'm curently working on Coinbase Prime with team members from various disciplines to create intuitive and trustworthy user experiences for institutional customers. I primarily focus on efficiently executing and maintaining frontend features on the platform and admin interface.",
@@ -60,8 +59,8 @@ export const EMPLOYMENT: Employer[] = [
     displayName: "Rockstar Games",
     url: "https://www.rockstargames.com/",
     position: "Frontend Engineer",
-    startDate: "Nov 20",
-    endDate: "Feb 22",
+    startDate: "11-01-2020",
+    endDate: "02-01-2022",
     location: "Edinburgh, UK",
     content1:
       "I worked with other technology teams at Rockstar's worldwide studios to develop frontend features and applications for the company's online services. Responsibilities were to deliver feature-flagged content under time-sensitive release cycles, and maintain legacy architecture.",
@@ -85,8 +84,8 @@ export const EMPLOYMENT: Employer[] = [
     displayName: "BCG Digital Ventures",
     url: "https://www.bcgdv.com/",
     position: "Senior Frontend Engineer",
-    startDate: "Apr 19",
-    endDate: "Oct 20",
+    startDate: "04-01-2019",
+    endDate: "10-01-2020",
     location: "London, UK",
     content1:
       "I played a key role in the development and launch of several successful startup businesses. At BCG I was responsible for leading a small engineering team through scoped deliverables, collaborating with cross-functional teams, and engineering a robust and well-documented product that could be taken to market.",
@@ -110,8 +109,8 @@ export const EMPLOYMENT: Employer[] = [
     displayName: "Fathom London",
     url: "https://fath.om/",
     position: "Frontend Engineer",
-    startDate: "Jun 17",
-    endDate: "Mar 19",
+    startDate: "06-01-2017",
+    endDate: "03-01-2019",
     location: "London, UK",
     content1:
       "During my time at Fathom, I had the opportunity to work on exciting data visualization and trading platform projects for fintech clients and major banks. I was also involved in creating a React Native prototype for an international business planning software company, bringing their desktop offerings to mobile.",
@@ -140,8 +139,8 @@ export const EMPLOYMENT: Employer[] = [
     displayName: "Cohaesus",
     url: "https://cohaesus.co.uk/",
     position: "Associate Engineer",
-    startDate: "Feb 15",
-    endDate: "Jun 17",
+    startDate: "02-01-2015",
+    endDate: "06-01-2017",
     location: "London, UK",
     content1:
       "Cohaesus is a commercial advertising agency where I had the opportunity to learn the fundamentals of frontend web development while working on a variety of projects, both in-house and at some of the top advertising agencies in and around London.",
@@ -170,8 +169,8 @@ export const EMPLOYMENT: Employer[] = [
     displayName: "Rockstar North",
     url: "https://www.rockstarnorth.com/",
     position: "QA Tester",
-    startDate: "May 14",
-    endDate: "Feb 15",
+    startDate: "05-01-2014",
+    endDate: "02-01-2015",
     location: "Edinburgh, UK",
     content1:
       "Credited as a QA Tester on Grand Theft Auto V, I helped ensure the overall quality of the existing game and any upcoming features. It was a rewarding and challenging experience that allowed me to make a meaningful contribution to the development of one of the best-selling video games of all time.",
@@ -250,37 +249,35 @@ export const SOCIAL: Record<string, Social> = {
 
 export const TESTIMONIALS: Testimonial[] = [
   {
-    id: "testimonial-matthew-sinclair",
+    id: "ms",
     name: "Matthew Sinclair",
     url: "https://www.linkedin.com/in/matthewsinclair/",
-    quote1:
-      "Rarely have I had the opportunity to work with an engineer that combines Andrew's technical calibre, his exceptional citizenship, his ability to communicate and demonstrate his ideas to both team and client, and his commitment to coaching and mentoring the folks he works with.",
-    quote2:
-      "He blogs about some of the most interesting front-end technologies, and on top of all of this, he's an all-round great human. He is a genuine asset to any tech team that has the privilege of his attention, and I have no hesitation recommending him wholeheartedly for any role that he puts his mind to.",
+    position: "Vice President, Engineering",
+    quote:
+      "Rarely have I had the opportunity to work with an engineer that combines Andrew's technical calibre, his exceptional citizenship, his ability to communicate and demonstrate his ideas to both team and client, and his commitment to coaching and mentoring the folks he works with. He blogs about some of the most interesting front-end technologies, and on top of all of this, he's an all-round great human. He is a genuine asset to any tech team that has the privilege of his attention, and I have no hesitation recommending him wholeheartedly for any role that he puts his mind to.",
   },
   {
-    id: "testimonial-paul-groves",
+    id: "pg",
     name: "Paul Groves",
     url: "https://www.linkedin.com/in/-paul-groves/",
-    quote1:
-      "Andrew brings exceptional technical competency to his work, applying the highest levels of detail and clarity to his code. In his role at BCGDV, Andrew took full ownership of the design and implementation of multiple front end systems, driving the direction, performing impressive demos to clients, and mentoring his colleagues.",
-    quote2:
-      "He brings a considered, positive attitude and has been an absolute pleasure to work with. I could not recommend him higher.",
+    position: "Engineering Director",
+    quote:
+      "Andrew brings exceptional technical competency to his work, applying the highest levels of detail and clarity to his code. In his role at BCGDV, Andrew took full ownership of the design and implementation of multiple front end systems, driving the direction, performing impressive demos to clients, and mentoring his colleagues. He brings a considered, positive attitude and has been an absolute pleasure to work with. I could not recommend him higher.",
   },
   {
-    id: "testimonial-ian-brennan",
+    id: "ib",
     name: "Ian Brennan",
     url: "https://www.linkedin.com/in/ian-brennan-474245138/",
-    quote1:
+    position: "Engineering Manager",
+    quote:
       "From the moment we interviewed him, through to the many projects we worked on together, Andrew always showed a strong desire and passion for his work and the technologies behind it. He picks up new techniques, approaches, libraries, and languages with ease, delivering on project requirements whilst also taking the time to truly understand how something works.",
   },
   {
-    id: "testimonial-don-knox",
+    id: "dk",
     name: "Don Knox",
     url: "https://www.linkedin.com/in/don-knox-53902351/",
-    quote1:
-      "I knew Andrew when he was enrolled on the Audio Technology BSc (Hons) degree at GCU, between 2102 and 2014. Throughout his time at GCU, Andrew proved himself to be an enthusiastic and talented student. ",
-    quote2:
-      "He had a clear enthusiasm for his subject, and engaged diligently with several programming-centred and system development activities required in the degree. In addition to his proven professional expertise and knowledge, Andrew is a friendly, personable and conscientious individual.",
+    position: "Senior audio lecturer",
+    quote:
+      "I knew Andrew when he was enrolled on the Audio Technology BSc (Hons) degree at GCU, between 2102 and 2014. Throughout his time at GCU, Andrew proved himself to be an enthusiastic and talented student. He had a clear enthusiasm for his subject, and engaged diligently with several programming-centred and system development activities required in the degree. In addition to his proven professional expertise and knowledge, Andrew is a friendly, personable and conscientious individual.",
   },
 ];

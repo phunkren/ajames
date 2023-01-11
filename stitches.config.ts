@@ -17,6 +17,7 @@ import {
 } from "@radix-ui/colors";
 import { SPACING_UTILS } from "./styles/spacing";
 import { DISPLAY_UTILS } from "./styles/display";
+import { DARK_THEME_COLORS, LIGHT_THEME_COLORS } from "./styles/color";
 
 export const {
   styled,
@@ -57,10 +58,7 @@ export const {
 
 export const lightTheme = createTheme({
   colors: {
-    foreground: blackA.blackA11,
-    foregroundMuted: blackA.blackA8,
-    background: whiteA.whiteA11,
-    backgroundMuted: whiteA.whiteA8,
+    ...LIGHT_THEME_COLORS,
     ...gray,
     ...blue,
     ...red,
@@ -72,10 +70,7 @@ export const lightTheme = createTheme({
 
 export const darkTheme = createTheme({
   colors: {
-    foreground: whiteA.whiteA11,
-    foregroundMuted: whiteA.whiteA8,
-    background: blackA.blackA11,
-    backgroundMuted: blackA.blackA8,
+    ...DARK_THEME_COLORS,
     ...grayDark,
     ...blueDark,
     ...redDark,

@@ -10,7 +10,7 @@ export type Employer = {
   url: string;
   position: string;
   startDate?: string;
-  endDate: string;
+  endDate?: string;
   location: string;
   content1: string;
   content2?: string;

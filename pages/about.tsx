@@ -2,7 +2,6 @@ import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import {
   DownloadIcon,
   EnvelopeOpenIcon,
-  FileTextIcon,
   GitHubLogoIcon,
   HomeIcon,
   LinkedInLogoIcon,
@@ -32,6 +31,7 @@ import {
   SOCIAL,
   TESTIMONIALS,
 } from "../util/data";
+import { formatLongDate } from "../util/date";
 
 const StyledPageHeader = styled(Box, {
   display: "block",
@@ -54,6 +54,20 @@ const StyledHero = styled(Box, {
   inset: 0,
   borderRadius: 4,
   background: "$background",
+});
+
+const StyledBlockQuote = styled("blockquote", {
+  fontStyle: "oblique",
+  textAlign: "justify",
+
+  "@print": {
+    display: "-webkit-box",
+    overflow: "hidden",
+    textAlign: "left",
+
+    ["-webkit-line-clamp"]: "5",
+    ["-webkit-box-orient"]: "vertical",
+  },
 });
 
 const GridRoot = styled("div", {
@@ -255,12 +269,37 @@ function Cv() {
                       ) : null}
                       <TextBody>{education.course}</TextBody>
                       <TextAux>{education.institution}</TextAux>
-                      <TextAux>
-                        {education.startDate
-                          ? `${education.startDate} - `
-                          : null}
-                        {education.endDate}
-                      </TextAux>
+                      <Box>
+                        {education.startDate ? (
+                          <>
+                            <TextAux
+                              as="time"
+                              dateTime={new Date(
+                                education.startDate
+                              ).toISOString()}
+                            >
+                              {formatLongDate(new Date(education.startDate))}
+                            </TextAux>
+                            <TextAux>&nbsp;-&nbsp;</TextAux>
+                          </>
+                        ) : null}
+
+                        {education.endDate ? (
+                          <TextAux
+                            as="time"
+                            dateTime={new Date(education.endDate).toISOString()}
+                          >
+                            {formatLongDate(new Date(education.endDate))}
+                          </TextAux>
+                        ) : (
+                          <TextAux
+                            as="time"
+                            dateTime={new Date().toISOString()}
+                          >
+                            Present
+                          </TextAux>
+                        )}
+                      </Box>
                     </Box>
                   ))}
                 </GridRoot>
@@ -279,7 +318,7 @@ function Cv() {
                 <GridRoot>
                   {EXPERTISE.map((topic) => (
                     <GridItem key={topic}>
-                      <TextAux>{topic}</TextAux>
+                      <TextAux css={{ color: "$foreground" }}>{topic}</TextAux>
                     </GridItem>
                   ))}
                 </GridRoot>
@@ -298,7 +337,9 @@ function Cv() {
                 <GridRoot>
                   {INTERESTS.map((interest) => (
                     <GridItem key={interest}>
-                      <TextAux>{interest}</TextAux>
+                      <TextAux css={{ color: "$foreground" }}>
+                        {interest}
+                      </TextAux>
                     </GridItem>
                   ))}
                 </GridRoot>
@@ -315,47 +356,31 @@ function Cv() {
                 </Box>
 
                 <Box direction="vertical" gap={10} spacingBottom={10}>
-                  <Box as="ul" direction="vertical" gap={10}>
-                    {TESTIMONIALS.map((testimonial, i) => (
-                      <Box
-                        as="li"
-                        direction="vertical"
-                        key={testimonial.id}
-                        display={{
-                          "@print": i === 0 ? "flex" : "none",
-                          "@initial": "flex",
-                        }}
-                      >
-                        <Box
-                          as="blockquote"
-                          direction="vertical"
-                          cite={SOCIAL.linkedin.url}
-                          gap={{ "@print": 2, "@initial": 3, "@bp2": 6 }}
-                          css={{
-                            fontStyle: "oblique",
-                            textAlign: "justify",
-                          }}
-                        >
-                          <TextAux css={{ textTransform: "initial" }}>
-                            {testimonial.quote1}
-                          </TextAux>
-
-                          {testimonial.quote2 ? (
+                  <Box
+                    as="ul"
+                    direction="vertical"
+                    gap={{ "@print": 6, "@initial": 10 }}
+                  >
+                    {TESTIMONIALS.map((testimonial) => (
+                      <Box key={testimonial.id} as="li" direction="vertical">
+                        <Box direction="vertical">
+                          <StyledBlockQuote cite={SOCIAL.linkedin.url}>
                             <TextAux css={{ textTransform: "initial" }}>
-                              {testimonial.quote2}
+                              {testimonial.quote}
                             </TextAux>
-                          ) : null}
-                        </Box>
+                          </StyledBlockQuote>
 
-                        <Link
-                          variant="secondary"
-                          href={testimonial.url}
-                          css={{ alignSelf: "flex-end" }}
-                        >
-                          <TextHeadline css={{ spacingTop: "$4" }}>
-                            - {testimonial.name}
-                          </TextHeadline>
-                        </Link>
+                          <Box
+                            direction="vertical"
+                            alignSelf="flex-end"
+                            spacingTop={4}
+                          >
+                            <Link href={testimonial.url}>
+                              <TextHeadline>{testimonial.name}</TextHeadline>
+                            </Link>
+                            <TextAux>{testimonial.position}</TextAux>
+                          </Box>
+                        </Box>
                       </Box>
                     ))}
                   </Box>
@@ -462,12 +487,37 @@ function Cv() {
                           </Box>
 
                           <Box>
-                            <TextAux as="span">
-                              {employer.startDate
-                                ? `${employer.startDate} - `
-                                : null}
-                              {employer.endDate}
-                            </TextAux>
+                            {employer.startDate ? (
+                              <>
+                                <TextAux
+                                  as="time"
+                                  dateTime={new Date(
+                                    employer.startDate
+                                  ).toISOString()}
+                                >
+                                  {formatLongDate(new Date(employer.startDate))}
+                                </TextAux>
+                                <TextAux>&nbsp;-&nbsp;</TextAux>
+                              </>
+                            ) : null}
+
+                            {employer.endDate ? (
+                              <TextAux
+                                as="time"
+                                dateTime={new Date(
+                                  employer.endDate
+                                ).toISOString()}
+                              >
+                                {formatLongDate(new Date(employer.endDate))}
+                              </TextAux>
+                            ) : (
+                              <TextAux
+                                as="time"
+                                dateTime={new Date().toISOString()}
+                              >
+                                Present
+                              </TextAux>
+                            )}
                           </Box>
                         </Box>
                       </Box>
@@ -496,7 +546,7 @@ function Cv() {
                             "@initial": 2,
                           }}
                         >
-                          <TextAux>Notable Work</TextAux>
+                          <TextHeadline>Notable Work</TextHeadline>
                           <Box
                             as="ul"
                             direction={{
