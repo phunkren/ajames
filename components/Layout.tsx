@@ -36,7 +36,7 @@ const StyledContent = styled(Box, {
   top: -16,
 
   "@bp2": {
-    top: -36,
+    top: -32,
   },
 });
 

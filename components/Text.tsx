@@ -49,7 +49,7 @@ const StyledEmoji = styled("span", {
         fontSize: 24,
       },
       l: {
-        fontSize: 72,
+        fontSize: 64,
       },
     },
   },
