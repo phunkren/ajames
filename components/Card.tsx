@@ -6,7 +6,7 @@ import { styled } from "../stitches.config";
 import { PostTags, PublishDate } from "./Frontmatter";
 import { Box } from "./Layout";
 import { Emoji, TextAux, TextTitle3 } from "./Text";
-import { Link, StyledIconLink } from "./Link";
+import { Link } from "./Link";
 import { BlogCardProps, CardProps, VideoCardProps } from "../types/card";
 import { PreviewToggle } from "./Button";
 
@@ -40,7 +40,7 @@ const StyledLink = styled(Link, {});
 
 const StyledBlogContent = styled(Box, {
   position: "relative",
-  top: -24,
+  top: -16,
 });
 
 export function Card({ image, children, ...props }: CardProps) {
@@ -110,7 +110,7 @@ export function BlogCard({
               emoji={emoji}
               css={{
                 zIndex: 1,
-                spacingBottom: "$2",
+                spacingBottom: "$4",
                 position: "relative",
                 right: "$1",
               }}
@@ -132,7 +132,7 @@ export function BlogCard({
                     },
                   }}
                 >
-                  {description} {description}
+                  {description}
                 </TextAux>
               ) : (
                 <TextTitle3

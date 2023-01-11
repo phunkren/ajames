@@ -33,13 +33,9 @@ const StyledImage = styled(Image, {
 // The computed value is (fontSize * lineHeight) / 2.
 const StyledContent = styled(Box, {
   position: "relative",
-  top: -18,
+  top: -16,
 
   "@bp2": {
-    top: -27,
-  },
-
-  "@bp3": {
     top: -36,
   },
 });

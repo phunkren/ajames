@@ -13,7 +13,6 @@ import { TextAux, TextHeadline } from "./Text";
 import { LinkProps } from "../types/link";
 import { buildUrl } from "../util/url";
 import { SITE, SOCIAL } from "../util/data";
-import { whiteA } from "@radix-ui/colors";
 import { Box } from "./Layout";
 
 type TwitterShareProps = {
@@ -24,7 +23,7 @@ type TwitterShareProps = {
 };
 
 type SubscribeProps = CSS & {
-  variant?: "link" | "button";
+  type?: "link" | "icon" | "button";
 };
 
 const StyledLink = styled("a", {
@@ -99,14 +98,27 @@ const StyledYoutubeSubscription = styled(Link, {
   alignItems: "center",
 
   variants: {
-    variant: {
+    type: {
       button: {
         padding: "$2 $4",
-        background: "red",
+        backgroundColor: "red",
         borderRadius: 4,
         color: "white",
       },
-      link: {},
+      link: {
+        color: "inherit",
+      },
+      icon: {
+        justifyContent: "center",
+        borderRadius: "50%",
+        spacing: "$2",
+        borderWidth: 1,
+        borderStyle: "solid",
+        backgroundColor: "red",
+        color: "white",
+        minWidth: 44,
+        minHeight: 44,
+      },
     },
   },
 });
@@ -116,15 +128,27 @@ const StyledBlogSubscription = styled(Link, {
   alignItems: "center",
 
   variants: {
-    variant: {
+    type: {
+      link: {
+        color: "inherit",
+      },
       button: {
         padding: "$2 $4",
         background: "white",
         borderRadius: 4,
         color: "black",
       },
-      link: {
-        color: "white",
+      icon: {
+        justifyContent: "center",
+        borderRadius: "50%",
+        spacing: "$2",
+        borderWidth: 1,
+        borderStyle: "solid",
+        borderColor: "$foregroundMuted",
+        backgroundColor: "white",
+        color: "black",
+        minWidth: 44,
+        minHeight: 44,
       },
     },
   },
@@ -143,36 +167,33 @@ export function MarkdownLink({ node, ...props }) {
 }
 
 export function YoutubeSubscribeLink({
-  variant = "link",
+  type = "link",
   ...props
 }: SubscribeProps) {
   return (
     <StyledYoutubeSubscription
       href={YOUTUBE_SUBSCRIBE_URL}
-      variant={variant}
+      type={type}
       {...props}
     >
       <Box alignItems="center" gap={2}>
         <VideoIcon width={18} height={18} aria-hidden />
-        {variant === "button" && <TextAux>Subscribe</TextAux>}
-        {variant === "link" && <TextHeadline>Subscribe</TextHeadline>}
+        {type === "button" && <TextAux>Subscribe</TextAux>}
+        {type === "link" && <TextHeadline>Subscribe</TextHeadline>}
       </Box>
     </StyledYoutubeSubscription>
   );
 }
 
-export function BlogSubscribeLink({
-  variant = "link",
-  ...props
-}: SubscribeProps) {
+export function BlogSubscribeLink({ type = "link", ...props }: SubscribeProps) {
   const rssFeedUrl = `${SITE.url}/rss`;
 
   return (
-    <StyledBlogSubscription href={rssFeedUrl} variant={variant} {...props}>
+    <StyledBlogSubscription href={rssFeedUrl} type={type} {...props}>
       <Box alignItems="center" gap={2}>
         <RocketIcon width={18} height={18} aria-hidden />
-        {variant === "button" && <TextAux>Subscribe</TextAux>}
-        {variant === "link" && <TextHeadline>Subscribe</TextHeadline>}
+        {type === "button" && <TextAux>Subscribe</TextAux>}
+        {type === "link" && <TextHeadline>Subscribe</TextHeadline>}
       </Box>
     </StyledBlogSubscription>
   );

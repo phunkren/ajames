@@ -54,6 +54,7 @@ import {
 } from "../components/Scroll";
 import { PERSONAL, SITE } from "../util/data";
 import { ShareButton } from "../components/Button";
+import { H2_STYLES } from "../styles/text";
 
 type Props = {
   videoPreview: VideoPreview;
@@ -169,19 +170,21 @@ function Streaming({
                 </AvatarRoot>
               </Link>
 
-              <Box justifyContent="space-between" alignItems="flex-end">
-                <Box direction="vertical">
-                  <Box
-                    justifyContent="space-between"
-                    alignItems="center"
-                    spacingTop={10}
-                  >
-                    <TextTitle2>{channelInfoPreview.title}</TextTitle2>
+              <Box direction="vertical" justifyContent="space-between">
+                <Box
+                  justifyContent="space-between"
+                  alignItems="center"
+                  spacingTop={4}
+                  spacingBottom={8}
+                >
+                  <TextTitle2>{channelInfoPreview.title}</TextTitle2>
 
+                  <Box css={{ ...H2_STYLES }}>
                     <YoutubeSubscribeLink
-                      variant="button"
+                      type="button"
                       css={{
                         display: "none",
+
                         "@bp2": {
                           display: "flex",
                         },
@@ -189,46 +192,52 @@ function Streaming({
                     />
                   </Box>
 
-                  <Box
-                    alignItems={{ "@initial": "center", "@bp2": "flex-end" }}
-                    spacingTop={6}
-                  >
-                    <Box as="ul" role="list" direction="vertical" gap={4}>
-                      <VideosViewsCount
-                        views={channelInfoPreview.viewCount}
-                        icon
-                      />
-                      <SubscriberCount
-                        subscribers={channelInfoPreview.subscriberCount}
-                        icon
-                      />
-                      <VideosTotalCount
-                        total={channelInfoPreview.videoCount}
-                        icon
-                      />
-                    </Box>
+                  <YoutubeSubscribeLink
+                    type="icon"
+                    css={{
+                      display: "flex",
+                      "@bp2": {
+                        display: "none",
+                      },
+                    }}
+                  />
+                </Box>
 
-                    <Box
-                      direction={{
-                        "@initial": "vertical",
-                        "@bp2": "horizontal",
-                      }}
-                      gap={4}
-                      css={{ width: "auto" }}
-                    >
-                      <TwitterShareLink
+                <Box alignItems="flex-end">
+                  <Box as="ul" role="list" direction="vertical" gap={6}>
+                    <VideosViewsCount
+                      views={channelInfoPreview.viewCount}
+                      icon
+                    />
+                    <SubscriberCount
+                      subscribers={channelInfoPreview.subscriberCount}
+                      icon
+                    />
+                    <VideosTotalCount
+                      total={channelInfoPreview.videoCount}
+                      icon
+                    />
+                  </Box>
+
+                  <Box
+                    gap={4}
+                    direction={{ "@initial": "vertical", "@bp2": "horizontal" }}
+                    justifyContent="flex-end"
+                    alignItems="flex-end"
+                    css={{ width: "auto" }}
+                  >
+                    <TwitterShareLink
+                      url={YOUTUBE_CHANNEL_URL}
+                      text={YOUTUBE_SHARE_TEXT}
+                      variant="icon"
+                    />
+
+                    <Box>
+                      <ShareButton
                         url={YOUTUBE_CHANNEL_URL}
                         text={YOUTUBE_SHARE_TEXT}
                         variant="icon"
                       />
-
-                      <Box>
-                        <ShareButton
-                          url={YOUTUBE_CHANNEL_URL}
-                          text={YOUTUBE_SHARE_TEXT}
-                          variant="icon"
-                        />
-                      </Box>
                     </Box>
                   </Box>
                 </Box>
@@ -315,7 +324,7 @@ function Streaming({
                       {videoPreview.description}
                     </TextBody>
 
-                    <Box spacingTop={2}>
+                    <Box spacingTop={3}>
                       <Link href={videoPreview.url} variant="secondary">
                         <TextAux>Read more</TextAux>
                       </Link>

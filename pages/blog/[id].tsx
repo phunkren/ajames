@@ -24,9 +24,9 @@ import {
   PublishDate,
   ReadingTime,
 } from "../../components/Frontmatter";
-import { H2_STYLES } from "../../styles/text";
 import { SITE } from "../../util/data";
 import { ShareButton } from "../../components/Button";
+import { H2_STYLES } from "../../styles/text";
 
 type Frontmatter = {
   title: string;
@@ -92,54 +92,64 @@ export default function BlogPost({ frontmatter, postData }: Props) {
         as="article"
         direction="vertical"
         spacingHorizontal={{ "@initial": 4, "@bp2": 10 }}
+        gap={10}
       >
         <Box direction="vertical">
           <Box direction="vertical">
-            <Emoji emoji={frontmatter.emoji} css={{ ...H2_STYLES }} />
+            <Emoji
+              emoji={frontmatter.emoji}
+              size={{ "@bp2": "l" }}
+              css={{
+                zIndex: 1,
+                position: "relative",
+                right: "$2",
+                alignSelf: "flex-start",
+              }}
+            />
 
             <Box
               justifyContent="space-between"
               alignItems="flex-start"
-              spacingTop={{ "@initial": 3, "@bp2": 0 }}
+              spacingTop={4}
             >
-              <TextTitle2>
+              <TextTitle2 css={{ spacingBottom: "$4" }}>
                 <Balancer>{frontmatter.title}</Balancer>
               </TextTitle2>
 
               <BlogSubscribeLink
-                variant="button"
+                type="button"
                 css={{
                   display: "none",
-                  "@bp2": { display: "flex", position: "relative", top: 18 },
+                  transform: "translateY(50%)",
+                  "@bp3": { display: "flex" },
                 }}
               />
             </Box>
           </Box>
 
-          <Box gap={4} spacingTop={7} alignItems="center">
+          <Box gap={10}>
             <Box
               id="frontmatter"
               as="ul"
               role="list"
               direction="vertical"
-              gap={5}
+              spacingTop={6}
+              gap={6}
             >
-              <Box as="ul" role="list" direction="vertical" gap={4}>
-                <li>
-                  <PostTags tags={frontmatter.tags} icon />
-                </li>
-                <li>
-                  <PublishDate date={frontmatter.date} icon />
-                </li>
-                <li>
-                  <ReadingTime time={frontmatter.time} icon />
-                </li>
-              </Box>
+              <li>
+                <PostTags tags={frontmatter.tags} icon />
+              </li>
+              <li>
+                <PublishDate date={frontmatter.date} icon />
+              </li>
+              <li>
+                <ReadingTime time={frontmatter.time} icon />
+              </li>
             </Box>
 
             <Box
               gap={4}
-              direction="vertical"
+              direction={{ "@initial": "vertical", "@bp2": "horizontal" }}
               justifyContent="flex-end"
               alignItems="flex-end"
               css={{ width: "auto" }}

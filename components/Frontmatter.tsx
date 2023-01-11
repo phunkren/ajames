@@ -6,6 +6,7 @@ import {
   ListBulletIcon,
   VideoIcon,
 } from "@radix-ui/react-icons";
+import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { useRouter } from "next/router";
 import { styled } from "../stitches.config";
 import { NOTION_TAG_VARIANTS } from "../styles/tag";
@@ -25,6 +26,7 @@ const StyledTag = styled(Box, {
   borderRadius: 4,
   borderStyle: "solid",
   borderWidth: 1,
+  color: "$foreground",
 
   variants: {
     ...NOTION_TAG_VARIANTS,
@@ -39,10 +41,15 @@ export function PostTags({ tags, icon = false, ...props }: PostTagProps) {
   const { query } = useRouter();
 
   return (
-    <Box alignItems="center" gap={4} {...props}>
-      {icon ? <ListBulletIcon width={24} height={24} /> : null}
+    <StyledBox gap={4} {...props}>
+      {icon ? (
+        <Box spacingTop={1} alignItems="flex-start" justify-content="center">
+          <VisuallyHidden.Root>Tags</VisuallyHidden.Root>
+          <ListBulletIcon width={24} height={24} />
+        </Box>
+      ) : null}
 
-      <Box as="ul" role="list" gap={4}>
+      <Box as="ul" role="list" gap={4} flexWrap="wrap">
         {tags.map((tag) => (
           <StyledTag
             as="li"
@@ -54,7 +61,7 @@ export function PostTags({ tags, icon = false, ...props }: PostTagProps) {
           </StyledTag>
         ))}
       </Box>
-    </Box>
+    </StyledBox>
   );
 }
 
