@@ -110,7 +110,10 @@ const GridItem = styled("div", {
 function Cv() {
   return (
     <Layout>
-      <Box spacingTop={{ "@print": 4, "@initial": 4, "@bp2": 7 }}>
+      <Box
+        spacingTop={{ "@print": 4, "@initial": 4, "@bp2": 10 }}
+        css={{ marginTop: "$5" }}
+      >
         <VisuallyHidden.Root>
           <TextTitle1>About</TextTitle1>
         </VisuallyHidden.Root>
