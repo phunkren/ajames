@@ -111,7 +111,7 @@ function Cv() {
   return (
     <Layout>
       <Box
-        spacingTop={{ "@print": 4, "@initial": 4, "@bp2": 10 }}
+        spacingTop={{ "@print": 4, "@initial": 7, "@bp2": 10 }}
         css={{ marginTop: "$5" }}
       >
         <VisuallyHidden.Root>

@@ -136,7 +136,7 @@ function Streaming({
       <Box
         direction="vertical"
         alignItems="center"
-        spacingTop={{ "@initial": 4, "@bp2": 10 }}
+        spacingTop={{ "@initial": 7, "@bp2": 10 }}
         css={{ marginTop: "$5" }}
       >
         <VisuallyHidden.Root>

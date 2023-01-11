@@ -82,7 +82,7 @@ function Blog({ posts, tags }: Props) {
       <Box
         direction="vertical"
         alignItems="center"
-        spacingTop={{ "@initial": 4, "@bp2": 10 }}
+        spacingTop={{ "@initial": 7, "@bp2": 10 }}
         css={{ marginTop: "$5" }}
         spacingBottom={10}
         gap={10}
