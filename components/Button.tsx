@@ -87,7 +87,8 @@ const StyledToastViewport = styled(Toast.Viewport, {
 });
 
 const StyledToastRoot = styled(Toast.Root, {
-  backgroundColor: "white",
+  backgroundColor: "$foreground",
+  color: "$background",
   borderRadius: 6,
   boxShadow: `0px 2px 4px ${blackA.blackA10}`,
   padding: 15,
