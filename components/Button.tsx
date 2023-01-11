@@ -52,7 +52,7 @@ export const Button = forwardRef(
   }
 );
 
-const StyledIconButton = styled(Button, {
+export const StyledIconButton = styled(Button, {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",

@@ -1,6 +1,7 @@
 import { GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
+import * as Collapsible from "@radix-ui/react-collapsible";
 import { BlogCard } from "../../components/Card";
 import { Box, Layout } from "../../components/Layout";
 import { TagToggle } from "../../components/Tags";
@@ -13,6 +14,9 @@ import { Divider } from "../../components/Divider";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import { blackA } from "@radix-ui/colors";
 import Image from "next/image";
+import { StyledIconButton } from "../../components/Button";
+import { useState } from "react";
+import { RowSpacingIcon } from "@radix-ui/react-icons";
 
 type Props = {
   posts: BlogPost[];
@@ -62,6 +66,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
 function Blog({ posts, tags }: Props) {
   const { pathname, push, query } = useRouter();
+  const [isFiltersOpen, setIsFiltersOpen] = useState(false);
 
   const filteredPosts = query.tag ? filterPosts(posts, query.tag) : posts;
 
@@ -110,19 +115,36 @@ function Blog({ posts, tags }: Props) {
           spacingHorizontal={{ "@initial": 4, "@bp2": 10 }}
           spacingVertical={10}
         >
-          <VisuallyHidden.Root>
-            <TextTitle2>Filters</TextTitle2>
-          </VisuallyHidden.Root>
+          <Collapsible.Root
+            open={isFiltersOpen}
+            onOpenChange={setIsFiltersOpen}
+          >
+            <Box gap={4} alignItems="center">
+              <TextTitle2>Articles</TextTitle2>
+              <Collapsible.Trigger asChild>
+                <StyledIconButton title="Filter">
+                  <VisuallyHidden.Root>Filters</VisuallyHidden.Root>
+                  <RowSpacingIcon width={24} height={24} />
+                </StyledIconButton>
+              </Collapsible.Trigger>
+            </Box>
 
-          <TagToggle
-            tags={tags}
-            value={query.tag as string}
-            onChange={handleTagChange}
-          />
+            <Box spacingVertical={10}>
+              <Divider />
+            </Box>
 
-          <Box spacingVertical={10}>
-            <Divider />
-          </Box>
+            <Collapsible.Content>
+              <TagToggle
+                tags={tags}
+                value={query.tag as string}
+                onChange={handleTagChange}
+              />
+
+              <Box spacingVertical={10}>
+                <Divider />
+              </Box>
+            </Collapsible.Content>
+          </Collapsible.Root>
 
           <VisuallyHidden.Root>
             <TextTitle2>Articles</TextTitle2>

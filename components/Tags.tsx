@@ -17,6 +17,7 @@ const ToggleGroupRoot = styled(ToggleGroup.Root, {
   gridColumnGap: "$2",
   gridRowGap: "$2",
   width: "100%",
+  spacingVertical: "$10",
 
   "@bp2": {
     gridTemplateColumns: "repeat(3, 1fr)",
