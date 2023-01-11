@@ -1,5 +1,6 @@
 import { forwardRef, Ref } from "react";
 import NextLink from "next/link";
+import { UrlObject } from "url";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { CSS, darkTheme, lightTheme, styled } from "../stitches.config";
 import { YOUTUBE_SUBSCRIBE_URL } from "../util/youtube";
@@ -68,8 +69,22 @@ export const Link = forwardRef(
     { href, nextLinkProps, ...props }: LinkProps,
     ref: Ref<HTMLAnchorElement>
   ) => {
+    const isInternal = isLinkInternal();
+
+    function isLinkInternal() {
+      let link = typeof href === "object" ? href.pathname : href;
+      return link.charAt(0) === "/";
+    }
+
     return (
-      <NextLink href={href} passHref legacyBehavior {...nextLinkProps}>
+      <NextLink
+        href={href}
+        target={!isInternal ? "_blank" : "_self"}
+        rel={!isInternal ? "external noopener noreferrer" : ""}
+        passHref
+        legacyBehavior
+        {...nextLinkProps}
+      >
         <StyledLink ref={ref} {...props} />
       </NextLink>
     );
