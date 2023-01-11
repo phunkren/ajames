@@ -1,6 +1,5 @@
 import { forwardRef, Ref } from "react";
 import NextLink from "next/link";
-import { UrlObject } from "url";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { CSS, darkTheme, lightTheme, styled } from "../stitches.config";
 import { YOUTUBE_SUBSCRIBE_URL } from "../util/youtube";
