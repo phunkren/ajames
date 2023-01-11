@@ -26,7 +26,8 @@ const StyledCardInner = styled(Box, {
   borderStyle: "solid",
   borderBottomRightRadius: 4,
   borderBottomLeftRadius: 4,
-  borderColor: blackA.blackA10,
+  borderColor: "$background",
+  backgroundColor: "$backgroundMuted",
 });
 
 const StyledImage = styled(Image, {
