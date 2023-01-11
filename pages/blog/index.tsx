@@ -72,19 +72,9 @@ function Blog({ posts, tags }: Props) {
   const filteredPosts = query.tag ? filterPosts(posts, query.tag) : posts;
 
   function handleTagChange(tagName: string) {
-    push(
-      {
-        pathname,
-        query: {
-          ...query,
-          tag: tagName,
-        },
-      },
-      undefined,
-      {
-        scroll: false,
-      }
-    );
+    push({ pathname, query: { ...query, tag: tagName } }, undefined, {
+      scroll: false,
+    });
   }
 
   return (
