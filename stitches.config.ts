@@ -6,6 +6,7 @@ import {
   green,
   orange,
   slate,
+  sky,
   grayDark,
   blueDark,
   redDark,
@@ -14,6 +15,9 @@ import {
   slateDark,
   whiteA,
   blackA,
+  skyDark,
+  yellow,
+  yellowDark,
 } from "@radix-ui/colors";
 import { SPACING_UTILS } from "./styles/spacing";
 import { DISPLAY_UTILS } from "./styles/display";
@@ -64,7 +68,9 @@ export const lightTheme = createTheme({
     ...red,
     ...green,
     ...orange,
+    ...yellow,
     ...slate,
+    ...sky,
   },
   shadows: {
     verticalOffset: `0 2px 4px ${blackA.blackA8}`,
@@ -80,6 +86,8 @@ export const darkTheme = createTheme({
     ...greenDark,
     ...orangeDark,
     ...slateDark,
+    ...skyDark,
+    ...yellowDark,
   },
   shadows: {
     verticalOffset: `0 2px 4px ${whiteA.whiteA6}`,

@@ -6,11 +6,11 @@ import React, {
   useMemo,
   useCallback,
 } from "react";
-import { blackA, blue, grayDark, yellow } from "@radix-ui/colors";
+import { blackA, blue, grayDark, whiteA, yellow } from "@radix-ui/colors";
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import * as ToggleGroup from "@radix-ui/react-toggle-group";
 import { useLocalStorage } from "../hooks/useLocalStorage";
-import { styled } from "../stitches.config";
+import { darkTheme, lightTheme, styled } from "../stitches.config";
 import { Theme } from "../types/theme";
 
 // Create the theme context
@@ -22,7 +22,7 @@ export const ThemeContext = createContext({
 const ToggleGroupRoot = styled(ToggleGroup.Root, {
   display: "inline-flex",
   borderRadius: 4,
-  boxShadow: `0 2px 10px ${blackA.blackA7}`,
+  boxShadow: "$verticalOffset",
 });
 
 const ToggleGroupItem = styled(ToggleGroup.Item, {
@@ -37,7 +37,6 @@ const ToggleGroupItem = styled(ToggleGroup.Item, {
   marginLeft: 1,
 
   backgroundColor: "transparent",
-  opacity: 0.4,
 
   "&:first-child": {
     marginLeft: 0,
@@ -45,29 +44,32 @@ const ToggleGroupItem = styled(ToggleGroup.Item, {
     borderBottomLeftRadius: 4,
   },
 
-  "&[data-state=on]": {
-    opacity: 1,
-  },
-
   "&:last-child": { borderTopRightRadius: 4, borderBottomRightRadius: 4 },
-
-  "&:focus": { position: "relative", boxShadow: `0 0 0 2px black` },
 });
 
 const LightToggle = styled(ToggleGroupItem, {
-  "&:hover": { backgroundColor: "yellow" },
+  backgroundColor: "$sky1",
+  color: "$sky1",
+
+  "&:hover": { color: "$yellow5", backgroundColor: "$sky2" },
 
   "&[data-state=on]": {
-    backgroundColor: blue.blue6,
-    color: yellow.yellow6,
+    backgroundColor: "$sky7",
+    color: "$yellow6",
   },
 });
 
 const DarkToggle = styled(ToggleGroupItem, {
-  "&:hover": { backgroundColor: "black" },
+  backgroundColor: "$sky1",
+  color: "transparent",
+
+  "&:hover": {
+    backgroundColor: "black",
+    color: "$gray4",
+  },
 
   "&[data-state=on]": {
-    color: grayDark.gray11,
+    color: "$gray11",
     backgroundColor: "black",
   },
 });

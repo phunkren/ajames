@@ -9,23 +9,23 @@ export const EDUCATION: Education[] = [
     qualification: "BSc (Hons) 2.1",
     course: "Audio Technology",
     institution: "Glasgow Caledonian University",
-    startDate: "2010",
-    endDate: "2014",
+    startDate: "08-01-2010",
+    endDate: "06-01-2014",
   },
   {
     id: "gcal-usa",
 
     course: "Erasmus+ Study Abroad",
     institution: "UMass Boston",
-    startDate: "2011",
-    endDate: "2012",
+    startDate: "08-01-2011",
+    endDate: "06-01-2012",
   },
   {
     id: "udacity",
 
     course: "Frontend Nanodegree",
     institution: "Udacity",
-    endDate: "2016",
+    endDate: "09-01-2016",
   },
 ];
 

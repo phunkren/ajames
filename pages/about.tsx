@@ -140,7 +140,7 @@ function Cv() {
                     "@bp2": "flex",
                   }}
                 >
-                  {/* <PrintButton /> */}
+                  <PrintButton />
 
                   <StyledIconLink href="/download-cv" title="Download" download>
                     <DownloadIcon width={18} height={18} aria-hidden />
@@ -162,7 +162,7 @@ function Cv() {
             </Box>
           </StyledPrintHeader>
 
-          <Divider />
+          <Divider size="l" />
 
           <Box
             id="__cv"
@@ -279,7 +279,7 @@ function Cv() {
                                 education.startDate
                               ).toISOString()}
                             >
-                              {formatLongDate(new Date(education.startDate))}
+                              {new Date(education.startDate).getFullYear()}
                             </TextAux>
                             <TextAux>&nbsp;-&nbsp;</TextAux>
                           </>
@@ -290,7 +290,7 @@ function Cv() {
                             as="time"
                             dateTime={new Date(education.endDate).toISOString()}
                           >
-                            {formatLongDate(new Date(education.endDate))}
+                            {new Date(education.endDate).getFullYear()}
                           </TextAux>
                         ) : (
                           <TextAux
@@ -355,7 +355,7 @@ function Cv() {
                 >
                   <Divider />
                 </Box>
-                {/*
+
                 <Box direction="vertical" gap={10} spacingBottom={10}>
                   <Box
                     as="ul"
@@ -395,7 +395,7 @@ function Cv() {
                       Written references are also available upon request
                     </TextBody>
                   </Box>
-                </Box> */}
+                </Box>
               </Box>
             </Box>
 
