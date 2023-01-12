@@ -41,7 +41,6 @@ const StyledButton = styled("button", {
   overflow: "visible",
   padding: "0",
   lineHeight: "normal",
-  boxShadow: "$verticalOffset",
 
   "-webkit-appearance": "none",
   "-moz-appearance": "none",
@@ -63,6 +62,7 @@ export const StyledIconButton = styled(Button, {
   borderStyle: "solid",
   borderColor: "$foregroundMuted",
   backgroundColor: "transparent",
+  boxShadow: "$verticalOffset",
 
   minWidth: 44,
   minHeight: 44,
