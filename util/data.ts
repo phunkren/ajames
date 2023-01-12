@@ -198,6 +198,7 @@ export const INTERESTS = [
 
 export const PERSONAL = {
   name: "Andrew James",
+  email: "contact@ajames.dev",
   initials: "AJ",
   location: "Glasgow, UK",
   occupation: "Frontend Engineer",
