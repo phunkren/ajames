@@ -11,10 +11,9 @@ import { TextTitle1, TextTitle2 } from "../../components/Text";
 import { styled } from "../../stitches.config";
 import { BlogPost, Tag } from "../../types/notion";
 import { filterPosts, getTags, sortPosts } from "../../util/posts";
-import { getPosts } from "../../lib/notion";
+import { createPosts, generateRSSFeed, getPosts } from "../../lib/notion";
 import { Divider } from "../../components/Divider";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
-import { blackA } from "@radix-ui/colors";
 import Image from "next/image";
 import { StyledIconButton } from "../../components/Button";
 import { BlogSubscribeLink } from "../../components/Link";
@@ -53,14 +52,22 @@ const StyledImage = styled(Image, {
 });
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { personal, professional } = await getPosts();
+  // Grab all blogs from Notion
+  const posts = await getPosts();
 
-  const posts = [...professional, ...personal];
+  // Create a .mdx file for each blog post
+  await createPosts(posts);
+
+  const sortedPosts = sortPosts(posts);
+  const postTags = getTags(posts);
+
+  // Create a feed.xml file for blog subscriptions
+  generateRSSFeed(sortedPosts);
 
   return {
     props: {
-      posts: sortPosts(posts),
-      tags: getTags(posts),
+      posts: sortedPosts,
+      tags: postTags,
     },
   };
 };

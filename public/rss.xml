@@ -1,0 +1,1846 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>ajames.dev | Blogs</title>
+        <link>https://ajames.vercel.app</link>
+        <description>I'm a software engineer based in Glasgow, Scotland. My passion for frontend web technology continually drives me to advance my skill set and adopt the latest industry best practices. An analytical mindset and strong communication skills allow me to excel in environments where I can learn from others and inspire my peers. Over the years I've refined a set of technical principles to strive towards, namely: complexity should only be introduced when it’s unavoidable; code should be easy to reason with and delete; avoid abstracting too early, and the top priority is always the best possible user experience.</description>
+        <lastBuildDate>Thu, 12 Jan 2023 19:10:57 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>en</language>
+        <copyright>All rights reserved 2023, Andrew James</copyright>
+        <atom:link href="https://ajames.vercel.app/rss.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[So you want to work remotely?]]></title>
+            <link>https://ajames.vercel.app/blog/work-remote</link>
+            <guid>https://ajames.vercel.app/blog/work-remote</guid>
+            <pubDate>Sat, 01 Oct 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[Duis volutpat eleifend eros, id gravida ipsum pellentesque vel. Pellentesque pretium ante metus, vel tempor sem vehicula non. ]]></description>
+            <content:encoded><![CDATA[Back in 2020, I put together a list of basic principles for [working from home](/cd25930b8cc24a92bfde13b12693e6a3). Where that focused on the ethos of working remotely, this time I’d like to discuss equipment that will allow you to be effective working in a remote environment.
+
+Unfortunately, it’s impossible to recommend a setup that covers every use case. Everyone’s budget, available space, and personal circumstances are infinitely variable. This post will therefore assume you are working from a laptop, in a dedicated space, and are willing to spend a reasonable sum of money on upgrading your workstation.
+
+For those interested in my personal setup, I’ve also included recommendations below each section that I’ve either used in the past, or I’m currently using at the time of writing.
+
+## Desk
+
+It’s tough to recommend a desk, as it all comes down to available space and personal preference. My overarching advice is to minimise the clutter on the desk to optimise your working space. There should be enough space to type on your keyboard and scribble notes on a pad without rearranging the desk. Bigger is better.
+
+Motorised standing desks are popular, but they’re usually expensive. If you don’t see yourself standing on a daily basis, spend the money elsewhere. I know plenty of people with height-adjustable desks that are permanently seated.
+
+Try to position the desk close to any natural light. Facing the window is usually best. It can be visually stimulating, and it’ll give you the best lighting for conference calls. If you find yourself squinting or getting annoyed by the glare, rotate it perpendicular to the window. Try not to have your back to the window. This can lead to underexposure, making you appear as a silhouette on video calls.
+
+**Recommendation**
+
+[IKEA Karlby worktop](https://www.ikea.com/gb/en/p/karlby-worktop-walnut-veneer-00335201/)
+
+[Flexispot standing desk legs](https://www.amazon.co.uk/FLEXISPOT-Adjustable-Electric-Two-Stage-Automatic/dp/B07HFZP1Q3/ref=sr_1_6?crid=35K9YAEDWXO0Y\&keywords=standing+desk+legs\&qid=1665875715\&qu=eyJxc2MiOiI0LjY3IiwicXNhIjoiNC4yNiIsInFzcCI6IjMuMzAifQ%3D%3D\&sprefix=standing+desk+legs%2Caps%2C147\&sr=8-6)
+
+## Chair
+
+On average, you’ll spend at least a third of the day sitting down, so it makes sense to invest in a high-quality ergonomic chair. My advice is to scan second-hand outlets (Facebook Marketplace, Gumtree, eBay, etc) for a Herman Millar chair. If space is limited, check out the Setu. I’m my opinion, the best all-rounder is the Mirra / Mirra 2. If money is no object, treat yourself to an Aeron!
+
+When sat at your desk, you ideally want to be looking directly ahead or slightly below your eye level. Your elbows, knees, and hips should be at around 90 degrees, and your feet should be flat on the floor and in front of your knees.
+
+**Recommendation**
+
+[Herman Miller Mirra](https://www.amazon.com/Mirra-Chair-Highly-Adjustable-Herman-Miller/dp/B0035BCRRU/ref=sr_1_15?keywords=Herman+Miller\&qid=1665876180\&qu=eyJxc2MiOiI1LjY4IiwicXNhIjoiNi4wNyIsInFzcCI6IjUuNzMifQ%3D%3D\&sr=8-15)
+
+## Communication
+
+Virtual meetings come with the territory. It’s important to ensure you are broadcasting clearly - both audibly and visually - and can focus on what is being said without becoming distracted.
+
+Laptop speakers traditionally have poor fidelity, making it easy to miss something important. Nearby distractions can also cause you to lose focus. To counter both of these issues, I highly recommend noise-cancelling headphones. Although most conferencing software can detect audio feedback, headphones prevent your speakers from leaking unwanted noise into your microphone.
+
+I also recommend using a dedicated webcam over the laptop’s integrated equivalent. The camera should be at least 1080p resolution, with a 30fps refresh rate, and a microphone if your headphones do not have their own. If you’re paranoid like me, it’s also worth looking out for a camera that comes with a physical privacy screen / slide for when it is not in use.
+
+**Recommendation**
+
+[Logitech C925-E webcam](https://www.amazon.co.uk/Logitech-Auto-Focus-Webcam-Omni-Directional-Microphones/dp/B01GRE7W9O/ref=sxts_rp_s_1_0?content-id=amzn1.sym.78489f60-7584-4e4f-a0a9-1b053691012c%3Aamzn1.sym.78489f60-7584-4e4f-a0a9-1b053691012c\&crid=3430EUF4UQGOK\&cv_ct_cx=logitech+webcam\&keywords=logitech+webcam\&pd_rd_i=B01GRE7W9O\&pd_rd_r=284061e3-e364-428d-932e-007832fe4d88\&pd_rd_w=g5wHl\&pd_rd_wg=JAvno\&pf_rd_p=78489f60-7584-4e4f-a0a9-1b053691012c\&pf_rd_r=1NFFPMSZDA2VZ25SHVJ1\&psc=1\&qid=1665876942\&qu=eyJxc2MiOiI0LjE5IiwicXNhIjoiMy43MyIsInFzcCI6IjMuNjEifQ%3D%3D\&sprefix=logitech+webca%2Caps%2C117\&sr=1-1-1890b328-3a40-4864-baa0-a8eddba1bf6a)
+
+[Bose QuietComfort noise cancelling earbuds](https://www.amazon.co.uk/dp/B08CJP6V6W/ref=asc_df_B08C4KWM9T1665615600000?tag=georiot-trd-21\&ascsubtag=trd-gb-2956678197275574000-21\&geniuslink=true\&th=1)
+
+## Monitor
+
+One extra screen is essential. Two is optimal. My general recommendation for each screen is [1080p resolution, 60Hz refresh rate, and a 24” IPS panel](https://uk.pcpartpicker.com/products/monitor/#F=609600000\&r=192001080\&D=60000\&P=2). Ideally look for screens with little to no bezels (the plastic frame around the screen), especially if you are positioning them side by side.
+
+Speaking of which, you definitely want to mount your monitors. Not only will it allow you to reposition the monitor to prevent neck strain, but it also frees up space on the desk and improves the overall aesthetic. I’ve been using the Amazon basic mounts for years and I love them!
+
+**Recommendation**
+
+[ASUS VZ249HE Monitor](https://www.amazon.co.uk/ASUS-VZ249HE-Monitor-Ultra-Slim-Certified/dp/B07281PZWK/ref=psdc_340832031_t3_B0859YRX7C?th=1)
+
+[Amazon Basic Monitor Arm](https://www.amazon.co.uk/AmazonBasics-Single-Monitor-Display-Mounting/dp/B00MIBN16O/ref=sr_1_3?keywords=amazon+basics+monitor+arm\&qid=1665875343\&qu=eyJxc2MiOiIzLjE0IiwicXNhIjoiMi44MCIsInFzcCI6IjIuNTcifQ%3D%3D\&s=computers\&sprefix=amazon+basics%2Ccomputers%2C85\&sr=1-3)
+
+## Peripherals
+
+Laptop keyboards are traditionally smaller than their external counterparts, which can feel cramped over longer periods of time. With the exception of a Macbook, trackpads are also notorious to work with. Even if you are working from a laptop, I’d still recommend using a wireless keyboard and mouse. Mechanical keyboards feel great to type on, and I’ve always preferred using a wireless mouse for both professional and personal use.
+
+Rather than relying on Wi-Fi, it’s a good idea to use a powerline adaptor to connect your machine to your internet router. Depending on the condition of the wiring in your house, this usually leads to faster speeds and a more stable connection. Be sure to buy an adaptor that is capable of transferring the same speed as your service provides! It’s also worth investing in an adaptor that has a passthrough socket. This will prevent you from losing the socket when the adaptor is plugged in.
+
+For those that split their time between the office and working from home, a USB hub is a great investment. It will allow you to connect all of your devices, internet, displays, and even charging to a single source. When it comes to working from home, all you need to do is plug a single cable into your laptop and you’re good to go!
+
+**Recommendation**
+
+[Logitech MX Master 2s mouse](https://www.amazon.co.uk/Logitech-Rechargeable-Multi-Device-Programmable-Productivity/dp/B071KZS3MF)
+
+[Keychron K8 keyboard](https://www.keychron.uk/products/keychron-k8-wireless-mechanical-keyboard-uk-iso-layout)
+
+[Powerline Adaptor](https://www.amazon.co.uk/dp/B08LW5VPPV?tag=pcad03-21\&linkCode=ogi\&th=1\&psc=1\&ascsubtag=4-1-723387-6-664724-14959)
+
+[Anker USB-C Hub](https://www.amazon.co.uk/Anker-PowerExpand-Adapter-Delivery-Ethernet-Gray/dp/B08NDGD2V5/ref=sr_1_15?crid=3JXOI78MP1MK1\&keywords=anker+usb+hub\&qid=1665878993\&qu=eyJxc2MiOiI0LjI0IiwicXNhIjoiMi45NCIsInFzcCI6IjIuNjUifQ%3D%3D\&sprefix=ankey+usb+hub%2Caps%2C102\&sr=8-15)
+
+## Ambience
+
+As trivial as it sounds, investing in appropriate lighting is a worthwhile investment. Diffusing the glare from the monitor with ambient light will reduce the strain on your eyes over long periods of time. This is especially important in rooms with low natural light. It also helps to personalise the space beyond the usual white walls.
+
+I use a BenQ screen light that is mounted above my primary monitor. The back of my desk is fitted with a Philips Hue lightstrip, and my keyboard is backlit to make the keys easier to see in low-light conditions.
+
+**Recommendation**
+
+[BenQ Screenbar](https://www.amazon.co.uk/BenQ-ScreenBar-Halo-Controller-Temperature/dp/B08WT889V3/ref=sr_1_5?crid=1N9LALPL4K7GI\&keywords=benq+screenbar\&qid=1665875930\&qu=eyJxc2MiOiIyLjM3IiwicXNhIjoiMi4zNyIsInFzcCI6IjIuMjUifQ%3D%3D\&sprefix=benq+screenbar%2Caps%2C94\&sr=8-5)
+
+[Philips Hue lightstrip](https://www.amazon.co.uk/Philips-Lightstrip-Ambiance-Bluetooth-Assistant/dp/B088RX9CSZ/ref=sr_1_4?crid=141DJPMWH7LF\&keywords=hue+lightstrip\&qid=1665875844\&qu=eyJxc2MiOiIyLjk4IiwicXNhIjoiMi4wNSIsInFzcCI6IjEuOTQifQ%3D%3D\&sprefix=hue+lightstrip%2Caps%2C102\&sr=8-4)
+
+## Miscellaneous
+
+Plants are great for clearing the air and giving some visual stimulation. If you decide on a plant, I’d recommend something low maintenance - particularly those that survive well in low-light conditions and can go for extend periods if you forget to water it. The only thing worse than no plant is a dead one!
+
+Everything gets dusty and dirty over time. Screen cleaner is great for removing fingerprints and streaks off of your monitor, and the microfibre cloth can also be used for dusting the desk off after the weekend.
+
+Instead of a small mouse mat, I prefer one that spans the majority of my working space. It allows for wider sweeping motions with the mouse (this is handy when you have multiple monitors), it gives the keyboard extra grip to prevent slipping, and it helps prevent damage to the desk through continual use.
+
+Repetitive strain injury is common for those of us typing on keyboards for extend periods of time. Adding a padded rest below the keyboard can help alleviate the strain on the wrists, and allow you to type for extended periods of time without any noticeable discomfort.
+
+Finally, cable tidies are great for removing clutter from your desk. They can really give your desk a clean, minimal feel for a trivial cost.
+
+**Recommendation**
+
+[Sansevieria (Snake plant)](https://thelittlebotanical.com/product/sanseveria-punk-succulent-snakeplant/)
+
+[Microfibre cloth & screen cleaner](https://www.amazon.co.uk/gp/product/B078QQRKWL/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8\&psc=1)
+
+[XXXL mouse mat](https://www.amazon.co.uk/Corsair-Anti-Fray-Anti-Skid-Optimised-High-Performance/dp/B0833PQPPG/ref=psdc_340832031_t2_B08JH8C5T5?th=1)
+
+[Keyboard wrist rest](https://www.amazon.co.uk/gp/product/B07HWKFQD6/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8\&psc=1)
+
+[Cable management](https://www.amazon.co.uk/Anker-PowerExpand-Adapter-Delivery-Ethernet-Gray/dp/B08NDGD2V5/ref=sr_1_15?crid=3JXOI78MP1MK1\&keywords=anker+usb+hub\&qid=1665878993\&qu=eyJxc2MiOiI0LjI0IiwicXNhIjoiMi45NCIsInFzcCI6IjIuNjUifQ%3D%3D\&sprefix=ankey+usb+hub%2Caps%2C102\&sr=8-15)
+
+## ✌
+]]></content:encoded>
+            <author>contact@ajames.dev (Andrew James)</author>
+            <category>Productivity</category>
+            <enclosure length="0" type="image/jpg" url="https://i.imgur.com/padlgmg.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Building an Accessible Menubar Component Using React]]></title>
+            <link>https://ajames.vercel.app/blog/accessible-menubar</link>
+            <guid>https://ajames.vercel.app/blog/accessible-menubar</guid>
+            <pubDate>Fri, 01 Apr 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[Duis volutpat eleifend eros, id gravida ipsum pellentesque vel. Pellentesque pretium ante metus, vel tempor sem vehicula non. ]]></description>
+            <content:encoded><![CDATA[Last week I watched Pedro Duarte's excellent *"*[*So You Think You Can Build A Dropdown*](https://www.youtube.com/watch?v=lY-RQjWeweo)*"* talk at Next.js Conf. It inspired me to write up an accessible component of my own that I recently worked on — the menubar widget.
+
+I have a real interest in accessibility, particularly in frontend web development. Of all the patterns that I've researched to date, the menubar was the most complex. [Reach](https://reach.tech/), [Radix](https://www.radix-ui.com/), and [React Aria](https://react-spectrum.adobe.com/react-aria/index.html) all provide flexible and accessible React components.
+
+Yet, I struggled to find any library that provided a menubar component out of the box. Given the complexity and lack of material, I thought I'd share my discoveries with the community.
+
+## Introduction
+
+This article will explain how I created an accessible `Menubar` component with React. The aim was to create a component that adhered to the WAI-ARIA [design pattern](https://www.w3.org/TR/wai-aria-practices/#menu) for a menubar widget.
+
+For brevity, the article will focus on a horizontal menubar with a single submenu. It also assumes you are comfortable with React hooks and the [compound component](https://kentcdodds.com/blog/compound-components-with-react-hooks) pattern. I've included the  solution as a Code Sandbox link below.
+
+### **Design Pattern**
+
+[https://www.w3.org/TR/wai-aria-practices/#menu](https://www.w3.org/TR/wai-aria-practices/#menu)
+
+### **Navigation Menubar Example**
+
+[https://www.w3.org/TR/wai-aria-practices/examples/menubar/menubar-1/menubar-1.html](https://www.w3.org/TR/wai-aria-practices/examples/menubar/menubar-1/menubar-1.html)
+
+### **Code Sandbox**
+
+[https://codesandbox.io/s/a11y-menubar-logrocket-cv5q3w](https://codesandbox.io/s/a11y-menubar-logrocket-cv5q3w)
+
+## The Menubar
+
+We'll kick off with the requirements. The Mythical University has requested an accessible site navigation for their website.
+
+To get started, we'll group a collection of hyperlinks in an unordered list. We'll also wrap the list in a navigation section.
+
+The HTML might look something like this:
+
+```html
+<nav>
+    <ul>
+        <li>
+            <a href="/#about">About</a>
+        </li>
+				
+        <li>
+            <a href="/#admissions">Admissions</a>
+        </li>
+				
+        <li>
+            <a href="/#academics">Academics</a>
+        </li>
+    </ul>
+</nav>
+```
+
+At first glance, the markup looks comprehensive, but how accessible is it for those reliant on assistive technologies? Additionally, can the user navigate the menubar with the expected keyboard controls?
+
+Although we have provided semantic HTML, the current iteration is not considered accessible. The markup is missing critical `aria-` roles that give context to both the links and the widget itself. Poor keyboard support also means the user is only able to tab through the list of links.
+
+Let's improve both of these areas.
+
+We'll start by creating two functional components. One is a parent `Menubar` list, and the other is a child `MenuItem` list item. Together we'll use these to compose a compound `<Menubar />` component.
+
+The parent `Menubar` returns an unordered list element. Since it's the widget's root element, we'll assign it the `menubar` role. The `aria-orientation` attribute allows assistive technology to determine the direction of the menu. Finally, let's include a custom `data-` attribute for targeting and styling later on.
+
+```javascript
+function Menubar({ children, ...props }) {
+    const listProps = {
+        ...props,
+        "aria-orientation": "horizontal",
+        "data-menubar-list": "",
+        role: "menubar",
+    };
+
+    return <ul {...listProps}>{children}</ul>;
+};
+```
+
+The second component is the `MenuItem`. It accepts a single node for its `children` prop and returns the node wrapped in a list item element.
+
+Assistive technology should only announce the child node. A list item element has the `listitem` role by default. By overriding it to `none`, we completely remove it from the accessibility tree. We then assign the child node the `menuitem` role by [cloning the element](https://reactjs.org/docs/react-api.html#cloneelement) and shallow merging the prop.
+
+```javascript
+function MenuItem({ children, ...props }) {
+    const listItemProps = {
+        ...props,
+        "data-menubar-listitem": "",
+        role: "none"
+    };
+
+    const childProps = {
+        "data-menubar-menuitem": "",
+        role: "menuitem",
+    };
+
+    return (
+        <li {...listItemProps}>
+            {React.cloneElement(children, childProps)}
+        </li>
+    );
+};
+```
+
+Finally, let's add a matching `aria-label` to the navigation element.
+
+The current React markup will look something like this:
+
+```html
+<nav aria-label="Mythical University">
+    <Menubar aria-label="Mythical University">
+        <MenuItem>
+            <a href="/#about">About</a>
+        </MenuItem>
+		
+        <MenuItem>
+            <a href="/#admissions">Admissions</a>
+        </MenuItem>
+		
+        <MenuItem>
+            <a href="/#academics">Academics</a>
+        </MenuItem>
+    </Menubar>
+</nav>
+```
+
+Which will compile into the following HTML:
+
+```html
+<nav aria-label="Mythical University">
+    <ul
+        aria-label="Mythical University"
+        aria-orientation="horizontal"
+        data-menubar-list
+        role="menubar"
+    >
+        <li data-menubar-listitem role="none">
+            <a data-menubar-menuitem href="/#about" role="menuitem">
+                About
+            </a>
+        </li>
+			
+        <li data-menubar-listitem role="none">
+            <a data-menubar-menuitem href="/#admissions" role="menuitem">
+                Admissions
+            </a>
+        </li>
+			  
+        <li data-menubar-listitem role="none">
+            <a data-menubar-menuitem href="/#academics" role="menuitem">
+                Academics
+            </a>
+        </li>
+    </ul>
+</nav>
+```
+
+So far we've improved the menubar for those using assistive technology, but what about those who are reliant on keyboard controls? For them to navigate the list of menu items, the `Menubar` component needs to be aware of each child `MenuItem`. We can achieve this by utilizing the React `createContext()` and `useEffect()` hooks.
+
+Let's start by creating a new `MenubarContext`:
+
+```javascript
+export const MenubarContext = React.createContext(null);
+```
+
+The `MenubarContext` will store a [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) of nested `MenuItem` nodes within a parent `Menubar`. We contain the `Set` in a mutable ref object created with the `useRef()` hook, and store the `current` value in a variable.
+
+This allows us to manipulate the `Set` contents without re-rendering the `Menubar`. Next, we'll memoize an object with the `useMemo()` hook and assign the `menuItems` as a property. Finally, we'll pass the object to the value attribute of the `MenubarContext.Provider`.
+
+```javascript
+function Menubar({ children, ...props }) {
+    const menuItems = React.useRef(new Set()).current;
+    const value = React.useMemo(() => ({ menuItems }), [menuItems]);
+    const listProps = { ... };
+
+    return (
+        <MenubarContext.Provider value={value}>
+            <ul {...listProps}>
+                {children}
+            </ul>
+        </MenubarContext.Provider>
+    );
+};
+```
+
+The `MenuItem` should only ever be a child of a `Menubar` component. To enforce this, let's throw an error if the `useContext()` hook cannot find a `MenubarContext`. This allows us to assert that `menuItems` exists below the following conditional statement:
+
+```javascript
+const menubarContext = React.useContext(MenubarContext);
+
+if (!menubarContext) {
+    throw new Error("MenuItem must be used within a Menubar Context");
+}
+
+const { menuItems } = menubarContext;
+```
+
+Let's create an object reference to the `MenuItem` DOM node with the `useRef()` hook. Then let's use the `useEffect()` hook to trigger a side-effect that adds the node to the `menuItems` `Set`. We'll also return a cleanup function to remove it from the `Set` if the `MenuItem` unmounts.
+
+```javascript
+const { menuItems } = menubarContext;
+
+const menuItemRef = React.useRef(null);
+
+const listItemProps = {
+    [ ... ],
+    ref: menuItemRef,
+};
+
+React.useEffect(() => {
+    const menuItemNode = menuItemRef.current;
+
+    if (menuItemNode) {
+        menuItems.add(menuItemNode);
+    }
+
+    return () => {
+        menuItems.delete(menuItemNode);
+    };
+}, [menuItems]);
+
+return (
+    <li {...listItemProps}>
+        {React.cloneElement(children, childProps)}
+    </li>
+);
+```
+
+### Roving tab index
+
+We now have a reference to each `MenuItem` node. With them, we can apply the [roving tab index](https://www.w3.org/TR/wai-aria-practices-1.1/#kbd_roving_tabindex) pattern to manage focus within the component. To do that, the `Menubar` needs to keep track of the current and previously-focused `MenuItem`. We can do this by storing the indexes of the current and previous nodes in the `Menubar`'s component state.
+
+The current index is a stateful value stored using the React `useState()` hook. When the Menubar first mounts, the first `MenuItem` child should have a tab index of `0`. Thus, we can assign `0` as the default state for the current index.
+
+We can use a custom hook to track the previous index. The hook accepts the current index as a function parameter. If the hook does not return a value, we can assume that one does not exist and fall back to `null`.
+
+```javascript
+/* https://usehooks.com/usePrevious/ */
+const [currentIndex, setCurrentIndex] = React.useState(0);
+const previousIndex = usePrevious(currentIndex) ?? null;
+
+function usePrevious(value) {
+    const ref = React.useRef();
+
+    React.useEffect(() => {
+        ref.current = value;
+    }, [value]);
+
+    return ref.current;
+}
+```
+
+To apply the roving tab index, the `menuItems[currentIndex]` node must have a tab index of `0`. All other elements in the component's tab sequence should have a tab index of `-1`. Whenever the user navigates from one menu item to another, the following should occur:
+
+*   The current node should blur and its tab index should set to `-1`
+*   The next node's tab index is set to `0`
+*   The next node receives focus
+
+Let's utilize the React `useEffect()` hook for this. We'll pass the current and previous indexes as effect dependencies. Whenever either index changes, the effect will update all appropriate indexes. Note that we are applying the tab index attribute to the first child of the `MenuItem`, not the list item wrapper.
+
+```javascript
+React.useEffect(() => {
+    if (currentIndex !== previousIndex) {
+        const items = Array.from(menuItems);
+        const currentNode = items[currentIndex]?.firstChild;
+        const previousNode = items[previousIndex]?.firstChild;
+		
+        previousNode?.setAttribute("tabindex", "-1");
+        currentNode?.setAttribute("tabindex", "0");
+        currentNode?.focus();
+    }
+}, [currentIndex, previousIndex, menuItems]);
+```
+
+We don’t have to add the tab index to each menu item, we can update the `MenuItem` component to do that for us! We can assume that if the `menuItems` `Set` is empty, then the node is the first menu item in the sequence.
+
+Let's add some component state to track whether the `MenuItem` is the first node in the set. If it is, we can assign its tab index a value of `0` — otherwise, we'll fall back to `-1`.
+
+```javascript
+const [isFirstChild, setIsFirstChild] = React.useState(false);
+const menuItemRef = React.useRef(null);
+const { menuItems } = menubarContext;
+
+const listItemProps = {
+    [ ... ],
+    ref: menuItemRef,
+};
+
+const childProps = {
+    [ ... ],
+    tabIndex: isFirstChild ? "0" : "-1",
+};
+
+React.useEffect(() => {
+    const menuItemNode = menuItemRef.current;
+	
+    if (menuItemNode) {
+        if (!menuItems.size) {
+            setIsFirstChild(true);
+        }
+
+        menuItems.add(menuItemNode);
+    }
+
+    return () => {
+        menuItems.delete(menuItemNode);
+    };
+}, [menuItems]);
+
+return (
+    <li {...listItemProps}>
+        {React.cloneElement(children, childProps)}
+    </li>;
+);
+```
+
+### Keyboard controls
+
+Next, we'll use the `Menubar`'s `onKeyDown()` event to update the current index based on the user's keypress. There are five primary methods that a user can navigate through the menu items. They can:
+
+*   Return to the previous item
+*   Advance to the next
+*   Jump to the first
+*   Skip to the last
+*   Move to the next match
+
+Let's encapsulate that logic into some helper methods that we can pass to the `keyDown` event.
+
+```javascript
+// Moves focus to the first item in the menubar.
+const first = () => setCurrentIndex(0);
+
+// Moves focus to last item in the menubar.
+const last = () => setCurrentIndex(menuItems.size - 1);
+
+// Moves focus to the next item in the menubar. 
+// If focus is on the last item, moves focus to the first item.
+const next = () => {
+    const index = currentIndex === menuItems.size - 1 ? 0 : currentIndex + 1;
+    setCurrentIndex(index);
+};
+
+// Moves focus to the previous item in the menubar. 
+// If focus is on the first item, moves focus to the last item.
+const previous = () => {
+    const index = currentIndex === 0 ? menuItems.size - 1 : currentIndex - 1;
+    setCurrentIndex(index);
+};
+
+// Moves focus to next item in the menubar that starts with the character. 
+// If none of the items start with the typed character, focus does not move.
+const match = (e) => {
+    const items = Array.from(menuItems);
+
+    const reorderedItems = [
+        ...items.slice(currentIndex),
+        ...items.slice(0, currentIndex)
+    ];
+
+    const matches = reorderedItems.filter((menuItem) => {
+        const { textContent } = menuItem.firstChild;
+        const firstLetter = textContent.toLowerCase().charAt(0);
+        return e.key === firstLetter;
+        });
+
+    if (!matches.length) {
+        return;
+    }
+
+    const currentNode = items[currentIndex];
+    const nextMatch = matches.includes(currentNode) ? matches[1] : matches[0];
+    const index = items.findIndex((item) => item === nextMatch);
+
+    setCurrentIndex(index);
+};
+```
+
+With the helper methods defined, we can assign them to the appropriate key codes. We'll check to see if the keypress matches any keys associated with movement; if it doesn’t, we'll default to the `match()` helper method.
+
+```javascript
+const keyDown = (e) => {
+    e.stopPropagation();
+
+switch (e.code) {
+    case "ArrowLeft":
+        e.preventDefault();
+        previous();
+        break;
+    case "ArrowRight":
+        e.preventDefault();
+        next();
+        break;
+    case "End":
+        e.preventDefault();
+        last();
+        break;
+    case "Home":
+        e.preventDefault();
+        first();
+        break;
+    default:
+        match(e);
+        break;
+    }
+}
+
+const listProps = {
+    [ ... ],
+    onKeyDown: (e) => {
+        keyDown(e);
+    },
+};
+```
+
+Notice that we are calling `e.preventDefault()` on most of the helper methods. This is to suppress any default browser behavior as the user interacts with the menubar. For example, by default, the `End` key scrolls the user to the bottom of the page.
+
+Let's say we did not prevent the default behavior; the scroll position would jump to the bottom of the page any time the user tried to skip to the final menu item!
+
+We mustn't call `e.preventDefault()` on the default case. If we did, it would ignore any default browser behavior not captured by a switch case. This could lead to undesired behavior. An example would be if a menu item within the menubar had focus and the user pressed `ctrl + r` to refresh the page. If we called `e.preventDefault()` on the default case, it would ignore the refresh request. It would then pass the `r` key to the `match` helper method.
+
+We now have a fully-accessible Menubar widget for a collection of navigation links! Each menu item provides rich contextual information to assistive technology. It also allows those reliant on keyboard support to navigate the list of links as they would expect.
+
+The component API hasn't changed from the previous example...
+
+```html
+<nav aria-label="Mythical University">
+    <Menubar aria-label="Mythical University">
+        <MenuItem>
+            <a href="/#about">About</a>
+        </MenuItem>
+			
+        <MenuItem>
+            <a href="/#admissions">Admissions</a>
+        </MenuItem>
+			
+        <MenuItem>
+            <a href="/#academics">Academics</a>
+        </MenuItem>
+    </Menubar>
+</nav>
+```
+
+...yet the compiled HTML markup now includes tab indexes on the menu items.
+
+Progress!
+
+```html
+<nav aria-label="Mythical University">
+    <ul
+        aria-label="Mythical University"
+        aria-orientation="horizontal"
+        data-menubar-list
+        role="menubar"
+    >
+        <li data-menubar-listitem role="none">
+            <a data-menubar-menuitem href="/#about" role="menuitem" tabindex="0">
+                About
+            </a>
+        </li>
+
+        <li data-menubar-listitem role="none">
+            <a data-menubar-menuitem href="/#admissions" role="menuitem" tabindex="-1">
+                Admissions
+            </a>
+        </li>
+
+        <li data-menubar-listitem role="none">
+            <a data-menubar-menuitem href="/#academics" role="menuitem" tabindex="-1">
+                Academics
+            </a>
+        </li>
+    </ul>
+</nav>
+```
+
+## The Submenu
+
+The previous example is great for a single collection of links, but what if we replaced one of them with a dropdown that revealed a secondary set of navigation links?
+
+```html
+<nav aria-label="Mythical University">
+    <Menubar aria-label="Mythical University">
+        <MenuItem>
+            <a href="/#about">About</a>
+        </MenuItem>
+			
+        <MenuItem>
+            <button>Admissions</button>
+
+            <ul>
+                <li><a href="/#visit">Visit</a></li>
+                <li><a href="/#photo-tour">Photo Tour</a></li>
+                <li><a href="/#connect">Connect</a></li>
+            </ul>
+        </MenuItem>
+			
+        <MenuItem>
+            <a href="/#academics">Academics</a>
+        </MenuItem>
+    </Menubar>
+</nav>
+```
+
+For this, we're going to need to create a second compound component — the `<Submenu />`. It is composed of three functional components:
+
+*   The `Submenu` will hold shared logic and component state
+*   The `Trigger` will allow the user to expand the menu
+*   The `List` will display the expanded menu items
+
+The `MenubarContext` keeps track of menu items within the `Menubar`. In turn, let's create a `SubmenuContext` to keep track of menu items nested within a `Submenu`.
+
+```javascript
+export const SubmenuContext = React.createContext(null);
+```
+
+Let's start by defining the `Submenu` component. It'll share some similar behaviors and functionality to the `Menubar`. Alongside the index tracking, it also needs to know if its menu has expanded. We could declare another state variable with `useState()`. Instead, it makes more sense to merge the logic into a reducer function.
+
+The purpose of the `Submenu` parent component is to hold the compound component state. It is also responsible for distributing shared logic to its sub-components. We assign the logic to a memoized object, after which that object is then passed to the value attribute of a `SubmenuContext.Provider`.
+
+```javascript
+const submenuInitialState = {
+    currentIndex: null,
+    previousIndex: null,
+    isExpanded: false,
+};
+
+function submenuReducer(state, action) {
+    switch (action.type) {
+        case "expand":
+            return { ...state, isExpanded: true };
+        case "collapse":
+            return submenuInitialState;
+        case "move":
+            return {
+                ...state,
+                isExpanded: true,
+                currentIndex: action.index,
+                previousIndex: state.currentIndex
+            };
+        default:
+            throw new Error(`${action.type} not recognised`);
+    }
+}
+
+const Submenu = ({ children }) => 
+    const menuItems = React.useRef(new Set()).current;
+    const [state, dispatch] = React.useReducer(submenuReducer, submenuInitialState);
+    const value = React.useMemo(() => ({ menuItems }), [menuItems]);
+
+    return (
+        <SubmenuContext.Provider value={value}>
+            {children}
+        </SubmenuContext.Provider>
+    );
+};
+```
+
+Now, let's define the helper methods for navigating the submenu's menu items. These are almost identical to the `Menubar` helpers. The key difference is they dispatch reducer actions instead of updating the component state directly.
+
+```javascript
+const open = React.useCallback(() => dispatch({ type: "expand" }), []);
+
+const close = React.useCallback(() => dispatch({ type: "collapse" }), []);
+
+const first = React.useCallback() => dispatch({ type: "move", index: 0 }), []);
+
+const last = React.useCallback(() => (
+    dispatch({ type: "move", index: menuItems.size - 1 }), [menuItems.size]
+));
+
+const move = React.useCallback((index) => dispatch({ type: "move", index }), []);
+
+const value = React.useMemo(() => ({ open, close, first, last, move }),
+    [open, close, first, last, move]
+);
+
+return (
+    <SubmenuContext.Provider value={value}>
+        {children}
+    </SubmenuContext.Provider>
+);
+```
+
+Some functional requirements need the subcomponents to have knowledge of their sibling. We can achieve this by defining ids and references for each subcomponent in the `Submenu`. Note that we store the `menuId` within a reference object. This is to prevent the `uniqueId()` function from regenerating the id on every render. Each subcomponent can now retrieve the values from the `useContext()` hook.
+
+```javascript
+const id = React.useRef(_.uniqueId("submenu--")).current;
+const buttonId = `button--${id}`;
+const listId = `list--${id}`;
+
+const buttonRef = React.useRef(null);
+const listRef = React.useRef(null);
+
+const value = React.useMemo(
+    () => ({ buttonId, buttonRef, listId, listRef })
+    [buttonId, buttonRef, listId, listRef]
+);
+```
+
+Let's now manage focus within the `Submenu`. We'll start by adding another side effect. This one will focus the first child of the current index if the tracked indexes do not match. Whenever we update the current index, we focus the first child of the new current node.
+
+```javascript
+React.useEffect(() => {
+    const items = Array.from(menuItems);
+
+    if (currentIndex !== previousIndex) {
+        const currentNode = items[currentIndex]?.firstChild;
+        currentNode?.focus();
+    }
+}, [menuItems, currentIndex, previousIndex]);
+```
+
+Submenus do not follow the roving tab index pattern. Instead, the tab index of each menu item within a submenu will always be `-1`. This requires a small change to the `MenuItem` component. If a `SubmenuContext` exists, we can assume the `MenuItem` is inside a `Submenu` and apply `-1` to its tab index.
+
+```javascript
+const [isFirstChild, setIsFirstChild] = React.useState(false);
+const submenuContext = React.useContext(SubmenuContext);
+
+const childProps = {
+    [ ... ],
+    tabIndex: !submenuContext && isFirstChild ? "0" : "-1",
+};
+```
+
+### Trigger
+
+With the `Submenu` defined, let's create the `Trigger` component. We'll start by retrieving the `buttonId` and `buttonRef` from the `SubmenuContext`. Since a button's default type is `submit`, it's usually a good idea to override it to `button`.
+
+Finally, the `Trigger` should only ever be a child of the `Submenu`. Like before, let's throw an error if we use it outside of a `SubmenuContext`.
+
+```javascript
+const Trigger = ({ onKeyDown, ...props }) => {
+const context = React.useContext(SubmenuContext);
+
+if (!context) {
+    throw new Error("Trigger must be used within a Submenu Context");
+}
+
+const { buttonId, buttonRef } = context;
+
+const buttonProps = {
+    ...props,
+    id: buttonId,
+    ref: buttonRef,
+    type: "button",  
+}
+
+return <button {...buttonProps} />;
+};
+```
+
+Next, let's add the appropriate `aria-` attributes. `aria-haspopup='true'` will inform assistive technology that the button controls a submenu. To go one step further, we can also add the `aria-controls` attribute. This informs the screen reader of the exact submenu controlled by the `Trigger`.
+
+Let's also retrieve the `listId` and the `isExpanded` state from the `SubmenuContext`. We'll assign the `listId` to `aria-controls`. Then, all that's left is to assign the `isExpanded` state to the `aria-expanded` attribute. Assistive technology is now aware of the menu button controls, and whether they are open or closed.
+
+```javascript
+const { buttonId, buttonRef, listId, isExpanded } = submenuContext;
+
+const buttonProps = {
+    ...props,
+    "aria-haspopup": true,
+    "aria-expanded": isExpanded,
+    "aria-controls": listId,
+    "data-menubar-submenu-trigger": "",
+    id: buttonId,
+    ref: buttonRef,
+    type: "button",
+};
+```
+
+Now, let's add keyboard support to the `Trigger`. The `Trigger` will be a sibling of the Menubar menu items. That means it should perform the same `keyDown` events as the Menubar links. It also requires some additional functionality. Alongside the menu item behavior, the Trigger should:
+
+*   `ArrowUp`: Open the submenu and focus the last item
+*   `ArrowDown`: Opens the submenu and focus the first item
+*   `Space`, `Enter`: Open the submenu and focus to the first item
+
+To do this, we'll retrieve some methods from the `SubmenuContext` and assign them to the relevant `e.code`. Note that we only want to execute the `e.stopPropagation()` method on unique events.
+
+Doing so allows all other events to bubble up to the `MenuBar`. This is what prevents us from having to duplicate the menu item's `keydown` events.
+
+```javascript
+const { first, last } = submenuContext;
+
+const keyDown = (e) => {
+    switch (e.code) {
+        case "ArrowUp":
+            e.stopPropagation();
+            last();
+            break;
+        case "ArrowDown":
+            e.stopPropagation();
+            first();
+            break;
+        case "Enter":
+        case "Space":
+            e.stopPropagation();
+            first();
+            break;
+        default:
+            break;
+    }
+};
+
+const buttonProps = {
+    [ ... ],
+    onKeyDown: (e) => {
+    onKeyDown?.(e);
+        keyDown(e);
+    },
+};
+```
+
+Let's say a submenu is open when the user presses the `ArrowLeft`or `ArrowRight` key. The submenu should close and focus the previous or next `Menubar` menu item. If the root menu item is also a submenu, it should expand the menu but keep focus on the trigger.
+
+The `Trigger` achieves this by checking to see if the event originated from a submenu menu item. This ensures that the menu does not expand when other `keydown` methods focus the trigger.
+
+```javascript
+const buttonProps = {
+    [ ... ],
+    onFocus: (e) => {
+        const isFromSubmenu = e.relatedTarget?.getAttribute(
+            "data-menubar-submenu-menuitem"
+        ) === "";
+			
+        if (isFromSubmenu) {
+            open();
+        }
+    }
+};
+```
+
+### List
+
+Now that we have a `Trigger`, all we need to do is create a submenu `List`. Like the `Trigger`, we'll throw an error if the `List` component is not used within a `SubmenuContext`.
+
+Let's also define some attributes. First, we'll apply the `role='menu'` and retrieve the `listId` from the `SubmenuContext`. We'll retrieve `isExpanded` from the context and assign it to the `aria-hidden` attribute. This will hide the List from the accessibility tree if the menu is not expanded.
+
+Next, let's label the menu by assigning the `buttonId` to the `aria-labelledby` attribute. Finally, we'll supply the menu's direction to assistive technology with the `aria-orientation` attribute.
+
+```javascript
+const List = ({ children, ...props }) => {
+    const submenuContext = React.useContext(SubmenuContext);
+
+    if (!submenuContext ) {
+        throw new Error("List must be used within a Submenu Context");
+    }
+
+    const { listId, listRef, isExpanded } = submenuContext;
+
+    const listProps = {
+        ...props,
+        "aria-hidden": !isExpanded,
+        "aria-labelledby": buttonId,
+        "aria-orientation": "vertical",
+        "data-menubar-submenu-list": "",
+        id: listId,
+        ref: listRef,
+        role: "menu",
+    };
+
+    return (
+        <ul {...listProps}>
+            {children}
+        </ul>
+    );
+};
+```
+
+Now let's add some `keydown` events specific to the `List` component. We'll retrieve the appropriate helpers from the `SubmenuContext`. Again, we only want to stop propagation on events that we do not want to bubble up to the `Menubar`'s `keydown` event.
+
+```javascript
+const { close, first, last, move } = submenuContext;
+
+const keyDown = (e) => {
+    switch (e.code) {
+        case "ArrowUp":
+            e.stopPropagation();
+            e.preventDefault();
+            previous();
+            break;
+        case "ArrowDown":
+            e.stopPropagation();
+            e.preventDefault();
+            next();
+            break;
+        case "ArrowLeft":
+            e.preventDefault();
+            close();
+            break;
+        case "ArrowRight":
+            e.preventDefault();
+            close();
+            break;
+        case "Home":
+            e.stopPropagation();
+            e.preventDefault();
+            first();
+            break;
+        case "End":
+            e.stopPropagation();
+            e.preventDefault();
+            last();
+            break;
+        case "Enter":
+        case "Space":
+            close();
+            break;
+        case "Escape":
+            e.stopPropagation();
+            e.preventDefault();
+            close();
+            break;
+        case "Tab":
+            close();
+            break;
+        default:
+            e.stopPropagation();
+            match(e);
+            break;
+    }
+};
+
+const listProps = {
+    [ ... ],
+    onKeyDown: (e) => {
+        e.preventDefault();
+        keyDown(e);
+    },
+};
+```
+
+The `MenuItem` component will work within a `Submenu` for the most part. We'll need to make a couple of changes to ensure that both the `Menubar` and `Submenu` can make use of the component.
+
+The first change is to ensure that the correct `menuItems` `Set` receives the `menuItem` node. We can assert that a submenu is an ancestor element if the `MenuItem` can retrieve a `SubmenuContext`. If it returns a false value, then the `Menuitem` must belong to the Menubar.
+
+Let's update the error to check for the `SubmenuContext`. The error should only throw if both contexts do not exist. A `MenuItem` can now be a child of either a `Menubar` or a `Submenu`.
+
+```javascript
+const menubarContext = React.useContext(MenubarContext);
+const submenuContext = React.useContext(SubmenuContext);
+
+if (!menubarContext && !submenuContext) {
+    throw new Error(
+        "MenuItem must be used within either a Menubar or Submenu Context"
+    );
+}
+```
+
+There is one final change that we need to make to the `MenuItem` component. Let's revisit the structure of the `Submenu`.
+
+The `MenuItem` currently clones its `children` prop and appends extra props. In the example below, we can see that `MenuItem`'s child is the `Submenu` component. The `Submenu` returns a context provider as its parent element. The provider returns nothing from render, and so the props are not attached to any DOM node.
+
+```html
+<Menubar aria-label="Menubar example">
+    <MenuItem>
+        <SubmenuContext.Provider {...menuItemProps}>
+            <Trigger />
+            <List />
+        </SubmenuContext.Provider>
+    </MenuItem> 
+</Menubar>
+```
+
+Instead, we would like to append the `MenuItem`'s `childProps` onto the submenu `Trigger`. To do so, the `MenuItem` component will need to check its `children`'s type.
+
+If the type is a node, then we clone it and append the props. If the type is a function, then we instead provide the props as an argument in the function signature.
+
+This allows us the flexibility of choosing which element should receive the props and additionally retains the convenience of appending the props onto the child by default.
+
+```javascript
+return (
+    <li {...listItemProps}>
+        { typeof children === "function"
+            ? children(childProps)
+            : React.cloneElement(children, childProps)
+        }
+    </li>
+);
+
+MenuItem.propTypes = {
+    children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]).isRequired,
+}
+```
+
+That leaves us with this flexible React markup:
+
+```html
+<nav aria-label="Mythical University">
+    <Menubar aria-label="Mythical University">
+        <MenuItem>
+            <a href="/#about">About</a>
+        </MenuItem> 
+		
+        <MenuItem>
+            {(menuItemProps) => (
+                <Submenu>
+                    <Trigger {...menuItemProps}>
+                        Admissions
+                    </Trigger>
+	
+                    <List>
+                        <MenuItem>
+                            <a href="/#visit">Visit</a>
+                        </MenuItem> 
+											
+                        <MenuItem>
+                            <a href="/#photo-tour">Photo Tour</a>
+                        </MenuItem> 
+
+                        <MenuItem>
+                            <a href="/#connect">Connect</a>
+                        </MenuItem> 
+                    </List>
+                </Submenu>
+            )}
+        </MenuItem> 
+		
+        <MenuItem>
+            <a href="/#academics">Academics</a>
+        </MenuItem> 
+    </Menubar>
+</nav>
+```
+
+...which compiles into this beautiful, accessible HTML:
+
+```html
+<nav aria-label="Mythical University">
+    <ul
+        aria-label="Mythical University"
+        aria-orientation="horizontal"
+        data-menubar-list
+        role="menubar"
+    >
+        <li data-menubar-listitem role="none">
+            <a data-menubar-menuitem href="/#about" role="menuitem" tabindex="0">
+                About
+            </a>
+        </li>
+			
+        <li data-menubar-listitem role="none">
+            <button
+                aria-controls="list--submenu--1"
+                aria-expanded="false"
+                aria-haspopup="true"
+                data-menubar-menuitem
+                data-menubar-submenu-trigger
+                id="button--submenu--1"
+                role="menuitem"
+                tabindex="-1"
+                type="button"
+            >
+                Admissions
+            </button>
+			
+            <ul
+                aria-hidden="true"
+                aria-labelledby="button--submenu--1"
+                aria-orientation="vertical"
+                data-menubar-submenu-list
+                id="list--submenu--1"
+                role="menu"
+            >
+                <li data-menubar-submenu-listitem role="none">
+                    <a
+                        data-menubar-submenu-menuitem
+                        href="/#visit"
+                        role="menuitem"
+                        tabindex="-1" 
+                    >
+                        Visit
+                    </a>
+                </li>
+
+                <li data-menubar-submenu-listitem role="none">
+                    <a
+                        data-menubar-submenu-menuitem
+                        href="/#photo-tour"
+                        role="menuitem"
+                        tabindex="-1" 
+                    >
+                        Photo Tour
+                    </a>
+                </li>
+
+                <li data-menubar-submenu-listitem role="none">
+                    <a
+                        data-menubar-submenu-menuitem
+                        href="/#connect"
+                        role="menuitem"
+                        tabindex="-1" 
+                    >
+                        Connect
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li data-menubar-listitem role="none">
+            <a data-menubar-menuitem href="/#academics" role="menuitem" tabindex="-1">
+                Academics
+            </a>
+        </li>
+    </ul>
+</nav>
+```
+
+Now, all that's left is to add extra logic for mouse pointer events, nested submenus, and a full suite of unit tests!
+
+Unfortunately, we'll consider these features out of scope for this article and they would warrant a follow-up post to cover. I've included all the extra logic and the unit tests in the [Code Sandbox demo](https://codesandbox.io/s/a11y-menubar-ej7kh?file=/src/App.js) at the top of the page.
+
+*   Special thanks to [Jenna Smith](https://twitter.com/jjenzz) for her invaluable contributions to the initial API design.
+]]></content:encoded>
+            <author>contact@ajames.dev (Andrew James)</author>
+            <category>react</category>
+            <category>a11y</category>
+            <enclosure length="0" type="image/jpg" url="https://i.imgur.com/ea3i0eM.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[So you want to write a Groom’s speech?]]></title>
+            <link>https://ajames.vercel.app/blog/wedding-speech</link>
+            <guid>https://ajames.vercel.app/blog/wedding-speech</guid>
+            <pubDate>Mon, 27 Sep 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[Duis volutpat eleifend eros, id gravida ipsum pellentesque vel. Pellentesque pretium ante metus, vel tempor sem vehicula non. ]]></description>
+            <content:encoded><![CDATA[Here are some quick tips I discovered when I was researching my wedding speech:
+
+*   8 mins is the sweet spot. Too short and you look unprepared; too long and you’ll lose the crowd
+*   Hand out flowers and gifts afterwards. Try to minimise any distractions from the speech itself
+*   Thank the bride, parents, wedding party, guests, and those not in attendance
+*   Remember to say “On behalf of my wife and I”. Pause for a cheer
+*   Shoot from the heart. It always lands easier than a punchline
+*   Breathe. Pause between sections, and try to speak slowly. “Um” is a naughty word
+*   Rehearse it into the ground. It’ll help keep your eyes off the paper
+
+To help my speech flow, I structured it around a couple of themes:
+
+*   [The rule of three](https://www.masterclass.com/articles/how-to-use-the-rule-of-three-in-writing). My inspiration was Dave Chappelle’s three times he met OJ Simpson
+*   Increase the level of familiarisation with the bride as the speech went on (start - “her”, middle - “Catriona”, end - “My wife / Mrs. James”)
+*   Each section was a period of time in chronological order. It started with the moment I first thought about marrying her, and finished on the day of the wedding
+*   Each period of time was there to explain defining moments in our relationship, but it also served as a way to thank everyone who had been along for the ride
+
+I’ll leave my speech below. Maybe it’ll help someone along the way. Good luck!
+
+***
+
+Hi there. Hi. Good evening!
+
+My name is Andrew. This evening I have the privilege of giving thanks to those that not only made today extra special, but in all the moments leading up to it as well.
+
+I also have some gifts that I'd like to hand out to people without which today would not be possible. I'll come round and hand those out at some point after the speeches.
+
+I'd like to kick us off with a fresh round of applause for my new *father-in-law.* Thank you for the kind words, Billy. I'll do my best to repay them in kind shortly.
+
+12 years, 1 month, 1 week, 5 days, and some change. After all of that I can finally say: Welcome to the wedding! Finally! It’s been a long time. And during that time, there were three distinct moments that I knew I was going to marry this beautiful young...ish woman. (It's been twelve years. Time marches on!)
+
+The first time I wanted to marry her was on September 8th, 2011.
+
+I was spending my second year of university studying in Boston Massachusetts. I woke up on my birthday feeling homesick for the first time since I had arrived.
+
+At the bottom of the birthday messages on my social media feed was a video from Catriona. She held out a cupcake with a candle, sang happy birthday to me and blew out the candle.
+
+Not in a weird way like 'Happy birthday, Mr President', but in the thoughtful and endearing manner that only she is truly capable of. I must’ve watched that video a hundred times.
+
+My beautiful bride. Doesn't she look wonderful?
+
+Catriona. My first thanks is to you.
+
+Thank you for making me the happiest man in the world. I love you. I love you, and I’d choose you. In a hundred lifetimes, in a hundred worlds, in any version of reality, I’d find you, and I’d choose you. I cannot wait to spend the rest of my life with you.
+
+For all who are able, I'd like you to join me in raising a glass as I propose my first toast of the evening.
+
+**To the beautiful bride!**
+
+The second time I wanted to marry Catriona was at Queen Street station in 2013.
+
+She had recently accepted a job in London, and we we about to spent the next two years apart in a long distance relationship, travelling between Glasgow, Edinburgh, and London.
+
+Thinking on it, that was probably the make or break moment in our relationship. We did not break. We made it because we're both resilient, we believe in each other, and because we're both as stubborn as they come.
+
+We went for lunch on the day she left, and I think for the first time in my life I’d completely lost my appetite.
+
+When she disappeared from sight onto the platform, I made a quiet promise to myself that the next time we found ourselves in the same city, I'd never let her out of my sight again.
+
+What I honestly believe got us through that period of our lives, was the continual love and support from our closest friends and family during that time.
+
+Whether it be a shoulder to cry on when times were tough, lonely lime-lit bus stops at 3am, to simply always being on hand to offer us advice - and having the courage to do so, even if it wasn't necessarily something that we wanted to hear at the time.
+
+Billy and Jennifer. My next thanks is to you.
+
+To be honest…I'm just as surprised how I turned out as you probably are!
+
+With that in mind, thank you for welcoming into your family with open arms on day one, regardless.
+
+I’ve cherished your love and generosity over the last twelve years, and I look forward to creating many more happy memories with you both as a member of your family.
+
+My Maw and Paw. There are no words. Guess I'll just move on.
+
+Thank you for the unconditional love and support over all these years - both emotional and financial. Both of which are debts that I'll never be able to truly repay.
+
+I love you both dearly. I hope to make you proud as a son, and know that I couldn't have asked for a better set of parents to guide me to where I stand today.
+
+Thanks to the Maid of Honour, and my awesome new sister-in-law, Jenny.
+
+Thanks to the bridesmaids Sinead, and my sister Elaine.
+
+Thanks to our flower girl and my other sister-in-law, Miss Abigail.
+
+Thanks to my best man, my brother, Iain.
+
+And finally thanks to my groomsmen and closest friends Euan, Tony, and Kenny.
+
+I’d like you to join me in raising a glass as I propose my second toast of the evening.
+
+**To the wedding party!**
+
+The third time I wanted to marry Mrs...Catriona…James, was about four and a half hours ago. And when I first caught her eye as she was walking down the aisle towards me, I knew I was about to make the best decision of my life.
+
+My dog Kiwi was an *incredibly* close second. But you pipped her at the post, so well done you!
+
+What truly made that moment special, was being able to share it with each and every one of you here today. And it is my sincerest hope, that we are able to share many more of these memories with you all in the years to come.
+
+And with that I'd like to give my final thanks and propose a final toast.
+
+Thank you for the children our friends and family have recently brought into this world, thank you to all of you here today, and thank you to all of you here with us in spirit.
+
+And on behalf of my wife and I …
+
+**Slàinte Mhath**
+
+Thank you.
+]]></content:encoded>
+            <author>contact@ajames.dev (Andrew James)</author>
+            <category>Family</category>
+            <category>Public Speaking</category>
+            <enclosure length="0" type="image/jpg" url="https://i.imgur.com/jehqEYc.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[So you want to build a PC?]]></title>
+            <link>https://ajames.vercel.app/blog/build-pc</link>
+            <guid>https://ajames.vercel.app/blog/build-pc</guid>
+            <pubDate>Thu, 18 Mar 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[Duis volutpat eleifend eros, id gravida ipsum pellentesque vel. Pellentesque pretium ante metus, vel tempor sem vehicula non. ]]></description>
+            <content:encoded><![CDATA[A few people have recently asked for advice in building their own desktop PC, so I thought I'd throw together a quick introduction to the main pieces of hardware you'll need to get yourself up and running.
+
+You can find my current setup here:
+
+[https://uk.pcpartpicker.com/user/funkrenegade/saved/7dVgwP](https://uk.pcpartpicker.com/user/funkrenegade/saved/7dVgwP)
+
+**Useful Resources**
+
+PCPartPicker: [https://pcpartpicker.com](https://pcpartpicker.com/)
+Discord: [https://discordapp.com/invite/buildapc](https://discordapp.com/invite/buildapc)
+Reddit: [https://www.reddit.com/r/buildapc/](https://www.reddit.com/r/buildapc/)
+
+## MOBO
+
+It's essential that your motherboard is compatible with your case and other components. PCPartPicker's [System Builder](https://uk.pcpartpicker.com/list/) will automatically do this for you and filter out any incompatible parts.
+
+For a starter rig, try to buy a motherboard with four RAM slots. This allows you to purchase two sticks to get you started, with the option to add another two sticks further down the line. This is usually cheaper than two slots and upgrading the sticks.
+
+The motherboard's form factor denotes the size of the board. You want to match the form factor to your case type. As a general rule of thumb, expensive things come in small packages. It’s worth noting that you can put smaller boards (e.g. micro-ATX) into larger cases (ATX), just be sure to check the board size is included in the case’s motherboard form factor.
+
+## CPU
+
+AMD is traditionally known as having the best bang for buck. It fell behind NVIDIA in recent years, but it’s made a real comeback with low/mid tier machines (it was also less affected by the [Meltdown](https://en.wikipedia.org/wiki/Meltdown_\(security_vulnerability\)) / [Spectre](https://en.wikipedia.org/wiki/Spectre_\(security_vulnerability\)) fiascos).
+
+Some chips can have their performance enhanced by overclocking the base clock speed (it’s simpler than it sounds). Note that doing so will also require you to purchase an aftermarket cooling system, otherwise the CPU will cook. For a first-time build I'd recommend a factory-overclocked CPU and save yourself the hassle.
+
+## GPU
+
+Try to select a GPU that complements your monitor. If your monitor is 4k, then you're going to want a GPU that is capable of outputting native 4k resolution. A GPU rendering 1080p to a native 1080 monitor looks better than downscaling a 4k monitor to 1080p. If this ends up happening, try to adjust the resolution on the monitor itself to match your game’s video settings, otherwise the screen will appear pixelated and/or blurry.
+
+At the time of writing, 4k gaming is still pretty expensive. I’d advise downscaling to 1080p for a budget build, and 1440p if you want to spend a little more. If you mainly play competitive games, a 144Hz 1080p build could be more favourable than running a 60Hz monitor at 1440p. Work out what you need from your PC, and then pick a GPU that meets the criteria.
+
+Ignore anything about running two GPUs (known as SLI / Crossfire). It’s just not worth the effort (imo).
+
+## RAM
+
+Not much to talk about here, other than running dual channel will almost always yield better results over single (i.e. using 2 x 8GB sticks rather than 1 x 16GB). As mentioned above I’d suggest buying a motherboard with 4 RAM slots and two sticks then upgrading to four at a later date. Don’t mix and match the sticks, i.e. try to use the same brand and frequency across the board.
+
+## SSD
+
+A single SSD is a solid (pun intended) starting point. It’s helpful to know that your case will likely have multiple drive bays, so you can always add more if you’re struggling for space. Games take up a surprising amount of space, and, y’know, `node_modules`...
+
+To be cost-efficient you could buy a small SSD exclusively for the operating system and a large hard disk drive (HDD) for storage. I’ve used this approach a couple of times, but generally find it to be more hassle than it’s worth.
+
+## PSU
+
+It’s tempting to cheap out here, but make sure your power supply has a branded 80+ Gold energy efficiency rating. AC power from the mains needs converted to DC, but some of that power is lost to heat in the transfer. The 80+ ensures that at least 80% is converted whilst under 100% load. When creating a build PCPartPicker will calculate the total wattage required to run your machine, which makes it easier to choose the correct wattage for your power supply.
+
+In terms of cabling, you have the choice of modular, semi-modular, and non-modular. Non-modular comes with a bunch of cables permanently connected to the supply that you might not need to use. Semi- has the essential cables connected with the option to add more, and modular has no connected cables and allows you to connect exactly what you need. As with everything, beauty comes at a price: non-modular is cheap and ugly (if you have a Perspex case you’ll see a clutter of unused wires), full modular is sleek and expensive, semi is half-way happy. Pick your poison.
+
+### Case
+
+More important than people give it credit for. You want two things from a case: good airflow and cable management. A large 140mm intake fan on the front of the case and a smaller 120mm exhaust fan on the rear to expel hot air is a standard airflow and usually enough for most starter builds. Better cable management means better airflow (and aesthetics), so it's worth putting in the time.
+
+![My desktop PC (side-view)](https://i.imgur.com/gzDhckY.jpg)
+]]></content:encoded>
+            <author>contact@ajames.dev (Andrew James)</author>
+            <category>Technology</category>
+            <enclosure length="0" type="image/jpg" url="https://i.imgur.com/cgCr9LR.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Multiple Entry Points in Create React App Without Ejecting]]></title>
+            <link>https://ajames.vercel.app/blog/multiple-entry</link>
+            <guid>https://ajames.vercel.app/blog/multiple-entry</guid>
+            <pubDate>Tue, 02 Jun 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[Duis volutpat eleifend eros, id gravida ipsum pellentesque vel. Pellentesque pretium ante metus, vel tempor sem vehicula non. ]]></description>
+            <content:encoded><![CDATA[**Intro**
+
+I was recently tasked with building two applications in parallel. The first was a commercial web application, and a second that acted as a platform to A|B test content messaging, page layouts, and so on. To be ruthlessly efficient we wanted to reuse the majority of core components and styles for both applications, and interchange any branded assets (images, fonts, colour palette, etc) with a dummy brand using Styled Components' [theming](https://styled-components.com/docs/advanced#theming) capabilities.
+
+The challenge then was to create multiple applications from a single [Create-React-App](https://github.com/facebook/create-react-app) (CRA henceforth) with each having no trace of the other's branded assets in their bundled build files. Thankfully there's a number of ways to achieve this, ranging in complexity and development effort.
+
+[Lerna](https://github.com/lerna/lerna) is a popular tool that maintains multiple packages under a single repository (commonly referred to as a monorepo). It achieves this by linking identical dependencies across it's packages, with the ability to publish them either collectively or individually. Lerna would allow us to create a package for each application and one for the core components to share between them. This certainly solves the use case, but requires us to rearchitect the entire codebase and increase the complexity of the build process. Given that there are no immediate plans to add any other containers to the codebase, and that the testing application will likely not be required beyond the initial development phases, we decided the associated overhead for this scenario was overkill.
+
+A leaner approach would be to rewire the codebase with [React App Rewired](https://github.com/timarney/react-app-rewired), which tweaks the CRA build scripts without having to [eject](https://www.notion.so/phunkren/Multiple-entry-points-in-Create-React-App-without-ejecting-8b9f99a040c04225b4f5f2c19022420b#b2e9e1ca8a0f4141bc0992918bae2a92). In our case we would use rewired to alter the application's entry point at build time. A major drawback here is that in doing so we'd break the guarantees that CRA provides by hiding the configuration files from us, and the software itself is only lightly maintained by the community at the time of writing ([customise-cra](https://github.com/arackaf/customize-cra) is a popular package built on top of rewired that supports CRA v2). This solution could be viable on a personal project, but it wasn't something we were willing to depend on for a commercial application.
+
+[Ejecting](https://create-react-app.dev/docs/available-scripts/#npm-run-eject) is a one-way operation that cannot be undone. It allows us complete control of the project's infrastructure by converting the codebase into a standard React application, at the cost of transferring the responsibility of maintaining the exposed configuration to our team. This option is viable in some scenarios, but it usually considered a last resort due to the increased complexity and associated maintenance cost.
+
+Each of these - and plenty more - are all viable solutions that come with their own set of benefits and drawbacks. However, for this particular scenario we were keen to investigate a simple solution that allows us to work from a single codebase, not rely on third-party dependancies, and not eject from the safety net of Create React App.
+
+**To infinity, or beyond**
+
+Let's look at the default entry point in a Create React Application. The `src/index.js` file imports the `App` container and renders it inside the `div#root` element defined in `public/index.html`.
+
+```javascript
+/* src/index.js */
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+
+ReactDOM.render(<App />, document.getElementById('root'));
+```
+
+```html
+/* public/index.html */
+<body>
+    <noscript>You need to enable JavaScript to run this app</noscript>
+    <div id="root"></div>
+</body>
+```
+
+We can introduce multiple points of entry by importing both containers into the `index.js` file and conditionally render them based on a constant variable. This allows us to switch between the containers, but comes with a couple of caveats. In order to switch between the builds we'd need to manually update the `isTestEnv` variable. The variable always needs to be correctly set when each of the sites are deployed, otherwise the wrong code would be deployed to the production environment.
+
+```javascript
+/* src/index.js */
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./app";
+import Test from './test';
+
+const isTestEnv = true;
+
+if (isTestEnv) {
+    ReactDOM.render(<Test />, document.getElementById("root"));
+} else {
+    ReactDOM.render(<App />, document.getElementById("root"));
+}
+```
+
+Let's tighten this up by creating a `.env` file with a [custom environment variable](https://create-react-app.dev/docs/adding-custom-environment-variables/). Now we have the ability to choose the build target before running the local development script, and also permanently assign a value to each of our production environments.
+
+```javascript
+/* .env */
+REACT_APP_BUILD_TARGET=
+```
+
+```javascript
+/* index.js */
+import React from "react";
+import ReactDOM from "react-dom";
+import { App } from "./App";
+import { Test } from './Test'; 
+
+if (process.env.REACT_APP_BUILD_TARGET === 'test')
+    ReactDOM.render(<Test />, document.getElementById("root"));
+} else {
+    ReactDOM.render(<App />, document.getElementById("root"));
+}
+```
+
+We used [Netlify](https://www.netlify.com/) to create a production environment for each application. Both sites will be virtually identical. They'll both point to the same [GitHub repository](https://github.com/phunkren/multiple-entry-points) and have master set as the production branch. The only difference will be their respective `BUILD_TARGET` environment variable: `test` is assigned to the [testing site](https://multiple-entry-points-test.netlify.app/), and `app` for the [main application](https://multiple-entry-points-app.netlify.app/).
+
+![Netlify: App test environment](https://i.imgur.com/gG0sGVc.jpg)
+
+![Netlify: App production environment](https://i.imgur.com/QL3KX14.jpg)
+
+We now have two production environments with the correct build target and free from human error. All that's left is to ensure that only the code from the defined container appears in the bundled build. Due to the nature of tree-shaking, all of the imported containers in the application's current `index.js` file would appear in the production build files, regardless of our build target. To remedy this we can use CommonJS to conditionally require the desired container based on the `BUILD_TARGET` environment variable.
+
+```javascript
+/* index.js */
+require(process.env.REACT_APP_BUILD_TARGET === "test" 
+    ? "./test" 
+    : "./app"
+)
+```
+
+This works, but setting the environment variable to anything other than `test` will import the main application. We can fix this with an `if/else` statement, and further refine the solution with ES6 [dynamic imports](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#Dynamic_Imports). The `importBuildTarget()` function below will return a promise for each entry point, and a fallback error in the event that the specified build target is not found. Once the `import` promise has resolved it will render the requested build target with none of the other entry point files in the bundled build. 💥
+
+```javascript
+import React from "react";
+import ReactDOM from "react-dom";
+
+function importBuildTarget() {
+    if (process.env.REACT_APP_BUILD_TARGET === "app") {
+        return import("./app.js");
+    } else if (process.env.REACT_APP_BUILD_TARGET === "test") {
+        return import("./test.js");
+    } else {
+        return Promise.reject(
+            new Error("No such build target: " + process.env.REACT_APP_BUILD_TARGET)
+        );
+    }
+}
+
+// Import the entry point and render it's default export
+importBuildTarget().then(({ default: Environment }) => (
+    ReactDOM.render(
+        <React.StrictMode>
+            <Environment />
+        </React.StrictMode>,
+        document.getElementById("root")
+    )
+);
+```
+
+**TL; DR**
+
+You can create multiple entry points in a Create React Application without ejecting by using an environment variable to conditionally import container files. Doing this prevents code from the other containers appearing in the desired bundled build.
+
+**Resources**
+
+GitHub: [https://github.com/phunkren/multiple-entry-points](https://github.com/phunkren/multiple-entry-points)
+
+Entry point A: [https://multiple-entry-points-app.netlify.app](https://multiple-entry-points-app.netlify.app)
+
+Entry point B: [https://multiple-entry-points-test.netlify.app](https://multiple-entry-points-test.netlify.app/)
+
+Special thanks to [Stephen Taylor](https://twitter.com/meandmycode) and [Robin Weston](https://twitter.com/robinweston) for their valuable input, and to [Jonathan Hawkes](https://twitter.com/jonathanhawkes) for his solution to all build target files appearing in the bundle.
+]]></content:encoded>
+            <author>contact@ajames.dev (Andrew James)</author>
+            <category>react</category>
+            <enclosure length="0" type="image/jpg" url="https://i.imgur.com/la3fekz.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[So you want to WFH?]]></title>
+            <link>https://ajames.vercel.app/blog/work-home</link>
+            <guid>https://ajames.vercel.app/blog/work-home</guid>
+            <pubDate>Sun, 15 Mar 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[Duis volutpat eleifend eros, id gravida ipsum pellentesque vel. Pellentesque pretium ante metus, vel tempor sem vehicula non. ]]></description>
+            <content:encoded><![CDATA[After spending some time last year working from home, I’ve quickly written up ten rules that kept me sane and helped retain my focus throughout the day.
+
+1: Shower & Shave. Dress for the job as normal - It’ll make you less reluctant to go on video (see below), and make the day feel more ‘real’.
+
+2: Leave the house / exercise. In the morning I either walk for coffee or go for a short cycle and then walk the dog after lunch. Try not to use any devices and instead use it to clear your head.
+
+3: Have somewhere you can work both standing and sitting. Alternate. Do not use the sofa; you are mentally conditioned to relax there. Try to use a chair with good back support, and have your monitor at eye level to prevent neck strain.
+
+4: Designate an office space, ideally a room with minimal distractions that you can leave once the working day is over. Working and relaxing in your lounge will give you cabin fever.
+
+5: Conference calls are synchronous; Slack/email is asynchronous. Get comfortable with both. Try to respond promptly regardless. Over-communicate and document outcomes.
+
+6: Always be ready to go on video. Cameras should be enabled by default on conference calls, and only disabled on poor connections. Try to establish an open channel that acts as a hangout space for people to be part of (even if they’re permanently muted).
+
+7: Use headphones with a dedicated microphone. Record yourself speaking into the microphone and listen to it. Is it clear? Does it pick up a load of background noise? Most communication software will allow you to modify your input threshold to fix this. If you’re not speaking, mute yourself.
+
+8: Be proficient with all of your communication software. Get comfortable creating/joining rooms / sharing your screen / generating meeting invites / etc.
+
+9: Don’t work an extra handful of hours each day. Spend the time you save commuting on yourself, spend time with family, etc.
+
+10: [Pimp yo ride](/88af57d8b6d441be9f964467f4eef68f). You’ll be spending 40+ hours per week working here, so try to make it as inviting as possible. Plants / artwork / lighting can really make a difference.
+]]></content:encoded>
+            <author>contact@ajames.dev (Andrew James)</author>
+            <category>Productivity</category>
+            <enclosure length="0" type="image/jpg" url="https://i.imgur.com/lQvNL24.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Building a Responsive Camera Component Using React Hooks]]></title>
+            <link>https://ajames.vercel.app/blog/responsive-camera</link>
+            <guid>https://ajames.vercel.app/blog/responsive-camera</guid>
+            <pubDate>Thu, 07 Nov 2019 00:00:00 GMT</pubDate>
+            <description><![CDATA[Duis volutpat eleifend eros, id gravida ipsum pellentesque vel. Pellentesque pretium ante metus, vel tempor sem vehicula non. ]]></description>
+            <author>contact@ajames.dev (Andrew James)</author>
+            <category>react</category>
+            <category>css-in-js</category>
+            <enclosure length="0" type="image/jpg" url="https://i.imgur.com/kau9Fcb.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Mastering Modals in React with Context and Portals]]></title>
+            <link>https://ajames.vercel.app/blog/custom-modal</link>
+            <guid>https://ajames.vercel.app/blog/custom-modal</guid>
+            <pubDate>Tue, 16 Jul 2019 00:00:00 GMT</pubDate>
+            <description><![CDATA[Duis volutpat eleifend eros, id gravida ipsum pellentesque vel. Pellentesque pretium ante metus, vel tempor sem vehicula non. ]]></description>
+            <content:encoded><![CDATA[Modals are a useful tool for displaying information on top of your application, and are often used for notifications, alerts, or standalone dialogs such as registration or login forms. Before building a custom modal, it's a good idea to check if there are any pre-existing solutions that meet your needs ([Reach UI's Dialog](https://reacttraining.com/reach-ui/dialog/) and [react-modal](http://reactcommunity.org/react-modal/) are both popular options). If you don't find a suitable solution, let's explore creating a bespoke modal component in React.
+
+To get started, we'll create a basic modal that appears and disappears based on some local state in our React app. The process is simple: when a button in the root of the app is clicked, the modal will appear. Then, when the button inside the modal is clicked, the modal will close. Let's start building!
+
+[embed](https://codesandbox.io/embed/zen-pare-76gl3?autoresize=1\&fontsize=14\&hidenavigation=1\&theme=dark\&view=preview)
+
+If you want to trigger the modal from a nested component rather than just from within `<App/>`, you can pass the `setState` action `setIsModalOpen` as a prop. Then, you can call this action as a callback when a button within the nested component is clicked, which will trigger the modal.
+
+[embed](https://codesandbox.io/embed/peaceful-bardeen-7jexx?autoresize=1\&fontsize=14\&hidenavigation=1\&theme=dark\&view=preview)
+
+This works for a single level of nesting, but it probably won’t scale very well. We could keep passing the callback down through the components, but that could get a bit tedious and create a lot of extra code that's tough to manage. Enter [React Context](https://reactjs.org/docs/context.html).
+
+Context allows you to store and access a value anywhere in your React app. You can use a Provider to store the value and a Consumer to access it, and the Consumer will search up the component tree for the first Provider that matches its context. This is useful when you want to trigger the modal from a nested component, rather than just from the top-level App component. You can use the `useContext` hook to consume the value in a nested component.
+
+Let’s wrap the previous example with a Provider, set the `setIsModalOpen` callback as its value, then utilise the [useContext()](https://reactjs.org/docs/hooks-reference.html#usecontext) hook to consume it in a nested component.
+
+[embed](https://codesandbox.io/embed/sweet-brown-yn44i?autoresize=1\&fontsize=14\&hidenavigation=1\&theme=dark\&view=preview)
+
+We now have a modal that can be opened from anywhere in our app, but it can only display static content for now. If we want it to render dynamic content, we'll need to refactor it to accept children. Plus, since React's data flow only goes one way, we'll need to find a good way to pass data from a nested component back up to the modal at the root level.
+
+My former colleague, [Jenna Smith](https://twitter.com/jjenzz), a highly skilled front-end developer, suggested using [React Portal](https://reactjs.org/docs/portals.html) as a solution. Portal's are designed to pass children to a DOM node outside the hierarchy of the parent component, which is perfect for our needs. To use a portal, we'll need to provide two arguments: a React element (for our dynamic content) and a DOM element to inject the content into (the modal's container). This should allow us to effectively pass the data from the nested component to the modal at the root level.
+
+[embed](https://codesandbox.io/embed/7w6mq72l2q?autoresize=1\&fontsize=14\&hidenavigation=1\&theme=dark\&view=preview)
+
+As demonstrated in the sandbox, Jenna created two functional components to provide dynamic content for the modal. The `<ModalProvider />` component includes a DOM element with a ref attached (`<div ref={modalRef}/>`), as well as a context provider that wraps the entire app and distributes the ref's current value to any relevant consumers within it. The second component is the modal itself. Each time a `<Modal />` component is rendered, it will try to retrieve the `modalRef` element using `useContext()`. If the ref exists, the component will create a React portal and inject the modal's children into the ref element, rather than mounting in its expected position in the DOM tree..
+
+With this approach, the `Modal` component can now be used anywhere within the `ModalProvider` to display dynamic content on top of the app. One thing to keep in mind is that the body will still be able to scroll on iOS when the modal is mounted. I highly recommend reading Will Po's article on [body scroll lock](https://medium.com/jsdownunder/locking-body-scroll-for-all-devices-22def9615177) for potential solutions to this issue.
+]]></content:encoded>
+            <author>contact@ajames.dev (Andrew James)</author>
+            <category>react</category>
+            <enclosure length="0" type="image/jpg" url="https://i.imgur.com/ihdlQLe.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Streamlining State Management in Storybook with React]]></title>
+            <link>https://ajames.vercel.app/blog/storybook-state</link>
+            <guid>https://ajames.vercel.app/blog/storybook-state</guid>
+            <pubDate>Sat, 29 Jun 2019 00:00:00 GMT</pubDate>
+            <description><![CDATA[Duis volutpat eleifend eros, id gravida ipsum pellentesque vel. Pellentesque pretium ante metus, vel tempor sem vehicula non. ]]></description>
+            <content:encoded><![CDATA[Storybook is an amazing tool for developing UI components in isolation. One of my current projects is a large form with controlled components that rely on their parent container as the source of truth. While Storybook is great for testing individual component state, I found myself writing repetitive code in each story to pass state to a parent container.
+
+```javascript
+/* src/stories/index.js */
+import React, { useState } from 'react';
+import { storiesOf } from '@storybook/react';
+
+storiesOf('Input', module).add('controlled', () => {
+    function Parent({ children, ...props }) {
+        const [state, setState] = useState();
+        return <div>{children(state, setState)}</div>;
+    }
+
+    return (
+        <Parent>
+            {(state, setState) => (
+                <input
+                    value={state.value}
+                    onChange={e => setState({ value: e.target.value })}
+                />
+            )}
+        </Parent>
+    );
+});
+```
+
+This parent component could easily be abstracted and imported into relevant stories, but since each story is effectively a render function you would ideally pass the state variables through as arguments, i.e.
+
+```javascript
+/* src/stories/index.js */
+import React, { useState } from "react";
+import { storiesOf } from "@storybook/react";
+
+storiesOf("Input", module).add("controlled", (state, setState) => (
+    <input
+        value={state.value}
+        onChange={e => setState({ value: e.target.value })}
+    />
+);
+```
+
+To solve this, I created two components and a custom decorator in the .storybook/config.js file. The first component is a function-as-child that acts as a render callback, emulating the parent component from my project. The second is a presentation component that receives state as a prop and displays the current value below each story. The custom decorator adds these components and state variables to each story, where the components wrap the story and the state values are passed as arguments.
+
+```javascript
+/* .storybook/config.js */
+import React, { useState } from "react";
+import { configure, addDecorator } from "@storybook/react";
+
+function loadStories() {
+    require("../src/stories/index.js");
+}
+
+// Component 1
+function Stage({ children, …props }) {
+    const [state, setState] = useState({});
+    return <div {…props}>{children(state, setState)}</div>;
+}
+
+// Component 2
+function State({ state, …props }) {
+    return (
+        <div {…props}>
+            Parent state: <pre>{JSON.stringify(state)}</pre>
+        </div>
+    );
+}
+
+// Custom decorator
+addDecorator(story => (
+    <Stage>
+        {(state, setState) => (
+            <div style={{ display: "flex", flexFlow: "column" }}>
+                {story(state, setState)}
+                <State state={state} />
+            </div>
+        )}
+    </Stage>
+));
+
+configure(loadStories, module);
+```
+
+This allows each component to easily set and retrieve hoisted state values from the story itself, without any extra code. 💥
+
+```javascript
+/* src/stories/index.js */
+import React from 'react';
+import { storiesOf } from '@storybook/react';
+
+storiesOf('Input', module)
+    // stateless
+    .add('uncontrolled', () => <input />)
+
+    // stateful
+    .add('controlled', (state, setState) => (
+        <input
+            value={state.value}
+            onChange={e => setState({ value: e.target.value })}
+        />
+));
+```
+
+You can find the repository on [GitHub](https://github.com/phunkren/storybook-state), and here’s a quick look at it in action:
+
+![1.1: Test both controlled and uncontrolled inputs in Storybook](https://i.imgur.com/tqd1QZR.gif)
+]]></content:encoded>
+            <author>contact@ajames.dev (Andrew James)</author>
+            <category>react</category>
+            <category>storybook</category>
+            <enclosure length="0" type="image/jpg" url="https://i.imgur.com/WclzTTm.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[So you want to buy a puppy? ]]></title>
+            <link>https://ajames.vercel.app/blog/buy-puppy</link>
+            <guid>https://ajames.vercel.app/blog/buy-puppy</guid>
+            <pubDate>Sun, 03 Feb 2019 00:00:00 GMT</pubDate>
+            <description><![CDATA[Duis volutpat eleifend eros, id gravida ipsum pellentesque vel. Pellentesque pretium ante metus, vel tempor sem vehicula non. ]]></description>
+            <content:encoded><![CDATA[A few people have recently asked me about whether or not to buy a puppy, so I figured I’d collect my thoughts here as a point of reference. I mention advice from friends, family, and trainers throughout, but ultimately all opinions are my own and formulated from experience with my dog only.
+
+**Bio:**
+
+Name: Kiwi
+
+Breed: Cavapoo (KCS / Toy poodle cross)
+
+Age: 4.5 months (at time of writing)
+
+Status: Legend
+
+**Toilet training**:
+
+The puppy will pee and shit on the carpet. Make peace with it. After speaking with a trainer, you’re looking at 3months best case / 6 months worst to toilet train them. You have to take them out every 30-40minutes at the start. It’s difficult to focus on anything because you always have one eye on the dog.
+
+**Crate training:**
+
+This is probably the toughest part in the beginning, but so worth it. It takes time to get them comfortable just walking into the crate, then being in it whilst you are there with them, until finally you can leave the room. Be prepared to get up 2/3 times every night for bathroom breaks. And fuck me that whining is heart-wrenching. It will make you argue.
+
+**Teething:**
+
+They bite everything. It gets old. Quick. Don’t think they’re going to sit in your lap and cuddle you. Plants, carpet, clothes, fingers; they’ll chew anything for the first few months until their adult teeth grow in. Socialising with other dogs is good for this, as they’ll quickly let them know if they  bite too hard.
+
+**Leaving her alone:**
+
+Some people say to leave and let them cry it out. Our trainer advised the complete opposite, and to gradually increase the time / distance you are away from them to prevent separation anxiety developing. This has definitely worked for us, but it meant Cat and I were usually in different rooms until the puppy could be left alone crated in her room.
+
+**Walks:**
+
+You can’t take them out for exercise until they have their second injection (~12 weeks), so they have loads of energy and nowhere to really expel it. The cabin fever can really set in if you don’t like being stuck at home for long periods of time. Thankfully mental stimulation also tires them out, so simple training (e.g. responding to their name) can really help out here.
+
+They pull on the leash, eat everything on the ground, try to jump up on everyone and chase after everything. It takes time to desensitise them to the environment and stick with you. Good luck recalling them when they get hooked on a scent!
+
+**Cost:**
+
+Probably spent ~£4k (inc. sale, equipment, vet, toys, food, and training) since we brought her home.
+
+**Training:**
+
+There’s loads to train. Toilet, crate, tricks, walking (on/off leash), recalls, scavenging, socialisation, etc. You also have train them in different environments; teaching her to sit in the house is not the same as in the park. It apparently becomes harder to train them once they reach adulthood, so you really have to commit to all of the training early on. Trying to fit all of that in with a full work schedule and a semblance of a social life is exhausting.
+
+**Ageing:**
+
+I have a couple of friends with slightly older dogs. The general curve seems to be: First week is the honeymoon phase, 1 week-3 months is a fucking riot, 3-6 months is when you start having fun, 6-18 months is adolescence when it goes back to being a fucking riot, and if you can make it past that and you’ve put the time in training them you’ll have a chilled, obedient adult dog.
+
+**How has my life changed:**
+
+I’m now up at 6am every morning. Casual beers now need planning. We’ve been on a handful of date nights since we got her. Everything revolves around her for the moment, and all I seem to talk about at the moment is dogs.
+
+I can’t imagine life without her now, and it’s amazing how quickly you become attached to them. It’s incredibly rewarding when they start responding to your teachings and start to become independent. It’s also brought Cat and I closer, and given a real insight into parenthood. Just make sure you’re ready to commit to 12-18 months of training and tough times to get the pay off afterwards.
+
+My friend gave some advice the day before we went to collect Kiwi: “I love \[their dog] so much. I would literally peel your face off with a spoon if it meant she would be happy. But \*\*\*\* me she can be a real \*\*\*\* sometimes.”
+
+I now fully understand this statement.
+]]></content:encoded>
+            <author>contact@ajames.dev (Andrew James)</author>
+            <category>Pets</category>
+            <category>Family</category>
+            <enclosure length="0" type="image/jpg" url="https://i.imgur.com/Wt4Lu7N.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Elevating Your Tech Meetup with Live Streaming]]></title>
+            <link>https://ajames.vercel.app/blog/livestream-meetup</link>
+            <guid>https://ajames.vercel.app/blog/livestream-meetup</guid>
+            <pubDate>Mon, 05 Nov 2018 00:00:00 GMT</pubDate>
+            <description><![CDATA[Duis volutpat eleifend eros, id gravida ipsum pellentesque vel. Pellentesque pretium ante metus, vel tempor sem vehicula non. ]]></description>
+            <content:encoded><![CDATA[One of my favourite parts of my job is being surrounded by creative professionals who are eager to openly discuss ideas and expand our collective understanding. Some of these professionals have been in the industry for over ten years and, while they have developed their own opinions, they remain open to outside ideas and criticism to continually improve their professional perspective. About a year ago, a group of developers organized the company's first "Egg Talk", an in-house meet-up where developers could discuss any topic they found interesting, such as project challenges, office diversity, emerging technologies, and even banana peeling techniques. These talks were well received, and now events are scheduled at least once a month with several speakers at each event. Recently, we have also started welcoming talks from other business disciplines.
+
+Remote work is becoming increasingly common in digital professions, including ours. As a result, we decided to extend our meet-up to employees who were unable to attend in person. Initially, we recorded the talks using a laptop placed on a coffee table facing the presenter and a television, and then uploaded the recordings to YouTube for later viewing. While this solution allowed us to share the talks with a wider audience, it also had its fair share of issues.
+
+![1.1: One of the original Egg talk recordings](https://i.imgur.com/sBGfPhi.jpg)
+
+The omnidirectional microphone on the laptop made it difficult to clearly capture the presenter's voice and was prone to picking up background noise. Additionally, the glare on the television and the inconsistency in refresh rate between the television and the laptop's camera made it hard to see the presenter's slides. The talks also tended to last over two hours, which meant that it took several hours to upload and process the files for remote viewers to watch. Ideally, those watching remotely should have the same level of clarity as those in the room. However, the challenge is to improve the quality of the live stream without compromising the experience for those attending in person.
+
+One option is to invest in equipment such as a dedicated camera, wireless lapel microphones for each speaker, and a digital mixing board to control and monitor the hardware. However, it's difficult to justify this investment without a baseline for comparison or a clear financial return for the business. Therefore, we decided to explore ways to progressively enhance the stream using existing technology as a baseline for determining the potential return on any future upgrades.
+
+Since our office heavily uses Apple products, we decided to try leveraging that technology. We used four Apple devices to set up the live stream: a MacBook Pro running broadcasting software, an Apple TV displaying the presenter's slides, an iPhone serving as the presenter's microphone, and another iPhone capturing a panoramic shot of the room. We used third-party broadcasting software called Open Broadcaster Software (OBS) because it is currently not possible to live stream via QuickTime. However, OBS does not support the Apple TV as a direct input or the iPhone's microphone or camera without additional third-party support.
+
+To use the iPhone's microphone as an audio input, we had to hardwire it to the MacBook Pro and enable it as an input device in the system preferences. We also needed to download an app called VonBruno Microphone from the App Store to enable the microphone on the iPhone. To use the iPhone's camera as a video input, we downloaded an app called EpocCam HD from the App Store and used the EpocCam Viewer software to connect to it as a video capture device in OBS.
+
+In OBS, we created two types of scenes: input scenes and broadcasting scenes. An input scene contains one of the hardware inputs and any related sources, which can then be imported into a broadcasting scene. A broadcasting scene is what the end user will see on the live stream and is composed of sources and input scenes. By creating a scene for each input, we were able to group and control the sources from a single source of truth, while still being able to distribute the group across multiple scenes.
+
+![1.2: A list of scenes and sources in OBS (input scenes as sources are highlighted green)](https://i.imgur.com/3dvuPzF.jpg)
+
+In OBS, we created a list of scenes and designated the "Primary" scene as the one that would be broadcasted. The Primary scene included the live camera shot, the presenter's slides, and the microphone. We also added a green border and a small logo to the live camera view and used a placeholder image of the company logo to replace the background shot when the slides were not available. Additionally, we created a "Placeholder" scene to be displayed at the beginning and end of the stream, or during intermissions. This scene consisted of a simple background image of our Egg poster with no audio or visual inputs.
+
+![1.3: Broadcasting scene overlay in OBS](https://i.imgur.com/cOqezAh.jpg)
+
+The final step was to choose a platform to host the live stream. We decided to use YouTube and had to enable our account for live streaming, which was a one-time process that took about 24 hours for YouTube to approve. Once our account was enabled, we scheduled an event for the upcoming Egg talk. Events provide more control over the broadcast, such as generating an event URL that we can share with invited viewers, displaying a countdown to the start time if the URL is accessed before the event goes live, and allowing us to restrict access to the event. We chose to host our talks privately for now, which means the stream is only accessible to the host and those invited and will not appear in search results or public playlists.
+
+We also configured default event settings and a reusable stream key, which allows us to use presets for future events, including privacy options, video categorization, and advanced broadcasting configurations (such as stream optimizations, licensing, and rights). This ensures consistency across the channel and minimizes setup before future events go live. To connect the event to our broadcasting software, we simply pasted the reusable stream key and the server URL from the event into the OBS stream settings. It's important to keep the stream key secret and only share it with trusted individuals.
+
+![1.4: YouTube encoder settings](https://i.imgur.com/qar9gqx.jpg)
+
+![1.5: OBS stream settings](https://i.imgur.com/9Y7fzOf.jpg)
+
+While we were able to achieve our desire result, there were a few compromises. For example, a thick red border appeared around the screen when a device was recording the output from the Apple TV, which was visible to those in the room but not on the live stream. There was also a notification in the top right corner of the screen indicating which device was recording the output, which was visible on both the television and the live stream. Additionally, the camera, which was connected over Wi-Fi through a third-party application, introduced about two seconds of latency between the live camera shot and the presenter's voice and slides, which reduced the overall quality of the stream.
+
+Despite these issues, the stream still provided a significant improvement in quality compared to the initial talks. The event is now immediately available to anyone with permission and access to the link, and YouTube automatically archives the broadcast for later viewing. The presenter's voice is clearer, the background noise has been reduced, the slides are the main focus and can be seen clearly, and the camera gives viewers a sense of the room. With some modest upgrades, we believe it is possible to make further refinements, although the benefits of doing so remain to be seen.
+]]></content:encoded>
+            <author>contact@ajames.dev (Andrew James)</author>
+            <category>livestream</category>
+            <enclosure length="0" type="image/jpg" url="https://i.imgur.com/4OS812V.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Bridging the Gap: Improving Collaboration Between Engineering and Design]]></title>
+            <link>https://ajames.vercel.app/blog/grid-overlay</link>
+            <guid>https://ajames.vercel.app/blog/grid-overlay</guid>
+            <pubDate>Sun, 13 May 2018 00:00:00 GMT</pubDate>
+            <description><![CDATA[Duis volutpat eleifend eros, id gravida ipsum pellentesque vel. Pellentesque pretium ante metus, vel tempor sem vehicula non. ]]></description>
+            <content:encoded><![CDATA[One of my favourite talks from ReactFest London was Siddharth Kshetrapal's [presentation on the frontend workflow](https://www.youtube.com/watch?v=bLgZwFRYTJ4). Their discussion about how design systems can be undermined by misunderstandings between project disciplines reminded me of a similar experience I had with a designer on a React project. We were discussing the inconsistencies in vertical rhythm between their design and the application's frontend build. To illustrate their point, they opened the design in Sketch and enabled the grid view.
+
+![1.1: Sketch’s design grid](https://i.imgur.com/9K1JAct.jpg)
+
+Sketch's grid is a visual overlay that enables designers to create a highly precise layout. I had assumed that constant spacing between components would result in consistent vertical rhythm, but the demonstration showed that even though the components were evenly distributed on the page, their respective content was not.
+
+![1.2: Vertical rhythm example](https://i.imgur.com/r6xrD6F.png)
+
+To address the issue of inconsistent vertical rhythm, I created a similar treatment for the frontend by adding a styled component to the application root. The grid would sit on top of the entire application, fixed to the viewport using **`position: fixed`** with a high **`z-index`** and **`pointer-events`** disabled.
+
+The grid was generated using a [**repeating-linear-gradient**](https://developer.mozilla.org/en-US/docs/Web/CSS/repeating-linear-gradient) on the component's **`background`** property. The grid lines were made up of two sections: an opaque coloured grid line and a transparent interval. Custom props allowed the consumer to configure the colour, width, interval, and direction of each line, with default values serving as a fallback (the values below emulate a 12-column vertical grid layout).
+
+```javascript
+import styled from 'styled-components';
+import { rgba } from 'polished';
+
+export const GridOverlay = styled.div(
+    ({
+        color = 'black',
+        width = `${100 / 12}%`,
+        interval = `${100 / 12}%`,
+        direction = 'vertical',
+    }) => css`
+        ${position('fixed', '0', '0', '0', '0')};
+        background: repeating-linear-gradient(
+            ${direction === 'vertical' ? '-90deg' : '0'},
+            ${rgba(color, 0.2)},
+            ${rgba(color, 0.2)} ${width},
+            transparent ${width},
+            transparent calc(${width} + ${interval})
+        );
+        pointer-events: none;
+        z-index: 999;
+    `,
+);
+```
+
+With the overlay in place, we were able to more accurately compare the vertical rhythm of our Sketch design with the production build and edge closer to pixel-perfect design (if that's your goal). To demonstrate the output, I quickly added the overlay to a personal site. Setting **`direction="horizontal"`** emulates Sketch's regular grid, while **`direction="vertical"`** resembles the layout grid.
+
+![1.3: Grid overlay (horizontal)](https://i.imgur.com/43Ltv5X.jpg)
+
+![1.4: Grid overlay (vertical)](https://i.imgur.com/EQGDLbm.jpg)
+
+Adding the grid overlay to the application was a rewarding experience. In addition to its practical value, it also helped us to understand each other's approaches to the project and improve the workflow as a result. It's these small progressions that lead to truly collaborative efforts and produce the best results.
+]]></content:encoded>
+            <author>contact@ajames.dev (Andrew James)</author>
+            <category>css-in-js</category>
+            <category>react</category>
+            <enclosure length="0" type="image/jpg" url="https://i.imgur.com/sbW7IxY.jpg"/>
+        </item>
+    </channel>
+</rss>
