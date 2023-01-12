@@ -355,7 +355,7 @@ function Cv() {
                 >
                   <Divider />
                 </Box>
-
+                {/*
                 <Box direction="vertical" gap={10} spacingBottom={10}>
                   <Box
                     as="ul"
@@ -395,7 +395,7 @@ function Cv() {
                       Written references are also available upon request
                     </TextBody>
                   </Box>
-                </Box>
+                </Box> */}
               </Box>
             </Box>
 
