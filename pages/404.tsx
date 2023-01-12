@@ -1,7 +1,7 @@
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import { Box, Layout } from "../components/Layout";
 import { Link } from "../components/Link";
-import { TextHeadline, TextTitle1, TextTitle2 } from "../components/Text";
+import { TextHeadline, TextTitle1 } from "../components/Text";
 import { styled } from "../stitches.config";
 
 const StyledHero = styled(Box, {
