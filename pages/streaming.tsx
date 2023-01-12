@@ -94,12 +94,13 @@ const StyledContentContainer = styled(Box, {
 const StyledYouTubePlayer = styled(YouTube, {
   position: "absolute",
   inset: 0,
+  boxShadow: "$verticalOffset",
 });
 
 const StyledImage = styled(Image, {
   objectFit: "cover",
   borderRadius: 4,
-  boxShadow: `0px 2px 4px ${blackA.blackA10}`,
+  boxShadow: "$verticalOffset",
 });
 
 export async function getStaticProps() {
@@ -389,7 +390,7 @@ function Streaming({
 
                     <ScrollAreaRoot>
                       <StyledVideoCardViewport>
-                        <StyledVideoCardContainer spacingTop={10}>
+                        <StyledVideoCardContainer spacingVertical={10}>
                           {playlistVideosPreview[playlist.id].map(
                             (playlistVideo) => (
                               <VideoCard

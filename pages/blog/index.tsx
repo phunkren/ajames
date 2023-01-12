@@ -49,7 +49,7 @@ const StyledCardContainer = styled(Box, {
 const StyledImage = styled(Image, {
   objectFit: "cover",
   borderRadius: 4,
-  boxShadow: `0px 2px 4px ${blackA.blackA10}`,
+  boxShadow: "$verticalOffset",
 });
 
 export const getStaticProps: GetStaticProps = async () => {

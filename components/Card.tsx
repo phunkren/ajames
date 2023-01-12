@@ -13,7 +13,7 @@ import { PreviewToggle } from "./Button";
 const StyledCardOuter = styled(Box, {
   display: "flex",
   flexDirection: "column",
-  boxShadow: `0px 2px 4px ${blackA.blackA10}`,
+  boxShadow: "$verticalOffset",
   cursor: "pointer",
   minWidth: `calc(300px - $space$3)`,
 });

@@ -99,28 +99,31 @@ export const StyledIconLink = styled(Link, {
   borderWidth: 1,
   borderStyle: "solid",
   borderColor: "$foregroundMuted",
+  boxShadow: "$verticalOffset",
   minWidth: 44,
   minHeight: 44,
 
   "&:hover": {
-    backgroundColor: "$foregroundMuted",
+    backgroundColor: "$foreground",
+    color: "$background",
   },
 });
 
 const StyledYoutubeSubscription = styled(Link, {
   display: "flex",
   alignItems: "center",
+  boxShadow: "$verticalOffset",
 
   variants: {
     type: {
       button: {
         padding: "$2 $4",
-        backgroundColor: "red",
+        backgroundColor: "$red8",
         borderRadius: 4,
-        color: "white",
       },
       link: {
         color: "inherit",
+        boxShadow: "none",
       },
       icon: {
         justifyContent: "center",
@@ -206,7 +209,11 @@ export function BlogSubscribeLink({ type = "link", ...props }: SubscribeProps) {
     <StyledBlogSubscription href={rssFeedUrl} type={type} {...props}>
       <Box alignItems="center" gap={2}>
         <RocketIcon width={18} height={18} aria-hidden />
-        {type === "button" && <TextAux>Subscribe</TextAux>}
+
+        {type === "button" && (
+          <TextAux css={{ color: "inherit" }}>Subscribe</TextAux>
+        )}
+
         {type === "link" && <TextHeadline>Subscribe</TextHeadline>}
       </Box>
     </StyledBlogSubscription>
@@ -223,7 +230,7 @@ export function TwitterShareLink({
   const formattedAuthor = `🙋‍♂️ ${SOCIAL.twitter.handle}`;
 
   const sanitisedText = encodeURIComponent(
-    `${formattedText}\n${formattedAuthor}\n\n`
+    `${formattedText}\n\n${formattedAuthor}\n\n`
   );
 
   const sanitisedUrl = encodeURIComponent(url);

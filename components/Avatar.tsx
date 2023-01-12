@@ -14,6 +14,7 @@ export const AvatarRoot = styled(RadixAvatar.Root, {
   height: 48,
   borderRadius: "100%",
   backgroundColor: "black",
+  boxShadow: "$verticalOffset",
 });
 
 export const AvatarImage = styled(RadixAvatar.Image, {

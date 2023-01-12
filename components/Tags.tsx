@@ -41,6 +41,7 @@ const ToggleGroupItem = styled(ToggleGroup.Item, {
   padding: "$2",
   borderRadius: 4,
   border: "1px solid",
+  boxShadow: "$verticalOffset",
 
   "&[data-state=on]": {
     opacity: 1,

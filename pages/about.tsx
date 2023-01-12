@@ -140,7 +140,7 @@ function Cv() {
                     "@bp2": "flex",
                   }}
                 >
-                  <PrintButton />
+                  {/* <PrintButton /> */}
 
                   <StyledIconLink href="/download-cv" title="Download" download>
                     <DownloadIcon width={18} height={18} aria-hidden />

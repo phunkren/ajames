@@ -40,8 +40,9 @@ const StyledButton = styled("button", {
   font: "inherit",
   overflow: "visible",
   padding: "0",
+  lineHeight: "normal",
+  boxShadow: "$verticalOffset",
 
-  "line-height": "normal",
   "-webkit-appearance": "none",
   "-moz-appearance": "none",
 });
@@ -61,11 +62,14 @@ export const StyledIconButton = styled(Button, {
   borderWidth: 1,
   borderStyle: "solid",
   borderColor: "$foregroundMuted",
+  backgroundColor: "transparent",
+
   minWidth: 44,
   minHeight: 44,
 
   "&:hover": {
-    backgroundColor: "$foregroundMuted",
+    backgroundColor: "$foreground",
+    color: "$background",
   },
 });
 

@@ -27,6 +27,7 @@ const StyledTag = styled(Box, {
   borderStyle: "solid",
   borderWidth: 1,
   textTransform: "uppercase",
+  color: "$foregroundMuted",
 
   variants: {
     ...NOTION_TAG_VARIANTS,
@@ -55,9 +56,9 @@ export function PostTags({ tags, icon = false, ...props }: PostTagProps) {
             as="li"
             key={tag.id}
             borderColor={tag.color}
-            active={(query?.tag as string) === tag.name.toLowerCase()}
+            active={!query.tag || query.tag === tag.name.toLowerCase()}
           >
-            <TextAux css={{ color: "$foreground" }}>{tag.name}</TextAux>
+            <TextAux css={{ color: "inherit" }}>{tag.name}</TextAux>
           </StyledTag>
         ))}
       </Box>

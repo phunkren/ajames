@@ -47,8 +47,8 @@ export const {
     bp1: "(min-width: 480px)",
     bp2: "(min-width: 720px)",
     bp3: "(min-width: 1080px)",
-    print: "print",
     reducedMotion: "(prefers-reduced-motion: reduce)",
+    print: "print",
   },
   utils: {
     ...SPACING_UTILS,
@@ -66,6 +66,9 @@ export const lightTheme = createTheme({
     ...orange,
     ...slate,
   },
+  shadows: {
+    verticalOffset: `0 2px 4px ${blackA.blackA8}`,
+  },
 });
 
 export const darkTheme = createTheme({
@@ -77,6 +80,9 @@ export const darkTheme = createTheme({
     ...greenDark,
     ...orangeDark,
     ...slateDark,
+  },
+  shadows: {
+    verticalOffset: `0 2px 4px ${whiteA.whiteA6}`,
   },
 });
 
