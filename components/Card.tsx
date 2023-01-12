@@ -109,7 +109,6 @@ export function BlogCard({
             <Emoji
               emoji={emoji}
               css={{
-                zIndex: 1,
                 spacingBottom: "$4",
                 position: "relative",
                 right: "$1",
