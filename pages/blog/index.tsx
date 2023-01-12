@@ -119,15 +119,14 @@ function Blog({ posts, tags }: Props) {
             onOpenChange={setIsFiltersOpen}
           >
             <Box gap={4} alignItems="center">
-              <TextTitle2>Articles</TextTitle2>
               <Collapsible.Trigger asChild>
                 <StyledIconButton title="Filter">
                   <VisuallyHidden.Root>Filters</VisuallyHidden.Root>
 
                   {isFiltersOpen ? (
-                    <Cross2Icon width={24} height={24} />
+                    <Cross2Icon width={18} height={18} />
                   ) : (
-                    <DropdownMenuIcon width={24} height={24} />
+                    <DropdownMenuIcon width={18} height={18} />
                   )}
                 </StyledIconButton>
               </Collapsible.Trigger>
