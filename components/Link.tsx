@@ -1,5 +1,6 @@
 import { forwardRef, Ref } from "react";
 import NextLink from "next/link";
+import { MdRssFeed } from "react-icons/md";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { CSS, darkTheme, lightTheme, styled } from "../stitches.config";
 import { YOUTUBE_SUBSCRIBE_URL } from "../util/youtube";
@@ -171,6 +172,12 @@ const StyledBlogSubscription = styled(Link, {
   },
 });
 
+const StyledRssIcon = styled(MdRssFeed, {
+  position: "relative",
+  top: -1,
+  left: 3,
+});
+
 // 'Notion to Markdown' converts embeds to links
 // Render embeds as iframes, and links with the custom Link component
 export function MarkdownLink({ node, ...props }) {
@@ -208,7 +215,7 @@ export function BlogSubscribeLink({ type = "link", ...props }: SubscribeProps) {
   return (
     <StyledBlogSubscription href={rssFeedUrl} type={type} {...props}>
       <Box alignItems="center" gap={2}>
-        <RocketIcon width={18} height={18} aria-hidden />
+        <StyledRssIcon size={18} />
 
         {type === "button" && (
           <TextAux css={{ color: "inherit" }}>Subscribe</TextAux>
