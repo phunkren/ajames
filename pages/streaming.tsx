@@ -143,7 +143,7 @@ function Streaming({
           <TextTitle1>Streaming</TextTitle1>
         </VisuallyHidden.Root>
 
-        <AspectRatio ratio={2.84 / 1}>
+        <AspectRatio ratio={2.5 / 1}>
           <StyledImage
             src="/images/banner.png"
             alt={SITE.displayName}

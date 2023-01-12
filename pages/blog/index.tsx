@@ -91,7 +91,7 @@ function Blog({ posts, tags }: Props) {
           <TextTitle1>Blog</TextTitle1>
         </VisuallyHidden.Root>
 
-        <AspectRatio ratio={2.84 / 1}>
+        <AspectRatio ratio={2.5 / 1}>
           <StyledImage
             src="/images/blog.jpg"
             alt=""

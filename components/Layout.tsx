@@ -228,7 +228,7 @@ export function BlogLayout({ frontmatter, children }) {
             </Box>
           </Link>
 
-          <AspectRatio.Root ratio={2.84 / 1}>
+          <AspectRatio.Root ratio={2.5 / 1}>
             <StyledImage
               src={frontmatter.cover}
               alt=""

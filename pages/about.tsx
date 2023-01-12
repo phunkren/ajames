@@ -7,17 +7,15 @@ import {
   LinkedInLogoIcon,
 } from "@radix-ui/react-icons";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
-import { Button, PrintButton } from "../components/Button";
+import { PrintButton } from "../components/Button";
 import { Divider } from "../components/Divider";
 import { Box, Layout } from "../components/Layout";
 import { Link, StyledIconLink } from "../components/Link";
-import { Social } from "../components/Social";
 import {
   TextAux,
   TextBody,
   TextHeadline,
   TextTitle1,
-  TextTitle2,
   TextTitle3,
 } from "../components/Text";
 import { styled } from "../stitches.config";
@@ -77,17 +75,17 @@ const GridRoot = styled("div", {
   gridColumnGap: "$4",
   gridRowGap: "$4",
 
+  "@print": {
+    gridTemplateColumns: "1fr",
+    gridColumnGap: "$1",
+  },
+
   "@bp2": {
     gridTemplateColumns: "repeat(2, 1fr)",
   },
 
   "@bp3": {
     gridTemplateColumns: "1fr",
-  },
-
-  "@print": {
-    gridTemplateColumns: "1fr",
-    gridColumnGap: "$1",
   },
 });
 
@@ -120,7 +118,7 @@ function Cv() {
 
         <Box direction="vertical">
           <StyledPageHeader>
-            <AspectRatio ratio={2.84 / 1}>
+            <AspectRatio ratio={2.5 / 1}>
               <StyledHero
                 spacingHorizontal={{ "@initial": 4, "@bp2": 10 }}
                 spacingVertical={{ "@initial": 5, "@bp2": 7 }}
@@ -373,11 +371,7 @@ function Cv() {
                             </TextAux>
                           </StyledBlockQuote>
 
-                          <Box
-                            direction="vertical"
-                            alignSelf="flex-end"
-                            spacingTop={4}
-                          >
+                          <Box direction="vertical" spacingTop={4}>
                             <Link href={testimonial.url}>
                               <TextHeadline>{testimonial.name}</TextHeadline>
                             </Link>
