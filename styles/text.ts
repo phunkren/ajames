@@ -1,5 +1,13 @@
 export const TEXT_VARIANTS = {
   variants: {
+    color: {
+      primary: {
+        color: "$foregound",
+      },
+      secondary: {
+        color: "$foregroundMuted",
+      },
+    },
     textAlign: {
       left: {
         textAlign: "left",

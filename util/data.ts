@@ -256,6 +256,8 @@ export const TESTIMONIALS: Testimonial[] = [
     position: "Vice President, Engineering",
     quote:
       "Rarely have I had the opportunity to work with an engineer that combines Andrew's technical calibre, his exceptional citizenship, his ability to communicate and demonstrate his ideas to both team and client, and his commitment to coaching and mentoring the folks he works with. He blogs about some of the most interesting front-end technologies, and on top of all of this, he's an all-round great human. He is a genuine asset to any tech team that has the privilege of his attention, and I have no hesitation recommending him wholeheartedly for any role that he puts his mind to.",
+    excerpt:
+      "He's an all-round great human. He is a genuine asset to any tech team that has the privilege of his attention",
   },
   {
     id: "pg",
@@ -264,6 +266,8 @@ export const TESTIMONIALS: Testimonial[] = [
     position: "Engineering Director",
     quote:
       "Andrew brings exceptional technical competency to his work, applying the highest levels of detail and clarity to his code. In his role at BCGDV, Andrew took full ownership of the design and implementation of multiple front end systems, driving the direction, performing impressive demos to clients, and mentoring his colleagues. He brings a considered, positive attitude and has been an absolute pleasure to work with. I could not recommend him higher.",
+    excerpt:
+      "Andrew brings a considered, positive attitude and has been an absolute pleasure to work with.",
   },
   {
     id: "ib",
@@ -272,6 +276,8 @@ export const TESTIMONIALS: Testimonial[] = [
     position: "Engineering Manager",
     quote:
       "From the moment we interviewed him, through to the many projects we worked on together, Andrew always showed a strong desire and passion for his work and the technologies behind it. He picks up new techniques, approaches, libraries, and languages with ease, delivering on project requirements whilst also taking the time to truly understand how something works.",
+    excerpt:
+      "Andrew always showed a strong desire and passion for his work and the technologies behind it.",
   },
   {
     id: "dk",
@@ -280,5 +286,7 @@ export const TESTIMONIALS: Testimonial[] = [
     position: "Senior audio lecturer",
     quote:
       "I knew Andrew when he was enrolled on the Audio Technology BSc (Hons) degree at GCU, between 2102 and 2014. Throughout his time at GCU, Andrew proved himself to be an enthusiastic and talented student. He had a clear enthusiasm for his subject, and engaged diligently with several programming-centred and system development activities required in the degree. In addition to his proven professional expertise and knowledge, Andrew is a friendly, personable and conscientious individual.",
+    excerpt:
+      "Andrew had a clear enthusiasm for his subject, and engaged diligently with several programming-centred activities",
   },
 ];

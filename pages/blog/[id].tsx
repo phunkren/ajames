@@ -9,7 +9,6 @@ import {
   getPostData,
   getPostTime,
 } from "../../lib/notion";
-import { ONE_HOUR_IN_SECONDS } from "../../util/date";
 import { BlogLayout, Box } from "../../components/Layout";
 import {
   BlogSubscribeLink,
@@ -26,7 +25,6 @@ import {
 } from "../../components/Frontmatter";
 import { SITE } from "../../util/data";
 import { ShareButton } from "../../components/Button";
-import { H2_STYLES } from "../../styles/text";
 
 type Frontmatter = {
   title: string;
@@ -101,8 +99,11 @@ export default function BlogPost({ frontmatter, postData }: Props) {
               css={{
                 zIndex: 1,
                 position: "relative",
-                right: "$2",
+                right: "$1",
                 alignSelf: "flex-start",
+                "@bp2": {
+                  right: "$2",
+                },
               }}
             />
 

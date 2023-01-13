@@ -1,6 +1,11 @@
 import { blackA } from "@radix-ui/colors";
 import { globalCss } from "../stitches.config";
-import { DARK_THEME_COLORS, LIGHT_THEME_COLORS } from "./color";
+import {
+  DARK_THEME_COLORS,
+  DARK_THEME_SHADOW_VERTICAL_OFFSET,
+  LIGHT_THEME_COLORS,
+  LIGHT_THEME_SHADOW_VERTICAL_OFFSET,
+} from "./color";
 import { AUX_STYLES, H1_STYLES, H2_STYLES, H3_STYLES, P_STYLES } from "./text";
 
 /* https://piccalil.li/blog/a-modern-css-reset/ */
@@ -36,6 +41,7 @@ export const globalStyles = globalCss({
     width: "100%",
     minHeight: "100dvh",
     overflowX: "hidden",
+    ...P_STYLES,
   },
 
   "div#__next, div#__root": {
@@ -90,6 +96,18 @@ export const globalStyles = globalCss({
     img: {
       margin: "0 auto",
     },
+
+    "body[data-theme='light'] &": {
+      "img, pre": {
+        boxShadow: LIGHT_THEME_SHADOW_VERTICAL_OFFSET,
+      },
+    },
+
+    "body[data-theme='dark'] &": {
+      "img, pre": {
+        boxShadow: DARK_THEME_SHADOW_VERTICAL_OFFSET,
+      },
+    },
   },
 
   // Default code block styling
@@ -107,7 +125,7 @@ export const globalStyles = globalCss({
     code: {
       ...AUX_STYLES,
       display: "block",
-      boxShadow: `0 4px 6px 0 ${blackA.blackA6}`,
+
       whiteSpace: "pre-wrap",
       minWidth: "100px",
       maxWidth: "100%",

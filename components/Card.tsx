@@ -204,7 +204,7 @@ export function VideoCard({
           </StyledLink>
 
           <Box spacingTop={7} css={{ marginTop: "auto" }}>
-            <PublishDate date={publishDate} icon />
+            <PublishDate date={publishDate} icon compact />
           </Box>
         </Box>
       )}

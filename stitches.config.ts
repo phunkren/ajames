@@ -35,7 +35,12 @@ import {
 } from "@radix-ui/colors";
 import { SPACING_UTILS } from "./styles/spacing";
 import { DISPLAY_UTILS } from "./styles/display";
-import { DARK_THEME_COLORS, LIGHT_THEME_COLORS } from "./styles/color";
+import {
+  DARK_THEME_COLORS,
+  DARK_THEME_SHADOW_VERTICAL_OFFSET,
+  LIGHT_THEME_COLORS,
+  LIGHT_THEME_SHADOW_VERTICAL_OFFSET,
+} from "./styles/color";
 
 export const {
   styled,
@@ -94,7 +99,7 @@ export const lightTheme = createTheme({
     ...gold,
   },
   shadows: {
-    verticalOffset: `0 2px 4px ${blackA.blackA8}`,
+    verticalOffset: LIGHT_THEME_SHADOW_VERTICAL_OFFSET,
   },
 });
 
@@ -118,7 +123,7 @@ export const darkTheme = createTheme({
     ...goldDark,
   },
   shadows: {
-    verticalOffset: `0 2px 4px ${whiteA.whiteA6}`,
+    verticalOffset: DARK_THEME_SHADOW_VERTICAL_OFFSET,
   },
 });
 

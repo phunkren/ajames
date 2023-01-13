@@ -383,8 +383,22 @@ function Cv() {
                       <Box key={testimonial.id} as="li" direction="vertical">
                         <Box direction="vertical">
                           <StyledBlockQuote cite={SOCIAL.linkedin.url}>
-                            <TextAux css={{ textTransform: "initial" }}>
+                            <TextAux
+                              css={{
+                                "@print": { display: "none" },
+                                "@initial": { display: "inline" },
+                              }}
+                            >
                               {testimonial.quote}
+                            </TextAux>
+
+                            <TextAux
+                              css={{
+                                "@print": { display: "inline" },
+                                "@initial": { display: "none" },
+                              }}
+                            >
+                              {testimonial.excerpt}
                             </TextAux>
                           </StyledBlockQuote>
 

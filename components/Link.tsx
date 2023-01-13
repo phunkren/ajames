@@ -203,7 +203,7 @@ export function YoutubeSubscribeLink({
     >
       <Box alignItems="center" gap={2}>
         <VideoIcon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
-        {type === "button" && <TextAux>Subscribe</TextAux>}
+        {type === "button" && <TextAux color="primary">Subscribe</TextAux>}
         {type === "link" && <TextHeadline>Subscribe</TextHeadline>}
       </Box>
     </StyledYoutubeSubscription>

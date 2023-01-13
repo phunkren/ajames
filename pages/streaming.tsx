@@ -271,7 +271,7 @@ function Streaming({
                       height={ICON_SIZE.m}
                       aria-hidden
                     />
-                    <TextAux>Watch video</TextAux>
+                    <TextHeadline color="secondary">Watch video</TextHeadline>
                   </Link>
                 </Box>
 
@@ -382,7 +382,7 @@ function Streaming({
                           height={ICON_SIZE.m}
                           aria-hidden
                         />
-                        <TextAux>Watch all</TextAux>
+                        <TextHeadline color="secondary">Watch all</TextHeadline>
                       </Link>
                     </Box>
 
@@ -427,9 +427,7 @@ function Streaming({
             </Box>
 
             <Box direction="vertical" gap={6}>
-              <TextTitle3
-                css={{ textAlign: "center", color: "$foregroundMuted" }}
-              >
+              <TextTitle3 textAlign="center" color="secondary">
                 Enjoying the content?
               </TextTitle3>
 

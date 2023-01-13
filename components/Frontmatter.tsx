@@ -15,7 +15,7 @@ import { formatShortDate } from "../util/date";
 import { ICON_SIZE } from "../util/images";
 import { formatReadingTime } from "../util/posts";
 import { Box } from "./Layout";
-import { TextAux } from "./Text";
+import { TextAux, TextHeadline } from "./Text";
 
 type PostTagProps = {
   tags: Tag[];
@@ -35,17 +35,18 @@ const StyledTag = styled(Box, {
   },
 });
 
-const StyledBox = styled(Box, {
-  color: "$foregroundMuted",
-});
-
 export function PostTags({ tags, icon = false, ...props }: PostTagProps) {
   const { query } = useRouter();
 
   return (
-    <StyledBox gap={4} {...props}>
+    <Box gap={6} {...props}>
       {icon ? (
-        <Box spacingTop={1} alignItems="flex-start" justify-content="center">
+        <Box
+          spacingTop={1}
+          alignItems="flex-start"
+          justify-content="center"
+          css={{ color: "$foregroundMuted" }}
+        >
           <VisuallyHidden.Root>Tags</VisuallyHidden.Root>
           <ListBulletIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
         </Box>
@@ -59,25 +60,58 @@ export function PostTags({ tags, icon = false, ...props }: PostTagProps) {
             borderColor={tag.color}
             active={!query.tag || query.tag === tag.name.toLowerCase()}
           >
-            <TextAux css={{ color: "inherit" }}>{tag.name}</TextAux>
+            <TextAux>{tag.name}</TextAux>
           </StyledTag>
         ))}
       </Box>
-    </StyledBox>
+    </Box>
   );
 }
 
-export function PublishDate({ date, icon = false, ...props }) {
+export function PublishDate({ date, icon = false, compact = false, ...props }) {
   const dateObject = new Date(date);
   const formattedDate = formatShortDate(dateObject);
 
+  if (compact) {
+    return (
+      <Box
+        alignItems="center"
+        gap={4}
+        css={{ color: "$foregroundMuted" }}
+        {...props}
+      >
+        {icon ? (
+          <CalendarIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
+        ) : null}
+
+        <TextAux
+          as="time"
+          dateTime={dateObject.toISOString()}
+          color="secondary"
+        >
+          {formattedDate}
+        </TextAux>
+      </Box>
+    );
+  }
+
   return (
-    <StyledBox alignItems="center" gap={4} {...props}>
+    <Box
+      alignItems="center"
+      gap={6}
+      css={{ color: "$foregroundMuted" }}
+      {...props}
+    >
       {icon ? <CalendarIcon width={ICON_SIZE.l} height={ICON_SIZE.l} /> : null}
-      <TextAux as="time" dateTime={dateObject.toISOString()}>
+
+      <TextHeadline
+        as="time"
+        dateTime={dateObject.toISOString()}
+        color="secondary"
+      >
         {formattedDate}
-      </TextAux>
-    </StyledBox>
+      </TextHeadline>
+    </Box>
   );
 }
 
@@ -85,10 +119,15 @@ export function ReadingTime({ time, icon = false, ...props }) {
   const formattedTime = formatReadingTime(time);
 
   return (
-    <StyledBox alignItems="center" gap={4} {...props}>
+    <Box
+      alignItems="center"
+      gap={6}
+      css={{ color: "$foregroundMuted" }}
+      {...props}
+    >
       {icon ? <ClockIcon width={ICON_SIZE.l} height={ICON_SIZE.l} /> : null}
-      <TextAux>{formattedTime}</TextAux>
-    </StyledBox>
+      <TextHeadline color="secondary">{formattedTime}</TextHeadline>
+    </Box>
   );
 }
 
@@ -96,10 +135,15 @@ export function SubscriberCount({ subscribers, icon = false, ...props }) {
   const formattedSubscribers = `${subscribers} subscribers`;
 
   return (
-    <StyledBox alignItems="center" gap={4} {...props}>
+    <Box
+      alignItems="center"
+      gap={6}
+      css={{ color: "$foregroundMuted" }}
+      {...props}
+    >
       {icon ? <AvatarIcon width={ICON_SIZE.l} height={ICON_SIZE.l} /> : null}
-      <TextAux>{formattedSubscribers}</TextAux>
-    </StyledBox>
+      <TextHeadline color="secondary">{formattedSubscribers}</TextHeadline>
+    </Box>
   );
 }
 
@@ -107,10 +151,15 @@ export function VideosViewsCount({ views, icon = false, ...props }) {
   const formattedViews = `${views} total views`;
 
   return (
-    <StyledBox alignItems="center" gap={4} {...props}>
+    <Box
+      alignItems="center"
+      gap={6}
+      css={{ color: "$foregroundMuted" }}
+      {...props}
+    >
       {icon ? <EyeOpenIcon width={ICON_SIZE.l} height={ICON_SIZE.l} /> : null}
-      <TextAux>{formattedViews}</TextAux>
-    </StyledBox>
+      <TextHeadline color="secondary">{formattedViews}</TextHeadline>
+    </Box>
   );
 }
 
@@ -118,9 +167,14 @@ export function VideosTotalCount({ total, icon = false, ...props }) {
   const formattedTotal = `${total} videos`;
 
   return (
-    <StyledBox alignItems="center" gap={4} {...props}>
+    <Box
+      alignItems="center"
+      gap={6}
+      css={{ color: "$foregroundMuted" }}
+      {...props}
+    >
       {icon ? <VideoIcon width={ICON_SIZE.l} height={ICON_SIZE.l} /> : null}
-      <TextAux>{formattedTotal}</TextAux>
-    </StyledBox>
+      <TextHeadline color="secondary">{formattedTotal}</TextHeadline>
+    </Box>
   );
 }
