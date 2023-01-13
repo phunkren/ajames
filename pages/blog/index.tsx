@@ -57,15 +57,14 @@ const { publicRuntimeConfig } = getConfig();
 export const getStaticProps: GetStaticProps = async () => {
   // Grab all blogs from Notion
   const posts = await getPosts();
-
-  // Create a .mdx file for each blog post
-  await createPosts(posts);
-
   const sortedPosts = sortPosts(posts);
   const postTags = getTags(posts);
 
-  // Create a feed.xml file for blog subscriptions
   if (publicRuntimeConfig.PRODUCTION) {
+    // Create a .mdx file for each blog post
+    await createPosts(posts);
+
+    // Create a feed.xml file for blog subscriptions
     generateRSSFeed(sortedPosts);
   }
 
