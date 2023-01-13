@@ -15,6 +15,9 @@ module.exports = {
       },
     ],
   },
+  publicRuntimeConfig: {
+    PRODUCTION: process.env.NODE_ENV === "production",
+  },
   async redirects() {
     return [
       {

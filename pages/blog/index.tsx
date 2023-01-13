@@ -17,6 +17,7 @@ import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import Image from "next/image";
 import { StyledIconButton } from "../../components/Button";
 import { BlogSubscribeLink } from "../../components/Link";
+import getConfig from "next/config";
 
 type Props = {
   posts: BlogPost[];
@@ -51,6 +52,8 @@ const StyledImage = styled(Image, {
   boxShadow: "$verticalOffset",
 });
 
+const { publicRuntimeConfig } = getConfig();
+
 export const getStaticProps: GetStaticProps = async () => {
   // Grab all blogs from Notion
   const posts = await getPosts();
@@ -62,7 +65,9 @@ export const getStaticProps: GetStaticProps = async () => {
   const postTags = getTags(posts);
 
   // Create a feed.xml file for blog subscriptions
-  generateRSSFeed(sortedPosts);
+  if (publicRuntimeConfig.PRODUCTION) {
+    generateRSSFeed(sortedPosts);
+  }
 
   return {
     props: {
