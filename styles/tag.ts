@@ -1,28 +1,3 @@
-import {
-  amber,
-  amberDark,
-  brown,
-  brownDark,
-  gold,
-  goldDark,
-  grass,
-  grassDark,
-  pink,
-  pinkDark,
-  plum,
-  plumDark,
-  red,
-  sky,
-  skyDark,
-  slate,
-  slateDark,
-  tomato,
-  tomatoDark,
-  yellow,
-  yellowDark,
-} from "@radix-ui/colors";
-import { darkTheme, lightTheme } from "../stitches.config";
-
 export const NOTION_TAG_VARIANTS = {
   active: {
     true: {

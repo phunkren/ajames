@@ -55,6 +55,7 @@ import {
 import { PERSONAL, SITE } from "../util/data";
 import { ShareButton } from "../components/Button";
 import { H2_STYLES } from "../styles/text";
+import { ICON_SIZE } from "../util/images";
 
 type Props = {
   videoPreview: VideoPreview;
@@ -100,7 +101,6 @@ const StyledYouTubePlayer = styled(YouTube, {
 const StyledImage = styled(Image, {
   objectFit: "cover",
   borderRadius: 4,
-  boxShadow: "$verticalOffset",
 });
 
 export async function getStaticProps() {
@@ -266,7 +266,11 @@ function Streaming({
                   <TextTitle3>Latest Video</TextTitle3>
 
                   <Link href={videoPreview.url} variant="secondary">
-                    <PlayIcon aria-hidden />
+                    <PlayIcon
+                      width={ICON_SIZE.m}
+                      height={ICON_SIZE.m}
+                      aria-hidden
+                    />
                     <TextAux>Watch video</TextAux>
                   </Link>
                 </Box>
@@ -373,7 +377,11 @@ function Streaming({
                       </Link>
 
                       <Link href={watchAllUrl} variant="secondary">
-                        <PlayIcon aria-hidden />
+                        <PlayIcon
+                          width={ICON_SIZE.m}
+                          height={ICON_SIZE.m}
+                          aria-hidden
+                        />
                         <TextAux>Watch all</TextAux>
                       </Link>
                     </Box>

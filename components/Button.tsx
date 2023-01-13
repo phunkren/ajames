@@ -21,8 +21,9 @@ import { usePrevious } from "../hooks/usePrevious";
 import { CSS, styled } from "../stitches.config";
 import { Box } from "./Layout";
 import { PERSONAL } from "../util/data";
-import { blackA, whiteA } from "@radix-ui/colors";
+import { blackA } from "@radix-ui/colors";
 import { TextHeadline } from "./Text";
+import { ICON_SIZE } from "../util/images";
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: "primary" | "secondary";
@@ -32,7 +33,6 @@ const StyledButton = styled("button", {
   display: "inline-flex",
   alignItems: "center",
   justifyContent: "center",
-
   appearance: "none",
   background: "none",
   border: "none",
@@ -63,7 +63,6 @@ export const StyledIconButton = styled(Button, {
   borderColor: "$foregroundMuted",
   backgroundColor: "transparent",
   boxShadow: "$verticalOffset",
-
   minWidth: 44,
   minHeight: 44,
 
@@ -99,14 +98,6 @@ const StyledToastRoot = styled(Toast.Root, {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-
-  '&[data-swipe="move"]': {
-    transform: "translateX(var(--radix-toast-swipe-move-x))",
-  },
-  '&[data-swipe="cancel"]': {
-    transform: "translateX(0)",
-    transition: "transform 200ms ease-out",
-  },
 });
 
 const StyledScrollToTop = styled(Button, {
@@ -116,7 +107,7 @@ const StyledScrollToTop = styled(Button, {
   display: "flex",
   alignitems: "center",
   justifyContent: "center",
-  boxShadow: `0px 2px 4px ${blackA.blackA10}`,
+  boxShadow: `$verticalOffset`,
   background: "$foreground",
   color: "$background",
   padding: "$4",
@@ -168,7 +159,7 @@ export function ScrollToTopButton() {
       onClick={handleScrollToTop}
       tabIndex={-1}
     >
-      <DoubleArrowUpIcon width={18} height={18} />
+      <DoubleArrowUpIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
       <TextHeadline>Scroll to top</TextHeadline>
     </StyledScrollToTop>
   );
@@ -202,13 +193,13 @@ export function ShareButton({ url, text, emoji = "👀", variant = "default" }) 
     <Toast.Provider label="Share notification" duration={2000}>
       {variant === "icon" ? (
         <StyledIconButton title="Share" onClick={handleClick}>
-          <Share2Icon width={18} height={18} aria-hidden />
+          <Share2Icon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
           <VisuallyHidden.Root>Share</VisuallyHidden.Root>
         </StyledIconButton>
       ) : (
         <Button title="Share" onClick={handleClick}>
           <Box alignItems="center" gap={2}>
-            <Share2Icon width={18} height={18} aria-hidden />
+            <Share2Icon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
             <TextHeadline>Share</TextHeadline>
           </Box>
         </Button>
@@ -244,12 +235,12 @@ export function PreviewToggle({ pressed, ...props }: ToggleProps & CSS) {
     >
       {pressed ? (
         <>
-          <EyeOpenIcon width={18} height={18} />
+          <EyeOpenIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
           <VisuallyHidden.Root>Description Visible</VisuallyHidden.Root>
         </>
       ) : (
         <>
-          <EyeClosedIcon width={18} height={18} />
+          <EyeClosedIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
           <VisuallyHidden.Root>Description Hidden</VisuallyHidden.Root>
         </>
       )}
@@ -260,7 +251,7 @@ export function PreviewToggle({ pressed, ...props }: ToggleProps & CSS) {
 export function PrintButton(props) {
   return (
     <StyledIconButton title="Print" onClick={() => window?.print()} {...props}>
-      <FileIcon width={18} height={18} />
+      <FileIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
       <VisuallyHidden.Root>Print</VisuallyHidden.Root>
     </StyledIconButton>
   );

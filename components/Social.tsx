@@ -5,6 +5,7 @@ import {
   VideoIcon,
 } from "@radix-ui/react-icons";
 import { SOCIAL } from "../util/data";
+import { ICON_SIZE } from "../util/images";
 import { Box } from "./Layout";
 import { Link } from "./Link";
 
@@ -27,8 +28,8 @@ export function Social() {
           >
             <Box spacing={1}>
               <TwitterLogoIcon
-                width={32}
-                height={32}
+                width={ICON_SIZE.l}
+                height={ICON_SIZE.l}
                 aria-hidden
                 focusable={false}
               />
@@ -44,7 +45,12 @@ export function Social() {
             href={SOCIAL.youtube.url}
           >
             <Box spacing={1}>
-              <VideoIcon width={32} height={32} aria-hidden focusable={false} />
+              <VideoIcon
+                width={ICON_SIZE.l}
+                height={ICON_SIZE.l}
+                aria-hidden
+                focusable={false}
+              />
             </Box>
           </Link>
         </li>
@@ -58,8 +64,8 @@ export function Social() {
           >
             <Box spacing={1}>
               <LinkedInLogoIcon
-                width={30}
-                height={30}
+                width={ICON_SIZE.l}
+                height={ICON_SIZE.l}
                 aria-hidden
                 focusable={false}
               />
@@ -76,8 +82,8 @@ export function Social() {
           >
             <Box spacing={1}>
               <GitHubLogoIcon
-                width={28}
-                height={28}
+                width={ICON_SIZE.l}
+                height={ICON_SIZE.l}
                 aria-hidden
                 focusable={false}
               />

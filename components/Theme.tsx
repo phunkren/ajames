@@ -12,6 +12,7 @@ import * as ToggleGroup from "@radix-ui/react-toggle-group";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { darkTheme, lightTheme, styled } from "../stitches.config";
 import { Theme } from "../types/theme";
+import { ICON_SIZE } from "../util/images";
 
 // Create the theme context
 export const ThemeContext = createContext({
@@ -150,11 +151,11 @@ export function ThemeToggle() {
       onValueChange={handleThemeChange}
     >
       <DarkToggle value={Theme.DARK} aria-label="Dark mode">
-        <MoonIcon width={28} height={28} />
+        <MoonIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
       </DarkToggle>
 
       <LightToggle value={Theme.LIGHT} aria-label="Light mode">
-        <SunIcon width={28} height={28} />
+        <SunIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
       </LightToggle>
     </ToggleGroupRoot>
   );

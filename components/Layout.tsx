@@ -16,6 +16,7 @@ import { ScrollToTopButton } from "./Button";
 import { TextHeadline } from "./Text";
 import Head from "next/head";
 import { PERSONAL, SITE, SOCIAL } from "../util/data";
+import { ICON_SIZE } from "../util/images";
 
 const StyledBox = styled("div", {
   display: "flex",
@@ -223,7 +224,11 @@ export function BlogLayout({ frontmatter, children }) {
               gap={2}
               spacingBottom={{ "@initial": 4, "@bp2": 7 }}
             >
-              <ArrowLeftIcon width={28} height={28} aria-hidden />
+              <ArrowLeftIcon
+                width={ICON_SIZE.m}
+                height={ICON_SIZE.m}
+                aria-hidden
+              />
               <TextHeadline>Back to blog overview</TextHeadline>
             </Box>
           </Link>

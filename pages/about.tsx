@@ -30,6 +30,7 @@ import {
   TESTIMONIALS,
 } from "../util/data";
 import { formatLongDate } from "../util/date";
+import { ICON_SIZE } from "../util/images";
 
 const StyledPageHeader = styled(Box, {
   display: "block",
@@ -143,7 +144,11 @@ function Cv() {
                   <PrintButton />
 
                   <StyledIconLink href="/download-cv" title="Download" download>
-                    <DownloadIcon width={18} height={18} aria-hidden />
+                    <DownloadIcon
+                      width={ICON_SIZE.m}
+                      height={ICON_SIZE.m}
+                      aria-hidden
+                    />
                   </StyledIconLink>
                 </Box>
               </StyledHero>
@@ -202,7 +207,11 @@ function Cv() {
                     title={SOCIAL.linkedin.displayName}
                   >
                     <Box direction="horizontal" gap={4} alignItems="center">
-                      <LinkedInLogoIcon width={18} height={18} aria-hidden />
+                      <LinkedInLogoIcon
+                        width={ICON_SIZE.m}
+                        height={ICON_SIZE.m}
+                        aria-hidden
+                      />
                       <TextHeadline>Andrew James</TextHeadline>
                     </Box>
                   </Link>
@@ -213,18 +222,22 @@ function Cv() {
                     title="Email"
                   >
                     <Box direction="horizontal" gap={4} alignItems="center">
-                      <EnvelopeOpenIcon width={18} height={18} aria-hidden />
+                      <EnvelopeOpenIcon
+                        width={ICON_SIZE.m}
+                        height={ICON_SIZE.m}
+                        aria-hidden
+                      />
                       <TextHeadline>contact@ajames.dev</TextHeadline>
                     </Box>
                   </Link>
 
-                  <Link
-                    variant="tertiary"
-                    href={SITE.url}
-                    title={SITE.displayName}
-                  >
+                  <Link variant="tertiary" href={SITE.url} title="Website">
                     <Box direction="horizontal" gap={4} alignItems="center">
-                      <HomeIcon width={18} height={18} aria-hidden />
+                      <HomeIcon
+                        width={ICON_SIZE.m}
+                        height={ICON_SIZE.m}
+                        aria-hidden
+                      />
                       <TextHeadline>ajames.dev</TextHeadline>
                     </Box>
                   </Link>
@@ -235,7 +248,11 @@ function Cv() {
                     title={SOCIAL.github.displayName}
                   >
                     <Box direction="horizontal" gap={4} alignItems="center">
-                      <GitHubLogoIcon width={18} height={18} aria-hidden />
+                      <GitHubLogoIcon
+                        width={ICON_SIZE.m}
+                        height={ICON_SIZE.m}
+                        aria-hidden
+                      />
                       <TextHeadline>phunkren</TextHeadline>
                     </Box>
                   </Link>

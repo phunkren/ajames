@@ -9,6 +9,7 @@ import { TextHeadline } from "./Text";
 import { Button } from "./Button";
 import { Social } from "./Social";
 import { ThemeToggle } from "./Theme";
+import { ICON_SIZE } from "../util/images";
 
 const StyledDialogContent = styled(Dialog.Content, {
   position: "absolute",
@@ -59,7 +60,11 @@ export function NavigationMobile() {
     <Dialog.Root>
       <Dialog.Trigger asChild>
         <Button title="Mobile Navigation Menu">
-          <HamburgerMenuIcon width={28} height={28} aria-hidden="true" />
+          <HamburgerMenuIcon
+            width={ICON_SIZE.l}
+            height={ICON_SIZE.l}
+            aria-hidden="true"
+          />
         </Button>
       </Dialog.Trigger>
 

@@ -18,6 +18,7 @@ import Image from "next/image";
 import { StyledIconButton } from "../../components/Button";
 import { BlogSubscribeLink } from "../../components/Link";
 import getConfig from "next/config";
+import { ICON_SIZE } from "../../util/images";
 
 type Props = {
   posts: BlogPost[];
@@ -49,7 +50,6 @@ const StyledCardContainer = styled(Box, {
 const StyledImage = styled(Image, {
   objectFit: "cover",
   borderRadius: 4,
-  boxShadow: "$verticalOffset",
 });
 
 const { publicRuntimeConfig } = getConfig();
@@ -128,9 +128,12 @@ function Blog({ posts, tags }: Props) {
                   <VisuallyHidden.Root>Filters</VisuallyHidden.Root>
 
                   {isFiltersOpen ? (
-                    <Cross2Icon width={18} height={18} />
+                    <Cross2Icon width={ICON_SIZE.m} height={ICON_SIZE.m} />
                   ) : (
-                    <DropdownMenuIcon width={18} height={18} />
+                    <DropdownMenuIcon
+                      width={ICON_SIZE.m}
+                      height={ICON_SIZE.m}
+                    />
                   )}
                 </StyledIconButton>
               </Collapsible.Trigger>

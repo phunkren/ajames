@@ -15,6 +15,7 @@ import { LinkProps } from "../types/link";
 import { buildUrl } from "../util/url";
 import { SITE, SOCIAL } from "../util/data";
 import { Box } from "./Layout";
+import { ICON_SIZE } from "../util/images";
 
 type TwitterShareProps = {
   url: string;
@@ -201,7 +202,7 @@ export function YoutubeSubscribeLink({
       {...props}
     >
       <Box alignItems="center" gap={2}>
-        <VideoIcon width={18} height={18} aria-hidden />
+        <VideoIcon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
         {type === "button" && <TextAux>Subscribe</TextAux>}
         {type === "link" && <TextHeadline>Subscribe</TextHeadline>}
       </Box>
@@ -215,7 +216,7 @@ export function BlogSubscribeLink({ type = "link", ...props }: SubscribeProps) {
   return (
     <StyledBlogSubscription href={rssFeedUrl} type={type} {...props}>
       <Box alignItems="center" gap={2}>
-        <StyledRssIcon size={18} />
+        <StyledRssIcon size={ICON_SIZE.m} />
 
         {type === "button" && (
           <TextAux css={{ color: "inherit" }}>Subscribe</TextAux>
@@ -250,7 +251,7 @@ export function TwitterShareLink({
   if (variant === "icon") {
     return (
       <StyledIconLink href={href} title="Share on Twitter" target="_blank">
-        <TwitterLogoIcon width={18} height={18} aria-hidden />
+        <TwitterLogoIcon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
         <VisuallyHidden.Root>Tweet</VisuallyHidden.Root>
       </StyledIconLink>
     );
@@ -259,7 +260,7 @@ export function TwitterShareLink({
   return (
     <Link href={href} title="Share on Twitter">
       <Box alignItems="center" gap={2}>
-        <TwitterLogoIcon width={18} height={18} aria-hidden />
+        <TwitterLogoIcon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
         <TextHeadline>Tweet</TextHeadline>
       </Box>
     </Link>
@@ -270,7 +271,7 @@ export function ReadMoreLink(props) {
   return (
     <Box gap={2} alignItems="center" {...props}>
       <TextAux>Read more</TextAux>
-      <ArrowRightIcon width={18} height={18} />
+      <ArrowRightIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
     </Box>
   );
 }

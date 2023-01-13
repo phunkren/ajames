@@ -12,6 +12,7 @@ import { styled } from "../stitches.config";
 import { NOTION_TAG_VARIANTS } from "../styles/tag";
 import { Tag } from "../types/notion";
 import { formatShortDate } from "../util/date";
+import { ICON_SIZE } from "../util/images";
 import { formatReadingTime } from "../util/posts";
 import { Box } from "./Layout";
 import { TextAux } from "./Text";
@@ -46,7 +47,7 @@ export function PostTags({ tags, icon = false, ...props }: PostTagProps) {
       {icon ? (
         <Box spacingTop={1} alignItems="flex-start" justify-content="center">
           <VisuallyHidden.Root>Tags</VisuallyHidden.Root>
-          <ListBulletIcon width={24} height={24} />
+          <ListBulletIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
         </Box>
       ) : null}
 
@@ -72,7 +73,7 @@ export function PublishDate({ date, icon = false, ...props }) {
 
   return (
     <StyledBox alignItems="center" gap={4} {...props}>
-      {icon ? <CalendarIcon width={24} height={24} /> : null}
+      {icon ? <CalendarIcon width={ICON_SIZE.l} height={ICON_SIZE.l} /> : null}
       <TextAux as="time" dateTime={dateObject.toISOString()}>
         {formattedDate}
       </TextAux>
@@ -85,7 +86,7 @@ export function ReadingTime({ time, icon = false, ...props }) {
 
   return (
     <StyledBox alignItems="center" gap={4} {...props}>
-      {icon ? <ClockIcon width={24} height={24} /> : null}
+      {icon ? <ClockIcon width={ICON_SIZE.l} height={ICON_SIZE.l} /> : null}
       <TextAux>{formattedTime}</TextAux>
     </StyledBox>
   );
@@ -96,7 +97,7 @@ export function SubscriberCount({ subscribers, icon = false, ...props }) {
 
   return (
     <StyledBox alignItems="center" gap={4} {...props}>
-      {icon ? <AvatarIcon width={24} height={24} /> : null}
+      {icon ? <AvatarIcon width={ICON_SIZE.l} height={ICON_SIZE.l} /> : null}
       <TextAux>{formattedSubscribers}</TextAux>
     </StyledBox>
   );
@@ -107,7 +108,7 @@ export function VideosViewsCount({ views, icon = false, ...props }) {
 
   return (
     <StyledBox alignItems="center" gap={4} {...props}>
-      {icon ? <EyeOpenIcon width={24} height={24} /> : null}
+      {icon ? <EyeOpenIcon width={ICON_SIZE.l} height={ICON_SIZE.l} /> : null}
       <TextAux>{formattedViews}</TextAux>
     </StyledBox>
   );
@@ -118,7 +119,7 @@ export function VideosTotalCount({ total, icon = false, ...props }) {
 
   return (
     <StyledBox alignItems="center" gap={4} {...props}>
-      {icon ? <VideoIcon width={24} height={24} /> : null}
+      {icon ? <VideoIcon width={ICON_SIZE.l} height={ICON_SIZE.l} /> : null}
       <TextAux>{formattedTotal}</TextAux>
     </StyledBox>
   );
