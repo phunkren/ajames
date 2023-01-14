@@ -6,7 +6,6 @@ import React, {
   useMemo,
   useCallback,
 } from "react";
-import { blackA, blue, grayDark, whiteA, yellow } from "@radix-ui/colors";
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import * as ToggleGroup from "@radix-ui/react-toggle-group";
 import { useLocalStorage } from "../hooks/useLocalStorage";
@@ -23,6 +22,10 @@ export const ThemeContext = createContext({
 const ToggleGroupRoot = styled(ToggleGroup.Root, {
   display: "inline-flex",
   borderRadius: 4,
+
+  borderWidth: 1,
+  borderStyle: "solid",
+  borderColor: "$foregroundMuted",
   boxShadow: "$verticalOffset",
 });
 
@@ -36,8 +39,14 @@ const ToggleGroupItem = styled(ToggleGroup.Item, {
   alignItems: "center",
   justifyContent: "center",
   marginLeft: 1,
-
   backgroundColor: "transparent",
+
+  "&[data-state=off]": {
+    boxShadow: "$inset",
+    opacity: 0.2,
+  },
+
+  "&[data-state=off]:hover": { backgroundColor: "$background", opacity: 0.75 },
 
   "&:first-child": {
     marginLeft: 0,
@@ -49,29 +58,18 @@ const ToggleGroupItem = styled(ToggleGroup.Item, {
 });
 
 const LightToggle = styled(ToggleGroupItem, {
-  backgroundColor: "$sky1",
-  color: "$sky1",
-
-  "&:hover": { color: "$yellow5", backgroundColor: "$sky2" },
-
   "&[data-state=on]": {
-    backgroundColor: "$sky7",
-    color: "$yellow6",
+    backgroundColor: "$sky11",
+    color: "$yellow8",
+    opacity: 1,
   },
 });
 
 const DarkToggle = styled(ToggleGroupItem, {
-  backgroundColor: "$sky1",
-  color: "transparent",
-
-  "&:hover": {
-    backgroundColor: "black",
-    color: "$gray4",
-  },
-
   "&[data-state=on]": {
-    color: "$gray11",
     backgroundColor: "black",
+    color: "$gray11",
+    opacity: 1,
   },
 });
 

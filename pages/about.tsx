@@ -18,7 +18,7 @@ import {
   TextTitle1,
   TextTitle3,
 } from "../components/Text";
-import { styled } from "../stitches.config";
+import { darkTheme, lightTheme, styled } from "../stitches.config";
 import {
   EDUCATION,
   EMPLOYMENT,
@@ -38,8 +38,33 @@ const StyledPageHeader = styled(Box, {
   display: "block",
   position: "relative",
   overflow: "hidden",
-  background: "$background",
-  borderRadius: 4,
+  borderTopRightRadius: 4,
+  borderTopLeftRadius: 4,
+
+  "&::after": {
+    content: "",
+    position: "absolute",
+    inset: 0,
+    background: "rgba(0,0,0,0.25)",
+  },
+
+  [`.${lightTheme} &`]: {
+    background: "conic-gradient(from 20deg, $red10, $red10, $blue9, $blue10)",
+  },
+
+  [`.${darkTheme} &`]: {
+    background: "$slate1",
+  },
+
+  "@bp2": {
+    [`.${lightTheme} &`]: {
+      background: "conic-gradient(from 20deg, $red10, $red10, $blue9, $blue10)",
+    },
+
+    [`.${darkTheme} &`]: {
+      background: "conic-gradient(from 20deg, $red3, $red2, $blue2, $blue4)",
+    },
+  },
 
   "@print": {
     display: "none",
@@ -57,20 +82,21 @@ const StyledPrintHeader = styled(Box, {
 const StyledHero = styled(Box, {
   position: "absolute",
   inset: 0,
-  borderRadius: 4,
   zIndex: 1,
+  borderBottomWidth: 5,
+  borderBottomStyle: "solid",
+  borderBottomColor: "$foregroundMuted",
 });
 
 const StyledImage = styled(Image, {
   display: "none",
   objectFit: "contain",
   borderRadius: 4,
-  background: "$background",
   position: "absolute",
   top: "5% !important",
   left: "12.5% !important",
   zIndex: 0,
-  opacity: 0.4,
+  filter: "brightness(75%)",
 
   "@bp2": {
     display: "block",
@@ -187,8 +213,6 @@ function Cv() {
               <TextHeadline>{PERSONAL.occupation} / Glasgow, UK</TextHeadline>
             </Box>
           </StyledPrintHeader>
-
-          <Divider size="l" />
 
           <Box
             id="__cv"

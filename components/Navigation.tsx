@@ -1,46 +1,64 @@
-import { HamburgerMenuIcon } from "@radix-ui/react-icons";
+import { Cross1Icon, HamburgerMenuIcon } from "@radix-ui/react-icons";
 import * as Dialog from "@radix-ui/react-dialog";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
-import { gray } from "@radix-ui/colors";
 import { styled } from "../stitches.config";
 import { Box } from "./Layout";
 import { Link } from "./Link";
 import { TextHeadline } from "./Text";
 import { Button } from "./Button";
 import { Social } from "./Social";
-import { ThemeToggle } from "./Theme";
+import { ThemeProvider, ThemeToggle } from "./Theme";
 import { ICON_SIZE } from "../util/images";
 
 const StyledDialogContent = styled(Dialog.Content, {
   position: "absolute",
   display: "flex",
   flexDirection: "column",
-  gap: "$10",
-  background: gray.gray10,
+  backgroundColor: "black",
   width: "75vw",
   height: "100dvh",
   minWidth: 300,
-  spacing: "$4",
+  zIndex: 99,
+});
+
+const StyledHamburgerMenuIcon = styled(HamburgerMenuIcon, {
+  "button[data-state=open] > &": {
+    display: "none",
+  },
+
+  "button[data-state=closed] > &": {
+    display: "flex",
+  },
+});
+
+const StyledCloseMenuIcon = styled(Cross1Icon, {
+  "button[data-state=open] > &": {
+    display: "flex",
+  },
+
+  "button[data-state=closed] > &": {
+    display: "none",
+  },
 });
 
 export function NavigationLinks() {
   return (
     <>
-      <li>
+      <Box as="li">
         <Link variant="secondary" href="/about">
           <TextHeadline>About</TextHeadline>
         </Link>
-      </li>
-      <li>
+      </Box>
+      <Box as="li">
         <Link variant="secondary" href="/blog">
           <TextHeadline>Blog</TextHeadline>
         </Link>
-      </li>
-      <li>
+      </Box>
+      <Box as="li">
         <Link variant="secondary" href="/streaming">
           <TextHeadline>Streaming</TextHeadline>
         </Link>
-      </li>
+      </Box>
     </>
   );
 }
@@ -60,7 +78,13 @@ export function NavigationMobile() {
     <Dialog.Root>
       <Dialog.Trigger asChild>
         <Button title="Mobile Navigation Menu">
-          <HamburgerMenuIcon
+          <StyledHamburgerMenuIcon
+            width={ICON_SIZE.l}
+            height={ICON_SIZE.l}
+            aria-hidden="true"
+          />
+
+          <StyledCloseMenuIcon
             width={ICON_SIZE.l}
             height={ICON_SIZE.l}
             aria-hidden="true"
@@ -71,7 +95,7 @@ export function NavigationMobile() {
       <Dialog.Portal>
         <StyledDialogContent>
           <VisuallyHidden.Root asChild>
-            <Dialog.Title>Mobile Navgiation Menu</Dialog.Title>
+            <Dialog.Title>Mobile Navigation Menu</Dialog.Title>
           </VisuallyHidden.Root>
 
           <VisuallyHidden.Root asChild>
@@ -81,16 +105,29 @@ export function NavigationMobile() {
             </Dialog.Description>
           </VisuallyHidden.Root>
 
-          <Box justifyContent="flex-end">
-            <ThemeToggle />
-          </Box>
+          <Box
+            direction="vertical"
+            spacingVertical={7}
+            spacingHorizontal={6}
+            gap={10}
+            flexGrow
+          >
+            <Box justifyContent="flex-end">
+              <ThemeToggle />
+            </Box>
 
-          <Box direction="vertical">
-            <NavigationLinks />
-          </Box>
+            <Box
+              direction="vertical"
+              gap={10}
+              spacingTop={10}
+              spacingHorizontal={4}
+            >
+              <NavigationLinks />
+            </Box>
 
-          <Box justifyContent="center" css={{ marginTop: "auto" }}>
-            <Social />
+            <Box justifyContent="center" css={{ marginTop: "auto" }}>
+              <Social />
+            </Box>
           </Box>
         </StyledDialogContent>
       </Dialog.Portal>
