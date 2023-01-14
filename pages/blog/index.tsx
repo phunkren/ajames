@@ -185,7 +185,7 @@ function Blog({ posts, tags }: Props) {
                     <StyledIconLink
                       href={{ pathname: "blog" }}
                       title="Clear Filters"
-                      scroll={false}
+                      nextLinkProps={{ scroll: false }}
                     >
                       <VisuallyHidden.Root>
                         <TextAux>Clear filters</TextAux>

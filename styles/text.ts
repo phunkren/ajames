@@ -120,7 +120,6 @@ export const P_STYLES = {
 
 export const AUX_STYLES = {
   fontSize: 14,
-  color: "$foregroundMuted",
 
   "@bp2": {
     fontSize: 16,

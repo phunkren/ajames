@@ -35,6 +35,7 @@ type PostActiveTagsProps = {
 const StyledTag = styled(Box, {
   padding: "0 $2",
   borderRadius: 4,
+  lineHeight: 1,
   borderStyle: "solid",
   borderWidth: 1,
   textTransform: "uppercase",
@@ -75,18 +76,23 @@ export function PostTags({ tags, icon = false, ...props }: PostTagProps) {
       ) : null}
 
       <Box as="ul" role="list" gap={4} flexWrap="wrap">
-        {tags.map((tag) => (
-          <StyledTag
-            as="li"
-            key={tag.id}
-            borderColor={tag.color}
-            active={
-              !queryTags.length || queryTags.includes(tag.name.toLowerCase())
-            }
-          >
-            <TextAux>{tag.name}</TextAux>
-          </StyledTag>
-        ))}
+        {tags.map((tag) => {
+          const isActive =
+            !queryTags.length || queryTags.includes(tag.name.toLowerCase());
+
+          return (
+            <StyledTag
+              as="li"
+              key={tag.id}
+              borderColor={tag.color}
+              active={isActive}
+            >
+              <TextAux color={isActive ? "primary" : "secondary"}>
+                {tag.name}
+              </TextAux>
+            </StyledTag>
+          );
+        })}
       </Box>
     </Box>
   );

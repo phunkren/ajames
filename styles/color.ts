@@ -15,7 +15,7 @@ export const LIGHT_THEME_COLORS = {
 };
 
 export const DARK_THEME_COLORS = {
-  foreground: whiteA.whiteA12,
+  foreground: slateDark.slate12,
   foregroundMuted: grayDark.gray11,
   background: slateDark.slate1,
   backgroundMuted: grayDark.gray2,
