@@ -1,6 +1,7 @@
 import uniqWith from "lodash.uniqwith";
 import isEqual from "lodash.isequal";
 import { BlogPost, Tag } from "../types/notion";
+import { ParsedUrlQuery } from "querystring";
 
 export function getTags(posts: BlogPost[]): Tag[] {
   const allTags = posts.flatMap((post) => post.properties.tags.multi_select);
@@ -23,12 +24,16 @@ export function getTags(posts: BlogPost[]): Tag[] {
   return formattedTags;
 }
 
-export function filterPosts(posts: BlogPost[], activeTagName) {
+export function filterPosts(posts: BlogPost[], queryTags: string[]) {
+  if (!queryTags.length) {
+    return posts;
+  }
+
   return posts.filter((post) => {
     const postTags = post.properties.tags.multi_select;
 
-    const isActive = postTags.some(
-      ({ name }) => name.toLowerCase() === activeTagName.toLowerCase()
+    const isActive = postTags.some(({ name }) =>
+      queryTags?.includes(name.toLowerCase())
     );
 
     return isActive;
@@ -68,4 +73,16 @@ export function formatCount(count: number) {
   }
 
   return `${count} videos`;
+}
+
+export function getQueryTags(query: ParsedUrlQuery) {
+  if (!query.tag) {
+    return [];
+  }
+
+  if (typeof query.tag === "string") {
+    return query.tag.split(",");
+  }
+
+  return query.tag;
 }

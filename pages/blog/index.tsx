@@ -10,15 +10,25 @@ import { TagToggle } from "../../components/Tags";
 import { TextTitle1, TextTitle2 } from "../../components/Text";
 import { styled } from "../../stitches.config";
 import { BlogPost, Tag } from "../../types/notion";
-import { filterPosts, getTags, sortPosts } from "../../util/posts";
+import {
+  filterPosts,
+  getQueryTags,
+  getTags,
+  sortPosts,
+} from "../../util/posts";
 import { createPosts, generateRSSFeed, getPosts } from "../../lib/notion";
 import { Divider } from "../../components/Divider";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import Image from "next/image";
 import { StyledIconButton } from "../../components/Button";
-import { BlogSubscribeLink } from "../../components/Link";
+import { BlogSubscribeLink, StyledIconLink } from "../../components/Link";
 import getConfig from "next/config";
 import { ICON_SIZE } from "../../util/images";
+import {
+  PostCategoriesCount,
+  PostTotalCount,
+  PostActiveTags,
+} from "../../components/Frontmatter";
 
 type Props = {
   posts: BlogPost[];
@@ -80,10 +90,18 @@ function Blog({ posts, tags }: Props) {
   const { pathname, push, query } = useRouter();
   const [isFiltersOpen, setIsFiltersOpen] = useState(false);
 
-  const filteredPosts = query.tag ? filterPosts(posts, query.tag) : posts;
+  const queryTags = getQueryTags(query);
 
-  function handleTagChange(tagName: string) {
+  const filteredPosts = filterPosts(posts, queryTags);
+
+  function handleTagChange(tagName: string[]) {
     push({ pathname, query: { ...query, tag: tagName } }, undefined, {
+      scroll: false,
+    });
+  }
+
+  function handleFilterClear() {
+    push({ pathname }, undefined, {
       scroll: false,
     });
   }
@@ -116,29 +134,55 @@ function Blog({ posts, tags }: Props) {
           direction="vertical"
           gap={10}
           spacingHorizontal={{ "@initial": 4, "@bp2": 10 }}
-          spacingVertical={10}
+          spacingTop={4}
+          spacingBottom={10}
         >
           <Collapsible.Root
             open={isFiltersOpen}
             onOpenChange={setIsFiltersOpen}
           >
-            <Box gap={4} alignItems="center">
-              <Collapsible.Trigger asChild>
-                <StyledIconButton title="Filter">
-                  <VisuallyHidden.Root>Filters</VisuallyHidden.Root>
+            <Box direction="vertical" gap={10}>
+              <Box justifyContent="space-between" alignItems="center">
+                <TextTitle2>Blog</TextTitle2>
+                <BlogSubscribeLink type="button" css={{ marginLeft: "auto" }} />
+              </Box>
 
-                  {isFiltersOpen ? (
-                    <Cross2Icon width={ICON_SIZE.m} height={ICON_SIZE.m} />
-                  ) : (
-                    <DropdownMenuIcon
-                      width={ICON_SIZE.m}
-                      height={ICON_SIZE.m}
-                    />
-                  )}
-                </StyledIconButton>
-              </Collapsible.Trigger>
+              <Box>
+                <Box as="ul" role="list" direction="vertical" gap={6} flexGrow>
+                  <PostTotalCount total={posts.length} icon />
+                  <PostCategoriesCount total={tags.length} icon />
+                  <PostActiveTags tags={tags} queryTags={queryTags} icon />
+                </Box>
 
-              <BlogSubscribeLink type="button" css={{ marginLeft: "auto" }} />
+                <Box
+                  gap={4}
+                  justifyContent="flex-end"
+                  alignItems="flex-end"
+                  direction="vertical"
+                  css={{ width: "auto", "@bp3": { flexBasis: "45%" } }}
+                >
+                  {queryTags.length ? (
+                    <StyledIconLink
+                      href="/blog"
+                      title="Clear Filter"
+                      scroll={false}
+                    >
+                      <VisuallyHidden.Root>Clear Filter</VisuallyHidden.Root>
+                      <Cross2Icon width={ICON_SIZE.m} height={ICON_SIZE.m} />
+                    </StyledIconLink>
+                  ) : null}
+
+                  <Collapsible.Trigger asChild>
+                    <StyledIconButton title="Filter">
+                      <VisuallyHidden.Root>Filters</VisuallyHidden.Root>
+                      <DropdownMenuIcon
+                        width={ICON_SIZE.m}
+                        height={ICON_SIZE.m}
+                      />
+                    </StyledIconButton>
+                  </Collapsible.Trigger>
+                </Box>
+              </Box>
             </Box>
 
             <Box spacingVertical={10}>
@@ -147,9 +191,10 @@ function Blog({ posts, tags }: Props) {
 
             <Collapsible.Content>
               <TagToggle
+                type="multiple"
                 tags={tags}
-                value={query.tag as string}
-                onChange={handleTagChange}
+                value={queryTags}
+                onValueChange={handleTagChange}
               />
 
               <Box spacingVertical={10}>

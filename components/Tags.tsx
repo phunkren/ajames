@@ -4,10 +4,8 @@ import { NOTION_TAG_VARIANTS } from "../styles/tag";
 import { Tag } from "../types/notion";
 import { TextAux } from "./Text";
 
-type Props = {
+type Props = ToggleGroup.ToggleGroupMultipleProps & {
   tags: Tag[];
-  value?: string; // tag.id
-  onChange: (tag: string) => void;
 };
 
 const ToggleGroupRoot = styled(ToggleGroup.Root, {
@@ -56,14 +54,12 @@ const ToggleGroupItem = styled(ToggleGroup.Item, {
   },
 });
 
-export function TagToggle({ tags, value, onChange }: Props) {
+export function TagToggle({ tags, ...props }: Props) {
   return (
     <ToggleGroupRoot
-      type="single"
       aria-label="Blog tag toggle"
       orientation="horizontal"
-      value={value}
-      onValueChange={onChange}
+      {...props}
     >
       {tags.map((tag) => (
         <ToggleGroupItem key={tag.id} value={tag.name} borderColor={tag.color}>

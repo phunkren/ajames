@@ -4,6 +4,8 @@ import {
   ClockIcon,
   EyeOpenIcon,
   ListBulletIcon,
+  MixIcon,
+  Pencil2Icon,
   VideoIcon,
 } from "@radix-ui/react-icons";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
@@ -13,12 +15,18 @@ import { NOTION_TAG_VARIANTS } from "../styles/tag";
 import { Tag } from "../types/notion";
 import { formatShortDate } from "../util/date";
 import { ICON_SIZE } from "../util/images";
-import { formatReadingTime } from "../util/posts";
+import { formatReadingTime, getQueryTags } from "../util/posts";
 import { Box } from "./Layout";
 import { TextAux, TextHeadline } from "./Text";
 
 type PostTagProps = {
   tags: Tag[];
+  icon?: boolean;
+};
+
+type PostActiveTagsProps = {
+  tags: Tag[];
+  queryTags: string[];
   icon?: boolean;
 };
 
@@ -37,6 +45,7 @@ const StyledTag = styled(Box, {
 
 export function PostTags({ tags, icon = false, ...props }: PostTagProps) {
   const { query } = useRouter();
+  const queryTags = getQueryTags(query);
 
   return (
     <Box gap={6} {...props}>
@@ -53,16 +62,61 @@ export function PostTags({ tags, icon = false, ...props }: PostTagProps) {
       ) : null}
 
       <Box as="ul" role="list" gap={4} flexWrap="wrap">
-        {tags.map((tag) => (
-          <StyledTag
-            as="li"
-            key={tag.id}
-            borderColor={tag.color}
-            active={!query.tag || query.tag === tag.name.toLowerCase()}
-          >
-            <TextAux>{tag.name}</TextAux>
+        {tags.length ? (
+          tags.map((tag) => (
+            <StyledTag
+              as="li"
+              key={tag.id}
+              borderColor={tag.color}
+              active={
+                !queryTags.length || queryTags.includes(tag.name.toLowerCase())
+              }
+            >
+              <TextAux>{tag.name}</TextAux>
+            </StyledTag>
+          ))
+        ) : (
+          <TextHeadline color="secondary">All</TextHeadline>
+        )}
+      </Box>
+    </Box>
+  );
+}
+
+export function PostActiveTags({
+  tags,
+  queryTags,
+  icon = false,
+  ...props
+}: PostActiveTagsProps) {
+  const activeTags = tags.filter((tag) => queryTags.includes(tag.name));
+
+  return (
+    <Box gap={6} {...props}>
+      {icon ? (
+        <Box
+          spacingTop={1}
+          alignItems="flex-start"
+          justify-content="center"
+          css={{ color: "$foregroundMuted" }}
+        >
+          <VisuallyHidden.Root>Tags</VisuallyHidden.Root>
+          <ListBulletIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
+        </Box>
+      ) : null}
+
+      <Box as="ul" role="list" gap={4} flexWrap="wrap">
+        {activeTags.length ? (
+          activeTags.map((tag) => (
+            <StyledTag as="li" key={tag.id} borderColor={tag.color} active>
+              <TextAux>{tag.name}</TextAux>
+            </StyledTag>
+          ))
+        ) : (
+          <StyledTag as="li">
+            <TextAux color="secondary">All Filters</TextAux>
           </StyledTag>
-        ))}
+        )}
       </Box>
     </Box>
   );
@@ -174,6 +228,38 @@ export function VideosTotalCount({ total, icon = false, ...props }) {
       {...props}
     >
       {icon ? <VideoIcon width={ICON_SIZE.l} height={ICON_SIZE.l} /> : null}
+      <TextHeadline color="secondary">{formattedTotal}</TextHeadline>
+    </Box>
+  );
+}
+
+export function PostTotalCount({ total, icon = false, ...props }) {
+  const formattedTotal = `${total} articles`;
+
+  return (
+    <Box
+      alignItems="center"
+      gap={6}
+      css={{ color: "$foregroundMuted" }}
+      {...props}
+    >
+      {icon ? <Pencil2Icon width={ICON_SIZE.l} height={ICON_SIZE.l} /> : null}
+      <TextHeadline color="secondary">{formattedTotal}</TextHeadline>
+    </Box>
+  );
+}
+
+export function PostCategoriesCount({ total, icon = false, ...props }) {
+  const formattedTotal = `${total} categories`;
+
+  return (
+    <Box
+      alignItems="center"
+      gap={6}
+      css={{ color: "$foregroundMuted" }}
+      {...props}
+    >
+      {icon ? <MixIcon width={ICON_SIZE.l} height={ICON_SIZE.l} /> : null}
       <TextHeadline color="secondary">{formattedTotal}</TextHeadline>
     </Box>
   );
