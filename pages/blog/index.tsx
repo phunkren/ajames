@@ -80,10 +80,10 @@ export const getStaticProps: GetStaticProps = async () => {
   const sortedPosts = sortPosts(posts);
   const postTags = getTags(posts);
 
-  if (publicRuntimeConfig.PRODUCTION) {
-    // Create a .mdx file for each blog post
-    await createPosts(posts);
+  // Create a .mdx file for each blog post
+  await createPosts(posts);
 
+  if (publicRuntimeConfig.PRODUCTION) {
     // Create a feed.xml file for blog subscriptions
     generateRSSFeed(sortedPosts);
   }
