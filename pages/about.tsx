@@ -31,9 +31,15 @@ import {
 } from "../util/data";
 import { formatLongDate } from "../util/date";
 import { ICON_SIZE } from "../util/images";
+import banner from "../public/images/mugshot.png";
+import Image from "next/image";
 
 const StyledPageHeader = styled(Box, {
   display: "block",
+  position: "relative",
+  overflow: "hidden",
+  background: "$background",
+  borderRadius: 4,
 
   "@print": {
     display: "none",
@@ -52,7 +58,23 @@ const StyledHero = styled(Box, {
   position: "absolute",
   inset: 0,
   borderRadius: 4,
+  zIndex: 1,
+});
+
+const StyledImage = styled(Image, {
+  display: "none",
+  objectFit: "contain",
+  borderRadius: 4,
   background: "$background",
+  position: "absolute",
+  top: "5% !important",
+  left: "12.5% !important",
+  zIndex: 0,
+  opacity: 0.4,
+
+  "@bp2": {
+    display: "block",
+  },
 });
 
 const StyledBlockQuote = styled("blockquote", {
@@ -117,6 +139,8 @@ function Cv() {
         <Box direction="vertical">
           <StyledPageHeader>
             <AspectRatio ratio={2.5 / 1}>
+              <StyledImage src={banner} alt="" sizes="100vw" priority fill />
+
               <StyledHero
                 spacingHorizontal={{ "@initial": 4, "@bp2": 10 }}
                 spacingVertical={{ "@initial": 5, "@bp2": 7 }}

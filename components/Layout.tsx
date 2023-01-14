@@ -68,7 +68,7 @@ export function HeaderLayout() {
       direction="horizontal"
       spacingTop={7}
       spacingBottom={10}
-      spacingHorizontal={2}
+      spacingHorizontal={4}
       gap={{ "@initial": 4, "@bp2": 7 }}
       justifyContent="space-between"
       alignItems="center"
@@ -101,8 +101,8 @@ export function FooterLayout() {
       as="footer"
       direction="horizontal"
       spacingTop={10}
-      spacingBottom={{ "@initial": 4, "@bp2": 7 }}
-      spacingHorizontal={2}
+      spacingBottom={7}
+      spacingHorizontal={4}
       justifyContent="center"
       css={{ "@print": { display: "none" } }}
     >

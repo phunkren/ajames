@@ -101,6 +101,7 @@ export const lightTheme = createTheme({
   shadows: {
     verticalOffset: LIGHT_THEME_SHADOW_VERTICAL_OFFSET,
     inset: "inset 0px 4px 8px rgba(0, 0, 0, 0.1)",
+    textShadow: "rgb(0 0 0 / 18%) 2px 2px",
   },
 });
 
@@ -126,6 +127,7 @@ export const darkTheme = createTheme({
   shadows: {
     verticalOffset: DARK_THEME_SHADOW_VERTICAL_OFFSET,
     inset: "inset 0px 4px 8px rgba(0, 0, 0, 0.1)",
+    textShadow: "rgb(0 0 0 / 18%) 2px 2px",
   },
 });
 
