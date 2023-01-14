@@ -279,14 +279,4 @@ export const TESTIMONIALS: Testimonial[] = [
     excerpt:
       "Andrew always showed a strong desire and passion for his work and the technologies behind it.",
   },
-  {
-    id: "dk",
-    name: "Don Knox",
-    url: "https://www.linkedin.com/in/don-knox-53902351/",
-    position: "Senior audio lecturer",
-    quote:
-      "I knew Andrew when he was enrolled on the Audio Technology BSc (Hons) degree at GCU, between 2102 and 2014. Throughout his time at GCU, Andrew proved himself to be an enthusiastic and talented student. He had a clear enthusiasm for his subject, and engaged diligently with several programming-centred and system development activities required in the degree. In addition to his proven professional expertise and knowledge, Andrew is a friendly, personable and conscientious individual.",
-    excerpt:
-      "Andrew had a clear enthusiasm for his subject, and engaged diligently with several programming-centred activities",
-  },
 ];

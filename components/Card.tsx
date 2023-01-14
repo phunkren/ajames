@@ -5,10 +5,11 @@ import { blackA } from "@radix-ui/colors";
 import { styled } from "../stitches.config";
 import { PostTags, PublishDate } from "./Frontmatter";
 import { Box } from "./Layout";
-import { Emoji, TextAux, TextTitle3 } from "./Text";
+import { Emoji, TextAux, TextBody, TextHeadline, TextTitle3 } from "./Text";
 import { Link } from "./Link";
 import { BlogCardProps, CardProps, VideoCardProps } from "../types/card";
 import { PreviewToggle } from "./Button";
+import { BLUR_DATA_URL } from "../util/images";
 
 const StyledCardOuter = styled(Box, {
   display: "flex",
@@ -34,6 +35,7 @@ const StyledImage = styled(Image, {
   objectFit: "cover",
   borderTopLeftRadius: 4,
   borderTopRightRadius: 4,
+  boxShadow: "none",
 });
 
 const StyledLink = styled(Link, {});
@@ -44,14 +46,22 @@ const StyledBlogContent = styled(Box, {
 });
 
 export function Card({ image, children, ...props }: CardProps) {
+  const [isPreviewVisible, setIsPreviewVisible] = useState(false);
+
   const linkRef = useRef<HTMLAnchorElement>(null);
 
   const childProps = {
     ref: linkRef,
+    isPreviewVisible,
+    onPreviewToggle: handlePreviewToggle,
   };
 
   function handleClick() {
     linkRef.current.click();
+  }
+
+  function handlePreviewToggle(pressed: boolean) {
+    setIsPreviewVisible(pressed);
   }
 
   return (
@@ -63,6 +73,8 @@ export function Card({ image, children, ...props }: CardProps) {
     >
       <AspectRatio.Root ratio={16 / 9}>
         <StyledImage
+          placeholder="blur"
+          blurDataURL={BLUR_DATA_URL}
           src={image}
           alt=""
           sizes="(max-width: 768px) 100vw,
@@ -92,15 +104,9 @@ export function BlogCard({
   emoji,
   tags,
 }: BlogCardProps) {
-  const [isPreviewVisible, setIsPreviewVisible] = useState(false);
-
-  function handlePreviewToggle(pressed: boolean) {
-    setIsPreviewVisible(pressed);
-  }
-
   return (
     <Card image={image}>
-      {({ ref }) => (
+      {({ ref, isPreviewVisible, onPreviewToggle }) => (
         <>
           <StyledBlogContent
             direction="vertical"
@@ -121,14 +127,9 @@ export function BlogCard({
                   css={{
                     lineHeight: 1.75,
                     display: "-webkit-box",
-                    ["-webkit-line-clamp"]: "3",
+                    ["-webkit-line-clamp"]: "4",
                     ["-webkit-box-orient"]: "vertical",
                     overflow: "hidden",
-                    textTransform: "capitalize",
-
-                    "@bp2": {
-                      ["-webkit-line-clamp"]: "4",
-                    },
                   }}
                 >
                   {description}
@@ -170,7 +171,7 @@ export function BlogCard({
               }}
               title="View description"
               pressed={isPreviewVisible}
-              onPressedChange={handlePreviewToggle}
+              onPressedChange={onPreviewToggle}
             />
           </Box>
         </>
@@ -182,29 +183,72 @@ export function BlogCard({
 export function VideoCard({
   url,
   title,
+  description,
   image,
   publishDate,
   ...props
 }: VideoCardProps) {
   return (
     <Card image={image} {...props}>
-      {({ ref }) => (
-        <Box direction="vertical" spacingTop={3} flexGrow>
+      {({ ref, isPreviewVisible, onPreviewToggle }) => (
+        <Box
+          direction="vertical"
+          spacingTop={4}
+          flexGrow
+          css={{ minHeight: 155, "@bp2": { minHeight: 168 } }}
+        >
           <StyledLink href={url} ref={ref} variant="secondary">
-            <TextAux
-              css={{
-                display: "-webkit-box",
-                ["-webkit-line-clamp"]: "3",
-                ["-webkit-box-orient"]: "vertical",
-                overflow: "hidden",
-              }}
-            >
-              {title}
-            </TextAux>
+            {isPreviewVisible ? (
+              <TextAux
+                css={{
+                  display: "-webkit-box",
+                  ["-webkit-line-clamp"]: "4",
+                  ["-webkit-box-orient"]: "vertical",
+                  overflow: "hidden",
+                }}
+              >
+                {description}
+              </TextAux>
+            ) : (
+              <TextHeadline
+                css={{
+                  display: "-webkit-box",
+                  ["-webkit-line-clamp"]: "3",
+                  ["-webkit-box-orient"]: "vertical",
+                  overflow: "hidden",
+                }}
+              >
+                {title}
+              </TextHeadline>
+            )}
           </StyledLink>
 
-          <Box spacingTop={7} css={{ marginTop: "auto" }}>
+          <Box
+            spacingTop={7}
+            justifyContent="space-between"
+            alignItems="center"
+            css={{ marginTop: "auto" }}
+          >
             <PublishDate date={publishDate} icon compact />
+
+            {description ? (
+              <PreviewToggle
+                aria-label="Toggle article preview"
+                css={{
+                  "&::before": {
+                    content: "",
+                    width: 44,
+                    height: 44,
+                    background: "transparent",
+                    position: "absolute",
+                    zIndex: 0,
+                  },
+                }}
+                title="View description"
+                pressed={isPreviewVisible}
+                onPressedChange={onPreviewToggle}
+              />
+            ) : null}
           </Box>
         </Box>
       )}

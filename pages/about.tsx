@@ -109,10 +109,7 @@ const GridItem = styled("div", {
 function Cv() {
   return (
     <Layout>
-      <Box
-        spacingTop={{ "@print": 4, "@initial": 7, "@bp2": 10 }}
-        css={{ marginTop: "$5" }}
-      >
+      <Box spacingTop={{ "@print": 4, "@initial": 7, "@bp2": 10 }}>
         <VisuallyHidden.Root>
           <TextTitle1>About</TextTitle1>
         </VisuallyHidden.Root>
@@ -310,12 +307,7 @@ function Cv() {
                             {new Date(education.endDate).getFullYear()}
                           </TextAux>
                         ) : (
-                          <TextAux
-                            as="time"
-                            dateTime={new Date().toISOString()}
-                          >
-                            Present
-                          </TextAux>
+                          <TextAux>Present</TextAux>
                         )}
                       </Box>
                     </Box>
@@ -385,8 +377,8 @@ function Cv() {
                           <StyledBlockQuote cite={SOCIAL.linkedin.url}>
                             <TextAux
                               css={{
+                                display: "inline",
                                 "@print": { display: "none" },
-                                "@initial": { display: "inline" },
                               }}
                             >
                               {testimonial.quote}
@@ -394,8 +386,8 @@ function Cv() {
 
                             <TextAux
                               css={{
+                                display: "none",
                                 "@print": { display: "inline" },
-                                "@initial": { display: "none" },
                               }}
                             >
                               {testimonial.excerpt}

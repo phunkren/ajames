@@ -16,6 +16,7 @@ import { buildUrl } from "../util/url";
 import { SITE, SOCIAL } from "../util/data";
 import { Box } from "./Layout";
 import { ICON_SIZE } from "../util/images";
+import { whiteA } from "@radix-ui/colors";
 
 type TwitterShareProps = {
   url: string;
@@ -153,7 +154,7 @@ const StyledBlogSubscription = styled(Link, {
       },
       button: {
         padding: "$2 $4",
-        background: "white",
+        backgroundColor: "$amber11",
         borderRadius: 4,
         color: "black",
       },
@@ -163,11 +164,16 @@ const StyledBlogSubscription = styled(Link, {
         spacing: "$2",
         borderWidth: 1,
         borderStyle: "solid",
-        borderColor: "$foregroundMuted",
-        backgroundColor: "white",
-        color: "black",
+        borderColor: "$foreground",
+        backgroundColor: "$amber11",
+        color: "white",
         minWidth: 44,
         minHeight: 44,
+
+        "& div": {
+          position: "relative",
+          right: 2,
+        },
       },
     },
   },
@@ -177,6 +183,22 @@ const StyledRssIcon = styled(MdRssFeed, {
   position: "relative",
   top: -1,
   left: 3,
+});
+
+export const StyledClearFilterLink = styled(Link, {
+  position: "relative",
+  cursor: "pointer",
+  boxShadow: "$verticalOffset",
+  padding: "$2",
+  borderWidth: 1,
+  borderStyle: "solid",
+  borderColor: "$foreground",
+  borderRadius: "50%",
+
+  "&:hover": {
+    background: "$foreground",
+    color: "$background",
+  },
 });
 
 // 'Notion to Markdown' converts embeds to links
@@ -216,7 +238,7 @@ export function BlogSubscribeLink({ type = "link", ...props }: SubscribeProps) {
   return (
     <StyledBlogSubscription href={rssFeedUrl} type={type} {...props}>
       <Box alignItems="center" gap={2}>
-        <StyledRssIcon size={ICON_SIZE.m} />
+        <StyledRssIcon size={ICON_SIZE.l} />
 
         {type === "button" && (
           <TextAux css={{ color: "inherit" }}>Subscribe</TextAux>

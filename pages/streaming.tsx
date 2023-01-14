@@ -55,7 +55,8 @@ import {
 import { PERSONAL, SITE } from "../util/data";
 import { ShareButton } from "../components/Button";
 import { H2_STYLES } from "../styles/text";
-import { ICON_SIZE } from "../util/images";
+import { BLUR_DATA_URL, ICON_SIZE } from "../util/images";
+import banner from "../public/images/banner.png";
 
 type Props = {
   videoPreview: VideoPreview;
@@ -138,7 +139,6 @@ function Streaming({
         direction="vertical"
         alignItems="center"
         spacingTop={{ "@initial": 7, "@bp2": 10 }}
-        css={{ marginTop: "$5" }}
       >
         <VisuallyHidden.Root>
           <TextTitle1>Streaming</TextTitle1>
@@ -146,8 +146,9 @@ function Streaming({
 
         <AspectRatio ratio={2.5 / 1}>
           <StyledImage
-            src="/images/banner.png"
-            alt={SITE.displayName}
+            placeholder="blur"
+            src={banner}
+            alt=""
             sizes="100vw"
             priority
             fill
@@ -406,6 +407,7 @@ function Streaming({
                                 url={playlistVideo.url}
                                 image={playlistVideo.thumbnail.src}
                                 title={playlistVideo.title}
+                                description={playlistVideo.description}
                                 publishDate={playlistVideo.publishedAt}
                                 css={{ scrollSnapAlign: "start" }}
                               />

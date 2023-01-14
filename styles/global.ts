@@ -87,29 +87,6 @@ export const globalStyles = globalCss({
     content: "close-quote",
   },
 
-  // Blog post styling
-  article: {
-    h1: H1_STYLES,
-    h2: H2_STYLES,
-    h3: H3_STYLES,
-    p: P_STYLES,
-    img: {
-      margin: "0 auto",
-    },
-
-    "body[data-theme='light'] &": {
-      "img, pre": {
-        boxShadow: LIGHT_THEME_SHADOW_VERTICAL_OFFSET,
-      },
-    },
-
-    "body[data-theme='dark'] &": {
-      "img, pre": {
-        boxShadow: DARK_THEME_SHADOW_VERTICAL_OFFSET,
-      },
-    },
-  },
-
   // Default code block styling
   code: {
     background: blackA.blackA10,

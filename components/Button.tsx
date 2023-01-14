@@ -11,10 +11,12 @@ import * as Toast from "@radix-ui/react-toast";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { ToggleProps } from "@radix-ui/react-toggle-group";
 import {
+  Cross1Icon,
   DoubleArrowUpIcon,
   EyeClosedIcon,
   EyeOpenIcon,
   FileIcon,
+  InfoCircledIcon,
   Share2Icon,
 } from "@radix-ui/react-icons";
 import { usePrevious } from "../hooks/usePrevious";
@@ -41,6 +43,8 @@ const StyledButton = styled("button", {
   overflow: "visible",
   padding: "0",
   lineHeight: "normal",
+  minWidth: 44,
+  minHeight: 44,
 
   "-webkit-appearance": "none",
   "-moz-appearance": "none",
@@ -235,12 +239,12 @@ export function PreviewToggle({ pressed, ...props }: ToggleProps & CSS) {
     >
       {pressed ? (
         <>
-          <EyeOpenIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
+          <Cross1Icon width={ICON_SIZE.m} height={ICON_SIZE.m} />
           <VisuallyHidden.Root>Description Visible</VisuallyHidden.Root>
         </>
       ) : (
         <>
-          <EyeClosedIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
+          <InfoCircledIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
           <VisuallyHidden.Root>Description Hidden</VisuallyHidden.Root>
         </>
       )}

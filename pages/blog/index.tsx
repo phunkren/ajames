@@ -3,11 +3,15 @@ import { GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import * as Collapsible from "@radix-ui/react-collapsible";
-import { Cross2Icon, DropdownMenuIcon } from "@radix-ui/react-icons";
+import {
+  ChevronUpIcon,
+  Cross2Icon,
+  DropdownMenuIcon,
+} from "@radix-ui/react-icons";
 import { BlogCard } from "../../components/Card";
 import { Box, Layout } from "../../components/Layout";
 import { TagToggle } from "../../components/Tags";
-import { TextTitle1, TextTitle2 } from "../../components/Text";
+import { TextAux, TextTitle1, TextTitle2 } from "../../components/Text";
 import { styled } from "../../stitches.config";
 import { BlogPost, Tag } from "../../types/notion";
 import {
@@ -20,15 +24,21 @@ import { createPosts, generateRSSFeed, getPosts } from "../../lib/notion";
 import { Divider } from "../../components/Divider";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import Image from "next/image";
-import { StyledIconButton } from "../../components/Button";
-import { BlogSubscribeLink, StyledIconLink } from "../../components/Link";
+import { Button, StyledIconButton } from "../../components/Button";
+import {
+  BlogSubscribeLink,
+  StyledClearFilterLink,
+  StyledIconLink,
+} from "../../components/Link";
 import getConfig from "next/config";
 import { ICON_SIZE } from "../../util/images";
 import {
   PostCategoriesCount,
   PostTotalCount,
   PostActiveTags,
+  StyledFilterTag,
 } from "../../components/Frontmatter";
+import banner from "../../public/images/blog.jpg";
 
 type Props = {
   posts: BlogPost[];
@@ -112,7 +122,6 @@ function Blog({ posts, tags }: Props) {
         direction="vertical"
         alignItems="center"
         spacingTop={{ "@initial": 7, "@bp2": 10 }}
-        css={{ marginTop: "$5" }}
         spacingBottom={10}
         gap={10}
       >
@@ -122,7 +131,8 @@ function Blog({ posts, tags }: Props) {
 
         <AspectRatio ratio={2.5 / 1}>
           <StyledImage
-            src="/images/blog.jpg"
+            placeholder="blur"
+            src={banner}
             alt=""
             sizes="100vw"
             priority
@@ -141,13 +151,21 @@ function Blog({ posts, tags }: Props) {
             open={isFiltersOpen}
             onOpenChange={setIsFiltersOpen}
           >
-            <Box direction="vertical" gap={10}>
+            <Box direction="vertical" gap={10} spacingBottom={10}>
               <Box justifyContent="space-between" alignItems="center">
                 <TextTitle2>Blog</TextTitle2>
-                <BlogSubscribeLink type="button" css={{ marginLeft: "auto" }} />
+                <BlogSubscribeLink
+                  type="icon"
+                  css={{ display: "flex", "@bp2": { display: "none" } }}
+                />
+
+                <BlogSubscribeLink
+                  type="button"
+                  css={{ display: "none", "@bp2": { display: "flex" } }}
+                />
               </Box>
 
-              <Box>
+              <Box justifyContent="space-between" alignItems="flex-end">
                 <Box as="ul" role="list" direction="vertical" gap={6} flexGrow>
                   <PostTotalCount total={posts.length} icon />
                   <PostCategoriesCount total={tags.length} icon />
@@ -155,30 +173,54 @@ function Blog({ posts, tags }: Props) {
                 </Box>
 
                 <Box
+                  direction={{ "@initial": "vertical", "@bp2": "horizontal" }}
                   gap={4}
-                  justifyContent="flex-end"
-                  alignItems="flex-end"
-                  direction="vertical"
-                  css={{ width: "auto", "@bp3": { flexBasis: "45%" } }}
+                  justifyContent={{
+                    "@initial": "flex-end",
+                    "@bp2": "flex-end",
+                  }}
+                  alignItems={{ "@initial": "flex-end", "@bp2": "center" }}
                 >
                   {queryTags.length ? (
                     <StyledIconLink
-                      href="/blog"
-                      title="Clear Filter"
+                      href={{ pathname: "blog" }}
+                      title="Clear Filters"
                       scroll={false}
                     >
-                      <VisuallyHidden.Root>Clear Filter</VisuallyHidden.Root>
+                      <VisuallyHidden.Root>
+                        <TextAux>Clear filters</TextAux>
+                      </VisuallyHidden.Root>
                       <Cross2Icon width={ICON_SIZE.m} height={ICON_SIZE.m} />
                     </StyledIconLink>
                   ) : null}
 
                   <Collapsible.Trigger asChild>
-                    <StyledIconButton title="Filter">
-                      <VisuallyHidden.Root>Filters</VisuallyHidden.Root>
-                      <DropdownMenuIcon
-                        width={ICON_SIZE.m}
-                        height={ICON_SIZE.m}
-                      />
+                    <StyledIconButton
+                      title={
+                        isFiltersOpen ? "Collapse Filters" : "Expand Filters"
+                      }
+                    >
+                      {isFiltersOpen ? (
+                        <>
+                          <VisuallyHidden.Root>
+                            <TextAux>Close filter menu</TextAux>
+                          </VisuallyHidden.Root>
+                          <ChevronUpIcon
+                            width={ICON_SIZE.m}
+                            height={ICON_SIZE.m}
+                          />
+                        </>
+                      ) : (
+                        <>
+                          <VisuallyHidden.Root>
+                            <TextAux>Open filter menu</TextAux>
+                          </VisuallyHidden.Root>
+                          <DropdownMenuIcon
+                            width={ICON_SIZE.m}
+                            height={ICON_SIZE.m}
+                          />
+                        </>
+                      )}
                     </StyledIconButton>
                   </Collapsible.Trigger>
                 </Box>

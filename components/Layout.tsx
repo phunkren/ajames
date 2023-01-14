@@ -16,7 +16,8 @@ import { ScrollToTopButton } from "./Button";
 import { TextHeadline } from "./Text";
 import Head from "next/head";
 import { PERSONAL, SITE, SOCIAL } from "../util/data";
-import { ICON_SIZE } from "../util/images";
+import { BLUR_DATA_URL, ICON_SIZE } from "../util/images";
+import { H1_STYLES, H2_STYLES, H3_STYLES, P_STYLES } from "../styles/text";
 
 const StyledBox = styled("div", {
   display: "flex",
@@ -65,7 +66,7 @@ export function HeaderLayout() {
     <Box
       as="header"
       direction="horizontal"
-      spacingTop={{ "@initial": 4, "@bp2": 7 }}
+      spacingTop={7}
       spacingBottom={10}
       spacingHorizontal={2}
       gap={{ "@initial": 4, "@bp2": 7 }}
@@ -172,6 +173,20 @@ export function Layout({ children }) {
   );
 }
 
+const StyledContainer = styled(Box, {
+  h1: H1_STYLES,
+  h2: H2_STYLES,
+  h3: H3_STYLES,
+  p: P_STYLES,
+  img: {
+    margin: "0 auto",
+  },
+
+  "img, pre": {
+    boxShadow: "$verticalOffset",
+  },
+});
+
 export function BlogLayout({ frontmatter, children }) {
   const router = useRouter();
   const { themeName, themeColor } = useTheme();
@@ -211,7 +226,7 @@ export function BlogLayout({ frontmatter, children }) {
         <meta name="og:image" content={frontmatter.cover} />
       </Head>
 
-      <Box
+      <StyledContainer
         direction="vertical"
         spacingHorizontal={{ "@initial": 2, "@bp2": 4 }}
       >
@@ -235,6 +250,8 @@ export function BlogLayout({ frontmatter, children }) {
 
           <AspectRatio.Root ratio={2.5 / 1}>
             <StyledImage
+              placeholder="blur"
+              blurDataURL={BLUR_DATA_URL}
               src={frontmatter.cover}
               alt=""
               sizes="100vw"
@@ -251,7 +268,7 @@ export function BlogLayout({ frontmatter, children }) {
         </Box>
 
         <ScrollToTopButton />
-      </Box>
+      </StyledContainer>
     </>
   );
 }

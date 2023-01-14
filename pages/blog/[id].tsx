@@ -15,7 +15,13 @@ import {
   MarkdownLink,
   TwitterShareLink,
 } from "../../components/Link";
-import { Emoji, TextTitle2, TextTitle3 } from "../../components/Text";
+import {
+  Emoji,
+  TextBody,
+  TextTitle1,
+  TextTitle2,
+  TextTitle3,
+} from "../../components/Text";
 import { Code } from "../../components/Code";
 import { Divider } from "../../components/Divider";
 import {
@@ -25,6 +31,7 @@ import {
 } from "../../components/Frontmatter";
 import { SITE } from "../../util/data";
 import { ShareButton } from "../../components/Button";
+import { ReactNode } from "react";
 
 type Frontmatter = {
   title: string;
@@ -97,7 +104,6 @@ export default function BlogPost({ frontmatter, postData }: Props) {
               emoji={frontmatter.emoji}
               size={{ "@bp2": "l" }}
               css={{
-                zIndex: 1,
                 position: "relative",
                 right: "$1",
                 alignSelf: "flex-start",

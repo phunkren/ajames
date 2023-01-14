@@ -2,6 +2,7 @@ import {
   AvatarIcon,
   CalendarIcon,
   ClockIcon,
+  DropdownMenuIcon,
   EyeOpenIcon,
   ListBulletIcon,
   MixIcon,
@@ -10,6 +11,7 @@ import {
 } from "@radix-ui/react-icons";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { useRouter } from "next/router";
+import { relative } from "node:path/win32";
 import { styled } from "../stitches.config";
 import { NOTION_TAG_VARIANTS } from "../styles/tag";
 import { Tag } from "../types/notion";
@@ -43,6 +45,18 @@ const StyledTag = styled(Box, {
   },
 });
 
+export const StyledFilterTag = styled(StyledTag, {
+  color: "$foreground",
+  cursor: "pointer",
+  boxShadow: "$verticalOffset",
+  padding: "$2",
+
+  "&:hover": {
+    background: "$foreground",
+    color: "$background",
+  },
+});
+
 export function PostTags({ tags, icon = false, ...props }: PostTagProps) {
   const { query } = useRouter();
   const queryTags = getQueryTags(query);
@@ -51,7 +65,6 @@ export function PostTags({ tags, icon = false, ...props }: PostTagProps) {
     <Box gap={6} {...props}>
       {icon ? (
         <Box
-          spacingTop={1}
           alignItems="flex-start"
           justify-content="center"
           css={{ color: "$foregroundMuted" }}
@@ -62,22 +75,18 @@ export function PostTags({ tags, icon = false, ...props }: PostTagProps) {
       ) : null}
 
       <Box as="ul" role="list" gap={4} flexWrap="wrap">
-        {tags.length ? (
-          tags.map((tag) => (
-            <StyledTag
-              as="li"
-              key={tag.id}
-              borderColor={tag.color}
-              active={
-                !queryTags.length || queryTags.includes(tag.name.toLowerCase())
-              }
-            >
-              <TextAux>{tag.name}</TextAux>
-            </StyledTag>
-          ))
-        ) : (
-          <TextHeadline color="secondary">All</TextHeadline>
-        )}
+        {tags.map((tag) => (
+          <StyledTag
+            as="li"
+            key={tag.id}
+            borderColor={tag.color}
+            active={
+              !queryTags.length || queryTags.includes(tag.name.toLowerCase())
+            }
+          >
+            <TextAux>{tag.name}</TextAux>
+          </StyledTag>
+        ))}
       </Box>
     </Box>
   );
@@ -92,32 +101,29 @@ export function PostActiveTags({
   const activeTags = tags.filter((tag) => queryTags.includes(tag.name));
 
   return (
-    <Box gap={6} {...props}>
+    <Box gap={6} alignItems="center" {...props}>
       {icon ? (
         <Box
-          spacingTop={1}
           alignItems="flex-start"
           justify-content="center"
           css={{ color: "$foregroundMuted" }}
         >
           <VisuallyHidden.Root>Tags</VisuallyHidden.Root>
-          <ListBulletIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
+          <EyeOpenIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
         </Box>
       ) : null}
 
-      <Box as="ul" role="list" gap={4} flexWrap="wrap">
-        {activeTags.length ? (
-          activeTags.map((tag) => (
+      {activeTags.length ? (
+        <Box as="ul" role="list" gap={4} flexWrap="wrap">
+          {activeTags.map((tag) => (
             <StyledTag as="li" key={tag.id} borderColor={tag.color} active>
               <TextAux>{tag.name}</TextAux>
             </StyledTag>
-          ))
-        ) : (
-          <StyledTag as="li">
-            <TextAux color="secondary">All Filters</TextAux>
-          </StyledTag>
-        )}
-      </Box>
+          ))}
+        </Box>
+      ) : (
+        <TextHeadline color="secondary">All</TextHeadline>
+      )}
     </Box>
   );
 }

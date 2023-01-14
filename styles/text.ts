@@ -7,6 +7,9 @@ export const TEXT_VARIANTS = {
       secondary: {
         color: "$foregroundMuted",
       },
+      inherit: {
+        color: "inherit",
+      },
     },
     textAlign: {
       left: {

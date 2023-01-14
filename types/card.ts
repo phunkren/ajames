@@ -4,6 +4,8 @@ import { Tag } from "./notion";
 
 type ChildProps = {
   ref: Ref<HTMLAnchorElement>;
+  isPreviewVisible: boolean;
+  onPreviewToggle: (pressed: boolean) => void;
 };
 
 export type CardProps = CSS & {
@@ -25,5 +27,6 @@ export type VideoCardProps = CSS & {
   image: string;
   publishDate: string;
   title: string;
+  description?: string;
   css: any;
 };
