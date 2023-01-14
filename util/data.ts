@@ -9,23 +9,23 @@ export const EDUCATION: Education[] = [
     qualification: "BSc (Hons) 2.1",
     course: "Audio Technology",
     institution: "Glasgow Caledonian University",
-    startDate: "08-01-2010",
-    endDate: "06-01-2014",
+    startDate: "2010-08-01",
+    endDate: "2014-06-01",
   },
   {
     id: "gcal-usa",
 
     course: "Erasmus+ Study Abroad",
     institution: "UMass Boston",
-    startDate: "08-01-2011",
-    endDate: "06-01-2012",
+    startDate: "2011-08-01",
+    endDate: "2012-06-01",
   },
   {
     id: "udacity",
 
     course: "Frontend Nanodegree",
     institution: "Udacity",
-    endDate: "09-01-2016",
+    endDate: "2016-09-01",
   },
 ];
 
@@ -35,7 +35,7 @@ export const EMPLOYMENT: Employer[] = [
     displayName: "Coinbase",
     url: "https://www.coinbase.com/",
     position: "IC4 Engineer",
-    startDate: "03-01-2022",
+    startDate: "2022-03-01",
     location: "Remote, EMEA",
     content1:
       "I'm curently working on Coinbase Prime with team members from various disciplines to create intuitive and trustworthy user experiences for institutional customers. I primarily focus on efficiently executing and maintaining frontend features on the platform and admin interface.",
@@ -59,8 +59,8 @@ export const EMPLOYMENT: Employer[] = [
     displayName: "Rockstar Games",
     url: "https://www.rockstargames.com/",
     position: "Frontend Engineer",
-    startDate: "11-01-2020",
-    endDate: "02-01-2022",
+    startDate: "2020-11-01",
+    endDate: "2022-02-01",
     location: "Edinburgh, UK",
     content1:
       "I worked with other technology teams at Rockstar's worldwide studios to develop frontend features and applications for the company's online services. Responsibilities were to deliver feature-flagged content under time-sensitive release cycles, and maintain legacy architecture.",
@@ -84,8 +84,8 @@ export const EMPLOYMENT: Employer[] = [
     displayName: "BCG Digital Ventures",
     url: "https://www.bcgdv.com/",
     position: "Senior Frontend Engineer",
-    startDate: "04-01-2019",
-    endDate: "10-01-2020",
+    startDate: "2019-04-01",
+    endDate: "2020-10-01",
     location: "London, UK",
     content1:
       "I played a key role in the development and launch of several successful startup businesses. At BCG I was responsible for leading a small engineering team through scoped deliverables, collaborating with cross-functional teams, and engineering a robust and well-documented product that could be taken to market.",
@@ -109,8 +109,8 @@ export const EMPLOYMENT: Employer[] = [
     displayName: "Fathom London",
     url: "https://fath.om/",
     position: "Frontend Engineer",
-    startDate: "06-01-2017",
-    endDate: "03-01-2019",
+    startDate: "2017-06-01",
+    endDate: "2019-03-01",
     location: "London, UK",
     content1:
       "During my time at Fathom, I had the opportunity to work on exciting data visualization and trading platform projects for fintech clients and major banks. I was also involved in creating a React Native prototype for an international business planning software company, bringing their desktop offerings to mobile.",
@@ -139,8 +139,8 @@ export const EMPLOYMENT: Employer[] = [
     displayName: "Cohaesus",
     url: "https://cohaesus.co.uk/",
     position: "Associate Engineer",
-    startDate: "02-01-2015",
-    endDate: "06-01-2017",
+    startDate: "2015-02-01",
+    endDate: "2017-06-01",
     location: "London, UK",
     content1:
       "Cohaesus is a commercial advertising agency where I had the opportunity to learn the fundamentals of frontend web development while working on a variety of projects, both in-house and at some of the top advertising agencies in and around London.",
@@ -169,8 +169,8 @@ export const EMPLOYMENT: Employer[] = [
     displayName: "Rockstar North",
     url: "https://www.rockstarnorth.com/",
     position: "QA Tester",
-    startDate: "05-01-2014",
-    endDate: "02-01-2015",
+    startDate: "2014-05-01",
+    endDate: "2015-02-01",
     location: "Edinburgh, UK",
     content1:
       "Credited as a QA Tester on Grand Theft Auto V, I helped ensure the overall quality of the existing game and any upcoming features. It was a rewarding and challenging experience that allowed me to make a meaningful contribution to the development of one of the best-selling video games of all time.",

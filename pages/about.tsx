@@ -284,7 +284,7 @@ function Cv() {
                       ) : null}
                       <TextBody>{education.course}</TextBody>
                       <TextAux>{education.institution}</TextAux>
-                      {/* <Box>
+                      <Box>
                         {education.startDate ? (
                           <>
                             <TextAux
@@ -307,9 +307,14 @@ function Cv() {
                             {new Date(education.endDate).getFullYear()}
                           </TextAux>
                         ) : (
-                          <TextAux>Present</TextAux>
+                          <TextAux
+                            as="time"
+                            dateTime={new Date().toISOString()}
+                          >
+                            Present
+                          </TextAux>
                         )}
-                      </Box> */}
+                      </Box>
                     </Box>
                   ))}
                 </GridRoot>
