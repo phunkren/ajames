@@ -74,7 +74,7 @@ export function HeaderLayout() {
       alignItems="center"
       css={{ "@print": { display: "none" } }}
     >
-      <Box direction="horizontal" gap={7} alignItems="center">
+      <Box direction="horizontal" gap={10} alignItems="center">
         <Link href="/">
           <Avatar />
         </Link>

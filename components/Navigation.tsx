@@ -66,7 +66,7 @@ export function NavigationLinks() {
 export function Navigation() {
   return (
     <Box aria-label="Primary navigation" as="nav">
-      <Box direction="horizontal" as="ul" role="list" gap={7}>
+      <Box direction="horizontal" as="ul" role="list" gap={10}>
         <NavigationLinks />
       </Box>
     </Box>
