@@ -37,20 +37,20 @@ const StyledLink = styled("a", {
   variants: {
     variant: {
       primary: {
-        [`${lightTheme.selector} &`]: {
+        [`.${lightTheme} &`]: {
           color: "$blue11",
         },
 
-        [`${darkTheme.selector} &`]: {
+        [`.${darkTheme} &`]: {
           color: "$blue10",
         },
       },
       secondary: {
-        [`${lightTheme.selector} &`]: {
+        [`.${lightTheme} &`]: {
           color: "$gray11",
         },
 
-        [`${darkTheme.selector} &`]: {
+        [`.${darkTheme} &`]: {
           color: "$white",
         },
       },
