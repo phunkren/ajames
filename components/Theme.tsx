@@ -9,7 +9,7 @@ import React, {
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import * as ToggleGroup from "@radix-ui/react-toggle-group";
 import { useLocalStorage } from "../hooks/useLocalStorage";
-import { darkTheme, lightTheme, styled } from "../stitches.config";
+import { styled } from "../stitches.config";
 import { Theme } from "../types/theme";
 import { ICON_SIZE } from "../util/images";
 
