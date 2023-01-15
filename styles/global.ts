@@ -1,12 +1,29 @@
 import { blackA } from "@radix-ui/colors";
 import { globalCss } from "../stitches.config";
-import {
-  DARK_THEME_COLORS,
-  DARK_THEME_SHADOW_VERTICAL_OFFSET,
-  LIGHT_THEME_COLORS,
-  LIGHT_THEME_SHADOW_VERTICAL_OFFSET,
-} from "./color";
-import { AUX_STYLES, H1_STYLES, H2_STYLES, H3_STYLES, P_STYLES } from "./text";
+import { DARK_THEME_COLORS, LIGHT_THEME_COLORS } from "./color";
+import { AUX_STYLES, P_STYLES } from "./text";
+import { Alexandria, Jost, Fira_Code } from "@next/font/google";
+
+export const alexandria = Alexandria({
+  weight: ["300", "400", "500"],
+  style: ["normal"],
+  subsets: ["latin"],
+  variable: "--font-alex",
+});
+
+export const jost = Jost({
+  weight: ["300", "400", "500"],
+  style: ["normal", "italic"],
+  subsets: ["latin"],
+  variable: "--font-jost",
+});
+
+export const firaCode = Fira_Code({
+  weight: ["300", "400", "500"],
+  style: ["normal"],
+  subsets: ["latin"],
+  variable: "--font-fira",
+});
 
 /* https://piccalil.li/blog/a-modern-css-reset/ */
 export const globalStyles = globalCss({
@@ -16,24 +33,16 @@ export const globalStyles = globalCss({
     boxSizing: "border-box",
   },
 
-  /* Remove default margin */
-  "body, h1, h2, h3, h4, p, figure, blockquote, dl, dd, a": {
-    margin: 0,
-    lineHeight: 1.5,
-  },
-
-  "a, button": {
-    fontweight: 500,
-  },
-
-  /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-  "ul[role='list'], ol[role='list']": {
-    listStyle: "none",
-  },
-
   /* Set core root defaults */
   "html:focus-within": {
     scrollBehavior: "smooth",
+  },
+
+  "div#__next, div#__root": {
+    flexGrow: 1,
+    display: "flex",
+    flexDirection: "column",
+    width: "100%",
   },
 
   /* Set core body defaults */
@@ -49,11 +58,10 @@ export const globalStyles = globalCss({
     ...P_STYLES,
   },
 
-  "div#__next, div#__root": {
-    flexGrow: 1,
-    display: "flex",
-    flexDirection: "column",
-    width: "100%",
+  /* Remove default margin */
+  "body, h1, h2, h3, h4, p, figure, blockquote, dl, dd, a": {
+    margin: 0,
+    lineHeight: 1.5,
   },
 
   "body[data-theme='light']": {
@@ -62,8 +70,21 @@ export const globalStyles = globalCss({
   },
 
   "body[data-theme='dark']": {
-    background: `radial-gradient(circle at top, ${DARK_THEME_COLORS.background} 0%, ${DARK_THEME_COLORS.backgroundMuted} 100%)`,
+    background: DARK_THEME_COLORS.backgroundGradient,
     color: DARK_THEME_COLORS.foreground,
+  },
+
+  "h1, h2, h3": {
+    fontWeight: 400,
+  },
+
+  "a, button": {
+    fontweight: 500,
+  },
+
+  /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+  "ul[role='list'], ol[role='list']": {
+    listStyle: "none",
   },
 
   /* A elements that don't have a class get default styles */
@@ -129,17 +150,6 @@ export const globalStyles = globalCss({
       animationIterationCount: "1 !important",
       transitionDuration: "0.01ms !important",
       scrollBehavior: "auto !important",
-    },
-  },
-
-  "@print": {
-    body: {
-      background: "white",
-      color: "red",
-    },
-
-    blockquote: {
-      lineHeight: 1,
     },
   },
 });
