@@ -41,31 +41,6 @@ const StyledPageHeader = styled(Box, {
   borderTopRightRadius: 4,
   borderTopLeftRadius: 4,
 
-  "&::after": {
-    content: "",
-    position: "absolute",
-    inset: 0,
-    background: "rgba(0,0,0,0.25)",
-  },
-
-  [`.${lightTheme} &`]: {
-    background: "conic-gradient(from 20deg, $red10, $red10, $blue9, $blue10)",
-  },
-
-  [`.${darkTheme} &`]: {
-    background: "$slate1",
-  },
-
-  "@bp2": {
-    [`.${lightTheme} &`]: {
-      background: "conic-gradient(from 20deg, $red10, $red10, $blue9, $blue10)",
-    },
-
-    [`.${darkTheme} &`]: {
-      background: "conic-gradient(from 20deg, $red3, $red2, $blue2, $blue4)",
-    },
-  },
-
   "@print": {
     display: "none",
   },
@@ -86,6 +61,28 @@ const StyledHero = styled(Box, {
   borderBottomWidth: 5,
   borderBottomStyle: "solid",
   borderBottomColor: "$foregroundMuted",
+
+  "&::after": {
+    content: "",
+    position: "absolute",
+    inset: 0,
+    background: "rgba(0,0,0,0.25)",
+  },
+});
+
+const StyledHero2 = styled(Box, {
+  position: "absolute",
+  inset: 0,
+  zIndex: 0,
+  filter: "blur(80px)",
+
+  [`.${lightTheme} &`]: {
+    background: "conic-gradient(from 50deg, $red10, $red10, $blue9, $blue10)",
+  },
+
+  [`.${darkTheme} &`]: {
+    background: "conic-gradient(from 50deg, $red3, $red2, $blue2, $blue4)",
+  },
 });
 
 const StyledImage = styled(Image, {
@@ -94,9 +91,10 @@ const StyledImage = styled(Image, {
   borderRadius: 4,
   position: "absolute",
   top: "5% !important",
-  left: "12.5% !important",
-  zIndex: 0,
+  left: "17% !important",
+  zIndex: 1,
   filter: "brightness(75%)",
+  transform: "scale(0.9)",
 
   "@bp2": {
     display: "block",
@@ -166,14 +164,14 @@ function Cv() {
           <StyledPageHeader>
             <AspectRatio ratio={2.5 / 1}>
               <StyledImage src={banner} alt="" sizes="100vw" priority fill />
-
+              <StyledHero2 />
               <StyledHero
                 spacingHorizontal={{ "@initial": 4, "@bp2": 10 }}
                 spacingVertical={{ "@initial": 5, "@bp2": 7 }}
                 alignItems="flex-end"
                 justifyContent="space-between"
               >
-                <Box direction="vertical">
+                <Box direction="vertical" css={{ zIndex: 1 }}>
                   <TextTitle1>{PERSONAL.name}</TextTitle1>
                   <TextHeadline>
                     {PERSONAL.occupation} / {PERSONAL.location}

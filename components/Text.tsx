@@ -42,6 +42,7 @@ const StyledEmoji = styled("span", {
   display: "block",
   fontSize: 32,
   lineHeight: 1,
+  textShadow: "$textShadow",
 
   variants: {
     size: {

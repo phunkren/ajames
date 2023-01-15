@@ -35,7 +35,7 @@ type PostActiveTagsProps = {
 const StyledTag = styled(Box, {
   padding: "0 $2",
   borderRadius: 4,
-  lineHeight: 1,
+  lineHeight: 1.2,
   borderStyle: "solid",
   borderWidth: 1,
   textTransform: "uppercase",
@@ -87,7 +87,10 @@ export function PostTags({ tags, icon = false, ...props }: PostTagProps) {
               borderColor={tag.color}
               active={isActive}
             >
-              <TextAux color={isActive ? "primary" : "secondary"}>
+              <TextAux
+                color={isActive ? "primary" : "secondary"}
+                css={{ position: "relative", top: -2 }}
+              >
                 {tag.name}
               </TextAux>
             </StyledTag>
@@ -123,7 +126,9 @@ export function PostActiveTags({
         <Box as="ul" role="list" gap={4} flexWrap="wrap">
           {activeTags.map((tag) => (
             <StyledTag as="li" key={tag.id} borderColor={tag.color} active>
-              <TextAux>{tag.name}</TextAux>
+              <TextAux css={{ position: "relative", top: -2 }}>
+                {tag.name}
+              </TextAux>
             </StyledTag>
           ))}
         </Box>

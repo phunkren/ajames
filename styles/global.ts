@@ -36,7 +36,7 @@ export const globalStyles = globalCss({
   body: {
     display: "flex",
     flexDirection: "column",
-    textRendering: "optimizeSpeed",
+    textRendering: "optimizeLegibility",
     lineHeight: "1.5",
     width: "100%",
     minHeight: "100dvh",
@@ -52,12 +52,13 @@ export const globalStyles = globalCss({
   },
 
   "body[data-theme='light']": {
-    background: `radial-gradient(circle at top, ${LIGHT_THEME_COLORS.background} 0%, ${LIGHT_THEME_COLORS.backgroundMuted} 100%)`,
+    background:
+      "radial-gradient(ellipse at center, $sky12 0%, $sage12 50%, $slate12 100%), radial-gradient(ellipse at center, $gray12 0%, $slate12 50%, $sage12 100%)",
     color: LIGHT_THEME_COLORS.foreground,
   },
 
   "body[data-theme='dark']": {
-    background: `radial-gradient(circle at top, ${DARK_THEME_COLORS.backgroundMuted} 0%, ${DARK_THEME_COLORS.background} 100%)`,
+    background: `radial-gradient(circle at top, ${DARK_THEME_COLORS.background} 0%, ${DARK_THEME_COLORS.backgroundMuted} 100%)`,
     color: DARK_THEME_COLORS.foreground,
   },
 
@@ -73,6 +74,7 @@ export const globalStyles = globalCss({
   /* Inherit fonts for inputs and buttons */
   "input, button, textarea, select": {
     font: "inherit",
+    fontWeight: 500,
   },
 
   /* Come at me bro */

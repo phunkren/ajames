@@ -17,7 +17,7 @@ import {
 } from "../../components/Link";
 import {
   Emoji,
-  TextBody,
+  TextHeadline,
   TextTitle1,
   TextTitle2,
   TextTitle3,
@@ -31,7 +31,7 @@ import {
 } from "../../components/Frontmatter";
 import { SITE } from "../../util/data";
 import { ShareButton } from "../../components/Button";
-import { ReactNode } from "react";
+import { HeadingComponent } from "react-markdown/lib/ast-to-react";
 
 type Frontmatter = {
   title: string;
@@ -197,6 +197,9 @@ export default function BlogPost({ frontmatter, postData }: Props) {
             components={{
               a: MarkdownLink,
               code: Code,
+              h1: TextTitle2 as any,
+              h2: TextTitle3 as any,
+              h3: TextHeadline as any,
             }}
             remarkPlugins={[remarkMdx]}
           />
@@ -206,9 +209,7 @@ export default function BlogPost({ frontmatter, postData }: Props) {
           </Box>
 
           <Box direction="vertical" gap={6}>
-            <TextTitle3
-              css={{ textAlign: "center", color: "$foregroundMuted" }}
-            >
+            <TextTitle3 textAlign="center" color="secondary">
               Enjoying the content?
             </TextTitle3>
 

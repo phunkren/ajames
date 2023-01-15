@@ -1,7 +1,4 @@
 
-**Intro**
-
-
 I was recently tasked with building two applications in parallel. The first was a commercial web application, and a second that acted as a platform to A|B test content messaging, page layouts, and so on. To be ruthlessly efficient we wanted to reuse the majority of core components and styles for both applications, and interchange any branded assets (images, fonts, colour palette, etc) with a dummy brand using Styled Components' [theming](https://styled-components.com/docs/advanced#theming) capabilities. 
 
 
@@ -20,7 +17,7 @@ A leaner approach would be to rewire the codebase with [React App Rewired](https
 Each of these - and plenty more - are all viable solutions that come with their own set of benefits and drawbacks. However, for this particular scenario we were keen to investigate a simple solution that allows us to work from a single codebase, not rely on third-party dependancies, and not eject from the safety net of Create React App.
 
 
-**To infinity, or beyond**
+## **To infinity, or beyond**
 
 
 Let's look at the default entry point in a Create React Application. The `src/index.js` file imports the `App` container and renders it inside the `div#root` element defined in `public/index.html`. 
@@ -141,23 +138,17 @@ importBuildTarget().then(({ default: Environment }) => (
 ```
 
 
-**TL; DR**
+## **TL; DR**
 
 
 You can create multiple entry points in a Create React Application without ejecting by using an environment variable to conditionally import container files. Doing this prevents code from the other containers appearing in the desired bundled build.
 
 
-**Resources**
+### **Resources**
 
-
-GitHub: [https://github.com/phunkren/multiple-entry-points](https://github.com/phunkren/multiple-entry-points)
-
-
-Entry point A: [https://multiple-entry-points-app.netlify.app](https://multiple-entry-points-app.netlify.app) 
-
-
-Entry point B: [https://multiple-entry-points-test.netlify.app](https://multiple-entry-points-test.netlify.app/)
-
+- [GitHub Repository](/8b9f99a040c04225b4f5f2c19022420b)
+- [Entry point A](https://multiple-entry-points-app.netlify.app)
+- [Entry point B](https://multiple-entry-points-test.netlify.app)
 
 Special thanks to [Stephen Taylor](https://twitter.com/meandmycode) and [Robin Weston](https://twitter.com/robinweston) for their valuable input, and to [Jonathan Hawkes](https://twitter.com/jonathanhawkes) for his solution to all build target files appearing in the bundle.
 
