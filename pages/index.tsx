@@ -47,9 +47,7 @@ function Home() {
 
         {currentTab === "home" ? (
           <Box direction="vertical" alignItems="center">
-            <TextTitle1 css={{ textTransform: "uppercase" }}>
-              {PERSONAL.name}
-            </TextTitle1>
+            <TextTitle1>{PERSONAL.name}</TextTitle1>
 
             <Box direction="horizontal" gap={2} alignItems="flex-end">
               <TextHeadline>{PERSONAL.occupation}</TextHeadline>
@@ -64,11 +62,7 @@ function Home() {
         ) : null}
 
         {currentTab === "about" ? (
-          <Box
-            direction="vertical"
-            gap={5}
-            css={{ maxWidth: 720, margin: "0 auto" }}
-          >
+          <Box direction="vertical" gap={5} container="s">
             <TextAux>👋</TextAux>
             <TextBody>{PERSONAL.profile1}</TextBody>
             <TextBody>{PERSONAL.profile2}</TextBody>

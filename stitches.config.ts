@@ -36,15 +36,12 @@ import {
   indigoDark,
   sage,
   sageDark,
+  blackA,
+  whiteA,
 } from "@radix-ui/colors";
 import { SPACING_UTILS } from "./styles/spacing";
 import { DISPLAY_UTILS } from "./styles/display";
-import {
-  DARK_THEME_COLORS,
-  DARK_THEME_SHADOW_VERTICAL_OFFSET,
-  LIGHT_THEME_COLORS,
-  LIGHT_THEME_SHADOW_VERTICAL_OFFSET,
-} from "./styles/color";
+import { DARK_THEME_COLORS, LIGHT_THEME_COLORS } from "./styles/color";
 
 export const {
   styled,
@@ -69,6 +66,14 @@ export const {
       9: "36px",
       10: "40px",
     },
+    shadows: {
+      1: `0px 2px 1px -1px ${blackA.blackA6}, 0px 1px 1px 0px ${blackA.blackA7}, 0px 1px 3px 0px ${blackA.blackA8}`, // Cards, Buttons
+      2: `0px 3px 1px -2px ${blackA.blackA6}, 0px 2px 2px 0px ${blackA.blackA7}, 0px 1px 5px 0px ${blackA.blackA8}`, // Scroll to Top, Toast
+      3: `0px 3px 3px -2px ${blackA.blackA6}, 0px 3px 4px 0px ${blackA.blackA7}, 0px 1px 8px 0px ${blackA.blackA8}`, // Dialog
+      4: `0px 2px 4px -1px ${blackA.blackA6}, 0px 4px 5px 0px ${blackA.blackA7}, 0px 1px 10px 0px ${blackA.blackA8}`, // :hover
+      5: `0px 3px 5px -1px ${blackA.blackA6}, 0px 5px 8px 0px ${blackA.blackA7}, 0px 1px 14px 0px ${blackA.blackA8}`, // :active
+      textShadow: "rgb(0 0 0 / 18%) 2px 2px",
+    },
   },
   media: {
     bp1: "(min-width: 480px)",
@@ -86,6 +91,8 @@ export const {
 export const lightTheme = createTheme({
   colors: {
     ...LIGHT_THEME_COLORS,
+    ...blackA,
+    ...whiteA,
     ...gray,
     ...blue,
     ...red,
@@ -105,16 +112,13 @@ export const lightTheme = createTheme({
     ...indigo,
     ...sage,
   },
-  shadows: {
-    verticalOffset: LIGHT_THEME_SHADOW_VERTICAL_OFFSET,
-    inset: "inset 0px 4px 8px rgba(0, 0, 0, 0.1)",
-    textShadow: "rgb(0 0 0 / 18%) 2px 2px",
-  },
 });
 
 export const darkTheme = createTheme({
   colors: {
     ...DARK_THEME_COLORS,
+    ...blackA,
+    ...whiteA,
     ...grayDark,
     ...blueDark,
     ...redDark,
@@ -133,11 +137,6 @@ export const darkTheme = createTheme({
     ...tealDark,
     ...indigoDark,
     ...sageDark,
-  },
-  shadows: {
-    verticalOffset: DARK_THEME_SHADOW_VERTICAL_OFFSET,
-    inset: "inset 0px 4px 8px rgba(0, 0, 0, 0.1)",
-    textShadow: "rgb(0 0 0 / 18%) 2px 2px",
   },
 });
 

@@ -7,7 +7,7 @@ import { Link } from "./Link";
 import { TextHeadline } from "./Text";
 import { Button } from "./Button";
 import { Social } from "./Social";
-import { ThemeProvider, ThemeToggle } from "./Theme";
+import { ThemeToggle } from "./Theme";
 import { ICON_SIZE } from "../util/images";
 
 const StyledDialogContent = styled(Dialog.Content, {
@@ -15,6 +15,7 @@ const StyledDialogContent = styled(Dialog.Content, {
   display: "flex",
   flexDirection: "column",
   backgroundColor: "black",
+  boxShadow: "$3",
   width: "75vw",
   height: "100dvh",
   minWidth: 300,

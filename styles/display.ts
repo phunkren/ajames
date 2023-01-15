@@ -41,4 +41,10 @@ export const DISPLAY_VARIANTS = {
       visibility: "visible",
     },
   },
+  container: {
+    s: { maxWidth: 720, margin: "0 auto" },
+    m: { maxWidth: 900, margin: "0 auto" },
+    l: { maxWidth: 1200, margin: "0 auto" },
+    xl: { maxWidth: 1800, margin: "0 auto" },
+  },
 };

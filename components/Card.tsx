@@ -1,8 +1,8 @@
 import { useRef, useState } from "react";
 import Image from "next/image";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
-import { blackA } from "@radix-ui/colors";
-import { styled } from "../stitches.config";
+import { blackA, whiteA } from "@radix-ui/colors";
+import { darkTheme, lightTheme, styled } from "../stitches.config";
 import { PostTags, PublishDate } from "./Frontmatter";
 import { Box } from "./Layout";
 import { Emoji, TextAux, TextBody, TextHeadline, TextTitle3 } from "./Text";
@@ -14,9 +14,28 @@ import { BLUR_DATA_URL } from "../util/images";
 const StyledCardOuter = styled(Box, {
   display: "flex",
   flexDirection: "column",
-  boxShadow: "$verticalOffset",
   cursor: "pointer",
   minWidth: `calc(300px - $space$3)`,
+  boxShadow: "$1",
+  borderRadius: 4,
+  overflow: "hidden",
+
+  "& div[data-radix-aspect-ratio-wrapper]": {
+    overflow: "hidden",
+  },
+
+  "&:hover": {
+    boxShadow: "$4",
+
+    "& img": {
+      transform: "scale(1.025)",
+    },
+  },
+
+  "&:active": {
+    boxShadow: "$5",
+    transform: "scale(0.99)",
+  },
 });
 
 const StyledCardInner = styled(Box, {
@@ -28,18 +47,50 @@ const StyledCardInner = styled(Box, {
   borderBottomRightRadius: 4,
   borderBottomLeftRadius: 4,
   borderColor: "$background",
-  backgroundColor: "$backgroundMuted",
+  zIndex: 5,
+
+  [`.${darkTheme} &`]: {
+    backgroundColor: whiteA.whiteA2,
+  },
+
+  [`.${darkTheme} &:hover, .${darkTheme} &:has(a:focus)`]: {
+    backgroundColor: whiteA.whiteA3,
+  },
+
+  [`.${darkTheme} &:active`]: {
+    backgroundColor: whiteA.whiteA4,
+  },
+
+  [`.${lightTheme} &`]: {
+    backgroundColor: blackA.blackA2,
+  },
+
+  [`.${lightTheme} &:hover, .${lightTheme} &:has(a:focus)`]: {
+    backgroundColor: blackA.blackA3,
+  },
+
+  [`.${lightTheme} &:active`]: {
+    backgroundColor: blackA.blackA4,
+  },
 });
 
 const StyledImage = styled(Image, {
   objectFit: "cover",
   borderTopLeftRadius: 4,
   borderTopRightRadius: 4,
-  boxShadow: "none",
   filter: "brightness(90%)",
+  transform: "scale(1)",
 });
 
-const StyledLink = styled(Link, {});
+const StyledLink = styled(Link, {
+  "&:hover": {
+    color: "inherit",
+  },
+
+  "&:focus": {
+    outline: "none",
+  },
+});
 
 const StyledBlogContent = styled(Box, {
   position: "relative",
@@ -122,7 +173,11 @@ export function BlogCard({
               }}
             />
 
-            <StyledLink href={url} ref={ref}>
+            <StyledLink
+              href={url}
+              ref={ref}
+              onClick={(e) => e.stopPropagation()}
+            >
               {isPreviewVisible ? (
                 <TextAux
                   css={{
@@ -198,7 +253,12 @@ export function VideoCard({
           flexGrow
           css={{ minHeight: 155, "@bp2": { minHeight: 168 } }}
         >
-          <StyledLink href={url} ref={ref} variant="secondary">
+          <StyledLink
+            href={url}
+            ref={ref}
+            variant="secondary"
+            onClick={(e) => e.stopPropagation()}
+          >
             {isPreviewVisible ? (
               <TextAux
                 css={{

@@ -18,7 +18,6 @@ import {
 import {
   Emoji,
   TextHeadline,
-  TextTitle1,
   TextTitle2,
   TextTitle3,
 } from "../../components/Text";
@@ -31,7 +30,8 @@ import {
 } from "../../components/Frontmatter";
 import { SITE } from "../../util/data";
 import { ShareButton } from "../../components/Button";
-import { HeadingComponent } from "react-markdown/lib/ast-to-react";
+import { styled } from "../../stitches.config";
+import { H1_STYLES, H2_STYLES, H3_STYLES, P_STYLES } from "../../styles/text";
 
 type Frontmatter = {
   title: string;
@@ -48,6 +48,25 @@ type Props = {
   frontmatter: Frontmatter;
   postData: string;
 };
+
+const StyledContainer = styled(Box, {
+  h1: H1_STYLES,
+  h2: H2_STYLES,
+  h3: H3_STYLES,
+  p: P_STYLES,
+
+  img: {
+    margin: "0 auto",
+  },
+
+  "img, pre code": {
+    boxShadow: "$1",
+  },
+
+  ul: {
+    paddingLeft: "$10",
+  },
+});
 
 export async function getStaticPaths() {
   const paths = getAllPostIds();
@@ -183,12 +202,11 @@ export default function BlogPost({ frontmatter, postData }: Props) {
           <Divider />
         </Box>
 
-        <Box
+        <StyledContainer
           direction="vertical"
+          container="m"
           gap={10}
           css={{
-            maxWidth: 900,
-            margin: "0 auto",
             textAlign: "justify",
           }}
         >
@@ -236,7 +254,7 @@ export default function BlogPost({ frontmatter, postData }: Props) {
               </Box>
             </Box>
           </Box>
-        </Box>
+        </StyledContainer>
       </Box>
     </BlogLayout>
   );

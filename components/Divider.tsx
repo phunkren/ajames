@@ -5,9 +5,10 @@ import { styled } from "../stitches.config";
 const StyledSeparator = styled(Separator.Root, {
   backgroundColor: "$foregroundMuted",
   opacity: 0.25,
+  boxShadow: "$1",
 
-  "&[data-orientation=horizontal]": { height: 1, width: "100%" },
-  "&[data-orientation=vertical]": { height: "100%", width: 1 },
+  "&[data-orientation=horizontal]": { height: 2, width: "100%" },
+  "&[data-orientation=vertical]": { height: "100%", width: 2 },
 });
 
 export function Divider(props) {

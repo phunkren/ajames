@@ -72,7 +72,6 @@ export const globalStyles = globalCss({
   /* Inherit fonts for inputs and buttons */
   "input, button, textarea, select": {
     font: "inherit",
-    fontWeight: 500,
   },
 
   /* Come at me bro */
@@ -89,8 +88,6 @@ export const globalStyles = globalCss({
 
   // Default code block styling
   code: {
-    background: blackA.blackA10,
-    color: "white",
     paddingTop: 0,
     paddingRight: "$1",
     paddingBottom: 0,
@@ -102,7 +99,6 @@ export const globalStyles = globalCss({
     code: {
       ...AUX_STYLES,
       display: "block",
-
       whiteSpace: "pre-wrap",
       minWidth: "100px",
       maxWidth: "100%",

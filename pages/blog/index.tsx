@@ -24,19 +24,14 @@ import { createPosts, generateRSSFeed, getPosts } from "../../lib/notion";
 import { Divider } from "../../components/Divider";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import Image from "next/image";
-import { Button, StyledIconButton } from "../../components/Button";
-import {
-  BlogSubscribeLink,
-  StyledClearFilterLink,
-  StyledIconLink,
-} from "../../components/Link";
+import { StyledIconButton } from "../../components/Button";
+import { BlogSubscribeLink, StyledIconLink } from "../../components/Link";
 import getConfig from "next/config";
 import { ICON_SIZE } from "../../util/images";
 import {
   PostCategoriesCount,
   PostTotalCount,
   PostActiveTags,
-  StyledFilterTag,
 } from "../../components/Frontmatter";
 import banner from "../../public/images/blog.jpg";
 
@@ -72,18 +67,16 @@ const StyledImage = styled(Image, {
   borderRadius: 4,
 });
 
-const { publicRuntimeConfig } = getConfig();
-
 export const getStaticProps: GetStaticProps = async () => {
   // Grab all blogs from Notion
   const posts = await getPosts();
   const sortedPosts = sortPosts(posts);
   const postTags = getTags(posts);
 
-  // Create a .mdx file for each blog post
-  await createPosts(posts);
+  if (process.env.NODE_ENV === "production") {
+    // Create a .mdx file for each blog post
+    await createPosts(posts);
 
-  if (publicRuntimeConfig.PRODUCTION) {
     // Create a feed.xml file for blog subscriptions
     generateRSSFeed(sortedPosts);
   }

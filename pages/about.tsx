@@ -186,8 +186,10 @@ function Cv() {
                 justifyContent="space-between"
               >
                 <Box direction="vertical" css={{ zIndex: 1 }}>
-                  <TextTitle1>{PERSONAL.name}</TextTitle1>
-                  <TextHeadline>
+                  <TextTitle1 css={{ textShadow: "$textShadow" }}>
+                    {PERSONAL.name}
+                  </TextTitle1>
+                  <TextHeadline css={{ textShadow: "$textShadow" }}>
                     {PERSONAL.occupation} / {PERSONAL.location}
                   </TextHeadline>
                 </Box>
@@ -260,7 +262,7 @@ function Cv() {
 
                 <GridRoot>
                   <Link
-                    variant="tertiary"
+                    variant="secondary"
                     href={SOCIAL.linkedin.url}
                     title={SOCIAL.linkedin.displayName}
                   >
@@ -275,7 +277,7 @@ function Cv() {
                   </Link>
 
                   <Link
-                    variant="tertiary"
+                    variant="secondary"
                     href="mailto:contact@ajames.dev"
                     title="Email"
                   >
@@ -289,7 +291,7 @@ function Cv() {
                     </Box>
                   </Link>
 
-                  <Link variant="tertiary" href={SITE.url} title="Website">
+                  <Link variant="secondary" href={SITE.url} title="Website">
                     <Box direction="horizontal" gap={4} alignItems="center">
                       <HomeIcon
                         width={ICON_SIZE.m}
@@ -301,7 +303,7 @@ function Cv() {
                   </Link>
 
                   <Link
-                    variant="tertiary"
+                    variant="secondary"
                     href={SOCIAL.github.url}
                     title={SOCIAL.github.displayName}
                   >
@@ -344,25 +346,29 @@ function Cv() {
                         <TextTitle3>{education.qualification}</TextTitle3>
                       ) : null}
                       <TextBody>{education.course}</TextBody>
-                      <TextAux>{education.institution}</TextAux>
+                      <TextAux color="secondary">
+                        {education.institution}
+                      </TextAux>
                       <Box>
                         {education.startDate ? (
                           <>
                             <TextAux
                               as="time"
+                              color="secondary"
                               dateTime={new Date(
                                 education.startDate
                               ).toISOString()}
                             >
                               {new Date(education.startDate).getFullYear()}
                             </TextAux>
-                            <TextAux>&nbsp;-&nbsp;</TextAux>
+                            <TextAux color="secondary">&nbsp;-&nbsp;</TextAux>
                           </>
                         ) : null}
 
                         {education.endDate ? (
                           <TextAux
                             as="time"
+                            color="secondary"
                             dateTime={new Date(education.endDate).toISOString()}
                           >
                             {new Date(education.endDate).getFullYear()}
@@ -370,6 +376,7 @@ function Cv() {
                         ) : (
                           <TextAux
                             as="time"
+                            color="secondary"
                             dateTime={new Date().toISOString()}
                           >
                             Present
@@ -394,14 +401,22 @@ function Cv() {
                 <GridRoot>
                   {EXPERTISE.map((topic) => (
                     <GridItem key={topic}>
-                      <TextAux css={{ color: "$foreground" }}>{topic}</TextAux>
+                      <TextAux color="primary" textTransform="uppercase">
+                        {topic}
+                      </TextAux>
                     </GridItem>
                   ))}
                 </GridRoot>
               </Box>
 
-              <Box direction="vertical" id="interests" as="section">
-                <TextTitle3 as="h2">Interests</TextTitle3>
+              <Box
+                as="section"
+                direction="vertical"
+                aria-labelledBy="interests"
+              >
+                <TextTitle3 id="interests" as="h2">
+                  Interests
+                </TextTitle3>
 
                 <Box
                   spacingTop={{ "@print": 1, "@initial": 4 }}
@@ -413,7 +428,7 @@ function Cv() {
                 <GridRoot>
                   {INTERESTS.map((interest) => (
                     <GridItem key={interest}>
-                      <TextAux css={{ color: "$foreground" }}>
+                      <TextAux color="primary" textTransform="uppercase">
                         {interest}
                       </TextAux>
                     </GridItem>
@@ -464,7 +479,9 @@ function Cv() {
                             <Link href={testimonial.url}>
                               <TextHeadline>{testimonial.name}</TextHeadline>
                             </Link>
-                            <TextAux>{testimonial.position}</TextAux>
+                            <TextAux color="secondary">
+                              {testimonial.position}
+                            </TextAux>
                           </Box>
                         </Box>
                       </Box>
@@ -577,19 +594,25 @@ function Cv() {
                               <>
                                 <TextAux
                                   as="time"
+                                  color="secondary"
+                                  textTransform="uppercase"
                                   dateTime={new Date(
                                     employer.startDate
                                   ).toISOString()}
                                 >
                                   {formatLongDate(new Date(employer.startDate))}
                                 </TextAux>
-                                <TextAux>&nbsp;-&nbsp;</TextAux>
+                                <TextAux color="secondary">
+                                  &nbsp;-&nbsp;
+                                </TextAux>
                               </>
                             ) : null}
 
                             {employer.endDate ? (
                               <TextAux
                                 as="time"
+                                textTransform="uppercase"
+                                color="secondary"
                                 dateTime={new Date(
                                   employer.endDate
                                 ).toISOString()}
@@ -599,6 +622,8 @@ function Cv() {
                             ) : (
                               <TextAux
                                 as="time"
+                                color="secondary"
+                                textTransform="uppercase"
                                 dateTime={new Date().toISOString()}
                               >
                                 Present
@@ -648,7 +673,7 @@ function Cv() {
                           >
                             {employer.notableWork.map((work) => (
                               <li key={work.id}>
-                                <Link href={work.url} variant="tertiary">
+                                <Link href={work.url} variant="secondary">
                                   <TextBody as="span">
                                     {work.displayName}
                                   </TextBody>

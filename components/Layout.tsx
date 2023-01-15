@@ -17,7 +17,6 @@ import { TextHeadline } from "./Text";
 import Head from "next/head";
 import { PERSONAL, SITE, SOCIAL } from "../util/data";
 import { BLUR_DATA_URL, ICON_SIZE } from "../util/images";
-import { H1_STYLES, H2_STYLES, H3_STYLES, P_STYLES } from "../styles/text";
 
 const StyledBox = styled("div", {
   display: "flex",
@@ -50,12 +49,7 @@ export function RootLayout({ children }) {
   const { theme } = useTheme();
 
   return (
-    <Box
-      id="__root"
-      direction="vertical"
-      className={theme}
-      css={{ maxWidth: "1800px", margin: "0 auto" }}
-    >
+    <Box id="__root" direction="vertical" container="xl" className={theme}>
       {children}
     </Box>
   );
@@ -158,12 +152,7 @@ export function Layout({ children }) {
       >
         <HeaderLayout />
 
-        <Box
-          as="main"
-          direction="vertical"
-          css={{ maxWidth: 1200, margin: "0 auto" }}
-          flexGrow
-        >
+        <Box as="main" direction="vertical" container="l" flexGrow>
           {children}
         </Box>
 
@@ -172,20 +161,6 @@ export function Layout({ children }) {
     </>
   );
 }
-
-const StyledContainer = styled(Box, {
-  h1: H1_STYLES,
-  h2: H2_STYLES,
-  h3: H3_STYLES,
-  p: P_STYLES,
-  img: {
-    margin: "0 auto",
-  },
-
-  "img, pre": {
-    boxShadow: "$verticalOffset",
-  },
-});
 
 export function BlogLayout({ frontmatter, children }) {
   const router = useRouter();
@@ -226,13 +201,13 @@ export function BlogLayout({ frontmatter, children }) {
         <meta name="og:image" content={frontmatter.cover} />
       </Head>
 
-      <StyledContainer
+      <Box
         direction="vertical"
         spacingHorizontal={{ "@initial": 2, "@bp2": 4 }}
       >
         <HeaderLayout />
 
-        <Box direction="vertical" css={{ maxWidth: 1200, margin: "0 auto" }}>
+        <Box direction="vertical" container="l">
           <Link href="/blog" variant="secondary">
             <Box
               alignItems="center"
@@ -268,7 +243,7 @@ export function BlogLayout({ frontmatter, children }) {
         </Box>
 
         <ScrollToTopButton />
-      </StyledContainer>
+      </Box>
     </>
   );
 }

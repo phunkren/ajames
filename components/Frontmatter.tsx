@@ -2,7 +2,6 @@ import {
   AvatarIcon,
   CalendarIcon,
   ClockIcon,
-  DropdownMenuIcon,
   EyeOpenIcon,
   ListBulletIcon,
   MixIcon,
@@ -11,12 +10,12 @@ import {
 } from "@radix-ui/react-icons";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { useRouter } from "next/router";
-import { relative } from "node:path/win32";
 import { styled } from "../stitches.config";
 import { NOTION_TAG_VARIANTS } from "../styles/tag";
 import { Tag } from "../types/notion";
 import { formatShortDate } from "../util/date";
 import { ICON_SIZE } from "../util/images";
+import { formatNumber } from "../util/number";
 import { formatReadingTime, getQueryTags } from "../util/posts";
 import { Box } from "./Layout";
 import { TextAux, TextHeadline } from "./Text";
@@ -49,8 +48,8 @@ const StyledTag = styled(Box, {
 export const StyledFilterTag = styled(StyledTag, {
   color: "$foreground",
   cursor: "pointer",
-  boxShadow: "$verticalOffset",
   padding: "$2",
+  boxShadow: "$1",
 
   "&:hover": {
     background: "$foreground",
@@ -175,11 +174,7 @@ export function PublishDate({ date, icon = false, compact = false, ...props }) {
     >
       {icon ? <CalendarIcon width={ICON_SIZE.l} height={ICON_SIZE.l} /> : null}
 
-      <TextHeadline
-        as="time"
-        dateTime={dateObject.toISOString()}
-        color="secondary"
-      >
+      <TextHeadline as="time" dateTime={dateObject.toISOString()}>
         {formattedDate}
       </TextHeadline>
     </Box>
@@ -197,13 +192,14 @@ export function ReadingTime({ time, icon = false, ...props }) {
       {...props}
     >
       {icon ? <ClockIcon width={ICON_SIZE.l} height={ICON_SIZE.l} /> : null}
-      <TextHeadline color="secondary">{formattedTime}</TextHeadline>
+      <TextHeadline>{formattedTime}</TextHeadline>
     </Box>
   );
 }
 
 export function SubscriberCount({ subscribers, icon = false, ...props }) {
-  const formattedSubscribers = `${subscribers} subscribers`;
+  const formattedNumber = formatNumber(subscribers);
+  const formattedSubscribers = `${formattedNumber} subscribers`;
 
   return (
     <Box
@@ -213,13 +209,16 @@ export function SubscriberCount({ subscribers, icon = false, ...props }) {
       {...props}
     >
       {icon ? <AvatarIcon width={ICON_SIZE.l} height={ICON_SIZE.l} /> : null}
-      <TextHeadline color="secondary">{formattedSubscribers}</TextHeadline>
+      <TextHeadline textTransform="capitalize">
+        {formattedSubscribers}
+      </TextHeadline>
     </Box>
   );
 }
 
 export function VideosViewsCount({ views, icon = false, ...props }) {
-  const formattedViews = `${views} total views`;
+  const formattedNumber = formatNumber(views);
+  const formattedViews = `${formattedNumber} total views`;
 
   return (
     <Box
@@ -229,13 +228,14 @@ export function VideosViewsCount({ views, icon = false, ...props }) {
       {...props}
     >
       {icon ? <EyeOpenIcon width={ICON_SIZE.l} height={ICON_SIZE.l} /> : null}
-      <TextHeadline color="secondary">{formattedViews}</TextHeadline>
+      <TextHeadline textTransform="capitalize">{formattedViews}</TextHeadline>
     </Box>
   );
 }
 
 export function VideosTotalCount({ total, icon = false, ...props }) {
-  const formattedTotal = `${total} videos`;
+  const formattedNumber = formatNumber(total);
+  const formattedTotal = `${formattedNumber} videos`;
 
   return (
     <Box
@@ -245,13 +245,14 @@ export function VideosTotalCount({ total, icon = false, ...props }) {
       {...props}
     >
       {icon ? <VideoIcon width={ICON_SIZE.l} height={ICON_SIZE.l} /> : null}
-      <TextHeadline color="secondary">{formattedTotal}</TextHeadline>
+      <TextHeadline textTransform="capitalize">{formattedTotal}</TextHeadline>
     </Box>
   );
 }
 
 export function PostTotalCount({ total, icon = false, ...props }) {
-  const formattedTotal = `${total} articles`;
+  const formattedNumber = formatNumber(total);
+  const formattedTotal = `${formattedNumber} articles`;
 
   return (
     <Box
@@ -267,7 +268,8 @@ export function PostTotalCount({ total, icon = false, ...props }) {
 }
 
 export function PostCategoriesCount({ total, icon = false, ...props }) {
-  const formattedTotal = `${total} categories`;
+  const formattedNumber = formatNumber(total);
+  const formattedTotal = `${formattedNumber} categories`;
 
   return (
     <Box

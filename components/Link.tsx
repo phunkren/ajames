@@ -15,6 +15,7 @@ import { buildUrl } from "../util/url";
 import { SITE, SOCIAL } from "../util/data";
 import { Box } from "./Layout";
 import { ICON_SIZE } from "../util/images";
+import { whiteA } from "@radix-ui/colors";
 
 type TwitterShareProps = {
   url: string;
@@ -34,25 +35,21 @@ const StyledLink = styled("a", {
   color: "inherit",
   textDecoration: "none",
 
+  "&:hover": {
+    color: "$blue11",
+  },
+
+  "&:active": {
+    color: "$blue9",
+  },
+
   variants: {
     variant: {
       primary: {
-        [`.${lightTheme} &`]: {
-          color: "$blue11",
-        },
-
-        [`.${darkTheme} &`]: {
-          color: "$blue10",
-        },
+        color: "$blue10",
       },
       secondary: {
-        [`.${lightTheme} &`]: {
-          color: "$gray11",
-        },
-
-        [`.${darkTheme} &`]: {
-          color: "$white",
-        },
+        color: "$gray12",
       },
       tertiary: {
         textDecoration: "underline",
@@ -95,49 +92,69 @@ export const StyledIconLink = styled(Link, {
   justifyContent: "center",
   borderRadius: "50%",
   spacing: "$2",
-  borderWidth: 1,
+  borderWidth: 2,
   borderStyle: "solid",
-  borderColor: "$foreground",
-  boxShadow: "$verticalOffset",
+  borderColor: "$foregroundMuted",
   minWidth: 44,
   minHeight: 44,
+  boxShadow: "$1",
 
   "&:hover": {
+    boxShadow: "$4",
     backgroundColor: "$foreground",
     color: "$background",
+  },
+
+  "&:active": {
+    boxShadow: "$5",
   },
 });
 
 const StyledYoutubeSubscription = styled(Link, {
   display: "flex",
   alignItems: "center",
-  boxShadow: "$verticalOffset",
 
   variants: {
     type: {
       button: {
         padding: "$2 $4",
-        backgroundColor: "$red7",
+        backgroundColor: "$red8",
         borderRadius: 4,
+        boxShadow: "$1",
 
         "&:hover": {
-          backgroundColor: "$red8",
+          boxShadow: "$4",
+          backgroundColor: "$red7",
+          color: "$white",
+        },
+
+        "&:active": {
+          boxShadow: "$5",
         },
       },
       link: {
         color: "inherit",
-        boxShadow: "none",
       },
       icon: {
         justifyContent: "center",
         borderRadius: "50%",
         spacing: "$2",
-        borderWidth: 1,
+        borderWidth: 2,
         borderStyle: "solid",
-        backgroundColor: "red",
-        color: "white",
+        backgroundColor: "$red8",
         minWidth: 44,
         minHeight: 44,
+        boxShadow: "$1",
+
+        "&:hover": {
+          backgroundColor: "$red7",
+          boxShadow: "$4",
+          color: "$white",
+        },
+
+        "&:active": {
+          boxShadow: "$5",
+        },
       },
     },
   },
@@ -157,18 +174,34 @@ const StyledBlogSubscription = styled(Link, {
         backgroundColor: "$amber11",
         borderRadius: 4,
         color: "black",
+        boxShadow: "$1",
+        "&:hover": {
+          boxShadow: "$4",
+        },
+
+        "&:active": {
+          boxShadow: "$5",
+        },
       },
       icon: {
         justifyContent: "center",
         borderRadius: "50%",
         spacing: "$2",
-        borderWidth: 1,
+        borderWidth: 2,
         borderStyle: "solid",
-        borderColor: "$foreground",
+        borderColor: "$foregroundMuted",
         backgroundColor: "$amber11",
         color: "white",
         minWidth: 44,
         minHeight: 44,
+        boxShadow: "$1",
+        "&:hover": {
+          boxShadow: "$4",
+        },
+
+        "&:active": {
+          boxShadow: "$5",
+        },
 
         "& div": {
           position: "relative",
@@ -187,17 +220,20 @@ const StyledRssIcon = styled(MdRssFeed, {
 
 export const StyledClearFilterLink = styled(Link, {
   position: "relative",
-  cursor: "pointer",
-  boxShadow: "$verticalOffset",
   padding: "$2",
-  borderWidth: 1,
+  borderWidth: 2,
   borderStyle: "solid",
-  borderColor: "$foreground",
+  borderColor: "$foregroundMuted",
   borderRadius: "50%",
-
+  boxShadow: "$1",
   "&:hover": {
+    boxShadow: "$4",
     background: "$foreground",
     color: "$background",
+  },
+
+  "&:active": {
+    boxShadow: "$5",
   },
 });
 

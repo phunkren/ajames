@@ -13,8 +13,6 @@ import { ToggleProps } from "@radix-ui/react-toggle-group";
 import {
   Cross1Icon,
   DoubleArrowUpIcon,
-  EyeClosedIcon,
-  EyeOpenIcon,
   FileIcon,
   InfoCircledIcon,
   Share2Icon,
@@ -23,7 +21,6 @@ import { usePrevious } from "../hooks/usePrevious";
 import { CSS, styled } from "../stitches.config";
 import { Box } from "./Layout";
 import { PERSONAL } from "../util/data";
-import { blackA } from "@radix-ui/colors";
 import { TextHeadline } from "./Text";
 import { ICON_SIZE } from "../util/images";
 
@@ -62,17 +59,22 @@ export const StyledIconButton = styled(Button, {
   justifyContent: "center",
   borderRadius: "50%",
   spacing: "$2",
-  borderWidth: 1,
+  borderWidth: 2,
   borderStyle: "solid",
-  borderColor: "$foreground",
+  borderColor: "$foregroundMuted",
   backgroundColor: "transparent",
-  boxShadow: "$verticalOffset",
   minWidth: 44,
   minHeight: 44,
+  boxShadow: "$1",
 
   "&:hover": {
+    boxShadow: "$4",
     backgroundColor: "$foreground",
     color: "$background",
+  },
+
+  "&:active": {
+    boxShadow: "$5",
   },
 });
 
@@ -97,11 +99,19 @@ const StyledToastRoot = styled(Toast.Root, {
   backgroundColor: "$foreground",
   color: "$background",
   borderRadius: 6,
-  boxShadow: `0px 2px 4px ${blackA.blackA10}`,
   padding: 15,
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
+  boxShadow: "$2",
+
+  "&:hover": {
+    boxShadow: "$4",
+  },
+
+  "&:active": {
+    boxShadow: "$5",
+  },
 });
 
 const StyledScrollToTop = styled(Button, {
@@ -111,13 +121,21 @@ const StyledScrollToTop = styled(Button, {
   display: "flex",
   alignitems: "center",
   justifyContent: "center",
-  boxShadow: `$verticalOffset`,
   background: "$foreground",
   color: "$background",
   padding: "$4",
   gap: "$2",
   borderRadius: 4,
   border: "none",
+  boxShadow: "$2",
+
+  "&:hover": {
+    boxShadow: "$4",
+  },
+
+  "&:active": {
+    boxShadow: "$5",
+  },
 
   variants: {
     active: {

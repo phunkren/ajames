@@ -22,11 +22,10 @@ export const ThemeContext = createContext({
 const ToggleGroupRoot = styled(ToggleGroup.Root, {
   display: "inline-flex",
   borderRadius: 4,
-
   borderWidth: 1,
   borderStyle: "solid",
   borderColor: "$backgroundMuted",
-  boxShadow: "$verticalOffset",
+  boxShadow: "$1",
 });
 
 const ToggleGroupItem = styled(ToggleGroup.Item, {
@@ -42,7 +41,6 @@ const ToggleGroupItem = styled(ToggleGroup.Item, {
   backgroundColor: "transparent",
 
   "&[data-state=off]": {
-    boxShadow: "$inset",
     opacity: 0.75,
   },
 

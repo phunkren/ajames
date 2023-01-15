@@ -55,7 +55,7 @@ import {
 import { PERSONAL, SITE } from "../util/data";
 import { ShareButton } from "../components/Button";
 import { H2_STYLES } from "../styles/text";
-import { BLUR_DATA_URL, ICON_SIZE } from "../util/images";
+import { ICON_SIZE } from "../util/images";
 import banner from "../public/images/banner.png";
 
 type Props = {
@@ -96,7 +96,15 @@ const StyledContentContainer = styled(Box, {
 const StyledYouTubePlayer = styled(YouTube, {
   position: "absolute",
   inset: 0,
-  boxShadow: "$verticalOffset",
+  boxShadow: "$1",
+
+  "&:hover": {
+    boxShadow: "$4",
+  },
+
+  "&:active": {
+    boxShadow: "$5",
+  },
 });
 
 const StyledImage = styled(Image, {
@@ -307,7 +315,7 @@ function Streaming({
                   </Box>
 
                   <Box direction="vertical">
-                    <Link href={videoPreview.url} variant="secondary">
+                    <Link href={videoPreview.url} variant="primary">
                       <TextHeadline>
                         <Balancer>{videoPreview.title}</Balancer>
                       </TextHeadline>

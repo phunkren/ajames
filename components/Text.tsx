@@ -1,3 +1,5 @@
+import { Slot } from "@radix-ui/react-slot";
+import { ReactElement } from "react";
 import { styled } from "../stitches.config";
 import {
   AUX_STYLES,
@@ -7,6 +9,11 @@ import {
   P_STYLES,
   TEXT_VARIANTS,
 } from "../styles/text";
+
+type Props = {
+  asChild?: boolean;
+  children: ReactElement;
+};
 
 export const TextTitle1 = styled("h1", {
   ...H1_STYLES,
@@ -29,6 +36,7 @@ export const TextBody = styled("p", {
 });
 
 export const TextHeadline = styled("span", {
+  fontWeight: 500,
   ...P_STYLES,
   ...TEXT_VARIANTS,
 });

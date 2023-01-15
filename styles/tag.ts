@@ -1,3 +1,5 @@
+import { darkTheme, lightTheme } from "../stitches.config";
+
 export const NOTION_TAG_VARIANTS = {
   active: {
     true: {
@@ -9,34 +11,94 @@ export const NOTION_TAG_VARIANTS = {
   },
   borderColor: {
     red: {
-      borderColor: "$tomato9",
+      [`.${lightTheme} &`]: {
+        borderColor: "$tomato9",
+      },
+
+      [`.${darkTheme} &`]: {
+        borderColor: "$tomato9",
+      },
     },
     orange: {
-      borderColor: "$amber9",
+      [`.${lightTheme} &`]: {
+        borderColor: "$amber9",
+      },
+
+      [`.${darkTheme} &`]: {
+        borderColor: "$amber9",
+      },
     },
     yellow: {
-      borderColor: "$yellow9",
+      [`.${lightTheme} &`]: {
+        borderColor: "$yellow9",
+      },
+
+      [`.${darkTheme} &`]: {
+        borderColor: "$yellow9",
+      },
     },
     green: {
-      borderColor: "$grass9",
+      [`.${lightTheme} &`]: {
+        borderColor: "$grass9",
+      },
+
+      [`.${darkTheme} &`]: {
+        borderColor: "$grass9",
+      },
     },
     blue: {
-      borderColor: "$sky9",
+      [`.${lightTheme} &`]: {
+        borderColor: "$sky9",
+      },
+
+      [`.${darkTheme} &`]: {
+        borderColor: "$sky9",
+      },
     },
     purple: {
-      borderColor: "$plum9",
+      [`.${lightTheme} &`]: {
+        borderColor: "$plum9",
+      },
+
+      [`.${darkTheme} &`]: {
+        borderColor: "$plum9",
+      },
     },
     pink: {
-      borderColor: "$pink9",
+      [`.${lightTheme} &`]: {
+        borderColor: "$pink9",
+      },
+
+      [`.${darkTheme} &`]: {
+        borderColor: "$pink9",
+      },
     },
     gray: {
-      borderColor: "$slate9",
+      [`.${lightTheme} &`]: {
+        borderColor: "$slate9",
+      },
+
+      [`.${darkTheme} &`]: {
+        borderColor: "$slate9",
+      },
     },
     brown: {
-      borderColor: "$brown9",
+      [`.${lightTheme} &`]: {
+        borderColor: "$brown9",
+      },
+
+      [`.${darkTheme} &`]: {
+        borderColor: "$brown9",
+      },
     },
     default: {
-      borderColor: "$gold9",
+      [`.${lightTheme} &`]: {
+        borderColor: "$gold9",
+      },
+
+      [`.${darkTheme} &`]: {
+        borderColor: "$gold9",
+      },
     },
   },
 };

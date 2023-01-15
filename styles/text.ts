@@ -43,6 +43,9 @@ export const TEXT_VARIANTS = {
       lowercase: {
         textTransform: "lowercase",
       },
+      capitalize: {
+        textTransform: "capitalize",
+      },
       initial: {
         textTransform: "initial",
       },
