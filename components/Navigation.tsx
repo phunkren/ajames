@@ -41,33 +41,25 @@ const StyledCloseMenuIcon = styled(Cross1Icon, {
   },
 });
 
-export function NavigationLinks() {
-  return (
-    <>
-      <Box as="li">
-        <Link variant="secondary" href="/about">
-          <TextHeadline>About</TextHeadline>
-        </Link>
-      </Box>
-      <Box as="li">
-        <Link variant="secondary" href="/blog">
-          <TextHeadline>Blog</TextHeadline>
-        </Link>
-      </Box>
-      <Box as="li">
-        <Link variant="secondary" href="/streaming">
-          <TextHeadline>Streaming</TextHeadline>
-        </Link>
-      </Box>
-    </>
-  );
-}
-
 export function Navigation() {
   return (
     <Box aria-label="Primary navigation" as="nav">
       <Box direction="horizontal" as="ul" role="list" gap={10}>
-        <NavigationLinks />
+        <Box as="li">
+          <Link variant="secondary" href="/about">
+            <TextHeadline>About</TextHeadline>
+          </Link>
+        </Box>
+        <Box as="li">
+          <Link variant="secondary" href="/blog">
+            <TextHeadline>Blog</TextHeadline>
+          </Link>
+        </Box>
+        <Box as="li">
+          <Link variant="secondary" href="/streaming">
+            <TextHeadline>Streaming</TextHeadline>
+          </Link>
+        </Box>
       </Box>
     </Box>
   );
@@ -122,7 +114,26 @@ export function NavigationMobile() {
               spacingTop={10}
               spacingHorizontal={4}
             >
-              <NavigationLinks />
+              <Box as="li">
+                <Link variant="secondary" href="/">
+                  <TextHeadline>Home</TextHeadline>
+                </Link>
+              </Box>
+              <Box as="li">
+                <Link variant="secondary" href="/about">
+                  <TextHeadline>About</TextHeadline>
+                </Link>
+              </Box>
+              <Box as="li">
+                <Link variant="secondary" href="/blog">
+                  <TextHeadline>Blog</TextHeadline>
+                </Link>
+              </Box>
+              <Box as="li">
+                <Link variant="secondary" href="/streaming">
+                  <TextHeadline>Streaming</TextHeadline>
+                </Link>
+              </Box>
             </Box>
 
             <Box justifyContent="center" css={{ marginTop: "auto" }}>
