@@ -3,27 +3,24 @@ import { ErrorFallback } from "../components/ErrorFallback";
 import { RootLayout } from "../components/Layout";
 import { ThemeProvider } from "../components/Theme";
 import { globalStyles } from "../styles/global";
-import { Alexandria, Jost, Fira_Code } from "@next/font/google";
+import { Rubik, Jost, Fira_Code } from "@next/font/google";
 
-const alexandria = Alexandria({
+const rubik = Rubik({
   weight: ["300", "400", "500"],
   style: ["normal"],
   subsets: ["latin"],
-  variable: "--font-alex",
 });
 
 const jost = Jost({
   weight: ["300", "400", "500"],
   style: ["normal", "italic"],
   subsets: ["latin"],
-  variable: "--font-jost",
 });
 
 const firaCode = Fira_Code({
   weight: ["300", "400", "500"],
   style: ["normal"],
   subsets: ["latin"],
-  variable: "--font-fira",
 });
 
 export default function MyApp({ Component, pageProps }) {
@@ -35,19 +32,22 @@ export default function MyApp({ Component, pageProps }) {
         h1,
         h2,
         h3 {
-          font-family: ${alexandria.style.fontFamily};
+          font-family: ${rubik.style.fontFamily};
+          font-weight: 500;
         }
       `}</style>
 
       <style jsx global>{`
         body {
           font-family: ${jost.style.fontFamily};
+          font-weight: 300;
         }
       `}</style>
 
       <style jsx global>{`
         code {
           font-family: ${firaCode.style.fontFamily};
+          font-weight: 400;
         }
       `}</style>
 

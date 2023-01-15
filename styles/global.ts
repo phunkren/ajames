@@ -2,28 +2,6 @@ import { blackA } from "@radix-ui/colors";
 import { globalCss } from "../stitches.config";
 import { DARK_THEME_COLORS, LIGHT_THEME_COLORS } from "./color";
 import { AUX_STYLES, P_STYLES } from "./text";
-import { Alexandria, Jost, Fira_Code } from "@next/font/google";
-
-export const alexandria = Alexandria({
-  weight: ["300", "400", "500"],
-  style: ["normal"],
-  subsets: ["latin"],
-  variable: "--font-alex",
-});
-
-export const jost = Jost({
-  weight: ["300", "400", "500"],
-  style: ["normal", "italic"],
-  subsets: ["latin"],
-  variable: "--font-jost",
-});
-
-export const firaCode = Fira_Code({
-  weight: ["300", "400", "500"],
-  style: ["normal"],
-  subsets: ["latin"],
-  variable: "--font-fira",
-});
 
 /* https://piccalil.li/blog/a-modern-css-reset/ */
 export const globalStyles = globalCss({
@@ -54,7 +32,6 @@ export const globalStyles = globalCss({
     width: "100%",
     minHeight: "100dvh",
     overflowX: "hidden",
-    fontWeight: 300,
     ...P_STYLES,
   },
 
@@ -74,12 +51,8 @@ export const globalStyles = globalCss({
     color: DARK_THEME_COLORS.foreground,
   },
 
-  "h1, h2, h3": {
-    fontWeight: 400,
-  },
-
   "a, button": {
-    fontweight: 500,
+    fontWeight: 500,
   },
 
   /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */

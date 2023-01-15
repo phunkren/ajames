@@ -4,7 +4,7 @@
         <title>ajames.dev | Blogs</title>
         <link>https://ajames.vercel.app</link>
         <description>I'm a software engineer based in Glasgow, Scotland. My passion for frontend web technology continually drives me to advance my skill set and adopt the latest industry best practices. An analytical mindset and strong communication skills allow me to excel in environments where I can learn from others and inspire my peers. Over the years I've refined a set of technical principles to strive towards, namely: complexity should only be introduced when it’s unavoidable; code should be easy to reason with and delete; avoid abstracting too early, and the top priority is always the best possible user experience.</description>
-        <lastBuildDate>Thu, 12 Jan 2023 19:10:57 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 15 Jan 2023 12:09:48 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -15,7 +15,7 @@
             <link>https://ajames.vercel.app/blog/work-remote</link>
             <guid>https://ajames.vercel.app/blog/work-remote</guid>
             <pubDate>Sat, 01 Oct 2022 00:00:00 GMT</pubDate>
-            <description><![CDATA[Duis volutpat eleifend eros, id gravida ipsum pellentesque vel. Pellentesque pretium ante metus, vel tempor sem vehicula non. ]]></description>
+            <description><![CDATA[Tips and product suggestions for setting up an effective remote workstation. Various options for different budgets and personal preferences are provided.]]></description>
             <content:encoded><![CDATA[Back in 2020, I put together a list of basic principles for [working from home](/cd25930b8cc24a92bfde13b12693e6a3). Where that focused on the ethos of working remotely, this time I’d like to discuss equipment that will allow you to be effective working in a remote environment.
 
 Unfortunately, it’s impossible to recommend a setup that covers every use case. Everyone’s budget, available space, and personal circumstances are infinitely variable. This post will therefore assume you are working from a laptop, in a dedicated space, and are willing to spend a reasonable sum of money on upgrading your workstation.
@@ -30,11 +30,10 @@ Motorised standing desks are popular, but they’re usually expensive. If you do
 
 Try to position the desk close to any natural light. Facing the window is usually best. It can be visually stimulating, and it’ll give you the best lighting for conference calls. If you find yourself squinting or getting annoyed by the glare, rotate it perpendicular to the window. Try not to have your back to the window. This can lead to underexposure, making you appear as a silhouette on video calls.
 
-**Recommendation**
+### **Recommendation**
 
-[IKEA Karlby worktop](https://www.ikea.com/gb/en/p/karlby-worktop-walnut-veneer-00335201/)
-
-[Flexispot standing desk legs](https://www.amazon.co.uk/FLEXISPOT-Adjustable-Electric-Two-Stage-Automatic/dp/B07HFZP1Q3/ref=sr_1_6?crid=35K9YAEDWXO0Y\&keywords=standing+desk+legs\&qid=1665875715\&qu=eyJxc2MiOiI0LjY3IiwicXNhIjoiNC4yNiIsInFzcCI6IjMuMzAifQ%3D%3D\&sprefix=standing+desk+legs%2Caps%2C147\&sr=8-6)
+*   [IKEA Karlby worktop](https://www.ikea.com/gb/en/p/karlby-worktop-walnut-veneer-00335201/)
+*   [Flexispot standing desk legs](https://www.amazon.co.uk/FLEXISPOT-Adjustable-Electric-Two-Stage-Automatic/dp/B07HFZP1Q3/ref=sr_1_6?crid=35K9YAEDWXO0Y\&keywords=standing+desk+legs\&qid=1665875715\&qu=eyJxc2MiOiI0LjY3IiwicXNhIjoiNC4yNiIsInFzcCI6IjMuMzAifQ%3D%3D\&sprefix=standing+desk+legs%2Caps%2C147\&sr=8-6)
 
 ## Chair
 
@@ -42,9 +41,9 @@ On average, you’ll spend at least a third of the day sitting down, so it makes
 
 When sat at your desk, you ideally want to be looking directly ahead or slightly below your eye level. Your elbows, knees, and hips should be at around 90 degrees, and your feet should be flat on the floor and in front of your knees.
 
-**Recommendation**
+### **Recommendation**
 
-[Herman Miller Mirra](https://www.amazon.com/Mirra-Chair-Highly-Adjustable-Herman-Miller/dp/B0035BCRRU/ref=sr_1_15?keywords=Herman+Miller\&qid=1665876180\&qu=eyJxc2MiOiI1LjY4IiwicXNhIjoiNi4wNyIsInFzcCI6IjUuNzMifQ%3D%3D\&sr=8-15)
+*   [Herman Miller Mirra](https://www.amazon.com/Mirra-Chair-Highly-Adjustable-Herman-Miller/dp/B0035BCRRU/ref=sr_1_15?keywords=Herman+Miller\&qid=1665876180\&qu=eyJxc2MiOiI1LjY4IiwicXNhIjoiNi4wNyIsInFzcCI6IjUuNzMifQ%3D%3D\&sr=8-15)
 
 ## Communication
 
@@ -54,11 +53,10 @@ Laptop speakers traditionally have poor fidelity, making it easy to miss somethi
 
 I also recommend using a dedicated webcam over the laptop’s integrated equivalent. The camera should be at least 1080p resolution, with a 30fps refresh rate, and a microphone if your headphones do not have their own. If you’re paranoid like me, it’s also worth looking out for a camera that comes with a physical privacy screen / slide for when it is not in use.
 
-**Recommendation**
+### **Recommendation**
 
-[Logitech C925-E webcam](https://www.amazon.co.uk/Logitech-Auto-Focus-Webcam-Omni-Directional-Microphones/dp/B01GRE7W9O/ref=sxts_rp_s_1_0?content-id=amzn1.sym.78489f60-7584-4e4f-a0a9-1b053691012c%3Aamzn1.sym.78489f60-7584-4e4f-a0a9-1b053691012c\&crid=3430EUF4UQGOK\&cv_ct_cx=logitech+webcam\&keywords=logitech+webcam\&pd_rd_i=B01GRE7W9O\&pd_rd_r=284061e3-e364-428d-932e-007832fe4d88\&pd_rd_w=g5wHl\&pd_rd_wg=JAvno\&pf_rd_p=78489f60-7584-4e4f-a0a9-1b053691012c\&pf_rd_r=1NFFPMSZDA2VZ25SHVJ1\&psc=1\&qid=1665876942\&qu=eyJxc2MiOiI0LjE5IiwicXNhIjoiMy43MyIsInFzcCI6IjMuNjEifQ%3D%3D\&sprefix=logitech+webca%2Caps%2C117\&sr=1-1-1890b328-3a40-4864-baa0-a8eddba1bf6a)
-
-[Bose QuietComfort noise cancelling earbuds](https://www.amazon.co.uk/dp/B08CJP6V6W/ref=asc_df_B08C4KWM9T1665615600000?tag=georiot-trd-21\&ascsubtag=trd-gb-2956678197275574000-21\&geniuslink=true\&th=1)
+*   [Logitech C925-E webcam](https://www.amazon.co.uk/Logitech-Auto-Focus-Webcam-Omni-Directional-Microphones/dp/B01GRE7W9O/ref=sxts_rp_s_1_0?content-id=amzn1.sym.78489f60-7584-4e4f-a0a9-1b053691012c%3Aamzn1.sym.78489f60-7584-4e4f-a0a9-1b053691012c\&crid=3430EUF4UQGOK\&cv_ct_cx=logitech+webcam\&keywords=logitech+webcam\&pd_rd_i=B01GRE7W9O\&pd_rd_r=284061e3-e364-428d-932e-007832fe4d88\&pd_rd_w=g5wHl\&pd_rd_wg=JAvno\&pf_rd_p=78489f60-7584-4e4f-a0a9-1b053691012c\&pf_rd_r=1NFFPMSZDA2VZ25SHVJ1\&psc=1\&qid=1665876942\&qu=eyJxc2MiOiI0LjE5IiwicXNhIjoiMy43MyIsInFzcCI6IjMuNjEifQ%3D%3D\&sprefix=logitech+webca%2Caps%2C117\&sr=1-1-1890b328-3a40-4864-baa0-a8eddba1bf6a)
+*   [Bose QuietComfort noise cancelling earbuds](https://www.amazon.co.uk/dp/B08CJP6V6W/ref=asc_df_B08C4KWM9T1665615600000?tag=georiot-trd-21\&ascsubtag=trd-gb-2956678197275574000-21\&geniuslink=true\&th=1)
 
 ## Monitor
 
@@ -66,11 +64,10 @@ One extra screen is essential. Two is optimal. My general recommendation for eac
 
 Speaking of which, you definitely want to mount your monitors. Not only will it allow you to reposition the monitor to prevent neck strain, but it also frees up space on the desk and improves the overall aesthetic. I’ve been using the Amazon basic mounts for years and I love them!
 
-**Recommendation**
+### **Recommendation**
 
-[ASUS VZ249HE Monitor](https://www.amazon.co.uk/ASUS-VZ249HE-Monitor-Ultra-Slim-Certified/dp/B07281PZWK/ref=psdc_340832031_t3_B0859YRX7C?th=1)
-
-[Amazon Basic Monitor Arm](https://www.amazon.co.uk/AmazonBasics-Single-Monitor-Display-Mounting/dp/B00MIBN16O/ref=sr_1_3?keywords=amazon+basics+monitor+arm\&qid=1665875343\&qu=eyJxc2MiOiIzLjE0IiwicXNhIjoiMi44MCIsInFzcCI6IjIuNTcifQ%3D%3D\&s=computers\&sprefix=amazon+basics%2Ccomputers%2C85\&sr=1-3)
+*   [ASUS VZ249HE Monitor](https://www.amazon.co.uk/ASUS-VZ249HE-Monitor-Ultra-Slim-Certified/dp/B07281PZWK/ref=psdc_340832031_t3_B0859YRX7C?th=1)
+*   [Amazon Basic Monitor Arm](https://www.amazon.co.uk/AmazonBasics-Single-Monitor-Display-Mounting/dp/B00MIBN16O/ref=sr_1_3?keywords=amazon+basics+monitor+arm\&qid=1665875343\&qu=eyJxc2MiOiIzLjE0IiwicXNhIjoiMi44MCIsInFzcCI6IjIuNTcifQ%3D%3D\&s=computers\&sprefix=amazon+basics%2Ccomputers%2C85\&sr=1-3)
 
 ## Peripherals
 
@@ -80,15 +77,12 @@ Rather than relying on Wi-Fi, it’s a good idea to use a powerline adaptor to c
 
 For those that split their time between the office and working from home, a USB hub is a great investment. It will allow you to connect all of your devices, internet, displays, and even charging to a single source. When it comes to working from home, all you need to do is plug a single cable into your laptop and you’re good to go!
 
-**Recommendation**
+### **Recommendation**
 
-[Logitech MX Master 2s mouse](https://www.amazon.co.uk/Logitech-Rechargeable-Multi-Device-Programmable-Productivity/dp/B071KZS3MF)
-
-[Keychron K8 keyboard](https://www.keychron.uk/products/keychron-k8-wireless-mechanical-keyboard-uk-iso-layout)
-
-[Powerline Adaptor](https://www.amazon.co.uk/dp/B08LW5VPPV?tag=pcad03-21\&linkCode=ogi\&th=1\&psc=1\&ascsubtag=4-1-723387-6-664724-14959)
-
-[Anker USB-C Hub](https://www.amazon.co.uk/Anker-PowerExpand-Adapter-Delivery-Ethernet-Gray/dp/B08NDGD2V5/ref=sr_1_15?crid=3JXOI78MP1MK1\&keywords=anker+usb+hub\&qid=1665878993\&qu=eyJxc2MiOiI0LjI0IiwicXNhIjoiMi45NCIsInFzcCI6IjIuNjUifQ%3D%3D\&sprefix=ankey+usb+hub%2Caps%2C102\&sr=8-15)
+*   [Logitech MX Master 2s mouse](https://www.amazon.co.uk/Logitech-Rechargeable-Multi-Device-Programmable-Productivity/dp/B071KZS3MF)
+*   [Keychron K8 keyboard](https://www.keychron.uk/products/keychron-k8-wireless-mechanical-keyboard-uk-iso-layout)
+*   [Powerline Adaptor](https://www.amazon.co.uk/dp/B08LW5VPPV?tag=pcad03-21\&linkCode=ogi\&th=1\&psc=1\&ascsubtag=4-1-723387-6-664724-14959)
+*   [Anker USB-C Hub](https://www.amazon.co.uk/Anker-PowerExpand-Adapter-Delivery-Ethernet-Gray/dp/B08NDGD2V5/ref=sr_1_15?crid=3JXOI78MP1MK1\&keywords=anker+usb+hub\&qid=1665878993\&qu=eyJxc2MiOiI0LjI0IiwicXNhIjoiMi45NCIsInFzcCI6IjIuNjUifQ%3D%3D\&sprefix=ankey+usb+hub%2Caps%2C102\&sr=8-15)
 
 ## Ambience
 
@@ -96,11 +90,10 @@ As trivial as it sounds, investing in appropriate lighting is a worthwhile inves
 
 I use a BenQ screen light that is mounted above my primary monitor. The back of my desk is fitted with a Philips Hue lightstrip, and my keyboard is backlit to make the keys easier to see in low-light conditions.
 
-**Recommendation**
+### **Recommendation**
 
-[BenQ Screenbar](https://www.amazon.co.uk/BenQ-ScreenBar-Halo-Controller-Temperature/dp/B08WT889V3/ref=sr_1_5?crid=1N9LALPL4K7GI\&keywords=benq+screenbar\&qid=1665875930\&qu=eyJxc2MiOiIyLjM3IiwicXNhIjoiMi4zNyIsInFzcCI6IjIuMjUifQ%3D%3D\&sprefix=benq+screenbar%2Caps%2C94\&sr=8-5)
-
-[Philips Hue lightstrip](https://www.amazon.co.uk/Philips-Lightstrip-Ambiance-Bluetooth-Assistant/dp/B088RX9CSZ/ref=sr_1_4?crid=141DJPMWH7LF\&keywords=hue+lightstrip\&qid=1665875844\&qu=eyJxc2MiOiIyLjk4IiwicXNhIjoiMi4wNSIsInFzcCI6IjEuOTQifQ%3D%3D\&sprefix=hue+lightstrip%2Caps%2C102\&sr=8-4)
+*   [BenQ Screenbar](https://www.amazon.co.uk/BenQ-ScreenBar-Halo-Controller-Temperature/dp/B08WT889V3/ref=sr_1_5?crid=1N9LALPL4K7GI\&keywords=benq+screenbar\&qid=1665875930\&qu=eyJxc2MiOiIyLjM3IiwicXNhIjoiMi4zNyIsInFzcCI6IjIuMjUifQ%3D%3D\&sprefix=benq+screenbar%2Caps%2C94\&sr=8-5)
+*   [Philips Hue lightstrip](https://www.amazon.co.uk/Philips-Lightstrip-Ambiance-Bluetooth-Assistant/dp/B088RX9CSZ/ref=sr_1_4?crid=141DJPMWH7LF\&keywords=hue+lightstrip\&qid=1665875844\&qu=eyJxc2MiOiIyLjk4IiwicXNhIjoiMi4wNSIsInFzcCI6IjEuOTQifQ%3D%3D\&sprefix=hue+lightstrip%2Caps%2C102\&sr=8-4)
 
 ## Miscellaneous
 
@@ -114,19 +107,13 @@ Repetitive strain injury is common for those of us typing on keyboards for exten
 
 Finally, cable tidies are great for removing clutter from your desk. They can really give your desk a clean, minimal feel for a trivial cost.
 
-**Recommendation**
+### **Recommendation**
 
-[Sansevieria (Snake plant)](https://thelittlebotanical.com/product/sanseveria-punk-succulent-snakeplant/)
-
-[Microfibre cloth & screen cleaner](https://www.amazon.co.uk/gp/product/B078QQRKWL/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8\&psc=1)
-
-[XXXL mouse mat](https://www.amazon.co.uk/Corsair-Anti-Fray-Anti-Skid-Optimised-High-Performance/dp/B0833PQPPG/ref=psdc_340832031_t2_B08JH8C5T5?th=1)
-
-[Keyboard wrist rest](https://www.amazon.co.uk/gp/product/B07HWKFQD6/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8\&psc=1)
-
-[Cable management](https://www.amazon.co.uk/Anker-PowerExpand-Adapter-Delivery-Ethernet-Gray/dp/B08NDGD2V5/ref=sr_1_15?crid=3JXOI78MP1MK1\&keywords=anker+usb+hub\&qid=1665878993\&qu=eyJxc2MiOiI0LjI0IiwicXNhIjoiMi45NCIsInFzcCI6IjIuNjUifQ%3D%3D\&sprefix=ankey+usb+hub%2Caps%2C102\&sr=8-15)
-
-## ✌
+*   [Sansevieria (Snake plant)](https://thelittlebotanical.com/product/sanseveria-punk-succulent-snakeplant/)
+*   [Microfibre cloth & screen cleaner](https://www.amazon.co.uk/gp/product/B078QQRKWL/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8\&psc=1)
+*   [XXXL mouse mat](https://www.amazon.co.uk/Corsair-Anti-Fray-Anti-Skid-Optimised-High-Performance/dp/B0833PQPPG/ref=psdc_340832031_t2_B08JH8C5T5?th=1)
+*   [Keyboard wrist rest](https://www.amazon.co.uk/gp/product/B07HWKFQD6/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8\&psc=1)
+*   [Cable management](https://www.amazon.co.uk/Anker-PowerExpand-Adapter-Delivery-Ethernet-Gray/dp/B08NDGD2V5/ref=sr_1_15?crid=3JXOI78MP1MK1\&keywords=anker+usb+hub\&qid=1665878993\&qu=eyJxc2MiOiI0LjI0IiwicXNhIjoiMi45NCIsInFzcCI6IjIuNjUifQ%3D%3D\&sprefix=ankey+usb+hub%2Caps%2C102\&sr=8-15)
 ]]></content:encoded>
             <author>contact@ajames.dev (Andrew James)</author>
             <category>Productivity</category>
@@ -137,7 +124,7 @@ Finally, cable tidies are great for removing clutter from your desk. They can re
             <link>https://ajames.vercel.app/blog/accessible-menubar</link>
             <guid>https://ajames.vercel.app/blog/accessible-menubar</guid>
             <pubDate>Fri, 01 Apr 2022 00:00:00 GMT</pubDate>
-            <description><![CDATA[Duis volutpat eleifend eros, id gravida ipsum pellentesque vel. Pellentesque pretium ante metus, vel tempor sem vehicula non. ]]></description>
+            <description><![CDATA[How to create an accessible Menubar component with React, based on the WAI-ARIA design pattern for a menubar widget. ]]></description>
             <content:encoded><![CDATA[Last week I watched Pedro Duarte's excellent *"*[*So You Think You Can Build A Dropdown*](https://www.youtube.com/watch?v=lY-RQjWeweo)*"* talk at Next.js Conf. It inspired me to write up an accessible component of my own that I recently worked on — the menubar widget.
 
 I have a real interest in accessibility, particularly in frontend web development. Of all the patterns that I've researched to date, the menubar was the most complex. [Reach](https://reach.tech/), [Radix](https://www.radix-ui.com/), and [React Aria](https://react-spectrum.adobe.com/react-aria/index.html) all provide flexible and accessible React components.
@@ -150,17 +137,11 @@ This article will explain how I created an accessible `Menubar` component with R
 
 For brevity, the article will focus on a horizontal menubar with a single submenu. It also assumes you are comfortable with React hooks and the [compound component](https://kentcdodds.com/blog/compound-components-with-react-hooks) pattern. I've included the  solution as a Code Sandbox link below.
 
-### **Design Pattern**
+### Useful Links
 
-[https://www.w3.org/TR/wai-aria-practices/#menu](https://www.w3.org/TR/wai-aria-practices/#menu)
-
-### **Navigation Menubar Example**
-
-[https://www.w3.org/TR/wai-aria-practices/examples/menubar/menubar-1/menubar-1.html](https://www.w3.org/TR/wai-aria-practices/examples/menubar/menubar-1/menubar-1.html)
-
-### **Code Sandbox**
-
-[https://codesandbox.io/s/a11y-menubar-logrocket-cv5q3w](https://codesandbox.io/s/a11y-menubar-logrocket-cv5q3w)
+*   [Design pattern](https://www.w3.org/TR/wai-aria-practices/#menu)
+*   [Navigation Menubar Example](https://www.w3.org/TR/wai-aria-practices/examples/menubar/menubar-1/menubar-1.html)
+*   [Code Sandbox](https://codesandbox.io/s/a11y-menubar-logrocket-cv5q3w)
 
 ## The Menubar
 
@@ -1155,23 +1136,18 @@ Unfortunately, we'll consider these features out of scope for this article and t
             <link>https://ajames.vercel.app/blog/wedding-speech</link>
             <guid>https://ajames.vercel.app/blog/wedding-speech</guid>
             <pubDate>Mon, 27 Sep 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[Duis volutpat eleifend eros, id gravida ipsum pellentesque vel. Pellentesque pretium ante metus, vel tempor sem vehicula non. ]]></description>
-            <content:encoded><![CDATA[Here are some quick tips I discovered when I was researching my wedding speech:
+            <description><![CDATA[Advice for the groom to help him create a memorable and meaningful wedding speech. ]]></description>
+            <content:encoded><![CDATA[When it comes to giving a wedding speech, there are a few tips and tricks I discovered while researching mine. First and foremost, timing is key. 8 minutes is usually the sweet spot; anything shorter may seem unprepared, and anything longer can lose the attention of the crowd. Another tip is to hand out flowers and gifts after the speech, rather than during, to minimize distractions.
 
-*   8 mins is the sweet spot. Too short and you look unprepared; too long and you’ll lose the crowd
-*   Hand out flowers and gifts afterwards. Try to minimise any distractions from the speech itself
-*   Thank the bride, parents, wedding party, guests, and those not in attendance
-*   Remember to say “On behalf of my wife and I”. Pause for a cheer
-*   Shoot from the heart. It always lands easier than a punchline
-*   Breathe. Pause between sections, and try to speak slowly. “Um” is a naughty word
-*   Rehearse it into the ground. It’ll help keep your eyes off the paper
+When it comes to the content of the speech, be sure to thank the bride, parents, wedding party, guests, and even those who couldn't attend. Remember to speak on behalf of both you and your spouse, and pause for cheers.
 
-To help my speech flow, I structured it around a couple of themes:
+One of the most important things to remember when giving a wedding speech is to speak from the heart. Shooting from the heart will always land better than a punchline. And while you're speaking, remember to breathe, pause between sections, and try to speak slowly. Avoid filler words like "um" as much as possible.
 
-*   [The rule of three](https://www.masterclass.com/articles/how-to-use-the-rule-of-three-in-writing). My inspiration was Dave Chappelle’s three times he met OJ Simpson
-*   Increase the level of familiarisation with the bride as the speech went on (start - “her”, middle - “Catriona”, end - “My wife / Mrs. James”)
-*   Each section was a period of time in chronological order. It started with the moment I first thought about marrying her, and finished on the day of the wedding
-*   Each period of time was there to explain defining moments in our relationship, but it also served as a way to thank everyone who had been along for the ride
+When it came to structuring my wedding speech, I found that focusing on a couple of key themes helped to keep it flowing smoothly. One of my main inspirations was the rule of three, which I incorporated by talking about the three times I met my wife. This helped to break up the speech and keep the audience engaged.
+
+I also structured the speech chronologically, starting with the moment I first thought about marrying her and ending with the day of the wedding. This allowed me to take the audience on a journey through our relationship and highlight defining moments along the way. I started by referring to her as "her," moved on to "Catriona," and ended by calling her "My wife" or "Mrs. James." Each period of time was not only a way to tell our story, but also served as an opportunity to thank everyone who has been a part of our journey.
+
+Last but not least, practice, practice, practice. Rehearsing your speech repeatedly will help keep you calm and prevent you from relying too heavily on the paper.
 
 I’ll leave my speech below. Maybe it’ll help someone along the way. Good luck!
 
@@ -1273,18 +1249,16 @@ Thank you.
             <link>https://ajames.vercel.app/blog/build-pc</link>
             <guid>https://ajames.vercel.app/blog/build-pc</guid>
             <pubDate>Thu, 18 Mar 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[Duis volutpat eleifend eros, id gravida ipsum pellentesque vel. Pellentesque pretium ante metus, vel tempor sem vehicula non. ]]></description>
+            <description><![CDATA[An overview of the main hardware components you will need to build a desktop PC. It also provides advice on how to select the right parts for your build.]]></description>
             <content:encoded><![CDATA[A few people have recently asked for advice in building their own desktop PC, so I thought I'd throw together a quick introduction to the main pieces of hardware you'll need to get yourself up and running.
 
-You can find my current setup here:
-
-[https://uk.pcpartpicker.com/user/funkrenegade/saved/7dVgwP](https://uk.pcpartpicker.com/user/funkrenegade/saved/7dVgwP)
+You can find my current setup at [PC Part Picker](https://uk.pcpartpicker.com/user/funkrenegade/saved/7dVgwP).
 
 **Useful Resources**
 
-PCPartPicker: [https://pcpartpicker.com](https://pcpartpicker.com/)
-Discord: [https://discordapp.com/invite/buildapc](https://discordapp.com/invite/buildapc)
-Reddit: [https://www.reddit.com/r/buildapc/](https://www.reddit.com/r/buildapc/)
+*   [PCPartPicker](https://pcpartpicker.com)
+*   [Discord](https://discordapp.com/invite/buildapc)
+*   [Reddit](https://www.reddit.com/r/buildapc/)
 
 ## MOBO
 
@@ -1339,10 +1313,8 @@ More important than people give it credit for. You want two things from a case: 
             <link>https://ajames.vercel.app/blog/multiple-entry</link>
             <guid>https://ajames.vercel.app/blog/multiple-entry</guid>
             <pubDate>Tue, 02 Jun 2020 00:00:00 GMT</pubDate>
-            <description><![CDATA[Duis volutpat eleifend eros, id gravida ipsum pellentesque vel. Pellentesque pretium ante metus, vel tempor sem vehicula non. ]]></description>
-            <content:encoded><![CDATA[**Intro**
-
-I was recently tasked with building two applications in parallel. The first was a commercial web application, and a second that acted as a platform to A|B test content messaging, page layouts, and so on. To be ruthlessly efficient we wanted to reuse the majority of core components and styles for both applications, and interchange any branded assets (images, fonts, colour palette, etc) with a dummy brand using Styled Components' [theming](https://styled-components.com/docs/advanced#theming) capabilities.
+            <description><![CDATA[An overview of different strategies for creating multiple entry points without ejecting from the safety net of Create React App.]]></description>
+            <content:encoded><![CDATA[I was recently tasked with building two applications in parallel. The first was a commercial web application, and a second that acted as a platform to A|B test content messaging, page layouts, and so on. To be ruthlessly efficient we wanted to reuse the majority of core components and styles for both applications, and interchange any branded assets (images, fonts, colour palette, etc) with a dummy brand using Styled Components' [theming](https://styled-components.com/docs/advanced#theming) capabilities.
 
 The challenge then was to create multiple applications from a single [Create-React-App](https://github.com/facebook/create-react-app) (CRA henceforth) with each having no trace of the other's branded assets in their bundled build files. Thankfully there's a number of ways to achieve this, ranging in complexity and development effort.
 
@@ -1354,7 +1326,7 @@ A leaner approach would be to rewire the codebase with [React App Rewired](https
 
 Each of these - and plenty more - are all viable solutions that come with their own set of benefits and drawbacks. However, for this particular scenario we were keen to investigate a simple solution that allows us to work from a single codebase, not rely on third-party dependancies, and not eject from the safety net of Create React App.
 
-**To infinity, or beyond**
+## **To infinity, or beyond**
 
 Let's look at the default entry point in a Create React Application. The `src/index.js` file imports the `App` container and renders it inside the `div#root` element defined in `public/index.html`.
 
@@ -1459,17 +1431,15 @@ importBuildTarget().then(({ default: Environment }) => (
 );
 ```
 
-**TL; DR**
+## **TL; DR**
 
 You can create multiple entry points in a Create React Application without ejecting by using an environment variable to conditionally import container files. Doing this prevents code from the other containers appearing in the desired bundled build.
 
-**Resources**
+### **Resources**
 
-GitHub: [https://github.com/phunkren/multiple-entry-points](https://github.com/phunkren/multiple-entry-points)
-
-Entry point A: [https://multiple-entry-points-app.netlify.app](https://multiple-entry-points-app.netlify.app)
-
-Entry point B: [https://multiple-entry-points-test.netlify.app](https://multiple-entry-points-test.netlify.app/)
+*   [GitHub Repository](/8b9f99a040c04225b4f5f2c19022420b)
+*   [Entry point A](https://multiple-entry-points-app.netlify.app)
+*   [Entry point B](https://multiple-entry-points-test.netlify.app)
 
 Special thanks to [Stephen Taylor](https://twitter.com/meandmycode) and [Robin Weston](https://twitter.com/robinweston) for their valuable input, and to [Jonathan Hawkes](https://twitter.com/jonathanhawkes) for his solution to all build target files appearing in the bundle.
 ]]></content:encoded>
@@ -1482,28 +1452,48 @@ Special thanks to [Stephen Taylor](https://twitter.com/meandmycode) and [Robin W
             <link>https://ajames.vercel.app/blog/work-home</link>
             <guid>https://ajames.vercel.app/blog/work-home</guid>
             <pubDate>Sun, 15 Mar 2020 00:00:00 GMT</pubDate>
-            <description><![CDATA[Duis volutpat eleifend eros, id gravida ipsum pellentesque vel. Pellentesque pretium ante metus, vel tempor sem vehicula non. ]]></description>
+            <description><![CDATA[Tips for working from home effectively. It covers suggestions for maintaining focus, physical and mental well-being, and effective communication.]]></description>
             <content:encoded><![CDATA[After spending some time last year working from home, I’ve quickly written up ten rules that kept me sane and helped retain my focus throughout the day.
 
-1: Shower & Shave. Dress for the job as normal - It’ll make you less reluctant to go on video (see below), and make the day feel more ‘real’.
+## 1: Shower & Shave.
 
-2: Leave the house / exercise. In the morning I either walk for coffee or go for a short cycle and then walk the dog after lunch. Try not to use any devices and instead use it to clear your head.
+Dress for the job as normal - It’ll make you less reluctant to go on video (see below), and make the day feel more ‘real’.
 
-3: Have somewhere you can work both standing and sitting. Alternate. Do not use the sofa; you are mentally conditioned to relax there. Try to use a chair with good back support, and have your monitor at eye level to prevent neck strain.
+## 2: Leave the house / exercise.
 
-4: Designate an office space, ideally a room with minimal distractions that you can leave once the working day is over. Working and relaxing in your lounge will give you cabin fever.
+In the morning I either walk for coffee or go for a short cycle and then walk the dog after lunch. Try not to use any devices and instead use it to clear your head.
 
-5: Conference calls are synchronous; Slack/email is asynchronous. Get comfortable with both. Try to respond promptly regardless. Over-communicate and document outcomes.
+## 3: Have somewhere you can work both standing and sitting.
 
-6: Always be ready to go on video. Cameras should be enabled by default on conference calls, and only disabled on poor connections. Try to establish an open channel that acts as a hangout space for people to be part of (even if they’re permanently muted).
+Alternate. Do not use the sofa; you are mentally conditioned to relax there. Try to use a chair with good back support, and have your monitor at eye level to prevent neck strain.
 
-7: Use headphones with a dedicated microphone. Record yourself speaking into the microphone and listen to it. Is it clear? Does it pick up a load of background noise? Most communication software will allow you to modify your input threshold to fix this. If you’re not speaking, mute yourself.
+## 4: Designate an office space.
 
-8: Be proficient with all of your communication software. Get comfortable creating/joining rooms / sharing your screen / generating meeting invites / etc.
+Ideally a room with minimal distractions that you can leave once the working day is over. Working and relaxing in your lounge will give you cabin fever.
 
-9: Don’t work an extra handful of hours each day. Spend the time you save commuting on yourself, spend time with family, etc.
+## 5: Conference calls are synchronous; Slack/email is asynchronous.
 
-10: [Pimp yo ride](/88af57d8b6d441be9f964467f4eef68f). You’ll be spending 40+ hours per week working here, so try to make it as inviting as possible. Plants / artwork / lighting can really make a difference.
+Get comfortable with both. Try to respond promptly regardless. Over-communicate and document outcomes.
+
+## 6: Always be ready to go on video.
+
+Cameras should be enabled by default on conference calls, and only disabled on poor connections. Try to establish an open channel that acts as a hangout space for people to be part of (even if they’re permanently muted).
+
+## 7: Use headphones with a dedicated microphone.
+
+Record yourself speaking into the microphone and listen to it. Is it clear? Does it pick up a load of background noise? Most communication software will allow you to modify your input threshold to fix this. If you’re not speaking, mute yourself.
+
+## 8: Be proficient with all of your communication software.
+
+Get comfortable creating/joining rooms / sharing your screen / generating meeting invites / etc.
+
+## 9: Don’t work an extra handful of hours each day.
+
+Spend the time you save commuting on yourself, spend time with family, etc.
+
+## 10: Pimp yo ride.
+
+You’ll be spending 40+ hours per week working here, so try to make it as inviting as possible. Plants / artwork / lighting can really make a difference.
 ]]></content:encoded>
             <author>contact@ajames.dev (Andrew James)</author>
             <category>Productivity</category>
@@ -1514,7 +1504,611 @@ Special thanks to [Stephen Taylor](https://twitter.com/meandmycode) and [Robin W
             <link>https://ajames.vercel.app/blog/responsive-camera</link>
             <guid>https://ajames.vercel.app/blog/responsive-camera</guid>
             <pubDate>Thu, 07 Nov 2019 00:00:00 GMT</pubDate>
-            <description><![CDATA[Duis volutpat eleifend eros, id gravida ipsum pellentesque vel. Pellentesque pretium ante metus, vel tempor sem vehicula non. ]]></description>
+            <description><![CDATA[Build a responsive frontend camera component that allows users to upload ID card images, using React hooks, the getUserMedia API, and Styled Components. ]]></description>
+            <content:encoded><![CDATA[I was recently tasked with building a frontend camera component that allows users to upload images of their identification cards to a backend service. In this post I'll demonstrate how I created the component by explaining how to configure a live media stream and capture a snapshot with React hooks, and how to style and position the elements using Styled Components. As such, the article assumes a working knowledge of functional components in React 16.x and the Styled Components library. Below you can see a demo of the component in action, and feel free to play around with the complete solution on my [Code Sandbox](https://codesandbox.io/s/react-camera-component-with-hooks-mf1i2) as you read along. Enjoy!
+
+![Camera demo](https://i.imgur.com/sfbwXN1.gif)
+
+## Configuration
+
+Let’s begin by accessing the browser navigator and invoking the [`getUserMedia()`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia) method to display a live video feed from the user’s camera. Since the component is designed to take photographs of identity cards, we can pass a configuration object that does not require audio and defaults to the rear-facing camera on mobile devices. By passing an options object to the video property, video is assumed to be `true`.
+
+```javascript
+const CAPTURE_OPTIONS = {
+    audio: false,
+    video: { facingMode: "environment" },
+};
+```
+
+The `getUserMedia()` method requests permission from the user to access the media defined in the configuration. It then returns a promise that will either resolve and return a [`MediaStream`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream) object that can be stored in local state, or reject and return an error. Using one of React's [`useEffect()`](https://reactjs.org/docs/hooks-effect.html) hooks, we create and store the requested stream if none exists (i.e. our local state is empty) or return a cleanup function to prevent any potential memory leaks when the component unmounts. The cleanup simply loops through and stops each of the media tracks stored in local state via the [`getTracks()`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream/getTracks) method.
+
+With the stream stored in local state it can then be bound to a `<video />` element. Since React [does not support the srcObject attribute](https://github.com/facebook/react/pull/9146#issuecomment-355584767), we use a ref to target the `<video />` and assign the stream to it's `srcObject` property. With a valid source the video will trigger an `onCanPlay()` event where we can trigger video playback. This implementation is necessary since the video `autoPlay` attribute does not work consistently across all platforms. We can abstract all of this logic into a custom hook that takes the configuration object as an argument, creates the cleanup function, and returns the stream to the camera component.
+
+```javascript
+import { useState, useEffect } from "react";
+
+export function useUserMedia(requestedMedia) {
+    const [mediaStream, setMediaStream] = useState(null);
+
+    useEffect(() => {
+        async function enableStream() {
+            try {
+              const stream = await navigator.mediaDevices.getUserMedia(requestedMedia);
+                setMediaStream(stream);
+            } catch(err) {
+                // Removed for brevity
+            }
+        }
+
+        if (!mediaStream) {
+            enableStream();
+        } else {
+            return function cleanup() {
+                mediaStream.getTracks().forEach(track => {
+                    track.stop();
+                });
+            }
+        }
+    }, [mediaStream, requestedMedia]);
+
+    return mediaStream;
+}
+```
+
+```javascript
+import React, { useRef, useState } from 'react';
+import { useUserMedia } from './useUserMedia';
+
+const CAPTURE_OPTIONS = {
+    audio: false,
+    video: { facingMode: "environment" },
+};
+
+function Camera() {
+    const videoRef = useRef();
+    const mediaStream = useUserMedia(CAPTURE_OPTIONS);
+
+    if (mediaStream && videoRef.current && videoRef.current.srcObject === null) {
+        videoRef.current.srcObject = mediaStream;
+    }
+
+    function handleCanPlay() {
+        videoRef.current.play();
+    }
+
+    return (
+        <video ref={videoRef} onCanPlay={handleCanPlay} autoPlay playsInline muted />
+    );
+}
+```
+
+## Positioning
+
+With the media stream configured we can start to position the video within the component. To enhance the user experience, the camera feed should resemble an identification card. This requires the preview container to maintain a landscape ratio regardless of the native resolution of the camera (desktop cameras typically have a square or landscape ratio, where we assume that mobile devices will capture the images in portrait). This is achieved by calculating a ratio that is >= 1 by always dividing by the largest dimension. Once the video is available for playback (i.e. when the `onCanPlay()` event is invoked) we can evaluate the native resolution of the camera and use it to calculate the desired aspect ratio of the parent container.
+
+In order for the component to be responsive, it will need to be notified whenever the width of the parent container has changed so that the height can be recalculated. [`React-measure`](https://www.npmjs.com/package/react-measure) exports a `<Measure />` component that provides the `DOMRect` of a referenced element as an argument in an `onResize()` callback. Whenever the container mounts or is resized, the argument's `contentRect.bounds.width` property is used to determine the container height by dividing it by the calculated ratio.
+
+Similar to before, the ratio calculation is abstracted into a custom hook and returns both the calculated ratio and setter function. Since the ratio will remain constant we can utilise React's [`useCallback()`](https://reactjs.org/docs/hooks-reference.html#usecallback) hook to prevent any unnecessary recalculations.
+
+```javascript
+import { useState, useCallback } from "react";
+
+export function useCardRatio(initialRatio) {
+    const [aspectRatio, setAspectRatio] = useState(initialRatio);
+
+    const calculateRatio = useCallback((height, width) => {
+        if (height && width) {
+            const isLandscape = height <= width;
+            const ratio = isLandscape ? width / height : height / width;
+
+            setAspectRatio(ratio);
+        }
+    }, []);
+
+    return [aspectRatio, calculateRatio];
+}
+```
+
+```javascript
+import React, { useRef, useState } from 'react';
+import { Measure } from 'react-measure';
+import { useUserMedia } from './useUserMedia';
+import { useCardRatio } from './useCardRatio';
+
+const CAPTURE_OPTIONS = {
+    audio: false,
+    video: { facingMode: "environment" },
+};
+
+function Camera() {
+    const videoRef = useRef();
+    const mediaStream = useUserMedia(CAPTURE_OPTIONS);
+    const [container, setContainer] = useState({ height: 0 });
+    const [aspectRatio, setAspectRatio] = useCardRatio(1.586); // default card ratio
+
+    if (mediaStream && videoRef.current && videoRef.current.srcObject === null) {
+        videoRef.current.srcObject = mediaStream;
+    }
+
+    function handleCanPlay() {
+        calculateRatio(videoRef.current.videoHeight, videoRef.current.videoWidth);
+        videoRef.current.play();
+    }
+
+    function handleResize(contentRect) {
+        setContainer({
+            height: Math.round(contentRect.bounds.width / aspectRatio)
+        });
+    }
+
+    function handleCanPlay() {
+        setAspectRatio(videoRef.current.videoHeight, videoRef.current.videoWidth);
+        videoRef.current.play();
+    }
+
+    return (
+        <Measure bounds onResize={handleResize}>
+            {({ measureRef }) => (
+                <div ref={measureRef} style={{ height: `${container.height}px` }}>
+                    <video ref={videoRef} onCanPlay={handleCanPlay} autoPlay playsInline muted />
+                </div>
+            )}
+        </Measure>
+    );
+}
+```
+
+The current solution works well if the video element is smaller than the parent container, but in the event that the native resolution is larger it will overflow and cause layout issues. Adding `overflow: hidden` & `position: relative` to the parent and absolutely positioning the video will prevent the break in layout, but the video will appear off-centre to the user. To compensate for this we centre the feed by calculating axis-offsets that subtract the dimensions of the video element from the parent container and half the resulting value.
+
+```javascript
+const offsetX = Math.round((videoWidth - containerWidth) / 2);
+const offsetY = Math.round((videoHeight - containerHeight) / 2);
+```
+
+We only want to apply the offsets in the event that the video *(v)* is larger than the parent container *(c)*. We can create another custom hook that uses an effect to evaluate whether an offset is required and returns the updated results whenever any of the values change. At this point we now have a responsive live feed that roughly resembles an identification card and is correctly positioned within the parent container.
+
+```javascript
+import { useState, useEffect } from "react";
+
+export function useOffsets(vWidth, vHeight, cWidth, cHeight) {
+    const [offsets, setOffsets] = useState({ x: 0, y: 0 });
+
+    useEffect(() => {
+        if (vWidth && vHeight && cWidth && cHeight) {
+            const x = vWidth > cWidth
+                ? Math.round((vWidth - cWidth) / 2)
+                : 0;
+	
+            const y = vHeight > cHeight
+                ? Math.round((vHeight - cHeight) / 2)
+                : 0;
+	
+            setOffsets({ x, y });
+        }
+    }, [vWidth, vHeight, cWidth, cHeight]);
+
+    return offsets;
+}
+```
+
+```javascript
+import React, { useRef, useState } from 'react';
+import { Measure } fropm 'react-measure';
+import { useUserMedia } from './useUserMedia ';
+import { useCardRatio } from './useCardRatio';
+import { useOffsets } from './useOffsets';
+
+const CAPTURE_OPTIONS = {
+	audio: false,
+	video: { facingMode: "environment" },
+};
+
+function Camera() {
+    const videoRef = useRef();
+    const mediaStream = useUserMedia(CAPTURE_OPTIONS);
+    const [container, setContainer] = useState({ height: 0, width: 0 });
+    const [aspectRatio, calculateRatio] = useCardRatio(1.586);
+    const offsets = useOffsets(
+        videoRef.current && videoRef.current.videoWidth,
+        videoRef.current && videoRef.current.videoHeight,
+        container.width,
+        container.height
+    );
+
+    if (mediaStream && videoRef.current && videoRef.current.srcObject === null) {
+        videoRef.current.srcObject = mediaStream;
+    }
+
+    function handleResize(contentRect) {
+        setContainer({
+            height: Math.round(contentRect.bounds.width / aspectRatio),
+            width: contentRect.bounds.width
+        });
+    }
+
+    function handleCanPlay() {
+        calculateRatio(videoRef.current.videoHeight, videoRef.current.videoWidth);
+        videoRef.current.play();
+    }
+
+    return (
+        <Measure bounds onResize={handleResize}>
+            {({ measureRef }) => (
+                <div ref={measureRef} style={{ height: `${container.height}px` }}>
+                    <video 
+                        ref={videoRef}
+                        onCanPlay={handleCanPlay}
+                        style={{ top: `-${offsets.y}px`, left: `-${offsets.x}px` }}
+                        autoPlay 
+                        playsInline 
+                        muted
+                    />
+                </div>
+            )}
+        </Measure>
+    );
+}
+```
+
+## Capture / Clear
+
+To emulate a camera snapshot, a `<canvas/>` element is positioned on top of the video with matching dimensions. Whenever the user initiates a capture, the current frame in the feed will be drawn onto the canvas and cause the video to become temporarily hidden. This is achieved by creating a two-dimensional rendering context on the canvas, drawing the current frame of the video as an image and then exporting the resulting `Blob` as an argument in a `handleCapture()` callback.
+
+```javascript
+function handleCapture() {
+    const context = canvasRef.current.getContext("2d");
+    context.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
+    canvasRef.current.toBlob(blob => onCapture(blob), "image/jpeg", 1);
+}
+```
+
+The arguments supplied to the [`drawImage()`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage) method are broadly split into three groups: the source image, the source image parameters *(s)*, and the destination canvas parameters *(d)*. We need to consider the potential axis-offsets when drawing the canvas, as we only want to snapshot the section of the video feed that is visible from within the parent container. We'll add our offsets to the source image's starting axis coordinates and use the parent container's width and height for both the source and destination boundaries. Since we want to draw our snapshot onto the entire canvas, no destination offsets are required.
+
+```javascript
+context.drawImage(
+    videoRef.current, // source
+    offsets.x,        // sx  
+    offsets.y,        // sy
+    container.width,  // sWidth
+    container.height, // sHeight
+    0,                // dx
+    0,                // dy
+    container.width,  // dWidth
+    container.height  // dHeight
+);
+```
+
+To discard the image, the canvas is reverted to it's initial state via a `handleClear()` callback. Calling `handleClear()` will retrieve the same drawing context instance that was previously returned in the `handleCapture()` function. We can then pass the canvas' width and height to the context [`clearRect()`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/clearRect) function to convert the requested pixels to transparent and resume displaying the video feed.
+
+```javascript
+function handleClear() {
+    const context = canvasRef.current.getContext("2d");
+    context.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+    onClear();
+}
+```
+
+```javascript
+import React, { useRef, useState } from 'react';
+import { Measure } fropm 'react-measure';
+import { useUserMedia } from './useUserMedia ';
+import { useCardRatio } from './useCardRatio';
+import { useOffsets } from './useOffsets';
+
+const CAPTURE_OPTIONS = {
+    audio: false,
+    video: { facingMode: "environment" },
+};
+
+function Camera() {
+    const videoRef = useRef();
+    const mediaStream = useUserMedia(CAPTURE_OPTIONS);
+    const [container, setContainer] = useState({ height: 0, width: 0 });
+    const [aspectRatio, calculateRatio] = useCardRatio(1.586);
+    const [isCanvasEmpty, setIsCanvasEmpty] = useState(true);
+    const offsets = useOffsets(
+        videoRef.current && videoRef.current.videoWidth,
+        videoRef.current && videoRef.current.videoHeight,
+        container.width,
+        container.height
+    );
+
+    if (mediaStream && videoRef.current && videoRef.current.srcObject === null) {
+        videoRef.current.srcObject = mediaStream;
+    }
+
+    function handleResize(contentRect) {
+        setContainer({
+            height: Math.round(contentRect.bounds.width / aspectRatio),
+            width: contentRect.bounds.width
+        });
+    }
+
+    function handleCanPlay() {
+        calculateRatio(videoRef.current.videoHeight, videoRef.current.videoWidth);
+        videoRef.current.play();
+    }
+
+    function handleCapture() {
+        const context = canvasRef.current.getContext("2d");
+
+        context.drawImage(
+            videoRef.current,
+            offsets.x,
+            offsets.y,
+            container.width,
+            container.height,
+            0,
+            0,
+            container.width,
+            container.height
+        );
+
+        canvasRef.current.toBlob(blob => onCapture(blob), "image/jpeg", 1);
+        setIsCanvasEmpty(false);
+    }
+
+    function handleClear() {
+        const context = canvasRef.current.getContext("2d");
+        context.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+        onClear();
+        setIsCanvasEmpty(true);
+    }
+
+    return (
+        <Measure bounds onResize={handleResize}>
+            {({ measureRef }) => (
+                <div>
+                    <div ref={measureRef} style={{ height: `${container.height}px` }}>
+                        <video 
+                            ref={videoRef}
+                            onCanPlay={handleCanPlay}
+                            style={{ top: `-${offsets.y}px`, left: `-${offsets.x}px` }} 
+                            autoPlay 
+                            playsInline 
+                            muted
+                        />
+                    </div>
+
+                    <button onClick={isCanvasEmpty ? handleCapture : handleClear}>
+                        {isCanvasEmpty ? "Take a picture" : "Take another picture"}
+                    </button>
+                </div>
+            )}
+        </Measure>
+    );
+}
+```
+
+## Styling
+
+With the ability to capture an image, all that remains is to implement a card-aid overlay, a flash animation on capture, and style the elements using [Styled Components](https://www.styled-components.com/). The overlay component is a white rounded border layered on top of the video to encourage the user to fit their identification card within the boundary, with an outer box-shadowed area acting as a safe-zone to prevent clipping. The flash component has a solid white background and is also layered on top of the video, but will initially appear hidden due to a default opacity of 0. The keyframes animation triggers whenever the user captures an image, which briefly sets the opacity to 0.75 before quickly reducing it back to zero to emulate a flash effect. Adding a local state variable, `isVideoPlaying`, keeps the video and overlay elements hidden until the camera begins streaming. We can pass the resolution of the camera as props to the parent container to determine it's maximum width and height, and finally add `display: none` to `-webkit-media-controls-play-button` to hide the video's play symbol on iOS devices. 💥
+
+```javascript
+import styled, { css, keyframes } from 'styled-components';
+
+const flashAnimation = keyframes`
+    from {
+        opacity: 0.75;
+    }
+
+    to {
+        opacity: 0;
+    }
+`;
+
+export const Wrapper = styled.div`
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    width: 100%;
+`;
+
+export const Container = styled.div`
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: ${({ maxWidth }) => maxWidth && `${maxWidth}px`};
+    max-height: ${({ maxHeight }) => maxHeight && `${maxHeight}px`};
+`;
+
+export const Canvas = styled.canvas`
+    position: absolute;
+    top: 0;
+    left: 0;
+`;
+
+export const Video = styled.video`
+    position: absolute;
+
+    &::-webkit-media-controls-play-button {
+        display: none !important;
+        -webkit-appearance: none;
+    }
+`;
+
+export const Overlay = styled.div`
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    bottom: 20px;
+    left: 20px;
+    box-shadow: 0px 0px 20px 56px rgba(0, 0, 0, 0.6);
+    border: 1px solid #ffffff;
+    border-radius: 10px;
+`;
+
+export const Flash = styled.div`
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    background-color: #ffffff;
+
+    ${({ flash }) => {
+        if (flash) {
+            return css`
+                animation: ${flashAnimation} 750ms ease-out;
+            `;
+        }
+    }}
+`;
+
+export const Button = styled.button`
+    width: 75%;
+    min-width: 100px;
+    max-width: 250px;
+    margin-top: 24px;
+    padding: 12px 24px;
+    background: silver;
+`;
+```
+
+```javascript
+import React, { useState, useRef } from "react";
+import Measure from "react-measure";
+import { useUserMedia } from "../hooks/use-user-media";
+import { useCardRatio } from "../hooks/use-card-ratio";
+import { useOffsets } from "../hooks/use-offsets";
+import {
+    Video,
+    Canvas,
+    Wrapper,
+    Container,
+    Flash,
+    Overlay,
+    Button
+} from "./styles";
+
+const CAPTURE_OPTIONS = {
+    audio: false,
+    video: { facingMode: "environment" }
+};
+
+export function Camera({ onCapture, onClear }) {
+    const canvasRef = useRef();
+    const videoRef = useRef();
+
+    const [container, setContainer] = useState({ width: 0, height: 0 });
+    const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+    const [isCanvasEmpty, setIsCanvasEmpty] = useState(true);
+    const [isFlashing, setIsFlashing] = useState(false);
+
+    const mediaStream = useUserMedia(CAPTURE_OPTIONS);
+    const [aspectRatio, calculateRatio] = useCardRatio(1.586);
+    const offsets = useOffsets(
+        videoRef.current && videoRef.current.videoWidth,
+        videoRef.current && videoRef.current.videoHeight,
+        container.width,
+        container.height
+    );
+
+    if (videoRef.current && videoRef.current.srcObject === null) {
+        videoRef.current.srcObject = mediaStream;
+    }
+
+    function handleResize(contentRect) {
+        setContainer({
+            width: contentRect.bounds.width,
+            height: Math.round(contentRect.bounds.width / aspectRatio)
+        });
+    }
+
+    function handleCanPlay() {
+        calculateRatio(videoRef.current.videoHeight, videoRef.current.videoWidth);
+        setIsVideoPlaying(true);
+        videoRef.current.play();
+    }
+
+    function handleCapture() {
+        const context = canvasRef.current.getContext("2d");
+
+        context.drawImage(
+            videoRef.current,
+            offsets.x,
+            offsets.y,
+            container.width,
+            container.height,
+            0,
+            0,
+            container.width,
+            container.height
+        );
+
+        canvasRef.current.toBlob(blob => onCapture(blob), "image/jpeg", 1);
+        setIsCanvasEmpty(false);
+        setIsFlashing(true);
+    }
+
+    function handleClear() {
+        const context = canvasRef.current.getContext("2d");
+        context.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+        setIsCanvasEmpty(true);
+        onClear();
+    }
+
+    if (!mediaStream) {
+        return null;
+    }
+
+    return (
+        <Measure bounds onResize={handleResize}>
+            {({ measureRef }) => (
+                <Wrapper>
+                    <Container
+                        ref={measureRef}
+                        maxHeight={videoRef.current && videoRef.current.videoHeight}
+                        maxWidth={videoRef.current && videoRef.current.videoWidth}
+                        style={{
+                            height: `${container.height}px`
+                        }}
+                    >
+
+                        <Video
+                            ref={videoRef}
+                            hidden={!isVideoPlaying}
+                            onCanPlay={handleCanPlay}
+                            autoPlay
+                            playsInline
+                            muted
+                            style={{
+                                top: `-${offsets.y}px`,
+                                left: `-${offsets.x}px`
+                            }}
+                        />
+
+                        <Overlay hidden={!isVideoPlaying} />
+
+                        <Canvas
+                            ref={canvasRef}
+                            width={container.width}
+                            height={container.height}
+                        />
+
+                        <Flash
+                            flash={isFlashing}
+                            onAnimationEnd={() => setIsFlashing(false)}
+                        />
+                    </Container>
+
+                    {isVideoPlaying && (
+                        <Button onClick={isCanvasEmpty ? handleCapture : handleClear}>
+                            {isCanvasEmpty ? "Take a picture" : "Take another picture"}
+                        </Button>
+                    )}
+                </Wrapper>
+            )}
+        </Measure>
+    );
+}
+```
+
+## Conclusion
+
+For the moment the component serves to provide images as proof of authenticity, and is used alongside a form where users manually input field information from the identification cards. I'm hoping to follow this post up with an integration with [OCR technology](https://en.wikipedia.org/wiki/Optical_character_recognition) to scrape the fields from the images and remove the requirement for the form altogether. Thanks for reading along, and special thanks to [Pete Correia](https://twitter.com/petecorreia) for taking the time to review the component code.
+]]></content:encoded>
             <author>contact@ajames.dev (Andrew James)</author>
             <category>react</category>
             <category>css-in-js</category>
@@ -1525,7 +2119,7 @@ Special thanks to [Stephen Taylor](https://twitter.com/meandmycode) and [Robin W
             <link>https://ajames.vercel.app/blog/custom-modal</link>
             <guid>https://ajames.vercel.app/blog/custom-modal</guid>
             <pubDate>Tue, 16 Jul 2019 00:00:00 GMT</pubDate>
-            <description><![CDATA[Duis volutpat eleifend eros, id gravida ipsum pellentesque vel. Pellentesque pretium ante metus, vel tempor sem vehicula non. ]]></description>
+            <description><![CDATA[Different methods to create modals, and how to trigger them from nested components using React context, hooks, and portals]]></description>
             <content:encoded><![CDATA[Modals are a useful tool for displaying information on top of your application, and are often used for notifications, alerts, or standalone dialogs such as registration or login forms. Before building a custom modal, it's a good idea to check if there are any pre-existing solutions that meet your needs ([Reach UI's Dialog](https://reacttraining.com/reach-ui/dialog/) and [react-modal](http://reactcommunity.org/react-modal/) are both popular options). If you don't find a suitable solution, let's explore creating a bespoke modal component in React.
 
 To get started, we'll create a basic modal that appears and disappears based on some local state in our React app. The process is simple: when a button in the root of the app is clicked, the modal will appear. Then, when the button inside the modal is clicked, the modal will close. Let's start building!
@@ -1563,7 +2157,7 @@ With this approach, the `Modal` component can now be used anywhere within the `M
             <link>https://ajames.vercel.app/blog/storybook-state</link>
             <guid>https://ajames.vercel.app/blog/storybook-state</guid>
             <pubDate>Sat, 29 Jun 2019 00:00:00 GMT</pubDate>
-            <description><![CDATA[Duis volutpat eleifend eros, id gravida ipsum pellentesque vel. Pellentesque pretium ante metus, vel tempor sem vehicula non. ]]></description>
+            <description><![CDATA[Learn how to simplify state management in Storybook with React. Streamline repetitive code and pass state variables through as arguments to improve your workflow.]]></description>
             <content:encoded><![CDATA[Storybook is an amazing tool for developing UI components in isolation. One of my current projects is a large form with controlled components that rely on their parent container as the source of truth. While Storybook is great for testing individual component state, I found myself writing repetitive code in each story to pass state to a parent container.
 
 ```javascript
@@ -1680,54 +2274,51 @@ You can find the repository on [GitHub](https://github.com/phunkren/storybook-st
             <link>https://ajames.vercel.app/blog/buy-puppy</link>
             <guid>https://ajames.vercel.app/blog/buy-puppy</guid>
             <pubDate>Sun, 03 Feb 2019 00:00:00 GMT</pubDate>
-            <description><![CDATA[Duis volutpat eleifend eros, id gravida ipsum pellentesque vel. Pellentesque pretium ante metus, vel tempor sem vehicula non. ]]></description>
+            <description><![CDATA[Thinking about getting a puppy? This blog post provides an in-depth look at the responsibilities and challenges of owning a puppy]]></description>
             <content:encoded><![CDATA[A few people have recently asked me about whether or not to buy a puppy, so I figured I’d collect my thoughts here as a point of reference. I mention advice from friends, family, and trainers throughout, but ultimately all opinions are my own and formulated from experience with my dog only.
 
-**Bio:**
+## **Bio:**
 
-Name: Kiwi
+*   **Name**: Kiwi
+*   **Breed**: Cavapoo (KCS / Toy poodle cross)
+*   **Age**: 4.5 months (at time of writing)
+*   **Status**: Legend
 
-Breed: Cavapoo (KCS / Toy poodle cross)
-
-Age: 4.5 months (at time of writing)
-
-Status: Legend
-
-**Toilet training**:
+## **Toilet training**
 
 The puppy will pee and shit on the carpet. Make peace with it. After speaking with a trainer, you’re looking at 3months best case / 6 months worst to toilet train them. You have to take them out every 30-40minutes at the start. It’s difficult to focus on anything because you always have one eye on the dog.
 
-**Crate training:**
+## **Crate training**
 
 This is probably the toughest part in the beginning, but so worth it. It takes time to get them comfortable just walking into the crate, then being in it whilst you are there with them, until finally you can leave the room. Be prepared to get up 2/3 times every night for bathroom breaks. And fuck me that whining is heart-wrenching. It will make you argue.
 
-**Teething:**
+## **Teething**
 
 They bite everything. It gets old. Quick. Don’t think they’re going to sit in your lap and cuddle you. Plants, carpet, clothes, fingers; they’ll chew anything for the first few months until their adult teeth grow in. Socialising with other dogs is good for this, as they’ll quickly let them know if they  bite too hard.
 
-**Leaving her alone:**
+## **Leaving her alone**
 
 Some people say to leave and let them cry it out. Our trainer advised the complete opposite, and to gradually increase the time / distance you are away from them to prevent separation anxiety developing. This has definitely worked for us, but it meant Cat and I were usually in different rooms until the puppy could be left alone crated in her room.
 
-**Walks:**
+## **Walks**
 
 You can’t take them out for exercise until they have their second injection (~12 weeks), so they have loads of energy and nowhere to really expel it. The cabin fever can really set in if you don’t like being stuck at home for long periods of time. Thankfully mental stimulation also tires them out, so simple training (e.g. responding to their name) can really help out here.
 
 They pull on the leash, eat everything on the ground, try to jump up on everyone and chase after everything. It takes time to desensitise them to the environment and stick with you. Good luck recalling them when they get hooked on a scent!
 
-**Cost:**
+## **Cost**
 
 Probably spent ~£4k (inc. sale, equipment, vet, toys, food, and training) since we brought her home.
 
-**Training:**
+## **Training**
 
 There’s loads to train. Toilet, crate, tricks, walking (on/off leash), recalls, scavenging, socialisation, etc. You also have train them in different environments; teaching her to sit in the house is not the same as in the park. It apparently becomes harder to train them once they reach adulthood, so you really have to commit to all of the training early on. Trying to fit all of that in with a full work schedule and a semblance of a social life is exhausting.
 
-**Ageing:**
+## **Ageing**
 
-I have a couple of friends with slightly older dogs. The general curve seems to be: First week is the honeymoon phase, 1 week-3 months is a fucking riot, 3-6 months is when you start having fun, 6-18 months is adolescence when it goes back to being a fucking riot, and if you can make it past that and you’ve put the time in training them you’ll have a chilled, obedient adult dog.
+I have a couple of friends with slightly older dogs. The general curve seems to be: First week is the honeymoon phase, 1 week-3 months is a riot, 3-6 months is when you start having fun, 6-18 months is adolescence when it goes back to being a riot, and if you can make it past that and you’ve put the time in training them you’ll have a chilled, obedient adult dog.
 
-**How has my life changed:**
+## **How has my life changed**
 
 I’m now up at 6am every morning. Casual beers now need planning. We’ve been on a handful of date nights since we got her. Everything revolves around her for the moment, and all I seem to talk about at the moment is dogs.
 
@@ -1747,7 +2338,7 @@ I now fully understand this statement.
             <link>https://ajames.vercel.app/blog/livestream-meetup</link>
             <guid>https://ajames.vercel.app/blog/livestream-meetup</guid>
             <pubDate>Mon, 05 Nov 2018 00:00:00 GMT</pubDate>
-            <description><![CDATA[Duis volutpat eleifend eros, id gravida ipsum pellentesque vel. Pellentesque pretium ante metus, vel tempor sem vehicula non. ]]></description>
+            <description><![CDATA[Discover how to enhance the live streaming experience of your tech meetup and engage remote attendees, without compromising the in-person experience.]]></description>
             <content:encoded><![CDATA[One of my favourite parts of my job is being surrounded by creative professionals who are eager to openly discuss ideas and expand our collective understanding. Some of these professionals have been in the industry for over ten years and, while they have developed their own opinions, they remain open to outside ideas and criticism to continually improve their professional perspective. About a year ago, a group of developers organized the company's first "Egg Talk", an in-house meet-up where developers could discuss any topic they found interesting, such as project challenges, office diversity, emerging technologies, and even banana peeling techniques. These talks were well received, and now events are scheduled at least once a month with several speakers at each event. Recently, we have also started welcoming talks from other business disciplines.
 
 Remote work is becoming increasingly common in digital professions, including ours. As a result, we decided to extend our meet-up to employees who were unable to attend in person. Initially, we recorded the talks using a laptop placed on a coffee table facing the presenter and a television, and then uploaded the recordings to YouTube for later viewing. While this solution allowed us to share the talks with a wider audience, it also had its fair share of issues.
@@ -1791,52 +2382,7 @@ Despite these issues, the stream still provided a significant improvement in qua
             <link>https://ajames.vercel.app/blog/grid-overlay</link>
             <guid>https://ajames.vercel.app/blog/grid-overlay</guid>
             <pubDate>Sun, 13 May 2018 00:00:00 GMT</pubDate>
-            <description><![CDATA[Duis volutpat eleifend eros, id gravida ipsum pellentesque vel. Pellentesque pretium ante metus, vel tempor sem vehicula non. ]]></description>
-            <content:encoded><![CDATA[One of my favourite talks from ReactFest London was Siddharth Kshetrapal's [presentation on the frontend workflow](https://www.youtube.com/watch?v=bLgZwFRYTJ4). Their discussion about how design systems can be undermined by misunderstandings between project disciplines reminded me of a similar experience I had with a designer on a React project. We were discussing the inconsistencies in vertical rhythm between their design and the application's frontend build. To illustrate their point, they opened the design in Sketch and enabled the grid view.
-
-![1.1: Sketch’s design grid](https://i.imgur.com/9K1JAct.jpg)
-
-Sketch's grid is a visual overlay that enables designers to create a highly precise layout. I had assumed that constant spacing between components would result in consistent vertical rhythm, but the demonstration showed that even though the components were evenly distributed on the page, their respective content was not.
-
-![1.2: Vertical rhythm example](https://i.imgur.com/r6xrD6F.png)
-
-To address the issue of inconsistent vertical rhythm, I created a similar treatment for the frontend by adding a styled component to the application root. The grid would sit on top of the entire application, fixed to the viewport using **`position: fixed`** with a high **`z-index`** and **`pointer-events`** disabled.
-
-The grid was generated using a [**repeating-linear-gradient**](https://developer.mozilla.org/en-US/docs/Web/CSS/repeating-linear-gradient) on the component's **`background`** property. The grid lines were made up of two sections: an opaque coloured grid line and a transparent interval. Custom props allowed the consumer to configure the colour, width, interval, and direction of each line, with default values serving as a fallback (the values below emulate a 12-column vertical grid layout).
-
-```javascript
-import styled from 'styled-components';
-import { rgba } from 'polished';
-
-export const GridOverlay = styled.div(
-    ({
-        color = 'black',
-        width = `${100 / 12}%`,
-        interval = `${100 / 12}%`,
-        direction = 'vertical',
-    }) => css`
-        ${position('fixed', '0', '0', '0', '0')};
-        background: repeating-linear-gradient(
-            ${direction === 'vertical' ? '-90deg' : '0'},
-            ${rgba(color, 0.2)},
-            ${rgba(color, 0.2)} ${width},
-            transparent ${width},
-            transparent calc(${width} + ${interval})
-        );
-        pointer-events: none;
-        z-index: 999;
-    `,
-);
-```
-
-With the overlay in place, we were able to more accurately compare the vertical rhythm of our Sketch design with the production build and edge closer to pixel-perfect design (if that's your goal). To demonstrate the output, I quickly added the overlay to a personal site. Setting **`direction="horizontal"`** emulates Sketch's regular grid, while **`direction="vertical"`** resembles the layout grid.
-
-![1.3: Grid overlay (horizontal)](https://i.imgur.com/43Ltv5X.jpg)
-
-![1.4: Grid overlay (vertical)](https://i.imgur.com/EQGDLbm.jpg)
-
-Adding the grid overlay to the application was a rewarding experience. In addition to its practical value, it also helped us to understand each other's approaches to the project and improve the workflow as a result. It's these small progressions that lead to truly collaborative efforts and produce the best results.
-]]></content:encoded>
+            <description><![CDATA[Creating a visual grid overlay in a React project helps bridge the gap between engineering and design, improving collaboration and leading to more consistent and accurate layouts.]]></description>
             <author>contact@ajames.dev (Andrew James)</author>
             <category>css-in-js</category>
             <category>react</category>
