@@ -6,7 +6,6 @@ import { CSS, darkTheme, lightTheme, styled } from "../stitches.config";
 import { YOUTUBE_SUBSCRIBE_URL } from "../util/youtube";
 import {
   ArrowRightIcon,
-  RocketIcon,
   TwitterLogoIcon,
   VideoIcon,
 } from "@radix-ui/react-icons";
@@ -16,7 +15,6 @@ import { buildUrl } from "../util/url";
 import { SITE, SOCIAL } from "../util/data";
 import { Box } from "./Layout";
 import { ICON_SIZE } from "../util/images";
-import { whiteA } from "@radix-ui/colors";
 
 type TwitterShareProps = {
   url: string;
@@ -33,8 +31,6 @@ const StyledLink = styled("a", {
   display: "inline-flex",
   alignItems: "center",
   gap: "$2",
-  fontWeight: 500,
-  letterSpacing: 0.2,
   color: "inherit",
   textDecoration: "none",
 
@@ -101,7 +97,7 @@ export const StyledIconLink = styled(Link, {
   spacing: "$2",
   borderWidth: 1,
   borderStyle: "solid",
-  borderColor: "$foregroundMuted",
+  borderColor: "$foreground",
   boxShadow: "$verticalOffset",
   minWidth: 44,
   minHeight: 44,
@@ -121,8 +117,12 @@ const StyledYoutubeSubscription = styled(Link, {
     type: {
       button: {
         padding: "$2 $4",
-        backgroundColor: "$red8",
+        backgroundColor: "$red7",
         borderRadius: 4,
+
+        "&:hover": {
+          backgroundColor: "$red8",
+        },
       },
       link: {
         color: "inherit",

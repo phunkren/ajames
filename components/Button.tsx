@@ -64,7 +64,7 @@ export const StyledIconButton = styled(Button, {
   spacing: "$2",
   borderWidth: 1,
   borderStyle: "solid",
-  borderColor: "$foregroundMuted",
+  borderColor: "$foreground",
   backgroundColor: "transparent",
   boxShadow: "$verticalOffset",
   minWidth: 44,

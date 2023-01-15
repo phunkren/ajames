@@ -407,7 +407,6 @@ function Streaming({
                                 url={playlistVideo.url}
                                 image={playlistVideo.thumbnail.src}
                                 title={playlistVideo.title}
-                                description={playlistVideo.description}
                                 publishDate={playlistVideo.publishedAt}
                                 css={{ scrollSnapAlign: "start" }}
                               />

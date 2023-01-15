@@ -31,11 +31,13 @@ export const TextBody = styled("p", {
 export const TextHeadline = styled("span", {
   ...P_STYLES,
   ...TEXT_VARIANTS,
+  fontWeight: 400,
 });
 
 export const TextAux = styled("span", {
   ...AUX_STYLES,
   ...TEXT_VARIANTS,
+  fontWeight: 400,
 });
 
 const StyledEmoji = styled("span", {

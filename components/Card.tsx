@@ -36,6 +36,7 @@ const StyledImage = styled(Image, {
   borderTopLeftRadius: 4,
   borderTopRightRadius: 4,
   boxShadow: "none",
+  filter: "brightness(90%)",
 });
 
 const StyledLink = styled(Link, {});

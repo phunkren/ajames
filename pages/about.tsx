@@ -60,24 +60,32 @@ const StyledHero = styled(Box, {
   zIndex: 1,
   borderBottomWidth: 5,
   borderBottomStyle: "solid",
-  borderBottomColor: "$foregroundMuted",
+  borderBottomColor: "$foreground",
 
   "&::after": {
     content: "",
     position: "absolute",
     inset: 0,
-    background: "rgba(0,0,0,0.25)",
+
+    [`.${darkTheme} &`]: {
+      background: "rgba(0,0,0,0.15)",
+    },
+
+    [`.${lightTheme} &`]: {
+      background: "$slate11",
+      opacity: 0.4,
+    },
   },
 });
 
-const StyledHero2 = styled(Box, {
+const StyledFilter = styled(Box, {
   position: "absolute",
   inset: 0,
   zIndex: 0,
   filter: "blur(80px)",
 
   [`.${lightTheme} &`]: {
-    background: "conic-gradient(from 50deg, $red10, $red10, $blue9, $blue10)",
+    background: "conic-gradient(from 50deg, $red11, $red11, $blue10, $blue11)",
   },
 
   [`.${darkTheme} &`]: {
@@ -90,11 +98,15 @@ const StyledImage = styled(Image, {
   objectFit: "contain",
   borderRadius: 4,
   position: "absolute",
-  top: "5% !important",
+  top: "4% !important",
   left: "17% !important",
-  zIndex: 1,
-  filter: "brightness(75%)",
+  zIndex: 2,
   transform: "scale(0.9)",
+  pointerEvents: "none",
+
+  [`.${darkTheme} &`]: {
+    filter: "brightness(66%)",
+  },
 
   "@bp2": {
     display: "block",
@@ -164,7 +176,9 @@ function Cv() {
           <StyledPageHeader>
             <AspectRatio ratio={2.5 / 1}>
               <StyledImage src={banner} alt="" sizes="100vw" priority fill />
-              <StyledHero2 />
+
+              <StyledFilter />
+
               <StyledHero
                 spacingHorizontal={{ "@initial": 4, "@bp2": 10 }}
                 spacingVertical={{ "@initial": 5, "@bp2": 7 }}
@@ -185,6 +199,7 @@ function Cv() {
                     "@initial": "none",
                     "@bp2": "flex",
                   }}
+                  css={{ zIndex: 1 }}
                 >
                   <PrintButton />
 

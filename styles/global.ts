@@ -22,6 +22,10 @@ export const globalStyles = globalCss({
     lineHeight: 1.5,
   },
 
+  "a, button": {
+    fontweight: 500,
+  },
+
   /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
   "ul[role='list'], ol[role='list']": {
     listStyle: "none",
@@ -41,6 +45,7 @@ export const globalStyles = globalCss({
     width: "100%",
     minHeight: "100dvh",
     overflowX: "hidden",
+    fontWeight: 300,
     ...P_STYLES,
   },
 
@@ -52,8 +57,7 @@ export const globalStyles = globalCss({
   },
 
   "body[data-theme='light']": {
-    background:
-      "radial-gradient(ellipse at center, $sky12 0%, $sage12 50%, $slate12 100%), radial-gradient(ellipse at center, $gray12 0%, $slate12 50%, $sage12 100%)",
+    background: LIGHT_THEME_COLORS.backgroundGradient,
     color: LIGHT_THEME_COLORS.foreground,
   },
 

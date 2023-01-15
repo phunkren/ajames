@@ -13,8 +13,6 @@ import {
   greenDark,
   orangeDark,
   slateDark,
-  whiteA,
-  blackA,
   skyDark,
   yellow,
   yellowDark,
@@ -36,6 +34,8 @@ import {
   tealDark,
   indigo,
   indigoDark,
+  sage,
+  sageDark,
 } from "@radix-ui/colors";
 import { SPACING_UTILS } from "./styles/spacing";
 import { DISPLAY_UTILS } from "./styles/display";
@@ -107,6 +107,7 @@ export const lightTheme = createTheme({
     ...gold,
     ...teal,
     ...indigo,
+    ...sage,
   },
   shadows: {
     verticalOffset: LIGHT_THEME_SHADOW_VERTICAL_OFFSET,
@@ -135,6 +136,7 @@ export const darkTheme = createTheme({
     ...goldDark,
     ...tealDark,
     ...indigoDark,
+    ...sageDark,
   },
   shadows: {
     verticalOffset: DARK_THEME_SHADOW_VERTICAL_OFFSET,

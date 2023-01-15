@@ -25,7 +25,7 @@ const ToggleGroupRoot = styled(ToggleGroup.Root, {
 
   borderWidth: 1,
   borderStyle: "solid",
-  borderColor: "$foregroundMuted",
+  borderColor: "$backgroundMuted",
   boxShadow: "$verticalOffset",
 });
 
@@ -43,10 +43,10 @@ const ToggleGroupItem = styled(ToggleGroup.Item, {
 
   "&[data-state=off]": {
     boxShadow: "$inset",
-    opacity: 0.2,
+    opacity: 0.75,
   },
 
-  "&[data-state=off]:hover": { backgroundColor: "$background", opacity: 0.75 },
+  "&[data-state=off]:hover": { backgroundColor: "$backgroundMuted" },
 
   "&:first-child": {
     marginLeft: 0,
