@@ -69,10 +69,6 @@ export const {
       9: "36px",
       10: "40px",
     },
-    fonts: {
-      primary: "Alexandria, apple-system, sans-serif",
-      secondary: "Jost, menlo, monospace",
-    },
   },
   media: {
     bp1: "(min-width: 480px)",
