@@ -22,6 +22,7 @@ export const DARK_THEME_COLORS = {
   foregroundMuted: grayDark.gray11,
   background: slateDark.slate1,
   backgroundMuted: grayDark.gray2,
+  backgroundGradient: `radial-gradient(circle at top, ${slateDark.slate1} 0%, ${grayDark.gray2} 100%)`,
 };
 
 export const LIGHT_THEME_SHADOW_VERTICAL_OFFSET = `0 2px 4px ${blackA.blackA8}`;
