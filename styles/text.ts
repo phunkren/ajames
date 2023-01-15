@@ -1,5 +1,3 @@
-import { darkTheme, lightTheme } from "../stitches.config";
-
 export const TEXT_VARIANTS = {
   variants: {
     color: {
@@ -65,9 +63,6 @@ export const TEXT_VARIANTS = {
 
 export const H1_STYLES = {
   fontSize: 36,
-  fontFamily: "$primary",
-  fontWeight: 300,
-  letterSpacing: 0.4,
 
   "@bp2": {
     fontSize: 48,
@@ -84,9 +79,6 @@ export const H1_STYLES = {
 
 export const H2_STYLES = {
   fontSize: 24,
-  fontFamily: "$primary",
-  fontWeight: 400,
-  letterSpacing: 0.2,
 
   "@bp2": {
     fontSize: 36,
@@ -103,9 +95,6 @@ export const H2_STYLES = {
 
 export const H3_STYLES = {
   fontSize: 22,
-  fontFamily: "$primary",
-  fontWeight: 400,
-  letterSpacing: 0.2,
 
   "@bp3": {
     fontSize: 24,
@@ -118,7 +107,6 @@ export const H3_STYLES = {
 
 export const P_STYLES = {
   fontSize: 18,
-  fontFamily: "$secondary",
 
   "@bp2": {
     fontSize: 22,
