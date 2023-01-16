@@ -1,32 +1,40 @@
 import {
-  ButtonHTMLAttributes,
   forwardRef,
+  memo,
+  MouseEvent,
   Ref,
+  useCallback,
   useEffect,
   useRef,
   useState,
 } from "react";
+import { useRouter } from "next/router";
 import * as Toggle from "@radix-ui/react-toggle";
 import * as Toast from "@radix-ui/react-toast";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { ToggleProps } from "@radix-ui/react-toggle-group";
 import {
+  ChevronUpIcon,
   Cross1Icon,
+  Cross2Icon,
   DoubleArrowUpIcon,
+  DropdownMenuIcon,
   FileIcon,
   InfoCircledIcon,
   Share2Icon,
 } from "@radix-ui/react-icons";
 import { usePrevious } from "../hooks/usePrevious";
 import { CSS, styled } from "../stitches.config";
-import { Box } from "./Layout";
 import { PERSONAL } from "../util/data";
-import { TextHeadline } from "./Text";
 import { ICON_SIZE } from "../util/images";
-
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  variant?: "primary" | "secondary";
-};
+import { TextAux, TextHeadline } from "./Text";
+import { Box } from "./Layout";
+import {
+  ButtonProps,
+  FilterClearProps,
+  FilterMenuProps,
+  ShareButtonProps,
+} from "../types/button";
 
 const StyledButton = styled("button", {
   display: "inline-flex",
@@ -45,12 +53,17 @@ const StyledButton = styled("button", {
 
   "-webkit-appearance": "none",
   "-moz-appearance": "none",
+
+  "&[aria-disabled='true']": {
+    pointerEvents: "none",
+    opacity: 0.4,
+  },
 });
 
-export const Button = forwardRef(
-  (props: ButtonProps, ref: Ref<HTMLButtonElement>) => {
+export const Button = memo(
+  forwardRef((props: ButtonProps, ref: Ref<HTMLButtonElement>) => {
     return <StyledButton ref={ref} type="button" {...props} />;
-  }
+  })
 );
 
 export const StyledIconButton = styled(Button, {
@@ -149,7 +162,18 @@ const StyledScrollToTop = styled(Button, {
   },
 });
 
-export function ScrollToTopButton() {
+const StyledPreviewToggle = styled(Toggle.Root, {
+  all: "unset",
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
+  borderRadius: "50%",
+  borderWidth: 1,
+  borderStyle: "solid",
+  borderColor: "transparent",
+});
+
+export const ScrollToTopButton = memo(function ScrollToTopButton() {
   const [scrollY, setScrollY] = useState<number>();
   const previousScrollY = usePrevious(scrollY);
 
@@ -157,16 +181,16 @@ export function ScrollToTopButton() {
   const isThresholdPassed = scrollY > 1000;
   const isButtonActive = isUserScrollingUp && isThresholdPassed;
 
-  function handleScrollToTop() {
+  const handleScrollToTop = useCallback(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-  }
+  }, []);
+
+  const handleScroll = useCallback(() => {
+    const scrollPositionY = window.pageYOffset;
+    setScrollY(scrollPositionY);
+  }, []);
 
   useEffect(() => {
-    function handleScroll() {
-      const scrollPositionY = window.pageYOffset;
-      setScrollY(scrollPositionY);
-    }
-
     window.addEventListener("scroll", handleScroll);
 
     return () => {
@@ -185,13 +209,19 @@ export function ScrollToTopButton() {
       <TextHeadline>Scroll to top</TextHeadline>
     </StyledScrollToTop>
   );
-}
+});
 
-export function ShareButton({ url, text, emoji = "👀", variant = "default" }) {
+export const ShareButton = memo(function ShareButton({
+  url,
+  text,
+  emoji = "👀",
+  variant = "default",
+}: ShareButtonProps) {
   const [open, setOpen] = useState(false);
+
   const timerRef = useRef(0);
 
-  function handleClick() {
+  const handleClick = useCallback(() => {
     setOpen(false);
 
     window.clearTimeout(timerRef.current);
@@ -207,74 +237,138 @@ export function ShareButton({ url, text, emoji = "👀", variant = "default" }) 
         setOpen(true);
       }, 100);
     });
-  }
+  }, []);
 
   useEffect(() => () => clearTimeout(timerRef.current), []);
 
   return (
     <Toast.Provider label="Share notification" duration={2000}>
-      {variant === "icon" ? (
-        <StyledIconButton title="Share" onClick={handleClick}>
-          <Share2Icon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
-          <VisuallyHidden.Root>Share</VisuallyHidden.Root>
-        </StyledIconButton>
-      ) : (
-        <Button title="Share" onClick={handleClick}>
-          <Box alignItems="center" gap={2}>
+      <Box>
+        {variant === "icon" ? (
+          <StyledIconButton title="Share" onClick={handleClick}>
             <Share2Icon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
-            <TextHeadline>Share</TextHeadline>
-          </Box>
-        </Button>
-      )}
+            <VisuallyHidden.Root>Share</VisuallyHidden.Root>
+          </StyledIconButton>
+        ) : (
+          <Button title="Share" onClick={handleClick}>
+            <Box alignItems="center" gap={2}>
+              <Share2Icon
+                width={ICON_SIZE.m}
+                height={ICON_SIZE.m}
+                aria-hidden
+              />
+              <TextHeadline>Share</TextHeadline>
+            </Box>
+          </Button>
+        )}
 
-      <StyledToastRoot open={open} onOpenChange={setOpen}>
-        <Toast.Description>Copied to clipboard!</Toast.Description>
-      </StyledToastRoot>
+        <StyledToastRoot open={open} onOpenChange={setOpen}>
+          <Toast.Description>Copied to clipboard!</Toast.Description>
+        </StyledToastRoot>
 
-      <StyledToastViewport />
+        <StyledToastViewport />
+      </Box>
     </Toast.Provider>
   );
-}
-
-const StyledPreviewToggle = styled(Toggle.Root, {
-  all: "unset",
-  display: "inline-flex",
-  alignItems: "center",
-  justifyContent: "center",
-  borderRadius: "50%",
-  borderWidth: 1,
-  borderStyle: "solid",
-  borderColor: "transparent",
 });
 
-export function PreviewToggle({ pressed, ...props }: ToggleProps & CSS) {
+export const PreviewToggle = memo(function PreviewToggle({
+  pressed,
+  ...props
+}: ToggleProps & CSS) {
+  const handleClick = useCallback((e: MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+  }, []);
+
   return (
     <StyledPreviewToggle
       aria-label="Preview toggle"
       pressed={pressed}
-      onClick={(e) => e.stopPropagation()}
+      onClick={handleClick}
       {...props}
     >
       {pressed ? (
         <>
+          <VisuallyHidden.Root>Hide Description</VisuallyHidden.Root>
           <Cross1Icon width={ICON_SIZE.m} height={ICON_SIZE.m} />
-          <VisuallyHidden.Root>Description Visible</VisuallyHidden.Root>
         </>
       ) : (
         <>
+          <VisuallyHidden.Root>Show Description</VisuallyHidden.Root>
           <InfoCircledIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
-          <VisuallyHidden.Root>Description Hidden</VisuallyHidden.Root>
         </>
       )}
     </StyledPreviewToggle>
   );
-}
+});
 
-export function PrintButton(props) {
+export const PrintButton = memo(function PrintButton(props) {
+  const handleClick = useCallback(() => {
+    window.print();
+  }, []);
+
   return (
-    <StyledIconButton title="Print" onClick={() => window?.print()} {...props}>
-      <FileIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
+    <StyledIconButton title="Print" onClick={handleClick} {...props}>
       <VisuallyHidden.Root>Print</VisuallyHidden.Root>
+      <FileIcon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
     </StyledIconButton>
   );
-}
+});
+
+export const FilterClearButton = memo(function FilterClearButton({
+  filters,
+  ...props
+}: FilterClearProps) {
+  const { pathname, push } = useRouter();
+
+  const handleClick = useCallback(() => {
+    push({ pathname }, undefined, {
+      scroll: false,
+    });
+  }, []);
+
+  return (
+    <StyledIconButton
+      title="Clear Filters"
+      aria-disabled={!filters.length}
+      onClick={handleClick}
+      {...props}
+    >
+      <VisuallyHidden.Root>
+        <TextAux>Clear filters</TextAux>
+      </VisuallyHidden.Root>
+
+      <Cross2Icon width={ICON_SIZE.m} height={ICON_SIZE.m} />
+    </StyledIconButton>
+  );
+});
+
+export const FilterMenuButton = memo(function FilterMenuButton({
+  open,
+  ...props
+}: FilterMenuProps) {
+  return (
+    <StyledIconButton
+      title={open ? "Collapse Filters" : "Expand Filters"}
+      {...props}
+    >
+      {open ? (
+        <>
+          <VisuallyHidden.Root>
+            <TextAux>Close menu</TextAux>
+          </VisuallyHidden.Root>
+
+          <ChevronUpIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
+        </>
+      ) : (
+        <>
+          <VisuallyHidden.Root>
+            <TextAux>Open menu</TextAux>
+          </VisuallyHidden.Root>
+
+          <DropdownMenuIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
+        </>
+      )}
+    </StyledIconButton>
+  );
+});

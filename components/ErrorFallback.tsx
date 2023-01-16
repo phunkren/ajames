@@ -1,8 +1,10 @@
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
+import { memo, useCallback } from "react";
+import Router from "next/router";
 import { styled } from "../stitches.config";
+import { ErrorBoundaryProps } from "../types/error";
 import { Button } from "./Button";
 import { Box, Layout } from "./Layout";
-import { Link } from "./Link";
 import { TextHeadline, TextTitle1 } from "./Text";
 
 const StyledHero = styled(Box, {
@@ -12,7 +14,14 @@ const StyledHero = styled(Box, {
   background: "$background",
 });
 
-export function ErrorFallback({ error, resetErrorBoundary }) {
+export const ErrorFallback = memo(function ErrorFallback({
+  error,
+  resetErrorBoundary,
+}: ErrorBoundaryProps) {
+  const handleReload = useCallback(() => {
+    Router.replace("/");
+  }, []);
+
   return (
     <Layout>
       <AspectRatio ratio={2.5 / 1}>
@@ -23,7 +32,7 @@ export function ErrorFallback({ error, resetErrorBoundary }) {
           justifyContent="center"
         >
           <Box direction="vertical">
-            <TextTitle1 textAlign="center">{error.code ?? "Uh-oh!"}</TextTitle1>
+            <TextTitle1 textAlign="center">Uh-oh!</TextTitle1>
             <TextHeadline textAlign="center">Something went wrong</TextHeadline>
           </Box>
         </StyledHero>
@@ -33,19 +42,20 @@ export function ErrorFallback({ error, resetErrorBoundary }) {
         role="alert"
         direction="vertical"
         justifyContent="center"
-        alignItems="center"
         spacingTop={10}
         gap={10}
         flexGrow
       >
         <Box as="pre">{error.message}</Box>
 
+        {error.cause ? <Box as="pre">{error.cause}</Box> : null}
+
         <Button onClick={resetErrorBoundary}>Try again</Button>
 
-        <Link href="/" variant="primary">
+        <Button onClick={handleReload}>
           <TextHeadline>Return to homepage</TextHeadline>
-        </Link>
+        </Button>
       </Box>
     </Layout>
   );
-}
+});

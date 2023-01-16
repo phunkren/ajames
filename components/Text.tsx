@@ -42,6 +42,7 @@ export const TextHeadline = styled("span", {
 });
 
 export const TextAux = styled("span", {
+  fontWeight: 500,
   ...AUX_STYLES,
   ...TEXT_VARIANTS,
 });

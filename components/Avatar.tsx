@@ -1,3 +1,4 @@
+import { memo } from "react";
 import * as RadixAvatar from "@radix-ui/react-avatar";
 import { PERSONAL } from "../util/data";
 import { styled } from "../stitches.config";
@@ -42,11 +43,11 @@ export const AvatarFallback = styled(RadixAvatar.Fallback, {
   color: "white",
 });
 
-export function Avatar() {
+export const Avatar = memo(function Avatar(props: RadixAvatar.AvatarProps) {
   return (
-    <AvatarRoot>
+    <AvatarRoot {...props}>
       <AvatarImage src="/images/avatar.png" alt={PERSONAL.name} />
       <AvatarFallback delayMs={600}>{PERSONAL.initials}</AvatarFallback>
     </AvatarRoot>
   );
-}
+});

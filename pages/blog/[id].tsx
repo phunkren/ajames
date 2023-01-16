@@ -9,7 +9,7 @@ import {
   getPostData,
   getPostTime,
 } from "../../lib/notion";
-import { BlogLayout, Box } from "../../components/Layout";
+import { ActionButtons, BlogLayout, Box } from "../../components/Layout";
 import {
   BlogSubscribeLink,
   MarkdownLink,
@@ -24,6 +24,7 @@ import {
 import { Code } from "../../components/Code";
 import { Divider } from "../../components/Divider";
 import {
+  Frontmatter,
   PostTags,
   PublishDate,
   ReadingTime,
@@ -153,32 +154,13 @@ export default function BlogPost({ frontmatter, postData }: Props) {
           </Box>
 
           <Box gap={10}>
-            <Box
-              id="frontmatter"
-              as="ul"
-              role="list"
-              direction="vertical"
-              spacingTop={6}
-              gap={6}
-            >
-              <li>
-                <PostTags tags={frontmatter.tags} icon />
-              </li>
-              <li>
-                <PublishDate date={frontmatter.date} icon />
-              </li>
-              <li>
-                <ReadingTime time={frontmatter.time} icon />
-              </li>
-            </Box>
+            <Frontmatter spacingTop={6}>
+              <PostTags tags={frontmatter.tags} icon />
+              <PublishDate date={frontmatter.date} icon />
+              <ReadingTime time={frontmatter.time} icon />
+            </Frontmatter>
 
-            <Box
-              gap={4}
-              direction={{ "@initial": "vertical", "@bp2": "horizontal" }}
-              justifyContent="flex-end"
-              alignItems="flex-end"
-              css={{ width: "auto" }}
-            >
+            <ActionButtons css={{ width: "auto" }}>
               <TwitterShareLink
                 url={shareUrl}
                 emoji={frontmatter.emoji}
@@ -194,7 +176,7 @@ export default function BlogPost({ frontmatter, postData }: Props) {
                   variant="icon"
                 />
               </Box>
-            </Box>
+            </ActionButtons>
           </Box>
         </Box>
 

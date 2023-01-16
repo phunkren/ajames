@@ -10,12 +10,13 @@ import { AvatarFallback, AvatarImage, AvatarRoot } from "../components/Avatar";
 import { VideoCard } from "../components/Card";
 import { Divider } from "../components/Divider";
 import {
+  Frontmatter,
   PublishDate,
   SubscriberCount,
   VideosTotalCount,
   VideosViewsCount,
 } from "../components/Frontmatter";
-import { Layout, Box } from "../components/Layout";
+import { Layout, Box, ActionButtons } from "../components/Layout";
 import {
   Link,
   YoutubeSubscribeLink,
@@ -215,7 +216,7 @@ function Streaming({
                 </Box>
 
                 <Box alignItems="flex-end">
-                  <Box as="ul" role="list" direction="vertical" gap={6}>
+                  <Frontmatter>
                     <VideosViewsCount
                       views={channelInfoPreview.viewCount}
                       icon
@@ -228,29 +229,21 @@ function Streaming({
                       total={channelInfoPreview.videoCount}
                       icon
                     />
-                  </Box>
+                  </Frontmatter>
 
-                  <Box
-                    gap={4}
-                    direction={{ "@initial": "vertical", "@bp2": "horizontal" }}
-                    justifyContent="flex-end"
-                    alignItems="flex-end"
-                    css={{ width: "auto" }}
-                  >
+                  <ActionButtons css={{ width: "auto" }}>
                     <TwitterShareLink
                       url={YOUTUBE_CHANNEL_URL}
                       text={YOUTUBE_SHARE_TEXT}
                       variant="icon"
                     />
 
-                    <Box>
-                      <ShareButton
-                        url={YOUTUBE_CHANNEL_URL}
-                        text={YOUTUBE_SHARE_TEXT}
-                        variant="icon"
-                      />
-                    </Box>
-                  </Box>
+                    <ShareButton
+                      url={YOUTUBE_CHANNEL_URL}
+                      text={YOUTUBE_SHARE_TEXT}
+                      variant="icon"
+                    />
+                  </ActionButtons>
                 </Box>
               </Box>
             </Box>
@@ -453,12 +446,10 @@ function Streaming({
 
                 <YoutubeSubscribeLink />
 
-                <Box>
-                  <ShareButton
-                    url={YOUTUBE_CHANNEL_URL}
-                    text={YOUTUBE_SHARE_TEXT}
-                  />
-                </Box>
+                <ShareButton
+                  url={YOUTUBE_CHANNEL_URL}
+                  text={YOUTUBE_SHARE_TEXT}
+                />
               </Box>
             </Box>
           </Box>

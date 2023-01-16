@@ -1,9 +1,11 @@
+import { memo } from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import {
   atomOneDark,
   atomOneLight,
 } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import { useTheme } from "../hooks/useTheme";
+import { CodeProps } from "../types/code";
 
 const LANGUAGE_MAP = {
   html: "htmlbars",
@@ -14,12 +16,16 @@ const STYLE_MAP = {
   dark: atomOneDark,
 };
 
-export function Code({ node, ...props }) {
-  const language = props.className?.split("-")[1] ?? "";
+export const Code = memo(function Code({
+  className,
+  inline,
+  children,
+}: CodeProps) {
+  const language = className?.split("-")[1] ?? "";
   const { themeName } = useTheme();
 
-  if (props.inline) {
-    return <code>{props.children}</code>;
+  if (inline) {
+    return <code>{children}</code>;
   }
 
   return (
@@ -28,7 +34,7 @@ export function Code({ node, ...props }) {
       style={STYLE_MAP[themeName]}
       wrapLongLines
     >
-      {props.children}
+      {children}
     </SyntaxHighlighter>
   );
-}
+});

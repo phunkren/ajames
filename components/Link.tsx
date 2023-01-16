@@ -2,7 +2,7 @@ import { forwardRef, Ref } from "react";
 import NextLink from "next/link";
 import { MdRssFeed } from "react-icons/md";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
-import { CSS, darkTheme, lightTheme, styled } from "../stitches.config";
+import { CSS, styled } from "../stitches.config";
 import { YOUTUBE_SUBSCRIBE_URL } from "../util/youtube";
 import {
   ArrowRightIcon,
@@ -15,7 +15,6 @@ import { buildUrl } from "../util/url";
 import { SITE, SOCIAL } from "../util/data";
 import { Box } from "./Layout";
 import { ICON_SIZE } from "../util/images";
-import { whiteA } from "@radix-ui/colors";
 
 type TwitterShareProps = {
   url: string;
@@ -107,6 +106,15 @@ export const StyledIconLink = styled(Link, {
 
   "&:active": {
     boxShadow: "$5",
+  },
+
+  variants: {
+    disabled: {
+      true: {
+        pointerEvents: "none",
+        opacity: 0.4,
+      },
+    },
   },
 });
 

@@ -1,3 +1,4 @@
+import { memo } from "react";
 import {
   GitHubLogoIcon,
   LinkedInLogoIcon,
@@ -15,7 +16,7 @@ const StyledLink = styled(Link, {
   minHeight: 44,
 });
 
-export function Social() {
+export const Social = memo(function Social() {
   return (
     <Box as="nav" aria-label="Social Media">
       <Box
@@ -95,4 +96,4 @@ export function Social() {
       </Box>
     </Box>
   );
-}
+});

@@ -9,7 +9,7 @@ import {
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { PrintButton } from "../components/Button";
 import { Divider } from "../components/Divider";
-import { Box, Layout } from "../components/Layout";
+import { ActionButtons, Box, Layout } from "../components/Layout";
 import { Link, StyledIconLink } from "../components/Link";
 import {
   TextAux,
@@ -194,15 +194,7 @@ function Cv() {
                   </TextHeadline>
                 </Box>
 
-                <Box
-                  direction="horizontal"
-                  gap={4}
-                  display={{
-                    "@initial": "none",
-                    "@bp2": "flex",
-                  }}
-                  css={{ zIndex: 1 }}
-                >
+                <ActionButtons css={{ zIndex: 1 }}>
                   <PrintButton />
 
                   <StyledIconLink href="/download-cv" title="Download" download>
@@ -212,7 +204,7 @@ function Cv() {
                       aria-hidden
                     />
                   </StyledIconLink>
-                </Box>
+                </ActionButtons>
               </StyledHero>
             </AspectRatio>
           </StyledPageHeader>

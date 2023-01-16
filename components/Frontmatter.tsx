@@ -25,7 +25,7 @@ type PostTagProps = {
   icon?: boolean;
 };
 
-type PostActiveTagsProps = {
+type ActiveTagsProps = {
   tags: Tag[];
   queryTags: string[];
   icon?: boolean;
@@ -57,18 +57,31 @@ export const StyledFilterTag = styled(StyledTag, {
   },
 });
 
+export function Frontmatter(props) {
+  return (
+    <Box
+      as="ul"
+      role="list"
+      direction="vertical"
+      gap={6}
+      css={{ color: "$foregroundMuted" }}
+      {...props}
+    />
+  );
+}
+
+export function FrontmatterItem(props) {
+  return <Box as="li" gap={6} alignItems="center" {...props} />;
+}
+
 export function PostTags({ tags, icon = false, ...props }: PostTagProps) {
   const { query } = useRouter();
   const queryTags = getQueryTags(query);
 
   return (
-    <Box gap={6} {...props}>
+    <FrontmatterItem {...props}>
       {icon ? (
-        <Box
-          alignItems="flex-start"
-          justify-content="center"
-          css={{ color: "$foregroundMuted" }}
-        >
+        <Box alignItems="flex-start" justify-content="center">
           <VisuallyHidden.Root>Tags</VisuallyHidden.Root>
           <ListBulletIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
         </Box>
@@ -96,26 +109,22 @@ export function PostTags({ tags, icon = false, ...props }: PostTagProps) {
           );
         })}
       </Box>
-    </Box>
+    </FrontmatterItem>
   );
 }
 
-export function PostActiveTags({
+export function ActiveTags({
   tags,
   queryTags,
   icon = false,
   ...props
-}: PostActiveTagsProps) {
+}: ActiveTagsProps) {
   const activeTags = tags.filter((tag) => queryTags.includes(tag.name));
 
   return (
-    <Box gap={6} alignItems="center" {...props}>
+    <FrontmatterItem>
       {icon ? (
-        <Box
-          alignItems="flex-start"
-          justify-content="center"
-          css={{ color: "$foregroundMuted" }}
-        >
+        <Box alignItems="flex-start" justify-content="center">
           <VisuallyHidden.Root>Tags</VisuallyHidden.Root>
           <EyeOpenIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
         </Box>
@@ -132,9 +141,9 @@ export function PostActiveTags({
           ))}
         </Box>
       ) : (
-        <TextHeadline color="secondary">All</TextHeadline>
+        <TextHeadline textTransform="capitalize">All</TextHeadline>
       )}
-    </Box>
+    </FrontmatterItem>
   );
 }
 
@@ -144,40 +153,26 @@ export function PublishDate({ date, icon = false, compact = false, ...props }) {
 
   if (compact) {
     return (
-      <Box
-        alignItems="center"
-        gap={4}
-        css={{ color: "$foregroundMuted" }}
-        {...props}
-      >
+      <FrontmatterItem>
         {icon ? (
           <CalendarIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
         ) : null}
 
-        <TextAux
-          as="time"
-          dateTime={dateObject.toISOString()}
-          color="secondary"
-        >
+        <TextAux as="time" dateTime={dateObject.toISOString()}>
           {formattedDate}
         </TextAux>
-      </Box>
+      </FrontmatterItem>
     );
   }
 
   return (
-    <Box
-      alignItems="center"
-      gap={6}
-      css={{ color: "$foregroundMuted" }}
-      {...props}
-    >
+    <FrontmatterItem>
       {icon ? <CalendarIcon width={ICON_SIZE.l} height={ICON_SIZE.l} /> : null}
 
       <TextHeadline as="time" dateTime={dateObject.toISOString()}>
         {formattedDate}
       </TextHeadline>
-    </Box>
+    </FrontmatterItem>
   );
 }
 
@@ -185,15 +180,10 @@ export function ReadingTime({ time, icon = false, ...props }) {
   const formattedTime = formatReadingTime(time);
 
   return (
-    <Box
-      alignItems="center"
-      gap={6}
-      css={{ color: "$foregroundMuted" }}
-      {...props}
-    >
+    <FrontmatterItem>
       {icon ? <ClockIcon width={ICON_SIZE.l} height={ICON_SIZE.l} /> : null}
-      <TextHeadline>{formattedTime}</TextHeadline>
-    </Box>
+      <TextHeadline textTransform="capitalize">{formattedTime}</TextHeadline>
+    </FrontmatterItem>
   );
 }
 
@@ -202,17 +192,12 @@ export function SubscriberCount({ subscribers, icon = false, ...props }) {
   const formattedSubscribers = `${formattedNumber} subscribers`;
 
   return (
-    <Box
-      alignItems="center"
-      gap={6}
-      css={{ color: "$foregroundMuted" }}
-      {...props}
-    >
+    <FrontmatterItem>
       {icon ? <AvatarIcon width={ICON_SIZE.l} height={ICON_SIZE.l} /> : null}
       <TextHeadline textTransform="capitalize">
         {formattedSubscribers}
       </TextHeadline>
-    </Box>
+    </FrontmatterItem>
   );
 }
 
@@ -221,15 +206,10 @@ export function VideosViewsCount({ views, icon = false, ...props }) {
   const formattedViews = `${formattedNumber} total views`;
 
   return (
-    <Box
-      alignItems="center"
-      gap={6}
-      css={{ color: "$foregroundMuted" }}
-      {...props}
-    >
+    <FrontmatterItem>
       {icon ? <EyeOpenIcon width={ICON_SIZE.l} height={ICON_SIZE.l} /> : null}
       <TextHeadline textTransform="capitalize">{formattedViews}</TextHeadline>
-    </Box>
+    </FrontmatterItem>
   );
 }
 
@@ -238,48 +218,33 @@ export function VideosTotalCount({ total, icon = false, ...props }) {
   const formattedTotal = `${formattedNumber} videos`;
 
   return (
-    <Box
-      alignItems="center"
-      gap={6}
-      css={{ color: "$foregroundMuted" }}
-      {...props}
-    >
+    <FrontmatterItem>
       {icon ? <VideoIcon width={ICON_SIZE.l} height={ICON_SIZE.l} /> : null}
       <TextHeadline textTransform="capitalize">{formattedTotal}</TextHeadline>
-    </Box>
+    </FrontmatterItem>
   );
 }
 
-export function PostTotalCount({ total, icon = false, ...props }) {
+export function TotalPosts({ total, icon = false, ...props }) {
   const formattedNumber = formatNumber(total);
   const formattedTotal = `${formattedNumber} articles`;
 
   return (
-    <Box
-      alignItems="center"
-      gap={6}
-      css={{ color: "$foregroundMuted" }}
-      {...props}
-    >
+    <FrontmatterItem>
       {icon ? <Pencil2Icon width={ICON_SIZE.l} height={ICON_SIZE.l} /> : null}
-      <TextHeadline color="secondary">{formattedTotal}</TextHeadline>
-    </Box>
+      <TextHeadline textTransform="capitalize">{formattedTotal}</TextHeadline>
+    </FrontmatterItem>
   );
 }
 
-export function PostCategoriesCount({ total, icon = false, ...props }) {
+export function TotalCategories({ total, icon = false, ...props }) {
   const formattedNumber = formatNumber(total);
   const formattedTotal = `${formattedNumber} categories`;
 
   return (
-    <Box
-      alignItems="center"
-      gap={6}
-      css={{ color: "$foregroundMuted" }}
-      {...props}
-    >
+    <FrontmatterItem>
       {icon ? <MixIcon width={ICON_SIZE.l} height={ICON_SIZE.l} /> : null}
-      <TextHeadline color="secondary">{formattedTotal}</TextHeadline>
-    </Box>
+      <TextHeadline textTransform="capitalize">{formattedTotal}</TextHeadline>
+    </FrontmatterItem>
   );
 }

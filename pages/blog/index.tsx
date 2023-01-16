@@ -3,15 +3,10 @@ import { GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import * as Collapsible from "@radix-ui/react-collapsible";
-import {
-  ChevronUpIcon,
-  Cross2Icon,
-  DropdownMenuIcon,
-} from "@radix-ui/react-icons";
 import { BlogCard } from "../../components/Card";
-import { Box, Layout } from "../../components/Layout";
+import { ActionButtons, Box, Layout } from "../../components/Layout";
 import { TagToggle } from "../../components/Tags";
-import { TextAux, TextTitle1, TextTitle2 } from "../../components/Text";
+import { TextTitle1, TextTitle2 } from "../../components/Text";
 import { styled } from "../../stitches.config";
 import { BlogPost, Tag } from "../../types/notion";
 import {
@@ -24,14 +19,13 @@ import { createPosts, generateRSSFeed, getPosts } from "../../lib/notion";
 import { Divider } from "../../components/Divider";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import Image from "next/image";
-import { StyledIconButton } from "../../components/Button";
-import { BlogSubscribeLink, StyledIconLink } from "../../components/Link";
-import getConfig from "next/config";
-import { ICON_SIZE } from "../../util/images";
+import { FilterClearButton, FilterMenuButton } from "../../components/Button";
+import { BlogSubscribeLink } from "../../components/Link";
 import {
-  PostCategoriesCount,
-  PostTotalCount,
-  PostActiveTags,
+  TotalCategories,
+  TotalPosts,
+  ActiveTags,
+  Frontmatter,
 } from "../../components/Frontmatter";
 import banner from "../../public/images/blog.jpg";
 
@@ -92,19 +86,11 @@ export const getStaticProps: GetStaticProps = async () => {
 function Blog({ posts, tags }: Props) {
   const { pathname, push, query } = useRouter();
   const [isFiltersOpen, setIsFiltersOpen] = useState(false);
-
   const queryTags = getQueryTags(query);
-
   const filteredPosts = filterPosts(posts, queryTags);
 
   function handleTagChange(tagName: string[]) {
     push({ pathname, query: { ...query, tag: tagName } }, undefined, {
-      scroll: false,
-    });
-  }
-
-  function handleFilterClear() {
-    push({ pathname }, undefined, {
       scroll: false,
     });
   }
@@ -159,64 +145,19 @@ function Blog({ posts, tags }: Props) {
               </Box>
 
               <Box justifyContent="space-between" alignItems="flex-end">
-                <Box as="ul" role="list" direction="vertical" gap={6} flexGrow>
-                  <PostTotalCount total={posts.length} icon />
-                  <PostCategoriesCount total={tags.length} icon />
-                  <PostActiveTags tags={tags} queryTags={queryTags} icon />
-                </Box>
+                <Frontmatter flexGrow>
+                  <TotalPosts total={posts.length} icon />
+                  <TotalCategories total={tags.length} icon />
+                  <ActiveTags tags={tags} queryTags={queryTags} icon />
+                </Frontmatter>
 
-                <Box
-                  direction={{ "@initial": "vertical", "@bp2": "horizontal" }}
-                  gap={4}
-                  justifyContent={{
-                    "@initial": "flex-end",
-                    "@bp2": "flex-end",
-                  }}
-                  alignItems={{ "@initial": "flex-end", "@bp2": "center" }}
-                >
-                  {queryTags.length ? (
-                    <StyledIconLink
-                      href={{ pathname: "blog" }}
-                      title="Clear Filters"
-                      nextLinkProps={{ scroll: false }}
-                    >
-                      <VisuallyHidden.Root>
-                        <TextAux>Clear filters</TextAux>
-                      </VisuallyHidden.Root>
-                      <Cross2Icon width={ICON_SIZE.m} height={ICON_SIZE.m} />
-                    </StyledIconLink>
-                  ) : null}
+                <ActionButtons>
+                  <FilterClearButton filters={queryTags} />
 
                   <Collapsible.Trigger asChild>
-                    <StyledIconButton
-                      title={
-                        isFiltersOpen ? "Collapse Filters" : "Expand Filters"
-                      }
-                    >
-                      {isFiltersOpen ? (
-                        <>
-                          <VisuallyHidden.Root>
-                            <TextAux>Close filter menu</TextAux>
-                          </VisuallyHidden.Root>
-                          <ChevronUpIcon
-                            width={ICON_SIZE.m}
-                            height={ICON_SIZE.m}
-                          />
-                        </>
-                      ) : (
-                        <>
-                          <VisuallyHidden.Root>
-                            <TextAux>Open filter menu</TextAux>
-                          </VisuallyHidden.Root>
-                          <DropdownMenuIcon
-                            width={ICON_SIZE.m}
-                            height={ICON_SIZE.m}
-                          />
-                        </>
-                      )}
-                    </StyledIconButton>
+                    <FilterMenuButton open={isFiltersOpen} />
                   </Collapsible.Trigger>
-                </Box>
+                </ActionButtons>
               </Box>
             </Box>
 

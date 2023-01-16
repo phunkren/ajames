@@ -33,7 +33,7 @@ export default function MyApp({ Component, pageProps }) {
         h2,
         h3 {
           font-family: ${rubik.style.fontFamily};
-          font-weight: 500;
+          font-weight: 400;
         }
       `}</style>
 
@@ -47,7 +47,7 @@ export default function MyApp({ Component, pageProps }) {
       <style jsx global>{`
         code {
           font-family: ${firaCode.style.fontFamily};
-          font-weight: 400;
+          font-weight: 500;
         }
       `}</style>
 

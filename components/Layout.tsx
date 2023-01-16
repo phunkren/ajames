@@ -45,6 +45,21 @@ export function Box(props) {
   return <StyledBox {...props} />;
 }
 
+export function ActionButtons(props) {
+  return (
+    <Box
+      direction={{ "@initial": "vertical", "@bp2": "horizontal" }}
+      gap={4}
+      justifyContent={{
+        "@initial": "flex-end",
+        "@bp2": "flex-end",
+      }}
+      alignItems={{ "@initial": "flex-end", "@bp2": "center" }}
+      {...props}
+    />
+  );
+}
+
 export function RootLayout({ children }) {
   const { theme } = useTheme();
 
