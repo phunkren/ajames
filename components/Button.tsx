@@ -33,11 +33,10 @@ import {
   ButtonProps,
   FilterClearProps,
   FilterMenuProps,
-  IconButtonProps,
   ShareButtonProps,
 } from "../types/button";
 
-export const StyledButton = styled("button", {
+const StyledButton = styled("button", {
   display: "inline-flex",
   alignItems: "center",
   justifyContent: "center",
@@ -72,7 +71,7 @@ export const StyledIconButton = styled(Button, {
   alignItems: "center",
   justifyContent: "center",
   borderRadius: "50%",
-  padding: "$2",
+  spacing: "$2",
   borderWidth: 2,
   borderStyle: "solid",
   borderColor: "$foregroundMuted",
@@ -104,9 +103,9 @@ const StyledToastViewport = styled(Toast.Viewport, {
   maxWidth: "100vw",
   margin: 0,
   listStyle: "none",
+  zIndex: 2147483647,
   outline: "none",
   transform: "translateX(50%)",
-  zIndex: "$2",
 });
 
 const StyledToastRoot = styled(Toast.Root, {
@@ -303,7 +302,7 @@ export const PreviewToggle = memo(function PreviewToggle({
   );
 });
 
-export const PrintButton = memo(function PrintButton(props: IconButtonProps) {
+export const PrintButton = memo(function PrintButton(props) {
   const handleClick = useCallback(() => {
     window.print();
   }, []);

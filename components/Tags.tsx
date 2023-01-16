@@ -1,9 +1,12 @@
 import * as ToggleGroup from "@radix-ui/react-toggle-group";
-import { memo } from "react";
 import { styled } from "../stitches.config";
 import { NOTION_TAG_VARIANTS } from "../styles/tag";
-import { TagProps } from "../types/tag";
+import { Tag } from "../types/notion";
 import { TextAux } from "./Text";
+
+type Props = ToggleGroup.ToggleGroupMultipleProps & {
+  tags: Tag[];
+};
 
 const ToggleGroupRoot = styled(ToggleGroup.Root, {
   display: "grid",
@@ -12,8 +15,7 @@ const ToggleGroupRoot = styled(ToggleGroup.Root, {
   gridColumnGap: "$2",
   gridRowGap: "$2",
   width: "100%",
-  paddingTop: "$10",
-  paddingBottom: "$10",
+  spacingVertical: "$10",
 
   "@bp2": {
     gridTemplateColumns: "repeat(3, 1fr)",
@@ -56,7 +58,7 @@ const ToggleGroupItem = styled(ToggleGroup.Item, {
   },
 });
 
-export const TagToggle = memo(function TagToggle({ tags, ...props }: TagProps) {
+export function TagToggle({ tags, ...props }: Props) {
   return (
     <ToggleGroupRoot
       aria-label="Blog tag toggle"
@@ -65,11 +67,11 @@ export const TagToggle = memo(function TagToggle({ tags, ...props }: TagProps) {
     >
       {tags.map((tag) => (
         <ToggleGroupItem key={tag.id} value={tag.name} borderColor={tag.color}>
-          <TextAux>
+          <TextAux textTransform="uppercase">
             {tag.name} ({tag.count})
           </TextAux>
         </ToggleGroupItem>
       ))}
     </ToggleGroupRoot>
   );
-});
+}

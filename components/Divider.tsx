@@ -1,6 +1,6 @@
-import { memo } from "react";
 import * as Separator from "@radix-ui/react-separator";
-import { CSS, styled } from "../stitches.config";
+import { memo } from "react";
+import { styled } from "../stitches.config";
 
 const StyledSeparator = styled(Separator.Root, {
   backgroundColor: "$foregroundMuted",
@@ -11,8 +11,6 @@ const StyledSeparator = styled(Separator.Root, {
   "&[data-orientation=vertical]": { height: "100%", width: 2 },
 });
 
-export const Divider = memo(function Divider(
-  props: Separator.SeparatorProps & CSS
-) {
+export const Divider = memo(function Divider(props: Separator.SeparatorProps) {
   return <StyledSeparator orientation="horizontal" decorative {...props} />;
 });

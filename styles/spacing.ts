@@ -1,254 +1,252 @@
-import { CSS } from "../stitches.config";
-
 export const SPACING_UTILS = {
-  spacing: (value: number) => ({
-    padding: `$space$${value}`,
+  spacing: (value: string) => ({
+    padding: value,
   }),
-  spacingHorizontal: (value: number) => ({
-    paddingLeft: `$space$${value}`,
-    paddingRight: `$space$${value}`,
+  spacingHorizontal: (value: string) => ({
+    paddingLeft: value,
+    paddingRight: value,
   }),
-  spacingVertical: (value: number) => ({
-    paddingTop: `$space$${value}`,
-    paddingBottom: `$space$${value}`,
+  spacingVertical: (value: string) => ({
+    paddingTop: value,
+    paddingBottom: value,
   }),
-  spacingTop: (value: number) => ({
-    paddingTop: `$space$${value}`,
+  spacingTop: (value: string) => ({
+    paddingTop: value,
   }),
-  spacingRight: (value: number) => ({
-    paddingRight: `$space$${value}`,
+  spacingRight: (value: string) => ({
+    paddingRight: value,
   }),
-  spacingBottom: (value: number) => ({
-    paddingBottom: `$space$${value}`,
+  spacingBottom: (value: string) => ({
+    paddingBottom: value,
   }),
-  spacingLeft: (value: number) => ({
-    paddingLeft: `$space$${value}`,
+  spacingLeft: (value: string) => ({
+    paddingLeft: value,
   }),
 };
 
 export const SPACING_VARIANTS = {
   spacing: {
     [1]: {
-      spacing: 1,
+      spacing: "$space$1",
     },
     [2]: {
-      spacing: 2,
+      spacing: "$space$2",
     },
     [3]: {
-      spacing: 3,
+      spacing: "$space$3",
     },
     [4]: {
-      spacing: 4,
+      spacing: "$space$4",
     },
     [5]: {
-      spacing: 5,
+      spacing: "$space$5",
     },
     [6]: {
-      spacing: 6,
+      spacing: "$space$6",
     },
     [7]: {
-      spacing: 7,
+      spacing: "$space$7",
     },
     [8]: {
-      spacing: 8,
+      spacing: "$space$8",
     },
     [9]: {
-      spacing: 9,
+      spacing: "$space$9",
     },
     [10]: {
-      spacing: 10,
+      spacing: "$space$10",
     },
   },
   spacingHorizontal: {
     [1]: {
-      spacingHorizontal: 1,
+      spacingHorizontal: "$space$1",
     },
     [2]: {
-      spacingHorizontal: 2,
+      spacingHorizontal: "$space$2",
     },
     [3]: {
-      spacingHorizontal: 3,
+      spacingHorizontal: "$space$3",
     },
     [4]: {
-      spacingHorizontal: 4,
+      spacingHorizontal: "$space$4",
     },
     [5]: {
-      spacingHorizontal: 5,
+      spacingHorizontal: "$space$5",
     },
     [6]: {
-      spacingHorizontal: 6,
+      spacingHorizontal: "$space$6",
     },
     [7]: {
-      spacingHorizontal: 7,
+      spacingHorizontal: "$space$7",
     },
     [8]: {
-      spacingHorizontal: 8,
+      spacingHorizontal: "$space$8",
     },
     [9]: {
-      spacingHorizontal: 9,
+      spacingHorizontal: "$space$9",
     },
     [10]: {
-      spacingHorizontal: 10,
+      spacingHorizontal: "$space$10",
     },
   },
   spacingVertical: {
     [1]: {
-      spacingVertical: 1,
+      spacingVertical: "$space$1",
     },
     [2]: {
-      spacingVertical: 2,
+      spacingVertical: "$space$2",
     },
     [3]: {
-      spacingVertical: 3,
+      spacingVertical: "$space$3",
     },
     [4]: {
-      spacingVertical: 4,
+      spacingVertical: "$space$4",
     },
     [5]: {
-      spacingVertical: 5,
+      spacingVertical: "$space$5",
     },
     [6]: {
-      spacingVertical: 6,
+      spacingVertical: "$space$6",
     },
     [7]: {
-      spacingVertical: 7,
+      spacingVertical: "$space$7",
     },
     [8]: {
-      spacingVertical: 8,
+      spacingVertical: "$space$8",
     },
     [9]: {
-      spacingVertical: 9,
+      spacingVertical: "$space$9",
     },
     [10]: {
-      spacingVertical: 10,
+      spacingVertical: "$space$10",
     },
   },
   spacingTop: {
     [1]: {
-      spacingTop: 1,
+      spacingTop: "$space$1",
     },
     [2]: {
-      spacingTop: 2,
+      spacingTop: "$space$2",
     },
     [3]: {
-      spacingTop: 3,
+      spacingTop: "$space$3",
     },
     [4]: {
-      spacingTop: 4,
+      spacingTop: "$space$4",
     },
     [5]: {
-      spacingTop: 5,
+      spacingTop: "$space$5",
     },
     [6]: {
-      spacingTop: 6,
+      spacingTop: "$space$6",
     },
     [7]: {
-      spacingTop: 7,
+      spacingTop: "$space$7",
     },
     [8]: {
-      spacingTop: 8,
+      spacingTop: "$space$8",
     },
     [9]: {
-      spacingTop: 9,
+      spacingTop: "$space$9",
     },
     [10]: {
-      spacingTop: 10,
+      spacingTop: "$space$10",
     },
   },
   spacingRight: {
     [1]: {
-      spacingRight: 1,
+      spacingRight: "$space$1",
     },
     [2]: {
-      spacingRight: 2,
+      spacingRight: "$space$2",
     },
     [3]: {
-      spacingRight: 3,
+      spacingRight: "$space$3",
     },
     [4]: {
-      spacingRight: 4,
+      spacingRight: "$space$4",
     },
     [5]: {
-      spacingRight: 5,
+      spacingRight: "$space$5",
     },
     [6]: {
-      spacingRight: 6,
+      spacingRight: "$space$6",
     },
     [7]: {
-      spacingRight: 7,
+      spacingRight: "$space$7",
     },
     [8]: {
-      spacingRight: 8,
+      spacingRight: "$space$8",
     },
     [9]: {
-      spacingRight: 9,
+      spacingRight: "$space$9",
     },
     [10]: {
-      spacingRight: 10,
+      spacingRight: "$space$10",
     },
   },
   spacingBottom: {
     [1]: {
-      spacingBottom: 1,
+      spacingBottom: "$space$1",
     },
     [2]: {
-      spacingBottom: 2,
+      spacingBottom: "$space$2",
     },
     [3]: {
-      spacingBottom: 3,
+      spacingBottom: "$space$3",
     },
     [4]: {
-      spacingBottom: 4,
+      spacingBottom: "$space$4",
     },
     [5]: {
-      spacingBottom: 5,
+      spacingBottom: "$space$5",
     },
     [6]: {
-      spacingBottom: 6,
+      spacingBottom: "$space$6",
     },
     [7]: {
-      spacingBottom: 7,
+      spacingBottom: "$space$7",
     },
     [8]: {
-      spacingBottom: 8,
+      spacingBottom: "$space$8",
     },
     [9]: {
-      spacingBottom: 9,
+      spacingBottom: "$space$9",
     },
     [10]: {
-      spacingBottom: 10,
+      spacingBottom: "$space$10",
     },
   },
   spacingLeft: {
     [1]: {
-      spacingLeft: 1,
+      spacingLeft: "$space$1",
     },
     [2]: {
-      spacingLeft: 2,
+      spacingLeft: "$space$2",
     },
     [3]: {
-      spacingLeft: 3,
+      spacingLeft: "$space$3",
     },
     [4]: {
-      spacingLeft: 4,
+      spacingLeft: "$space$4",
     },
     [5]: {
-      spacingLeft: 5,
+      spacingLeft: "$space$5",
     },
     [6]: {
-      spacingLeft: 6,
+      spacingLeft: "$space$6",
     },
     [7]: {
-      spacingLeft: 7,
+      spacingLeft: "$space$7",
     },
     [8]: {
-      spacingLeft: 8,
+      spacingLeft: "$space$8",
     },
     [9]: {
-      spacingLeft: 9,
+      spacingLeft: "$space$9",
     },
     [10]: {
-      spacingLeft: 10,
+      spacingLeft: "$space$10",
     },
   },
 };

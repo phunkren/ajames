@@ -1,5 +1,3 @@
-import { memo } from "react";
-import { useRouter } from "next/router";
 import {
   AvatarIcon,
   CalendarIcon,
@@ -11,21 +9,27 @@ import {
   VideoIcon,
 } from "@radix-ui/react-icons";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
-import {
-  ActiveTagsProps,
-  FrontmatterProps,
-  PostTagProps,
-  PublishProps,
-  TotalProps,
-} from "../types/frontmatter";
+import { useRouter } from "next/router";
 import { styled } from "../stitches.config";
 import { NOTION_TAG_VARIANTS } from "../styles/tag";
+import { Tag } from "../types/notion";
 import { formatShortDate } from "../util/date";
 import { ICON_SIZE } from "../util/images";
 import { formatNumber } from "../util/number";
-import { formatTotalTime, getQueryTags } from "../util/posts";
+import { formatReadingTime, getQueryTags } from "../util/posts";
 import { Box } from "./Layout";
 import { TextAux, TextHeadline } from "./Text";
+
+type PostTagProps = {
+  tags: Tag[];
+  icon?: boolean;
+};
+
+type ActiveTagsProps = {
+  tags: Tag[];
+  queryTags: string[];
+  icon?: boolean;
+};
 
 const StyledTag = styled(Box, {
   padding: "0 $2",
@@ -53,7 +57,7 @@ export const StyledFilterTag = styled(StyledTag, {
   },
 });
 
-export const Frontmatter = memo(function Frontmatter(props: FrontmatterProps) {
+export function Frontmatter(props) {
   return (
     <Box
       as="ul"
@@ -64,19 +68,13 @@ export const Frontmatter = memo(function Frontmatter(props: FrontmatterProps) {
       {...props}
     />
   );
-});
+}
 
-export const FrontmatterItem = memo(function FrontmatterItem(
-  props: FrontmatterProps
-) {
+export function FrontmatterItem(props) {
   return <Box as="li" gap={6} alignItems="center" {...props} />;
-});
+}
 
-export const PostTags = memo(function PostTags({
-  tags,
-  icon = false,
-  ...props
-}: PostTagProps) {
+export function PostTags({ tags, icon = false, ...props }: PostTagProps) {
   const { query } = useRouter();
   const queryTags = getQueryTags(query);
 
@@ -113,9 +111,9 @@ export const PostTags = memo(function PostTags({
       </Box>
     </FrontmatterItem>
   );
-});
+}
 
-export const ActiveTags = memo(function ActiveTags({
+export function ActiveTags({
   tags,
   queryTags,
   icon = false,
@@ -124,7 +122,7 @@ export const ActiveTags = memo(function ActiveTags({
   const activeTags = tags.filter((tag) => queryTags.includes(tag.name));
 
   return (
-    <FrontmatterItem {...props}>
+    <FrontmatterItem>
       {icon ? (
         <Box alignItems="flex-start" justify-content="center">
           <VisuallyHidden.Root>Tags</VisuallyHidden.Root>
@@ -147,20 +145,15 @@ export const ActiveTags = memo(function ActiveTags({
       )}
     </FrontmatterItem>
   );
-});
+}
 
-export const PublishDate = memo(function PublishDate({
-  date,
-  icon = false,
-  compact = false,
-  ...props
-}: PublishProps) {
+export function PublishDate({ date, icon = false, compact = false, ...props }) {
   const dateObject = new Date(date);
   const formattedDate = formatShortDate(dateObject);
 
   if (compact) {
     return (
-      <FrontmatterItem {...props}>
+      <FrontmatterItem>
         {icon ? (
           <CalendarIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
         ) : null}
@@ -173,7 +166,7 @@ export const PublishDate = memo(function PublishDate({
   }
 
   return (
-    <FrontmatterItem {...props}>
+    <FrontmatterItem>
       {icon ? <CalendarIcon width={ICON_SIZE.l} height={ICON_SIZE.l} /> : null}
 
       <TextHeadline as="time" dateTime={dateObject.toISOString()}>
@@ -181,101 +174,77 @@ export const PublishDate = memo(function PublishDate({
       </TextHeadline>
     </FrontmatterItem>
   );
-});
+}
 
-export const TotalTime = memo(function TotalTime({
-  total,
-  icon = false,
-  ...props
-}: TotalProps) {
-  const formattedTime = formatTotalTime(total);
+export function ReadingTime({ time, icon = false, ...props }) {
+  const formattedTime = formatReadingTime(time);
 
   return (
-    <FrontmatterItem {...props}>
+    <FrontmatterItem>
       {icon ? <ClockIcon width={ICON_SIZE.l} height={ICON_SIZE.l} /> : null}
       <TextHeadline textTransform="capitalize">{formattedTime}</TextHeadline>
     </FrontmatterItem>
   );
-});
+}
 
-export const TotalSubscribers = memo(function TotalSubscribers({
-  total,
-  icon = false,
-  ...props
-}: TotalProps) {
-  const formattedNumber = formatNumber(total);
+export function SubscriberCount({ subscribers, icon = false, ...props }) {
+  const formattedNumber = formatNumber(subscribers);
   const formattedSubscribers = `${formattedNumber} subscribers`;
 
   return (
-    <FrontmatterItem {...props}>
+    <FrontmatterItem>
       {icon ? <AvatarIcon width={ICON_SIZE.l} height={ICON_SIZE.l} /> : null}
       <TextHeadline textTransform="capitalize">
         {formattedSubscribers}
       </TextHeadline>
     </FrontmatterItem>
   );
-});
+}
 
-export const TotalViews = memo(function TotalViews({
-  total,
-  icon = false,
-  ...props
-}: TotalProps) {
-  const formattedNumber = formatNumber(total);
+export function VideosViewsCount({ views, icon = false, ...props }) {
+  const formattedNumber = formatNumber(views);
   const formattedViews = `${formattedNumber} total views`;
 
   return (
-    <FrontmatterItem {...props}>
+    <FrontmatterItem>
       {icon ? <EyeOpenIcon width={ICON_SIZE.l} height={ICON_SIZE.l} /> : null}
       <TextHeadline textTransform="capitalize">{formattedViews}</TextHeadline>
     </FrontmatterItem>
   );
-});
+}
 
-export const TotalVideos = memo(function TotalVideos({
-  total,
-  icon = false,
-  ...props
-}: TotalProps) {
+export function VideosTotalCount({ total, icon = false, ...props }) {
   const formattedNumber = formatNumber(total);
   const formattedTotal = `${formattedNumber} videos`;
 
   return (
-    <FrontmatterItem {...props}>
+    <FrontmatterItem>
       {icon ? <VideoIcon width={ICON_SIZE.l} height={ICON_SIZE.l} /> : null}
       <TextHeadline textTransform="capitalize">{formattedTotal}</TextHeadline>
     </FrontmatterItem>
   );
-});
+}
 
-export const TotalPosts = memo(function TotalPosts({
-  total,
-  icon = false,
-  ...props
-}: TotalProps) {
+export function TotalPosts({ total, icon = false, ...props }) {
   const formattedNumber = formatNumber(total);
   const formattedTotal = `${formattedNumber} articles`;
 
   return (
-    <FrontmatterItem {...props}>
+    <FrontmatterItem>
       {icon ? <Pencil2Icon width={ICON_SIZE.l} height={ICON_SIZE.l} /> : null}
       <TextHeadline textTransform="capitalize">{formattedTotal}</TextHeadline>
     </FrontmatterItem>
   );
-});
+}
 
-export const TotalCategories = memo(function TotalCategories({
-  total,
-  icon = false,
-  ...props
-}: TotalProps) {
+export function TotalCategories({ total, icon = false, ...props }) {
   const formattedNumber = formatNumber(total);
   const formattedTotal = `${formattedNumber} categories`;
 
   return (
-    <FrontmatterItem {...props}>
+    <FrontmatterItem>
       {icon ? <MixIcon width={ICON_SIZE.l} height={ICON_SIZE.l} /> : null}
       <TextHeadline textTransform="capitalize">{formattedTotal}</TextHeadline>
     </FrontmatterItem>
   );
-});
+}

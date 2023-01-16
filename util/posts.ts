@@ -49,7 +49,7 @@ export function sortPosts(posts: BlogPost[]) {
   });
 }
 
-export function formatTotalTime(time: number) {
+export function formatReadingTime(time: number) {
   const roundedTime = Math.ceil(time);
 
   if (!time) {

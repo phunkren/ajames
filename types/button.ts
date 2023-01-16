@@ -1,10 +1,7 @@
-import { ComponentProps } from "react";
-import { StyledButton, StyledIconButton } from "../components/Button";
+import { ButtonHTMLAttributes } from "react";
 import { CSS } from "../stitches.config";
 
-export type ButtonProps = ComponentProps<typeof StyledButton> & CSS;
-
-export type IconButtonProps = ComponentProps<typeof StyledIconButton> & CSS;
+export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & CSS;
 
 export type ShareButtonProps = ButtonProps & {
   url: string;
@@ -13,10 +10,10 @@ export type ShareButtonProps = ButtonProps & {
   variant?: string;
 };
 
-export type FilterClearProps = IconButtonProps & {
+export type FilterClearProps = ButtonProps & {
   filters: string[];
 };
 
-export type FilterMenuProps = IconButtonProps & {
+export type FilterMenuProps = ButtonProps & {
   open: boolean;
 };

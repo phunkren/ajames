@@ -1,9 +1,8 @@
-import { memo } from "react";
+import { Slot } from "@radix-ui/react-slot";
+import { ReactElement } from "react";
 import { styled } from "../stitches.config";
-import { EmojiProps } from "../types/text";
 import {
   AUX_STYLES,
-  EMOJI_VARIANTS,
   H1_STYLES,
   H2_STYLES,
   H3_STYLES,
@@ -11,42 +10,41 @@ import {
   TEXT_VARIANTS,
 } from "../styles/text";
 
+type Props = {
+  asChild?: boolean;
+  children: ReactElement;
+};
+
 export const TextTitle1 = styled("h1", {
   ...H1_STYLES,
-  variants: { ...TEXT_VARIANTS },
+  ...TEXT_VARIANTS,
 });
 
 export const TextTitle2 = styled("h2", {
   ...H2_STYLES,
-  variants: { ...TEXT_VARIANTS },
+  ...TEXT_VARIANTS,
 });
 
 export const TextTitle3 = styled("h3", {
   ...H3_STYLES,
-  variants: { ...TEXT_VARIANTS },
+  ...TEXT_VARIANTS,
 });
 
 export const TextBody = styled("p", {
   ...P_STYLES,
-  variants: { ...TEXT_VARIANTS },
+  ...TEXT_VARIANTS,
 });
 
 export const TextHeadline = styled("span", {
   fontWeight: 500,
   ...P_STYLES,
-
-  variants: {
-    ...TEXT_VARIANTS,
-  },
+  ...TEXT_VARIANTS,
 });
 
 export const TextAux = styled("span", {
   fontWeight: 500,
   ...AUX_STYLES,
-
-  variants: {
-    ...TEXT_VARIANTS,
-  },
+  ...TEXT_VARIANTS,
 });
 
 const StyledEmoji = styled("span", {
@@ -56,14 +54,21 @@ const StyledEmoji = styled("span", {
   textShadow: "$textShadow",
 
   variants: {
-    ...EMOJI_VARIANTS,
+    size: {
+      s: {
+        fontSize: 24,
+      },
+      l: {
+        fontSize: 64,
+      },
+    },
   },
 });
 
-export const Emoji = memo(function Emoji({ emoji, ...props }: EmojiProps) {
+export function Emoji({ emoji, ...props }) {
   return (
     <StyledEmoji aria-hidden {...props}>
       {emoji}
     </StyledEmoji>
   );
-});
+}

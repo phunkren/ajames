@@ -1,17 +1,20 @@
 import { Html, Head, Main, NextScript } from "next/document";
-import { RootSEO } from "../components/SEO";
-import { useTheme } from "../hooks/useTheme";
+import { getCssText } from "../stitches.config";
 
 export default function Document() {
-  const { theme } = useTheme();
-
   return (
     <Html lang="en">
       <Head>
-        <RootSEO />
+        <meta name="robots" content="index,follow" />
+        <meta name="generator" content="Next.js" />
+
+        <style
+          id="stitches"
+          dangerouslySetInnerHTML={{ __html: getCssText() }}
+        />
       </Head>
 
-      <body className={theme}>
+      <body>
         <Main />
         <NextScript />
       </body>

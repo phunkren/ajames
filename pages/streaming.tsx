@@ -12,9 +12,9 @@ import { Divider } from "../components/Divider";
 import {
   Frontmatter,
   PublishDate,
-  TotalSubscribers,
-  TotalVideos,
-  TotalViews,
+  SubscriberCount,
+  VideosTotalCount,
+  VideosViewsCount,
 } from "../components/Frontmatter";
 import { Layout, Box, ActionButtons } from "../components/Layout";
 import {
@@ -217,12 +217,18 @@ function Streaming({
 
                 <Box alignItems="flex-end">
                   <Frontmatter>
-                    <TotalViews views={channelInfoPreview.viewCount} icon />
-                    <TotalSubscribers
+                    <VideosViewsCount
+                      views={channelInfoPreview.viewCount}
+                      icon
+                    />
+                    <SubscriberCount
                       subscribers={channelInfoPreview.subscriberCount}
                       icon
                     />
-                    <TotalVideos total={channelInfoPreview.videoCount} icon />
+                    <VideosTotalCount
+                      total={channelInfoPreview.videoCount}
+                      icon
+                    />
                   </Frontmatter>
 
                   <ActionButtons css={{ width: "auto" }}>
@@ -314,7 +320,15 @@ function Streaming({
                       spacingBottom={6}
                     />
 
-                    <TextBody textAlign="justify" clamp={3}>
+                    <TextBody
+                      css={{
+                        display: "-webkit-box",
+                        ["-webkit-line-clamp"]: "3",
+                        ["-webkit-box-orient"]: "vertical",
+                        overflow: "hidden",
+                        textAlign: "justify",
+                      }}
+                    >
                       {videoPreview.description}
                     </TextBody>
 
