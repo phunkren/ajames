@@ -71,14 +71,6 @@ const DarkToggle = styled(ToggleGroupItem, {
   },
 });
 
-const getSystemTheme = () => {
-  const systemPrefersDark = window.matchMedia?.(
-    `(prefers-color-scheme: ${Theme.DARK})`
-  ).matches;
-
-  return systemPrefersDark ? Theme.DARK : Theme.LIGHT;
-};
-
 // Create the theme provider component
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [storageTheme, setStorageTheme] = useLocalStorage<Theme>("theme");

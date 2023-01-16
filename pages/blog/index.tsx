@@ -20,7 +20,7 @@ import { Divider } from "../../components/Divider";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import Image from "next/image";
 import { FilterClearButton, FilterMenuButton } from "../../components/Button";
-import { BlogSubscribeLink } from "../../components/Link";
+import { RssSubscribeLink } from "../../components/Link";
 import {
   TotalCategories,
   TotalPosts,
@@ -133,12 +133,12 @@ function Blog({ posts, tags }: Props) {
             <Box direction="vertical" gap={10} spacingBottom={10}>
               <Box justifyContent="space-between" alignItems="center">
                 <TextTitle2>Blog</TextTitle2>
-                <BlogSubscribeLink
+                <RssSubscribeLink
                   type="icon"
                   css={{ display: "flex", "@bp2": { display: "none" } }}
                 />
 
-                <BlogSubscribeLink
+                <RssSubscribeLink
                   type="button"
                   css={{ display: "none", "@bp2": { display: "flex" } }}
                 />

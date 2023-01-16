@@ -1,15 +1,15 @@
-import { memo, useRef, useState } from "react";
+import { memo, useRef, useState, MouseEvent } from "react";
 import Image from "next/image";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 import { blackA, whiteA } from "@radix-ui/colors";
+import { BlogCardProps, CardProps, VideoCardProps } from "../types/card";
 import { darkTheme, lightTheme, styled } from "../stitches.config";
+import { BLUR_DATA_URL } from "../util/images";
 import { PostTags, PublishDate } from "./Frontmatter";
 import { Box } from "./Layout";
 import { Emoji, TextAux, TextHeadline, TextTitle3 } from "./Text";
 import { Link } from "./Link";
-import { BlogCardProps, CardProps, VideoCardProps } from "../types/card";
 import { PreviewToggle } from "./Button";
-import { BLUR_DATA_URL } from "../util/images";
 
 const StyledCardOuter = styled(Box, {
   display: "flex",
@@ -77,7 +77,6 @@ const StyledCardInner = styled(Box, {
   borderBottomRightRadius: 4,
   borderBottomLeftRadius: 4,
   borderColor: "$background",
-  zIndex: 5,
 });
 
 const StyledImage = styled(Image, {
@@ -117,7 +116,7 @@ export const Card = memo(function Card({
     onPreviewToggle: handlePreviewToggle,
   };
 
-  function handleClick(e) {
+  function handleClick(e: MouseEvent<HTMLDivElement>) {
     e.stopPropagation();
 
     if (e.ctrlKey) {
@@ -191,9 +190,10 @@ export const BlogCard = memo(function BlogCard({
   image,
   emoji,
   tags,
+  ...props
 }: BlogCardProps) {
   return (
-    <Card image={image}>
+    <Card image={image} {...props}>
       {({ ref, isPreviewVisible, onPreviewToggle }) => (
         <>
           <StyledBlogContent
@@ -212,26 +212,15 @@ export const BlogCard = memo(function BlogCard({
             <StyledLink href={url} ref={ref}>
               {isPreviewVisible ? (
                 <TextAux
+                  clamp={4}
                   css={{
                     lineHeight: 1.75,
-                    display: "-webkit-box",
-                    ["-webkit-line-clamp"]: "4",
-                    ["-webkit-box-orient"]: "vertical",
-                    overflow: "hidden",
                   }}
                 >
                   {description}
                 </TextAux>
               ) : (
-                <TextTitle3
-                  id={url}
-                  css={{
-                    display: "-webkit-box",
-                    ["-webkit-line-clamp"]: "3",
-                    ["-webkit-box-orient"]: "vertical",
-                    overflow: "hidden",
-                  }}
-                >
+                <TextTitle3 id={url} clamp={3}>
                   {title}
                 </TextTitle3>
               )}
@@ -254,7 +243,7 @@ export const BlogCard = memo(function BlogCard({
                   height: 44,
                   background: "transparent",
                   position: "absolute",
-                  zIndex: 0,
+                  zIndex: "$1",
                 },
               }}
               title="View description"
@@ -287,27 +276,9 @@ export const VideoCard = memo(function VideoCard({
         >
           <StyledLink href={url} ref={ref} variant="secondary">
             {isPreviewVisible ? (
-              <TextAux
-                css={{
-                  display: "-webkit-box",
-                  ["-webkit-line-clamp"]: "4",
-                  ["-webkit-box-orient"]: "vertical",
-                  overflow: "hidden",
-                }}
-              >
-                {description}
-              </TextAux>
+              <TextAux clamp={4}>{description}</TextAux>
             ) : (
-              <TextHeadline
-                css={{
-                  display: "-webkit-box",
-                  ["-webkit-line-clamp"]: "3",
-                  ["-webkit-box-orient"]: "vertical",
-                  overflow: "hidden",
-                }}
-              >
-                {title}
-              </TextHeadline>
+              <TextHeadline clamp={3}>{title}</TextHeadline>
             )}
           </StyledLink>
 
@@ -329,7 +300,7 @@ export const VideoCard = memo(function VideoCard({
                     height: 44,
                     background: "transparent",
                     position: "absolute",
-                    zIndex: 0,
+                    zIndex: "$0",
                   },
                 }}
                 title="View description"

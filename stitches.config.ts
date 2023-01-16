@@ -1,4 +1,4 @@
-import { createStitches } from "@stitches/react";
+import * as Stitches from "@stitches/react";
 import {
   gray,
   blue,
@@ -52,7 +52,7 @@ export const {
   theme,
   createTheme,
   config,
-} = createStitches({
+} = Stitches.createStitches({
   theme: {
     space: {
       1: "4px",
@@ -73,6 +73,14 @@ export const {
       4: `0px 2px 4px -1px ${blackA.blackA6}, 0px 4px 5px 0px ${blackA.blackA7}, 0px 1px 10px 0px ${blackA.blackA8}`, // :hover
       5: `0px 3px 5px -1px ${blackA.blackA6}, 0px 5px 8px 0px ${blackA.blackA7}, 0px 1px 14px 0px ${blackA.blackA8}`, // :active
       textShadow: "rgb(0 0 0 / 18%) 2px 2px",
+    },
+    zIndices: {
+      [-1]: "-1",
+      0: "0", // Default
+      1: "25", // Layered Content
+      2: "50", // Layered Content
+      3: "75", // Raised Interactive elements (Scroll to Top, Toast, etc)
+      4: "100", // Dialog
     },
   },
   media: {
@@ -140,4 +148,4 @@ export const darkTheme = createTheme({
   },
 });
 
-export type { CSS } from "@stitches/react";
+export type CSS = Stitches.CSS<typeof config>;

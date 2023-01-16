@@ -1,3 +1,4 @@
+import { CSS, css } from "../stitches.config";
 import { SpacingUnit } from "../types/spacing";
 
 export const FLEX_UTILS = {

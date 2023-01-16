@@ -1,3 +1,4 @@
+import { ComponentProps, memo, PropsWithChildren } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
@@ -7,6 +8,7 @@ import { styled } from "../stitches.config";
 import { DISPLAY_VARIANTS } from "../styles/display";
 import { FLEX_VARIANTS } from "../styles/flex";
 import { SPACING_VARIANTS } from "../styles/spacing";
+import { ELEVATION_VARIANTS } from "../styles/elevation";
 import { Avatar } from "./Avatar";
 import { Link } from "./Link";
 import { Navigation, NavigationMobile } from "./Navigation";
@@ -17,12 +19,19 @@ import { TextHeadline } from "./Text";
 import Head from "next/head";
 import { PERSONAL, SITE, SOCIAL } from "../util/data";
 import { BLUR_DATA_URL, ICON_SIZE } from "../util/images";
+import { BlogLayoutProps, BoxProps, LayoutProps } from "../types/layout";
+import { BlogSEO, PageSEO } from "./SEO";
 
-const StyledBox = styled("div", {
+export const Box = styled("div", {
   display: "flex",
   flexDirection: "row",
 
-  variants: { ...FLEX_VARIANTS, ...SPACING_VARIANTS, ...DISPLAY_VARIANTS },
+  variants: {
+    ...DISPLAY_VARIANTS,
+    ...ELEVATION_VARIANTS,
+    ...FLEX_VARIANTS,
+    ...SPACING_VARIANTS,
+  },
 });
 
 const StyledImage = styled(Image, {
@@ -41,11 +50,7 @@ const StyledContent = styled(Box, {
   },
 });
 
-export function Box(props) {
-  return <StyledBox {...props} />;
-}
-
-export function ActionButtons(props) {
+export const ActionButtons = memo(function ActionButtons(props: BoxProps) {
   return (
     <Box
       direction={{ "@initial": "vertical", "@bp2": "horizontal" }}
@@ -53,24 +58,23 @@ export function ActionButtons(props) {
       justifyContent={{
         "@initial": "flex-end",
         "@bp2": "flex-end",
+        "@bp12": "flex-start",
       }}
       alignItems={{ "@initial": "flex-end", "@bp2": "center" }}
       {...props}
     />
   );
-}
+});
 
-export function RootLayout({ children }) {
-  const { theme } = useTheme();
-
+export const RootLayout = memo(function RootLayout({ children }: LayoutProps) {
   return (
-    <Box id="__root" direction="vertical" container="xl" className={theme}>
+    <Box id="__root" direction="vertical" container="xl">
       {children}
     </Box>
   );
-}
+});
 
-export function HeaderLayout() {
+export const HeaderLayout = memo(function HeaderLayout() {
   return (
     <Box
       as="header"
@@ -83,7 +87,7 @@ export function HeaderLayout() {
       alignItems="center"
       css={{ "@print": { display: "none" } }}
     >
-      <Box direction="horizontal" gap={10} alignItems="center">
+      <Box direction="horizontal" alignItems="center">
         <Link href="/">
           <Avatar />
         </Link>
@@ -102,9 +106,9 @@ export function HeaderLayout() {
       </Box>
     </Box>
   );
-}
+});
 
-export function FooterLayout() {
+export const FooterLayout = memo(function FooterLayout() {
   return (
     <Box
       as="footer"
@@ -118,46 +122,13 @@ export function FooterLayout() {
       <Social />
     </Box>
   );
-}
+});
 
-export function Layout({ children }) {
-  const router = useRouter();
-  const { themeName, themeColor } = useTheme();
-  const metaUrl = `${SITE.url}${router.asPath}`;
-  const metaTitle = `${PERSONAL.name} | ${PERSONAL.occupation}`;
-  const metaImage = `${SITE.url}/images/banner.png`;
-  const metaDescription = `${PERSONAL.profile1}\n${PERSONAL.profile2}`;
-  const metaKeywords = PERSONAL.keywords.join(",");
-
+export const Layout = memo(function Layout({ children }: LayoutProps) {
   return (
     <>
       <Head>
-        <title>{metaTitle}</title>
-
-        <link rel="canonical" href={metaUrl} />
-
-        <meta name="description" content={metaDescription} />
-        <meta name="author" content={PERSONAL.name} />
-        <meta name="keywords" content={metaKeywords} />
-        <meta name="image" content={metaImage} />
-        <meta name="theme-color" content={themeColor} />
-        <meta name="color-scheme" content={themeName} />
-
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:site" content={SOCIAL.twitter.handle} />
-        <meta name="twitter:creator" content={SOCIAL.twitter.handle} />
-        <meta name="twitter:title" content={metaTitle} />
-        <meta name="twitter:description" content={metaDescription} />
-        <meta name="twitter:image" content={metaImage} />
-
-        {/* OG */}
-        <meta name="og:locale" content="en_GB" />
-        <meta name="og:type" content="website" />
-        <meta name="og:url" content={metaUrl} />
-        <meta name="og:title" content={metaTitle} />
-        <meta name="og:description" content={metaDescription} />
-        <meta name="og:image" content={metaImage} />
+        <PageSEO />
       </Head>
 
       <Box
@@ -175,45 +146,16 @@ export function Layout({ children }) {
       </Box>
     </>
   );
-}
+});
 
-export function BlogLayout({ frontmatter, children }) {
-  const router = useRouter();
-  const { themeName, themeColor } = useTheme();
-  const metaUrl = `${SITE.url}${router.asPath}`;
-  const keywords = frontmatter.tags.map((tag) => tag.name).join(",");
-
+export const BlogLayout = memo(function BlogLayout({
+  frontmatter,
+  children,
+}: BlogLayoutProps) {
   return (
     <>
       <Head>
-        <title>
-          {frontmatter.emoji} {frontmatter.title}
-        </title>
-
-        <link rel="canonical" href={frontmatter.canonical} />
-
-        <meta name="description" content={frontmatter.description} />
-        <meta name="author" content={PERSONAL.name} />
-        <meta name="keywords" content={keywords} />
-        <meta name="image" content={frontmatter.cover} />
-        <meta name="theme-color" content={themeColor} />
-        <meta name="color-scheme" content={themeName} />
-
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:site" content={SOCIAL.twitter.handle} />
-        <meta name="twitter:creator" content={SOCIAL.twitter.handle} />
-        <meta name="twitter:title" content={frontmatter.title} />
-        <meta name="twitter:description" content={frontmatter.description} />
-        <meta name="twitter:image" content={frontmatter.cover} />
-
-        {/* OG */}
-        <meta name="og:locale" content="en_GB" />
-        <meta name="og:type" content="article" />
-        <meta name="og:url" content={metaUrl} />
-        <meta name="og:title" content={frontmatter.title} />
-        <meta name="og:description" content={frontmatter.description} />
-        <meta name="og:image" content={frontmatter.cover} />
+        <BlogSEO frontmatter={frontmatter} />
       </Head>
 
       <Box
@@ -261,4 +203,4 @@ export function BlogLayout({ frontmatter, children }) {
       </Box>
     </>
   );
-}
+});

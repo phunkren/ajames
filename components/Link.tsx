@@ -1,8 +1,8 @@
-import { forwardRef, Ref } from "react";
+import { forwardRef, memo, Ref } from "react";
 import NextLink from "next/link";
 import { MdRssFeed } from "react-icons/md";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
-import { CSS, styled } from "../stitches.config";
+import { styled } from "../stitches.config";
 import { YOUTUBE_SUBSCRIBE_URL } from "../util/youtube";
 import {
   ArrowRightIcon,
@@ -10,24 +10,25 @@ import {
   VideoIcon,
 } from "@radix-ui/react-icons";
 import { TextAux, TextHeadline } from "./Text";
-import { LinkProps } from "../types/link";
+import {
+  LinkProps,
+  MarkdownLinkProps,
+  RssLinkProps,
+  TwitterLinkProps,
+  YoutubeLinkProps,
+} from "../types/link";
 import { buildUrl } from "../util/url";
 import { SITE, SOCIAL } from "../util/data";
 import { Box } from "./Layout";
 import { ICON_SIZE } from "../util/images";
 
-type TwitterShareProps = {
-  url: string;
-  text: string;
-  emoji?: string;
-  variant?: "default" | "icon";
-};
+const StyledRssIcon = styled(MdRssFeed, {
+  position: "relative",
+  top: -1,
+  left: 3,
+});
 
-type SubscribeProps = CSS & {
-  type?: "link" | "icon" | "button";
-};
-
-const StyledLink = styled("a", {
+export const StyledLink = styled("a", {
   display: "inline-flex",
   alignItems: "center",
   gap: "$2",
@@ -58,31 +59,34 @@ const StyledLink = styled("a", {
   },
 });
 
-export const Link = forwardRef(
-  (
-    { href, nextLinkProps, ...props }: LinkProps,
-    ref: Ref<HTMLAnchorElement>
-  ) => {
-    const isInternal = isLinkInternal();
+export const Link = memo(
+  forwardRef(
+    (
+      { href, nextLinkProps, ...props }: LinkProps,
+      ref: Ref<HTMLAnchorElement>
+    ) => {
+      const isInternal = isLinkInternal();
 
-    function isLinkInternal() {
-      let link = typeof href === "object" ? href.pathname : href;
-      return link.charAt(0) === "/";
+      function isLinkInternal() {
+        const link = typeof href === "object" ? href.pathname : href;
+
+        return link.charAt(0) === "/";
+      }
+
+      return (
+        <NextLink
+          href={href}
+          target={!isInternal ? "_blank" : "_self"}
+          rel={!isInternal ? "external noopener noreferrer" : ""}
+          passHref
+          legacyBehavior
+          {...nextLinkProps}
+        >
+          <StyledLink ref={ref} {...props} />
+        </NextLink>
+      );
     }
-
-    return (
-      <NextLink
-        href={href}
-        target={!isInternal ? "_blank" : "_self"}
-        rel={!isInternal ? "external noopener noreferrer" : ""}
-        passHref
-        legacyBehavior
-        {...nextLinkProps}
-      >
-        <StyledLink ref={ref} {...props} />
-      </NextLink>
-    );
-  }
+  )
 );
 
 export const StyledIconLink = styled(Link, {
@@ -90,7 +94,7 @@ export const StyledIconLink = styled(Link, {
   alignItems: "center",
   justifyContent: "center",
   borderRadius: "50%",
-  spacing: "$2",
+  padding: "$2",
   borderWidth: 2,
   borderStyle: "solid",
   borderColor: "$foregroundMuted",
@@ -118,7 +122,7 @@ export const StyledIconLink = styled(Link, {
   },
 });
 
-const StyledYoutubeSubscription = styled(Link, {
+export const StyledYoutubeSubscription = styled(Link, {
   display: "flex",
   alignItems: "center",
 
@@ -146,7 +150,7 @@ const StyledYoutubeSubscription = styled(Link, {
       icon: {
         justifyContent: "center",
         borderRadius: "50%",
-        spacing: "$2",
+        padding: "$2",
         borderWidth: 2,
         borderStyle: "solid",
         backgroundColor: "$red8",
@@ -168,7 +172,7 @@ const StyledYoutubeSubscription = styled(Link, {
   },
 });
 
-const StyledBlogSubscription = styled(Link, {
+export const StyledRssSubscription = styled(Link, {
   display: "flex",
   alignItems: "center",
 
@@ -194,7 +198,7 @@ const StyledBlogSubscription = styled(Link, {
       icon: {
         justifyContent: "center",
         borderRadius: "50%",
-        spacing: "$2",
+        padding: "$2",
         borderWidth: 2,
         borderStyle: "solid",
         borderColor: "$foregroundMuted",
@@ -220,12 +224,6 @@ const StyledBlogSubscription = styled(Link, {
   },
 });
 
-const StyledRssIcon = styled(MdRssFeed, {
-  position: "relative",
-  top: -1,
-  left: 3,
-});
-
 export const StyledClearFilterLink = styled(Link, {
   position: "relative",
   padding: "$2",
@@ -247,20 +245,26 @@ export const StyledClearFilterLink = styled(Link, {
 
 // 'Notion to Markdown' converts embeds to links
 // Render embeds as iframes, and links with the custom Link component
-export function MarkdownLink({ node, ...props }) {
+export const MarkdownLink = memo(function MarkdownLink({
+  node,
+  ...props
+}: MarkdownLinkProps) {
   const isEmbedLink = node.children[0].value === "embed";
 
   if (isEmbedLink) {
-    return <iframe src={props.href} width="100%" height="500px"></iframe>;
+    const src =
+      typeof props.href === "object" ? props.href.pathname : props.href;
+
+    return <iframe src={src} width="100%" height="500px"></iframe>;
   }
 
   return <Link href={props.href} variant="tertiary" {...props} />;
-}
+});
 
-export function YoutubeSubscribeLink({
+export const YoutubeSubscribeLink = memo(function YoutubeSubscribeLink({
   type = "link",
   ...props
-}: SubscribeProps) {
+}: YoutubeLinkProps) {
   return (
     <StyledYoutubeSubscription
       href={YOUTUBE_SUBSCRIBE_URL}
@@ -274,33 +278,36 @@ export function YoutubeSubscribeLink({
       </Box>
     </StyledYoutubeSubscription>
   );
-}
+});
 
-export function BlogSubscribeLink({ type = "link", ...props }: SubscribeProps) {
+export const RssSubscribeLink = memo(function RssSubscribeLink({
+  type = "link",
+  ...props
+}: RssLinkProps) {
   const rssFeedUrl = `${SITE.url}/rss`;
 
   return (
-    <StyledBlogSubscription href={rssFeedUrl} type={type} {...props}>
+    <StyledRssSubscription href={rssFeedUrl} type={type} {...props}>
       <Box alignItems="center" gap={2}>
         <StyledRssIcon size={ICON_SIZE.l} />
 
-        {type === "button" && (
-          <TextAux css={{ color: "inherit" }}>Subscribe</TextAux>
-        )}
+        {type === "button" && <TextAux color="inherit">Subscribe</TextAux>}
 
         {type === "link" && <TextHeadline>Subscribe</TextHeadline>}
       </Box>
-    </StyledBlogSubscription>
+    </StyledRssSubscription>
   );
-}
+});
 
-export function TwitterShareLink({
+export const TwitterShareLink = memo(function TwitterShareLink({
   url,
   text,
   emoji = "👀",
   variant = "default",
-}: TwitterShareProps) {
+  ...props
+}: TwitterLinkProps) {
   const formattedText = `${emoji} ${text}`;
+
   const formattedAuthor = `🙋‍♂️ ${SOCIAL.twitter.handle}`;
 
   const sanitisedText = encodeURIComponent(
@@ -316,7 +323,7 @@ export function TwitterShareLink({
 
   if (variant === "icon") {
     return (
-      <StyledIconLink href={href} title="Share on Twitter" target="_blank">
+      <StyledIconLink href={href} title="Share on Twitter" {...props}>
         <TwitterLogoIcon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
         <VisuallyHidden.Root>Tweet</VisuallyHidden.Root>
       </StyledIconLink>
@@ -331,13 +338,13 @@ export function TwitterShareLink({
       </Box>
     </Link>
   );
-}
+});
 
-export function ReadMoreLink(props) {
+export const ReadmoreLink = memo(function ReadMoreLink(props) {
   return (
     <Box gap={2} alignItems="center" {...props}>
       <TextAux>Read more</TextAux>
       <ArrowRightIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
     </Box>
   );
-}
+});

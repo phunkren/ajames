@@ -3,7 +3,7 @@ import path from "path";
 import { remark } from "remark";
 import { rehype } from "rehype";
 import mdx from "remark-mdx";
-import rehypeInferReadingTimeMeta from "rehype-infer-reading-time-meta";
+import rehypeInferTotalTimeMeta from "rehype-infer-reading-time-meta";
 import { Client } from "@notionhq/client";
 import { NotionToMarkdown } from "notion-to-md";
 import { BlogPost } from "../types/notion";
@@ -90,7 +90,7 @@ export async function getPostData(id: string) {
 
 export async function getPostTime(content: string) {
   const { data } = await rehype()
-    .use(rehypeInferReadingTimeMeta)
+    .use(rehypeInferTotalTimeMeta)
     .process(content);
 
   const [readingTime] = data.meta.readingTime as [number, number];

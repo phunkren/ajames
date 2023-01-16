@@ -1,4 +1,5 @@
-import { ReactNode, Ref } from "react";
+import { ComponentProps, ReactNode, Ref } from "react";
+import { Box } from "../components/Layout";
 import { CSS } from "../stitches.config";
 import { Tag } from "./notion";
 
@@ -8,12 +9,13 @@ type ChildProps = {
   onPreviewToggle: (pressed: boolean) => void;
 };
 
-export type CardProps = CSS & {
-  image: string;
-  children: (props: ChildProps) => ReactNode;
-};
+export type CardProps = ComponentProps<typeof Box> &
+  CSS & {
+    image: string;
+    children: (props: ChildProps) => ReactNode;
+  };
 
-export type BlogCardProps = CSS & {
+export type BlogCardProps = CardProps & {
   url: string;
   image: string;
   description: string;
@@ -22,7 +24,7 @@ export type BlogCardProps = CSS & {
   tags: Tag[];
 };
 
-export type VideoCardProps = CSS & {
+export type VideoCardProps = CardProps & {
   url: string;
   image: string;
   publishDate: string;

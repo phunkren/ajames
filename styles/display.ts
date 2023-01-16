@@ -1,3 +1,5 @@
+import { CSS } from "../stitches.config";
+
 export const DISPLAY_UTILS = {
   op: (value: number) => ({
     opacity: value,

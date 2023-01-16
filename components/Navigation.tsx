@@ -1,14 +1,15 @@
+import { memo } from "react";
 import { Cross1Icon, HamburgerMenuIcon } from "@radix-ui/react-icons";
 import * as Dialog from "@radix-ui/react-dialog";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { styled } from "../stitches.config";
+import { ICON_SIZE } from "../util/images";
 import { Box } from "./Layout";
 import { Link } from "./Link";
 import { TextHeadline } from "./Text";
 import { Button } from "./Button";
 import { Social } from "./Social";
 import { ThemeToggle } from "./Theme";
-import { ICON_SIZE } from "../util/images";
 
 const StyledDialogContent = styled(Dialog.Content, {
   position: "absolute",
@@ -19,7 +20,7 @@ const StyledDialogContent = styled(Dialog.Content, {
   width: "75vw",
   height: "100dvh",
   minWidth: 300,
-  zIndex: 99,
+  zIndex: "$4",
 });
 
 const StyledHamburgerMenuIcon = styled(HamburgerMenuIcon, {
@@ -42,7 +43,7 @@ const StyledCloseMenuIcon = styled(Cross1Icon, {
   },
 });
 
-export function Navigation() {
+export const Navigation = memo(function Navigation() {
   return (
     <Box aria-label="Primary navigation" as="nav">
       <Box direction="horizontal" as="ul" role="list" gap={10}>
@@ -64,9 +65,9 @@ export function Navigation() {
       </Box>
     </Box>
   );
-}
+});
 
-export function NavigationMobile() {
+export const NavigationMobile = memo(function NavigationMobile() {
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
@@ -145,4 +146,4 @@ export function NavigationMobile() {
       </Dialog.Portal>
     </Dialog.Root>
   );
-}
+});

@@ -57,7 +57,7 @@ const StyledPrintHeader = styled(Box, {
 const StyledHero = styled(Box, {
   position: "absolute",
   inset: 0,
-  zIndex: 1,
+  zIndex: "$1",
   borderBottomWidth: 5,
   borderBottomStyle: "solid",
   borderBottomColor: "$foreground",
@@ -81,7 +81,6 @@ const StyledHero = styled(Box, {
 const StyledFilter = styled(Box, {
   position: "absolute",
   inset: 0,
-  zIndex: 0,
   filter: "blur(80px)",
 
   [`.${lightTheme} &`]: {
@@ -100,7 +99,7 @@ const StyledImage = styled(Image, {
   position: "absolute",
   top: "4% !important",
   left: "17% !important",
-  zIndex: 2,
+  zIndex: "$2",
   transform: "scale(0.9)",
   pointerEvents: "none",
 
@@ -110,20 +109,6 @@ const StyledImage = styled(Image, {
 
   "@bp2": {
     display: "block",
-  },
-});
-
-const StyledBlockQuote = styled("blockquote", {
-  fontStyle: "oblique",
-  textAlign: "justify",
-
-  "@print": {
-    display: "-webkit-box",
-    overflow: "hidden",
-    textAlign: "left",
-
-    ["-webkit-line-clamp"]: "5",
-    ["-webkit-box-orient"]: "vertical",
   },
 });
 
@@ -185,7 +170,7 @@ function Cv() {
                 alignItems="flex-end"
                 justifyContent="space-between"
               >
-                <Box direction="vertical" css={{ zIndex: 1 }}>
+                <Box direction="vertical" zIndex={1}>
                   <TextTitle1 css={{ textShadow: "$textShadow" }}>
                     {PERSONAL.name}
                   </TextTitle1>
@@ -194,7 +179,7 @@ function Cv() {
                   </TextHeadline>
                 </Box>
 
-                <ActionButtons css={{ zIndex: 1 }}>
+                <ActionButtons zIndex={1}>
                   <PrintButton />
 
                   <StyledIconLink href="/download-cv" title="Download" download>
@@ -447,7 +432,16 @@ function Cv() {
                     {TESTIMONIALS.map((testimonial) => (
                       <Box key={testimonial.id} as="li" direction="vertical">
                         <Box direction="vertical">
-                          <StyledBlockQuote cite={SOCIAL.linkedin.url}>
+                          <TextAux
+                            as="blockquote"
+                            cite={SOCIAL.linkedin.url}
+                            fontStyle="oblique"
+                            clamp={{ "@print": 5 }}
+                            textAlign={{
+                              "@print": "left",
+                              "@initial": "justify",
+                            }}
+                          >
                             <TextAux
                               css={{
                                 display: "inline",
@@ -465,7 +459,7 @@ function Cv() {
                             >
                               {testimonial.excerpt}
                             </TextAux>
-                          </StyledBlockQuote>
+                          </TextAux>
 
                           <Box direction="vertical" spacingTop={4}>
                             <Link href={testimonial.url}>

@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import remarkMdx from "remark-mdx";
 import ReactMarkdown from "react-markdown";
 import Balancer from "react-wrap-balancer";
-import { Tag } from "../../types/notion";
 import {
   getAllPostIds,
   getPageData,
@@ -11,7 +10,7 @@ import {
 } from "../../lib/notion";
 import { ActionButtons, BlogLayout, Box } from "../../components/Layout";
 import {
-  BlogSubscribeLink,
+  RssSubscribeLink,
   MarkdownLink,
   TwitterShareLink,
 } from "../../components/Link";
@@ -27,26 +26,16 @@ import {
   Frontmatter,
   PostTags,
   PublishDate,
-  ReadingTime,
+  TotalTime,
 } from "../../components/Frontmatter";
 import { SITE } from "../../util/data";
 import { ShareButton } from "../../components/Button";
 import { styled } from "../../stitches.config";
 import { H1_STYLES, H2_STYLES, H3_STYLES, P_STYLES } from "../../styles/text";
-
-type Frontmatter = {
-  title: string;
-  description: string;
-  cover: string;
-  emoji: string;
-  date: string;
-  time: number;
-  tags: Tag[];
-  canonical?: string;
-};
+import { BlogFrontmatter } from "../../types/frontmatter";
 
 type Props = {
-  frontmatter: Frontmatter;
+  frontmatter: BlogFrontmatter;
   postData: string;
 };
 
@@ -86,7 +75,7 @@ export async function getStaticProps({ params }) {
   const slug = pageData.properties.slug.rich_text[0].plain_text;
   const pageUrl = `${SITE.url}/blog/${slug}`;
 
-  const frontmatter: Frontmatter = {
+  const frontmatter: BlogFrontmatter = {
     title: pageData.properties.page.title[0].plain_text,
     canonical: pageData.properties.canonical.url ?? pageUrl,
     description: pageData.properties.abstract.rich_text[0].plain_text,
@@ -138,11 +127,11 @@ export default function BlogPost({ frontmatter, postData }: Props) {
               alignItems="flex-start"
               spacingTop={4}
             >
-              <TextTitle2 css={{ spacingBottom: "$4" }}>
+              <TextTitle2 css={{ paddingBottom: "$4" }}>
                 <Balancer>{frontmatter.title}</Balancer>
               </TextTitle2>
 
-              <BlogSubscribeLink
+              <RssSubscribeLink
                 type="button"
                 css={{
                   display: "none",
@@ -157,7 +146,7 @@ export default function BlogPost({ frontmatter, postData }: Props) {
             <Frontmatter spacingTop={6}>
               <PostTags tags={frontmatter.tags} icon />
               <PublishDate date={frontmatter.date} icon />
-              <ReadingTime time={frontmatter.time} icon />
+              <TotalTime total={frontmatter.time} icon />
             </Frontmatter>
 
             <ActionButtons css={{ width: "auto" }}>
@@ -195,8 +184,8 @@ export default function BlogPost({ frontmatter, postData }: Props) {
           <ReactMarkdown
             children={postData}
             components={{
-              a: MarkdownLink,
               code: Code,
+              a: MarkdownLink as any,
               h1: TextTitle2 as any,
               h2: TextTitle3 as any,
               h3: TextHeadline as any,
@@ -225,7 +214,7 @@ export default function BlogPost({ frontmatter, postData }: Props) {
                 text={frontmatter.title}
               />
 
-              <BlogSubscribeLink />
+              <RssSubscribeLink />
 
               <Box>
                 <ShareButton

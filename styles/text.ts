@@ -1,70 +1,113 @@
-export const TEXT_VARIANTS = {
-  variants: {
-    color: {
-      primary: {
-        color: "$foregound",
-      },
-      secondary: {
-        color: "$foregroundMuted",
-      },
-      inherit: {
-        color: "inherit",
-      },
+import { css } from "../stitches.config";
+
+export const EMOJI_VARIANTS = {
+  size: {
+    s: {
+      fontSize: 24,
     },
-    textAlign: {
-      left: {
-        textAlign: "left",
-      },
-      right: {
-        textAlign: "right",
-      },
-      center: {
-        textAlign: "center",
-      },
-      justify: {
-        textAlign: "justify",
-      },
-    },
-    textDecoration: {
-      none: {
-        textDecoration: "none",
-      },
-      underline: {
-        textDecoration: "underline",
-      },
-      dotted: {
-        textDecoration: "dotted",
-      },
-    },
-    textTransform: {
-      uppercase: {
-        textTransform: "uppercase",
-      },
-      lowercase: {
-        textTransform: "lowercase",
-      },
-      capitalize: {
-        textTransform: "capitalize",
-      },
-      initial: {
-        textTransform: "initial",
-      },
-    },
-    fontStyle: {
-      normal: {
-        fontStyle: "normal",
-      },
-      oblique: {
-        fontStyle: "oblique",
-      },
-      italic: {
-        fontStyle: "italic",
-      },
+    l: {
+      fontSize: 64,
     },
   },
 };
 
-export const H1_STYLES = {
+export const TEXT_VARIANTS = {
+  color: {
+    primary: {
+      color: "$foregound",
+    },
+    secondary: {
+      color: "$foregroundMuted",
+    },
+    inherit: {
+      color: "inherit",
+    },
+  },
+  textAlign: {
+    left: {
+      textAlign: "left",
+    },
+    right: {
+      textAlign: "right",
+    },
+    center: {
+      textAlign: "center",
+    },
+    justify: {
+      textAlign: "justify",
+    },
+  },
+  textDecoration: {
+    none: {
+      textDecoration: "none",
+    },
+    underline: {
+      textDecoration: "underline",
+    },
+    dotted: {
+      textDecoration: "dotted",
+    },
+  },
+  textTransform: {
+    uppercase: {
+      textTransform: "uppercase",
+    },
+    lowercase: {
+      textTransform: "lowercase",
+    },
+    capitalize: {
+      textTransform: "capitalize",
+    },
+    initial: {
+      textTransform: "initial",
+    },
+  },
+  fontStyle: {
+    normal: {
+      fontStyle: "normal",
+    },
+    oblique: {
+      fontStyle: "oblique",
+    },
+    italic: {
+      fontStyle: "italic",
+    },
+  },
+  clamp: {
+    1: {
+      display: "-webkit-box",
+      ["-webkit-line-clamp"]: "1",
+      ["-webkit-box-orient"]: "vertical",
+      overflow: "hidden",
+    },
+    2: {
+      display: "-webkit-box",
+      ["-webkit-line-clamp"]: "2",
+      ["-webkit-box-orient"]: "vertical",
+      overflow: "hidden",
+    },
+    3: {
+      display: "-webkit-box",
+      ["-webkit-line-clamp"]: "3",
+      ["-webkit-box-orient"]: "vertical",
+      overflow: "hidden",
+    },
+    4: {
+      display: "-webkit-box",
+      ["-webkit-line-clamp"]: "4",
+      ["-webkit-box-orient"]: "vertical",
+      overflow: "hidden",
+    },
+    5: {
+      display: "-webkit-box",
+      ["-webkit-line-clamp"]: "5",
+      ["-webkit-box-orient"]: "vertical",
+      overflow: "hidden",
+    },
+  },
+};
+
+export const H1_STYLES = css({
   fontSize: 36,
 
   "@bp2": {
@@ -78,9 +121,9 @@ export const H1_STYLES = {
   "@print": {
     fontSize: 24,
   },
-};
+});
 
-export const H2_STYLES = {
+export const H2_STYLES = css({
   fontSize: 24,
 
   "@bp2": {
@@ -94,9 +137,9 @@ export const H2_STYLES = {
   "@print": {
     fontSize: 18,
   },
-};
+});
 
-export const H3_STYLES = {
+export const H3_STYLES = css({
   fontSize: 22,
 
   "@bp3": {
@@ -106,9 +149,9 @@ export const H3_STYLES = {
   "@print": {
     fontSize: 16,
   },
-};
+});
 
-export const P_STYLES = {
+export const P_STYLES = css({
   fontSize: 18,
 
   "@bp2": {
@@ -119,9 +162,9 @@ export const P_STYLES = {
     fontSize: 14,
     lineHeight: 1.25,
   },
-};
+});
 
-export const AUX_STYLES = {
+export const AUX_STYLES = css({
   fontSize: 14,
 
   "@bp2": {
@@ -131,4 +174,4 @@ export const AUX_STYLES = {
   "@print": {
     fontSize: 12,
   },
-};
+});
