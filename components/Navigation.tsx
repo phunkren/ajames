@@ -10,12 +10,13 @@ import { Button } from "./Button";
 import { Social } from "./Social";
 import { ThemeToggle } from "./Theme";
 import { ICON_SIZE } from "../util/images";
+import { useTheme } from "../hooks/useTheme";
 
 const StyledDialogContent = styled(Dialog.Content, {
   position: "absolute",
   display: "flex",
   flexDirection: "column",
-  backgroundColor: "black",
+  backgroundColor: "$backgroundMuted",
   boxShadow: "$3",
   width: "75vw",
   height: "100dvh",
@@ -68,6 +69,8 @@ export const Navigation = memo(function Navigation() {
 });
 
 export const NavigationMobile = memo(function NavigationMobile() {
+  const { theme } = useTheme();
+
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
@@ -87,7 +90,7 @@ export const NavigationMobile = memo(function NavigationMobile() {
       </Dialog.Trigger>
 
       <Dialog.Portal>
-        <StyledDialogContent>
+        <StyledDialogContent className={theme}>
           <VisuallyHidden.Root asChild>
             <Dialog.Title>Mobile Navigation Menu</Dialog.Title>
           </VisuallyHidden.Root>
@@ -111,6 +114,8 @@ export const NavigationMobile = memo(function NavigationMobile() {
             </Box>
 
             <Box
+              as="ul"
+              role="list"
               direction="vertical"
               gap={10}
               spacingTop={10}
