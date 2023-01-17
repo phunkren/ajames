@@ -19,13 +19,7 @@ const StyledLink = styled(Link, {
 export const Social = memo(function Social() {
   return (
     <Box as="nav" aria-label="Social Media">
-      <Box
-        direction="horizontal"
-        as="ul"
-        role="list"
-        gap={4}
-        alignItems="center"
-      >
+      <Box as="ul" role="list" gap={4} alignItems="center">
         <li>
           <StyledLink
             variant="secondary"
