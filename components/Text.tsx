@@ -1,5 +1,3 @@
-import { Slot } from "@radix-ui/react-slot";
-import { ReactElement } from "react";
 import { styled } from "../stitches.config";
 import {
   AUX_STYLES,
@@ -9,45 +7,59 @@ import {
   P_STYLES,
   TEXT_VARIANTS,
 } from "../styles/text";
-
-type Props = {
-  asChild?: boolean;
-  children: ReactElement;
-};
+import { EmojiProps } from "../types/emoji";
 
 export const TextTitle1 = styled("h1", {
   ...H1_STYLES,
-  ...TEXT_VARIANTS,
+
+  variants: {
+    ...TEXT_VARIANTS,
+  },
 });
 
 export const TextTitle2 = styled("h2", {
   ...H2_STYLES,
-  ...TEXT_VARIANTS,
+
+  variants: {
+    ...TEXT_VARIANTS,
+  },
 });
 
 export const TextTitle3 = styled("h3", {
   ...H3_STYLES,
-  ...TEXT_VARIANTS,
+
+  variants: {
+    ...TEXT_VARIANTS,
+  },
 });
 
 export const TextBody = styled("p", {
   ...P_STYLES,
-  ...TEXT_VARIANTS,
+
+  variants: {
+    ...TEXT_VARIANTS,
+  },
 });
 
 export const TextHeadline = styled("span", {
   fontWeight: 500,
   ...P_STYLES,
-  ...TEXT_VARIANTS,
+
+  variants: {
+    ...TEXT_VARIANTS,
+  },
 });
 
 export const TextAux = styled("span", {
   fontWeight: 500,
   ...AUX_STYLES,
-  ...TEXT_VARIANTS,
+
+  variants: {
+    ...TEXT_VARIANTS,
+  },
 });
 
-const StyledEmoji = styled("span", {
+export const StyledEmoji = styled("span", {
   display: "block",
   fontSize: 32,
   lineHeight: 1,
@@ -65,7 +77,7 @@ const StyledEmoji = styled("span", {
   },
 });
 
-export function Emoji({ emoji, ...props }) {
+export function Emoji({ emoji, ...props }: EmojiProps) {
   return (
     <StyledEmoji aria-hidden {...props}>
       {emoji}
