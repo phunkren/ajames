@@ -1,65 +1,95 @@
 export const TEXT_VARIANTS = {
-  variants: {
-    color: {
-      primary: {
-        color: "$foregound",
-      },
-      secondary: {
-        color: "$foregroundMuted",
-      },
-      inherit: {
-        color: "inherit",
-      },
+  color: {
+    primary: {
+      color: "$foregound",
     },
-    textAlign: {
-      left: {
-        textAlign: "left",
-      },
-      right: {
-        textAlign: "right",
-      },
-      center: {
-        textAlign: "center",
-      },
-      justify: {
-        textAlign: "justify",
-      },
+    secondary: {
+      color: "$foregroundMuted",
     },
-    textDecoration: {
-      none: {
-        textDecoration: "none",
-      },
-      underline: {
-        textDecoration: "underline",
-      },
-      dotted: {
-        textDecoration: "dotted",
-      },
+    inherit: {
+      color: "inherit",
     },
-    textTransform: {
-      uppercase: {
-        textTransform: "uppercase",
-      },
-      lowercase: {
-        textTransform: "lowercase",
-      },
-      capitalize: {
-        textTransform: "capitalize",
-      },
-      initial: {
-        textTransform: "initial",
-      },
+  },
+  textAlign: {
+    left: {
+      textAlign: "left",
     },
-    fontStyle: {
-      normal: {
-        fontStyle: "normal",
-      },
-      oblique: {
-        fontStyle: "oblique",
-      },
-      italic: {
-        fontStyle: "italic",
-      },
+    right: {
+      textAlign: "right",
+    },
+    center: {
+      textAlign: "center",
+    },
+    justify: {
+      textAlign: "justify",
+    },
+  },
+  textDecoration: {
+    none: {
+      textDecoration: "none",
+    },
+    underline: {
+      textDecoration: "underline",
+    },
+    dotted: {
+      textDecoration: "dotted",
+    },
+  },
+  textTransform: {
+    uppercase: {
+      textTransform: "uppercase",
+    },
+    lowercase: {
+      textTransform: "lowercase",
+    },
+    capitalize: {
+      textTransform: "capitalize",
+    },
+    initial: {
+      textTransform: "initial",
+    },
+  },
+  fontStyle: {
+    normal: {
+      fontStyle: "normal",
+    },
+    oblique: {
+      fontStyle: "oblique",
+    },
+    italic: {
+      fontStyle: "italic",
+    },
+  },
+  clamp: {
+    [1]: {
+      display: "-webkit-box",
+      ["-webkit-line-clamp"]: "1",
+      ["-webkit-box-orient"]: "vertical",
+      overflow: "hidden",
+    },
+    [2]: {
+      display: "-webkit-box",
+      ["-webkit-line-clamp"]: "2",
+      ["-webkit-box-orient"]: "vertical",
+      overflow: "hidden",
+    },
+    [3]: {
+      display: "-webkit-box",
+      ["-webkit-line-clamp"]: "3",
+      ["-webkit-box-orient"]: "vertical",
+      overflow: "hidden",
+    },
+    [4]: {
+      display: "-webkit-box",
+      ["-webkit-line-clamp"]: "4",
+      ["-webkit-box-orient"]: "vertical",
+      overflow: "hidden",
+    },
+    [5]: {
+      display: "-webkit-box",
+      ["-webkit-line-clamp"]: "5",
+      ["-webkit-box-orient"]: "vertical",
+      overflow: "hidden",
     },
   },
 };
