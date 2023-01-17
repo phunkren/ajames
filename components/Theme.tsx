@@ -5,15 +5,15 @@ import React, {
   useContext,
   useMemo,
   useCallback,
+  memo,
 } from "react";
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import * as ToggleGroup from "@radix-ui/react-toggle-group";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { styled } from "../stitches.config";
-import { Theme } from "../types/theme";
+import { Theme, ThemeProviderProps } from "../types/theme";
 import { ICON_SIZE } from "../util/images";
 
-// Create the theme context
 export const ThemeContext = createContext({
   theme: Theme.LIGHT,
   onThemeChange: (newTheme: Theme) => {},
@@ -71,18 +71,20 @@ const DarkToggle = styled(ToggleGroupItem, {
   },
 });
 
-const getSystemTheme = () => {
-  const systemPrefersDark = window.matchMedia?.(
-    `(prefers-color-scheme: ${Theme.DARK})`
-  ).matches;
-
-  return systemPrefersDark ? Theme.DARK : Theme.LIGHT;
-};
-
 // Create the theme provider component
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
+export const ThemeProvider = memo(function ThemeProvider({
+  children,
+}: ThemeProviderProps) {
   const [storageTheme, setStorageTheme] = useLocalStorage<Theme>("theme");
   const [theme, setTheme] = useState<Theme>();
+
+  const getSystemTheme = useCallback(() => {
+    const systemPrefersDark = window.matchMedia?.(
+      `(prefers-color-scheme: ${Theme.DARK})`
+    ).matches;
+
+    return systemPrefersDark ? Theme.DARK : Theme.LIGHT;
+  }, []);
 
   const handleThemeChange = useCallback((newTheme: Theme) => {
     setTheme(newTheme);
@@ -127,16 +129,16 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   return (
     <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
   );
-}
+});
 
-export function ThemeToggle() {
+export const ThemeToggle = memo(function ThemeToggle() {
   const { theme, onThemeChange } = useContext(ThemeContext);
 
-  function handleThemeChange(newTheme: Theme) {
+  const handleThemeChange = useCallback((newTheme: Theme) => {
     if (newTheme) {
       onThemeChange(newTheme);
     }
-  }
+  }, []);
 
   return (
     <ToggleGroupRoot
@@ -155,4 +157,4 @@ export function ThemeToggle() {
       </LightToggle>
     </ToggleGroupRoot>
   );
-}
+});
