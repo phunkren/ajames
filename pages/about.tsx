@@ -245,8 +245,10 @@ function Cv() {
                 "@bp3": { flexGrow: 0, flexShrink: 0, flexBasis: 250 },
               }}
             >
-              <Box direction="vertical" id="contact" as="section">
-                <TextTitle3 as="h2">Contact</TextTitle3>
+              <Box as="section" aria-labelledby="contact" direction="vertical">
+                <TextTitle3 as="h2" id="contact">
+                  Contact
+                </TextTitle3>
 
                 <Box
                   spacingTop={{ "@print": 1, "@initial": 4 }}
@@ -314,8 +316,14 @@ function Cv() {
                 </GridRoot>
               </Box>
 
-              <Box direction="vertical" id="education" as="section">
-                <TextTitle3 as="h2">Education</TextTitle3>
+              <Box
+                as="section"
+                aria-labelledby="education"
+                direction="vertical"
+              >
+                <TextTitle3 id="education" as="h2">
+                  Education
+                </TextTitle3>
 
                 <Box
                   spacingTop={{ "@print": 1, "@initial": 4 }}
@@ -383,8 +391,14 @@ function Cv() {
                 </GridRoot>
               </Box>
 
-              <Box direction="vertical" id="expertise" as="section">
-                <TextTitle3 as="h2">Expertise</TextTitle3>
+              <Box
+                as="section"
+                aria-labelledby="expertise"
+                direction="vertical"
+              >
+                <TextTitle3 id="expertise" as="h2">
+                  Expertise
+                </TextTitle3>
 
                 <Box
                   spacingTop={{ "@print": 1, "@initial": 4 }}
@@ -407,7 +421,7 @@ function Cv() {
               <Box
                 as="section"
                 direction="vertical"
-                aria-labelledBy="interests"
+                aria-labelledby="interests"
               >
                 <TextTitle3 id="interests" as="h2">
                   Interests
@@ -431,8 +445,14 @@ function Cv() {
                 </GridRoot>
               </Box>
 
-              <Box direction="vertical" id="references" as="section">
-                <TextTitle3 as="h2">References</TextTitle3>
+              <Box
+                as="section"
+                aria-labelledby="references"
+                direction="vertical"
+              >
+                <TextTitle3 id="references" as="h2">
+                  References
+                </TextTitle3>
 
                 <Box
                   spacingTop={{ "@print": 1, "@initial": 4 }}
@@ -452,6 +472,7 @@ function Cv() {
                         <Box direction="vertical">
                           <StyledBlockQuote cite={SOCIAL.linkedin.url}>
                             <TextAux
+                              fontWeight={400}
                               css={{
                                 display: "inline",
                                 "@print": { display: "none" },
@@ -461,6 +482,7 @@ function Cv() {
                             </TextAux>
 
                             <TextAux
+                              fontWeight={400}
                               css={{
                                 display: "none",
                                 "@print": { display: "inline" },
@@ -474,6 +496,7 @@ function Cv() {
                             <Link href={testimonial.url}>
                               <TextHeadline>{testimonial.name}</TextHeadline>
                             </Link>
+
                             <TextAux color="secondary">
                               {testimonial.position}
                             </TextAux>
@@ -516,8 +539,10 @@ function Cv() {
               gap={{ "@print": 5, "@initial": 10 }}
               flexGrow
             >
-              <Box direction="vertical" id="profile" as="section">
-                <TextTitle3 as="h2">Profile</TextTitle3>
+              <Box as="section" aria-labelledby="profile" direction="vertical">
+                <TextTitle3 id="profile" as="h2">
+                  Profile
+                </TextTitle3>
 
                 <Box
                   spacingTop={{ "@print": 1, "@initial": 4 }}
@@ -536,8 +561,14 @@ function Cv() {
                 </Box>
               </Box>
 
-              <Box direction="vertical" id="experience" as="section">
-                <TextTitle3 as="h2">Experience</TextTitle3>
+              <Box
+                as="section"
+                aria-labelledby="experience"
+                direction="vertical"
+              >
+                <TextTitle3 id="experience" as="h2">
+                  Experience
+                </TextTitle3>
 
                 <Box
                   spacingTop={{ "@print": 1, "@initial": 4 }}
@@ -591,6 +622,7 @@ function Cv() {
                                   as="time"
                                   color="secondary"
                                   textTransform="uppercase"
+                                  fontWeight={400}
                                   dateTime={new Date(
                                     employer.startDate
                                   ).toISOString()}
@@ -608,6 +640,7 @@ function Cv() {
                                 as="time"
                                 textTransform="uppercase"
                                 color="secondary"
+                                fontWeight={400}
                                 dateTime={new Date(
                                   employer.endDate
                                 ).toISOString()}
@@ -618,6 +651,7 @@ function Cv() {
                               <TextAux
                                 as="time"
                                 color="secondary"
+                                fontWeight={400}
                                 textTransform="uppercase"
                                 dateTime={new Date().toISOString()}
                               >
@@ -630,7 +664,7 @@ function Cv() {
 
                       <Box
                         direction="vertical"
-                        gap={{ "@print": 2, "@initial": 3, "@bp2": 6 }}
+                        gap={{ "@print": 2, "@initial": 4, "@bp2": 6 }}
                       >
                         <TextBody>{employer.content1}</TextBody>
 
@@ -652,17 +686,19 @@ function Cv() {
                             "@initial": 2,
                           }}
                         >
-                          <TextHeadline>Notable Work</TextHeadline>
+                          <TextHeadline color="secondary">
+                            Notable Work
+                          </TextHeadline>
                           <Box
                             as="ul"
                             direction={{
                               "@print": "horizontal",
                               "@initial": "vertical",
                             }}
-                            spacingHorizontal={5}
+                            spacingHorizontal={10}
                             gap={{
                               "@print": 10,
-                              "@initial": 0,
+                              "@initial": 1,
                             }}
                             alignItems={{ "@print": "center" }}
                           >
