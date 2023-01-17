@@ -7,7 +7,6 @@ import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import { useTheme } from "../hooks/useTheme";
 import { styled } from "../stitches.config";
 import { BLUR_DATA_URL, ICON_SIZE } from "../util/images";
-import { PERSONAL, SITE, SOCIAL } from "../util/data";
 import { DISPLAY_VARIANTS } from "../styles/display";
 import { FLEX_VARIANTS } from "../styles/flex";
 import { SPACING_VARIANTS } from "../styles/spacing";

@@ -20,8 +20,6 @@ export const PageSEO = memo(function PageSEO({ path }) {
   const metaDescription = `${PERSONAL.profile1}\n${PERSONAL.profile2}`;
   const metaKeywords = PERSONAL.keywords.join(",");
 
-  console.log({ metaTitle });
-
   return (
     <>
       <title>{metaTitle}</title>
@@ -54,10 +52,9 @@ export const PageSEO = memo(function PageSEO({ path }) {
   );
 });
 
-export const BlogSEO = memo(function BlogSEO({ frontmatter }) {
-  const router = useRouter();
+export const BlogSEO = memo(function BlogSEO({ frontmatter, path }) {
   const { themeName, themeColor } = useTheme();
-  const metaUrl = `${SITE.url}${router.asPath}`;
+  const metaUrl = path ? `${SITE.url}${path}` : SITE.url;
   const keywords = frontmatter.tags.map((tag) => tag.name).join(",");
 
   return (
