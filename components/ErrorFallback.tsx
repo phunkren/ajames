@@ -40,17 +40,19 @@ export const ErrorFallback = memo(function ErrorFallback({
 
       <Box
         role="alert"
+        container="l"
         direction="vertical"
-        justifyContent="center"
         spacingTop={10}
         gap={10}
         flexGrow
       >
-        <Box as="pre">{error.message}</Box>
+        {error?.message ? <Box as="pre">{error.message}</Box> : null}
 
-        {error.cause ? <Box as="pre">{error.cause}</Box> : null}
+        {error?.cause ? <Box as="pre">{error.cause}</Box> : null}
 
-        <Button onClick={resetErrorBoundary}>Try again</Button>
+        {resetErrorBoundary ? (
+          <Button onClick={resetErrorBoundary}>Try again</Button>
+        ) : null}
 
         <Button onClick={handleReload}>
           <TextHeadline>Return to homepage</TextHeadline>

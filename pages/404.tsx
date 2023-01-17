@@ -27,13 +27,8 @@ function NotFoundPage() {
           </Box>
         </StyledHero>
       </AspectRatio>
-      <Box
-        direction="vertical"
-        justifyContent="center"
-        alignItems="center"
-        spacingTop={10}
-        flexGrow
-      >
+
+      <Box direction="vertical" alignItems="center" spacingTop={10} flexGrow>
         <Link href="/" variant="primary">
           <TextHeadline>Return to homepage</TextHeadline>
         </Link>
