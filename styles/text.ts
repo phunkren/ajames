@@ -60,6 +60,17 @@ export const TEXT_VARIANTS = {
       fontStyle: "italic",
     },
   },
+  fontWeight: {
+    [300]: {
+      fontWeight: 300,
+    },
+    [400]: {
+      fontWeight: 400,
+    },
+    [500]: {
+      fontWeight: 500,
+    },
+  },
   clamp: {
     [1]: {
       display: "-webkit-box",
