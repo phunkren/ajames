@@ -3,13 +3,15 @@ import { memo } from "react";
 import { styled } from "../stitches.config";
 import { NOTION_TAG_VARIANTS } from "../styles/tag";
 import { Tag } from "../types/notion";
+import { Divider } from "./Divider";
+import { Box } from "./Layout";
 import { TextAux } from "./Text";
 
-type Props = ToggleGroup.ToggleGroupMultipleProps & {
+type TagProps = ToggleGroup.ToggleGroupMultipleProps & {
   tags: Tag[];
 };
 
-const ToggleGroupRoot = styled(ToggleGroup.Root, {
+const TagToggleRoot = styled(ToggleGroup.Root, {
   display: "grid",
   gridTemplateColumns: "repeat(2, 1fr)",
   gridTemplateRows: "1fr",
@@ -29,7 +31,7 @@ const ToggleGroupRoot = styled(ToggleGroup.Root, {
   },
 });
 
-const ToggleGroupItem = styled(ToggleGroup.Item, {
+const TagToggleItem = styled(ToggleGroup.Item, {
   all: "unset",
   display: "flex",
   alignItems: "center",
@@ -39,7 +41,9 @@ const ToggleGroupItem = styled(ToggleGroup.Item, {
   textTransform: "uppercase",
   padding: "$2",
   borderRadius: 4,
-  border: "1px solid",
+  borderWidth: 1,
+  borderStyle: "solid",
+  borderColor: "transparent",
 
   "&:hover": {
     opacity: 0.75,
@@ -59,20 +63,67 @@ const ToggleGroupItem = styled(ToggleGroup.Item, {
   },
 });
 
-export const ThemeToggle = memo(function TagToggle({ tags, ...props }: Props) {
+const PageToggleRoot = styled(ToggleGroup.Root, {
+  display: "flex",
+  gap: "$5",
+});
+
+const PageToggleItem = styled(ToggleGroup.Item, {
+  all: "unset",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  backgroundColor: "transparent",
+  opacity: 0.4,
+  textTransform: "uppercase",
+  borderRadius: 4,
+  borderWidth: 1,
+  borderStyle: "solid",
+  borderColor: "transparent",
+
+  "&[data-state=on]": {
+    opacity: 1,
+  },
+
+  variants: {
+    ...NOTION_TAG_VARIANTS,
+  },
+});
+
+export const TagToggle = memo(function TagToggle({ tags, ...props }: TagProps) {
   return (
-    <ToggleGroupRoot
+    <TagToggleRoot
       aria-label="Blog tag toggle"
       orientation="horizontal"
       {...props}
     >
       {tags.map((tag) => (
-        <ToggleGroupItem key={tag.id} value={tag.name} borderColor={tag.color}>
+        <TagToggleItem key={tag.id} value={tag.name} borderColor={tag.color}>
           <TextAux textTransform="uppercase">
             {tag.name} ({tag.count})
           </TextAux>
-        </ToggleGroupItem>
+        </TagToggleItem>
       ))}
-    </ToggleGroupRoot>
+    </TagToggleRoot>
+  );
+});
+
+export const PageToggle = memo(function PageToggle(
+  props: ToggleGroup.ToggleGroupSingleProps
+) {
+  return (
+    <PageToggleRoot aria-label="Nav toggle" orientation="horizontal" {...props}>
+      <PageToggleItem value="short">
+        <TextAux textTransform="capitalize">Short</TextAux>
+      </PageToggleItem>
+
+      <Box>
+        <Divider orientation="vertical" />
+      </Box>
+
+      <PageToggleItem value="long">
+        <TextAux textTransform="capitalize">Long</TextAux>
+      </PageToggleItem>
+    </PageToggleRoot>
   );
 });
