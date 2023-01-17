@@ -1,4 +1,5 @@
 import * as ToggleGroup from "@radix-ui/react-toggle-group";
+import { memo } from "react";
 import { styled } from "../stitches.config";
 import { NOTION_TAG_VARIANTS } from "../styles/tag";
 import { Tag } from "../types/notion";
@@ -58,7 +59,7 @@ const ToggleGroupItem = styled(ToggleGroup.Item, {
   },
 });
 
-export function TagToggle({ tags, ...props }: Props) {
+export const ThemeToggle = memo(function TagToggle({ tags, ...props }: Props) {
   return (
     <ToggleGroupRoot
       aria-label="Blog tag toggle"
@@ -74,4 +75,4 @@ export function TagToggle({ tags, ...props }: Props) {
       ))}
     </ToggleGroupRoot>
   );
-}
+});
