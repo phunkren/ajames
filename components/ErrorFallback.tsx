@@ -11,7 +11,7 @@ const StyledHero = styled(Box, {
   position: "absolute",
   inset: 0,
   borderRadius: 4,
-  background: "$background",
+  backgroundColor: "$background",
 });
 
 export const ErrorFallback = memo(function ErrorFallback({
@@ -40,8 +40,9 @@ export const ErrorFallback = memo(function ErrorFallback({
 
       <Box
         role="alert"
-        container="l"
+        container="m"
         direction="vertical"
+        alignItems="center"
         spacingTop={10}
         gap={10}
         flexGrow
