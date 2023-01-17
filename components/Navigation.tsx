@@ -11,6 +11,7 @@ import { Social } from "./Social";
 import { ThemeToggle } from "./Theme";
 import { ICON_SIZE } from "../util/images";
 import { useTheme } from "../hooks/useTheme";
+import { Divider } from "./Divider";
 
 const StyledDialogContent = styled(Dialog.Content, {
   position: "absolute",
@@ -127,16 +128,28 @@ export const NavigationMobile = memo(function NavigationMobile() {
                 </Link>
               </Box>
 
+              <Box as="li" aria-hidden>
+                <Divider />
+              </Box>
+
               <Box as="li">
                 <Link variant="secondary" href="/about">
                   <TextHeadline>About</TextHeadline>
                 </Link>
               </Box>
 
+              <Box as="li" aria-hidden>
+                <Divider />
+              </Box>
+
               <Box as="li">
                 <Link variant="secondary" href="/blog">
                   <TextHeadline>Blog</TextHeadline>
                 </Link>
+              </Box>
+
+              <Box as="li" aria-hidden>
+                <Divider />
               </Box>
 
               <Box as="li">
