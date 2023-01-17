@@ -242,7 +242,7 @@ export const ShareButton = memo(function ShareButton({
   useEffect(() => () => clearTimeout(timerRef.current), []);
 
   return (
-    <Toast.Provider label="Share notification" duration={2000}>
+    <Toast.Provider label="Share notification" duration={5000}>
       <Box>
         {variant === "icon" ? (
           <StyledIconButton title="Share" onClick={handleClick}>
