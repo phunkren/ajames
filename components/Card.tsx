@@ -1,4 +1,11 @@
-import { memo, useRef, useState } from "react";
+import {
+  memo,
+  MouseEvent,
+  useCallback,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import Image from "next/image";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 import { blackA, whiteA } from "@radix-ui/colors";
@@ -7,7 +14,12 @@ import { PostTags, PublishDate } from "./Frontmatter";
 import { Box } from "./Layout";
 import { Emoji, TextAux, TextHeadline, TextTitle3 } from "./Text";
 import { Link } from "./Link";
-import { BlogCardProps, CardProps, VideoCardProps } from "../types/card";
+import {
+  BlogCardProps,
+  CardChildProps,
+  CardProps,
+  VideoCardProps,
+} from "../types/card";
 import { PreviewToggle } from "./Button";
 import { BLUR_DATA_URL } from "../util/images";
 
@@ -73,7 +85,7 @@ const StyledCardInner = styled(Box, {
   borderRight: 1,
   borderBottom: 1,
   borderLeft: 1,
-  borderStyle: "solid",
+  borderStyle: "inset",
   borderBottomRightRadius: 4,
   borderBottomLeftRadius: 4,
   borderColor: "$background",
@@ -111,13 +123,7 @@ export const Card = memo(function Card({
 
   const linkRef = useRef<HTMLAnchorElement>(null);
 
-  const childProps = {
-    ref: linkRef,
-    isPreviewVisible,
-    onPreviewToggle: handlePreviewToggle,
-  };
-
-  function handleClick(e) {
+  const handleClick = useCallback((e: MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
 
     if (e.ctrlKey) {
@@ -146,11 +152,20 @@ export const Card = memo(function Card({
         cancelable: true,
       })
     );
-  }
+  }, []);
 
-  function handlePreviewToggle(pressed: boolean) {
+  const handlePreviewToggle = useCallback((pressed: boolean) => {
     setIsPreviewVisible(pressed);
-  }
+  }, []);
+
+  const childProps: CardChildProps = useMemo(
+    () => ({
+      ref: linkRef,
+      isPreviewVisible,
+      onPreviewToggle: handlePreviewToggle,
+    }),
+    []
+  );
 
   return (
     <StyledCardOuter
