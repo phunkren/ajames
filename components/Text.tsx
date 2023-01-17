@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { styled } from "../stitches.config";
 import {
   AUX_STYLES,
@@ -80,10 +81,10 @@ export const StyledEmoji = styled("span", {
   },
 });
 
-export function Emoji({ emoji, ...props }: EmojiProps) {
+export const Emoji = memo(function Emoji({ emoji, ...props }: EmojiProps) {
   return (
     <StyledEmoji aria-hidden {...props}>
       {emoji}
     </StyledEmoji>
   );
-}
+});
