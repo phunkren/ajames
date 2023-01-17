@@ -10,6 +10,7 @@ import {
 import { EmojiProps } from "../types/emoji";
 
 export const TextTitle1 = styled("h1", {
+  fontWeight: 400,
   ...H1_STYLES,
 
   variants: {
@@ -18,6 +19,7 @@ export const TextTitle1 = styled("h1", {
 });
 
 export const TextTitle2 = styled("h2", {
+  fontWeight: 500,
   ...H2_STYLES,
 
   variants: {
@@ -26,6 +28,7 @@ export const TextTitle2 = styled("h2", {
 });
 
 export const TextTitle3 = styled("h3", {
+  fontWeight: 500,
   ...H3_STYLES,
 
   variants: {
