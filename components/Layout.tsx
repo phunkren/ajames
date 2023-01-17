@@ -1,9 +1,13 @@
+import { memo } from "react";
 import { useRouter } from "next/router";
+import Head from "next/head";
 import Image from "next/image";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import { useTheme } from "../hooks/useTheme";
 import { styled } from "../stitches.config";
+import { BLUR_DATA_URL, ICON_SIZE } from "../util/images";
+import { PERSONAL, SITE, SOCIAL } from "../util/data";
 import { DISPLAY_VARIANTS } from "../styles/display";
 import { FLEX_VARIANTS } from "../styles/flex";
 import { SPACING_VARIANTS } from "../styles/spacing";
@@ -14,15 +18,16 @@ import { Social } from "./Social";
 import { ThemeToggle } from "./Theme";
 import { ScrollToTopButton } from "./Button";
 import { TextHeadline } from "./Text";
-import Head from "next/head";
-import { PERSONAL, SITE, SOCIAL } from "../util/data";
-import { BLUR_DATA_URL, ICON_SIZE } from "../util/images";
 
 const StyledBox = styled("div", {
   display: "flex",
   flexDirection: "row",
 
   variants: { ...FLEX_VARIANTS, ...SPACING_VARIANTS, ...DISPLAY_VARIANTS },
+});
+
+export const Box = memo(function Box(props) {
+  return <StyledBox {...props} />;
 });
 
 const StyledImage = styled(Image, {
@@ -41,11 +46,7 @@ const StyledContent = styled(Box, {
   },
 });
 
-export function Box(props) {
-  return <StyledBox {...props} />;
-}
-
-export function ActionButtons(props) {
+export const ActionButtons = memo(function ActionButtons(props) {
   return (
     <Box
       direction={{ "@initial": "vertical", "@bp2": "horizontal" }}
@@ -58,9 +59,9 @@ export function ActionButtons(props) {
       {...props}
     />
   );
-}
+});
 
-export function RootLayout({ children }) {
+export const RootLayout = memo(function RootLayout({ children }) {
   const { theme } = useTheme();
 
   return (
@@ -68,13 +69,12 @@ export function RootLayout({ children }) {
       {children}
     </Box>
   );
-}
+});
 
-export function HeaderLayout() {
+export const HeaderLayout = memo(function HeaderLayout() {
   return (
     <Box
       as="header"
-      direction="horizontal"
       spacingTop={7}
       spacingBottom={10}
       spacingHorizontal={4}
@@ -102,13 +102,12 @@ export function HeaderLayout() {
       </Box>
     </Box>
   );
-}
+});
 
-export function FooterLayout() {
+export const FooterLayout = memo(function FooterLayout() {
   return (
     <Box
       as="footer"
-      direction="horizontal"
       spacingTop={10}
       spacingBottom={7}
       spacingHorizontal={4}
@@ -118,9 +117,9 @@ export function FooterLayout() {
       <Social />
     </Box>
   );
-}
+});
 
-export function Layout({ children }) {
+export const Layout = memo(function Layout({ children }) {
   const router = useRouter();
   const { themeName, themeColor } = useTheme();
   const metaUrl = `${SITE.url}${router.asPath}`;
@@ -175,9 +174,9 @@ export function Layout({ children }) {
       </Box>
     </>
   );
-}
+});
 
-export function BlogLayout({ frontmatter, children }) {
+export const BlogLayout = memo(function BlogLayout({ frontmatter, children }) {
   const router = useRouter();
   const { themeName, themeColor } = useTheme();
   const metaUrl = `${SITE.url}${router.asPath}`;
@@ -226,8 +225,8 @@ export function BlogLayout({ frontmatter, children }) {
           <Link href="/blog" variant="secondary">
             <Box
               alignItems="center"
-              gap={2}
               spacingBottom={{ "@initial": 4, "@bp2": 7 }}
+              gap={2}
             >
               <ArrowLeftIcon
                 width={ICON_SIZE.m}
@@ -261,4 +260,4 @@ export function BlogLayout({ frontmatter, children }) {
       </Box>
     </>
   );
-}
+});
