@@ -99,7 +99,7 @@ const StyledImage = styled(Image, {
   borderRadius: 4,
   position: "absolute",
   top: "4% !important",
-  left: "17% !important",
+  left: "16% !important",
   zIndex: 2,
   transform: "scale(0.9)",
   pointerEvents: "none",
@@ -194,7 +194,10 @@ function Cv() {
                   </TextHeadline>
                 </Box>
 
-                <ActionButtons css={{ zIndex: 1 }}>
+                <ActionButtons
+                  display={{ "@initial": "none", "@bp3": "flex" }}
+                  css={{ zIndex: 1 }}
+                >
                   <PrintButton />
 
                   <StyledIconLink href="/download-cv" title="Download" download>
