@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Cross1Icon, HamburgerMenuIcon } from "@radix-ui/react-icons";
 import * as Dialog from "@radix-ui/react-dialog";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
@@ -42,10 +43,10 @@ const StyledCloseMenuIcon = styled(Cross1Icon, {
   },
 });
 
-export function Navigation() {
+export const Navigation = memo(function Navigation() {
   return (
     <Box aria-label="Primary navigation" as="nav">
-      <Box direction="horizontal" as="ul" role="list" gap={10}>
+      <Box as="ul" role="list" gap={10}>
         <Box as="li">
           <Link variant="secondary" href="/about">
             <TextHeadline>About</TextHeadline>
@@ -64,9 +65,9 @@ export function Navigation() {
       </Box>
     </Box>
   );
-}
+});
 
-export function NavigationMobile() {
+export const NavigationMobile = memo(function NavigationMobile() {
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
@@ -74,13 +75,13 @@ export function NavigationMobile() {
           <StyledHamburgerMenuIcon
             width={ICON_SIZE.l}
             height={ICON_SIZE.l}
-            aria-hidden="true"
+            aria-hidden
           />
 
           <StyledCloseMenuIcon
             width={ICON_SIZE.l}
             height={ICON_SIZE.l}
-            aria-hidden="true"
+            aria-hidden
           />
         </Button>
       </Dialog.Trigger>
@@ -120,16 +121,19 @@ export function NavigationMobile() {
                   <TextHeadline>Home</TextHeadline>
                 </Link>
               </Box>
+
               <Box as="li">
                 <Link variant="secondary" href="/about">
                   <TextHeadline>About</TextHeadline>
                 </Link>
               </Box>
+
               <Box as="li">
                 <Link variant="secondary" href="/blog">
                   <TextHeadline>Blog</TextHeadline>
                 </Link>
               </Box>
+
               <Box as="li">
                 <Link variant="secondary" href="/streaming">
                   <TextHeadline>Streaming</TextHeadline>
@@ -145,4 +149,4 @@ export function NavigationMobile() {
       </Dialog.Portal>
     </Dialog.Root>
   );
-}
+});
