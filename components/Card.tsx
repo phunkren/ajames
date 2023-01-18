@@ -44,7 +44,7 @@ const StyledCardOuter = styled(Box, {
     },
   },
 
-  "&:active, &:has(img:active), &:has(a:active)": {
+  "&:active:not(:has(button:active))": {
     boxShadow: "$5",
     transform: "scale(0.99)",
 
@@ -61,10 +61,9 @@ const StyledCardOuter = styled(Box, {
     backgroundColor: whiteA.whiteA3,
   },
 
-  [`.${darkTheme} &:active, .${darkTheme} &:has(img:active), .${darkTheme} &:has(a:active)`]:
-    {
-      backgroundColor: whiteA.whiteA4,
-    },
+  [`.${darkTheme} &:active:not(:has(button:active))`]: {
+    backgroundColor: whiteA.whiteA4,
+  },
 
   [`.${lightTheme} &`]: {
     backgroundColor: blackA.blackA2,
@@ -74,10 +73,9 @@ const StyledCardOuter = styled(Box, {
     backgroundColor: blackA.blackA3,
   },
 
-  [`.${lightTheme} &:active, .${lightTheme} &:has(img:active), .${lightTheme} &:has(a:active)`]:
-    {
-      backgroundColor: blackA.blackA4,
-    },
+  [`.${lightTheme} &:active:not(:has(button:active))`]: {
+    backgroundColor: blackA.blackA4,
+  },
 });
 
 const StyledCardInner = styled(Box, {
@@ -150,7 +148,7 @@ export const Card = memo(function Card({
       isPreviewVisible,
       onPreviewToggle: handlePreviewToggle,
     }),
-    []
+    [isPreviewVisible]
   );
 
   return (

@@ -38,7 +38,6 @@ export const globalStyles = globalCss({
   /* Remove default margin */
   "body, h1, h2, h3, h4, p, figure, blockquote, dl, dd, a": {
     margin: 0,
-    lineHeight: 1.5,
   },
 
   "body[data-theme='light']": {
