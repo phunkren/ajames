@@ -48,6 +48,7 @@ const StyledHeroLayout = styled(Box, {
 
   "@bp2": {
     width: "100%",
+    left: 0,
   },
 });
 
@@ -91,11 +92,15 @@ export const HeaderLayout = memo(function HeaderLayout() {
       as="header"
       spacingTop={7}
       spacingBottom={10}
-      spacingHorizontal={{ "@initial": 4, "@bp3": 10 }}
       gap={{ "@initial": 4, "@bp2": 7 }}
       justifyContent="space-between"
       alignItems="center"
-      css={{ "@print": { display: "none" } }}
+      css={{
+        paddingLeft: "$4",
+        paddingRight: "$4",
+        "@bp2": { paddingLeft: 0, paddingRight: 0 },
+        "@print": { display: "none" },
+      }}
     >
       <Box direction="horizontal" gap={10} alignItems="center">
         <Link href="/">
@@ -169,7 +174,7 @@ export const Layout = memo(function Layout({ children }: any) {
       >
         <HeaderLayout />
 
-        <Box as="main" direction="vertical" flexGrow>
+        <Box as="main" direction="vertical" spacingVertical={6} flexGrow>
           {children}
         </Box>
 
@@ -192,15 +197,15 @@ export const BlogLayout = memo(function BlogLayout({
       <Box
         direction="vertical"
         spacingHorizontal={{ "@initial": 2, "@bp2": 4 }}
+        container="l"
       >
         <HeaderLayout />
 
-        <Box direction="vertical" container="l">
+        <Box direction="vertical">
           <Link href="/blog" variant="secondary">
             <Box
               alignItems="center"
               spacingBottom={{ "@initial": 4, "@bp2": 7 }}
-              spacingHorizontal={{ "@initial": 4, "@bp3": 10 }}
               gap={2}
             >
               <ArrowLeftIcon

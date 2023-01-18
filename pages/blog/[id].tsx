@@ -137,7 +137,7 @@ export default function BlogPost({ frontmatter, postData }: Props) {
             <Box
               justifyContent="space-between"
               alignItems="flex-start"
-              spacingTop={4}
+              spacingTop={10}
             >
               <TextTitle2 css={{ spacingBottom: "$4" }}>
                 <Balancer>{frontmatter.title}</Balancer>

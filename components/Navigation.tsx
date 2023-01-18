@@ -61,7 +61,7 @@ export const Navigation = memo(function Navigation() {
   const { asPath } = useRouter();
 
   return (
-    <Box aria-label="Primary navigation" as="nav" spacingHorizontal={5}>
+    <Box aria-label="Primary navigation" as="nav">
       <Box as="ul" role="list" gap={10}>
         <NavigationMenu.Root orientation="horizontal">
           <StyledNavigationMenuList role="list">

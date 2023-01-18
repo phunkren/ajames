@@ -171,8 +171,7 @@ function Streaming({
                 <Box
                   justifyContent="space-between"
                   alignItems="center"
-                  spacingTop={{ "@initial": 10, "@bp2": 4 }}
-                  spacingBottom={10}
+                  spacingVertical={10}
                 >
                   <TextTitle2>{channelInfoPreview.title}</TextTitle2>
 
