@@ -4,7 +4,12 @@ import { useRouter } from "next/router";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import * as Collapsible from "@radix-ui/react-collapsible";
 import { BlogCard } from "../../components/Card";
-import { ActionButtons, Box, Layout } from "../../components/Layout";
+import {
+  ActionButtons,
+  Box,
+  HeroLayout,
+  Layout,
+} from "../../components/Layout";
 import { TagToggle } from "../../components/Tags";
 import { TextTitle1, TextTitle2 } from "../../components/Text";
 import { styled } from "../../stitches.config";
@@ -17,8 +22,6 @@ import {
 } from "../../util/posts";
 import { createPosts, generateRSSFeed, getPosts } from "../../lib/notion";
 import { Divider } from "../../components/Divider";
-import { AspectRatio } from "@radix-ui/react-aspect-ratio";
-import Image from "next/image";
 import { FilterClearButton, FilterMenuButton } from "../../components/Button";
 import { BlogSubscriptionLink } from "../../components/Link";
 import {
@@ -54,11 +57,6 @@ const StyledCardContainer = styled(Box, {
     gridColumnGap: "$5",
     gridRowGap: "$10",
   },
-});
-
-const StyledImage = styled(Image, {
-  objectFit: "cover",
-  borderRadius: 4,
 });
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -108,16 +106,7 @@ function Blog({ posts, tags }: Props) {
           <TextTitle1>Blog</TextTitle1>
         </VisuallyHidden.Root>
 
-        <AspectRatio ratio={2.5 / 1}>
-          <StyledImage
-            placeholder="blur"
-            src={banner}
-            alt=""
-            sizes="100vw"
-            priority
-            fill
-          />
-        </AspectRatio>
+        <HeroLayout src={banner} />
 
         <Box
           direction="vertical"

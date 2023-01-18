@@ -30,11 +30,6 @@ export const Box = memo(function Box(props: any) {
   return <StyledBox {...props} />;
 });
 
-const StyledImage = styled(Image, {
-  objectFit: "cover",
-  borderRadius: 4,
-});
-
 // These magic numbers are calculated based on the font size of the TextTitle1 component
 // The computed value is (fontSize * lineHeight) / 2.
 const StyledContent = styled(Box, {
@@ -43,6 +38,25 @@ const StyledContent = styled(Box, {
 
   "@bp2": {
     top: -32,
+  },
+});
+
+const StyledHeroLayout = styled(Box, {
+  width: "100vw",
+  position: "relative",
+  left: "-$2",
+
+  "@bp2": {
+    width: "100%",
+  },
+});
+
+const StyledImage = styled(Image, {
+  objectFit: "cover",
+  borderRadius: 0,
+
+  "@bp2": {
+    borderRadius: 4,
   },
 });
 
@@ -77,7 +91,7 @@ export const HeaderLayout = memo(function HeaderLayout() {
       as="header"
       spacingTop={7}
       spacingBottom={10}
-      spacingHorizontal={4}
+      spacingHorizontal={{ "@initial": 4, "@bp3": 10 }}
       gap={{ "@initial": 4, "@bp2": 7 }}
       justifyContent="space-between"
       alignItems="center"
@@ -101,6 +115,24 @@ export const HeaderLayout = memo(function HeaderLayout() {
         <NavigationMobile />
       </Box>
     </Box>
+  );
+});
+
+export const HeroLayout = memo(function HeroLayout({ src }: any) {
+  return (
+    <StyledHeroLayout>
+      <AspectRatio.Root ratio={2.5 / 1}>
+        <StyledImage
+          placeholder="blur"
+          blurDataURL={BLUR_DATA_URL}
+          src={src}
+          alt=""
+          sizes="100vw"
+          fill
+          priority
+        />
+      </AspectRatio.Root>
+    </StyledHeroLayout>
   );
 });
 
@@ -131,11 +163,13 @@ export const Layout = memo(function Layout({ children }: any) {
       <Box
         direction="vertical"
         spacingHorizontal={{ "@initial": 2, "@bp2": 4 }}
+        container="l"
         flexGrow
+        css={{ overflowX: "hidden" }}
       >
         <HeaderLayout />
 
-        <Box as="main" direction="vertical" container="l" flexGrow>
+        <Box as="main" direction="vertical" flexGrow>
           {children}
         </Box>
 
@@ -166,7 +200,7 @@ export const BlogLayout = memo(function BlogLayout({
             <Box
               alignItems="center"
               spacingBottom={{ "@initial": 4, "@bp2": 7 }}
-              spacingHorizontal={{ "@initial": 4, "@bp2": 10 }}
+              spacingHorizontal={{ "@initial": 4, "@bp3": 10 }}
               gap={2}
             >
               <ArrowLeftIcon
@@ -178,17 +212,7 @@ export const BlogLayout = memo(function BlogLayout({
             </Box>
           </Link>
 
-          <AspectRatio.Root ratio={2.5 / 1}>
-            <StyledImage
-              placeholder="blur"
-              blurDataURL={BLUR_DATA_URL}
-              src={frontmatter.cover}
-              alt=""
-              sizes="100vw"
-              fill
-              priority
-            />
-          </AspectRatio.Root>
+          <HeroLayout src={frontmatter.cover} />
 
           <StyledContent as="main" direction="vertical">
             {children}

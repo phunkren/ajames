@@ -15,7 +15,7 @@ import {
   VideosTotalCount,
   VideosViewsCount,
 } from "../components/Frontmatter";
-import { Layout, Box, ActionButtons } from "../components/Layout";
+import { Layout, Box, ActionButtons, HeroLayout } from "../components/Layout";
 import {
   Link,
   YoutubeSubscribeLink,
@@ -107,11 +107,6 @@ const StyledYouTubePlayer = styled(YouTube, {
   },
 });
 
-const StyledImage = styled(Image, {
-  objectFit: "cover",
-  borderRadius: 4,
-});
-
 export async function getStaticProps() {
   const { latestVideo, playlists, videos, channelInfo } =
     await getYoutubeData();
@@ -152,16 +147,7 @@ function Streaming({
           <TextTitle1>Streaming</TextTitle1>
         </VisuallyHidden.Root>
 
-        <AspectRatio ratio={2.5 / 1}>
-          <StyledImage
-            placeholder="blur"
-            src={banner}
-            alt=""
-            sizes="100vw"
-            priority
-            fill
-          />
-        </AspectRatio>
+        <HeroLayout src={banner} />
 
         <StyledContentContainer
           direction="vertical"

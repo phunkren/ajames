@@ -37,9 +37,16 @@ import Image from "next/image";
 const StyledPageHeader = styled(Box, {
   display: "block",
   position: "relative",
+  left: "-$2",
+  width: "100vw",
   overflow: "hidden",
   borderTopRightRadius: 4,
   borderTopLeftRadius: 4,
+
+  "@bp2": {
+    left: 0,
+    width: "100%",
+  },
 
   "@print": {
     display: "none",
@@ -180,7 +187,7 @@ function Cv() {
               <StyledFilter />
 
               <StyledHero
-                spacingHorizontal={{ "@initial": 4, "@bp2": 10 }}
+                spacingHorizontal={{ "@initial": 6, "@bp2": 10 }}
                 spacingVertical={{ "@initial": 5, "@bp2": 7 }}
                 alignItems="flex-end"
                 justifyContent="space-between"
