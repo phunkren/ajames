@@ -58,7 +58,7 @@ export const StyledFilterTag = styled(StyledTag, {
   },
 });
 
-export const Frontmatter = memo(function Frontmatter(props) {
+export const Frontmatter = memo(function Frontmatter(props: any) {
   return (
     <Box
       as="ul"
@@ -71,7 +71,7 @@ export const Frontmatter = memo(function Frontmatter(props) {
   );
 });
 
-export const FrontmatterItem = memo(function FrontmatterItem(props) {
+export const FrontmatterItem = memo(function FrontmatterItem(props: any) {
   return <Box as="li" gap={6} alignItems="center" {...props} />;
 });
 
@@ -157,7 +157,7 @@ export const PublishDate = memo(function PublishDate({
   icon = false,
   compact = false,
   ...props
-}) {
+}: any) {
   const dateObject = new Date(date);
   const formattedDate = formatShortDate(dateObject);
 
@@ -190,7 +190,7 @@ export const ReadingTime = memo(function ReadingTime({
   time,
   icon = false,
   ...props
-}) {
+}: any) {
   const formattedTime = formatReadingTime(time);
 
   return (
@@ -202,11 +202,11 @@ export const ReadingTime = memo(function ReadingTime({
 });
 
 export const SubscriberCount = memo(function SubscriberCount({
-  subscribers,
+  total,
   icon = false,
   ...props
-}) {
-  const formattedNumber = formatNumber(subscribers);
+}: any) {
+  const formattedNumber = formatNumber(total);
   const formattedSubscribers = `${formattedNumber} subscribers`;
 
   return (
@@ -218,11 +218,11 @@ export const SubscriberCount = memo(function SubscriberCount({
 });
 
 export const VideosViewsCount = memo(function VideosViewsCount({
-  views,
+  total,
   icon = false,
   ...props
-}) {
-  const formattedNumber = formatNumber(views);
+}: any) {
+  const formattedNumber = formatNumber(total);
   const formattedViews = `${formattedNumber} total views`;
 
   return (
@@ -237,7 +237,7 @@ export const VideosTotalCount = memo(function VideosTotalCount({
   total,
   icon = false,
   ...props
-}) {
+}: any) {
   const formattedNumber = formatNumber(total);
   const formattedTotal = `${formattedNumber} videos`;
 
@@ -253,7 +253,7 @@ export const TotalPosts = memo(function TotalPosts({
   total,
   icon = false,
   ...props
-}) {
+}: any) {
   const formattedNumber = formatNumber(total);
   const formattedTotal = `${formattedNumber} articles`;
 
@@ -269,7 +269,7 @@ export const TotalCategories = memo(function TotalCategories({
   total,
   icon = false,
   ...props
-}) {
+}: any) {
   const formattedNumber = formatNumber(total);
   const formattedTotal = `${formattedNumber} categories`;
 

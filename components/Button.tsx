@@ -302,7 +302,7 @@ export const PreviewToggle = memo(function PreviewToggle({
   );
 });
 
-export const PrintButton = memo(function PrintButton(props) {
+export const PrintButton = memo(function PrintButton(props: any) {
   const handleClick = useCallback(() => {
     window.print();
   }, []);

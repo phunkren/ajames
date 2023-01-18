@@ -79,7 +79,7 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params }: any) {
   const pageData = await getPageData(params.id);
   const postData = await getPostData(params.id);
   const postTime = await getPostTime(postData);

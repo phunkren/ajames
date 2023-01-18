@@ -1,4 +1,4 @@
-import { ComponentPropsWithRef, memo } from "react";
+import { memo } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Image from "next/image";
@@ -26,7 +26,7 @@ const StyledBox = styled("div", {
   variants: { ...FLEX_VARIANTS, ...SPACING_VARIANTS, ...DISPLAY_VARIANTS },
 });
 
-export const Box = memo(function Box(props) {
+export const Box = memo(function Box(props: any) {
   return <StyledBox {...props} />;
 });
 
@@ -46,7 +46,7 @@ const StyledContent = styled(Box, {
   },
 });
 
-export const ActionButtons = memo(function ActionButtons(props) {
+export const ActionButtons = memo(function ActionButtons(props: any) {
   return (
     <Box
       direction={{ "@initial": "vertical", "@bp2": "horizontal" }}
@@ -61,7 +61,7 @@ export const ActionButtons = memo(function ActionButtons(props) {
   );
 });
 
-export const RootLayout = memo(function RootLayout({ children }) {
+export const RootLayout = memo(function RootLayout({ children }: any) {
   const { theme } = useTheme();
 
   return (
@@ -119,7 +119,7 @@ export const FooterLayout = memo(function FooterLayout() {
   );
 });
 
-export const Layout = memo(function Layout({ children }) {
+export const Layout = memo(function Layout({ children }: any) {
   const { asPath } = useRouter();
 
   return (
@@ -145,7 +145,10 @@ export const Layout = memo(function Layout({ children }) {
   );
 });
 
-export const BlogLayout = memo(function BlogLayout({ frontmatter, children }) {
+export const BlogLayout = memo(function BlogLayout({
+  frontmatter,
+  children,
+}: any) {
   return (
     <>
       <Head>

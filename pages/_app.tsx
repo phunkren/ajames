@@ -23,7 +23,7 @@ const firaCode = Fira_Code({
   subsets: ["latin"],
 });
 
-export default function MyApp({ Component, pageProps }) {
+export default function MyApp({ Component, pageProps }: any) {
   globalStyles();
 
   return (

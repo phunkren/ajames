@@ -253,7 +253,10 @@ export const StyledClearFilterLink = styled(Link, {
 
 // 'Notion to Markdown' converts embeds to links
 // Render embeds as iframes, and links with the custom Link component
-export const MarkdownLink = memo(function MarkdownLink({ node, ...props }) {
+export const MarkdownLink = memo(function MarkdownLink({
+  node,
+  ...props
+}: any) {
   const isEmbedLink = node.children[0].value === "embed";
 
   if (isEmbedLink) {
@@ -342,7 +345,7 @@ export const TwitterShareLink = memo(function TwitterShareLink({
   );
 });
 
-export const ReadMoreLink = memo(function ReadMoreLink(props) {
+export const ReadMoreLink = memo(function ReadMoreLink(props: any) {
   return (
     <Box gap={2} alignItems="center" {...props}>
       <TextAux>Read more</TextAux>
