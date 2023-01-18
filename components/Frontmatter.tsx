@@ -19,7 +19,7 @@ import { ICON_SIZE } from "../util/images";
 import { formatNumber } from "../util/number";
 import { formatReadingTime, getQueryTags } from "../util/posts";
 import { Box } from "./Layout";
-import { TextAux, TextHeadline } from "./Text";
+import { TextAux, TextBody } from "./Text";
 
 type PostTagProps = {
   tags: Tag[];
@@ -146,7 +146,7 @@ export const ActiveTags = memo(function ActiveTags({
           ))}
         </Box>
       ) : (
-        <TextHeadline textTransform="capitalize">All</TextHeadline>
+        <TextBody textTransform="capitalize">All</TextBody>
       )}
     </FrontmatterItem>
   );
@@ -179,9 +179,9 @@ export const PublishDate = memo(function PublishDate({
     <FrontmatterItem {...props}>
       {icon ? <CalendarIcon width={ICON_SIZE.l} height={ICON_SIZE.l} /> : null}
 
-      <TextHeadline as="time" dateTime={dateObject.toISOString()}>
+      <TextBody as="time" dateTime={dateObject.toISOString()}>
         {formattedDate}
-      </TextHeadline>
+      </TextBody>
     </FrontmatterItem>
   );
 });
@@ -196,7 +196,7 @@ export const ReadingTime = memo(function ReadingTime({
   return (
     <FrontmatterItem {...props}>
       {icon ? <ClockIcon width={ICON_SIZE.l} height={ICON_SIZE.l} /> : null}
-      <TextHeadline textTransform="capitalize">{formattedTime}</TextHeadline>
+      <TextBody textTransform="capitalize">{formattedTime}</TextBody>
     </FrontmatterItem>
   );
 });
@@ -212,9 +212,7 @@ export const SubscriberCount = memo(function SubscriberCount({
   return (
     <FrontmatterItem {...props}>
       {icon ? <AvatarIcon width={ICON_SIZE.l} height={ICON_SIZE.l} /> : null}
-      <TextHeadline textTransform="capitalize">
-        {formattedSubscribers}
-      </TextHeadline>
+      <TextBody textTransform="capitalize">{formattedSubscribers}</TextBody>
     </FrontmatterItem>
   );
 });
@@ -230,7 +228,7 @@ export const VideosViewsCount = memo(function VideosViewsCount({
   return (
     <FrontmatterItem {...props}>
       {icon ? <EyeOpenIcon width={ICON_SIZE.l} height={ICON_SIZE.l} /> : null}
-      <TextHeadline textTransform="capitalize">{formattedViews}</TextHeadline>
+      <TextBody textTransform="capitalize">{formattedViews}</TextBody>
     </FrontmatterItem>
   );
 });
@@ -246,7 +244,7 @@ export const VideosTotalCount = memo(function VideosTotalCount({
   return (
     <FrontmatterItem {...props}>
       {icon ? <VideoIcon width={ICON_SIZE.l} height={ICON_SIZE.l} /> : null}
-      <TextHeadline textTransform="capitalize">{formattedTotal}</TextHeadline>
+      <TextBody textTransform="capitalize">{formattedTotal}</TextBody>
     </FrontmatterItem>
   );
 });
@@ -262,7 +260,7 @@ export const TotalPosts = memo(function TotalPosts({
   return (
     <FrontmatterItem {...props}>
       {icon ? <Pencil2Icon width={ICON_SIZE.l} height={ICON_SIZE.l} /> : null}
-      <TextHeadline textTransform="capitalize">{formattedTotal}</TextHeadline>
+      <TextBody textTransform="capitalize">{formattedTotal}</TextBody>
     </FrontmatterItem>
   );
 });
@@ -278,7 +276,7 @@ export const TotalCategories = memo(function TotalCategories({
   return (
     <FrontmatterItem {...props}>
       {icon ? <MixIcon width={ICON_SIZE.l} height={ICON_SIZE.l} /> : null}
-      <TextHeadline textTransform="capitalize">{formattedTotal}</TextHeadline>
+      <TextBody textTransform="capitalize">{formattedTotal}</TextBody>
     </FrontmatterItem>
   );
 });
