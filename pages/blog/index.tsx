@@ -123,7 +123,7 @@ function Blog({ posts, tags }: Props) {
           direction="vertical"
           gap={10}
           spacingHorizontal={{ "@initial": 4, "@bp2": 10 }}
-          spacingTop={4}
+          spacingTop={{ "@initial": 6, "@bp2": 4 }}
           spacingBottom={10}
         >
           <Collapsible.Root

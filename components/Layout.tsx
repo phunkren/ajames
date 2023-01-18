@@ -163,6 +163,7 @@ export const BlogLayout = memo(function BlogLayout({ frontmatter, children }) {
             <Box
               alignItems="center"
               spacingBottom={{ "@initial": 4, "@bp2": 7 }}
+              spacingHorizontal={{ "@initial": 4, "@bp2": 10 }}
               gap={2}
             >
               <ArrowLeftIcon

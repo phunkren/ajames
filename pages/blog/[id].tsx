@@ -153,7 +153,7 @@ export default function BlogPost({ frontmatter, postData }: Props) {
             </Box>
           </Box>
 
-          <Box gap={10}>
+          <Box gap={10} alignItems="flex-end">
             <Frontmatter spacingTop={6}>
               <PostTags tags={frontmatter.tags} icon />
               <PublishDate date={frontmatter.date} icon />
