@@ -138,6 +138,7 @@ export default function BlogPost({ frontmatter, postData }: Props) {
               justifyContent="space-between"
               alignItems="flex-start"
               spacingTop={10}
+              css={{ marginTop: 3 }}
             >
               <TextTitle2 css={{ spacingBottom: "$4" }}>
                 <Balancer>{frontmatter.title}</Balancer>
@@ -210,7 +211,7 @@ export default function BlogPost({ frontmatter, postData }: Props) {
             <Divider />
           </Box>
 
-          <Box direction="vertical" gap={6}>
+          <Box direction="vertical" gap={8}>
             <TextTitle3 textAlign="center" color="secondary">
               Enjoying the content?
             </TextTitle3>

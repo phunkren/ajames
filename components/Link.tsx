@@ -2,7 +2,7 @@ import { forwardRef, memo, Ref } from "react";
 import NextLink from "next/link";
 import { MdRssFeed } from "react-icons/md";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
-import { CSS, styled } from "../stitches.config";
+import { CSS, darkTheme, lightTheme, styled } from "../stitches.config";
 import { YOUTUBE_SUBSCRIBE_URL } from "../util/youtube";
 import {
   ArrowRightIcon,
@@ -34,14 +34,6 @@ const StyledLink = styled("a", {
   color: "inherit",
   textDecoration: "none",
 
-  "&:hover": {
-    color: "$blue7",
-  },
-
-  "&:active": {
-    color: "$blue9",
-  },
-
   "&[aria-current='page']": {
     color: "$blue11",
     textDecoration: "underline",
@@ -51,13 +43,35 @@ const StyledLink = styled("a", {
     variant: {
       primary: {
         color: "$blue10",
+
+        "&:hover": {
+          color: "$blue12",
+        },
+
+        "&:active": {
+          color: "$blue9",
+        },
       },
       secondary: {
-        color: "$gray12",
+        "&:hover": {
+          color: "$blue10",
+        },
+
+        "&:active": {
+          color: "$blue9",
+        },
       },
       tertiary: {
         textDecoration: "underline",
         textDecorationStyle: "dotted",
+
+        "&:hover": {
+          color: "$blue10",
+        },
+
+        "&:active": {
+          color: "$blue9",
+        },
       },
     },
   },
@@ -76,15 +90,13 @@ export const Link = memo(
     }
 
     return (
-      <NextLink
-        href={href}
-        target={!isInternal ? "_blank" : "_self"}
-        rel={!isInternal ? "external noopener noreferrer" : ""}
-        passHref
-        legacyBehavior
-        {...nextLinkProps}
-      >
-        <StyledLink ref={ref} {...props} />
+      <NextLink href={href} passHref legacyBehavior {...nextLinkProps}>
+        <StyledLink
+          ref={ref}
+          target={!isInternal ? "_blank" : "_self"}
+          rel={!isInternal ? "external noopener noreferrer" : ""}
+          {...props}
+        />
       </NextLink>
     );
   })
@@ -105,6 +117,7 @@ export const StyledIconLink = styled(Link, {
 
   "&:hover": {
     boxShadow: "$4",
+    borderColor: "$foreground",
     backgroundColor: "$foreground",
     color: "$background",
   },
@@ -131,14 +144,30 @@ const StyledYoutubeSubscription = styled(Link, {
     type: {
       button: {
         padding: "$2 $4",
-        backgroundColor: "$red8",
+        color: "white",
         borderRadius: 4,
         boxShadow: "$1",
 
+        [`.${lightTheme} &`]: {
+          backgroundColor: "$red9",
+        },
+
+        [`.${darkTheme} &`]: {
+          backgroundColor: "$red8",
+        },
+
         "&:hover": {
           boxShadow: "$4",
-          backgroundColor: "$red7",
-          color: "$white",
+          color: "white",
+          [`.${lightTheme} &`]: {
+            backgroundColor: "$red10",
+            color: "white",
+          },
+
+          [`.${darkTheme} &`]: {
+            backgroundColor: "$red7",
+            color: "white",
+          },
         },
 
         "&:active": {
@@ -184,12 +213,29 @@ const StyledBlogSubscription = styled(Link, {
       },
       button: {
         padding: "$2 $4",
-        backgroundColor: "$amber11",
         borderRadius: 4,
-        color: "black",
+        color: "white",
         boxShadow: "$1",
+
+        [`.${lightTheme} &`]: {
+          backgroundColor: "$blue11",
+        },
+
+        [`.${darkTheme} &`]: {
+          backgroundColor: "$sky8",
+        },
+
         "&:hover": {
           boxShadow: "$4",
+          color: "white",
+
+          [`.${lightTheme} &`]: {
+            backgroundColor: "$blue10",
+          },
+
+          [`.${darkTheme} &`]: {
+            backgroundColor: "$sky7",
+          },
         },
 
         "&:active": {
@@ -202,14 +248,32 @@ const StyledBlogSubscription = styled(Link, {
         spacing: "$2",
         borderWidth: 2,
         borderStyle: "solid",
-        borderColor: "$foregroundMuted",
-        backgroundColor: "$amber11",
+        borderColor: "$foreground",
         color: "white",
         minWidth: 44,
         minHeight: 44,
         boxShadow: "$1",
+
+        [`.${lightTheme} &`]: {
+          backgroundColor: "$blue11",
+        },
+
+        [`.${darkTheme} &`]: {
+          backgroundColor: "$sky8",
+        },
+
         "&:hover": {
           boxShadow: "$4",
+
+          color: "white",
+
+          [`.${lightTheme} &`]: {
+            backgroundColor: "$blue10",
+          },
+
+          [`.${darkTheme} &`]: {
+            backgroundColor: "$sky7",
+          },
         },
 
         "&:active": {
@@ -274,6 +338,7 @@ export const YoutubeSubscribeLink = memo(function YoutubeSubscribeLink({
     <StyledYoutubeSubscription
       href={YOUTUBE_SUBSCRIBE_URL}
       type={type}
+      variant="secondary"
       {...props}
     >
       <Box alignItems="center" gap={2}>
@@ -294,9 +359,14 @@ export const BlogSubscriptionLink = memo(function BlogSubscribeLink({
   const rssFeedUrl = `${SITE.url}/rss`;
 
   return (
-    <StyledBlogSubscription href={rssFeedUrl} type={type} {...props}>
+    <StyledBlogSubscription
+      href={rssFeedUrl}
+      type={type}
+      variant="secondary"
+      {...props}
+    >
       <Box alignItems="center" gap={2}>
-        <StyledRssIcon size={ICON_SIZE.l} />
+        <StyledRssIcon size={ICON_SIZE.m} />
 
         {type === "button" && <TextAux color="inherit">Subscribe</TextAux>}
 
@@ -336,20 +406,11 @@ export const TwitterShareLink = memo(function TwitterShareLink({
   }
 
   return (
-    <Link href={href} title="Share on Twitter">
+    <Link href={href} title="Share on Twitter" variant="secondary">
       <Box alignItems="center" gap={2}>
         <TwitterLogoIcon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
         <TextHeadline>Tweet</TextHeadline>
       </Box>
     </Link>
-  );
-});
-
-export const ReadMoreLink = memo(function ReadMoreLink(props: any) {
-  return (
-    <Box gap={2} alignItems="center" {...props}>
-      <TextAux>Read more</TextAux>
-      <ArrowRightIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
-    </Box>
   );
 });

@@ -168,7 +168,11 @@ export const PublishDate = memo(function PublishDate({
           <CalendarIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
         ) : null}
 
-        <TextAux as="time" dateTime={dateObject.toISOString()}>
+        <TextAux
+          as="time"
+          dateTime={dateObject.toISOString()}
+          color="secondary"
+        >
           {formattedDate}
         </TextAux>
       </FrontmatterItem>
@@ -179,7 +183,7 @@ export const PublishDate = memo(function PublishDate({
     <FrontmatterItem {...props}>
       {icon ? <CalendarIcon width={ICON_SIZE.l} height={ICON_SIZE.l} /> : null}
 
-      <TextBody as="time" dateTime={dateObject.toISOString()}>
+      <TextBody as="time" dateTime={dateObject.toISOString()} color="secondary">
         {formattedDate}
       </TextBody>
     </FrontmatterItem>

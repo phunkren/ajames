@@ -28,8 +28,7 @@ function Home() {
         direction="vertical"
         justifyContent="center"
         alignItems="center"
-        container="s"
-        spacingHorizontal={3}
+        spacingHorizontal={{ "@initial": 4, "@bp2": 10 }}
         spacingVertical={7}
         flexGrow
       >

@@ -38,6 +38,8 @@ import {
   sageDark,
   blackA,
   whiteA,
+  crimson,
+  crimsonDark,
 } from "@radix-ui/colors";
 import { SPACING_UTILS } from "./styles/spacing";
 import { DISPLAY_UTILS } from "./styles/display";
@@ -111,6 +113,7 @@ export const lightTheme = createTheme({
     ...teal,
     ...indigo,
     ...sage,
+    ...crimson,
   },
 });
 
@@ -137,6 +140,7 @@ export const darkTheme = createTheme({
     ...tealDark,
     ...indigoDark,
     ...sageDark,
+    ...crimsonDark,
   },
 });
 

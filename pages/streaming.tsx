@@ -202,11 +202,11 @@ function Streaming({
                 <Box alignItems="flex-end">
                   <Frontmatter>
                     <VideosViewsCount
-                      views={channelInfoPreview.viewCount}
+                      total={channelInfoPreview.viewCount}
                       icon
                     />
                     <SubscriberCount
-                      subscribers={channelInfoPreview.subscriberCount}
+                      total={channelInfoPreview.subscriberCount}
                       icon
                     />
                     <VideosTotalCount
@@ -257,7 +257,7 @@ function Streaming({
                       height={ICON_SIZE.m}
                       aria-hidden
                     />
-                    <TextHeadline color="secondary">Watch video</TextHeadline>
+                    <TextAux>Watch video</TextAux>
                   </Link>
                 </Box>
 
@@ -310,7 +310,7 @@ function Streaming({
 
                     <Box spacingTop={3}>
                       <Link href={videoPreview.url} variant="secondary">
-                        <TextAux>Read more</TextAux>
+                        <TextAux color="secondary">Read more</TextAux>
                       </Link>
                     </Box>
                   </Box>
@@ -360,7 +360,7 @@ function Streaming({
                           height={ICON_SIZE.m}
                           aria-hidden
                         />
-                        <TextHeadline color="secondary">Watch all</TextHeadline>
+                        <TextAux>Watch all</TextAux>
                       </Link>
                     </Box>
 
@@ -404,7 +404,7 @@ function Streaming({
               <Divider />
             </Box>
 
-            <Box direction="vertical" gap={6}>
+            <Box direction="vertical" gap={8}>
               <TextTitle3 textAlign="center" color="secondary">
                 Enjoying the content?
               </TextTitle3>

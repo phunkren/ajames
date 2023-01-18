@@ -42,7 +42,7 @@ const StyledCardContainer = styled(Box, {
   gridTemplateColumns: "1fr",
   gridTemplateRows: "1fr",
   gridColumnGap: "$2",
-  gridRowGap: "$7",
+  gridRowGap: "$10",
   borderRadius: 4,
   width: "100%",
 
@@ -54,7 +54,7 @@ const StyledCardContainer = styled(Box, {
 
   "@bp3": {
     gridTemplateColumns: "repeat(3, 1fr)",
-    gridColumnGap: "$5",
+    gridColumnGap: "$10",
     gridRowGap: "$10",
   },
 });
@@ -112,7 +112,7 @@ function Blog({ posts, tags }: Props) {
           direction="vertical"
           gap={10}
           spacingHorizontal={{ "@initial": 4, "@bp2": 10 }}
-          spacingTop={{ "@initial": 6, "@bp2": 10 }}
+          spacingTop={{ "@initial": 6, "@bp2": 9 }}
           spacingBottom={10}
         >
           <Collapsible.Root
@@ -133,14 +133,14 @@ function Blog({ posts, tags }: Props) {
                 />
               </Box>
 
-              <Box justifyContent="space-between" alignItems="flex-end">
+              <Box justifyContent="space-between" alignItems="flex-end" gap={4}>
                 <Frontmatter flexGrow>
                   <TotalPosts total={posts.length} icon />
                   <TotalCategories total={tags.length} icon />
                   <ActiveTags tags={tags} queryTags={queryTags} icon />
                 </Frontmatter>
 
-                <ActionButtons>
+                <ActionButtons css={{ flexBasis: "fit-content" }}>
                   <FilterClearButton filters={queryTags} />
 
                   <Collapsible.Trigger asChild>

@@ -24,7 +24,8 @@ const ToggleGroupRoot = styled(ToggleGroup.Root, {
   borderRadius: 4,
   borderWidth: 1,
   borderStyle: "solid",
-  borderColor: "$backgroundMuted",
+  borderColor: "$foregroundMuted",
+  backgroundColor: "$backgroundMuted",
   boxShadow: "$1",
 });
 
@@ -39,9 +40,27 @@ const ToggleGroupItem = styled(ToggleGroup.Item, {
   justifyContent: "center",
   marginLeft: 1,
   backgroundColor: "transparent",
+  overflow: "hidden",
 
   "&[data-state=off]": {
     opacity: 0.75,
+
+    "& > *": {
+      transform: "translateY(100%)",
+    },
+
+    "&:hover > *": {
+      transform: "translateY(75%)",
+    },
+  },
+
+  "&[data-state=on]": {
+    opacity: 1,
+    cursor: "default",
+
+    "& > *": {
+      transform: "translateY(0)",
+    },
   },
 
   "&[data-state=off]:hover": { backgroundColor: "$backgroundMuted" },
@@ -50,26 +69,15 @@ const ToggleGroupItem = styled(ToggleGroup.Item, {
     marginLeft: 0,
     borderTopLeftRadius: 4,
     borderBottomLeftRadius: 4,
+    borderRight: "1px solid $foreground",
   },
 
   "&:last-child": { borderTopRightRadius: 4, borderBottomRightRadius: 4 },
 });
 
-const LightToggle = styled(ToggleGroupItem, {
-  "&[data-state=on]": {
-    backgroundColor: "$sky11",
-    color: "$yellow8",
-    opacity: 1,
-  },
-});
+const LightToggle = styled(ToggleGroupItem, {});
 
-const DarkToggle = styled(ToggleGroupItem, {
-  "&[data-state=on]": {
-    backgroundColor: "black",
-    color: "$gray11",
-    opacity: 1,
-  },
-});
+const DarkToggle = styled(ToggleGroupItem, {});
 
 // Create the theme provider component
 export const ThemeProvider = memo(function ThemeProvider({

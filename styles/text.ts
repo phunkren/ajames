@@ -1,3 +1,5 @@
+import { lightTheme } from "../stitches.config";
+
 export const TEXT_VARIANTS = {
   color: {
     primary: {
@@ -138,10 +140,10 @@ export const H2_STYLES = {
 };
 
 export const H3_STYLES = {
-  fontSize: 22,
+  fontSize: 18,
 
   "@bp3": {
-    fontSize: 24,
+    fontSize: 22,
   },
 
   "@print": {
@@ -152,12 +154,12 @@ export const H3_STYLES = {
 export const P_STYLES = {
   fontSize: 18,
 
-  "@bp2": {
-    fontSize: 22,
+  [`.${lightTheme} &`]: {
+    fontWeight: 400,
   },
 
-  "@bp3": {
-    fontSize: 24,
+  "@bp2": {
+    fontSize: 22,
   },
 
   "@print": {

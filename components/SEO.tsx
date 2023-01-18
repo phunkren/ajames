@@ -12,7 +12,7 @@ export const RootSeo = memo(function RootSeo() {
   );
 });
 
-export const PageSEO = memo(function PageSEO({ path }: any) {
+export function PageSEO({ path }: any) {
   const { themeName, themeColor } = useTheme();
   const metaUrl = path ? `${SITE.url}${path}` : SITE.url;
   const metaTitle = `${PERSONAL.name} | ${PERSONAL.occupation}`;
@@ -50,7 +50,7 @@ export const PageSEO = memo(function PageSEO({ path }: any) {
       <meta name="og:image" content={metaImage} />
     </>
   );
-});
+}
 
 export const BlogSEO = memo(function BlogSEO({ frontmatter, path }: any) {
   const { themeName, themeColor } = useTheme();

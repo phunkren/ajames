@@ -42,6 +42,8 @@ const StyledPageHeader = styled(Box, {
   overflow: "hidden",
   borderTopRightRadius: 4,
   borderTopLeftRadius: 4,
+  marginBottom: "$10",
+  color: "$foreground",
 
   "@bp2": {
     left: 0,
@@ -69,6 +71,14 @@ const StyledHero = styled(Box, {
   borderBottomStyle: "solid",
   borderBottomColor: "$foreground",
 
+  [`.${darkTheme} &`]: {
+    borderBottomColor: "$foreground",
+  },
+
+  [`.${lightTheme} &`]: {
+    borderBottomColor: "$background",
+  },
+
   "&::after": {
     content: "",
     position: "absolute",
@@ -79,8 +89,7 @@ const StyledHero = styled(Box, {
     },
 
     [`.${lightTheme} &`]: {
-      background: "$slate11",
-      opacity: 0.4,
+      background: "rgba(0,0,0,0.75)",
     },
   },
 });
@@ -90,13 +99,10 @@ const StyledFilter = styled(Box, {
   inset: 0,
   zIndex: 0,
   filter: "blur(80px)",
+  background: "conic-gradient(from 50deg, $red3, $red2, $blue2, $blue4)",
 
   [`.${lightTheme} &`]: {
     background: "conic-gradient(from 50deg, $red11, $red11, $blue10, $blue11)",
-  },
-
-  [`.${darkTheme} &`]: {
-    background: "conic-gradient(from 50deg, $red3, $red2, $blue2, $blue4)",
   },
 });
 
@@ -110,10 +116,7 @@ const StyledImage = styled(Image, {
   zIndex: 2,
   transform: "scale(0.9)",
   pointerEvents: "none",
-
-  [`.${darkTheme} &`]: {
-    filter: "brightness(66%)",
-  },
+  filter: "brightness(66%)",
 
   "@bp2": {
     display: "block",
@@ -180,7 +183,7 @@ function Cv() {
         </VisuallyHidden.Root>
 
         <Box direction="vertical">
-          <StyledPageHeader>
+          <StyledPageHeader className={darkTheme}>
             <AspectRatio ratio={2.5 / 1}>
               <StyledImage src={banner} alt="" sizes="100vw" priority fill />
 
@@ -480,6 +483,7 @@ function Cv() {
                           <StyledBlockQuote cite={SOCIAL.linkedin.url}>
                             <TextAux
                               fontWeight={400}
+                              color="secondary"
                               css={{
                                 display: "inline",
                                 "@print": { display: "none" },
@@ -544,6 +548,7 @@ function Cv() {
             <Box
               direction="vertical"
               gap={{ "@print": 5, "@initial": 10 }}
+              spacingBottom={10}
               flexGrow
             >
               <Box as="section" aria-labelledby="profile" direction="vertical">

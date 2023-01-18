@@ -191,7 +191,7 @@ export const NavigationMobile = memo(function NavigationMobile() {
                     as="ul"
                     role="list"
                     direction="vertical"
-                    gap={10}
+                    gap={5}
                     spacingTop={10}
                   >
                     <NavigationMenu.Item>

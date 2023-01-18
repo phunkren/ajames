@@ -48,11 +48,17 @@ const StyledButton = styled("button", {
   overflow: "visible",
   padding: "0",
   lineHeight: "normal",
-  minWidth: 44,
-  minHeight: 44,
 
   "-webkit-appearance": "none",
   "-moz-appearance": "none",
+
+  "&:hover": {
+    color: "$blue10",
+  },
+
+  "&:active": {
+    color: "$blue9",
+  },
 
   "&[aria-disabled='true']": {
     pointerEvents: "none",
@@ -82,6 +88,7 @@ export const StyledIconButton = styled(Button, {
 
   "&:hover": {
     boxShadow: "$4",
+    borderColor: "$foreground",
     backgroundColor: "$foreground",
     color: "$background",
   },
