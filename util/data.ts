@@ -280,3 +280,11 @@ export const TESTIMONIALS: Testimonial[] = [
       "Andrew always showed a strong desire and passion for his work and the technologies behind it.",
   },
 ];
+
+export const PROJECTS = [
+  {
+    id: "find-phunk",
+    name: "Find Phunk",
+    url: "https://findphunk.vercel.app/",
+  },
+];

@@ -35,11 +35,16 @@ const StyledLink = styled("a", {
   textDecoration: "none",
 
   "&:hover": {
-    color: "$blue11",
+    color: "$blue7",
   },
 
   "&:active": {
     color: "$blue9",
+  },
+
+  "&[aria-current='page']": {
+    color: "$blue11",
+    textDecoration: "underline",
   },
 
   variants: {

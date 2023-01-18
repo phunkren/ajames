@@ -1,5 +1,10 @@
 import { memo } from "react";
-import { Cross1Icon, HamburgerMenuIcon } from "@radix-ui/react-icons";
+import {
+  ChevronDownIcon,
+  Cross1Icon,
+  HamburgerMenuIcon,
+} from "@radix-ui/react-icons";
+import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import * as Dialog from "@radix-ui/react-dialog";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { styled } from "../stitches.config";
@@ -12,6 +17,8 @@ import { ThemeToggle } from "./Theme";
 import { ICON_SIZE } from "../util/images";
 import { useTheme } from "../hooks/useTheme";
 import { Divider } from "./Divider";
+import { useRouter } from "next/router";
+import { PROJECTS } from "../util/data";
 
 const StyledDialogContent = styled(Dialog.Content, {
   position: "absolute",
@@ -45,25 +52,80 @@ const StyledCloseMenuIcon = styled(Cross1Icon, {
   },
 });
 
+const StyledNavigationMenuList = styled(NavigationMenu.List, {
+  display: "flex",
+  gap: "$10",
+});
+
 export const Navigation = memo(function Navigation() {
+  const { asPath } = useRouter();
+
   return (
     <Box aria-label="Primary navigation" as="nav">
       <Box as="ul" role="list" gap={10}>
-        <Box as="li">
-          <Link variant="secondary" href="/about">
-            <TextHeadline>About</TextHeadline>
-          </Link>
-        </Box>
-        <Box as="li">
-          <Link variant="secondary" href="/blog">
-            <TextHeadline>Blog</TextHeadline>
-          </Link>
-        </Box>
-        <Box as="li">
-          <Link variant="secondary" href="/streaming">
-            <TextHeadline>Streaming</TextHeadline>
-          </Link>
-        </Box>
+        <NavigationMenu.Root orientation="horizontal">
+          <StyledNavigationMenuList role="list">
+            <NavigationMenu.Item>
+              <NavigationMenu.Link asChild active={asPath === "/about"}>
+                <Link variant="secondary" href="/about">
+                  <TextHeadline>About</TextHeadline>
+                </Link>
+              </NavigationMenu.Link>
+            </NavigationMenu.Item>
+
+            <NavigationMenu.Item>
+              <NavigationMenu.Link asChild active={asPath.includes("blog")}>
+                <Link variant="secondary" href="/blog">
+                  <TextHeadline>Blog</TextHeadline>
+                </Link>
+              </NavigationMenu.Link>
+            </NavigationMenu.Item>
+
+            <NavigationMenu.Item>
+              <NavigationMenu.Link asChild active={asPath === "/streaming"}>
+                <Link variant="secondary" href="/streaming">
+                  <TextHeadline>Streaming</TextHeadline>
+                </Link>
+              </NavigationMenu.Link>
+            </NavigationMenu.Item>
+
+            <NavigationMenu.Item>
+              <NavigationMenu.Trigger asChild>
+                <Button css={{ padding: 0, minHeight: 0, gap: "$2" }}>
+                  <TextHeadline>Projects</TextHeadline>
+                  <ChevronDownIcon width={ICON_SIZE.s} height={ICON_SIZE.s} />
+                </Button>
+              </NavigationMenu.Trigger>
+
+              <NavigationMenu.Content asChild>
+                <Box
+                  as="ul"
+                  css={{
+                    position: "absolute",
+                    top: "$10",
+                    background: "$backgroundMuted",
+                    borderRadius: 4,
+                    padding: "$4",
+                    minWidth: 200,
+                    boxShadow: "$2",
+                  }}
+                >
+                  {PROJECTS.map((project) => (
+                    <Box key={project.id} as="li">
+                      <NavigationMenu.Link asChild>
+                        <Link variant="secondary" href={project.url}>
+                          <TextHeadline>{project.name}</TextHeadline>
+                        </Link>
+                      </NavigationMenu.Link>
+                    </Box>
+                  ))}
+                </Box>
+              </NavigationMenu.Content>
+            </NavigationMenu.Item>
+
+            <NavigationMenu.Indicator />
+          </StyledNavigationMenuList>
+        </NavigationMenu.Root>
       </Box>
     </Box>
   );
@@ -71,6 +133,7 @@ export const Navigation = memo(function Navigation() {
 
 export const NavigationMobile = memo(function NavigationMobile() {
   const { theme } = useTheme();
+  const { asPath } = useRouter();
 
   return (
     <Dialog.Root>
@@ -122,41 +185,67 @@ export const NavigationMobile = memo(function NavigationMobile() {
               spacingTop={10}
               spacingHorizontal={4}
             >
-              <Box as="li">
-                <Link variant="secondary" href="/">
-                  <TextHeadline>Home</TextHeadline>
-                </Link>
-              </Box>
+              <NavigationMenu.Root orientation="horizontal">
+                <NavigationMenu.List role="list" asChild>
+                  <Box
+                    as="ul"
+                    role="list"
+                    direction="vertical"
+                    gap={10}
+                    spacingTop={10}
+                  >
+                    <NavigationMenu.Item>
+                      <NavigationMenu.Link asChild active={asPath === "/"}>
+                        <Link variant="secondary" href="/">
+                          <TextHeadline>Home</TextHeadline>
+                        </Link>
+                      </NavigationMenu.Link>
+                    </NavigationMenu.Item>
 
-              <Box as="li" aria-hidden>
-                <Divider />
-              </Box>
+                    <Box aria-hidden>
+                      <Divider />
+                    </Box>
 
-              <Box as="li">
-                <Link variant="secondary" href="/about">
-                  <TextHeadline>About</TextHeadline>
-                </Link>
-              </Box>
+                    <NavigationMenu.Item>
+                      <NavigationMenu.Link asChild active={asPath === "/about"}>
+                        <Link variant="secondary" href="/about">
+                          <TextHeadline>About</TextHeadline>
+                        </Link>
+                      </NavigationMenu.Link>
+                    </NavigationMenu.Item>
 
-              <Box as="li" aria-hidden>
-                <Divider />
-              </Box>
+                    <Box aria-hidden>
+                      <Divider />
+                    </Box>
 
-              <Box as="li">
-                <Link variant="secondary" href="/blog">
-                  <TextHeadline>Blog</TextHeadline>
-                </Link>
-              </Box>
+                    <NavigationMenu.Item>
+                      <NavigationMenu.Link
+                        asChild
+                        active={asPath.includes("blog")}
+                      >
+                        <Link variant="secondary" href="/blog">
+                          <TextHeadline>Blog</TextHeadline>
+                        </Link>
+                      </NavigationMenu.Link>
+                    </NavigationMenu.Item>
 
-              <Box as="li" aria-hidden>
-                <Divider />
-              </Box>
+                    <Box aria-hidden>
+                      <Divider />
+                    </Box>
 
-              <Box as="li">
-                <Link variant="secondary" href="/streaming">
-                  <TextHeadline>Streaming</TextHeadline>
-                </Link>
-              </Box>
+                    <NavigationMenu.Item>
+                      <NavigationMenu.Link
+                        asChild
+                        active={asPath === "/streaming"}
+                      >
+                        <Link variant="secondary" href="/streaming">
+                          <TextHeadline>Streaming</TextHeadline>
+                        </Link>
+                      </NavigationMenu.Link>
+                    </NavigationMenu.Item>
+                  </Box>
+                </NavigationMenu.List>
+              </NavigationMenu.Root>
             </Box>
 
             <Box justifyContent="center" css={{ marginTop: "auto" }}>
