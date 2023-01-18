@@ -120,7 +120,7 @@ export const ThemeProvider = memo(function ThemeProvider({
     if (theme) {
       document.body.setAttribute("data-theme", theme);
     }
-  }, [theme, storageTheme, getSystemTheme]);
+  }, [theme, storageTheme, getSystemTheme, setStorageTheme]);
 
   // [HACK]: Prevent light theme flash on page load if system prefers dark
   // [TODO] - There's gotta be a better way!?
