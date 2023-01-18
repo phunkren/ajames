@@ -1,20 +1,25 @@
+import * as Toggle from "@radix-ui/react-toggle";
+import { styled } from "@stitches/react";
 import { useRouter } from "next/router";
 import { Box, Layout } from "../components/Layout";
 import { Link } from "../components/Link";
-import {
-  TextAux,
-  TextBody,
-  TextHeadline,
-  TextTitle1,
-} from "../components/Text";
+import { PageToggle } from "../components/Tags";
+import { Emoji, TextBody, TextHeadline, TextTitle1 } from "../components/Text";
 import { EMPLOYMENT, PERSONAL } from "../util/data";
 
 function Home() {
-  const {
-    query: { tab },
-  } = useRouter();
+  const { pathname, push, query } = useRouter();
 
-  const currentTab = tab || "home";
+  const currentTab = query.tab as string | "short";
+
+  function handleTabChange(newTab: string) {
+    console.log({ newTab, currentTab });
+    if (newTab !== currentTab) {
+      push({ pathname, query: { ...query, tab: newTab } }, undefined, {
+        scroll: false,
+      });
+    }
+  }
 
   const currentEmployer = EMPLOYMENT[0];
 
@@ -24,28 +29,20 @@ function Home() {
         direction="vertical"
         justifyContent="center"
         alignItems="center"
-        gap={5}
+        container="s"
         spacingHorizontal={3}
         spacingVertical={7}
         flexGrow
       >
-        <nav aria-label="Blog categories">
-          <Box direction="horizontal" as="ul" role="list" gap={5}>
-            <li>
-              <Link href={{ pathname: "/", query: { tab: "home" } }}>
-                Short
-              </Link>
-            </li>
+        <Box spacingBottom={5}>
+          <PageToggle
+            type="single"
+            value={currentTab}
+            onValueChange={handleTabChange}
+          />
+        </Box>
 
-            <li>
-              <Link href={{ pathname: "/", query: { tab: "about" } }}>
-                Long
-              </Link>
-            </li>
-          </Box>
-        </nav>
-
-        {currentTab === "home" ? (
+        {!query.tab || query.tab === "short" ? (
           <Box direction="vertical" alignItems="center">
             <TextTitle1>{PERSONAL.name}</TextTitle1>
 
@@ -61,9 +58,9 @@ function Home() {
           </Box>
         ) : null}
 
-        {currentTab === "about" ? (
+        {query.tab === "long" ? (
           <Box direction="vertical" gap={5} container="s">
-            <TextAux>👋</TextAux>
+            <Emoji emoji="👋" />
             <TextBody>{PERSONAL.profile1}</TextBody>
             <TextBody>{PERSONAL.profile2}</TextBody>
           </Box>
