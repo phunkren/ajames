@@ -4,7 +4,6 @@ import { ScrollAreaViewport } from "@radix-ui/react-scroll-area";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import Balancer from "react-wrap-balancer";
 import { PlayIcon } from "@radix-ui/react-icons";
-import { blackA } from "@radix-ui/colors";
 import YouTube from "react-youtube";
 import { AvatarFallback, AvatarImage, AvatarRoot } from "../components/Avatar";
 import { VideoCard } from "../components/Card";
