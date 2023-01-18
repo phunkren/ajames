@@ -14,7 +14,7 @@ export const AvatarRoot = styled(RadixAvatar.Root, {
   width: 48,
   height: 48,
   borderRadius: "100%",
-  backgroundColor: "black",
+  backgroundColor: "$blue6",
   boxShadow: "$1",
 
   "&:hover": {
