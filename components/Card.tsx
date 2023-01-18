@@ -148,7 +148,7 @@ export const Card = memo(function Card({
       isPreviewVisible,
       onPreviewToggle: handlePreviewToggle,
     }),
-    [isPreviewVisible]
+    [isPreviewVisible, handlePreviewToggle]
   );
 
   return (

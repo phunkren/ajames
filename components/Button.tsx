@@ -237,7 +237,7 @@ export const ShareButton = memo(function ShareButton({
         setOpen(true);
       }, 100);
     });
-  }, []);
+  }, [emoji, text, url]);
 
   useEffect(() => () => clearTimeout(timerRef.current), []);
 
@@ -325,7 +325,7 @@ export const FilterClearButton = memo(function FilterClearButton({
     push({ pathname }, undefined, {
       scroll: false,
     });
-  }, []);
+  }, [pathname, push]);
 
   return (
     <StyledIconButton

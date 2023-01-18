@@ -1,11 +1,11 @@
-import { memo } from "react";
+import { ComponentPropsWithRef, memo } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Image from "next/image";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import { useTheme } from "../hooks/useTheme";
-import { styled } from "../stitches.config";
+import { CSS, styled } from "../stitches.config";
 import { BLUR_DATA_URL, ICON_SIZE } from "../util/images";
 import { DISPLAY_VARIANTS } from "../styles/display";
 import { FLEX_VARIANTS } from "../styles/flex";

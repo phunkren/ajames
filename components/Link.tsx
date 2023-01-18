@@ -58,11 +58,11 @@ const StyledLink = styled("a", {
   },
 });
 
-export const Link = forwardRef(
-  (
+export const Link = memo(
+  forwardRef(function Link(
     { href, nextLinkProps, ...props }: LinkProps,
     ref: Ref<HTMLAnchorElement>
-  ) => {
+  ) {
     const isInternal = isLinkInternal();
 
     function isLinkInternal() {
@@ -82,7 +82,7 @@ export const Link = forwardRef(
         <StyledLink ref={ref} {...props} />
       </NextLink>
     );
-  }
+  })
 );
 
 export const StyledIconLink = styled(Link, {

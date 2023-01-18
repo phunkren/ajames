@@ -194,7 +194,6 @@ export default function BlogPost({ frontmatter, postData }: Props) {
           }}
         >
           <ReactMarkdown
-            children={postData}
             components={{
               a: MarkdownLink,
               code: Code,
@@ -203,7 +202,9 @@ export default function BlogPost({ frontmatter, postData }: Props) {
               h3: TextHeadline as any,
             }}
             remarkPlugins={[remarkMdx]}
-          />
+          >
+            {postData}
+          </ReactMarkdown>
 
           <Box spacingVertical={10}>
             <Divider />

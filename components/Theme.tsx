@@ -86,17 +86,20 @@ export const ThemeProvider = memo(function ThemeProvider({
     return systemPrefersDark ? Theme.DARK : Theme.LIGHT;
   }, []);
 
-  const handleThemeChange = useCallback((newTheme: Theme) => {
-    setTheme(newTheme);
-    setStorageTheme(newTheme);
-  }, []);
+  const handleThemeChange = useCallback(
+    (newTheme: Theme) => {
+      setTheme(newTheme);
+      setStorageTheme(newTheme);
+    },
+    [setStorageTheme]
+  );
 
   const value = useMemo(
     () => ({
       theme,
       onThemeChange: handleThemeChange,
     }),
-    [theme]
+    [theme, handleThemeChange]
   );
 
   useEffect(() => {
@@ -117,7 +120,7 @@ export const ThemeProvider = memo(function ThemeProvider({
     if (theme) {
       document.body.setAttribute("data-theme", theme);
     }
-  }, [theme, storageTheme]);
+  }, [theme, storageTheme, getSystemTheme]);
 
   // [HACK]: Prevent light theme flash on page load if system prefers dark
   // [TODO] - There's gotta be a better way!?
@@ -134,11 +137,14 @@ export const ThemeProvider = memo(function ThemeProvider({
 export const ThemeToggle = memo(function ThemeToggle() {
   const { theme, onThemeChange } = useContext(ThemeContext);
 
-  const handleThemeChange = useCallback((newTheme: Theme) => {
-    if (newTheme) {
-      onThemeChange(newTheme);
-    }
-  }, []);
+  const handleThemeChange = useCallback(
+    (newTheme: Theme) => {
+      if (newTheme) {
+        onThemeChange(newTheme);
+      }
+    },
+    [onThemeChange]
+  );
 
   return (
     <ToggleGroupRoot
