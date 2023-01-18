@@ -156,6 +156,10 @@ export const P_STYLES = {
     fontSize: 22,
   },
 
+  "@bp3": {
+    fontSize: 24,
+  },
+
   "@print": {
     fontSize: 14,
     lineHeight: 1.25,
