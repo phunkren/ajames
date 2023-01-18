@@ -127,31 +127,17 @@ export const Card = memo(function Card({
     e.stopPropagation();
 
     if (e.ctrlKey) {
-      linkRef.current?.dispatchEvent(
-        new MouseEvent("click", {
-          ctrlKey: true,
-          bubbles: false,
-          cancelable: true,
-        })
-      );
+      linkRef.current.target = "_blank";
+      linkRef.current.click();
+      return;
     }
 
     if (e.shiftKey) {
-      linkRef.current?.dispatchEvent(
-        new MouseEvent("click", {
-          shiftKey: true,
-          bubbles: false,
-          cancelable: true,
-        })
-      );
+      window.open(linkRef.current.href, "_blank");
+      return;
     }
 
-    linkRef.current?.dispatchEvent(
-      new MouseEvent("click", {
-        bubbles: false,
-        cancelable: true,
-      })
-    );
+    linkRef.current.click();
   }, []);
 
   const handlePreviewToggle = useCallback((pressed: boolean) => {
