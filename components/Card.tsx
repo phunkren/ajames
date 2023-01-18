@@ -83,7 +83,7 @@ const StyledCardInner = styled(Box, {
   borderRight: 1,
   borderBottom: 1,
   borderLeft: 1,
-  borderStyle: "inset",
+  borderStyle: "solid",
   borderBottomRightRadius: 4,
   borderBottomLeftRadius: 4,
   borderColor: "$background",
