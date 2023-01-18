@@ -61,7 +61,7 @@ export const Navigation = memo(function Navigation() {
   const { asPath } = useRouter();
 
   return (
-    <Box aria-label="Primary navigation" as="nav">
+    <Box aria-label="Primary navigation" as="nav" spacingHorizontal={5}>
       <Box as="ul" role="list" gap={10}>
         <NavigationMenu.Root orientation="horizontal">
           <StyledNavigationMenuList role="list">
@@ -170,7 +170,7 @@ export const NavigationMobile = memo(function NavigationMobile() {
             direction="vertical"
             spacingVertical={7}
             spacingHorizontal={6}
-            gap={10}
+            gap={5}
             flexGrow
           >
             <Box justifyContent="flex-end">
