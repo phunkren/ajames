@@ -118,7 +118,7 @@ export const PostTags = memo(function PostTags({
   );
 });
 
-export const Activetags = memo(function ActiveTags({
+export const ActiveTags = memo(function ActiveTags({
   tags,
   queryTags,
   icon = false,
