@@ -226,27 +226,11 @@ export const BlogCard = memo(function BlogCard({
 
             <StyledLink href={url} ref={ref}>
               {isPreviewVisible ? (
-                <TextAux
-                  css={{
-                    lineHeight: 1.75,
-                    display: "-webkit-box",
-                    ["-webkit-line-clamp"]: "4",
-                    ["-webkit-box-orient"]: "vertical",
-                    overflow: "hidden",
-                  }}
-                >
+                <TextAux clamp={4} css={{ lineHeight: 1.75 }}>
                   {description}
                 </TextAux>
               ) : (
-                <TextTitle3
-                  id={url}
-                  css={{
-                    display: "-webkit-box",
-                    ["-webkit-line-clamp"]: "3",
-                    ["-webkit-box-orient"]: "vertical",
-                    overflow: "hidden",
-                  }}
-                >
+                <TextTitle3 id={url} clamp={3}>
                   {title}
                 </TextTitle3>
               )}
@@ -302,27 +286,9 @@ export const VideoCard = memo(function VideoCard({
         >
           <StyledLink href={url} ref={ref} variant="secondary">
             {isPreviewVisible ? (
-              <TextAux
-                css={{
-                  display: "-webkit-box",
-                  ["-webkit-line-clamp"]: "4",
-                  ["-webkit-box-orient"]: "vertical",
-                  overflow: "hidden",
-                }}
-              >
-                {description}
-              </TextAux>
+              <TextAux clamp={4}>{description}</TextAux>
             ) : (
-              <TextHeadline
-                css={{
-                  display: "-webkit-box",
-                  ["-webkit-line-clamp"]: "3",
-                  ["-webkit-box-orient"]: "vertical",
-                  overflow: "hidden",
-                }}
-              >
-                {title}
-              </TextHeadline>
+              <TextHeadline clamp={3}>{title}</TextHeadline>
             )}
           </StyledLink>
 

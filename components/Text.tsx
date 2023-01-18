@@ -54,6 +54,10 @@ export const TextHeadline = styled("span", {
   },
 });
 
+export const MarkdownTitle = styled(TextTitle2, {
+  paddingTop: "$10",
+});
+
 export const TextAux = styled("span", {
   fontWeight: 500,
   ...AUX_STYLES,

@@ -319,15 +319,7 @@ function Streaming({
                       spacingBottom={6}
                     />
 
-                    <TextBody
-                      css={{
-                        display: "-webkit-box",
-                        ["-webkit-line-clamp"]: "3",
-                        ["-webkit-box-orient"]: "vertical",
-                        overflow: "hidden",
-                        textAlign: "justify",
-                      }}
-                    >
+                    <TextBody clamp={3} textAlign="justify">
                       {videoPreview.description}
                     </TextBody>
 

@@ -81,12 +81,13 @@ const PageToggleItem = styled(ToggleGroup.Item, {
   borderStyle: "solid",
   borderColor: "transparent",
 
-  "&[data-state=on]": {
-    opacity: 1,
+  "&:hover": {
+    opacity: 0.75,
   },
 
-  variants: {
-    ...NOTION_TAG_VARIANTS,
+  "&[data-state=on]": {
+    opacity: 1,
+    cursor: "default",
   },
 });
 

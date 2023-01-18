@@ -17,6 +17,7 @@ import {
 } from "../../components/Link";
 import {
   Emoji,
+  MarkdownTitle,
   TextHeadline,
   TextTitle2,
   TextTitle3,
@@ -198,7 +199,7 @@ export default function BlogPost({ frontmatter, postData }: Props) {
               a: MarkdownLink,
               code: Code,
               h1: TextTitle2 as any,
-              h2: TextTitle3 as any,
+              h2: MarkdownTitle as any,
               h3: TextHeadline as any,
             }}
             remarkPlugins={[remarkMdx]}

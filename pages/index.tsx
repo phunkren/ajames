@@ -10,11 +10,10 @@ import { EMPLOYMENT, PERSONAL } from "../util/data";
 function Home() {
   const { pathname, push, query } = useRouter();
 
-  const currentTab = query.tab as string | "short";
+  const currentTab = (query.tab as string) ?? "short";
 
   function handleTabChange(newTab: string) {
-    console.log({ newTab, currentTab });
-    if (newTab !== currentTab) {
+    if (newTab) {
       push({ pathname, query: { ...query, tab: newTab } }, undefined, {
         scroll: false,
       });
@@ -37,6 +36,7 @@ function Home() {
         <Box spacingBottom={5}>
           <PageToggle
             type="single"
+            defaultValue="short"
             value={currentTab}
             onValueChange={handleTabChange}
           />
