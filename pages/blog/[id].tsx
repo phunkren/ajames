@@ -11,7 +11,7 @@ import {
 } from "../../lib/notion";
 import { ActionButtons, BlogLayout, Box } from "../../components/Layout";
 import {
-  BlogSubscribeLink,
+  BlogSubscriptionLink,
   MarkdownLink,
   TwitterShareLink,
 } from "../../components/Link";
@@ -142,7 +142,7 @@ export default function BlogPost({ frontmatter, postData }: Props) {
                 <Balancer>{frontmatter.title}</Balancer>
               </TextTitle2>
 
-              <BlogSubscribeLink
+              <BlogSubscriptionLink
                 type="button"
                 css={{
                   display: "none",
@@ -225,7 +225,7 @@ export default function BlogPost({ frontmatter, postData }: Props) {
                 text={frontmatter.title}
               />
 
-              <BlogSubscribeLink />
+              <BlogSubscriptionLink />
 
               <Box>
                 <ShareButton
