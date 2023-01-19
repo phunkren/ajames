@@ -148,16 +148,16 @@ export const Navigation = memo(function Navigation() {
             </NavigationMenu.Item>
 
             <NavigationMenu.Item>
-              <NavigationMenu.Link asChild active={asPath === "/streaming"}>
-                <Link variant="secondary" href="/streaming">
-                  <TextHeadline>Streaming</TextHeadline>
+              <NavigationMenu.Link asChild active={asPath === "/learning"}>
+                <Link variant="secondary" href="/learning">
+                  <TextHeadline>Learning</TextHeadline>
                 </Link>
               </NavigationMenu.Link>
             </NavigationMenu.Item>
 
             <NavigationMenu.Item>
               <NavigationMenu.Trigger asChild>
-                <Button css={{ padding: 0, minHeight: 0, gap: "$2" }}>
+                <Button css={{ padding: 0, gap: "$2" }}>
                   <TextHeadline>Projects</TextHeadline>
                   <ChevronDownIcon width={ICON_SIZE.s} height={ICON_SIZE.s} />
                 </Button>
@@ -287,10 +287,10 @@ export const NavigationMobile = memo(function NavigationMobile() {
                     <NavigationMenu.Item>
                       <NavigationMenu.Link
                         asChild
-                        active={asPath === "/streaming"}
+                        active={asPath === "/learning"}
                       >
-                        <Link variant="secondary" href="/streaming">
-                          <TextHeadline>Streaming</TextHeadline>
+                        <Link variant="secondary" href="/learning">
+                          <TextHeadline>Learning</TextHeadline>
                         </Link>
                       </NavigationMenu.Link>
                     </NavigationMenu.Item>
