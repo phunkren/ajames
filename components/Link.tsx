@@ -29,6 +29,7 @@ const StyledLink = styled("a", {
   gap: "$2",
   color: "inherit",
   textDecoration: "none",
+  transition: "color 75ms ease-out",
 
   "&[aria-current='page']": {
     color: "$blue11",
@@ -110,6 +111,7 @@ export const StyledIconLink = styled(Link, {
   minWidth: 44,
   minHeight: 44,
   boxShadow: "$1",
+  transition: "background 100ms ease-out, boxShadow 100ms ease-out",
 
   "&:hover": {
     boxShadow: "$4",
@@ -143,6 +145,7 @@ const StyledYoutubeSubscription = styled(Link, {
         color: "white",
         borderRadius: 4,
         boxShadow: "$1",
+        transition: "background 100ms ease-out, boxShadow 100ms ease-out",
 
         [`.${lightTheme} &`]: {
           backgroundColor: "$red9",

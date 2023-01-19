@@ -1,11 +1,12 @@
 import * as ToggleGroup from "@radix-ui/react-toggle-group";
 import { memo } from "react";
-import { styled } from "../stitches.config";
+import { darkTheme, lightTheme, styled } from "../stitches.config";
 import { NOTION_TAG_VARIANTS } from "../styles/tag";
 import { Tag } from "../types/notion";
 import { Divider } from "./Divider";
 import { Box } from "./Box";
 import { TextAux } from "./Text";
+import { blackA, whiteA } from "@radix-ui/colors";
 
 type TagProps = ToggleGroup.ToggleGroupMultipleProps & {
   tags: Tag[];
@@ -36,30 +37,61 @@ const TagToggleItem = styled(ToggleGroup.Item, {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  backgroundColor: "transparent",
-  opacity: 0.4,
   textTransform: "uppercase",
   padding: "$2",
   borderRadius: 4,
   borderWidth: 1,
   borderStyle: "solid",
   borderColor: "transparent",
+  transition:
+    "background 200ms ease-out, opacity 200ms ease-out, box-shadow 200ms ease-out",
 
-  "&:hover": {
-    opacity: 0.75,
+  [`.${darkTheme} &`]: {
+    backgroundColor: whiteA.whiteA2,
+  },
+
+  [`.${lightTheme} &`]: {
+    backgroundColor: blackA.blackA2,
+  },
+
+  [`.${darkTheme} &:hover`]: {
+    backgroundColor: whiteA.whiteA3,
     boxShadow: "$4",
+  },
+
+  [`.${lightTheme} &:hover`]: {
+    backgroundColor: blackA.blackA3,
+    boxShadow: "$4",
+  },
+
+  [`.${darkTheme} &:active`]: {
+    backgroundColor: whiteA.whiteA4,
+    boxShadow: "$5",
+  },
+
+  [`.${lightTheme} &:active`]: {
+    backgroundColor: blackA.blackA4,
+    boxShadow: "$5",
   },
 
   "&:active": {
     boxShadow: "$5",
   },
 
-  "&[data-state=on]": {
-    opacity: 1,
-  },
-
   variants: {
     ...NOTION_TAG_VARIANTS,
+    active: {
+      true: {
+        opacity: 1,
+      },
+      false: {
+        opacity: 0.4,
+
+        "&:hover": {
+          opacity: 0.75,
+        },
+      },
+    },
   },
 });
 
@@ -80,6 +112,7 @@ const PageToggleItem = styled(ToggleGroup.Item, {
   borderWidth: 1,
   borderStyle: "solid",
   borderColor: "transparent",
+  transition: "opacity 75ms ease-out",
 
   "&:hover": {
     opacity: 0.75,
@@ -88,18 +121,29 @@ const PageToggleItem = styled(ToggleGroup.Item, {
   "&[data-state=on]": {
     opacity: 1,
     cursor: "default",
+    transition: "opacity 0 ease-out",
   },
 });
 
-export const TagToggle = memo(function TagToggle({ tags, ...props }: TagProps) {
+export const TagToggle = memo(function TagToggle({
+  tags,
+  value,
+  ...props
+}: TagProps) {
   return (
     <TagToggleRoot
       aria-label="Blog tag toggle"
       orientation="horizontal"
+      value={value}
       {...props}
     >
       {tags.map((tag) => (
-        <TagToggleItem key={tag.id} value={tag.name} borderColor={tag.color}>
+        <TagToggleItem
+          key={tag.id}
+          value={tag.name}
+          borderColor={tag.color}
+          active={!value.length || value.includes(tag.name)}
+        >
           <TextAux textTransform="uppercase">
             {tag.name} ({tag.count})
           </TextAux>

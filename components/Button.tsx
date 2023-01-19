@@ -48,6 +48,7 @@ const StyledButton = styled("button", {
   overflow: "visible",
   padding: "0",
   lineHeight: "normal",
+  transition: "background 100ms ease-out, boxShadow 100ms ease-out",
 
   "-webkit-appearance": "none",
   "-moz-appearance": "none",

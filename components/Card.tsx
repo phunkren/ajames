@@ -31,6 +31,8 @@ const StyledCardOuter = styled(Box, {
   boxShadow: "$1",
   borderRadius: 4,
   overflow: "hidden",
+  transition:
+    "background 200ms ease-out, filter 200ms ease-out, boxShadow 200ms ease-out",
 
   "& div[data-radix-aspect-ratio-wrapper]": {
     overflow: "hidden",
