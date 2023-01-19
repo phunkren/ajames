@@ -24,17 +24,31 @@ import {
   Share2Icon,
 } from "@radix-ui/react-icons";
 import { usePrevious } from "../hooks/usePrevious";
-import { CSS, styled } from "../stitches.config";
+import { CSS, keyframes, styled } from "../stitches.config";
 import { PERSONAL } from "../util/data";
 import { ICON_SIZE } from "../util/images";
 import { TextAux, TextHeadline } from "./Text";
 import { Box } from "./Box";
 import {
-  ButtonProps,
   FilterClearProps,
   FilterMenuProps,
   ShareButtonProps,
 } from "../types/button";
+
+const buttonSlideUp = keyframes({
+  "0%": { bottom: "-10%" },
+  "100%": { bottom: "10%" },
+});
+
+const scaleIn = keyframes({
+  from: { transform: "rotateX(-30deg) scale(0.9)", opacity: 0 },
+  to: { transform: "rotateX(0deg) scale(1)", opacity: 1 },
+});
+
+const scaleOut = keyframes({
+  from: { transform: "rotateX(0deg) scale(1)", opacity: 1 },
+  to: { transform: "rotateX(-10deg) scale(0.95)", opacity: 0 },
+});
 
 const StyledButton = styled("button", {
   display: "inline-flex",
@@ -120,11 +134,14 @@ const StyledToastRoot = styled(Toast.Root, {
   backgroundColor: "$foreground",
   color: "$background",
   borderRadius: 6,
-  padding: 15,
+  padding: "$4",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
   boxShadow: "$2",
+
+  '&[data-state="open"]': { animation: `${scaleIn} 200ms ease-out` },
+  '&[data-state="closed"]': { animation: `${scaleOut} 200ms ease-out` },
 
   "&:hover": {
     boxShadow: "$4",
@@ -161,10 +178,10 @@ const StyledScrollToTop = styled(Button, {
   variants: {
     active: {
       true: {
-        bottom: "$10",
+        animation: `${buttonSlideUp} 200ms ease-out forwards`,
       },
       false: {
-        bottom: -1000,
+        bottom: "-100%",
       },
     },
   },
@@ -240,11 +257,19 @@ export const ShareButton = memo(function ShareButton({
 
     const copy = `${formattedText}\n${formattedAuthor}\n\n${formattedUrl}`;
 
-    navigator.clipboard.writeText(copy).then(() => {
-      timerRef.current = window.setTimeout(() => {
-        setOpen(true);
-      }, 100);
-    });
+    if (navigator.share) {
+      navigator.share({
+        title: formattedText,
+        text: formattedAuthor,
+        url: formattedUrl,
+      });
+    } else {
+      navigator.clipboard.writeText(copy).then(() => {
+        timerRef.current = window.setTimeout(() => {
+          setOpen(true);
+        }, 100);
+      });
+    }
   }, [emoji, text, url]);
 
   useEffect(() => () => clearTimeout(timerRef.current), []);
