@@ -143,10 +143,6 @@ function Streaming({
         alignItems="center"
         spacingTop={{ "@initial": 7, "@bp2": 10 }}
       >
-        <VisuallyHidden.Root>
-          <TextTitle1>Streaming</TextTitle1>
-        </VisuallyHidden.Root>
-
         <HeroLayout src={banner} />
 
         <StyledContentContainer
@@ -173,7 +169,7 @@ function Streaming({
                   alignItems="center"
                   spacingVertical={10}
                 >
-                  <TextTitle2>{channelInfoPreview.title}</TextTitle2>
+                  <TextTitle2 as="h1">{channelInfoPreview.title}</TextTitle2>
 
                   <Box css={{ ...H2_STYLES }}>
                     <YoutubeSubscribeLink
@@ -249,7 +245,7 @@ function Streaming({
                   alignItems="center"
                   spacingBottom={6}
                 >
-                  <TextTitle3>Latest Video</TextTitle3>
+                  <TextTitle3 as="h2">Latest Video</TextTitle3>
 
                   <Link href={videoPreview.url} variant="secondary">
                     <PlayIcon
@@ -293,9 +289,9 @@ function Streaming({
 
                   <Box direction="vertical">
                     <Link href={videoPreview.url} variant="primary">
-                      <TextHeadline>
+                      <TextTitle3>
                         <Balancer>{videoPreview.title}</Balancer>
-                      </TextHeadline>
+                      </TextTitle3>
                     </Link>
 
                     <PublishDate
@@ -351,7 +347,7 @@ function Streaming({
                       spacingBottom={6}
                     >
                       <Link href={playlistUrl} variant="tertiary">
-                        <TextTitle3>{playlist.title}</TextTitle3>
+                        <TextTitle3 as="h2">{playlist.title}</TextTitle3>
                       </Link>
 
                       <Link href={watchAllUrl} variant="secondary">
@@ -405,7 +401,7 @@ function Streaming({
             </Box>
 
             <Box direction="vertical" gap={8}>
-              <TextTitle3 textAlign="center" color="secondary">
+              <TextTitle3 as="h2" textAlign="center" color="secondary">
                 Enjoying the content?
               </TextTitle3>
 

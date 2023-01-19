@@ -268,7 +268,7 @@ export const VideoCard = memo(function VideoCard({
           flexGrow
           css={{ minHeight: 155, "@bp2": { minHeight: 168 } }}
         >
-          <StyledLink href={url} ref={ref} variant="secondary">
+          <StyledLink href={url} ref={ref}>
             {isPreviewVisible ? (
               <TextAux clamp={4}>{description}</TextAux>
             ) : (
