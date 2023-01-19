@@ -68,7 +68,7 @@ const StyledButton = styled("button", {
 });
 
 export const Button = memo(
-  forwardRef((props: ButtonProps, ref: Ref<HTMLButtonElement>) => {
+  forwardRef((props: any, ref: Ref<HTMLButtonElement>) => {
     return <StyledButton ref={ref} type="button" {...props} />;
   })
 );

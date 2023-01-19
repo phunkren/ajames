@@ -13,6 +13,6 @@ const StyledBox = styled("div", {
 
 type BoxProps = ComponentProps<typeof StyledBox>;
 
-export const Box = memo(function Box(props) {
+export const Box = memo(function Box(props: any) {
   return <StyledBox {...props} />;
 });
