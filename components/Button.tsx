@@ -350,32 +350,35 @@ export const FilterClearButton = memo(function FilterClearButton({
   );
 });
 
-export const FilterMenuButton = memo(function FilterMenuButton({
-  open,
-  ...props
-}: FilterMenuProps) {
-  return (
-    <StyledIconButton
-      title={open ? "Collapse Filters" : "Expand Filters"}
-      {...props}
-    >
-      {open ? (
-        <>
-          <VisuallyHidden.Root>
-            <TextAux>Close menu</TextAux>
-          </VisuallyHidden.Root>
+export const FilterMenuButton = memo(
+  forwardRef(function FilterMenuButton(
+    { open, ...props }: FilterMenuProps,
+    ref: Ref<HTMLButtonElement>
+  ) {
+    return (
+      <StyledIconButton
+        ref={ref}
+        title={open ? "Collapse Filters" : "Expand Filters"}
+        {...props}
+      >
+        {open ? (
+          <>
+            <VisuallyHidden.Root>
+              <TextAux>Close menu</TextAux>
+            </VisuallyHidden.Root>
 
-          <ChevronUpIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
-        </>
-      ) : (
-        <>
-          <VisuallyHidden.Root>
-            <TextAux>Open menu</TextAux>
-          </VisuallyHidden.Root>
+            <ChevronUpIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
+          </>
+        ) : (
+          <>
+            <VisuallyHidden.Root>
+              <TextAux>Open menu</TextAux>
+            </VisuallyHidden.Root>
 
-          <DropdownMenuIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
-        </>
-      )}
-    </StyledIconButton>
-  );
-});
+            <DropdownMenuIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
+          </>
+        )}
+      </StyledIconButton>
+    );
+  })
+);

@@ -179,15 +179,30 @@ const StyledYoutubeSubscription = styled(Link, {
         spacing: "$2",
         borderWidth: 2,
         borderStyle: "solid",
-        backgroundColor: "$red8",
+        borderColor: "$foreground",
+        color: "white",
         minWidth: 44,
         minHeight: 44,
         boxShadow: "$1",
 
+        [`.${lightTheme} &`]: {
+          backgroundColor: "$red9",
+        },
+
+        [`.${darkTheme} &`]: {
+          backgroundColor: "$red8",
+        },
+
         "&:hover": {
-          backgroundColor: "$red7",
           boxShadow: "$4",
-          color: "$white",
+
+          [`.${lightTheme} &`]: {
+            backgroundColor: "$red9",
+          },
+
+          [`.${darkTheme} &`]: {
+            backgroundColor: "$red8",
+          },
         },
 
         "&:active": {
