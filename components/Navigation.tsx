@@ -10,7 +10,7 @@ import { blackA, whiteA } from "@radix-ui/colors";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import * as Dialog from "@radix-ui/react-dialog";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
-import { darkTheme, lightTheme, styled } from "../stitches.config";
+import { darkTheme, keyframes, lightTheme, styled } from "../stitches.config";
 import { ThemeToggle } from "./Theme";
 import { ICON_SIZE } from "../util/images";
 import { useTheme } from "../hooks/useTheme";
@@ -23,6 +23,21 @@ import { Button } from "./Button";
 import { Social } from "./Social";
 import { Box } from "./Box";
 
+const dialogSlideIn = keyframes({
+  "0%": { left: "-100%" },
+  "100%": { left: 0 },
+});
+
+const scaleIn = keyframes({
+  from: { transform: "rotateX(-30deg) scale(0.9)", opacity: 0 },
+  to: { transform: "rotateX(0deg) scale(1)", opacity: 1 },
+});
+
+const scaleOut = keyframes({
+  from: { transform: "rotateX(0deg) scale(1)", opacity: 1 },
+  to: { transform: "rotateX(-10deg) scale(0.95)", opacity: 0 },
+});
+
 const StyledDialogContent = styled(Dialog.Content, {
   position: "absolute",
   display: "flex",
@@ -33,6 +48,19 @@ const StyledDialogContent = styled(Dialog.Content, {
   height: "100dvh",
   minWidth: 300,
   zIndex: 99,
+  left: "100vw",
+  transition: "right 3s ease-out",
+  animation: `${dialogSlideIn} 300ms ease-out`,
+
+  "&[data-state=open]": {
+    left: 0,
+  },
+});
+
+const StyledNavigationMenuContent = styled(NavigationMenu.Content, {
+  '&[data-state="open"]': { animation: `${scaleIn} 200ms ease-out` },
+
+  '&[data-state="closed"]': { animation: `${scaleOut} 200ms ease-out` },
 });
 
 const StyledHamburgerMenuIcon = styled(HamburgerMenuIcon, {
@@ -65,9 +93,12 @@ const StyledNavigationSubmenu = styled(Box, {
   top: "$10",
   background: "$backgroundMuted",
   borderRadius: 4,
-  padding: "$4",
   minWidth: 350,
   boxShadow: "$2",
+
+  "&:hover": {
+    boxShadow: "$4",
+  },
 });
 
 const StyledNavigationSubmenuLink = styled(Link, {
@@ -163,7 +194,7 @@ export const Navigation = memo(function Navigation() {
                 </Button>
               </NavigationMenu.Trigger>
 
-              <NavigationMenu.Content asChild>
+              <StyledNavigationMenuContent asChild>
                 <StyledNavigationSubmenu as="ul">
                   {PROJECTS.map((project) => (
                     <Box key={project.id} as="li" flexGrow>
@@ -171,7 +202,7 @@ export const Navigation = memo(function Navigation() {
                     </Box>
                   ))}
                 </StyledNavigationSubmenu>
-              </NavigationMenu.Content>
+              </StyledNavigationMenuContent>
             </NavigationMenu.Item>
 
             <NavigationMenu.Indicator />
