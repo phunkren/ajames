@@ -10,9 +10,25 @@ import React, {
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import * as ToggleGroup from "@radix-ui/react-toggle-group";
 import { useLocalStorage } from "../hooks/useLocalStorage";
-import { styled } from "../stitches.config";
+import { darkTheme, keyframes, lightTheme, styled } from "../stitches.config";
 import { Theme, ThemeProviderProps } from "../types/theme";
 import { ICON_SIZE } from "../util/images";
+import { blackA, whiteA } from "@radix-ui/colors";
+
+// const peek = keyframes({
+//   "0%": { transform: "translateY(100%)" },
+//   "100%": { transform: "translateY(75%)" },
+// });
+
+const rise = keyframes({
+  "0%": { transform: "translateY(75%)" },
+  "100%": { transform: "translateY(0)" },
+});
+
+const set = keyframes({
+  "0%": { transform: "translateY(0)" },
+  "100%": { transform: "translateY(100%)" },
+});
 
 export const ThemeContext = createContext({
   theme: Theme.LIGHT,
@@ -42,34 +58,49 @@ const ToggleGroupItem = styled(ToggleGroup.Item, {
   backgroundColor: "transparent",
   overflow: "hidden",
 
+  "&:focus": {
+    outline: "2px solid $foreground",
+  },
+
   "&[data-state=off]": {
     opacity: 0.75,
 
     "& > *": {
       transform: "translateY(100%)",
+      animation: `${set} 200ms ease-out forwards running`,
     },
 
-    "&:hover > *": {
-      transform: "translateY(75%)",
+    [`.${darkTheme} &`]: {
+      backgroundColor: whiteA.whiteA7,
+    },
+
+    [`.${darkTheme} &:hover, .${darkTheme} &:has(a:focus)`]: {
+      backgroundColor: whiteA.whiteA8,
+    },
+
+    [`.${lightTheme} &`]: {
+      backgroundColor: blackA.blackA7,
+    },
+
+    [`.${lightTheme} &:hover, .${lightTheme} &:has(a:focus)`]: {
+      backgroundColor: blackA.blackA8,
     },
   },
 
   "&[data-state=on]": {
     opacity: 1,
     cursor: "default",
+    transform: "translateY(0)",
 
     "& > *": {
-      transform: "translateY(0)",
+      animation: `${rise} 200ms ease-out forwards`,
     },
   },
-
-  "&[data-state=off]:hover": { backgroundColor: "$backgroundMuted" },
 
   "&:first-child": {
     marginLeft: 0,
     borderTopLeftRadius: 4,
     borderBottomLeftRadius: 4,
-    borderRight: "1px solid $foreground",
   },
 
   "&:last-child": { borderTopRightRadius: 4, borderBottomRightRadius: 4 },
