@@ -7,9 +7,6 @@ import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import { useTheme } from "../hooks/useTheme";
 import { styled } from "../stitches.config";
 import { BLUR_DATA_URL, ICON_SIZE } from "../util/images";
-import { DISPLAY_VARIANTS } from "../styles/display";
-import { FLEX_VARIANTS } from "../styles/flex";
-import { SPACING_VARIANTS } from "../styles/spacing";
 import { Avatar } from "./Avatar";
 import { Link } from "./Link";
 import { Navigation, NavigationMobile } from "./Navigation";
@@ -17,19 +14,8 @@ import { Social } from "./Social";
 import { ThemeToggle } from "./Theme";
 import { ScrollToTopButton } from "./Button";
 import { TextHeadline } from "./Text";
-import { BlogSEO, PageSEO } from "./SEO";
 import { PERSONAL, SITE, SOCIAL } from "../util/data";
-
-const StyledBox = styled("div", {
-  display: "flex",
-  flexDirection: "row",
-
-  variants: { ...FLEX_VARIANTS, ...SPACING_VARIANTS, ...DISPLAY_VARIANTS },
-});
-
-export const Box = memo(function Box(props: any) {
-  return <StyledBox {...props} />;
-});
+import { Box } from "./Box";
 
 // These magic numbers are calculated based on the font size of the TextTitle1 component
 // The computed value is (fontSize * lineHeight) / 2.

@@ -28,7 +28,7 @@ import { CSS, styled } from "../stitches.config";
 import { PERSONAL } from "../util/data";
 import { ICON_SIZE } from "../util/images";
 import { TextAux, TextHeadline } from "./Text";
-import { Box } from "./Layout";
+import { Box } from "./Box";
 import {
   ButtonProps,
   FilterClearProps,

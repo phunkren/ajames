@@ -11,7 +11,7 @@ import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 import { blackA, whiteA } from "@radix-ui/colors";
 import { darkTheme, lightTheme, styled } from "../stitches.config";
 import { PostTags, PublishDate } from "./Frontmatter";
-import { Box } from "./Layout";
+import { Box } from "./Box";
 import { Emoji, TextAux, TextHeadline, TextTitle3 } from "./Text";
 import { Link } from "./Link";
 import {

@@ -2,6 +2,8 @@ import { Education } from "../types/education";
 import { Employer } from "../types/employer";
 import { Social } from "../types/social";
 import { Testimonial } from "../types/testimonial";
+import ooft from "../public/images/ooft.png";
+import { Project } from "../types/project";
 
 export const EDUCATION: Education[] = [
   {
@@ -281,10 +283,12 @@ export const TESTIMONIALS: Testimonial[] = [
   },
 ];
 
-export const PROJECTS = [
+export const PROJECTS: Project[] = [
   {
     id: "find-phunk",
     name: "Find Phunk",
     url: "https://findphunk.vercel.app/",
+    description: "A daily game of 26 card Monte",
+    src: ooft,
   },
 ];

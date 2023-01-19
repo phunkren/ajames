@@ -8,7 +8,7 @@ import {
 import { styled } from "../stitches.config";
 import { SOCIAL } from "../util/data";
 import { ICON_SIZE } from "../util/images";
-import { Box } from "./Layout";
+import { Box } from "./Box";
 import { Link } from "./Link";
 
 const StyledLink = styled(Link, {

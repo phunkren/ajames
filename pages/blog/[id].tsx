@@ -9,7 +9,7 @@ import {
   getPostData,
   getPostTime,
 } from "../../lib/notion";
-import { ActionButtons, BlogLayout, Box } from "../../components/Layout";
+import { ActionButtons, BlogLayout } from "../../components/Layout";
 import {
   BlogSubscriptionLink,
   MarkdownLink,
@@ -34,6 +34,7 @@ import { SITE } from "../../util/data";
 import { ShareButton } from "../../components/Button";
 import { styled } from "../../stitches.config";
 import { H1_STYLES, H2_STYLES, H3_STYLES, P_STYLES } from "../../styles/text";
+import { Box } from "../../components/Box";
 
 type Frontmatter = {
   title: string;

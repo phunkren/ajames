@@ -4,16 +4,12 @@ import { MdRssFeed } from "react-icons/md";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { CSS, darkTheme, lightTheme, styled } from "../stitches.config";
 import { YOUTUBE_SUBSCRIBE_URL } from "../util/youtube";
-import {
-  ArrowRightIcon,
-  TwitterLogoIcon,
-  VideoIcon,
-} from "@radix-ui/react-icons";
+import { TwitterLogoIcon, VideoIcon } from "@radix-ui/react-icons";
 import { TextAux, TextHeadline } from "./Text";
 import { LinkProps } from "../types/link";
 import { buildUrl } from "../util/url";
 import { SITE, SOCIAL } from "../util/data";
-import { Box } from "./Layout";
+import { Box } from "./Box";
 import { ICON_SIZE } from "../util/images";
 
 type TwitterShareProps = {

@@ -1,7 +1,6 @@
-import * as Toggle from "@radix-ui/react-toggle";
-import { styled } from "@stitches/react";
 import { useRouter } from "next/router";
-import { Box, Layout } from "../components/Layout";
+import { Box } from "../components/Box";
+import { Layout } from "../components/Layout";
 import { Link } from "../components/Link";
 import { PageToggle } from "../components/Tags";
 import { Emoji, TextBody, TextHeadline, TextTitle1 } from "../components/Text";

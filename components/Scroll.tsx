@@ -1,6 +1,6 @@
 import * as ScrollArea from "@radix-ui/react-scroll-area";
-import { styled } from "@stitches/react";
 import { blackA } from "@radix-ui/colors";
+import { styled } from "../stitches.config";
 
 const SCROLLBAR_SIZE = 10;
 

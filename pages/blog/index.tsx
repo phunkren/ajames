@@ -4,12 +4,7 @@ import { useRouter } from "next/router";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import * as Collapsible from "@radix-ui/react-collapsible";
 import { BlogCard } from "../../components/Card";
-import {
-  ActionButtons,
-  Box,
-  HeroLayout,
-  Layout,
-} from "../../components/Layout";
+import { ActionButtons, HeroLayout, Layout } from "../../components/Layout";
 import { TagToggle } from "../../components/Tags";
 import { TextTitle1, TextTitle2 } from "../../components/Text";
 import { styled } from "../../stitches.config";
@@ -31,6 +26,7 @@ import {
   Frontmatter,
 } from "../../components/Frontmatter";
 import banner from "../../public/images/blog.jpg";
+import { Box } from "../../components/Box";
 
 type Props = {
   posts: BlogPost[];

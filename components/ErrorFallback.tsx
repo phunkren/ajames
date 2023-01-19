@@ -4,8 +4,9 @@ import Router from "next/router";
 import { styled } from "../stitches.config";
 import { ErrorBoundaryProps } from "../types/error";
 import { Button } from "./Button";
-import { Box, Layout } from "./Layout";
+import { Layout } from "./Layout";
 import { TextHeadline, TextTitle1 } from "./Text";
+import { Box } from "./Box";
 
 const StyledHero = styled(Box, {
   position: "absolute",

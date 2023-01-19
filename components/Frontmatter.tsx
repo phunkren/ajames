@@ -18,7 +18,7 @@ import { formatShortDate } from "../util/date";
 import { ICON_SIZE } from "../util/images";
 import { formatNumber } from "../util/number";
 import { formatReadingTime, getQueryTags } from "../util/posts";
-import { Box } from "./Layout";
+import { Box } from "./Box";
 import { TextAux, TextBody } from "./Text";
 
 type PostTagProps = {

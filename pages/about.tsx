@@ -7,9 +7,10 @@ import {
   LinkedInLogoIcon,
 } from "@radix-ui/react-icons";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
+import Image from "next/image";
 import { PrintButton } from "../components/Button";
 import { Divider } from "../components/Divider";
-import { ActionButtons, Box, Layout } from "../components/Layout";
+import { ActionButtons, Layout } from "../components/Layout";
 import { Link, StyledIconLink } from "../components/Link";
 import {
   TextAux,
@@ -32,7 +33,7 @@ import {
 import { formatLongDate } from "../util/date";
 import { ICON_SIZE } from "../util/images";
 import banner from "../public/images/mugshot.png";
-import Image from "next/image";
+import { Box } from "../components/Box";
 
 const StyledPageHeader = styled(Box, {
   display: "block",

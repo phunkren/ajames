@@ -4,21 +4,24 @@ import {
   Cross1Icon,
   HamburgerMenuIcon,
 } from "@radix-ui/react-icons";
+import { useRouter } from "next/router";
+import Image from "next/image";
+import { blackA, whiteA } from "@radix-ui/colors";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import * as Dialog from "@radix-ui/react-dialog";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
-import { styled } from "../stitches.config";
-import { Box } from "./Layout";
-import { Link } from "./Link";
-import { TextHeadline } from "./Text";
-import { Button } from "./Button";
-import { Social } from "./Social";
+import { darkTheme, lightTheme, styled } from "../stitches.config";
 import { ThemeToggle } from "./Theme";
 import { ICON_SIZE } from "../util/images";
 import { useTheme } from "../hooks/useTheme";
 import { Divider } from "./Divider";
-import { useRouter } from "next/router";
 import { PROJECTS } from "../util/data";
+import { Project } from "../types/project";
+import { Link } from "./Link";
+import { TextAux, TextBody, TextHeadline } from "./Text";
+import { Button } from "./Button";
+import { Social } from "./Social";
+import { Box } from "./Box";
 
 const StyledDialogContent = styled(Dialog.Content, {
   position: "absolute",
@@ -55,6 +58,69 @@ const StyledCloseMenuIcon = styled(Cross1Icon, {
 const StyledNavigationMenuList = styled(NavigationMenu.List, {
   display: "flex",
   gap: "$10",
+});
+
+const StyledNavigationSubmenu = styled(Box, {
+  position: "absolute",
+  top: "$10",
+  background: "$backgroundMuted",
+  borderRadius: 4,
+  padding: "$4",
+  minWidth: 350,
+  boxShadow: "$2",
+});
+
+const StyledNavigationSubmenuLink = styled(Link, {
+  flexGrow: 1,
+  padding: "$2",
+  borderRadius: 4,
+
+  "&:hover": {
+    [`.${darkTheme} &:hover`]: {
+      backgroundColor: whiteA.whiteA3,
+    },
+
+    [`.${lightTheme} &:hover`]: {
+      backgroundColor: blackA.blackA3,
+    },
+  },
+});
+
+export const NavigationProjectLink = memo(function NavigationProjectLink({
+  src,
+  name,
+  description,
+  url,
+}: Project) {
+  return (
+    <NavigationMenu.Link asChild>
+      <StyledNavigationSubmenuLink variant="secondary" href={url}>
+        <VisuallyHidden.Root>
+          <TextAux>
+            {name} - {description}
+          </TextAux>
+        </VisuallyHidden.Root>
+
+        <Box flexGrow alignItems="center" gap={4} aria-hidden>
+          <Box
+            css={{
+              flexShrink: 0,
+              backgroundColor: "$green5",
+              borderRadius: 4,
+            }}
+          >
+            <Image src={src} alt="" width={60} height={60} />
+          </Box>
+          <Box direction="vertical" flexGrow>
+            <TextBody>{name}</TextBody>
+            <TextAux color="secondary" clamp={1}>
+              {description}
+            </TextAux>
+          </Box>
+        </Box>
+      </StyledNavigationSubmenuLink>
+    </NavigationMenu.Link>
+  );
 });
 
 export const Navigation = memo(function Navigation() {
@@ -98,28 +164,13 @@ export const Navigation = memo(function Navigation() {
               </NavigationMenu.Trigger>
 
               <NavigationMenu.Content asChild>
-                <Box
-                  as="ul"
-                  css={{
-                    position: "absolute",
-                    top: "$10",
-                    background: "$backgroundMuted",
-                    borderRadius: 4,
-                    padding: "$4",
-                    minWidth: 200,
-                    boxShadow: "$2",
-                  }}
-                >
+                <StyledNavigationSubmenu as="ul">
                   {PROJECTS.map((project) => (
-                    <Box key={project.id} as="li">
-                      <NavigationMenu.Link asChild>
-                        <Link variant="secondary" href={project.url}>
-                          <TextHeadline>{project.name}</TextHeadline>
-                        </Link>
-                      </NavigationMenu.Link>
+                    <Box key={project.id} as="li" flexGrow>
+                      <NavigationProjectLink {...project} />
                     </Box>
                   ))}
-                </Box>
+                </StyledNavigationSubmenu>
               </NavigationMenu.Content>
             </NavigationMenu.Item>
 

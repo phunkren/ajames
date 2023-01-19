@@ -1,4 +1,3 @@
-import Image from "next/image";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { ScrollAreaViewport } from "@radix-ui/react-scroll-area";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
@@ -15,7 +14,7 @@ import {
   VideosTotalCount,
   VideosViewsCount,
 } from "../components/Frontmatter";
-import { Layout, Box, ActionButtons, HeroLayout } from "../components/Layout";
+import { Layout, ActionButtons, HeroLayout } from "../components/Layout";
 import {
   Link,
   YoutubeSubscribeLink,
@@ -57,6 +56,7 @@ import { ShareButton } from "../components/Button";
 import { H2_STYLES } from "../styles/text";
 import { ICON_SIZE } from "../util/images";
 import banner from "../public/images/banner.png";
+import { Box } from "../components/Box";
 
 type Props = {
   videoPreview: VideoPreview;
