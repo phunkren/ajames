@@ -1,4 +1,3 @@
-import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { ScrollAreaViewport } from "@radix-ui/react-scroll-area";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import Balancer from "react-wrap-balancer";
@@ -20,14 +19,7 @@ import {
   YoutubeSubscribeLink,
   TwitterShareLink,
 } from "../components/Link";
-import {
-  TextAux,
-  TextBody,
-  TextHeadline,
-  TextTitle1,
-  TextTitle2,
-  TextTitle3,
-} from "../components/Text";
+import { TextAux, TextBody, TextTitle2, TextTitle3 } from "../components/Text";
 import { ONE_HOUR_IN_SECONDS } from "../util/date";
 import {
   formatChannelInfo,
@@ -52,11 +44,14 @@ import {
   ScrollAreaThumb,
 } from "../components/Scroll";
 import { PERSONAL, SITE } from "../util/data";
-import { ShareButton } from "../components/Button";
+import { Button, ShareButton } from "../components/Button";
 import { H2_STYLES } from "../styles/text";
 import { ICON_SIZE } from "../util/images";
 import banner from "../public/images/banner.png";
+import poster from "../public/images/poster.gif";
 import { Box } from "../components/Box";
+import Image from "next/image";
+import { MouseEvent, useCallback, useRef } from "react";
 
 type Props = {
   videoPreview: VideoPreview;
@@ -107,6 +102,15 @@ const StyledYouTubePlayer = styled(YouTube, {
   },
 });
 
+const StyledPoster = styled(Button, {
+  width: "100%",
+  height: "100%;",
+
+  "@bp3": {
+    display: "none",
+  },
+});
+
 export async function getStaticProps() {
   const { latestVideo, playlists, videos, channelInfo } =
     await getYoutubeData();
@@ -136,6 +140,21 @@ function Streaming({
   playlistVideosPreview,
   channelInfoPreview,
 }: Props) {
+  const youtubeRef = useRef(null);
+  const posterRef = useRef<HTMLButtonElement>(null);
+
+  const handlePlayerReady = useCallback((e) => {
+    youtubeRef.current = e.target;
+  }, []);
+
+  const handlePlayerPlay = useCallback((e: MouseEvent<HTMLButtonElement>) => {
+    posterRef.current.style.display = "none";
+  }, []);
+
+  const handlePosterClick = useCallback(() => {
+    youtubeRef.current?.playVideo();
+  }, []);
+
   return (
     <Layout>
       <Box
@@ -271,6 +290,8 @@ function Streaming({
                     <AspectRatio ratio={16 / 9}>
                       <StyledYouTubePlayer
                         videoId={videoPreview.videoId}
+                        onReady={handlePlayerReady}
+                        onPlay={handlePlayerPlay}
                         opts={{
                           width: "100%",
                           height: "100%",
@@ -284,6 +305,10 @@ function Streaming({
                           },
                         }}
                       />
+
+                      <StyledPoster ref={posterRef} onClick={handlePosterClick}>
+                        <Image src={poster} sizes="100vw" fill alt="" />
+                      </StyledPoster>
                     </AspectRatio>
                   </Box>
 

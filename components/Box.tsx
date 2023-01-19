@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { ComponentProps, memo } from "react";
 import { styled } from "../stitches.config";
 import { DISPLAY_VARIANTS } from "../styles/display";
 import { FLEX_VARIANTS } from "../styles/flex";
@@ -11,6 +11,8 @@ const StyledBox = styled("div", {
   variants: { ...FLEX_VARIANTS, ...SPACING_VARIANTS, ...DISPLAY_VARIANTS },
 });
 
-export const Box = memo(function Box(props: any) {
+type BoxProps = ComponentProps<typeof StyledBox>;
+
+export const Box = memo(function Box(props) {
   return <StyledBox {...props} />;
 });
