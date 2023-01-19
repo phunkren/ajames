@@ -104,10 +104,7 @@ export const PostTags = memo(function PostTags({
               borderColor={tag.color}
               active={isActive}
             >
-              <TextAux
-                color={isActive ? "primary" : "secondary"}
-                css={{ position: "relative", top: -2 }}
-              >
+              <TextAux color={isActive ? "primary" : "secondary"}>
                 {tag.name}
               </TextAux>
             </StyledTag>

@@ -357,7 +357,7 @@ function Cv() {
                       justifyContent="flex-end"
                     >
                       {education.qualification ? (
-                        <TextTitle3>{education.qualification}</TextTitle3>
+                        <TextHeadline>{education.qualification}</TextHeadline>
                       ) : null}
                       <TextBody>{education.course}</TextBody>
                       <TextAux color="secondary">
