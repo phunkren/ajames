@@ -252,7 +252,7 @@ export const BlogLayout = memo(function BlogLayout({
         <HeaderLayout />
 
         <Box direction="vertical">
-          <Link href="/blog" variant="secondary">
+          <Link href="/writing" variant="secondary">
             <Box
               alignItems="center"
               spacingBottom={{ "@initial": 4, "@bp2": 7 }}
@@ -263,7 +263,7 @@ export const BlogLayout = memo(function BlogLayout({
                 height={ICON_SIZE.m}
                 aria-hidden
               />
-              <TextHeadline>Back to blog overview</TextHeadline>
+              <TextHeadline>Back to writing overview</TextHeadline>
             </Box>
           </Link>
 

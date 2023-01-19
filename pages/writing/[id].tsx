@@ -86,7 +86,7 @@ export async function getStaticProps({ params }: any) {
   const postTime = await getPostTime(postData);
 
   const slug = pageData.properties.slug.rich_text[0].plain_text;
-  const pageUrl = `${SITE.url}/blog/${slug}`;
+  const pageUrl = `${SITE.url}/writing/${slug}`;
 
   const frontmatter: Frontmatter = {
     title: pageData.properties.page.title[0].plain_text,

@@ -140,9 +140,9 @@ export const Navigation = memo(function Navigation() {
             </NavigationMenu.Item>
 
             <NavigationMenu.Item>
-              <NavigationMenu.Link asChild active={asPath.includes("blog")}>
-                <Link variant="secondary" href="/blog">
-                  <TextHeadline>Blog</TextHeadline>
+              <NavigationMenu.Link asChild active={asPath.includes("writing")}>
+                <Link variant="secondary" href="/writing">
+                  <TextHeadline>Writing</TextHeadline>
                 </Link>
               </NavigationMenu.Link>
             </NavigationMenu.Item>
@@ -272,10 +272,10 @@ export const NavigationMobile = memo(function NavigationMobile() {
                     <NavigationMenu.Item>
                       <NavigationMenu.Link
                         asChild
-                        active={asPath.includes("blog")}
+                        active={asPath.includes("writing")}
                       >
-                        <Link variant="secondary" href="/blog">
-                          <TextHeadline>Blog</TextHeadline>
+                        <Link variant="secondary" href="/writing">
+                          <TextHeadline>Writing</TextHeadline>
                         </Link>
                       </NavigationMenu.Link>
                     </NavigationMenu.Item>

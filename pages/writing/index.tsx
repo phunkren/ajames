@@ -77,7 +77,7 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-function Blog({ posts, tags }: Props) {
+function Writing({ posts, tags }: Props) {
   const { pathname, push, query } = useRouter();
   const [isFiltersOpen, setIsFiltersOpen] = useState(false);
   const queryTags = getQueryTags(query);
@@ -99,7 +99,7 @@ function Blog({ posts, tags }: Props) {
         gap={10}
       >
         <VisuallyHidden.Root>
-          <TextTitle1>Blog</TextTitle1>
+          <TextTitle1>Writing</TextTitle1>
         </VisuallyHidden.Root>
 
         <HeroLayout src={banner} />
@@ -117,7 +117,7 @@ function Blog({ posts, tags }: Props) {
           >
             <Box direction="vertical" gap={10} spacingBottom={10}>
               <Box justifyContent="space-between" alignItems="center">
-                <TextTitle2>Blog</TextTitle2>
+                <TextTitle2>Writing</TextTitle2>
                 <BlogSubscriptionLink
                   type="icon"
                   css={{ display: "flex", "@bp2": { display: "none" } }}
@@ -172,7 +172,7 @@ function Blog({ posts, tags }: Props) {
             {filteredPosts.map((post) => (
               <BlogCard
                 key={post.id}
-                url={`/blog/${post.properties.slug.rich_text[0].plain_text}`}
+                url={`/writing/${post.properties.slug.rich_text[0].plain_text}`}
                 image={post.cover.external.url}
                 emoji={post.icon.type === "emoji" ? post.icon.emoji : "👨‍💻"}
                 title={post.properties.page.title[0].plain_text}
@@ -188,4 +188,4 @@ function Blog({ posts, tags }: Props) {
   );
 }
 
-export default Blog;
+export default Writing;
