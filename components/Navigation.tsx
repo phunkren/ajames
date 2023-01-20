@@ -312,7 +312,22 @@ export const NavigationMobile = memo(function NavigationMobile() {
                           variant="secondary"
                           href={`/writing#${PERSONAL.initials}`}
                         >
-                          <TextHeadline>Writing</TextHeadline>
+                          <TextHeadline>Writing (hero)</TextHeadline>
+                        </Link>
+                      </NavigationMenu.Link>
+                    </NavigationMenu.Item>
+
+                    <Box aria-hidden>
+                      <Divider />
+                    </Box>
+
+                    <NavigationMenu.Item>
+                      <NavigationMenu.Link
+                        asChild
+                        active={asPath.includes("writing")}
+                      >
+                        <Link variant="secondary" href={`/writing`}>
+                          <TextHeadline>Writing (default)</TextHeadline>
                         </Link>
                       </NavigationMenu.Link>
                     </NavigationMenu.Item>
