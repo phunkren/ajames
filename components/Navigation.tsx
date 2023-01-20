@@ -306,7 +306,7 @@ export const NavigationMobile = memo(function NavigationMobile() {
                     <NavigationMenu.Item>
                       <NavigationMenu.Link
                         asChild
-                        active={asPath.includes("writing")}
+                        active={asPath.includes(`writing#${PERSONAL.initials}`)}
                       >
                         <Link
                           variant="secondary"
