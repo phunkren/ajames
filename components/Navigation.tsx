@@ -15,7 +15,7 @@ import { ThemeToggle } from "./Theme";
 import { ICON_SIZE } from "../util/images";
 import { useTheme } from "../hooks/useTheme";
 import { Divider } from "./Divider";
-import { PROJECTS } from "../util/data";
+import { PERSONAL, PROJECTS } from "../util/data";
 import { Project } from "../types/project";
 import { Link } from "./Link";
 import { TextAux, TextBody, TextHeadline } from "./Text";
@@ -50,7 +50,7 @@ const StyledDialogContent = styled(Dialog.Content, {
   zIndex: 99,
   left: "100vw",
   transition: "right 3s ease-out",
-  animation: `${dialogSlideIn} 300ms ease-out`,
+  animation: `${dialogSlideIn} 200ms ease-out`,
 
   "&[data-state=open]": {
     left: 0,
@@ -290,7 +290,10 @@ export const NavigationMobile = memo(function NavigationMobile() {
 
                     <NavigationMenu.Item>
                       <NavigationMenu.Link asChild active={asPath === "/about"}>
-                        <Link variant="secondary" href="/about">
+                        <Link
+                          variant="secondary"
+                          href={`/about#${PERSONAL.initials}`}
+                        >
                           <TextHeadline>About</TextHeadline>
                         </Link>
                       </NavigationMenu.Link>
@@ -305,7 +308,10 @@ export const NavigationMobile = memo(function NavigationMobile() {
                         asChild
                         active={asPath.includes("writing")}
                       >
-                        <Link variant="secondary" href="/writing">
+                        <Link
+                          variant="secondary"
+                          href={`/writing#${PERSONAL.initials}`}
+                        >
                           <TextHeadline>Writing</TextHeadline>
                         </Link>
                       </NavigationMenu.Link>
@@ -320,7 +326,10 @@ export const NavigationMobile = memo(function NavigationMobile() {
                         asChild
                         active={asPath === "/learning"}
                       >
-                        <Link variant="secondary" href="/learning">
+                        <Link
+                          variant="secondary"
+                          href={`/learning#${PERSONAL.initials}`}
+                        >
                           <TextHeadline>Learning</TextHeadline>
                         </Link>
                       </NavigationMenu.Link>

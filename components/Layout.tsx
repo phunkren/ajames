@@ -110,7 +110,7 @@ export const HeaderLayout = memo(function HeaderLayout() {
 
 export const HeroLayout = memo(function HeroLayout({ src }: any) {
   return (
-    <StyledHeroLayout>
+    <StyledHeroLayout id={PERSONAL.initials}>
       <AspectRatio.Root ratio={2.5 / 1}>
         <StyledImage
           placeholder="blur"

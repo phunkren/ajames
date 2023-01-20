@@ -184,7 +184,7 @@ function Cv() {
         </VisuallyHidden.Root>
 
         <Box direction="vertical">
-          <StyledPageHeader className={darkTheme}>
+          <StyledPageHeader id={PERSONAL.initials} className={darkTheme}>
             <AspectRatio ratio={2.5 / 1}>
               <StyledImage src={banner} alt="" sizes="100vw" priority fill />
 
