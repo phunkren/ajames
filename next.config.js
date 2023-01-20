@@ -1,4 +1,9 @@
-module.exports = {
+// @ts-check
+
+/**
+ * @type {import('next').NextConfig}
+ **/
+const nextConfig = {
   images: {
     minimumCacheTTL: 60,
     remotePatterns: [
@@ -38,3 +43,5 @@ module.exports = {
     return config;
   },
 };
+
+module.exports = nextConfig;
