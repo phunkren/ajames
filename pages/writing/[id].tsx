@@ -9,9 +9,10 @@ import {
   getPostData,
   getPostTime,
 } from "../../lib/notion";
-import { ActionButtons, BlogLayout } from "../../components/Layout";
+import { ActionButtons, HeroLayout, Layout } from "../../components/Layout";
 import {
   BlogSubscriptionLink,
+  Link,
   MarkdownLink,
   TwitterShareLink,
 } from "../../components/Link";
@@ -31,12 +32,17 @@ import {
   ReadingTime,
 } from "../../components/Frontmatter";
 import { SITE } from "../../util/data";
-import { ShareButton } from "../../components/Button";
+import { ScrollToTopButton, ShareButton } from "../../components/Button";
 import { styled } from "../../stitches.config";
 import { H1_STYLES, H2_STYLES, H3_STYLES, P_STYLES } from "../../styles/text";
 import { Box } from "../../components/Box";
+import { ArrowLeftIcon } from "@radix-ui/react-icons";
+import { ICON_SIZE } from "../../util/images";
+import { ReactElement } from "react";
+import { NextPageWithLayout } from "../_app";
+import { BlogSeo } from "../../components/SEO";
 
-type Frontmatter = {
+export type Frontmatter = {
   title: string;
   description: string;
   cover: string;
@@ -68,6 +74,17 @@ const StyledContainer = styled(Box, {
 
   ul: {
     paddingLeft: "$10",
+  },
+});
+
+// These magic numbers are calculated based on the font size of the TextTitle1 component
+// The computed value is (fontSize * lineHeight) / 2.
+const StyledContent = styled(Box, {
+  position: "relative",
+  top: -16,
+
+  "@bp2": {
+    top: -32,
   },
 });
 
@@ -108,140 +125,173 @@ export async function getStaticProps({ params }: any) {
   };
 }
 
-export default function BlogPost({ frontmatter, postData }: Props) {
-  const router = useRouter();
-  const shareUrl = `${SITE.url}${router.asPath}`;
+const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
+  const { asPath } = useRouter();
+  const metaUrl = asPath ? `${SITE.url}${asPath}` : SITE.url;
 
   return (
-    <BlogLayout frontmatter={frontmatter}>
-      <Box
-        as="article"
-        direction="vertical"
-        spacingHorizontal={{ "@initial": 4, "@bp2": 10 }}
-        gap={10}
-      >
+    <>
+      <BlogSeo frontmatter={frontmatter} />
+
+      <Box direction="vertical">
         <Box direction="vertical">
-          <Box direction="vertical">
-            <Emoji
-              emoji={frontmatter.emoji}
-              size={{ "@bp2": "l" }}
-              css={{
-                position: "relative",
-                right: "$1",
-                alignSelf: "flex-start",
-                "@bp2": {
-                  right: "$2",
-                },
-              }}
-            />
-
+          <Link href="/writing" variant="secondary">
             <Box
-              justifyContent="space-between"
-              alignItems="flex-start"
-              spacingTop={10}
-              css={{ marginTop: 3 }}
-            >
-              <TextTitle2 css={{ spacingBottom: "$4" }}>
-                <Balancer>{frontmatter.title}</Balancer>
-              </TextTitle2>
-
-              <BlogSubscriptionLink
-                type="button"
-                css={{
-                  display: "none",
-                  transform: "translateY(50%)",
-                  "@bp3": { display: "flex" },
-                }}
-              />
-            </Box>
-          </Box>
-
-          <Box gap={10} alignItems="flex-end">
-            <Frontmatter spacingTop={6}>
-              <PostTags tags={frontmatter.tags} icon />
-              <PublishDate date={frontmatter.date} icon />
-              <ReadingTime time={frontmatter.time} icon />
-            </Frontmatter>
-
-            <ActionButtons css={{ width: "auto" }}>
-              <TwitterShareLink
-                url={shareUrl}
-                emoji={frontmatter.emoji}
-                text={frontmatter.title}
-                variant="icon"
-              />
-
-              <Box>
-                <ShareButton
-                  url={shareUrl}
-                  emoji={frontmatter.emoji}
-                  text={frontmatter.title}
-                  variant="icon"
-                />
-              </Box>
-            </ActionButtons>
-          </Box>
-        </Box>
-
-        <Box spacingVertical={10}>
-          <Divider />
-        </Box>
-
-        <StyledContainer
-          direction="vertical"
-          container="m"
-          gap={10}
-          css={{
-            textAlign: "justify",
-          }}
-        >
-          <ReactMarkdown
-            components={{
-              a: MarkdownLink,
-              code: Code,
-              h1: TextTitle2 as any,
-              h2: MarkdownTitle as any,
-              h3: TextHeadline as any,
-            }}
-            remarkPlugins={[remarkMdx]}
-          >
-            {postData}
-          </ReactMarkdown>
-
-          <Box spacingVertical={10}>
-            <Divider />
-          </Box>
-
-          <Box direction="vertical" gap={8}>
-            <TextTitle3 textAlign="center" color="secondary">
-              Enjoying the content?
-            </TextTitle3>
-
-            <Box
-              justifyContent="space-around"
               alignItems="center"
-              spacingBottom={10}
-              gap={7}
+              spacingBottom={{ "@initial": 4, "@bp2": 7 }}
+              gap={2}
             >
-              <TwitterShareLink
-                url={shareUrl}
-                emoji={frontmatter.emoji}
-                text={frontmatter.title}
+              <ArrowLeftIcon
+                width={ICON_SIZE.m}
+                height={ICON_SIZE.m}
+                aria-hidden
               />
-
-              <BlogSubscriptionLink />
-
-              <Box>
-                <ShareButton
-                  url={shareUrl}
-                  emoji={frontmatter.emoji}
-                  text={frontmatter.title}
-                />
-              </Box>
+              <TextHeadline>Back to writing overview</TextHeadline>
             </Box>
-          </Box>
-        </StyledContainer>
+          </Link>
+
+          <HeroLayout src={frontmatter.cover} />
+
+          <StyledContent as="main" direction="vertical">
+            <Box
+              as="article"
+              direction="vertical"
+              spacingHorizontal={{ "@initial": 4, "@bp2": 10 }}
+              gap={10}
+            >
+              <Box direction="vertical">
+                <Box direction="vertical">
+                  <Emoji
+                    emoji={frontmatter.emoji}
+                    size={{ "@bp2": "l" }}
+                    css={{
+                      position: "relative",
+                      right: "$1",
+                      alignSelf: "flex-start",
+                      "@bp2": {
+                        right: "$2",
+                      },
+                    }}
+                  />
+
+                  <Box
+                    justifyContent="space-between"
+                    alignItems="flex-start"
+                    spacingTop={10}
+                    css={{ marginTop: 3 }}
+                  >
+                    <TextTitle2 css={{ spacingBottom: "$4" }}>
+                      <Balancer>{frontmatter.title}</Balancer>
+                    </TextTitle2>
+
+                    <BlogSubscriptionLink
+                      type="button"
+                      css={{
+                        display: "none",
+                        transform: "translateY(50%)",
+                        "@bp3": { display: "flex" },
+                      }}
+                    />
+                  </Box>
+                </Box>
+
+                <Box gap={10} alignItems="flex-end">
+                  <Frontmatter spacingTop={6}>
+                    <PostTags tags={frontmatter.tags} icon />
+                    <PublishDate date={frontmatter.date} icon />
+                    <ReadingTime time={frontmatter.time} icon />
+                  </Frontmatter>
+
+                  <ActionButtons css={{ width: "auto" }}>
+                    <TwitterShareLink
+                      url={metaUrl}
+                      emoji={frontmatter.emoji}
+                      text={frontmatter.title}
+                      variant="icon"
+                    />
+
+                    <Box>
+                      <ShareButton
+                        url={metaUrl}
+                        emoji={frontmatter.emoji}
+                        text={frontmatter.title}
+                        variant="icon"
+                      />
+                    </Box>
+                  </ActionButtons>
+                </Box>
+              </Box>
+
+              <Box spacingVertical={10}>
+                <Divider />
+              </Box>
+
+              <StyledContainer
+                direction="vertical"
+                container="m"
+                gap={10}
+                css={{
+                  textAlign: "justify",
+                }}
+              >
+                <ReactMarkdown
+                  components={{
+                    a: MarkdownLink,
+                    code: Code,
+                    h1: TextTitle2 as any,
+                    h2: MarkdownTitle as any,
+                    h3: TextHeadline as any,
+                  }}
+                  remarkPlugins={[remarkMdx]}
+                >
+                  {postData}
+                </ReactMarkdown>
+
+                <Box spacingVertical={10}>
+                  <Divider />
+                </Box>
+
+                <Box direction="vertical" gap={8}>
+                  <TextTitle3 textAlign="center" color="secondary">
+                    Enjoying the content?
+                  </TextTitle3>
+
+                  <Box
+                    justifyContent="space-around"
+                    alignItems="center"
+                    spacingBottom={10}
+                    gap={7}
+                  >
+                    <TwitterShareLink
+                      url={metaUrl}
+                      emoji={frontmatter.emoji}
+                      text={frontmatter.title}
+                    />
+
+                    <BlogSubscriptionLink />
+
+                    <Box>
+                      <ShareButton
+                        url={metaUrl}
+                        emoji={frontmatter.emoji}
+                        text={frontmatter.title}
+                      />
+                    </Box>
+                  </Box>
+                </Box>
+              </StyledContainer>
+            </Box>
+          </StyledContent>
+        </Box>
+
+        <ScrollToTopButton />
       </Box>
-    </BlogLayout>
+    </>
   );
-}
+};
+
+BlogPost.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
+};
+
+export default BlogPost;

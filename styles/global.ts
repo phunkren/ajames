@@ -1,4 +1,3 @@
-import { blackA } from "@radix-ui/colors";
 import { globalCss } from "../stitches.config";
 import { DARK_THEME_COLORS, LIGHT_THEME_COLORS } from "./color";
 import { AUX_STYLES, P_STYLES } from "./text";
@@ -34,6 +33,11 @@ export const globalStyles = globalCss({
     minHeight: "100dvh",
     overflowX: "hidden",
     ...P_STYLES,
+  },
+
+  /* block scroll when the mobile nav is open */
+  "body:has(div[role=dialog][data-state=open])": {
+    overflow: "hidden",
   },
 
   /* Remove default margin */

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ReactElement, useState } from "react";
 import { GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
@@ -27,6 +27,7 @@ import {
 } from "../../components/Frontmatter";
 import banner from "../../public/images/blog.jpg";
 import { Box } from "../../components/Box";
+import { NextPageWithLayout } from "../_app";
 
 type Props = {
   posts: BlogPost[];
@@ -77,7 +78,7 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-function Writing({ posts, tags }: Props) {
+const Writing: NextPageWithLayout = ({ posts, tags }: Props) => {
   const { pathname, push, query } = useRouter();
   const [isFiltersOpen, setIsFiltersOpen] = useState(false);
   const queryTags = getQueryTags(query);
@@ -90,102 +91,102 @@ function Writing({ posts, tags }: Props) {
   }
 
   return (
-    <Layout>
+    <Box
+      direction="vertical"
+      alignItems="center"
+      spacingTop={{ "@initial": 1, "@bp2": 10 }}
+      spacingBottom={10}
+      gap={10}
+    >
+      <VisuallyHidden.Root>
+        <TextTitle1>Writing</TextTitle1>
+      </VisuallyHidden.Root>
+
+      <HeroLayout src={banner} />
+
       <Box
         direction="vertical"
-        alignItems="center"
-        spacingTop={{ "@initial": 7, "@bp2": 10 }}
-        spacingBottom={10}
         gap={10}
+        spacingHorizontal={{ "@initial": 4, "@bp2": 10 }}
+        spacingTop={{ "@initial": 6, "@bp2": 9 }}
+        spacingBottom={10}
       >
-        <VisuallyHidden.Root>
-          <TextTitle1>Writing</TextTitle1>
-        </VisuallyHidden.Root>
+        <Collapsible.Root open={isFiltersOpen} onOpenChange={setIsFiltersOpen}>
+          <Box direction="vertical" gap={10} spacingBottom={10}>
+            <Box justifyContent="space-between" alignItems="center">
+              <TextTitle2>Writing</TextTitle2>
 
-        <HeroLayout src={banner} />
+              <BlogSubscriptionLink
+                type="icon"
+                css={{ display: "flex", "@bp2": { display: "none" } }}
+              />
 
-        <Box
-          direction="vertical"
-          gap={10}
-          spacingHorizontal={{ "@initial": 4, "@bp2": 10 }}
-          spacingTop={{ "@initial": 6, "@bp2": 9 }}
-          spacingBottom={10}
-        >
-          <Collapsible.Root
-            open={isFiltersOpen}
-            onOpenChange={setIsFiltersOpen}
-          >
-            <Box direction="vertical" gap={10} spacingBottom={10}>
-              <Box justifyContent="space-between" alignItems="center">
-                <TextTitle2>Writing</TextTitle2>
-                <BlogSubscriptionLink
-                  type="icon"
-                  css={{ display: "flex", "@bp2": { display: "none" } }}
-                />
-
-                <BlogSubscriptionLink
-                  type="button"
-                  css={{ display: "none", "@bp2": { display: "flex" } }}
-                />
-              </Box>
-
-              <Box justifyContent="space-between" alignItems="flex-end" gap={4}>
-                <Frontmatter flexGrow>
-                  <TotalPosts total={posts.length} icon />
-                  <TotalCategories total={tags.length} icon />
-                  <ActiveTags tags={tags} queryTags={queryTags} icon />
-                </Frontmatter>
-
-                <ActionButtons css={{ flexBasis: "fit-content" }}>
-                  <FilterClearButton filters={queryTags} />
-
-                  <Collapsible.Trigger asChild>
-                    <FilterMenuButton open={isFiltersOpen} />
-                  </Collapsible.Trigger>
-                </ActionButtons>
-              </Box>
+              <BlogSubscriptionLink
+                type="button"
+                css={{ display: "none", "@bp2": { display: "flex" } }}
+              />
             </Box>
+
+            <Box justifyContent="space-between" alignItems="flex-end" gap={4}>
+              <Frontmatter flexGrow>
+                <TotalPosts total={posts.length} icon />
+                <TotalCategories total={tags.length} icon />
+                <ActiveTags tags={tags} queryTags={queryTags} icon />
+              </Frontmatter>
+
+              <ActionButtons css={{ flexBasis: "fit-content" }}>
+                <FilterClearButton filters={queryTags} />
+
+                <Collapsible.Trigger asChild>
+                  <FilterMenuButton open={isFiltersOpen} />
+                </Collapsible.Trigger>
+              </ActionButtons>
+            </Box>
+          </Box>
+
+          <Box spacingVertical={10}>
+            <Divider />
+          </Box>
+
+          <Collapsible.Content>
+            <TagToggle
+              type="multiple"
+              tags={tags}
+              value={queryTags}
+              onValueChange={handleTagChange}
+            />
 
             <Box spacingVertical={10}>
               <Divider />
             </Box>
+          </Collapsible.Content>
+        </Collapsible.Root>
 
-            <Collapsible.Content>
-              <TagToggle
-                type="multiple"
-                tags={tags}
-                value={queryTags}
-                onValueChange={handleTagChange}
-              />
+        <VisuallyHidden.Root>
+          <TextTitle2>Articles</TextTitle2>
+        </VisuallyHidden.Root>
 
-              <Box spacingVertical={10}>
-                <Divider />
-              </Box>
-            </Collapsible.Content>
-          </Collapsible.Root>
-
-          <VisuallyHidden.Root>
-            <TextTitle2>Articles</TextTitle2>
-          </VisuallyHidden.Root>
-
-          <StyledCardContainer>
-            {filteredPosts.map((post) => (
-              <BlogCard
-                key={post.id}
-                url={`/writing/${post.properties.slug.rich_text[0].plain_text}`}
-                image={post.cover.external.url}
-                emoji={post.icon.type === "emoji" ? post.icon.emoji : "👨‍💻"}
-                title={post.properties.page.title[0].plain_text}
-                description={post.properties.abstract.rich_text[0].plain_text}
-                publishDate={post.properties.date.date.start}
-                tags={post.properties.tags.multi_select}
-              />
-            ))}
-          </StyledCardContainer>
-        </Box>
+        <StyledCardContainer>
+          {filteredPosts.map((post) => (
+            <BlogCard
+              key={post.id}
+              url={`/writing/${post.properties.slug.rich_text[0].plain_text}`}
+              image={post.cover.external.url}
+              emoji={post.icon.type === "emoji" ? post.icon.emoji : "👨‍💻"}
+              title={post.properties.page.title[0].plain_text}
+              description={post.properties.abstract.rich_text[0].plain_text}
+              publishDate={post.properties.date.date.start}
+              tags={post.properties.tags.multi_select}
+            />
+          ))}
+        </StyledCardContainer>
       </Box>
-    </Layout>
+    </Box>
   );
-}
+};
+
+Writing.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
+};
 
 export default Writing;

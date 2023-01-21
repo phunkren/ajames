@@ -15,7 +15,7 @@ import { ThemeToggle } from "./Theme";
 import { ICON_SIZE } from "../util/images";
 import { useTheme } from "../hooks/useTheme";
 import { Divider } from "./Divider";
-import { PERSONAL, PROJECTS } from "../util/data";
+import { PROJECTS } from "../util/data";
 import { Project } from "../types/project";
 import { Link } from "./Link";
 import { TextAux, TextBody, TextHeadline } from "./Text";
@@ -39,7 +39,7 @@ const scaleOut = keyframes({
 });
 
 const StyledDialogContent = styled(Dialog.Content, {
-  position: "absolute",
+  position: "fixed",
   display: "flex",
   flexDirection: "column",
   backgroundColor: "$backgroundMuted",
@@ -290,29 +290,8 @@ export const NavigationMobile = memo(function NavigationMobile() {
 
                     <NavigationMenu.Item>
                       <NavigationMenu.Link asChild active={asPath === "/about"}>
-                        <Link
-                          variant="secondary"
-                          href={`/about#${PERSONAL.initials}`}
-                        >
+                        <Link variant="secondary" href="/about">
                           <TextHeadline>About</TextHeadline>
-                        </Link>
-                      </NavigationMenu.Link>
-                    </NavigationMenu.Item>
-
-                    <Box aria-hidden>
-                      <Divider />
-                    </Box>
-
-                    <NavigationMenu.Item>
-                      <NavigationMenu.Link
-                        asChild
-                        active={asPath.includes(`writing#${PERSONAL.initials}`)}
-                      >
-                        <Link
-                          variant="secondary"
-                          href={`/writing#${PERSONAL.initials}`}
-                        >
-                          <TextHeadline>Writing (hero)</TextHeadline>
                         </Link>
                       </NavigationMenu.Link>
                     </NavigationMenu.Item>
@@ -326,8 +305,8 @@ export const NavigationMobile = memo(function NavigationMobile() {
                         asChild
                         active={asPath.includes("writing")}
                       >
-                        <Link variant="secondary" href={`/writing`}>
-                          <TextHeadline>Writing (default)</TextHeadline>
+                        <Link variant="secondary" href="/writing">
+                          <TextHeadline>Writing</TextHeadline>
                         </Link>
                       </NavigationMenu.Link>
                     </NavigationMenu.Item>
@@ -341,10 +320,7 @@ export const NavigationMobile = memo(function NavigationMobile() {
                         asChild
                         active={asPath === "/learning"}
                       >
-                        <Link
-                          variant="secondary"
-                          href={`/learning#${PERSONAL.initials}`}
-                        >
+                        <Link variant="secondary" href={"/learning"}>
                           <TextHeadline>Learning</TextHeadline>
                         </Link>
                       </NavigationMenu.Link>

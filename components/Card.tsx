@@ -22,7 +22,6 @@ import {
 } from "../types/card";
 import { PreviewToggle } from "./Button";
 import { BLUR_DATA_URL } from "../util/images";
-import { PERSONAL } from "../util/data";
 
 const StyledCardOuter = styled(Box, {
   display: "flex",
@@ -211,7 +210,7 @@ export const BlogCard = memo(function BlogCard({
               }}
             />
 
-            <StyledLink href={`/${url}#${PERSONAL.initials}`} ref={ref}>
+            <StyledLink href={url} ref={ref}>
               {isPreviewVisible ? (
                 <TextAux clamp={4} css={{ lineHeight: 1.75 }}>
                   {description}

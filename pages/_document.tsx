@@ -1,12 +1,15 @@
 import { Html, Head, Main, NextScript } from "next/document";
+import { DocumentSeo } from "../components/SEO";
 import { getCssText } from "../stitches.config";
+import { globalStyles } from "../styles/global";
 
 export default function Document() {
+  globalStyles();
+
   return (
     <Html lang="en">
       <Head>
-        <meta name="robots" content="index,follow" />
-        <meta name="generator" content="Next.js" />
+        <DocumentSeo />
 
         <style
           id="stitches"

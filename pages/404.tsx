@@ -1,9 +1,11 @@
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
+import { ReactElement } from "react";
 import { Box } from "../components/Box";
 import { Layout } from "../components/Layout";
 import { Link } from "../components/Link";
 import { TextHeadline, TextTitle1 } from "../components/Text";
 import { styled } from "../stitches.config";
+import { NextPageWithLayout } from "./_app";
 
 const StyledHero = styled(Box, {
   position: "absolute",
@@ -12,9 +14,9 @@ const StyledHero = styled(Box, {
   background: "$background",
 });
 
-function NotFoundPage() {
+const NotFound: NextPageWithLayout = () => {
   return (
-    <Layout>
+    <Box direction="vertical">
       <AspectRatio ratio={2.5 / 1}>
         <StyledHero
           spacingHorizontal={{ "@initial": 4, "@bp2": 10 }}
@@ -34,8 +36,12 @@ function NotFoundPage() {
           <TextHeadline>Return to homepage</TextHeadline>
         </Link>
       </Box>
-    </Layout>
+    </Box>
   );
-}
+};
 
-export default NotFoundPage;
+NotFound.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
+};
+
+export default NotFound;

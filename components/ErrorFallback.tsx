@@ -24,7 +24,7 @@ export const ErrorFallback = memo(function ErrorFallback({
   }, []);
 
   return (
-    <Layout>
+    <Box direction="vertical">
       <AspectRatio ratio={2.5 / 1}>
         <StyledHero
           spacingHorizontal={{ "@initial": 4, "@bp2": 10 }}
@@ -60,6 +60,6 @@ export const ErrorFallback = memo(function ErrorFallback({
           <TextHeadline>Return to homepage</TextHeadline>
         </Button>
       </Box>
-    </Layout>
+    </Box>
   );
 });

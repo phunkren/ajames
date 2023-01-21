@@ -2,7 +2,6 @@ import React, {
   useState,
   useEffect,
   createContext,
-  useContext,
   useMemo,
   useCallback,
   memo,
@@ -14,6 +13,7 @@ import { darkTheme, keyframes, lightTheme, styled } from "../stitches.config";
 import { Theme, ThemeProviderProps } from "../types/theme";
 import { ICON_SIZE } from "../util/images";
 import { blackA, whiteA } from "@radix-ui/colors";
+import { useTheme } from "../hooks/useTheme";
 
 // const peek = keyframes({
 //   "0%": { transform: "translateY(100%)" },
@@ -174,7 +174,7 @@ export const ThemeProvider = memo(function ThemeProvider({
 });
 
 export const ThemeToggle = memo(function ThemeToggle() {
-  const { theme, onThemeChange } = useContext(ThemeContext);
+  const { themeName: theme, onThemeChange } = useTheme();
 
   const handleThemeChange = useCallback(
     (newTheme: Theme) => {

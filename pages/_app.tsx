@@ -1,30 +1,40 @@
+import { Rubik, Jost, Fira_Code } from "@next/font/google";
+import { NextPage } from "next";
+import { ReactElement, ReactNode } from "react";
+import { AppProps } from "next/app";
 import { ErrorBoundary } from "react-error-boundary";
 import { ErrorFallback } from "../components/ErrorFallback";
-import { RootLayout } from "../components/Layout";
 import { ThemeProvider } from "../components/Theme";
-import { globalStyles } from "../styles/global";
-import { Rubik, Jost, Fira_Code } from "@next/font/google";
 
-const rubik = Rubik({
+export const rubik = Rubik({
   weight: ["300", "400", "500"],
   style: ["normal"],
   subsets: ["latin"],
 });
 
-const jost = Jost({
+export const jost = Jost({
   weight: ["300", "400", "500"],
   style: ["normal", "italic"],
   subsets: ["latin"],
 });
 
-const firaCode = Fira_Code({
+export const firaCode = Fira_Code({
   weight: ["300", "400", "500"],
   style: ["normal"],
   subsets: ["latin"],
 });
 
-export default function MyApp({ Component, pageProps }: any) {
-  globalStyles();
+export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+  getLayout?: (page: ReactElement) => ReactNode;
+};
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout;
+};
+
+export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+  // Use the layout defined at the page level, if available
+  const getLayout = Component.getLayout ?? ((page) => page);
 
   return (
     <>
@@ -52,11 +62,7 @@ export default function MyApp({ Component, pageProps }: any) {
       `}</style>
 
       <ErrorBoundary FallbackComponent={ErrorFallback}>
-        <ThemeProvider>
-          <RootLayout>
-            <Component {...pageProps} />
-          </RootLayout>
-        </ThemeProvider>
+        <ThemeProvider>{getLayout(<Component {...pageProps} />)}</ThemeProvider>
       </ErrorBoundary>
     </>
   );
