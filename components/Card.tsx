@@ -31,8 +31,7 @@ const StyledCardOuter = styled(Box, {
   boxShadow: "$1",
   borderRadius: 4,
   overflow: "hidden",
-  transition:
-    "background 200ms ease-out, filter 200ms ease-out, boxShadow 200ms ease-out",
+  transition: "background 200ms ease-out, boxShadow 200ms ease-out",
 
   "& div[data-radix-aspect-ratio-wrapper]": {
     overflow: "hidden",
@@ -96,7 +95,8 @@ const StyledImage = styled(Image, {
   objectFit: "cover",
   borderTopLeftRadius: 4,
   borderTopRightRadius: 4,
-  filter: "brightness(90%)",
+  filter: "brightness(75%)",
+  transition: "filter 200ms ease-out",
 });
 
 const StyledLink = styled(Link, {
