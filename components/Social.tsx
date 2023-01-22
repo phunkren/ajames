@@ -5,6 +5,7 @@ import {
   TwitterLogoIcon,
   VideoIcon,
 } from "@radix-ui/react-icons";
+import { MdRssFeed } from "react-icons/md";
 import { styled } from "../stitches.config";
 import { SOCIAL } from "../util/data";
 import { ICON_SIZE } from "../util/images";
@@ -23,11 +24,11 @@ export const Social = memo(function Social() {
         <li>
           <StyledLink
             variant="secondary"
-            title={SOCIAL.twitter.displayName}
-            href={SOCIAL.twitter.url}
+            title={SOCIAL.github.displayName}
+            href={SOCIAL.github.url}
           >
             <Box spacing={1}>
-              <TwitterLogoIcon
+              <GitHubLogoIcon
                 width={ICON_SIZE.xl}
                 height={ICON_SIZE.xl}
                 aria-hidden
@@ -57,11 +58,11 @@ export const Social = memo(function Social() {
         <li>
           <StyledLink
             variant="secondary"
-            title={SOCIAL.linkedin.displayName}
-            href={SOCIAL.linkedin.url}
+            title={SOCIAL.twitter.displayName}
+            href={SOCIAL.twitter.url}
           >
             <Box spacing={1}>
-              <LinkedInLogoIcon
+              <TwitterLogoIcon
                 width={ICON_SIZE.xl}
                 height={ICON_SIZE.xl}
                 aria-hidden
@@ -78,12 +79,7 @@ export const Social = memo(function Social() {
             href={SOCIAL.github.url}
           >
             <Box spacing={1}>
-              <GitHubLogoIcon
-                width={ICON_SIZE.xl}
-                height={ICON_SIZE.xl}
-                aria-hidden
-                focusable={false}
-              />
+              <StyledRssIcon size={ICON_SIZE.xl} />
             </Box>
           </StyledLink>
         </li>
