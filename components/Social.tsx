@@ -24,16 +24,24 @@ export const Social = memo(function Social() {
         <li>
           <StyledLink
             variant="secondary"
-            title={SOCIAL.github.displayName}
-            href={SOCIAL.github.url}
+            title={SOCIAL.linkedin.displayName}
+            href={SOCIAL.linkedin.url}
           >
             <Box spacing={1}>
-              <GitHubLogoIcon
+              <LinkedInLogoIcon
                 width={ICON_SIZE.xl}
                 height={ICON_SIZE.xl}
                 aria-hidden
                 focusable={false}
               />
+            </Box>
+          </StyledLink>
+        </li>
+
+        <li>
+          <StyledLink variant="secondary" title="RSS Feed" href="/rss">
+            <Box spacing={1}>
+              <MdRssFeed size={ICON_SIZE.xl} />
             </Box>
           </StyledLink>
         </li>
@@ -68,18 +76,6 @@ export const Social = memo(function Social() {
                 aria-hidden
                 focusable={false}
               />
-            </Box>
-          </StyledLink>
-        </li>
-
-        <li>
-          <StyledLink
-            variant="secondary"
-            title={SOCIAL.github.displayName}
-            href={SOCIAL.github.url}
-          >
-            <Box spacing={1}>
-              <StyledRssIcon size={ICON_SIZE.xl} />
             </Box>
           </StyledLink>
         </li>
