@@ -97,6 +97,13 @@ const StyledImage = styled(Image, {
   borderTopRightRadius: 4,
   filter: "brightness(75%)",
   transition: "filter 200ms ease-out",
+
+  // https://nextjs.org/docs/api-reference/next/image#known-browser-bugs
+  "@supports (font: -apple-system-body) and (-webkit-appearance: none)": {
+    "img[loading='lazy']": {
+      clipPath: "inset(0.6px)",
+    },
+  },
 });
 
 const StyledLink = styled(Link, {
