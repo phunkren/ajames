@@ -83,8 +83,6 @@ const StyledCloseMenuIcon = styled(Cross1Icon, {
   },
 });
 
-const StyledDialogClose = styled(Dialog.Close, {});
-
 const StyledNavigationMenuList = styled(NavigationMenu.List, {
   display: "flex",
   gap: "$10",
@@ -264,9 +262,7 @@ export const NavigationMobile = memo(function NavigationMobile() {
           >
             <Box justifyContent="flex-end">
               <VisuallyHidden.Root>
-                <StyledDialogClose ref={closeButtonRef}>
-                  Close menu
-                </StyledDialogClose>
+                <Dialog.Close ref={closeButtonRef}>Close menu</Dialog.Close>
               </VisuallyHidden.Root>
 
               <ThemeToggle />
