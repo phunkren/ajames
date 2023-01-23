@@ -36,6 +36,7 @@ import banner from "../public/images/mugshot.png";
 import { Box } from "../components/Box";
 import { NextPageWithLayout } from "./_app";
 import { ReactElement } from "react";
+import { ThemeProvider } from "../components/Theme";
 
 const StyledPageHeader = styled(Box, {
   display: "block",
@@ -188,44 +189,46 @@ const About: NextPageWithLayout = () => {
       </VisuallyHidden.Root>
 
       <Box direction="vertical">
-        <StyledPageHeader id={PERSONAL.initials} className={darkTheme}>
-          <AspectRatio ratio={2.5 / 1}>
-            <StyledImage src={banner} alt="" sizes="100vw" priority fill />
+        <ThemeProvider>
+          <StyledPageHeader id={PERSONAL.initials} className={darkTheme}>
+            <AspectRatio ratio={2.5 / 1}>
+              <StyledImage src={banner} alt="" sizes="100vw" priority fill />
 
-            <StyledFilter />
+              <StyledFilter />
 
-            <StyledHero
-              spacingHorizontal={{ "@initial": 6, "@bp2": 10 }}
-              spacingVertical={{ "@initial": 5, "@bp2": 7 }}
-              alignItems="flex-end"
-              justifyContent="space-between"
-            >
-              <Box direction="vertical" css={{ zIndex: 1 }}>
-                <TextTitle1 css={{ textShadow: "$textShadow" }}>
-                  {PERSONAL.name}
-                </TextTitle1>
-                <TextHeadline css={{ textShadow: "$textShadow" }}>
-                  {PERSONAL.occupation} / {PERSONAL.location}
-                </TextHeadline>
-              </Box>
-
-              <ActionButtons
-                display={{ "@initial": "none", "@bp3": "flex" }}
-                css={{ zIndex: 1 }}
+              <StyledHero
+                spacingHorizontal={{ "@initial": 6, "@bp2": 10 }}
+                spacingVertical={{ "@initial": 5, "@bp2": 7 }}
+                alignItems="flex-end"
+                justifyContent="space-between"
               >
-                <PrintButton />
+                <Box direction="vertical" css={{ zIndex: 1 }}>
+                  <TextTitle1 css={{ textShadow: "$textShadow" }}>
+                    {PERSONAL.name}
+                  </TextTitle1>
+                  <TextHeadline css={{ textShadow: "$textShadow" }}>
+                    {PERSONAL.occupation} / {PERSONAL.location}
+                  </TextHeadline>
+                </Box>
 
-                <StyledIconLink href="/download-cv" title="Download" download>
-                  <DownloadIcon
-                    width={ICON_SIZE.m}
-                    height={ICON_SIZE.m}
-                    aria-hidden
-                  />
-                </StyledIconLink>
-              </ActionButtons>
-            </StyledHero>
-          </AspectRatio>
-        </StyledPageHeader>
+                <ActionButtons
+                  display={{ "@initial": "none", "@bp3": "flex" }}
+                  css={{ zIndex: 1 }}
+                >
+                  <PrintButton />
+
+                  <StyledIconLink href="/download-cv" title="Download" download>
+                    <DownloadIcon
+                      width={ICON_SIZE.m}
+                      height={ICON_SIZE.m}
+                      aria-hidden
+                    />
+                  </StyledIconLink>
+                </ActionButtons>
+              </StyledHero>
+            </AspectRatio>
+          </StyledPageHeader>
+        </ThemeProvider>
 
         <StyledPrintHeader>
           <Box
