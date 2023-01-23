@@ -47,7 +47,7 @@ export const Avatar = memo(function Avatar(props: RadixAvatar.AvatarProps) {
   return (
     <AvatarRoot {...props}>
       <AvatarImage src="/images/avatar.png" alt={PERSONAL.name} />
-      <AvatarFallback delayMs={600}>{PERSONAL.initials}</AvatarFallback>
+      <AvatarFallback>{PERSONAL.initials}</AvatarFallback>
     </AvatarRoot>
   );
 });
