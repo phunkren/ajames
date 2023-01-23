@@ -13,13 +13,16 @@ const Home: NextPageWithLayout = () => {
   const currentTab = (query.tab as string) ?? "short";
   const currentEmployer = EMPLOYMENT[0];
 
-  const handleTabChange = useCallback((newTab: string) => {
-    if (newTab) {
-      push({ pathname, query: { ...query, tab: newTab } }, undefined, {
-        scroll: false,
-      });
-    }
-  }, []);
+  const handleTabChange = useCallback(
+    (newTab: string) => {
+      if (newTab) {
+        push({ pathname, query: { ...query, tab: newTab } }, undefined, {
+          scroll: false,
+        });
+      }
+    },
+    [pathname, push, query]
+  );
 
   return (
     <Box

@@ -26,7 +26,6 @@ import {
   formatPlaylist,
   formatPlaylistVideo,
   formatPlaylistVideos,
-  sortPlaylist,
   sortPlaylists,
   YOUTUBE_CHANNEL_URL,
   YOUTUBE_SHARE_TEXT,
