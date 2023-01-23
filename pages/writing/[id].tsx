@@ -75,6 +75,12 @@ const StyledContainer = styled(Box, {
   ul: {
     paddingLeft: "$10",
   },
+
+  "@bp3": {
+    p: {
+      fontSize: 24,
+    },
+  },
 });
 
 // These magic numbers are calculated based on the font size of the TextTitle1 component
