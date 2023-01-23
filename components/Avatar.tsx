@@ -14,7 +14,7 @@ export const AvatarRoot = styled(RadixAvatar.Root, {
   width: 48,
   height: 48,
   borderRadius: "100%",
-  backgroundColor: "$blue6",
+  backgroundColor: "$background",
   boxShadow: "$1",
 
   "&:hover": {
@@ -39,15 +39,35 @@ export const AvatarFallback = styled(RadixAvatar.Fallback, {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  backgroundColor: "black",
   color: "white",
 });
 
 export const Avatar = memo(function Avatar(props: RadixAvatar.AvatarProps) {
   return (
-    <AvatarRoot {...props}>
+    <AvatarRoot css={{ backgroundColor: "$blue6" }} {...props}>
       <AvatarImage src="/images/avatar.png" alt={PERSONAL.name} />
       <AvatarFallback>{PERSONAL.initials}</AvatarFallback>
+    </AvatarRoot>
+  );
+});
+
+type YouTubeAvatarProps = RadixAvatar.AvatarProps & {
+  src: string;
+  alt: string;
+};
+
+export const YouTubeAvatar = memo(function Avatar({
+  src,
+  alt,
+  ...props
+}: YouTubeAvatarProps) {
+  return (
+    <AvatarRoot
+      css={{ backgroundColor: "black", "@bp2": { width: 72, height: 72 } }}
+      {...props}
+    >
+      <AvatarImage src={src} alt={alt} />
+      <AvatarFallback delayMs={600}>{PERSONAL.initials}</AvatarFallback>
     </AvatarRoot>
   );
 });

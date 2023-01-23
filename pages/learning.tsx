@@ -3,7 +3,12 @@ import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import Balancer from "react-wrap-balancer";
 import { PlayIcon } from "@radix-ui/react-icons";
 import YouTube from "react-youtube";
-import { AvatarFallback, AvatarImage, AvatarRoot } from "../components/Avatar";
+import {
+  AvatarFallback,
+  AvatarImage,
+  AvatarRoot,
+  YouTubeAvatar,
+} from "../components/Avatar";
 import { VideoCard } from "../components/Card";
 import { Divider } from "../components/Divider";
 import {
@@ -170,15 +175,10 @@ const Learning: NextPageWithLayout = ({
         <Box direction="vertical" spacingBottom={10}>
           <Box direction="vertical">
             <Link href={YOUTUBE_CHANNEL_URL}>
-              <AvatarRoot css={{ "@bp2": { width: 72, height: 72 } }}>
-                <AvatarImage
-                  src={channelInfoPreview.thumbnail.src}
-                  alt={channelInfoPreview.thumbnail.alt}
-                />
-                <AvatarFallback delayMs={600}>
-                  {PERSONAL.initials}
-                </AvatarFallback>
-              </AvatarRoot>
+              <YouTubeAvatar
+                src={channelInfoPreview.thumbnail.src}
+                alt={channelInfoPreview.thumbnail.alt}
+              />
             </Link>
 
             <Box direction="vertical" justifyContent="space-between">
