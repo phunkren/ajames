@@ -421,7 +421,7 @@ const Learning: NextPageWithLayout = ({
             <Divider />
           </Box>
 
-          <Box direction="vertical" gap={8}>
+          <Box direction="vertical" gap={10}>
             <TextTitle3 as="h2" textAlign="center" color="secondary">
               Enjoying the content?
             </TextTitle3>
