@@ -138,6 +138,7 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
           <Link href="/writing" variant="secondary">
             <Box
               alignItems="center"
+              spacingHorizontal={{ "@initial": 4, "@bp2": 0 }}
               spacingBottom={{ "@initial": 4, "@bp2": 2 }}
               gap={2}
             >

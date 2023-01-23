@@ -160,7 +160,7 @@ const Learning: NextPageWithLayout = ({
   }, []);
 
   return (
-    <Box direction="vertical" alignItems="center" spacingTop={{ "@bp2": 10 }}>
+    <Box direction="vertical" spacingTop={{ "@bp2": 10 }}>
       <HeroLayout src={banner} />
 
       <StyledContentContainer

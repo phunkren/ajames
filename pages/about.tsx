@@ -43,14 +43,16 @@ const StyledPageHeader = styled(Box, {
   left: "-$2",
   width: "100vw",
   overflow: "hidden",
-  borderTopRightRadius: 4,
-  borderTopLeftRadius: 4,
+  borderTopRightRadius: 0,
+  borderTopLeftRadius: 0,
   marginBottom: "$10",
   color: "$foreground",
 
   "@bp2": {
     left: 0,
     width: "100%",
+    borderTopRightRadius: 4,
+    borderTopLeftRadius: 4,
   },
 
   "@print": {
@@ -112,7 +114,7 @@ const StyledFilter = styled(Box, {
 const StyledImage = styled(Image, {
   display: "none",
   objectFit: "contain",
-  borderRadius: 4,
+  borderRadius: 0,
   position: "absolute",
   top: "4% !important",
   left: "16% !important",
@@ -123,6 +125,7 @@ const StyledImage = styled(Image, {
 
   "@bp2": {
     display: "block",
+    borderRadius: 4,
   },
 });
 

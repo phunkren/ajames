@@ -12,12 +12,19 @@ import { ThemeToggle } from "./Theme";
 import { PERSONAL } from "../util/data";
 import { Box } from "./Box";
 import { PageSeo } from "./SEO";
+import { Button } from "./Button";
 
 const StyledHeroLayout = styled(Box, {
   width: "100vw",
   position: "relative",
+  left: "-$2",
 
   "@bp2": {
+    left: "-$4",
+  },
+
+  "@bp3": {
+    left: 0,
     width: "100%",
   },
 });
@@ -26,7 +33,7 @@ const StyledImage = styled(Image, {
   objectFit: "cover",
   borderRadius: 0,
 
-  "@bp2": {
+  "@bp3": {
     borderRadius: 4,
   },
 });
@@ -102,7 +109,7 @@ export const Layout = memo(function Layout({ children }: any) {
         <Box
           as="main"
           direction="vertical"
-          css={{ overflowX: "hidden" }}
+          // css={{ overflowX: "hidden" }}
           flexGrow
         >
           {children}

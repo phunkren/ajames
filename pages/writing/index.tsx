@@ -93,7 +93,6 @@ const Writing: NextPageWithLayout = ({ posts, tags }: Props) => {
   return (
     <Box
       direction="vertical"
-      alignItems="center"
       spacingTop={{ "@bp2": 10 }}
       spacingBottom={10}
       gap={10}
