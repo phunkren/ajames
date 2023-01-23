@@ -190,10 +190,12 @@ const StyledYoutubeSubscription = styled(Link, {
 
         [`.${lightTheme} &`]: {
           backgroundColor: "$red9",
+          borderColor: "$red9",
         },
 
         [`.${darkTheme} &`]: {
           backgroundColor: "$red8",
+          borderColor: "$red8",
         },
 
         "&:hover": {
@@ -201,10 +203,12 @@ const StyledYoutubeSubscription = styled(Link, {
 
           [`.${lightTheme} &`]: {
             backgroundColor: "$red9",
+            borderColor: "$red9",
           },
 
           [`.${darkTheme} &`]: {
             backgroundColor: "$red8",
+            borderColor: "$red8",
           },
         },
 
@@ -270,10 +274,12 @@ const StyledBlogSubscription = styled(Link, {
 
         [`.${lightTheme} &`]: {
           backgroundColor: "$blue11",
+          borderColor: "$blue11",
         },
 
         [`.${darkTheme} &`]: {
           backgroundColor: "$sky8",
+          borderColor: "$sky8",
         },
 
         "&:hover": {
@@ -283,10 +289,12 @@ const StyledBlogSubscription = styled(Link, {
 
           [`.${lightTheme} &`]: {
             backgroundColor: "$blue10",
+            borderColor: "$blue10",
           },
 
           [`.${darkTheme} &`]: {
             backgroundColor: "$sky7",
+            borderColor: "$sky7",
           },
         },
 
