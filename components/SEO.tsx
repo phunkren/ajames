@@ -5,6 +5,7 @@ import { useTheme } from "../hooks/useTheme";
 import { Frontmatter } from "../pages/writing/[id]";
 import { getCssText } from "../stitches.config";
 import { PERSONAL, SITE, SOCIAL } from "../util/data";
+import { getPageTitle } from "../util/url";
 
 type BlogSeoProps = {
   frontmatter: Frontmatter;
@@ -65,7 +66,9 @@ export const PageSeo = memo(function PageSeo() {
   const { asPath } = useRouter();
   const { themeName, themeColor } = useTheme();
   const metaUrl = asPath ? `${SITE.url}${asPath}` : SITE.url;
-  const metaTitle = `${PERSONAL.name} | ${asPath}`;
+  const metaTitle = `${PERSONAL.name} | ${
+    getPageTitle(asPath) ?? PERSONAL.occupation
+  }`;
 
   return (
     <Head>

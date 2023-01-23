@@ -18,3 +18,13 @@ export function buildUrl(
 
   return url;
 }
+
+const PAGE_MAP = {
+  "/about": "About",
+  "/writing": "Writing",
+  "/learning": "Learning",
+};
+
+export function getPageTitle(pathName: string) {
+  return PAGE_MAP[pathName] ?? null;
+}

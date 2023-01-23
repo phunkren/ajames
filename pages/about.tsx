@@ -677,7 +677,7 @@ const About: NextPageWithLayout = () => {
                         }}
                       >
                         <TextHeadline color="secondary">
-                          Notable Work
+                          Notable Contributions
                         </TextHeadline>
                         <Box
                           as="ul"
