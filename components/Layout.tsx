@@ -102,7 +102,6 @@ export const Layout = memo(function Layout({ children }: any) {
         <Box
           as="main"
           direction="vertical"
-          spacingVertical={6}
           css={{ overflowX: "hidden" }}
           flexGrow
         >

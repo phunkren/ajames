@@ -179,7 +179,7 @@ const GridItem = styled("div", {
 
 const About: NextPageWithLayout = () => {
   return (
-    <Box spacingTop={{ "@print": 4, "@initial": 7, "@bp2": 10 }}>
+    <Box spacingTop={{ "@print": 4, "@bp2": 10 }}>
       <VisuallyHidden.Root>
         <TextTitle1>About</TextTitle1>
       </VisuallyHidden.Root>
