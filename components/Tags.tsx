@@ -39,6 +39,7 @@ const TagToggleItem = styled(ToggleGroup.Item, {
   justifyContent: "center",
   textTransform: "uppercase",
   padding: "$2",
+  boxShadow: "$1",
   borderRadius: 4,
   borderWidth: 1,
   borderStyle: "solid",
@@ -50,23 +51,23 @@ const TagToggleItem = styled(ToggleGroup.Item, {
     backgroundColor: whiteA.whiteA2,
   },
 
-  [`.${lightTheme} &`]: {
-    backgroundColor: blackA.blackA2,
-  },
-
   [`.${darkTheme} &:hover`]: {
     backgroundColor: whiteA.whiteA3,
-    boxShadow: "$4",
-  },
-
-  [`.${lightTheme} &:hover`]: {
-    backgroundColor: blackA.blackA3,
     boxShadow: "$4",
   },
 
   [`.${darkTheme} &:active`]: {
     backgroundColor: whiteA.whiteA4,
     boxShadow: "$5",
+  },
+
+  [`.${lightTheme} &`]: {
+    backgroundColor: blackA.blackA2,
+  },
+
+  [`.${lightTheme} &:hover`]: {
+    backgroundColor: blackA.blackA3,
+    boxShadow: "$4",
   },
 
   [`.${lightTheme} &:active`]: {

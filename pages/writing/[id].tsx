@@ -179,6 +179,7 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
                     justifyContent="space-between"
                     alignItems="flex-start"
                     spacingTop={10}
+                    gap={6}
                     css={{ marginTop: 3 }}
                   >
                     <TextTitle2 css={{ spacingBottom: "$4" }}>
