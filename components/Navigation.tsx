@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useCallback, useRef } from "react";
 import {
   ChevronDownIcon,
   Cross1Icon,
@@ -82,6 +82,8 @@ const StyledCloseMenuIcon = styled(Cross1Icon, {
     display: "none",
   },
 });
+
+const StyledDialogClose = styled(Dialog.Close, {});
 
 const StyledNavigationMenuList = styled(NavigationMenu.List, {
   display: "flex",
@@ -216,6 +218,11 @@ export const Navigation = memo(function Navigation() {
 export const NavigationMobile = memo(function NavigationMobile() {
   const { theme } = useTheme();
   const { asPath } = useRouter();
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+  const handleLinkClick = useCallback(() => {
+    closeButtonRef.current?.click();
+  }, []);
 
   return (
     <Dialog.Root>
@@ -256,6 +263,12 @@ export const NavigationMobile = memo(function NavigationMobile() {
             flexGrow
           >
             <Box justifyContent="flex-end">
+              <VisuallyHidden.Root>
+                <StyledDialogClose ref={closeButtonRef}>
+                  Close menu
+                </StyledDialogClose>
+              </VisuallyHidden.Root>
+
               <ThemeToggle />
             </Box>
 
@@ -278,7 +291,11 @@ export const NavigationMobile = memo(function NavigationMobile() {
                   >
                     <NavigationMenu.Item>
                       <NavigationMenu.Link asChild active={asPath === "/"}>
-                        <Link variant="secondary" href="/">
+                        <Link
+                          href="/"
+                          variant="secondary"
+                          onClick={handleLinkClick}
+                        >
                           <TextHeadline>Home</TextHeadline>
                         </Link>
                       </NavigationMenu.Link>
@@ -290,7 +307,11 @@ export const NavigationMobile = memo(function NavigationMobile() {
 
                     <NavigationMenu.Item>
                       <NavigationMenu.Link asChild active={asPath === "/about"}>
-                        <Link variant="secondary" href="/about">
+                        <Link
+                          href="/about"
+                          variant="secondary"
+                          onClick={handleLinkClick}
+                        >
                           <TextHeadline>About</TextHeadline>
                         </Link>
                       </NavigationMenu.Link>
@@ -305,7 +326,11 @@ export const NavigationMobile = memo(function NavigationMobile() {
                         asChild
                         active={asPath.includes("writing")}
                       >
-                        <Link variant="secondary" href="/writing">
+                        <Link
+                          href="/writing"
+                          variant="secondary"
+                          onClick={handleLinkClick}
+                        >
                           <TextHeadline>Writing</TextHeadline>
                         </Link>
                       </NavigationMenu.Link>
@@ -320,7 +345,11 @@ export const NavigationMobile = memo(function NavigationMobile() {
                         asChild
                         active={asPath === "/learning"}
                       >
-                        <Link variant="secondary" href={"/learning"}>
+                        <Link
+                          href="/learning"
+                          variant="secondary"
+                          onClick={handleLinkClick}
+                        >
                           <TextHeadline>Learning</TextHeadline>
                         </Link>
                       </NavigationMenu.Link>
