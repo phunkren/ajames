@@ -28,7 +28,8 @@ export const YOUTUBE_CHANNEL_ID = "UCCp_G-IprVFee-tBabTROsw";
 // Identical to `YOUTUBE_CHANNEL_ID`, except with a `UU` prefix instead of `UC`.
 export const YOUTUBE_CHANNEL_PLAYLIST_ID = "UUCp_G-IprVFee-tBabTROsw";
 
-export const YOUTUBE_LIKED_VIDEOS_PLAYLIST_ID = "LL";
+export const YOUTUBE_LIKED_VIDEOS_PLAYLIST_ID =
+  "PL7_TxhdAmdDL7M26zUGU4nYpKm22h3CyY";
 
 export const formatPlaylistVideo = (
   response: youtube_v3.Schema$PlaylistItem
@@ -36,11 +37,13 @@ export const formatPlaylistVideo = (
   const {
     thumbnails,
     title,
-    publishedAt,
     description,
     resourceId,
     playlistId,
+    publishedAt,
   } = response.snippet;
+
+  const publishDate = response.contentDetails?.videoPublishedAt ?? publishedAt;
 
   const url = buildUrl(`${YOUTUBE_URL}/watch`, {
     v: resourceId.videoId,
@@ -58,7 +61,7 @@ export const formatPlaylistVideo = (
     videoId: resourceId.videoId,
     thumbnail,
     title,
-    publishedAt,
+    publishedAt: publishDate,
     description,
     url,
     playlistId,
@@ -137,4 +140,19 @@ export const formatChannelInfo = (
     subscriberCount,
     videoCount,
   };
+};
+
+// Ensure Liked Videos appears at the bottom
+export const sortPlaylists = (
+  playlists: PlaylistPreview[]
+): PlaylistPreview[] => {
+  const likedVideosPlaylist = playlists.find(
+    (playlist) => playlist.id === YOUTUBE_LIKED_VIDEOS_PLAYLIST_ID
+  );
+
+  const otherPlaylists = playlists.filter(
+    (pl) => pl.id !== YOUTUBE_LIKED_VIDEOS_PLAYLIST_ID
+  );
+
+  return [...otherPlaylists, likedVideosPlaylist];
 };

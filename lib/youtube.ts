@@ -49,7 +49,7 @@ export async function getYoutubeData() {
 
   const getPlayListVideos = playlistsRes.data.items.map((item) =>
     youtube.playlistItems.list({
-      part: ["snippet"],
+      part: ["snippet", "contentDetails"],
       playlistId: item.id,
       maxResults: 12,
     })

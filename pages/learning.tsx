@@ -26,6 +26,8 @@ import {
   formatPlaylist,
   formatPlaylistVideo,
   formatPlaylistVideos,
+  sortPlaylist,
+  sortPlaylists,
   YOUTUBE_CHANNEL_URL,
   YOUTUBE_SHARE_TEXT,
 } from "../util/youtube";
@@ -120,6 +122,8 @@ export async function getStaticProps() {
 
   const playlistsPreview = formatPlaylist(playlists);
 
+  const sortedPlaylistsPreview = sortPlaylists(playlistsPreview);
+
   const playlistVideosPreview = formatPlaylistVideos(videos);
 
   const channelInfoPreview = formatChannelInfo(channelInfo);
@@ -127,7 +131,7 @@ export async function getStaticProps() {
   return {
     props: {
       videoPreview,
-      playlistsPreview,
+      playlistsPreview: sortedPlaylistsPreview,
       playlistVideosPreview,
       channelInfoPreview,
     },
