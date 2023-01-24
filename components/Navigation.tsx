@@ -85,7 +85,7 @@ const StyledCloseMenuIcon = styled(Cross1Icon, {
 
 const StyledNavigationMenuList = styled(NavigationMenu.List, {
   display: "flex",
-  gap: "$10",
+  gap: "$8",
 });
 
 const StyledNavigationSubmenu = styled(Box, {
@@ -140,10 +140,10 @@ export const NavigationProjectLink = memo(function NavigationProjectLink({
               borderRadius: 4,
             }}
           >
-            <Image src={src} alt="" width={60} height={60} />
+            <Image src={src} alt="" width={44} height={44} />
           </Box>
           <Box direction="vertical" flexGrow>
-            <TextBody>{name}</TextBody>
+            <TextAux>{name}</TextAux>
             <TextAux color="secondary" clamp={1}>
               {description}
             </TextAux>
@@ -159,13 +159,13 @@ export const Navigation = memo(function Navigation() {
 
   return (
     <Box aria-label="Primary navigation" as="nav">
-      <Box as="ul" role="list" gap={10}>
+      <Box as="ul" role="list">
         <NavigationMenu.Root orientation="horizontal">
           <StyledNavigationMenuList role="list">
             <NavigationMenu.Item>
               <NavigationMenu.Link asChild active={asPath === "/about"}>
                 <Link variant="secondary" href="/about">
-                  <TextHeadline>About</TextHeadline>
+                  <TextAux>About</TextAux>
                 </Link>
               </NavigationMenu.Link>
             </NavigationMenu.Item>
@@ -173,7 +173,7 @@ export const Navigation = memo(function Navigation() {
             <NavigationMenu.Item>
               <NavigationMenu.Link asChild active={asPath.includes("writing")}>
                 <Link variant="secondary" href="/writing">
-                  <TextHeadline>Writing</TextHeadline>
+                  <TextAux>Writing</TextAux>
                 </Link>
               </NavigationMenu.Link>
             </NavigationMenu.Item>
@@ -181,7 +181,7 @@ export const Navigation = memo(function Navigation() {
             <NavigationMenu.Item>
               <NavigationMenu.Link asChild active={asPath === "/learning"}>
                 <Link variant="secondary" href="/learning">
-                  <TextHeadline>Learning</TextHeadline>
+                  <TextAux>Learning</TextAux>
                 </Link>
               </NavigationMenu.Link>
             </NavigationMenu.Item>
@@ -189,7 +189,7 @@ export const Navigation = memo(function Navigation() {
             <NavigationMenu.Item>
               <NavigationMenu.Trigger asChild>
                 <Button css={{ padding: 0, gap: "$2" }}>
-                  <TextHeadline>Projects</TextHeadline>
+                  <TextAux>Projects</TextAux>
                   <ChevronDownIcon width={ICON_SIZE.s} height={ICON_SIZE.s} />
                 </Button>
               </NavigationMenu.Trigger>

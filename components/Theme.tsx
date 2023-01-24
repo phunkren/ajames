@@ -47,8 +47,8 @@ const ToggleGroupRoot = styled(ToggleGroup.Root, {
 
 const ToggleGroupItem = styled(ToggleGroup.Item, {
   all: "unset",
-  height: 35,
-  width: 35,
+  height: 28,
+  width: 28,
   display: "flex",
   fontSize: 15,
   lineHeight: 1,
@@ -194,11 +194,11 @@ export const ThemeToggle = memo(function ThemeToggle() {
       onValueChange={handleThemeChange}
     >
       <DarkToggle value={Theme.DARK} aria-label="Dark mode">
-        <MoonIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
+        <MoonIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
       </DarkToggle>
 
       <LightToggle value={Theme.LIGHT} aria-label="Light mode">
-        <SunIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
+        <SunIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
       </LightToggle>
     </ToggleGroupRoot>
   );

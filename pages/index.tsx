@@ -4,7 +4,15 @@ import { Box } from "../components/Box";
 import { Layout } from "../components/Layout";
 import { Link } from "../components/Link";
 import { PageToggle } from "../components/Tags";
-import { Emoji, TextBody, TextHeadline, TextTitle1 } from "../components/Text";
+import {
+  Emoji,
+  TextAux,
+  TextBody,
+  TextHeadline,
+  TextTitle1,
+  TextTitle2,
+  TextTitle3,
+} from "../components/Text";
 import { keyframes, styled } from "../stitches.config";
 import { EMPLOYMENT, PERSONAL } from "../util/data";
 import { NextPageWithLayout } from "./_app";
@@ -81,7 +89,6 @@ const Home: NextPageWithLayout = () => {
       justifyContent="center"
       alignItems="center"
       spacingHorizontal={{ "@initial": 4, "@bp2": 10 }}
-      spacingVertical={7}
       flexGrow
     >
       <Box spacingBottom={5}>
@@ -115,8 +122,8 @@ const Home: NextPageWithLayout = () => {
             <StyledPalm data-palm emoji="👋" size="s" />
             <StyledFist data-fist emoji="👊" size="s" />
           </StyledHand>
-          <TextBody>{PERSONAL.profile1}</TextBody>
-          <TextBody>{PERSONAL.profile2}</TextBody>
+          <TextHeadline>{PERSONAL.profile1}</TextHeadline>
+          <TextHeadline>{PERSONAL.profile2}</TextHeadline>
         </Box>
       ) : null}
     </Box>

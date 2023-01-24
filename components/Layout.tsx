@@ -12,7 +12,6 @@ import { ThemeToggle } from "./Theme";
 import { PERSONAL } from "../util/data";
 import { Box } from "./Box";
 import { PageSeo } from "./SEO";
-import { Button } from "./Button";
 
 const StyledHeroLayout = styled(Box, {
   width: "100vw",
