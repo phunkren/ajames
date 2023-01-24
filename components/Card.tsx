@@ -211,6 +211,7 @@ export const BlogCard = memo(function BlogCard({
           >
             <Emoji
               emoji={emoji}
+              size="s"
               css={{
                 spacingBottom: "$4",
                 position: "relative",
