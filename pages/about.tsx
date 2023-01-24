@@ -261,7 +261,7 @@ const About: NextPageWithLayout = () => {
           direction="horizontal"
           gap={{ "@print": 4, "@initial": 0, "@bp2": 10 }}
           spacingHorizontal={{ "@print": 3, "@initial": 4, "@bp2": 10 }}
-          spacingVertical={{ "@print": 3, "@initial": 10 }}
+          spacingVertical={10}
           flexWrap={{
             "@print": "nowrap",
             "@initial": "wrapReverse",
@@ -283,8 +283,8 @@ const About: NextPageWithLayout = () => {
               </TextTitle3>
 
               <Box
-                spacingTop={{ "@print": 1, "@initial": 4 }}
-                spacingBottom={{ "@print": 2, "@initial": 6 }}
+                spacingTop={{ "@print": 2, "@initial": 4 }}
+                spacingBottom={{ "@print": 4, "@initial": 6 }}
               >
                 <Divider />
               </Box>
@@ -354,8 +354,8 @@ const About: NextPageWithLayout = () => {
               </TextTitle3>
 
               <Box
-                spacingTop={{ "@print": 1, "@initial": 4 }}
-                spacingBottom={{ "@print": 2, "@initial": 6 }}
+                spacingTop={{ "@print": 2, "@initial": 4 }}
+                spacingBottom={{ "@print": 4, "@initial": 6 }}
               >
                 <Divider />
               </Box>
@@ -423,8 +423,8 @@ const About: NextPageWithLayout = () => {
               </TextTitle3>
 
               <Box
-                spacingTop={{ "@print": 1, "@initial": 4 }}
-                spacingBottom={{ "@print": 2, "@initial": 6 }}
+                spacingTop={{ "@print": 2, "@initial": 4 }}
+                spacingBottom={{ "@print": 4, "@initial": 6 }}
               >
                 <Divider />
               </Box>
@@ -446,8 +446,8 @@ const About: NextPageWithLayout = () => {
               </TextTitle3>
 
               <Box
-                spacingTop={{ "@print": 1, "@initial": 4 }}
-                spacingBottom={{ "@print": 2, "@initial": 6 }}
+                spacingTop={{ "@print": 2, "@initial": 4 }}
+                spacingBottom={{ "@print": 4, "@initial": 6 }}
               >
                 <Divider />
               </Box>
@@ -469,18 +469,14 @@ const About: NextPageWithLayout = () => {
               </TextTitle3>
 
               <Box
-                spacingTop={{ "@print": 1, "@initial": 4 }}
-                spacingBottom={{ "@print": 2, "@initial": 6 }}
+                spacingTop={{ "@print": 2, "@initial": 4 }}
+                spacingBottom={{ "@print": 4, "@initial": 6 }}
               >
                 <Divider />
               </Box>
 
-              <Box direction="vertical" gap={10} spacingBottom={10}>
-                <Box
-                  as="ul"
-                  direction="vertical"
-                  gap={{ "@print": 6, "@initial": 10 }}
-                >
+              <Box direction="vertical" spacingBottom={10}>
+                <Box as="ul" direction="vertical" gap={10}>
                   {TESTIMONIALS.map((testimonial) => (
                     <Box key={testimonial.id} as="li" direction="vertical">
                       <Box direction="vertical">
@@ -512,27 +508,11 @@ const About: NextPageWithLayout = () => {
                             <TextHeadline>{testimonial.name}</TextHeadline>
                           </Link>
 
-                          <TextAux color="secondary">
-                            {testimonial.position}
-                          </TextAux>
+                          <TextAux>{testimonial.position}</TextAux>
                         </Box>
                       </Box>
                     </Box>
                   ))}
-                </Box>
-
-                <Box
-                  direction="vertical"
-                  gap={10}
-                  display={{ "@print": "flex", "@initial": "none" }}
-                >
-                  <Link href={SOCIAL.linkedin.url} variant="tertiary">
-                    <TextBody>View all references on LinkedIn</TextBody>
-                  </Link>
-
-                  <TextBody>
-                    Written references are also available upon request
-                  </TextBody>
                 </Box>
               </Box>
             </Box>
@@ -549,27 +529,22 @@ const About: NextPageWithLayout = () => {
             <Divider orientation="vertical" />
           </Box>
 
-          <Box
-            direction="vertical"
-            gap={{ "@print": 5, "@initial": 10 }}
-            spacingBottom={10}
-            flexGrow
-          >
+          <Box direction="vertical" gap={10} spacingBottom={10} flexGrow>
             <Box as="section" aria-labelledby="profile" direction="vertical">
               <TextTitle3 id="profile" as="h2">
                 Profile
               </TextTitle3>
 
               <Box
-                spacingTop={{ "@print": 1, "@initial": 4 }}
-                spacingBottom={{ "@print": 2, "@initial": 6 }}
+                spacingTop={{ "@print": 2, "@initial": 4 }}
+                spacingBottom={{ "@print": 4, "@initial": 6 }}
               >
                 <Divider />
               </Box>
 
               <Box
                 direction="vertical"
-                gap={{ "@print": 2, "@initial": 3, "@bp2": 6 }}
+                gap={{ "@print": 4, "@initial": 3, "@bp2": 4 }}
               >
                 <TextBody>{PERSONAL.profile1}</TextBody>
 
@@ -583,17 +558,17 @@ const About: NextPageWithLayout = () => {
               </TextTitle3>
 
               <Box
-                spacingTop={{ "@print": 1, "@initial": 4 }}
-                spacingBottom={{ "@print": 2, "@initial": 6 }}
+                spacingTop={{ "@print": 2, "@initial": 4 }}
+                spacingBottom={{ "@print": 4, "@initial": 6 }}
               >
                 <Divider />
               </Box>
 
-              <Box direction="vertical" gap={{ "@print": 5, "@initial": 10 }}>
+              <Box direction="vertical" gap={10}>
                 {EMPLOYMENT.map((employer) => (
                   <Box
                     direction="vertical"
-                    gap={{ "@print": 2, "@initial": 3, "@bp2": 4 }}
+                    gap={{ "@print": 4, "@initial": 3, "@bp2": 4 }}
                     key={employer.id}
                   >
                     <Box direction="vertical" gap={2}>
@@ -617,7 +592,7 @@ const About: NextPageWithLayout = () => {
                       >
                         <Box
                           direction="horizontal"
-                          gap={{ "@print": 1, "@initial": 2 }}
+                          gap={2}
                           alignItems="flex-end"
                         >
                           <Link href={employer.url} variant="primary">
@@ -675,13 +650,7 @@ const About: NextPageWithLayout = () => {
                     <TextBody>{employer.content}</TextBody>
 
                     {employer.notableWork?.length > 0 ? (
-                      <Box
-                        direction="vertical"
-                        gap={{
-                          "@print": 0,
-                          "@initial": 2,
-                        }}
-                      >
+                      <Box direction="vertical" gap={2}>
                         <TextHeadline color="secondary">
                           Notable Contributions
                         </TextHeadline>

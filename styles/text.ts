@@ -1,3 +1,4 @@
+import { gray } from "@radix-ui/colors";
 import { lightTheme } from "../stitches.config";
 
 export const TEXT_VARIANTS = {
@@ -161,6 +162,7 @@ export const P_STYLES = {
   "@print": {
     fontSize: 14,
     lineHeight: 1.25,
+    color: "black !important",
   },
 };
 
@@ -173,5 +175,7 @@ export const AUX_STYLES = {
 
   "@print": {
     fontSize: 12,
+    lineHeight: 1,
+    color: `${gray.gray11} !important`,
   },
 };

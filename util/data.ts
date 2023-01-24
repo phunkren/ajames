@@ -165,7 +165,7 @@ export const EMPLOYMENT: Employer[] = [
     endDate: "2015-02-01",
     location: "Edinburgh, UK",
     content:
-      "Credited as a QA Tester on Grand Theft Auto V, ensuring the overall quality of the existing game and any upcoming features. It was a rewarding and challenging experience that made a meaningful contribution to the development of one of the best-selling video games of all time. Responsibilities included finding and accurately reporting issues through detailed bug reports, providing critical analysis and feedback, and executing various types of testing across multiple platforms.",
+      "Credited as a QA Tester on Grand Theft Auto V, ensuring the overall quality of the existing game and any upcoming features. Responsibilities included finding and accurately reporting issues through detailed bug reports, providing critical analysis and feedback, and executing various types of testing across multiple platforms.",
     notableWork: [
       {
         id: "gtav-credits",
@@ -180,10 +180,9 @@ export const EXPERTISE = ["React JS", "JavaScript", "HTML", "CSS"];
 
 export const INTERESTS = [
   "UI Design",
-  "Accessibility",
   "Design Systems",
-  "Livestreams",
-  "Technical Writing",
+  "Accessibility",
+  "COntent Creation",
 ];
 
 export const PERSONAL = {
@@ -243,7 +242,7 @@ export const TESTIMONIALS: Testimonial[] = [
     id: "ms",
     name: "Matthew Sinclair",
     url: "https://www.linkedin.com/in/matthewsinclair/",
-    position: "Vice President, Engineering",
+    position: "VP, Engineering",
     quote:
       "Rarely have I had the opportunity to work with an engineer that combines Andrew's technical calibre, his exceptional citizenship, his ability to communicate and demonstrate his ideas to both team and client, and his commitment to coaching and mentoring the folks he works with. He blogs about some of the most interesting front-end technologies, and on top of all of this, he's an all-round great human. He is a genuine asset to any tech team that has the privilege of his attention, and I have no hesitation recommending him wholeheartedly for any role that he puts his mind to.",
     excerpt:
