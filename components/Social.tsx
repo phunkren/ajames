@@ -26,6 +26,22 @@ export const Social = memo(function Social({ size = "xl" }: Props) {
       <Box as="ul" role="list" gap={4} alignItems="center">
         <li>
           <StyledLink
+            href={SOCIAL.twitter.url}
+            title={SOCIAL.twitter.displayName}
+            variant="secondary"
+            css={{ justifyContent: "center", spacing: "$1" }}
+          >
+            <TwitterLogoIcon
+              width={ICON_SIZE[size]}
+              height={ICON_SIZE[size]}
+              aria-hidden
+              focusable={false}
+            />
+          </StyledLink>
+        </li>
+
+        <li>
+          <StyledLink
             href={SOCIAL.linkedin.url}
             title={SOCIAL.linkedin.displayName}
             variant="secondary"
@@ -59,22 +75,6 @@ export const Social = memo(function Social({ size = "xl" }: Props) {
             css={{ justifyContent: "center", spacing: "$1" }}
           >
             <VideoIcon
-              width={ICON_SIZE[size]}
-              height={ICON_SIZE[size]}
-              aria-hidden
-              focusable={false}
-            />
-          </StyledLink>
-        </li>
-
-        <li>
-          <StyledLink
-            href={SOCIAL.twitter.url}
-            title={SOCIAL.twitter.displayName}
-            variant="secondary"
-            css={{ justifyContent: "center", spacing: "$1" }}
-          >
-            <TwitterLogoIcon
               width={ICON_SIZE[size]}
               height={ICON_SIZE[size]}
               aria-hidden
