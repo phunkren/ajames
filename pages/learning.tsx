@@ -174,7 +174,7 @@ const Learning: NextPageWithLayout = ({
       >
         <Box direction="vertical" spacingBottom={10}>
           <Box direction="vertical">
-            <Link href={YOUTUBE_CHANNEL_URL}>
+            <Link href={YOUTUBE_CHANNEL_URL} css={{ display: "contents" }}>
               <YouTubeAvatar
                 src={channelInfoPreview.thumbnail.src}
                 alt={channelInfoPreview.thumbnail.alt}
