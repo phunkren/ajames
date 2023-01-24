@@ -87,7 +87,7 @@ const StyledContainer = styled(Box, {
 // The computed value is (fontSize * lineHeight) / 2.
 const StyledContent = styled(Box, {
   position: "relative",
-  top: -16,
+  top: -24,
 
   "@bp2": {
     top: -32,
@@ -141,22 +141,6 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
 
       <Box direction="vertical">
         <Box direction="vertical">
-          <Link href="/writing" variant="secondary">
-            <Box
-              alignItems="center"
-              spacingHorizontal={{ "@initial": 4, "@bp2": 0 }}
-              spacingBottom={{ "@initial": 4, "@bp2": 2 }}
-              gap={2}
-            >
-              <ArrowLeftIcon
-                width={ICON_SIZE.m}
-                height={ICON_SIZE.m}
-                aria-hidden
-              />
-              <TextHeadline>Back to writing overview</TextHeadline>
-            </Box>
-          </Link>
-
           <HeroLayout src={frontmatter.cover} />
 
           <StyledContent as="main" direction="vertical">
@@ -184,7 +168,7 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
                   <Box
                     justifyContent="space-between"
                     alignItems="flex-start"
-                    spacingTop={10}
+                    spacingTop={{ "@initial": 5, "@bp2": 10 }}
                     gap={6}
                     css={{ marginTop: 3 }}
                   >

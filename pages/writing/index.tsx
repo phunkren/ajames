@@ -91,12 +91,7 @@ const Writing: NextPageWithLayout = ({ posts, tags }: Props) => {
   }
 
   return (
-    <Box
-      direction="vertical"
-      spacingTop={{ "@bp2": 10 }}
-      spacingBottom={10}
-      gap={10}
-    >
+    <Box direction="vertical" spacingBottom={10} gap={10}>
       <VisuallyHidden.Root>
         <TextTitle1>Writing</TextTitle1>
       </VisuallyHidden.Root>
@@ -107,7 +102,7 @@ const Writing: NextPageWithLayout = ({ posts, tags }: Props) => {
         direction="vertical"
         gap={10}
         spacingHorizontal={{ "@initial": 4, "@bp2": 10 }}
-        spacingTop={{ "@initial": 6, "@bp2": 9 }}
+        spacingTop={{ "@initial": 1, "@bp2": 9 }}
         spacingBottom={10}
       >
         <Collapsible.Root open={isFiltersOpen} onOpenChange={setIsFiltersOpen}>

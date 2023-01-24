@@ -183,11 +183,7 @@ const GridItem = styled("div", {
 
 const About: NextPageWithLayout = () => {
   return (
-    <Box spacingTop={{ "@print": 4, "@bp2": 10 }}>
-      <VisuallyHidden.Root>
-        <TextTitle1>About</TextTitle1>
-      </VisuallyHidden.Root>
-
+    <Box>
       <Box direction="vertical">
         <ThemeProvider>
           <StyledPageHeader id={PERSONAL.initials} className={darkTheme}>

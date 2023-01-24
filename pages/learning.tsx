@@ -165,7 +165,7 @@ const Learning: NextPageWithLayout = ({
   }, []);
 
   return (
-    <Box direction="vertical" spacingTop={{ "@bp2": 10 }}>
+    <Box direction="vertical">
       <HeroLayout src={banner} />
 
       <StyledContentContainer
@@ -185,7 +185,8 @@ const Learning: NextPageWithLayout = ({
               <Box
                 justifyContent="space-between"
                 alignItems="center"
-                spacingVertical={10}
+                spacingTop={{ "@initial": 5, "@bp2": 10 }}
+                spacingBottom={10}
               >
                 <TextTitle2 as="h1">{channelInfoPreview.title}</TextTitle2>
 

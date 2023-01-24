@@ -60,7 +60,7 @@ const Home: NextPageWithLayout = () => {
 
       {query.tab === "long" ? (
         <Box direction="vertical" gap={5} container="s">
-          <Emoji emoji="👋" />
+          <Emoji emoji="👋" size="s" />
           <TextBody>{PERSONAL.profile1}</TextBody>
           <TextBody>{PERSONAL.profile2}</TextBody>
         </Box>
