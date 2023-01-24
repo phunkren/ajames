@@ -22,13 +22,6 @@ export const EDUCATION: Education[] = [
     startDate: "2011-08-01",
     endDate: "2012-06-01",
   },
-  {
-    id: "udacity",
-
-    course: "Frontend Nanodegree",
-    institution: "Udacity",
-    endDate: "2016-09-01",
-  },
 ];
 
 export const EMPLOYMENT: Employer[] = [
