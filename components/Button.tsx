@@ -93,7 +93,7 @@ export const StyledIconButton = styled(Button, {
   justifyContent: "center",
   borderRadius: "50%",
   spacing: "$2",
-  borderWidth: 2,
+  borderWidth: 1,
   borderStyle: "solid",
   borderColor: "$foregroundMuted",
   backgroundColor: "transparent",
