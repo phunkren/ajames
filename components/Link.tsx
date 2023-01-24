@@ -111,7 +111,7 @@ export const StyledIconLink = styled(Link, {
   minWidth: 44,
   minHeight: 44,
   boxShadow: "$1",
-  transition: "background 100ms ease-out, boxShadow 100ms ease-out",
+  transition: "background 100ms ease-out, box-shadow 100ms ease-out",
 
   "&:hover": {
     boxShadow: "$4",
