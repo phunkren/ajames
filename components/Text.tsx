@@ -69,14 +69,14 @@ export const TextAux = styled("span", {
 
 export const StyledEmoji = styled("span", {
   display: "block",
-  fontSize: 32,
+  fontSize: 48,
   lineHeight: 1,
   textShadow: "$textShadow",
 
   variants: {
     size: {
       s: {
-        fontSize: 24,
+        fontSize: 32,
       },
       l: {
         fontSize: 64,
