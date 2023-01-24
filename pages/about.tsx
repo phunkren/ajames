@@ -593,7 +593,7 @@ const About: NextPageWithLayout = () => {
                 {EMPLOYMENT.map((employer) => (
                   <Box
                     direction="vertical"
-                    gap={{ "@print": 2, "@initial": 3, "@bp2": 6 }}
+                    gap={{ "@print": 2, "@initial": 3, "@bp2": 4 }}
                     key={employer.id}
                   >
                     <Box direction="vertical" gap={2}>
@@ -672,20 +672,7 @@ const About: NextPageWithLayout = () => {
                       </Box>
                     </Box>
 
-                    <Box
-                      direction="vertical"
-                      gap={{ "@print": 2, "@initial": 4, "@bp2": 6 }}
-                    >
-                      <TextBody>{employer.content1}</TextBody>
-
-                      {employer.content2 ? (
-                        <TextBody>{employer.content2}</TextBody>
-                      ) : null}
-
-                      {employer.content3 ? (
-                        <TextBody>{employer.content3}</TextBody>
-                      ) : null}
-                    </Box>
+                    <TextBody>{employer.content}</TextBody>
 
                     {employer.notableWork?.length > 0 ? (
                       <Box
@@ -707,7 +694,7 @@ const About: NextPageWithLayout = () => {
                           spacingHorizontal={10}
                           gap={{
                             "@print": 10,
-                            "@initial": 1,
+                            "@initial": 0,
                           }}
                           alignItems={{ "@print": "center" }}
                         >

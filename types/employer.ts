@@ -12,8 +12,6 @@ export type Employer = {
   startDate?: string;
   endDate?: string;
   location: string;
-  content1: string;
-  content2?: string;
-  content3?: string;
+  content: string;
   notableWork?: NoteableWork[];
 };
