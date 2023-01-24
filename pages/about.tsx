@@ -1,3 +1,4 @@
+import { ReactElement } from "react";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import {
   DownloadIcon,
@@ -6,9 +7,8 @@ import {
   HomeIcon,
   LinkedInLogoIcon,
 } from "@radix-ui/react-icons";
-import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import Image from "next/image";
-import { PrintButton } from "../components/Button";
+import { PrintButton, StyledIconButton } from "../components/Button";
 import { Divider } from "../components/Divider";
 import { ActionButtons, Layout } from "../components/Layout";
 import { Link, StyledIconLink } from "../components/Link";
@@ -35,8 +35,14 @@ import { ICON_SIZE } from "../util/images";
 import banner from "../public/images/mugshot.png";
 import { Box } from "../components/Box";
 import { NextPageWithLayout } from "./_app";
-import { ReactElement } from "react";
-import { ThemeProvider } from "../components/Theme";
+
+const StyledPrintHeader = styled(Box, {
+  display: "none",
+
+  "@print": {
+    display: "block",
+  },
+});
 
 const StyledPageHeader = styled(Box, {
   display: "block",
@@ -44,28 +50,23 @@ const StyledPageHeader = styled(Box, {
   left: "-$2",
   width: "100vw",
   overflow: "hidden",
-  borderTopRightRadius: 0,
-  borderTopLeftRadius: 0,
-  marginBottom: "$10",
+  borderRadius: 0,
+  marginBottom: "$2",
   color: "$foreground",
 
   "@bp2": {
+    marginBottom: "$10",
+    left: "-$4",
+  },
+
+  "@bp3": {
     left: 0,
     width: "100%",
-    borderTopRightRadius: 4,
-    borderTopLeftRadius: 4,
+    borderRadius: 4,
   },
 
   "@print": {
     display: "none",
-  },
-});
-
-const StyledPrintHeader = styled(Box, {
-  display: "none",
-
-  "@print": {
-    display: "block",
   },
 });
 
@@ -77,25 +78,32 @@ const StyledHero = styled(Box, {
   borderBottomStyle: "solid",
   borderBottomColor: "$foreground",
 
-  [`.${darkTheme} &`]: {
-    borderBottomColor: "$foreground",
-  },
+  "@bp2": {
+    [`.${lightTheme} &`]: {
+      color: "white",
 
-  [`.${lightTheme} &`]: {
-    borderBottomColor: "$background",
-  },
+      [`${TextTitle1}, ${TextHeadline}`]: {
+        color: "inherit",
+      },
 
-  "&::after": {
-    content: "",
-    position: "absolute",
-    inset: 0,
-
-    [`.${darkTheme} &`]: {
-      background: "rgba(0,0,0,0.15)",
+      [`${StyledIconButton}, ${StyledIconLink}`]: {
+        color: "inherit",
+        borderColor: "inherit",
+      },
     },
 
-    [`.${lightTheme} &`]: {
-      background: "rgba(0,0,0,0.75)",
+    "&::after": {
+      content: "",
+      position: "absolute",
+      inset: 0,
+
+      [`.${darkTheme} &`]: {
+        background: "rgba(0,0,0,0.15)",
+      },
+
+      [`.${lightTheme} &`]: {
+        background: "rgba(0,0,0,0.75)",
+      },
     },
   },
 });
@@ -105,10 +113,16 @@ const StyledFilter = styled(Box, {
   inset: 0,
   zIndex: 0,
   filter: "blur(80px)",
-  background: "conic-gradient(from 50deg, $red3, $red2, $blue2, $blue4)",
 
-  [`.${lightTheme} &`]: {
-    background: "conic-gradient(from 50deg, $red11, $red11, $blue10, $blue11)",
+  "@bp2": {
+    [`.${darkTheme} &`]: {
+      background: "conic-gradient(from 50deg, $red3, $red2, $blue2, $blue4)",
+    },
+
+    [`.${lightTheme} &`]: {
+      background:
+        "conic-gradient(from 50deg, $red11, $red11, $blue10, $blue11)",
+    },
   },
 });
 
@@ -118,7 +132,6 @@ const StyledImage = styled(Image, {
   borderRadius: 0,
   position: "absolute",
   top: "4% !important",
-  left: "16% !important",
   zIndex: 2,
   transform: "scale(0.9)",
   pointerEvents: "none",
@@ -127,6 +140,13 @@ const StyledImage = styled(Image, {
   "@bp2": {
     display: "block",
     borderRadius: 4,
+    left: "25% !important",
+  },
+
+  "@bp3": {
+    display: "block",
+    borderRadius: 4,
+    left: "16% !important",
   },
 });
 
@@ -185,46 +205,44 @@ const About: NextPageWithLayout = () => {
   return (
     <Box>
       <Box direction="vertical">
-        <ThemeProvider>
-          <StyledPageHeader id={PERSONAL.initials} className={darkTheme}>
-            <AspectRatio ratio={2.5 / 1}>
-              <StyledImage src={banner} alt="" sizes="100vw" priority fill />
+        <StyledPageHeader id={PERSONAL.initials}>
+          <AspectRatio ratio={2.5 / 1}>
+            <StyledImage src={banner} alt="" sizes="100vw" priority fill />
 
-              <StyledFilter />
+            <StyledFilter />
 
-              <StyledHero
-                spacingHorizontal={{ "@initial": 6, "@bp2": 10 }}
-                spacingVertical={{ "@initial": 5, "@bp2": 7 }}
-                alignItems="flex-end"
-                justifyContent="space-between"
+            <StyledHero
+              spacingHorizontal={{ "@initial": 6, "@bp2": 10 }}
+              spacingVertical={{ "@initial": 5, "@bp2": 7 }}
+              alignItems="flex-end"
+              justifyContent="space-between"
+            >
+              <Box direction="vertical" css={{ zIndex: 1 }}>
+                <TextTitle1 css={{ "@bp2": { textShadow: "$textShadow" } }}>
+                  {PERSONAL.name}
+                </TextTitle1>
+                <TextHeadline css={{ "@bp2": { textShadow: "$textShadow" } }}>
+                  {PERSONAL.occupation} / {PERSONAL.location}
+                </TextHeadline>
+              </Box>
+
+              <ActionButtons
+                display={{ "@initial": "none", "@bp3": "flex" }}
+                css={{ zIndex: 1 }}
               >
-                <Box direction="vertical" css={{ zIndex: 1 }}>
-                  <TextTitle1 css={{ textShadow: "$textShadow" }}>
-                    {PERSONAL.name}
-                  </TextTitle1>
-                  <TextHeadline css={{ textShadow: "$textShadow" }}>
-                    {PERSONAL.occupation} / {PERSONAL.location}
-                  </TextHeadline>
-                </Box>
+                <PrintButton />
 
-                <ActionButtons
-                  display={{ "@initial": "none", "@bp3": "flex" }}
-                  css={{ zIndex: 1 }}
-                >
-                  <PrintButton />
-
-                  <StyledIconLink href="/download-cv" title="Download" download>
-                    <DownloadIcon
-                      width={ICON_SIZE.m}
-                      height={ICON_SIZE.m}
-                      aria-hidden
-                    />
-                  </StyledIconLink>
-                </ActionButtons>
-              </StyledHero>
-            </AspectRatio>
-          </StyledPageHeader>
-        </ThemeProvider>
+                <StyledIconLink href="/download-cv" title="Download" download>
+                  <DownloadIcon
+                    width={ICON_SIZE.m}
+                    height={ICON_SIZE.m}
+                    aria-hidden
+                  />
+                </StyledIconLink>
+              </ActionButtons>
+            </StyledHero>
+          </AspectRatio>
+        </StyledPageHeader>
 
         <StyledPrintHeader>
           <Box
