@@ -50,7 +50,7 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
       <style jsx global>{`
         body {
           font-family: ${jost.style.fontFamily};
-          font-weight: 300;
+          font-weight: 400;
         }
       `}</style>
 

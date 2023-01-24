@@ -154,10 +154,6 @@ export const H3_STYLES = {
 export const P_STYLES = {
   fontSize: 18,
 
-  [`.${lightTheme} &`]: {
-    fontWeight: 400,
-  },
-
   "@bp2": {
     fontSize: 22,
   },

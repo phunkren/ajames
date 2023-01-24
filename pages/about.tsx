@@ -259,7 +259,7 @@ const About: NextPageWithLayout = () => {
         <Box
           id="__cv"
           direction="horizontal"
-          gap={{ "@print": 4, "@initial": 10 }}
+          gap={{ "@print": 4, "@initial": 0, "@bp2": 10 }}
           spacingHorizontal={{ "@print": 3, "@initial": 4, "@bp2": 10 }}
           spacingVertical={{ "@print": 3, "@initial": 10 }}
           flexWrap={{
@@ -690,7 +690,6 @@ const About: NextPageWithLayout = () => {
                     {employer.notableWork?.length > 0 ? (
                       <Box
                         direction="vertical"
-                        spacingTop={2}
                         gap={{
                           "@print": 0,
                           "@initial": 2,
