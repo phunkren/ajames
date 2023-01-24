@@ -21,6 +21,9 @@ export const DISPLAY_VARIANTS = {
     grid: {
       display: "grid",
     },
+    contents: {
+      display: "contents",
+    },
   },
   position: {
     static: {
