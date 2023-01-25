@@ -123,7 +123,7 @@ const Home: NextPageWithLayout = () => {
             alignItems="center"
             justifyContent="center"
             spacingHorizontal={10}
-            css={{ transform: "translateX(-40px)" }}
+            css={{ "@bp2": { transform: "translateX(-40px)" } }}
             flexGrow
           >
             <TextTitle1>{PERSONAL.name}</TextTitle1>
