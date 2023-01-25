@@ -11,6 +11,17 @@ export const FLEX_VARIANTS = {
     true: {
       flexGrow: "1",
     },
+    false: {
+      flexGrow: "0",
+    },
+  },
+  flexShrink: {
+    true: {
+      flexShrink: "1",
+    },
+    false: {
+      flexShrink: "0",
+    },
   },
   flexWrap: {
     wrap: {

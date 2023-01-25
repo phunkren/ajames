@@ -86,10 +86,10 @@ export const PostTags = memo(function PostTags({
   return (
     <FrontmatterItem {...props}>
       {icon ? (
-        <>
+        <Box flexShrink={false}>
           <VisuallyHidden.Root>Tags</VisuallyHidden.Root>
           <ListBulletIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
-        </>
+        </Box>
       ) : null}
 
       <Box as="ul" role="list" gap={4} flexWrap="wrap">
@@ -126,10 +126,10 @@ export const ActiveTags = memo(function ActiveTags({
   return (
     <FrontmatterItem {...props}>
       {icon ? (
-        <>
+        <Box flexShrink={false}>
           <VisuallyHidden.Root>Tags</VisuallyHidden.Root>
           <EyeOpenIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
-        </>
+        </Box>
       ) : null}
 
       {activeTags.length ? (
@@ -162,10 +162,10 @@ export const PublishDate = memo(function PublishDate({
     return (
       <FrontmatterItem {...props}>
         {icon ? (
-          <>
+          <Box flexShrink={false}>
             <VisuallyHidden.Root>Publish Date</VisuallyHidden.Root>
             <CalendarIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
-          </>
+          </Box>
         ) : null}
 
         <TextAux
@@ -182,10 +182,10 @@ export const PublishDate = memo(function PublishDate({
   return (
     <FrontmatterItem {...props}>
       {icon ? (
-        <>
+        <Box flexShrink={false}>
           <VisuallyHidden.Root>Publish Date</VisuallyHidden.Root>
           <CalendarIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
-        </>
+        </Box>
       ) : null}
 
       <TextBody as="time" dateTime={dateObject.toISOString()} color="secondary">
@@ -205,10 +205,10 @@ export const ReadingTime = memo(function ReadingTime({
   return (
     <FrontmatterItem {...props}>
       {icon ? (
-        <>
+        <Box flexShrink={false}>
           <VisuallyHidden.Root>Reading Time</VisuallyHidden.Root>
           <ClockIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
-        </>
+        </Box>
       ) : null}
       <TextBody textTransform="capitalize">{formattedTime}</TextBody>
     </FrontmatterItem>
@@ -226,10 +226,10 @@ export const SubscriberCount = memo(function SubscriberCount({
   return (
     <FrontmatterItem {...props}>
       {icon ? (
-        <>
+        <Box flexShrink={false}>
           <VisuallyHidden.Root>Total Subscribers</VisuallyHidden.Root>
           <AvatarIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
-        </>
+        </Box>
       ) : null}
       <TextBody textTransform="capitalize">{formattedSubscribers}</TextBody>
     </FrontmatterItem>
@@ -247,10 +247,10 @@ export const VideosViewsCount = memo(function VideosViewsCount({
   return (
     <FrontmatterItem {...props}>
       {icon ? (
-        <>
+        <Box flexShrink={false}>
           <VisuallyHidden.Root>Total Views</VisuallyHidden.Root>
           <EyeOpenIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
-        </>
+        </Box>
       ) : null}
       <TextBody textTransform="capitalize">{formattedViews}</TextBody>
     </FrontmatterItem>
@@ -268,10 +268,10 @@ export const VideosTotalCount = memo(function VideosTotalCount({
   return (
     <FrontmatterItem {...props}>
       {icon ? (
-        <>
+        <Box flexShrink={false}>
           <VisuallyHidden.Root>Total Videos</VisuallyHidden.Root>
           <VideoIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
-        </>
+        </Box>
       ) : null}
       <TextBody textTransform="capitalize">{formattedTotal}</TextBody>
     </FrontmatterItem>
@@ -289,10 +289,10 @@ export const TotalPosts = memo(function TotalPosts({
   return (
     <FrontmatterItem {...props}>
       {icon ? (
-        <>
+        <Box flexShrink={false}>
           <VisuallyHidden.Root>Total Posts</VisuallyHidden.Root>
           <Pencil2Icon width={ICON_SIZE.l} height={ICON_SIZE.l} />
-        </>
+        </Box>
       ) : null}
       <TextBody textTransform="capitalize">{formattedTotal}</TextBody>
     </FrontmatterItem>
@@ -310,10 +310,10 @@ export const TotalCategories = memo(function TotalCategories({
   return (
     <FrontmatterItem {...props}>
       {icon ? (
-        <>
+        <Box flexShrink={false}>
           <VisuallyHidden.Root>Total Categories</VisuallyHidden.Root>
           <MixIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
-        </>
+        </Box>
       ) : null}
       <TextBody textTransform="capitalize">{formattedTotal}</TextBody>
     </FrontmatterItem>
