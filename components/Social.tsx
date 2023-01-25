@@ -20,7 +20,7 @@ const StyledLink = styled(Link, {
   minHeight: 44,
 });
 
-export const Social = memo(function Social({ size = "l" }: Props) {
+export const Social = memo(function Social({ size = "xl" }: Props) {
   return (
     <Box as="nav" aria-label="Social Media">
       <Box as="ul" role="list" gap={4} alignItems="center">
