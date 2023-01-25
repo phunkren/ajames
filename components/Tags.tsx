@@ -98,15 +98,10 @@ const TagToggleItem = styled(ToggleGroup.Item, {
 
 const PageToggleRoot = styled(ToggleGroup.Root, {
   display: "flex",
-  flexDirection: "row",
-
+  flexDirection: "column",
   justifyContent: "center",
+  alignItems: "center",
   gap: "$8",
-
-  "@bp2": {
-    flexDirection: "column",
-    alignItems: "center",
-  },
 });
 
 const PageToggleItem = styled(ToggleGroup.Item, {

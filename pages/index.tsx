@@ -96,13 +96,14 @@ const Home: NextPageWithLayout = () => {
     >
       <Box
         direction={{ "@initial": "vertical", "@bp2": "horizontal" }}
+        justifyContent="center"
         position="relative"
         flexGrow
       >
         <Box
-          direction={{ "@initial": "vertical", "@bp2": "horizontal" }}
-          spacingBottom={{ "@initial": 4, "@bp2": 0 }}
-          css={{ "@bp2": { width: 80 } }}
+          display={{ "@initial": "none", "@bp2": "flex" }}
+          direction="horizontal"
+          css={{ width: 80 }}
         >
           <PageToggle
             type="single"
@@ -111,10 +112,7 @@ const Home: NextPageWithLayout = () => {
             onValueChange={handleTabChange}
           />
 
-          <Box
-            display={{ "@initial": "none", "@bp2": "flex" }}
-            spacingLeft={10}
-          >
+          <Box spacingLeft={10}>
             <Divider orientation="vertical" />
           </Box>
         </Box>
@@ -125,8 +123,8 @@ const Home: NextPageWithLayout = () => {
             alignItems="center"
             justifyContent="center"
             spacingHorizontal={10}
-            css={{ "@bp2": { transform: "translateX(-40px)" } }}
-            flexGrow={{ "@initial": false, "@bp2": true }}
+            css={{ transform: "translateX(-40px)" }}
+            flexGrow
           >
             <TextTitle1>{PERSONAL.name}</TextTitle1>
 
@@ -149,13 +147,9 @@ const Home: NextPageWithLayout = () => {
               <StyledFist data-fist emoji="👊" size="s" />
             </StyledHand>
 
-            <TextHeadline textAlign={{ "@initial": "justify", "@bp2": "left" }}>
-              {PERSONAL.profile1}
-            </TextHeadline>
+            <TextHeadline>{PERSONAL.profile1}</TextHeadline>
 
-            <TextHeadline textAlign={{ "@initial": "justify", "@bp2": "left" }}>
-              {PERSONAL.profile2}
-            </TextHeadline>
+            <TextHeadline>{PERSONAL.profile2}</TextHeadline>
           </Box>
         ) : null}
       </Box>
