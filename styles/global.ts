@@ -28,7 +28,7 @@ export const globalStyles = globalCss({
     flexDirection: "column",
     textRendering: "optimizeLegibility",
     backgroundBlendMode: "multiply",
-    lineHeight: "1.5",
+    lineHeight: "1.6",
     width: "100%",
     minHeight: "100dvh",
     overflowX: "hidden",

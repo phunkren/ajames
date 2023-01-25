@@ -95,6 +95,7 @@ const StyledNavigationSubmenu = styled(Box, {
   borderRadius: 4,
   minWidth: 350,
   boxShadow: "$2",
+  zIndex: 10,
 
   "&:hover": {
     boxShadow: "$4",

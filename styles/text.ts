@@ -141,10 +141,10 @@ export const H2_STYLES = {
 };
 
 export const H3_STYLES = {
-  fontSize: 22,
+  fontSize: 20,
 
   "@bp3": {
-    fontSize: 24,
+    fontSize: 22,
   },
 
   "@print": {
@@ -156,7 +156,7 @@ export const P_STYLES = {
   fontSize: 18,
 
   "@bp2": {
-    fontSize: 22,
+    fontSize: 20,
   },
 
   "@print": {
@@ -167,11 +167,7 @@ export const P_STYLES = {
 };
 
 export const AUX_STYLES = {
-  fontSize: 14,
-
-  "@bp2": {
-    fontSize: 16,
-  },
+  fontSize: 16,
 
   "@print": {
     fontSize: 12,

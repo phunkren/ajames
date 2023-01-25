@@ -99,7 +99,7 @@ export const Layout = memo(function Layout({ children }: any) {
       <Box
         id="__root"
         direction="vertical"
-        spacingHorizontal={{ "@initial": 2, "@bp2": 4 }}
+        spacingHorizontal={{ "@initial": 2, "@bp2": 7 }}
         container="l"
         className={theme}
       >
@@ -108,7 +108,7 @@ export const Layout = memo(function Layout({ children }: any) {
         <Box
           as="main"
           direction="vertical"
-          spacingTop={{ "@print": 4, "@bp2": 10 }}
+          spacingTop={{ "@print": 4, "@bp2": 0 }}
           flexGrow
         >
           {children}

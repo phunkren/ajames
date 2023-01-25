@@ -98,7 +98,15 @@ const TagToggleItem = styled(ToggleGroup.Item, {
 
 const PageToggleRoot = styled(ToggleGroup.Root, {
   display: "flex",
-  gap: "$5",
+  flexDirection: "row",
+
+  justifyContent: "center",
+  gap: "$8",
+
+  "@bp2": {
+    flexDirection: "column",
+    alignItems: "center",
+  },
 });
 
 const PageToggleItem = styled(ToggleGroup.Item, {
@@ -158,14 +166,10 @@ export const PageToggle = memo(function PageToggle(
   props: ToggleGroup.ToggleGroupSingleProps
 ) {
   return (
-    <PageToggleRoot aria-label="Nav toggle" orientation="horizontal" {...props}>
+    <PageToggleRoot aria-label="Nav toggle" orientation="vertical" {...props}>
       <PageToggleItem value="short">
         <TextAux textTransform="capitalize">Short</TextAux>
       </PageToggleItem>
-
-      <Box>
-        <Divider orientation="vertical" />
-      </Box>
 
       <PageToggleItem value="long">
         <TextAux textTransform="capitalize">Long</TextAux>

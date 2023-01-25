@@ -1,6 +1,8 @@
+import { translate } from "googleapis/build/src/apis/translate";
 import { useRouter } from "next/router";
 import { ReactElement, useCallback } from "react";
 import { Box } from "../components/Box";
+import { Divider } from "../components/Divider";
 import { Layout } from "../components/Layout";
 import { Link } from "../components/Link";
 import { PageToggle } from "../components/Tags";
@@ -85,47 +87,78 @@ const Home: NextPageWithLayout = () => {
 
   return (
     <Box
-      direction="vertical"
-      justifyContent="center"
+      direction={{ "@initial": "vertical", "@bp2": "horizontal" }}
+      justifyContent="space-between"
       alignItems="center"
+      container="m"
       spacingHorizontal={{ "@initial": 4, "@bp2": 10 }}
       flexGrow
     >
-      <Box spacingBottom={5}>
-        <PageToggle
-          type="single"
-          defaultValue="short"
-          value={currentTab}
-          onValueChange={handleTabChange}
-        />
-      </Box>
+      <Box
+        direction={{ "@initial": "vertical", "@bp2": "horizontal" }}
+        position="relative"
+        flexGrow
+      >
+        <Box
+          direction={{ "@initial": "vertical", "@bp2": "horizontal" }}
+          spacingBottom={{ "@initial": 4, "@bp2": 0 }}
+          css={{ "@bp2": { width: 80 } }}
+        >
+          <PageToggle
+            type="single"
+            defaultValue="short"
+            value={currentTab}
+            onValueChange={handleTabChange}
+          />
 
-      {!query.tab || query.tab === "short" ? (
-        <Box direction="vertical" alignItems="center">
-          <TextTitle1>{PERSONAL.name}</TextTitle1>
-
-          <Box direction="horizontal" gap={2} alignItems="flex-end">
-            <TextHeadline>{PERSONAL.occupation}</TextHeadline>
-
-            <TextBody as="span">@</TextBody>
-
-            <Link href={currentEmployer.url} variant="primary">
-              <TextHeadline>{currentEmployer.displayName}</TextHeadline>
-            </Link>
+          <Box
+            display={{ "@initial": "none", "@bp2": "flex" }}
+            spacingLeft={10}
+          >
+            <Divider orientation="vertical" />
           </Box>
         </Box>
-      ) : null}
 
-      {query.tab === "long" ? (
-        <Box direction="vertical" gap={5} container="s">
-          <StyledHand>
-            <StyledPalm data-palm emoji="👋" size="s" />
-            <StyledFist data-fist emoji="👊" size="s" />
-          </StyledHand>
-          <TextHeadline>{PERSONAL.profile1}</TextHeadline>
-          <TextHeadline>{PERSONAL.profile2}</TextHeadline>
-        </Box>
-      ) : null}
+        {!query.tab || query.tab === "short" ? (
+          <Box
+            direction="vertical"
+            alignItems="center"
+            justifyContent="center"
+            spacingHorizontal={10}
+            css={{ "@bp2": { transform: "translateX(-40px)" } }}
+            flexGrow={{ "@initial": false, "@bp2": true }}
+          >
+            <TextTitle1>{PERSONAL.name}</TextTitle1>
+
+            <Box direction="horizontal" gap={2} alignItems="flex-end">
+              <TextHeadline>{PERSONAL.occupation}</TextHeadline>
+
+              <TextBody as="span">@</TextBody>
+
+              <Link href={currentEmployer.url} variant="primary">
+                <TextHeadline>{currentEmployer.displayName}</TextHeadline>
+              </Link>
+            </Box>
+          </Box>
+        ) : null}
+
+        {query.tab === "long" ? (
+          <Box direction="vertical" gap={5} spacingLeft={{ "@bp2": 10 }}>
+            <StyledHand>
+              <StyledPalm data-palm emoji="👋" size="s" />
+              <StyledFist data-fist emoji="👊" size="s" />
+            </StyledHand>
+
+            <TextHeadline textAlign={{ "@initial": "justify", "@bp2": "left" }}>
+              {PERSONAL.profile1}
+            </TextHeadline>
+
+            <TextHeadline textAlign={{ "@initial": "justify", "@bp2": "left" }}>
+              {PERSONAL.profile2}
+            </TextHeadline>
+          </Box>
+        ) : null}
+      </Box>
     </Box>
   );
 };
