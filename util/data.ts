@@ -169,13 +169,20 @@ export const EMPLOYMENT: Employer[] = [
   },
 ];
 
-export const EXPERTISE = ["React JS", "JavaScript", "HTML", "CSS"];
+export const EXPERTISE = [
+  "React JS",
+  "JavaScript",
+  "TypeScript",
+  "HTML",
+  "CSS",
+];
 
 export const INTERESTS = [
   "UI Design",
   "Design Systems",
   "Accessibility",
-  "COntent Creation",
+  "Content Creation",
+  "Technical Writing",
 ];
 
 export const PERSONAL = {

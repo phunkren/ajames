@@ -6,7 +6,7 @@ import {
 } from "@radix-ui/react-icons";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import { blackA, whiteA } from "@radix-ui/colors";
+import { blackA, greenDark, whiteA } from "@radix-ui/colors";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import * as Dialog from "@radix-ui/react-dialog";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
@@ -137,7 +137,7 @@ export const NavigationProjectLink = memo(function NavigationProjectLink({
           <Box
             css={{
               flexShrink: 0,
-              backgroundColor: "$green5",
+              backgroundColor: greenDark.green8,
               borderRadius: 4,
             }}
           >

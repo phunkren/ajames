@@ -205,7 +205,7 @@ const About: NextPageWithLayout = () => {
   return (
     <Box>
       <Box direction="vertical">
-        <StyledPageHeader id={PERSONAL.initials}>
+        <StyledPageHeader>
           <AspectRatio ratio={2.5 / 1}>
             <StyledImage src={banner} alt="" sizes="100vw" priority fill />
 
@@ -213,7 +213,7 @@ const About: NextPageWithLayout = () => {
 
             <StyledHero
               spacingHorizontal={{ "@initial": 6, "@bp2": 10 }}
-              spacingVertical={{ "@initial": 5, "@bp2": 7 }}
+              spacingVertical={{ "@initial": 10, "@bp2": 7 }}
               alignItems="flex-end"
               justifyContent="space-between"
             >
@@ -608,7 +608,10 @@ const About: NextPageWithLayout = () => {
                               <TextAux
                                 as="time"
                                 color="secondary"
-                                textTransform="uppercase"
+                                textTransform={{
+                                  "@print": "capitalize",
+                                  "@initial": "uppercase",
+                                }}
                                 fontWeight={400}
                                 dateTime={new Date(
                                   employer.startDate
@@ -623,9 +626,12 @@ const About: NextPageWithLayout = () => {
                           {employer.endDate ? (
                             <TextAux
                               as="time"
-                              textTransform="uppercase"
                               color="secondary"
                               fontWeight={400}
+                              textTransform={{
+                                "@print": "capitalize",
+                                "@initial": "uppercase",
+                              }}
                               dateTime={new Date(
                                 employer.endDate
                               ).toISOString()}
@@ -637,7 +643,10 @@ const About: NextPageWithLayout = () => {
                               as="time"
                               color="secondary"
                               fontWeight={400}
-                              textTransform="uppercase"
+                              textTransform={{
+                                "@print": "capitalize",
+                                "@initial": "uppercase",
+                              }}
                               dateTime={new Date().toISOString()}
                             >
                               Present
