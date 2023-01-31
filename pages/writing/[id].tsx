@@ -36,8 +36,6 @@ import { ScrollToTopButton, ShareButton } from "../../components/Button";
 import { styled } from "../../stitches.config";
 import { H1_STYLES, H2_STYLES, H3_STYLES, P_STYLES } from "../../styles/text";
 import { Box } from "../../components/Box";
-import { ArrowLeftIcon } from "@radix-ui/react-icons";
-import { ICON_SIZE } from "../../util/images";
 import { ReactElement } from "react";
 import { NextPageWithLayout } from "../_app";
 import { BlogSeo } from "../../components/SEO";
@@ -68,8 +66,9 @@ const StyledContainer = styled(Box, {
     margin: "0 auto",
   },
 
-  "img, pre code": {
+  "img, pre": {
     boxShadow: "$1",
+    borderRadius: 4,
   },
 
   ul: {
