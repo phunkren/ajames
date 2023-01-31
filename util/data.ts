@@ -244,7 +244,7 @@ export const TESTIMONIALS: Testimonial[] = [
     url: "https://www.linkedin.com/in/matthewsinclair/",
     position: "VP, Engineering",
     quote:
-      "Rarely have I had the opportunity to work with an engineer that combines Andrew's technical calibre, his exceptional citizenship, his ability to communicate and demonstrate his ideas to both team and client, and his commitment to coaching and mentoring the folks he works with. He blogs about some of the most interesting front-end technologies, and on top of all of this, he's an all-round great human. He is a genuine asset to any tech team that has the privilege of his attention, and I have no hesitation recommending him wholeheartedly for any role that he puts his mind to.",
+      "Rarely have I had the opportunity to work with an engineer that combines Andrew's technical calibre, his exceptional citizenship, his ability to communicate and demonstrate his ideas to both team and client, and his commitment to coaching and mentoring the folks he works with. [...] He is a genuine asset to any tech team that has the privilege of his attention, and I have no hesitation recommending him wholeheartedly for any role that he puts his mind to.",
     excerpt:
       "He's an all-round great human. He is a genuine asset to any tech team that has the privilege of his attention",
   },
