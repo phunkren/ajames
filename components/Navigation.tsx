@@ -166,7 +166,7 @@ export const Navigation = memo(function Navigation() {
             <NavigationMenu.Item>
               <NavigationMenu.Link asChild active={asPath === "/about"}>
                 <Link variant="secondary" href="/about">
-                  <TextAux>About</TextAux>
+                  <TextHeadline>About</TextHeadline>
                 </Link>
               </NavigationMenu.Link>
             </NavigationMenu.Item>
@@ -174,7 +174,7 @@ export const Navigation = memo(function Navigation() {
             <NavigationMenu.Item>
               <NavigationMenu.Link asChild active={asPath.includes("writing")}>
                 <Link variant="secondary" href="/writing">
-                  <TextAux>Writing</TextAux>
+                  <TextHeadline>Writing</TextHeadline>
                 </Link>
               </NavigationMenu.Link>
             </NavigationMenu.Item>
@@ -182,7 +182,7 @@ export const Navigation = memo(function Navigation() {
             <NavigationMenu.Item>
               <NavigationMenu.Link asChild active={asPath === "/learning"}>
                 <Link variant="secondary" href="/learning">
-                  <TextAux>Learning</TextAux>
+                  <TextHeadline>Learning</TextHeadline>
                 </Link>
               </NavigationMenu.Link>
             </NavigationMenu.Item>
@@ -190,7 +190,7 @@ export const Navigation = memo(function Navigation() {
             <NavigationMenu.Item>
               <NavigationMenu.Trigger asChild>
                 <Button css={{ padding: 0, gap: "$2" }}>
-                  <TextAux>Projects</TextAux>
+                  <TextHeadline>Projects</TextHeadline>
                   <ChevronDownIcon width={ICON_SIZE.s} height={ICON_SIZE.s} />
                 </Button>
               </NavigationMenu.Trigger>
