@@ -89,6 +89,12 @@ const StyledHero = styled(Box, {
       [`${StyledIconButton}, ${StyledIconLink}`]: {
         color: "inherit",
         borderColor: "inherit",
+
+        "&:hover": {
+          background: "white",
+          borderColor: "white",
+          color: "black",
+        },
       },
     },
 
