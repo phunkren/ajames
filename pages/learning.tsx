@@ -49,7 +49,7 @@ import {
   ScrollAreaScrollbar,
   ScrollAreaThumb,
 } from "../components/Scroll";
-import { PERSONAL, SITE } from "../util/data";
+import { SITE } from "../util/data";
 import { Button, ShareButton } from "../components/Button";
 import { H2_STYLES } from "../styles/text";
 import { ICON_SIZE } from "../util/images";

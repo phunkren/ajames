@@ -39,6 +39,7 @@ import { Box } from "../../components/Box";
 import { ReactElement } from "react";
 import { NextPageWithLayout } from "../_app";
 import { BlogSeo } from "../../components/SEO";
+import { ONE_HOUR_IN_SECONDS } from "../../util/date";
 
 export type Frontmatter = {
   title: string;
@@ -127,6 +128,7 @@ export async function getStaticProps({ params }: any) {
       postData,
       pageData,
     },
+    revalidate: ONE_HOUR_IN_SECONDS,
   };
 }
 
