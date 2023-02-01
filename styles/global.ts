@@ -125,4 +125,12 @@ export const globalStyles = globalCss({
       scrollBehavior: "auto !important",
     },
   },
+
+  "@print": {
+    "*, *::before, *::after": {
+      background: "white !important",
+      borderColor: "black !important",
+      color: "black !important",
+    },
+  },
 });

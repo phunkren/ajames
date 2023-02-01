@@ -161,8 +161,7 @@ export const P_STYLES = {
 
   "@print": {
     fontSize: 14,
-    lineHeight: 1.25,
-    color: "black !important",
+    lineHeight: 1.3,
   },
 };
 
@@ -172,6 +171,5 @@ export const AUX_STYLES = {
   "@print": {
     fontSize: 12,
     lineHeight: 1,
-    color: `${gray.gray11} !important`,
   },
 };

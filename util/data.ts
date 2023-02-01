@@ -244,7 +244,7 @@ export const TESTIMONIALS: Testimonial[] = [
     url: "https://www.linkedin.com/in/matthewsinclair/",
     position: "VP, Engineering",
     quote:
-      "Rarely have I had the opportunity to work with an engineer that combines Andrew's technical calibre, his exceptional citizenship, his ability to communicate and demonstrate his ideas to both team and client, and his commitment to coaching and mentoring the folks he works with. [...] He is a genuine asset to any tech team that has the privilege of his attention, and I have no hesitation recommending him wholeheartedly for any role that he puts his mind to.",
+      "Rarely have I had the opportunity to work with an engineer that combines Andrew's technical calibre, his exceptional citizenship, his ability to communicate and demonstrate his ideas to both team and client, and his commitment to coaching and mentoring the folks he works with.",
     excerpt:
       "He's an all-round great human. He is a genuine asset to any tech team that has the privilege of his attention",
   },
@@ -254,7 +254,7 @@ export const TESTIMONIALS: Testimonial[] = [
     url: "https://www.linkedin.com/in/-paul-groves/",
     position: "Engineering Director",
     quote:
-      "Andrew brings exceptional technical competency to his work, applying the highest levels of detail and clarity to his code. In his role at BCGDV, Andrew took full ownership of the design and implementation of multiple front end systems, driving the direction, performing impressive demos to clients, and mentoring his colleagues. He brings a considered, positive attitude and has been an absolute pleasure to work with. I could not recommend him higher.",
+      "Andrew brings exceptional technical competency to his work, applying the highest levels of detail and clarity to his code. [...] He brings a considered, positive attitude and has been an absolute pleasure to work with. I could not recommend him higher.",
     excerpt:
       "Andrew brings a considered, positive attitude and has been an absolute pleasure to work with.",
   },
@@ -264,7 +264,7 @@ export const TESTIMONIALS: Testimonial[] = [
     url: "https://www.linkedin.com/in/ian-brennan-474245138/",
     position: "Engineering Manager",
     quote:
-      "From the moment we interviewed him, through to the many projects we worked on together, Andrew always showed a strong desire and passion for his work and the technologies behind it. He picks up new techniques, approaches, libraries, and languages with ease, delivering on project requirements whilst also taking the time to truly understand how something works.",
+      "From the moment we interviewed him, through to the many projects we worked on together, Andrew always showed a strong desire and passion for his work and the technologies behind it. He picks up techniques, approaches, libraries, and languages with ease, delivering on project requirements whilst also taking the time to truly understand how something works.",
     excerpt:
       "Andrew always showed a strong desire and passion for his work and the technologies behind it.",
   },

@@ -253,8 +253,8 @@ const About: NextPageWithLayout = () => {
         <StyledPrintHeader>
           <Box
             direction="vertical"
-            spacingHorizontal={{ "@print": 3 }}
-            spacingBottom={{ "@print": 3 }}
+            spacingHorizontal={3}
+            spacingBottom={6}
             css={{ borderBottom: "2px solid black" }}
           >
             <TextTitle1>{PERSONAL.name}</TextTitle1>
@@ -267,7 +267,8 @@ const About: NextPageWithLayout = () => {
           direction="horizontal"
           gap={{ "@print": 4, "@initial": 0, "@bp2": 10 }}
           spacingHorizontal={{ "@print": 3, "@initial": 4, "@bp2": 10 }}
-          spacingVertical={10}
+          spacingTop={{ "@print": 6, "@initial": 10 }}
+          spacingBottom={{ "@print": 0, "@initial": 10 }}
           flexWrap={{
             "@print": "nowrap",
             "@initial": "wrapReverse",
@@ -382,8 +383,11 @@ const About: NextPageWithLayout = () => {
                     {education.qualification ? (
                       <TextHeadline>{education.qualification}</TextHeadline>
                     ) : null}
+
                     <TextBody>{education.course}</TextBody>
+
                     <TextAux color="secondary">{education.institution}</TextAux>
+
                     <Box>
                       {education.startDate ? (
                         <>
@@ -446,7 +450,7 @@ const About: NextPageWithLayout = () => {
               </GridRoot>
             </Box>
 
-            <Box as="section" direction="vertical" aria-labelledby="interests">
+            <Box as="section" aria-labelledby="interests" direction="vertical">
               <TextTitle3 id="interests" as="h2">
                 Interests
               </TextTitle3>
@@ -470,9 +474,22 @@ const About: NextPageWithLayout = () => {
             </Box>
 
             <Box as="section" aria-labelledby="references" direction="vertical">
-              <TextTitle3 id="references" as="h2">
-                References
-              </TextTitle3>
+              <Link
+                variant="secondary"
+                href={SOCIAL.linkedin.url}
+                title={`${SOCIAL.linkedin.displayName} references`}
+              >
+                <Box direction="horizontal" gap={4} alignItems="center">
+                  <TextTitle3 id="references" as="h2">
+                    References
+                  </TextTitle3>
+                  <LinkedInLogoIcon
+                    width={ICON_SIZE.m}
+                    height={ICON_SIZE.m}
+                    aria-hidden
+                  />
+                </Box>
+              </Link>
 
               <Box
                 spacingTop={{ "@print": 2, "@initial": 4 }}
@@ -548,10 +565,7 @@ const About: NextPageWithLayout = () => {
                 <Divider />
               </Box>
 
-              <Box
-                direction="vertical"
-                gap={{ "@print": 4, "@initial": 3, "@bp2": 4 }}
-              >
+              <Box direction="vertical" gap={4}>
                 <TextBody>{PERSONAL.profile1}</TextBody>
 
                 <TextBody>{PERSONAL.profile2}</TextBody>
@@ -572,12 +586,11 @@ const About: NextPageWithLayout = () => {
 
               <Box direction="vertical" gap={10}>
                 {EMPLOYMENT.map((employer) => (
-                  <Box
-                    direction="vertical"
-                    gap={{ "@print": 4, "@initial": 3, "@bp2": 4 }}
-                    key={employer.id}
-                  >
-                    <Box direction="vertical" gap={2}>
+                  <Box direction="vertical" gap={4} key={employer.id}>
+                    <Box
+                      direction="vertical"
+                      gap={{ "@print": 1, "@initial": 2 }}
+                    >
                       <TextTitle3>{employer.position}</TextTitle3>
 
                       <Box
@@ -662,7 +675,7 @@ const About: NextPageWithLayout = () => {
                       </Box>
                     </Box>
 
-                    <TextBody>{employer.content}</TextBody>
+                    <TextBody textAlign="justify">{employer.content}</TextBody>
 
                     {employer.notableWork?.length > 0 ? (
                       <Box direction="vertical" gap={2}>
