@@ -124,9 +124,13 @@ export const ActiveTags = memo(function ActiveTags({
   const activeTags = tags.filter((tag) => queryTags.includes(tag.name));
 
   return (
-    <FrontmatterItem {...props}>
+    <FrontmatterItem
+      alignItems="flex-start"
+      css={{ "@bp3": { maxWidth: "75%" } }}
+      {...props}
+    >
       {icon ? (
-        <Box flexShrink={false}>
+        <Box flexShrink={false} css={{ height: 26 }} alignItems="center">
           <VisuallyHidden.Root>Tags</VisuallyHidden.Root>
           <EyeOpenIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
         </Box>
@@ -143,7 +147,9 @@ export const ActiveTags = memo(function ActiveTags({
           ))}
         </Box>
       ) : (
-        <TextBody textTransform="capitalize">All</TextBody>
+        <TextBody textTransform="capitalize" css={{ lineHeight: 1.3 }}>
+          All
+        </TextBody>
       )}
     </FrontmatterItem>
   );

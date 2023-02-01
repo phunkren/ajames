@@ -59,15 +59,15 @@ const StyledCardOuter = styled(Box, {
   },
 
   [`.${darkTheme} &`]: {
-    backgroundColor: whiteA.whiteA1,
+    backgroundColor: whiteA.whiteA3,
   },
 
   [`.${darkTheme} &:hover, .${darkTheme} &:has(a:focus)`]: {
-    backgroundColor: whiteA.whiteA2,
+    backgroundColor: whiteA.whiteA4,
   },
 
   [`.${darkTheme} &:active:not(:has(button:active))`]: {
-    backgroundColor: whiteA.whiteA3,
+    backgroundColor: whiteA.whiteA5,
   },
 
   [`.${lightTheme} &`]: {
@@ -120,7 +120,9 @@ const StyledLink = styled(Link, {
   },
 });
 
-const StyledBlogContent = styled(Box, {
+export const StyledDescription = styled(TextAux, {});
+
+export const StyledBlogContent = styled(Box, {
   position: "relative",
   top: -16,
 });
@@ -224,9 +226,13 @@ export const BlogCard = memo(function BlogCard({
 
             <StyledLink href={url} ref={ref}>
               {isPreviewVisible ? (
-                <TextAux clamp={4} css={{ lineHeight: 1.75 }}>
+                <StyledDescription
+                  clamp={4}
+                  textAlign="justify"
+                  css={{ lineHeight: 1.75 }}
+                >
                   {description}
-                </TextAux>
+                </StyledDescription>
               ) : (
                 <TextTitle3 id={url} clamp={3}>
                   {title}
@@ -284,7 +290,9 @@ export const VideoCard = memo(function VideoCard({
         >
           <StyledLink href={url} ref={ref}>
             {isPreviewVisible ? (
-              <TextAux clamp={4}>{description}</TextAux>
+              <StyledDescription clamp={4} textAlign="justify">
+                {description}
+              </StyledDescription>
             ) : (
               <TextHeadline clamp={3}>{title}</TextHeadline>
             )}

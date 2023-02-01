@@ -128,7 +128,7 @@ export async function getStaticProps({ params }: any) {
       postData,
       pageData,
     },
-    revalidate: ONE_HOUR_IN_SECONDS,
+    // revalidate: ONE_HOUR_IN_SECONDS,
   };
 }
 
