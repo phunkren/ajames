@@ -30,6 +30,9 @@ const StyledCardOuter = styled(Box, {
   minWidth: `calc(300px - $space$3)`,
   boxShadow: "$1",
   borderRadius: 4,
+  borderWidth: 1,
+  borderStyle: "solid",
+  borderColor: "$backgroundMuted",
   overflow: "hidden",
   transition:
     "background 200ms ease-out, boxShadow 200ms ease-out, transform 200ms ease-out",
@@ -56,27 +59,27 @@ const StyledCardOuter = styled(Box, {
   },
 
   [`.${darkTheme} &`]: {
-    backgroundColor: whiteA.whiteA2,
+    backgroundColor: whiteA.whiteA1,
   },
 
   [`.${darkTheme} &:hover, .${darkTheme} &:has(a:focus)`]: {
-    backgroundColor: whiteA.whiteA3,
+    backgroundColor: whiteA.whiteA2,
   },
 
   [`.${darkTheme} &:active:not(:has(button:active))`]: {
-    backgroundColor: whiteA.whiteA4,
+    backgroundColor: whiteA.whiteA3,
   },
 
   [`.${lightTheme} &`]: {
-    backgroundColor: blackA.blackA2,
+    backgroundColor: blackA.blackA1,
   },
 
   [`.${lightTheme} &:hover, .${lightTheme} &:has(a:focus)`]: {
-    backgroundColor: blackA.blackA3,
+    backgroundColor: blackA.blackA2,
   },
 
   [`.${lightTheme} &:active:not(:has(button:active))`]: {
-    backgroundColor: blackA.blackA4,
+    backgroundColor: blackA.blackA3,
   },
 });
 
@@ -96,7 +99,7 @@ const StyledImage = styled(Image, {
   objectFit: "cover",
   borderTopLeftRadius: 4,
   borderTopRightRadius: 4,
-  filter: "brightness(75%)",
+  filter: "brightness(90%)",
   transition: "filter 200ms ease-out",
 
   // https://nextjs.org/docs/api-reference/next/image#known-browser-bugs
