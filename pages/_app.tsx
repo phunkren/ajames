@@ -1,27 +1,64 @@
-import { Rubik, Jost, Fira_Code } from "@next/font/google";
-import { NextPage } from "next";
 import { ReactElement, ReactNode } from "react";
+import { NextPage } from "next";
 import { AppProps } from "next/app";
+import localFont from "@next/font/local";
 import { ErrorBoundary } from "react-error-boundary";
 import { ErrorFallback } from "../components/ErrorFallback";
 import { ThemeProvider } from "../components/Theme";
 
-export const rubik = Rubik({
-  weight: ["300", "400", "500"],
-  style: ["normal"],
-  subsets: ["latin"],
+const euclid = localFont({
+  src: [
+    {
+      path: "../public/fonts/euclid-regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/euclid-italic.ttf",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/euclid-medium.ttf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/euclid-semi-bold.ttf",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/euclid-bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
 });
 
-export const jost = Jost({
-  weight: ["300", "400", "500"],
-  style: ["normal", "italic"],
-  subsets: ["latin"],
-});
-
-export const firaCode = Fira_Code({
-  weight: ["300", "400", "500"],
-  style: ["normal"],
-  subsets: ["latin"],
+const monoLisa = localFont({
+  src: [
+    {
+      path: "../public/fonts/mono-lisa-regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/mono-lisa-regular-italic.ttf",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/mono-lisa-bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/mono-lisa-bold-italic.ttf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
 });
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
@@ -42,21 +79,21 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
         h1,
         h2,
         h3 {
-          font-family: ${rubik.style.fontFamily};
+          font-family: ${euclid.style.fontFamily};
           font-weight: 400;
         }
       `}</style>
 
       <style jsx global>{`
         body {
-          font-family: ${jost.style.fontFamily};
+          font-family: ${euclid.style.fontFamily};
           font-weight: 400;
         }
       `}</style>
 
       <style jsx global>{`
         code {
-          font-family: ${firaCode.style.fontFamily};
+          font-family: ${monoLisa.style.fontFamily};
           font-weight: 500;
         }
       `}</style>

@@ -1,14 +1,11 @@
+import { MouseEvent, ReactElement, useCallback, useRef } from "react";
+import Image from "next/image";
 import { ScrollAreaViewport } from "@radix-ui/react-scroll-area";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import Balancer from "react-wrap-balancer";
 import { PlayIcon } from "@radix-ui/react-icons";
 import YouTube from "react-youtube";
-import {
-  AvatarFallback,
-  AvatarImage,
-  AvatarRoot,
-  YouTubeAvatar,
-} from "../components/Avatar";
+import { YouTubeAvatar } from "../components/Avatar";
 import { VideoCard } from "../components/Card";
 import { Divider } from "../components/Divider";
 import {
@@ -56,8 +53,6 @@ import { ICON_SIZE } from "../util/images";
 import banner from "../public/images/banner.png";
 import poster from "../public/images/poster.gif";
 import { Box } from "../components/Box";
-import Image from "next/image";
-import { MouseEvent, ReactElement, useCallback, useRef } from "react";
 import { NextPageWithLayout } from "./_app";
 
 type Props = {

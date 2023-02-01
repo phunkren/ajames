@@ -96,7 +96,7 @@ export const globalStyles = globalCss({
     paddingRight: "$1",
     paddingBottom: 0,
     paddingLeft: "$1",
-    ...AUX_STYLES,
+    ...P_STYLES,
   },
 
   pre: {
