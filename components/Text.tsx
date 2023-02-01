@@ -11,7 +11,7 @@ import {
 import { EmojiProps } from "../types/emoji";
 
 export const TextTitle1 = styled("h1", {
-  fontWeight: 700,
+  fontWeight: 600,
   ...H1_STYLES,
 
   variants: {
