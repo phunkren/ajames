@@ -141,7 +141,7 @@ const StyledImage = styled(Image, {
   zIndex: 2,
   transform: "scale(0.9)",
   pointerEvents: "none",
-  filter: "brightness(66%)",
+  filter: "brightness(75%)",
 
   "@bp2": {
     display: "block",
@@ -152,7 +152,7 @@ const StyledImage = styled(Image, {
   "@bp3": {
     display: "block",
     borderRadius: 4,
-    left: "16% !important",
+    left: "17% !important",
   },
 });
 
@@ -566,9 +566,9 @@ const About: NextPageWithLayout = () => {
               </Box>
 
               <Box direction="vertical" gap={4}>
-                <TextBody>{PERSONAL.profile1}</TextBody>
+                <TextBody textAlign="justify">{PERSONAL.profile1}</TextBody>
 
-                <TextBody>{PERSONAL.profile2}</TextBody>
+                <TextBody textAlign="justify">{PERSONAL.profile2}</TextBody>
               </Box>
             </Box>
 
