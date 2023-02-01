@@ -35,11 +35,6 @@ import {
   ShareButtonProps,
 } from "../types/button";
 
-const buttonSlideUp = keyframes({
-  "0%": { bottom: "-10%" },
-  "100%": { bottom: "10%" },
-});
-
 const scaleIn = keyframes({
   from: { transform: "rotateX(-30deg) scale(0.9)", opacity: 0 },
   to: { transform: "rotateX(0deg) scale(1)", opacity: 1 },
@@ -152,39 +147,10 @@ const StyledToastRoot = styled(Toast.Root, {
   },
 });
 
-const StyledScrollToTop = styled(Button, {
-  position: "fixed",
-  left: "50%",
-  transform: "translateX(-50%)",
-  display: "flex",
-  alignitems: "center",
-  justifyContent: "center",
-  background: "$foreground",
-  color: "$background",
-  padding: "$4",
+const StyledScrollToTop = styled(StyledIconButton, {
   gap: "$2",
   borderRadius: 4,
-  border: "none",
-  boxShadow: "$2",
-
-  "&:hover": {
-    boxShadow: "$4",
-  },
-
-  "&:active": {
-    boxShadow: "$5",
-  },
-
-  variants: {
-    active: {
-      true: {
-        animation: `${buttonSlideUp} 200ms ease-out forwards`,
-      },
-      false: {
-        bottom: "-100%",
-      },
-    },
-  },
+  width: "fit-content",
 });
 
 const StyledPreviewToggle = styled(Toggle.Root, {
@@ -198,40 +164,15 @@ const StyledPreviewToggle = styled(Toggle.Root, {
   borderColor: "transparent",
 });
 
-export const ScrollToTopButton = memo(function ScrollToTopButton() {
-  const [scrollY, setScrollY] = useState<number>();
-  const previousScrollY = usePrevious(scrollY);
-
-  const isUserScrollingUp = previousScrollY > scrollY;
-  const isThresholdPassed = scrollY > 1000;
-  const isButtonActive = isUserScrollingUp && isThresholdPassed;
-
+export const ScrollToTopButton = memo(function ScrollToTopButton(props: any) {
   const handleScrollToTop = useCallback(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
-  const handleScroll = useCallback(() => {
-    const scrollPositionY = window.pageYOffset;
-    setScrollY(scrollPositionY);
-  }, []);
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  });
-
   return (
-    <StyledScrollToTop
-      aria-hidden
-      active={isButtonActive}
-      onClick={handleScrollToTop}
-      tabIndex={-1}
-    >
-      <DoubleArrowUpIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
-      <TextHeadline>Scroll to top</TextHeadline>
+    <StyledScrollToTop onClick={handleScrollToTop} {...props}>
+      <DoubleArrowUpIcon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
+      <TextHeadline>Scroll to Top</TextHeadline>
     </StyledScrollToTop>
   );
 });

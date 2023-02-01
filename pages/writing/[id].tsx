@@ -240,6 +240,10 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
                   {postData}
                 </ReactMarkdown>
 
+                <Box direction="vertical" spacingTop={10}>
+                  <ScrollToTopButton css={{ alignSelf: "center" }} />
+                </Box>
+
                 <Box spacingVertical={10}>
                   <Divider />
                 </Box>
@@ -252,7 +256,6 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
                   <Box
                     justifyContent="space-around"
                     alignItems="center"
-                    spacingBottom={10}
                     gap={7}
                   >
                     <TwitterShareLink
@@ -272,12 +275,14 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
                     </Box>
                   </Box>
                 </Box>
+
+                <Box spacingVertical={10}>
+                  <Divider />
+                </Box>
               </StyledContainer>
             </Box>
           </StyledContent>
         </Box>
-
-        <ScrollToTopButton />
       </Box>
     </>
   );
