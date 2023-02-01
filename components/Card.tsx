@@ -229,7 +229,7 @@ export const BlogCard = memo(function BlogCard({
                 <StyledDescription
                   clamp={4}
                   textAlign="justify"
-                  css={{ lineHeight: 1.75 }}
+                  css={{ lineHeight: 1.5 }}
                 >
                   {description}
                 </StyledDescription>
