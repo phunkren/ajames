@@ -37,11 +37,9 @@ import {
   Frontmatter,
   PublishDate,
 } from "../../components/Frontmatter";
-import banner from "../../public/images/blog.jpg";
+import banner from "../../public/images/test.jpg";
 import { Box } from "../../components/Box";
 import { NextPageWithLayout } from "../_app";
-import { ICON_SIZE } from "../../util/images";
-import { BookmarkIcon } from "@radix-ui/react-icons";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import Image from "next/image";
 
@@ -299,24 +297,28 @@ const Writing: NextPageWithLayout = ({ posts, tags }: Props) => {
           </>
         ) : null}
 
-        <TextTitle3 as="h2">Articles</TextTitle3>
+        <Box direction="vertical">
+          <Box spacingBottom={6}>
+            <TextTitle3 as="h2">Articles</TextTitle3>
+          </Box>
 
-        <StyledCardContainer>
-          {filteredPosts.map((post) => {
-            return (
-              <BlogCard
-                key={post.id}
-                url={`/writing/${post.properties.slug.rich_text[0].plain_text}`}
-                image={post.cover.external.url}
-                emoji={post.icon.type === "emoji" ? post.icon.emoji : "👨‍💻"}
-                title={post.properties.page.title[0].plain_text}
-                description={post.properties.abstract.rich_text[0].plain_text}
-                publishDate={post.properties.date.date.start}
-                tags={post.properties.tags.multi_select}
-              />
-            );
-          })}
-        </StyledCardContainer>
+          <StyledCardContainer>
+            {filteredPosts.map((post) => {
+              return (
+                <BlogCard
+                  key={post.id}
+                  url={`/writing/${post.properties.slug.rich_text[0].plain_text}`}
+                  image={post.cover.external.url}
+                  emoji={post.icon.type === "emoji" ? post.icon.emoji : "👨‍💻"}
+                  title={post.properties.page.title[0].plain_text}
+                  description={post.properties.abstract.rich_text[0].plain_text}
+                  publishDate={post.properties.date.date.start}
+                  tags={post.properties.tags.multi_select}
+                />
+              );
+            })}
+          </StyledCardContainer>
+        </Box>
       </Box>
     </Box>
   );

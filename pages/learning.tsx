@@ -50,7 +50,7 @@ import { SITE } from "../util/data";
 import { Button, ShareButton } from "../components/Button";
 import { H2_STYLES } from "../styles/text";
 import { ICON_SIZE } from "../util/images";
-import banner from "../public/images/banner.png";
+import banner from "../public/images/test2.jpg";
 import poster from "../public/images/poster.gif";
 import { Box } from "../components/Box";
 import { NextPageWithLayout } from "./_app";

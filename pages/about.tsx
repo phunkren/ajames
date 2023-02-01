@@ -56,7 +56,7 @@ const StyledPageHeader = styled(Box, {
 
   "@bp2": {
     marginBottom: "$10",
-    left: "-$4",
+    left: "-$7",
   },
 
   "@bp3": {
@@ -137,9 +137,9 @@ const StyledImage = styled(Image, {
   objectFit: "contain",
   borderRadius: 0,
   position: "absolute",
-  top: "4% !important",
-  zIndex: 2,
-  transform: "scale(0.9)",
+  top: "9% !important",
+  zIndex: 1,
+  transform: "scale(0.8)",
   pointerEvents: "none",
   filter: "brightness(75%)",
 
@@ -152,7 +152,7 @@ const StyledImage = styled(Image, {
   "@bp3": {
     display: "block",
     borderRadius: 4,
-    left: "17% !important",
+    left: "18% !important",
   },
 });
 
@@ -223,7 +223,11 @@ const About: NextPageWithLayout = () => {
               alignItems="flex-end"
               justifyContent="space-between"
             >
-              <Box direction="vertical" css={{ zIndex: 1 }}>
+              <Box
+                direction="vertical"
+                spacingLeft={{ "@bp2": 10, "@bp3": 0 }}
+                css={{ zIndex: 1 }}
+              >
                 <TextTitle1 css={{ "@bp2": { textShadow: "$textShadow" } }}>
                   {PERSONAL.name}
                 </TextTitle1>
@@ -552,7 +556,12 @@ const About: NextPageWithLayout = () => {
             <Divider orientation="vertical" />
           </Box>
 
-          <Box direction="vertical" gap={10} spacingBottom={10} flexGrow>
+          <Box
+            direction="vertical"
+            gap={{ "@print": 8, "@initial": 10 }}
+            spacingBottom={10}
+            flexGrow
+          >
             <Box as="section" aria-labelledby="profile" direction="vertical">
               <TextTitle3 id="profile" as="h2">
                 Profile
@@ -584,7 +593,7 @@ const About: NextPageWithLayout = () => {
                 <Divider />
               </Box>
 
-              <Box direction="vertical" gap={10}>
+              <Box direction="vertical" gap={{ "@print": 6, "@initial": 10 }}>
                 {EMPLOYMENT.map((employer) => (
                   <Box direction="vertical" gap={4} key={employer.id}>
                     <Box

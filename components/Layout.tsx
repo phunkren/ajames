@@ -19,7 +19,7 @@ const StyledHeroLayout = styled(Box, {
   left: "-$2",
 
   "@bp2": {
-    left: "-$4",
+    left: "-$7",
   },
 
   "@bp3": {
