@@ -33,7 +33,7 @@ export const EMPLOYMENT: Employer[] = [
     startDate: "2022-03-01",
     location: "Remote, EMEA",
     content:
-      "Currently working with a multidisciplinary team to create intuitive and trustworthy user experiences for institutional customers on Coinbase Prime. The focus is on efficiently executing and maintaining frontend features on the platform and admin interface. Recent opportunities included leading the UI development for the initial launch of the Data Marketplace, which provides a collection of historical datasets from the Coinbase Exchange.",
+      "Currently working with a multidisciplinary team to create intuitive and trustworthy user experiences for institutional customers on Coinbase Prime. The focus is on efficiently executing and maintaining frontend features on the platform and admin interface. Latest opportunity was leading the UI development for the initial launch of the Data Marketplace, which provides a collection of historical datasets from the Coinbase Exchange.",
     notableWork: [
       {
         id: "insto-prime",
@@ -56,7 +56,7 @@ export const EMPLOYMENT: Employer[] = [
     endDate: "2022-02-01",
     location: "Edinburgh, UK",
     content:
-      "Worked with other technology teams at Rockstar's worldwide studios to develop frontend features and applications for the company's online services. Responsibilities include delivering feature-flagged content under time-sensitive release cycles, and maintaining legacy architecture. Key achievements at Rockstar include working with other engineers to update the Social Club to meet AA accessibility standards, and developing the foundations of an accessible design system that could be used across all Rockstar-branded websites.",
+      "Worked with teams across Rockstar's worldwide studios to develop frontend features and applications for the company's online services. This involved delivering feature-flagged content under time-sensitive release cycles, and maintaining legacy architecture. Key achievements included working with other engineers to update the Social Club to meet AA accessibility standards, and developing the foundations of an accessible design system that could be used across all Rockstar-branded websites.",
     notableWork: [
       {
         id: "social-club",
@@ -79,7 +79,7 @@ export const EMPLOYMENT: Employer[] = [
     endDate: "2020-10-01",
     location: "London, UK",
     content:
-      "Played a key role in the development and launch of several successful startup businesses. At BCG responsibilities centred around leading small teams through scoped deliverables to engineer robust and well-documented products that could be taken to market. Also participated in the Code First Girls program, which aims to reduce the gender diversity gap by giving women the opportunity to pursue a career in tech. Through mentoring, directly contributed to the community by supporting the growth and development of future engineers.",
+      "Played a key role in the development and launch of several successful startup businesses. Responsibilities centred around engineering and delivering robust and well-documented products that could be taken to market. Also participated in the Code First Girls program, which aims to reduce the gender diversity gap by giving women the opportunity to pursue a career in tech. Through mentoring, directly contributed to the community by supporting the growth and development of future engineers.",
     notableWork: [
       {
         id: "vanguard",
