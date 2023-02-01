@@ -71,7 +71,7 @@ const StyledVideoCardViewport = styled(ScrollAreaViewport, {
 const StyledVideoCardContainer = styled(Box, {
   display: "grid",
   gridTemplateColumns: "repeat(12, minmax(auto, 1fr))",
-  gridColumnGap: "$3",
+  gridColumnGap: "$4",
   borderRadius: 4,
   padding: "$2",
   width: "100%",

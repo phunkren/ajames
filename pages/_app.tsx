@@ -80,21 +80,18 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
         h2,
         h3 {
           font-family: ${euclid.style.fontFamily};
-          font-weight: 400;
         }
       `}</style>
 
       <style jsx global>{`
         body {
           font-family: ${euclid.style.fontFamily};
-          font-weight: 400;
         }
       `}</style>
 
       <style jsx global>{`
         code {
           font-family: ${monoLisa.style.fontFamily};
-          font-weight: 500;
         }
       `}</style>
 

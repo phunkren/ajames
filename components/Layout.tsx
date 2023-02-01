@@ -108,7 +108,7 @@ export const Layout = memo(function Layout({ children }: any) {
         <Box
           as="main"
           direction="vertical"
-          spacingTop={{ "@print": 4, "@bp2": 0 }}
+          spacingTop={{ "@print": 4, "@bp2": 10 }}
           flexGrow
         >
           {children}

@@ -92,11 +92,11 @@ const StyledCardContainer = styled(Box, {
       },
 
       [`${TextTitle3}`]: {
-        fontSize: "1.4em",
+        fontSize: "1.5em",
       },
 
       [`${StyledDescription}`]: {
-        fontSize: "1.1em",
+        fontSize: "0.9em",
         ["-webkit-line-clamp"]: "6",
       },
     },
@@ -116,11 +116,11 @@ const StyledCardContainer = styled(Box, {
       },
 
       [`${TextTitle3}`]: {
-        fontSize: "1.4em",
+        fontSize: "1.5em",
       },
 
       [`${StyledDescription}`]: {
-        fontSize: "1.1em",
+        fontSize: "0.9em",
         ["-webkit-line-clamp"]: "6",
       },
     },
@@ -234,28 +234,8 @@ const Writing: NextPageWithLayout = ({ posts, tags }: Props) => {
         {featuredPost ? (
           <>
             <Box direction="vertical">
-              <Box
-                justifyContent={{
-                  "@initial": "space-between",
-                  "@bp2": "flex-start",
-                }}
-                gap={10}
-                alignItems="center"
-                spacingBottom={6}
-              >
+              <Box spacingBottom={6}>
                 <TextTitle3 as="h2">Featured</TextTitle3>
-
-                <Link
-                  href={`/writing/${featuredPost.properties.slug.rich_text[0].plain_text}`}
-                  variant="secondary"
-                >
-                  <BookmarkIcon
-                    width={ICON_SIZE.m}
-                    height={ICON_SIZE.m}
-                    aria-hidden
-                  />
-                  <TextAux>Read Article</TextAux>
-                </Link>
               </Box>
 
               <Box
@@ -319,9 +299,7 @@ const Writing: NextPageWithLayout = ({ posts, tags }: Props) => {
           </>
         ) : null}
 
-        <VisuallyHidden.Root>
-          <TextTitle2>Articles</TextTitle2>
-        </VisuallyHidden.Root>
+        <TextTitle3 as="h2">Articles</TextTitle3>
 
         <StyledCardContainer>
           {filteredPosts.map((post) => {
