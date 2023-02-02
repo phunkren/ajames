@@ -7,6 +7,8 @@ import * as Collapsible from "@radix-ui/react-collapsible";
 import {
   BlogCard,
   StyledBlogContent,
+  StyledCardImage,
+  StyledCardInner,
   StyledDescription,
 } from "../../components/Card";
 import { ActionButtons, HeroLayout, Layout } from "../../components/Layout";
@@ -84,6 +86,14 @@ const StyledCardContainer = styled(Box, {
       flexDirection: "row",
       gridColumn: "span 2",
       gridRow: "span 1",
+
+      [`${StyledCardInner}`]: {
+        top: 32,
+      },
+
+      [`${StyledCardImage}`]: {
+        top: 32,
+      },
 
       [`${StyledBlogContent}`]: {
         top: 32,
@@ -282,7 +292,7 @@ const Writing: NextPageWithLayout = ({ posts, tags }: Props) => {
                   <Box spacingTop={3}>
                     <Link
                       href={`/writing/${featuredPost.properties.slug.rich_text[0].plain_text}`}
-                      variant="secondary"
+                      variant="tertiary"
                     >
                       <TextAux color="secondary">Read more</TextAux>
                     </Link>

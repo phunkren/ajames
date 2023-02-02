@@ -275,10 +275,6 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
                     </Box>
                   </Box>
                 </Box>
-
-                <Box spacingVertical={10}>
-                  <Divider />
-                </Box>
               </StyledContainer>
             </Box>
           </StyledContent>

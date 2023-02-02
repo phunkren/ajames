@@ -23,26 +23,49 @@ import {
 import { PreviewToggle } from "./Button";
 import { BLUR_DATA_URL } from "../util/images";
 
+const StyledLink = styled(Link, {
+  "&:hover": {
+    color: "inherit",
+  },
+
+  "&:focus": {
+    outline: "none",
+  },
+});
+
 const StyledCardOuter = styled(Box, {
+  position: "relative",
   display: "flex",
   flexDirection: "column",
   cursor: "pointer",
   minWidth: `calc(300px - $space$3)`,
   boxShadow: "$1",
   borderRadius: 4,
-  borderWidth: 1,
-  borderStyle: "solid",
-  borderColor: "$backgroundMuted",
   overflow: "hidden",
   transition:
     "background 200ms ease-out, boxShadow 200ms ease-out, transform 200ms ease-out",
+
+  "&::after": {
+    content: "",
+    position: "absolute",
+    height: 5,
+    width: "calc(100% + 2px)",
+    bottom: 0,
+    left: -1,
+    background: "transparent",
+    transition: "background 200ms ease-out",
+  },
 
   "& div[data-radix-aspect-ratio-wrapper]": {
     overflow: "hidden",
   },
 
-  "&:hover": {
+  "&:hover:not(:has(button:hover))": {
     boxShadow: "$4",
+
+    "&::after": {
+      background: "$blue10",
+    },
 
     "& img": {
       filter: "brightness(95%)",
@@ -83,22 +106,12 @@ const StyledCardOuter = styled(Box, {
   },
 });
 
-const StyledCardInner = styled(Box, {
-  borderTop: 0,
-  borderRight: 1,
-  borderBottom: 1,
-  borderLeft: 1,
-  borderStyle: "solid",
-  borderBottomRightRadius: 4,
-  borderBottomLeftRadius: 4,
-  borderColor: "$background",
+export const StyledCardInner = styled(Box, {
   zIndex: 5,
 });
 
-const StyledImage = styled(Image, {
+export const StyledCardImage = styled(Image, {
   objectFit: "cover",
-  borderTopLeftRadius: 4,
-  borderTopRightRadius: 4,
   filter: "brightness(90%)",
   transition: "filter 200ms ease-out",
 
@@ -107,16 +120,6 @@ const StyledImage = styled(Image, {
     "img[loading='lazy']": {
       clipPath: "inset(0.6px)",
     },
-  },
-});
-
-const StyledLink = styled(Link, {
-  "&:hover": {
-    color: "inherit",
-  },
-
-  "&:focus": {
-    outline: "none",
   },
 });
 
@@ -174,7 +177,7 @@ export const Card = memo(function Card({
       {...props}
     >
       <AspectRatio.Root ratio={16 / 9}>
-        <StyledImage
+        <StyledCardImage
           placeholder="blur"
           blurDataURL={BLUR_DATA_URL}
           src={image}
@@ -224,7 +227,7 @@ export const BlogCard = memo(function BlogCard({
               }}
             />
 
-            <StyledLink href={url} ref={ref}>
+            <StyledLink href={url} ref={ref} variant="invisible">
               {isPreviewVisible ? (
                 <StyledDescription
                   clamp={4}
@@ -251,6 +254,9 @@ export const BlogCard = memo(function BlogCard({
             <PreviewToggle
               aria-label="Toggle article preview"
               css={{
+                "&:hover": {
+                  cursor: "help",
+                },
                 "&::before": {
                   content: "",
                   width: 44,
@@ -288,7 +294,7 @@ export const VideoCard = memo(function VideoCard({
           flexGrow
           css={{ minHeight: 155, "@bp2": { minHeight: 168 } }}
         >
-          <StyledLink href={url} ref={ref}>
+          <StyledLink href={url} ref={ref} variant="invisible">
             {isPreviewVisible ? (
               <StyledDescription clamp={4} textAlign="justify">
                 {description}

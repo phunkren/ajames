@@ -258,7 +258,7 @@ const Learning: NextPageWithLayout = ({
               >
                 <TextTitle3 as="h2">Latest Video</TextTitle3>
 
-                <Link href={videoPreview.url} variant="secondary">
+                <Link href={videoPreview.url} variant="tertiary">
                   <PlayIcon
                     width={ICON_SIZE.m}
                     height={ICON_SIZE.m}
@@ -322,7 +322,7 @@ const Learning: NextPageWithLayout = ({
                   </TextBody>
 
                   <Box spacingTop={3}>
-                    <Link href={videoPreview.url} variant="secondary">
+                    <Link href={videoPreview.url} variant="tertiary">
                       <TextAux color="secondary">Read more</TextAux>
                     </Link>
                   </Box>
@@ -363,11 +363,11 @@ const Learning: NextPageWithLayout = ({
                     alignItems="center"
                     spacingBottom={6}
                   >
-                    <Link href={playlistUrl} variant="tertiary">
+                    <Link href={playlistUrl} variant="secondary">
                       <TextTitle3 as="h2">{playlist.title}</TextTitle3>
                     </Link>
 
-                    <Link href={watchAllUrl} variant="secondary">
+                    <Link href={watchAllUrl} variant="tertiary">
                       <PlayIcon
                         width={ICON_SIZE.m}
                         height={ICON_SIZE.m}

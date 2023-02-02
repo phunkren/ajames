@@ -706,7 +706,7 @@ const About: NextPageWithLayout = () => {
                         >
                           {employer.notableWork.map((work) => (
                             <li key={work.id}>
-                              <Link href={work.url} variant="secondary">
+                              <Link href={work.url} variant="tertiary">
                                 <TextBody as="span">
                                   {work.displayName}
                                 </TextBody>

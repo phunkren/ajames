@@ -29,6 +29,7 @@ const StyledLink = styled("a", {
   gap: "$2",
   color: "inherit",
   textDecoration: "none",
+  textUnderlineOffset: "$space$1",
   transition: "color 75ms ease-out",
 
   "&[aria-current='page']": {
@@ -42,7 +43,7 @@ const StyledLink = styled("a", {
         color: "$blue10",
 
         "&:hover": {
-          color: "$blue12",
+          textDecoration: "underline",
         },
 
         "&:active": {
@@ -51,7 +52,8 @@ const StyledLink = styled("a", {
       },
       secondary: {
         "&:hover": {
-          color: "$blue10",
+          textDecorationColor: "$blue10",
+          textDecorationLine: "underline",
         },
 
         "&:active": {
@@ -63,14 +65,34 @@ const StyledLink = styled("a", {
         textDecorationStyle: "dotted",
 
         "&:hover": {
-          color: "$blue10",
+          color: "inherit",
+          textDecorationStyle: "solid",
+          textDecorationColor: "$blue10",
         },
 
         "&:active": {
           color: "$blue9",
         },
       },
+      invisible: {
+        color: "inherit",
+        textDecoration: "none",
+
+        "&:hover": {
+          color: "inherit",
+          textDecoration: "none",
+        },
+
+        "&:active": {
+          color: "inherit",
+          textDecoration: "none",
+        },
+      },
     },
+  },
+
+  defaultVariants: {
+    variant: "secondary",
   },
 });
 
@@ -158,6 +180,8 @@ const StyledYoutubeSubscription = styled(Link, {
         "&:hover": {
           boxShadow: "$4",
           color: "white",
+          textDecoration: "none",
+
           [`.${lightTheme} &`]: {
             backgroundColor: "$red10",
             color: "white",
@@ -246,6 +270,7 @@ const StyledBlogSubscription = styled(Link, {
         "&:hover": {
           boxShadow: "$4",
           color: "white",
+          textDecorationLine: "none",
 
           [`.${lightTheme} &`]: {
             backgroundColor: "$blue10",

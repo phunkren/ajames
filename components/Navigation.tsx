@@ -107,14 +107,12 @@ const StyledNavigationSubmenuLink = styled(Link, {
   padding: "$2",
   borderRadius: 4,
 
-  "&:hover": {
-    [`.${darkTheme} &:hover`]: {
-      backgroundColor: whiteA.whiteA3,
-    },
+  [`.${darkTheme} &:hover`]: {
+    backgroundColor: whiteA.whiteA3,
+  },
 
-    [`.${lightTheme} &:hover`]: {
-      backgroundColor: blackA.blackA3,
-    },
+  [`.${lightTheme} &:hover`]: {
+    backgroundColor: blackA.blackA3,
   },
 });
 
@@ -126,7 +124,7 @@ export const NavigationProjectLink = memo(function NavigationProjectLink({
 }: Project) {
   return (
     <NavigationMenu.Link asChild>
-      <StyledNavigationSubmenuLink variant="secondary" href={url}>
+      <StyledNavigationSubmenuLink variant="invisible" href={url}>
         <VisuallyHidden.Root>
           <TextAux>
             {name} - {description}
