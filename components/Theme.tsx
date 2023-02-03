@@ -147,11 +147,10 @@ export const ThemeProvider = memo(function ThemeProvider({
       setTheme(storageTheme);
     }
 
-    // Set initial theme on system preference
-    if (!theme && !storageTheme) {
-      const systemTheme = getSystemTheme();
-      setTheme(systemTheme);
-      setStorageTheme(systemTheme);
+    // Set theme to dark otherwise
+    // https://twitter.com/phunkren/status/1621046678399881217
+    if (!storageTheme) {
+      handleThemeChange(Theme.DARK);
     }
 
     // Update the data-theme attribute on the body element
