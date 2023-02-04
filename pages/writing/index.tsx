@@ -1,8 +1,7 @@
-import { ReactElement, useState } from "react";
+import { ReactElement, useCallback, useEffect, useState } from "react";
 import { GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import Balancer from "react-wrap-balancer";
-import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import * as Collapsible from "@radix-ui/react-collapsible";
 import {
   BlogCard,
@@ -12,11 +11,11 @@ import {
   StyledDescription,
 } from "../../components/Card";
 import { ActionButtons, HeroLayout, Layout } from "../../components/Layout";
+import { LayoutToggle } from "../../components/Toggle";
 import { TagToggle } from "../../components/Tags";
 import {
   TextAux,
   TextBody,
-  TextTitle1,
   TextTitle2,
   TextTitle3,
 } from "../../components/Text";
@@ -38,12 +37,14 @@ import {
   ActiveTags,
   Frontmatter,
   PublishDate,
+  PostTags,
 } from "../../components/Frontmatter";
 import banner from "../../public/images/test.jpg";
 import { Box } from "../../components/Box";
 import { NextPageWithLayout } from "../_app";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import Image from "next/image";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 type Props = {
   posts: BlogPost[];
@@ -167,18 +168,25 @@ const Writing: NextPageWithLayout = ({ posts, tags }: Props) => {
       post.properties.slug.rich_text[0].plain_text === "accessible-menubar"
   );
 
-  function handleTagChange(tagName: string[]) {
+  const [storageLayout, setStorageLayout] = useLocalStorage<string>(
+    "layout",
+    "grid"
+  );
+
+  const handleTagChange = useCallback((tagName: string[]) => {
     push({ pathname, query: { ...query, tag: tagName } }, undefined, {
       scroll: false,
     });
-  }
+  }, [pathname, push, query]);
+
+  const handleLayoutChange = useCallback((newLayout: string) => {
+    if (newLayout) {
+      setStorageLayout(newLayout);
+    }
+  }, setStorageLayout[]);
 
   return (
     <Box direction="vertical" spacingBottom={10} gap={10}>
-      <VisuallyHidden.Root>
-        <TextTitle1>Writing</TextTitle1>
-      </VisuallyHidden.Root>
-
       <HeroLayout src={banner} />
 
       <Box
@@ -308,26 +316,82 @@ const Writing: NextPageWithLayout = ({ posts, tags }: Props) => {
         ) : null}
 
         <Box direction="vertical">
-          <Box spacingBottom={6}>
-            <TextTitle3 as="h2">Articles</TextTitle3>
+          <Box
+            gap={4}
+            justifyContent="space-between"
+            alignItems="center"
+            spacingBottom={6}
+          >
+            <Box>
+              <TextTitle3 as="h2">Articles</TextTitle3>
+            </Box>
+
+            <LayoutToggle
+              type="single"
+              aria-label="Article layout"
+              value={storageLayout}
+              onValueChange={handleLayoutChange}
+            />
           </Box>
 
-          <StyledCardContainer>
-            {filteredPosts.map((post) => {
-              return (
-                <BlogCard
-                  key={post.id}
-                  url={`/writing/${post.properties.slug.rich_text[0].plain_text}`}
-                  image={post.cover.external.url}
-                  emoji={post.icon.type === "emoji" ? post.icon.emoji : "👨‍💻"}
-                  title={post.properties.page.title[0].plain_text}
-                  description={post.properties.abstract.rich_text[0].plain_text}
-                  publishDate={post.properties.date.date.start}
-                  tags={post.properties.tags.multi_select}
-                />
-              );
-            })}
-          </StyledCardContainer>
+          {storageLayout === "grid" ? (
+            <StyledCardContainer>
+              {filteredPosts.map((post) => {
+                return (
+                  <BlogCard
+                    key={post.id}
+                    url={`/writing/${post.properties.slug.rich_text[0].plain_text}`}
+                    image={post.cover.external.url}
+                    emoji={post.icon.type === "emoji" ? post.icon.emoji : "👨‍💻"}
+                    title={post.properties.page.title[0].plain_text}
+                    description={
+                      post.properties.abstract.rich_text[0].plain_text
+                    }
+                    publishDate={post.properties.date.date.start}
+                    tags={post.properties.tags.multi_select}
+                  />
+                );
+              })}
+            </StyledCardContainer>
+          ) : null}
+
+          {storageLayout === "rows" ? (
+            <Box as="ul" direction="vertical" gap={10}>
+              {filteredPosts.map((post) => {
+                return (
+                  <Box as="li" key={post.id}>
+                    <Box as="article" direction="vertical">
+                      <Link
+                        href={`/writing/${post.properties.slug.rich_text[0].plain_text}`}
+                        variant="primary"
+                      >
+                        <TextTitle3>
+                          {post.properties.page.title[0].plain_text}
+                        </TextTitle3>
+                      </Link>
+
+                      <TextBody
+                        color="secondary"
+                        textAlign="justify"
+                        css={{
+                          maxWidth: "none",
+                          spacingBottom: "$2",
+                          "@bp3": { maxWidth: "75%" },
+                        }}
+                      >
+                        {post.properties.abstract.rich_text[0].plain_text}
+                      </TextBody>
+
+                      <PostTags
+                        as="div"
+                        tags={post.properties.tags.multi_select}
+                      />
+                    </Box>
+                  </Box>
+                );
+              })}
+            </Box>
+          ) : null}
         </Box>
       </Box>
     </Box>

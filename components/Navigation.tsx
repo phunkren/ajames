@@ -11,7 +11,6 @@ import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import * as Dialog from "@radix-ui/react-dialog";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { darkTheme, keyframes, lightTheme, styled } from "../stitches.config";
-import { ThemeToggle } from "./Theme";
 import { ICON_SIZE } from "../util/images";
 import { useTheme } from "../hooks/useTheme";
 import { Divider } from "./Divider";
@@ -22,6 +21,7 @@ import { TextAux, TextBody, TextHeadline } from "./Text";
 import { Button } from "./Button";
 import { Social } from "./Social";
 import { Box } from "./Box";
+import { ThemeToggle } from "./Toggle";
 
 const dialogSlideIn = keyframes({
   "0%": { left: "-100%" },

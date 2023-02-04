@@ -22,6 +22,7 @@ import { Box } from "./Box";
 import { TextAux, TextBody } from "./Text";
 
 type PostTagProps = {
+  as?: string;
   tags: Tag[];
   icon?: boolean;
 };
@@ -33,9 +34,12 @@ type ActiveTagsProps = {
 };
 
 const StyledTag = styled(Box, {
-  padding: "0 $2",
+  display: "flex",
+  alignitems: "center",
+  justifyContent: "center",
+  padding: "$1 $2",
   borderRadius: 4,
-  lineHeight: 1.2,
+  lineHeight: 1,
   borderStyle: "solid",
   borderWidth: 1,
   textTransform: "uppercase",

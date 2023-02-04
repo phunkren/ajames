@@ -8,7 +8,7 @@ import { Avatar } from "./Avatar";
 import { Link } from "./Link";
 import { Navigation, NavigationMobile } from "./Navigation";
 import { Social } from "./Social";
-import { ThemeToggle } from "./Theme";
+import { ThemeToggle } from "./Toggle";
 import { PERSONAL } from "../util/data";
 import { Box } from "./Box";
 import { PageSeo } from "./SEO";
