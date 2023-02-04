@@ -173,17 +173,23 @@ const Writing: NextPageWithLayout = ({ posts, tags }: Props) => {
     "grid"
   );
 
-  const handleTagChange = useCallback((tagName: string[]) => {
-    push({ pathname, query: { ...query, tag: tagName } }, undefined, {
-      scroll: false,
-    });
-  }, [pathname, push, query]);
+  const handleTagChange = useCallback(
+    (tagName: string[]) => {
+      push({ pathname, query: { ...query, tag: tagName } }, undefined, {
+        scroll: false,
+      });
+    },
+    [pathname, push, query]
+  );
 
-  const handleLayoutChange = useCallback((newLayout: string) => {
-    if (newLayout) {
-      setStorageLayout(newLayout);
-    }
-  }, setStorageLayout[]);
+  const handleLayoutChange = useCallback(
+    (newLayout: string) => {
+      if (newLayout) {
+        setStorageLayout(newLayout);
+      }
+    },
+    [setStorageLayout]
+  );
 
   return (
     <Box direction="vertical" spacingBottom={10} gap={10}>
