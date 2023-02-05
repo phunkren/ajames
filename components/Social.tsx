@@ -28,7 +28,7 @@ export const Social = memo(function Social({ size = "xl" }: Props) {
           <StyledLink
             href={SOCIAL.twitter.url}
             title={SOCIAL.twitter.displayName}
-            variant="secondary"
+            variant="icon"
             css={{ justifyContent: "center", spacing: "$1" }}
           >
             <TwitterLogoIcon
@@ -44,7 +44,7 @@ export const Social = memo(function Social({ size = "xl" }: Props) {
           <StyledLink
             href={SOCIAL.linkedin.url}
             title={SOCIAL.linkedin.displayName}
-            variant="secondary"
+            variant="icon"
             css={{ justifyContent: "center", spacing: "$1" }}
           >
             <LinkedInLogoIcon
@@ -60,7 +60,7 @@ export const Social = memo(function Social({ size = "xl" }: Props) {
           <StyledLink
             title="RSS Feed"
             href="/rss"
-            variant="secondary"
+            variant="icon"
             css={{ justifyContent: "center", spacing: "$1" }}
           >
             <MdRssFeed size={ICON_SIZE[size]} />
@@ -71,7 +71,7 @@ export const Social = memo(function Social({ size = "xl" }: Props) {
           <StyledLink
             href={SOCIAL.youtube.url}
             title={SOCIAL.youtube.displayName}
-            variant="secondary"
+            variant="icon"
             css={{ justifyContent: "center", spacing: "$1" }}
           >
             <VideoIcon

@@ -34,6 +34,7 @@ type ActiveTagsProps = {
 };
 
 const StyledTag = styled(Box, {
+  position: "relative",
   display: "flex",
   alignitems: "center",
   justifyContent: "center",
@@ -43,7 +44,19 @@ const StyledTag = styled(Box, {
   borderStyle: "solid",
   borderWidth: 1,
   textTransform: "uppercase",
-  color: "$foregroundMuted",
+
+  "& > *": {
+    zIndex: 1,
+  },
+
+  "&::after": {
+    content: "",
+    position: "absolute",
+    inset: -1,
+    backgroundColor: "$background",
+    opacity: 0.4,
+    borderRadius: 4,
+  },
 
   variants: {
     ...NOTION_TAG_VARIANTS,
@@ -108,9 +121,7 @@ export const PostTags = memo(function PostTags({
               borderColor={tag.color}
               active={isActive}
             >
-              <TextAux color={isActive ? "primary" : "secondary"}>
-                {tag.name}
-              </TextAux>
+              <TextAux>{tag.name}</TextAux>
             </StyledTag>
           );
         })}
@@ -144,9 +155,7 @@ export const ActiveTags = memo(function ActiveTags({
         <Box as="ul" role="list" gap={4} flexWrap="wrap">
           {activeTags.map((tag) => (
             <StyledTag as="li" key={tag.id} borderColor={tag.color} active>
-              <TextAux css={{ position: "relative", top: -2 }}>
-                {tag.name}
-              </TextAux>
+              <TextAux>{tag.name}</TextAux>
             </StyledTag>
           ))}
         </Box>

@@ -141,7 +141,7 @@ export const NavigationProjectLink = memo(function NavigationProjectLink({
           >
             <Image src={src} alt="" width={44} height={44} />
           </Box>
-          <Box direction="vertical" flexGrow>
+          <Box direction="vertical" flexGrow gap={1}>
             <TextAux>{name}</TextAux>
             <TextAux color="secondary" clamp={1}>
               {description}

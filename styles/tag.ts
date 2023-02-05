@@ -1,3 +1,4 @@
+import { rgba } from "polished";
 import { darkTheme, lightTheme } from "../stitches.config";
 
 export const NOTION_TAG_VARIANTS = {

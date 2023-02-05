@@ -122,7 +122,7 @@ const Home: NextPageWithLayout = () => {
             direction="vertical"
             alignItems="center"
             justifyContent="center"
-            spacingHorizontal={10}
+            spacingHorizontal={{ "@initial": 4, "@bp2": 10 }}
             css={{ "@bp2": { transform: "translateX(-40px)" } }}
             flexGrow
           >

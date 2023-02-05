@@ -3,8 +3,6 @@ import { memo } from "react";
 import { darkTheme, lightTheme, styled } from "../stitches.config";
 import { NOTION_TAG_VARIANTS } from "../styles/tag";
 import { Tag } from "../types/notion";
-import { Divider } from "./Divider";
-import { Box } from "./Box";
 import { TextAux } from "./Text";
 import { blackA, whiteA } from "@radix-ui/colors";
 

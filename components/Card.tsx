@@ -12,7 +12,7 @@ import { blackA, whiteA } from "@radix-ui/colors";
 import { darkTheme, lightTheme, styled } from "../stitches.config";
 import { PostTags, PublishDate } from "./Frontmatter";
 import { Box } from "./Box";
-import { Emoji, TextAux, TextHeadline, TextTitle3 } from "./Text";
+import { Emoji, TextAux, TextBody, TextHeadline, TextTitle3 } from "./Text";
 import { Link } from "./Link";
 import {
   BlogCardProps,
@@ -123,7 +123,9 @@ export const StyledCardImage = styled(Image, {
   },
 });
 
-export const StyledDescription = styled(TextAux, {});
+export const StyledDescription = styled(TextAux, {
+  lineHeight: 2,
+});
 
 export const StyledBlogContent = styled(Box, {
   position: "relative",
@@ -229,11 +231,7 @@ export const BlogCard = memo(function BlogCard({
 
             <StyledLink href={url} ref={ref} variant="invisible">
               {isPreviewVisible ? (
-                <StyledDescription
-                  clamp={4}
-                  textAlign="justify"
-                  css={{ lineHeight: 1.5 }}
-                >
+                <StyledDescription clamp={4} textAlign="justify">
                   {description}
                 </StyledDescription>
               ) : (

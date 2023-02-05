@@ -28,13 +28,17 @@ const StyledLink = styled("a", {
   alignItems: "center",
   gap: "$2",
   color: "inherit",
-  textDecoration: "none",
+  textDecorationLine: "none",
   textUnderlineOffset: "$space$1",
   transition: "color 75ms ease-out",
 
   "&[aria-current='page']": {
     color: "$blue11",
-    textDecoration: "underline",
+    textDecorationLine: "underline",
+  },
+
+  "@print": {
+    textDecorationLine: "none !important",
   },
 
   variants: {
@@ -43,7 +47,7 @@ const StyledLink = styled("a", {
         color: "$blue10",
 
         "&:hover": {
-          textDecoration: "underline",
+          textDecorationLine: "underline",
         },
 
         "&:active": {
@@ -61,7 +65,7 @@ const StyledLink = styled("a", {
         },
       },
       tertiary: {
-        textDecoration: "underline",
+        textDecorationLine: "underline",
         textDecorationStyle: "dotted",
 
         "&:hover": {
@@ -76,16 +80,27 @@ const StyledLink = styled("a", {
       },
       invisible: {
         color: "inherit",
-        textDecoration: "none",
+        textDecorationLine: "none",
 
         "&:hover": {
           color: "inherit",
-          textDecoration: "none",
+          textDecorationLine: "none",
         },
 
         "&:active": {
           color: "inherit",
-          textDecoration: "none",
+          textDecorationLine: "none",
+        },
+      },
+      icon: {
+        color: "inherit",
+
+        "&:hover": {
+          color: "$blue10",
+        },
+
+        "&:active": {
+          color: "$blue9",
         },
       },
     },
@@ -453,11 +468,11 @@ export const TwitterShareLink = memo(function TwitterShareLink({
   }
 
   return (
-    <Link href={href} title="Share on Twitter" variant="secondary">
+    <StyledLink href={href} title="Share on Twitter" variant="secondary">
       <Box alignItems="center" gap={2}>
         <TwitterLogoIcon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
         <TextHeadline>Tweet</TextHeadline>
       </Box>
-    </Link>
+    </StyledLink>
   );
 });

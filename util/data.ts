@@ -79,7 +79,7 @@ export const EMPLOYMENT: Employer[] = [
     endDate: "2020-10-01",
     location: "London, UK",
     content:
-      "Played a key role in the development and launch of several successful startup businesses. Responsibilities centred around engineering and delivering robust and well-documented products that could be taken to market. Also participated in the Code First Girls program, which aims to reduce the gender diversity gap by giving women the opportunity to pursue a career in tech. Through mentoring, directly contributed to the community by supporting the growth and development of future engineers.",
+      "Played a key role in the development and launch of several successful startup businesses. Responsibilities centred around engineering and delivering robust and well-documented products that could be taken to market. Also participated as a mentor in the Code First Girls program, directly contributing to the community by supporting the growth and development of future engineers.",
     notableWork: [
       {
         id: "vanguard",
@@ -102,7 +102,7 @@ export const EMPLOYMENT: Employer[] = [
     endDate: "2019-03-01",
     location: "London, UK",
     content:
-      "Collaborated on exciting data visualization and trading platform projects for fintech clients and major banks, including a React Native prototype. Also contributed to the redesign of the company's website and participated in various internal events such as hackathons, live streams, and technical presentations. These experiences not only kept current with the latest technologies and practices, but also provided opportunities to share knowledge and insights with colleagues.",
+      "Collaborated on exciting data visualization and trading platform projects for fintech clients and major banks, including a React Native prototype. Also contributed to the redesign of the company's website and participated in various internal events such as hackathons, live streams, and technical presentations.",
     notableWork: [
       {
         id: "access-fintech",
@@ -130,7 +130,7 @@ export const EMPLOYMENT: Employer[] = [
     endDate: "2017-06-01",
     location: "London, UK",
     content:
-      "Cohaesus is a commercial advertising agency that enabled the opportunity to learn the fundamentals of frontend web development. This spanned a variety of projects, both in-house and at some of the top advertising agencies in and around London. Working with both green field and legacy codebases provided the chance to not only learn new technologies and approaches, but also to gain a deeper understanding of how to maintain and improve existing systems.",
+      "Cohaesus is a commercial advertising agency where I learned the fundamentals of frontend web development, both in-house and at some of Londons top advertising agencies. Working with both green field and legacy codebases provided the chance to learn new technologies and approaches, and gain a deeper understanding of how to maintain and improve existing systems.",
     notableWork: [
       {
         id: "WWF",
@@ -245,8 +245,6 @@ export const TESTIMONIALS: Testimonial[] = [
     position: "VP, Engineering",
     quote:
       "Rarely have I had the opportunity to work with an engineer that combines Andrew's technical calibre, his exceptional citizenship, his ability to communicate and demonstrate his ideas to both team and client, and his commitment to coaching and mentoring the folks he works with.",
-    excerpt:
-      "He's an all-round great human. He is a genuine asset to any tech team that has the privilege of his attention",
   },
   {
     id: "pg",
@@ -255,8 +253,6 @@ export const TESTIMONIALS: Testimonial[] = [
     position: "Engineering Director",
     quote:
       "Andrew brings exceptional technical competency to his work, applying the highest levels of detail and clarity to his code. [...] He brings a considered, positive attitude and has been an absolute pleasure to work with. I could not recommend him higher.",
-    excerpt:
-      "Andrew brings a considered, positive attitude and has been an absolute pleasure to work with.",
   },
   {
     id: "ib",
@@ -264,9 +260,7 @@ export const TESTIMONIALS: Testimonial[] = [
     url: "https://www.linkedin.com/in/ian-brennan-474245138/",
     position: "Engineering Manager",
     quote:
-      "From the moment we interviewed him, through to the many projects we worked on together, Andrew always showed a strong desire and passion for his work and the technologies behind it. He picks up techniques, approaches, libraries, and languages with ease, delivering on project requirements whilst also taking the time to truly understand how something works.",
-    excerpt:
-      "Andrew always showed a strong desire and passion for his work and the technologies behind it.",
+      "Andrew always showed a strong desire and passion for his work and the technologies behind it. He picks up techniques, approaches, libraries, and languages with ease, delivering on project requirements whilst also taking the time to truly understand how something works.",
   },
 ];
 

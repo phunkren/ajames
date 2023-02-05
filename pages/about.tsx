@@ -159,14 +159,13 @@ const StyledImage = styled(Image, {
 const StyledBlockQuote = styled("blockquote", {
   fontStyle: "oblique",
   textAlign: "justify",
+  hyphens: "auto",
+  lineHeight: "inherit",
 
   "@print": {
     display: "-webkit-box",
     overflow: "hidden",
     textAlign: "left",
-
-    ["-webkit-line-clamp"]: "5",
-    ["-webkit-box-orient"]: "vertical",
   },
 });
 
@@ -446,7 +445,13 @@ const About: NextPageWithLayout = () => {
               <GridRoot>
                 {EXPERTISE.map((topic) => (
                   <GridItem key={topic}>
-                    <TextAux color="primary" textTransform="uppercase">
+                    <TextAux
+                      color="primary"
+                      textTransform={{
+                        "@print": "capitalize",
+                        "@initial": "uppercase",
+                      }}
+                    >
                       {topic}
                     </TextAux>
                   </GridItem>
@@ -469,7 +474,13 @@ const About: NextPageWithLayout = () => {
               <GridRoot>
                 {INTERESTS.map((interest) => (
                   <GridItem key={interest}>
-                    <TextAux color="primary" textTransform="uppercase">
+                    <TextAux
+                      color="primary"
+                      textTransform={{
+                        "@print": "capitalize",
+                        "@initial": "uppercase",
+                      }}
+                    >
                       {interest}
                     </TextAux>
                   </GridItem>
@@ -513,20 +524,9 @@ const About: NextPageWithLayout = () => {
                             color="secondary"
                             css={{
                               display: "inline",
-                              "@print": { display: "none" },
                             }}
                           >
                             {testimonial.quote}
-                          </TextAux>
-
-                          <TextAux
-                            fontWeight={400}
-                            css={{
-                              display: "none",
-                              "@print": { display: "inline" },
-                            }}
-                          >
-                            {testimonial.excerpt}
                           </TextAux>
                         </StyledBlockQuote>
 
@@ -593,7 +593,7 @@ const About: NextPageWithLayout = () => {
                 <Divider />
               </Box>
 
-              <Box direction="vertical" gap={{ "@print": 6, "@initial": 10 }}>
+              <Box direction="vertical" gap={10}>
                 {EMPLOYMENT.map((employer) => (
                   <Box direction="vertical" gap={4} key={employer.id}>
                     <Box
@@ -640,14 +640,19 @@ const About: NextPageWithLayout = () => {
                                   "@print": "capitalize",
                                   "@initial": "uppercase",
                                 }}
-                                fontWeight={400}
                                 dateTime={new Date(
                                   employer.startDate
                                 ).toISOString()}
+                                css={{ lineHeight: "inherit" }}
                               >
                                 {formatLongDate(new Date(employer.startDate))}
                               </TextAux>
-                              <TextAux color="secondary">&nbsp;-&nbsp;</TextAux>
+                              <TextAux
+                                color="secondary"
+                                css={{ lineHeight: "inherit" }}
+                              >
+                                &nbsp;-&nbsp;
+                              </TextAux>
                             </>
                           ) : null}
 
@@ -655,7 +660,6 @@ const About: NextPageWithLayout = () => {
                             <TextAux
                               as="time"
                               color="secondary"
-                              fontWeight={400}
                               textTransform={{
                                 "@print": "capitalize",
                                 "@initial": "uppercase",
@@ -663,6 +667,7 @@ const About: NextPageWithLayout = () => {
                               dateTime={new Date(
                                 employer.endDate
                               ).toISOString()}
+                              css={{ lineHeight: "inherit" }}
                             >
                               {formatLongDate(new Date(employer.endDate))}
                             </TextAux>
@@ -670,12 +675,12 @@ const About: NextPageWithLayout = () => {
                             <TextAux
                               as="time"
                               color="secondary"
-                              fontWeight={400}
                               textTransform={{
                                 "@print": "capitalize",
                                 "@initial": "uppercase",
                               }}
                               dateTime={new Date().toISOString()}
+                              css={{ lineHeight: "inherit" }}
                             >
                               Present
                             </TextAux>
@@ -697,7 +702,7 @@ const About: NextPageWithLayout = () => {
                             "@print": "horizontal",
                             "@initial": "vertical",
                           }}
-                          spacingHorizontal={10}
+                          spacingHorizontal={{ "@print": 5, "@initial": 10 }}
                           gap={{
                             "@print": 10,
                             "@initial": 0,

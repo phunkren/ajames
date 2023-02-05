@@ -101,10 +101,6 @@ export const StyledIconButton = styled(Button, {
     backgroundColor: "$foreground",
     color: "$background",
   },
-
-  "&:active": {
-    boxShadow: "$5",
-  },
 });
 
 const StyledToastViewport = styled(Toast.Viewport, {
@@ -161,6 +157,15 @@ const StyledPreviewToggle = styled(Toggle.Root, {
   borderWidth: 1,
   borderStyle: "solid",
   borderColor: "transparent",
+});
+
+const StyledBox = styled(Box, {
+  "&:hover": {
+    color: "$forgeound",
+    textDecorationColor: "$blue10",
+    textDecorationLine: "underline",
+    textUnderlineOffset: "$space$1",
+  },
 });
 
 export const ScrollToTopButton = memo(function ScrollToTopButton(props: any) {
@@ -224,14 +229,14 @@ export const ShareButton = memo(function ShareButton({
           </StyledIconButton>
         ) : (
           <Button title="Share" onClick={handleClick}>
-            <Box alignItems="center" gap={2}>
+            <StyledBox alignItems="center" gap={2}>
               <Share2Icon
                 width={ICON_SIZE.m}
                 height={ICON_SIZE.m}
                 aria-hidden
               />
               <TextHeadline>Share</TextHeadline>
-            </Box>
+            </StyledBox>
           </Button>
         )}
 

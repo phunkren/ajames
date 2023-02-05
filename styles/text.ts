@@ -22,6 +22,7 @@ export const TEXT_VARIANTS = {
     },
     justify: {
       textAlign: "justify",
+      hyphens: "auto",
     },
   },
   textDecoration: {

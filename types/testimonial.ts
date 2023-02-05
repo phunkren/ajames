@@ -4,5 +4,4 @@ export type Testimonial = {
   url: string;
   position: string;
   quote: string;
-  excerpt: string;
 };

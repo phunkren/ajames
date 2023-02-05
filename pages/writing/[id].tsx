@@ -87,7 +87,7 @@ const StyledContainer = styled(Box, {
 // The computed value is (fontSize * lineHeight) / 2.
 const StyledContent = styled(Box, {
   position: "relative",
-  top: -24,
+  top: -16,
 
   "@bp2": {
     top: -32,
@@ -155,7 +155,7 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
                 <Box direction="vertical">
                   <Emoji
                     emoji={frontmatter.emoji}
-                    size={{ "@bp2": "l" }}
+                    size={{ "@initial": "s", "@bp2": "l" }}
                     css={{
                       position: "relative",
                       right: "$1",

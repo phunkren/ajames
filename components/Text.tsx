@@ -29,7 +29,7 @@ export const TextTitle2 = styled("h2", {
 });
 
 export const TextTitle3 = styled("h3", {
-  fontWeight: 400,
+  fontWeight: 500,
   ...H3_STYLES,
 
   variants: {
@@ -38,6 +38,7 @@ export const TextTitle3 = styled("h3", {
 });
 
 export const TextBody = styled("p", {
+  fontWeight: 400,
   ...P_STYLES,
 
   variants: {
@@ -60,7 +61,12 @@ export const MarkdownTitle = styled(TextTitle2, {
 
 export const TextAux = styled("span", {
   fontWeight: 500,
+  lineHeight: 1,
   ...AUX_STYLES,
+
+  "@print": {
+    fontWeight: 400,
+  },
 
   variants: {
     ...TEXT_VARIANTS,

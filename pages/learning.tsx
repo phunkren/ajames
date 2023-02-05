@@ -254,7 +254,7 @@ const Learning: NextPageWithLayout = ({
                 }}
                 gap={10}
                 alignItems="center"
-                spacingBottom={6}
+                spacingBottom={8}
               >
                 <TextTitle3 as="h2">Latest Video</TextTitle3>
 
@@ -304,24 +304,20 @@ const Learning: NextPageWithLayout = ({
                   </AspectRatio>
                 </Box>
 
-                <Box direction="vertical">
+                <Box direction="vertical" gap={4}>
                   <Link href={videoPreview.url} variant="primary">
                     <TextTitle3>
                       <Balancer>{videoPreview.title}</Balancer>
                     </TextTitle3>
                   </Link>
 
-                  <PublishDate
-                    date={videoPreview.publishedAt}
-                    spacingTop={2}
-                    spacingBottom={6}
-                  />
+                  <PublishDate date={videoPreview.publishedAt} />
 
                   <TextBody clamp={3} textAlign="justify">
                     {videoPreview.description}
                   </TextBody>
 
-                  <Box spacingTop={3}>
+                  <Box>
                     <Link href={videoPreview.url} variant="tertiary">
                       <TextAux color="secondary">Read more</TextAux>
                     </Link>
@@ -361,7 +357,7 @@ const Learning: NextPageWithLayout = ({
                       "@bp2": "flex-start",
                     }}
                     alignItems="center"
-                    spacingBottom={6}
+                    spacingBottom={4}
                   >
                     <Link href={playlistUrl} variant="secondary">
                       <TextTitle3 as="h2">{playlist.title}</TextTitle3>
@@ -389,7 +385,7 @@ const Learning: NextPageWithLayout = ({
 
                   <ScrollAreaRoot>
                     <StyledVideoCardViewport>
-                      <StyledVideoCardContainer spacingVertical={10}>
+                      <StyledVideoCardContainer spacingVertical={8}>
                         {playlistVideosPreview[playlist.id].map(
                           (playlistVideo) => (
                             <VideoCard

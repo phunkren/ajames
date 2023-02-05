@@ -256,7 +256,7 @@ const Writing: NextPageWithLayout = ({ posts, tags }: Props) => {
         {featuredPost ? (
           <>
             <Box direction="vertical">
-              <Box spacingBottom={6}>
+              <Box spacingBottom={8}>
                 <TextTitle3 as="h2">Featured</TextTitle3>
               </Box>
 
@@ -281,7 +281,7 @@ const Writing: NextPageWithLayout = ({ posts, tags }: Props) => {
                   </AspectRatio>
                 </Box>
 
-                <Box direction="vertical">
+                <Box direction="vertical" gap={4}>
                   <Link
                     href={`/writing/${featuredPost.properties.slug.rich_text[0].plain_text}`}
                     variant="primary"
@@ -293,17 +293,17 @@ const Writing: NextPageWithLayout = ({ posts, tags }: Props) => {
                     </TextTitle3>
                   </Link>
 
-                  <PublishDate
-                    date={featuredPost.properties.date.date.start}
-                    spacingTop={2}
-                    spacingBottom={6}
-                  />
+                  <Box>
+                    <PostTags
+                      tags={featuredPost.properties.tags.multi_select}
+                    />
+                  </Box>
 
                   <TextBody clamp={3} textAlign="justify">
                     {featuredPost.properties.abstract.rich_text[0].plain_text}
                   </TextBody>
 
-                  <Box spacingTop={3}>
+                  <Box>
                     <Link
                       href={`/writing/${featuredPost.properties.slug.rich_text[0].plain_text}`}
                       variant="tertiary"
@@ -326,7 +326,7 @@ const Writing: NextPageWithLayout = ({ posts, tags }: Props) => {
             gap={4}
             justifyContent="space-between"
             alignItems="center"
-            spacingBottom={6}
+            spacingBottom={8}
           >
             <Box>
               <TextTitle3 as="h2">Articles</TextTitle3>
