@@ -102,7 +102,7 @@ const StyledCardContainer = styled(Box, {
         ["-webkit-line-clamp"]: "4",
       },
 
-      [`${TextAux}`]: {
+      [`& a ${TextAux}`]: {
         fontSize: "1.1em",
         ["-webkit-line-clamp"]: "6",
       },
@@ -127,7 +127,7 @@ const StyledCardContainer = styled(Box, {
         ["-webkit-line-clamp"]: "4",
       },
 
-      [`${TextAux}`]: {
+      [`& a ${TextAux}`]: {
         fontSize: "1.1em",
         ["-webkit-line-clamp"]: "6",
       },
