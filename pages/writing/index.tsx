@@ -87,10 +87,7 @@ const StyledCardContainer = styled(Box, {
 
       [`${StyledCardInner}`]: {
         top: 32,
-      },
-
-      [`${StyledCardImage}`]: {
-        top: 32,
+        padding: "0 $6 $6",
       },
 
       [`${StyledBlogContent}`]: {
@@ -117,6 +114,11 @@ const StyledCardContainer = styled(Box, {
       flexDirection: "row-reverse",
       gridColumn: "span 2",
       gridRow: "span 1",
+
+      [`${StyledCardInner}`]: {
+        top: 32,
+        padding: "0 $6 $6",
+      },
 
       [`${StyledBlogContent}`]: {
         top: 32,

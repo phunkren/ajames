@@ -57,6 +57,13 @@ const StyledLink = styled("a", {
         "&:active": {
           color: "$blue9",
         },
+
+        "@print": {
+          color: "black ",
+          backgroundImage: "none",
+          backgroundClip: "border-box",
+          ["-webkit-text-fill-color"]: "currentcolor",
+        },
       },
       secondary: {
         "&:hover": {

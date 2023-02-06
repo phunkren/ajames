@@ -1,11 +1,11 @@
-import { gray, slate, grayDark, slateDark, sky, sage } from "@radix-ui/colors";
+import { gray, slate, grayDark, slateDark } from "@radix-ui/colors";
 
 export const LIGHT_THEME_COLORS = {
   foreground: slate.slate12,
   foregroundMuted: gray.gray11,
   background: slate.slate2,
   backgroundMuted: gray.gray1,
-  backgroundGradient: `radial-gradient(circle at top, ${slate.slate2} 0%, ${gray.gray2} 100%)`,
+  backgroundGradient: `radial-gradient(circle at top, ${slate.slate4} 0%, ${gray.gray4} 100%)`,
 };
 
 export const DARK_THEME_COLORS = {

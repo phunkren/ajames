@@ -9,6 +9,10 @@ const StyledSeparator = styled(Separator.Root, {
 
   "&[data-orientation=horizontal]": { height: 2, width: "100%" },
   "&[data-orientation=vertical]": { height: "100%", width: 2 },
+
+  "@print": {
+    border: "1px solid black",
+  },
 });
 
 export const Divider = memo(function Divider(props: Separator.SeparatorProps) {

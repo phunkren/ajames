@@ -161,20 +161,15 @@ const StyledBlockQuote = styled("blockquote", {
   textAlign: "justify",
   hyphens: "auto",
   lineHeight: "inherit",
-
-  "@print": {
-    display: "-webkit-box",
-    overflow: "hidden",
-    textAlign: "left",
-  },
 });
 
-const GridRoot = styled("div", {
+const GridRoot = styled("ul", {
   display: "grid",
   gridTemplateColumns: "1fr",
   gridTemplateRows: "repeat(auto, 1fr)",
   gridColumnGap: "$4",
   gridRowGap: "$4",
+  listStyleType: "none",
 
   "@print": {
     gridTemplateColumns: "1fr",
@@ -190,7 +185,7 @@ const GridRoot = styled("div", {
   },
 });
 
-const GridItem = styled("div", {
+const GridItem = styled("li", {
   padding: "$2",
   borderWidth: 1,
   borderStyle: "solid",
@@ -257,7 +252,7 @@ const About: NextPageWithLayout = () => {
           <Box
             direction="vertical"
             spacingHorizontal={3}
-            spacingBottom={6}
+            spacingBottom={4}
             css={{ borderBottom: "2px solid black" }}
           >
             <TextTitle1>{PERSONAL.name}</TextTitle1>

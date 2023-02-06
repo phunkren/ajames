@@ -213,10 +213,7 @@ export const BlogCard = memo(function BlogCard({
     <Card image={image}>
       {({ ref, isPreviewVisible, onPreviewToggle }) => (
         <>
-          <StyledBlogContent
-            direction="vertical"
-            css={{ minHeight: 156, "@bp2": { minHeight: 140 } }}
-          >
+          <StyledBlogContent direction="vertical" css={{ minHeight: 156 }}>
             <Emoji
               emoji={emoji}
               size="s"
@@ -288,7 +285,7 @@ export const VideoCard = memo(function VideoCard({
           direction="vertical"
           spacingTop={4}
           flexGrow
-          css={{ minHeight: 156, "@bp2": { minHeight: 140 } }}
+          css={{ minHeight: 156 }}
         >
           <StyledLink href={url} ref={ref} variant="invisible">
             {isPreviewVisible ? (

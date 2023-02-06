@@ -58,10 +58,6 @@ export const MarkdownTitle = styled(TextTitle2, {
 export const TextAux = styled("span", {
   ...AUX_STYLES,
 
-  "@print": {
-    fontWeight: 400,
-  },
-
   variants: {
     ...TEXT_VARIANTS,
   },

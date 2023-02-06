@@ -122,6 +122,7 @@ export const H1_STYLES = {
 
   "@print": {
     fontSize: 24,
+    lineHeight: 1.2,
   },
 };
 
@@ -141,6 +142,7 @@ export const H2_STYLES = {
 
   "@print": {
     fontSize: 18,
+    lineHeight: 1.3,
   },
 };
 
@@ -156,6 +158,7 @@ export const H3_STYLES = {
 
   "@print": {
     fontSize: 16,
+    lineHeight: 1.4,
   },
 };
 
@@ -182,6 +185,7 @@ export const AUX_STYLES = {
 
   "@print": {
     fontSize: 12,
+    fontWeight: 400,
     lineHeight: 1,
   },
 };
