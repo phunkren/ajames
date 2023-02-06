@@ -225,6 +225,7 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
                 gap={10}
                 css={{
                   textAlign: "justify",
+                  hyphens: "auto",
                 }}
               >
                 <ReactMarkdown

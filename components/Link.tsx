@@ -44,10 +44,14 @@ const StyledLink = styled("a", {
   variants: {
     variant: {
       primary: {
-        color: "$blue10",
+        color: "unset",
+        backgroundImage: `linear-gradient(90deg, $blue11 0.04%, $blue9 100.04%)`,
+        backgroundClip: "text",
+        ["-webkit-text-fill-color"]: "transparent",
 
         "&:hover": {
           textDecorationLine: "underline",
+          textDecorationColor: "unset",
         },
 
         "&:active": {

@@ -1,17 +1,12 @@
+import { memo, useCallback } from "react";
 import * as ToggleGroup from "@radix-ui/react-toggle-group";
-import { memo, useCallback, useEffect } from "react";
+import { blackA, whiteA } from "@radix-ui/colors";
 import { GridIcon, MoonIcon, RowsIcon, SunIcon } from "@radix-ui/react-icons";
 import { darkTheme, keyframes, lightTheme, styled } from "../stitches.config";
 import { Theme } from "../types/theme";
 import { ICON_SIZE } from "../util/images";
-import { blackA, whiteA } from "@radix-ui/colors";
 import { useTheme } from "../hooks/useTheme";
-import { useLocalStorage } from "../hooks/useLocalStorage";
-
-// const peek = keyframes({
-//   "0%": { transform: "translateY(100%)" },
-//   "100%": { transform: "translateY(75%)" },
-// });
+import { TextAux } from "./Text";
 
 const rise = keyframes({
   "0%": { transform: "translateY(75%)" },
@@ -23,7 +18,7 @@ const set = keyframes({
   "100%": { transform: "translateY(100%)" },
 });
 
-export const ToggleGroupRoot = styled(ToggleGroup.Root, {
+const ToggleGroupRoot = styled(ToggleGroup.Root, {
   display: "inline-flex",
   borderRadius: 4,
   borderWidth: 1,
@@ -33,7 +28,7 @@ export const ToggleGroupRoot = styled(ToggleGroup.Root, {
   boxShadow: "$1",
 });
 
-export const ToggleGroupItem = styled(ToggleGroup.Item, {
+const ToggleGroupItem = styled(ToggleGroup.Item, {
   all: "unset",
   height: 32,
   width: 32,
@@ -121,6 +116,39 @@ const DarkToggle = styled(ToggleGroupItem, {
   },
 });
 
+const PageToggleRoot = styled(ToggleGroup.Root, {
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+  gap: "$8",
+});
+
+const PageToggleItem = styled(ToggleGroup.Item, {
+  all: "unset",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  backgroundColor: "transparent",
+  opacity: 0.4,
+  textTransform: "uppercase",
+  borderRadius: 4,
+  borderWidth: 1,
+  borderStyle: "solid",
+  borderColor: "transparent",
+  transition: "opacity 75ms ease-out",
+
+  "&:hover": {
+    opacity: 0.75,
+  },
+
+  "&[data-state=on]": {
+    opacity: 1,
+    cursor: "default",
+    transition: "opacity 0 ease-out",
+  },
+});
+
 export const ThemeToggle = memo(function ThemeToggle() {
   const { themeName: theme, onThemeChange } = useTheme();
 
@@ -166,5 +194,21 @@ export const LayoutToggle = memo(function LayoutToggle(
         <RowsIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
       </ToggleGroupItem>
     </ToggleGroupRoot>
+  );
+});
+
+export const PageToggle = memo(function PageToggle(
+  props: ToggleGroup.ToggleGroupSingleProps
+) {
+  return (
+    <PageToggleRoot aria-label="Nav toggle" orientation="vertical" {...props}>
+      <PageToggleItem value="short">
+        <TextAux textTransform="capitalize">Short</TextAux>
+      </PageToggleItem>
+
+      <PageToggleItem value="long">
+        <TextAux textTransform="capitalize">Long</TextAux>
+      </PageToggleItem>
+    </PageToggleRoot>
   );
 });

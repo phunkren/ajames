@@ -55,7 +55,6 @@ const StyledButton = styled("button", {
   font: "inherit",
   overflow: "visible",
   padding: "0",
-  lineHeight: "normal",
   transition: "background 100ms ease-out, boxShadow 100ms ease-out",
 
   "-webkit-appearance": "none",
@@ -159,15 +158,6 @@ const StyledPreviewToggle = styled(Toggle.Root, {
   borderColor: "transparent",
 });
 
-const StyledBox = styled(Box, {
-  "&:hover": {
-    color: "$forgeound",
-    textDecorationColor: "$blue10",
-    textDecorationLine: "underline",
-    textUnderlineOffset: "$space$1",
-  },
-});
-
 export const ScrollToTopButton = memo(function ScrollToTopButton(props: any) {
   const handleScrollToTop = useCallback(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -229,14 +219,8 @@ export const ShareButton = memo(function ShareButton({
           </StyledIconButton>
         ) : (
           <Button title="Share" onClick={handleClick}>
-            <StyledBox alignItems="center" gap={2}>
-              <Share2Icon
-                width={ICON_SIZE.m}
-                height={ICON_SIZE.m}
-                aria-hidden
-              />
-              <TextHeadline>Share</TextHeadline>
-            </StyledBox>
+            <Share2Icon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
+            <TextHeadline>Share</TextHeadline>
           </Button>
         )}
 

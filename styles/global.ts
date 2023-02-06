@@ -28,7 +28,6 @@ export const globalStyles = globalCss({
     flexDirection: "column",
     textRendering: "optimizeLegibility",
     backgroundBlendMode: "multiply",
-    lineHeight: "1.6",
     width: "100%",
     minHeight: "100dvh",
     overflowX: "hidden",
@@ -57,6 +56,7 @@ export const globalStyles = globalCss({
 
   "a, button": {
     fontWeight: 500,
+    letterSpacing: "0.32px",
   },
 
   /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
@@ -92,20 +92,22 @@ export const globalStyles = globalCss({
 
   // Default code block styling
   code: {
+    ...AUX_STYLES,
     paddingTop: 0,
     paddingRight: "$1",
     paddingBottom: 0,
     paddingLeft: "$1",
-    ...P_STYLES,
+    lineHeight: "inherit",
   },
 
   pre: {
     code: {
       ...AUX_STYLES,
       display: "block",
-      whiteSpace: "pre-wrap",
       minWidth: "100px",
       maxWidth: "100%",
+      whiteSpace: "pre !important",
+      overflowX: "auto",
       padding: "$4",
       borderRadius: 4,
       textAlign: "left",

@@ -4,7 +4,6 @@ import Router from "next/router";
 import { styled } from "../stitches.config";
 import { ErrorBoundaryProps } from "../types/error";
 import { Button } from "./Button";
-import { Layout } from "./Layout";
 import { TextHeadline, TextTitle1 } from "./Text";
 import { Box } from "./Box";
 

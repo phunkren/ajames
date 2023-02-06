@@ -1,5 +1,4 @@
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import * as ToggleGroup from "@radix-ui/react-toggle-group";
 import { memo, useCallback } from "react";
 import { darkTheme, lightTheme, styled } from "../stitches.config";
 import { NOTION_TAG_VARIANTS } from "../styles/tag";
@@ -9,12 +8,7 @@ import { blackA, whiteA } from "@radix-ui/colors";
 import { FilterMenuButton } from "./Button";
 import { CheckIcon } from "@radix-ui/react-icons";
 import { useTheme } from "../hooks/useTheme";
-import { StyledTag } from "./Frontmatter";
-import { tagmanager } from "googleapis/build/src/apis/tagmanager";
-
-type TagProps = ToggleGroup.ToggleGroupMultipleProps & {
-  tags: Tag[];
-};
+import { Box } from "./Box";
 
 type TagDropdownItemProps = DropdownMenu.DropdownMenuCheckboxItemProps & Tag;
 
@@ -44,165 +38,37 @@ const StyledDropdownMenuItem = styled(DropdownMenu.CheckboxItem, {
   },
 });
 
-const TagToggleRoot = styled(ToggleGroup.Root, {
-  display: "grid",
-  gridTemplateColumns: "repeat(2, 1fr)",
-  gridTemplateRows: "1fr",
-  gridColumnGap: "$2",
-  gridRowGap: "$2",
-  width: "100%",
-  spacingVertical: "$10",
-
-  "@bp2": {
-    gridTemplateColumns: "repeat(3, 1fr)",
-    gridColumnGap: "$4",
-    gridRowGap: "$4",
-  },
-
-  "@bp3": {
-    gridTemplateColumns: "repeat(4, 1fr)",
-  },
-});
-
-const TagToggleItem = styled(ToggleGroup.Item, {
-  all: "unset",
+export const StyledTag = styled(Box, {
+  position: "relative",
   display: "flex",
-  alignItems: "center",
+  alignitems: "center",
   justifyContent: "center",
-  textTransform: "uppercase",
-  padding: "$2",
-  boxShadow: "$1",
+  padding: "$1 $2",
   borderRadius: 4,
-  borderWidth: 1,
   borderStyle: "solid",
-  borderColor: "transparent",
-  transition:
-    "background 200ms ease-out, opacity 200ms ease-out, box-shadow 200ms ease-out",
+  borderWidth: 1,
+  textTransform: "uppercase",
 
-  [`.${darkTheme} &`]: {
-    backgroundColor: whiteA.whiteA2,
+  "& > *": {
+    zIndex: 1,
   },
 
-  [`.${darkTheme} &:hover`]: {
-    backgroundColor: whiteA.whiteA3,
-    boxShadow: "$4",
+  "&::after": {
+    content: "",
+    position: "absolute",
+    inset: -1,
+    backgroundColor: "$background",
+    opacity: 0.4,
+    borderRadius: 4,
   },
 
-  [`.${darkTheme} &:active`]: {
-    backgroundColor: whiteA.whiteA4,
-    boxShadow: "$5",
-  },
-
-  [`.${lightTheme} &`]: {
-    backgroundColor: blackA.blackA2,
-  },
-
-  [`.${lightTheme} &:hover`]: {
-    backgroundColor: blackA.blackA3,
-    boxShadow: "$4",
-  },
-
-  [`.${lightTheme} &:active`]: {
-    backgroundColor: blackA.blackA4,
-    boxShadow: "$5",
-  },
-
-  "&:active": {
-    boxShadow: "$5",
+  [`${TextAux}`]: {
+    lineHeight: 1,
   },
 
   variants: {
     ...NOTION_TAG_VARIANTS,
-    active: {
-      true: {
-        opacity: 1,
-      },
-      false: {
-        opacity: 0.4,
-
-        "&:hover": {
-          opacity: 0.75,
-        },
-      },
-    },
   },
-});
-
-const PageToggleRoot = styled(ToggleGroup.Root, {
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
-  alignItems: "center",
-  gap: "$8",
-});
-
-const PageToggleItem = styled(ToggleGroup.Item, {
-  all: "unset",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  backgroundColor: "transparent",
-  opacity: 0.4,
-  textTransform: "uppercase",
-  borderRadius: 4,
-  borderWidth: 1,
-  borderStyle: "solid",
-  borderColor: "transparent",
-  transition: "opacity 75ms ease-out",
-
-  "&:hover": {
-    opacity: 0.75,
-  },
-
-  "&[data-state=on]": {
-    opacity: 1,
-    cursor: "default",
-    transition: "opacity 0 ease-out",
-  },
-});
-
-export const TagToggle = memo(function TagToggle({
-  tags,
-  value,
-  ...props
-}: TagProps) {
-  return (
-    <TagToggleRoot
-      aria-label="Blog tag toggle"
-      orientation="horizontal"
-      value={value}
-      {...props}
-    >
-      {tags.map((tag) => (
-        <TagToggleItem
-          key={tag.id}
-          value={tag.name}
-          borderColor={tag.color}
-          active={!value.length || value.includes(tag.name)}
-        >
-          <TextAux textTransform="uppercase">
-            {tag.name} ({tag.count})
-          </TextAux>
-        </TagToggleItem>
-      ))}
-    </TagToggleRoot>
-  );
-});
-
-export const PageToggle = memo(function PageToggle(
-  props: ToggleGroup.ToggleGroupSingleProps
-) {
-  return (
-    <PageToggleRoot aria-label="Nav toggle" orientation="vertical" {...props}>
-      <PageToggleItem value="short">
-        <TextAux textTransform="capitalize">Short</TextAux>
-      </PageToggleItem>
-
-      <PageToggleItem value="long">
-        <TextAux textTransform="capitalize">Long</TextAux>
-      </PageToggleItem>
-    </PageToggleRoot>
-  );
 });
 
 export const TagDropdown = memo(function TagDropdown(props: any) {

@@ -11,7 +11,6 @@ import {
 import { EmojiProps } from "../types/emoji";
 
 export const TextTitle1 = styled("h1", {
-  fontWeight: 600,
   ...H1_STYLES,
 
   variants: {
@@ -20,7 +19,6 @@ export const TextTitle1 = styled("h1", {
 });
 
 export const TextTitle2 = styled("h2", {
-  fontWeight: 600,
   ...H2_STYLES,
 
   variants: {
@@ -29,7 +27,6 @@ export const TextTitle2 = styled("h2", {
 });
 
 export const TextTitle3 = styled("h3", {
-  fontWeight: 500,
   ...H3_STYLES,
 
   variants: {
@@ -38,7 +35,6 @@ export const TextTitle3 = styled("h3", {
 });
 
 export const TextBody = styled("p", {
-  fontWeight: 400,
   ...P_STYLES,
 
   variants: {
@@ -47,8 +43,8 @@ export const TextBody = styled("p", {
 });
 
 export const TextHeadline = styled("span", {
-  fontWeight: 500,
   ...P_STYLES,
+  fontWeight: 500,
 
   variants: {
     ...TEXT_VARIANTS,
@@ -60,8 +56,6 @@ export const MarkdownTitle = styled(TextTitle2, {
 });
 
 export const TextAux = styled("span", {
-  fontWeight: 500,
-  lineHeight: 1,
   ...AUX_STYLES,
 
   "@print": {

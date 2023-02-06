@@ -1,18 +1,18 @@
-import { ReactElement, useCallback, useEffect, useState } from "react";
+import { ReactElement, useCallback } from "react";
 import { GetStaticProps } from "next";
 import { useRouter } from "next/router";
+import Image from "next/image";
+import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import Balancer from "react-wrap-balancer";
-import * as Collapsible from "@radix-ui/react-collapsible";
 import {
   BlogCard,
   StyledBlogContent,
   StyledCardImage,
   StyledCardInner,
-  StyledDescription,
 } from "../../components/Card";
 import { ActionButtons, HeroLayout, Layout } from "../../components/Layout";
 import { LayoutToggle } from "../../components/Toggle";
-import { TagDropdown, TagDropdownItem, TagToggle } from "../../components/Tags";
+import { TagDropdown, TagDropdownItem } from "../../components/Tags";
 import {
   TextAux,
   TextBody,
@@ -36,14 +36,11 @@ import {
   TotalPosts,
   ActiveTags,
   Frontmatter,
-  PublishDate,
   PostTags,
 } from "../../components/Frontmatter";
 import banner from "../../public/images/test.jpg";
 import { Box } from "../../components/Box";
 import { NextPageWithLayout } from "../_app";
-import { AspectRatio } from "@radix-ui/react-aspect-ratio";
-import Image from "next/image";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 type Props = {
@@ -101,11 +98,12 @@ const StyledCardContainer = styled(Box, {
       },
 
       [`${TextTitle3}`]: {
-        fontSize: "1.5em",
+        fontSize: "1.6em",
+        ["-webkit-line-clamp"]: "4",
       },
 
-      [`${StyledDescription}`]: {
-        fontSize: "0.9em",
+      [`${TextAux}`]: {
+        fontSize: "1.1em",
         ["-webkit-line-clamp"]: "6",
       },
     },
@@ -125,11 +123,12 @@ const StyledCardContainer = styled(Box, {
       },
 
       [`${TextTitle3}`]: {
-        fontSize: "1.5em",
+        fontSize: "1.6em",
+        ["-webkit-line-clamp"]: "4",
       },
 
-      [`${StyledDescription}`]: {
-        fontSize: "0.9em",
+      [`${TextAux}`]: {
+        fontSize: "1.1em",
         ["-webkit-line-clamp"]: "6",
       },
     },
@@ -211,7 +210,7 @@ const Writing: NextPageWithLayout = ({ posts, tags }: Props) => {
         spacingTop={{ "@initial": 1, "@bp2": 9 }}
         spacingBottom={10}
       >
-        <Box direction="vertical" gap={10} spacingBottom={10}>
+        <Box direction="vertical" gap={10}>
           <Box justifyContent="space-between" alignItems="center">
             <TextTitle2>Writing</TextTitle2>
 

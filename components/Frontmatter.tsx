@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { useRouter } from "next/router";
 import {
   AvatarIcon,
   CalendarIcon,
@@ -10,9 +11,6 @@ import {
   VideoIcon,
 } from "@radix-ui/react-icons";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
-import { useRouter } from "next/router";
-import { styled } from "../stitches.config";
-import { NOTION_TAG_VARIANTS } from "../styles/tag";
 import { Tag } from "../types/notion";
 import { formatShortDate } from "../util/date";
 import { ICON_SIZE } from "../util/images";
@@ -20,6 +18,7 @@ import { formatNumber } from "../util/number";
 import { formatReadingTime, getQueryTags } from "../util/posts";
 import { Box } from "./Box";
 import { TextAux, TextBody } from "./Text";
+import { StyledTag } from "./Tags";
 
 type PostTagProps = {
   as?: string;
@@ -33,48 +32,6 @@ type ActiveTagsProps = {
   queryTags: string[];
   icon?: boolean;
 };
-
-export const StyledTag = styled(Box, {
-  position: "relative",
-  display: "flex",
-  alignitems: "center",
-  justifyContent: "center",
-  padding: "$1 $2",
-  borderRadius: 4,
-  lineHeight: 1,
-  borderStyle: "solid",
-  borderWidth: 1,
-  textTransform: "uppercase",
-
-  "& > *": {
-    zIndex: 1,
-  },
-
-  "&::after": {
-    content: "",
-    position: "absolute",
-    inset: -1,
-    backgroundColor: "$background",
-    opacity: 0.4,
-    borderRadius: 4,
-  },
-
-  variants: {
-    ...NOTION_TAG_VARIANTS,
-  },
-});
-
-export const StyledFilterTag = styled(StyledTag, {
-  color: "$foreground",
-  cursor: "pointer",
-  padding: "$2",
-  boxShadow: "$1",
-
-  "&:hover": {
-    background: "$foreground",
-    color: "$background",
-  },
-});
 
 export const Frontmatter = memo(function Frontmatter(props: any) {
   return (

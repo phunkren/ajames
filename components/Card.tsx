@@ -41,6 +41,8 @@ const StyledCardOuter = styled(Box, {
   minWidth: `calc(300px - $space$3)`,
   boxShadow: "$1",
   borderRadius: 4,
+  borderWidth: 1,
+  borderStyle: "solid",
   overflow: "hidden",
   transition:
     "background 200ms ease-out, boxShadow 200ms ease-out, transform 200ms ease-out",
@@ -48,7 +50,7 @@ const StyledCardOuter = styled(Box, {
   "&::after": {
     content: "",
     position: "absolute",
-    height: 5,
+    height: 2,
     width: "calc(100% + 2px)",
     bottom: 0,
     left: -1,
@@ -82,19 +84,21 @@ const StyledCardOuter = styled(Box, {
   },
 
   [`.${darkTheme} &`]: {
-    backgroundColor: whiteA.whiteA3,
+    backgroundColor: whiteA.whiteA2,
+    borderColor: whiteA.whiteA5,
   },
 
   [`.${darkTheme} &:hover, .${darkTheme} &:has(a:focus)`]: {
-    backgroundColor: whiteA.whiteA4,
+    backgroundColor: whiteA.whiteA3,
   },
 
   [`.${darkTheme} &:active:not(:has(button:active))`]: {
-    backgroundColor: whiteA.whiteA5,
+    backgroundColor: whiteA.whiteA4,
   },
 
   [`.${lightTheme} &`]: {
     backgroundColor: blackA.blackA1,
+    borderColor: whiteA.whiteA4,
   },
 
   [`.${lightTheme} &:hover, .${lightTheme} &:has(a:focus)`]: {
@@ -116,15 +120,9 @@ export const StyledCardImage = styled(Image, {
   transition: "filter 200ms ease-out",
 
   // https://nextjs.org/docs/api-reference/next/image#known-browser-bugs
-  "@supports (font: -apple-system-body) and (-webkit-appearance: none)": {
-    "img[loading='lazy']": {
-      clipPath: "inset(0.6px)",
-    },
+  "img[loading='lazy']": {
+    clipPath: "inset(0.6px)",
   },
-});
-
-export const StyledDescription = styled(TextAux, {
-  lineHeight: 2,
 });
 
 export const StyledBlogContent = styled(Box, {
@@ -217,7 +215,7 @@ export const BlogCard = memo(function BlogCard({
         <>
           <StyledBlogContent
             direction="vertical"
-            css={{ minHeight: 155, "@bp2": { minHeight: 168 } }}
+            css={{ minHeight: 156, "@bp2": { minHeight: 140 } }}
           >
             <Emoji
               emoji={emoji}
@@ -231,9 +229,9 @@ export const BlogCard = memo(function BlogCard({
 
             <StyledLink href={url} ref={ref} variant="invisible">
               {isPreviewVisible ? (
-                <StyledDescription clamp={4} textAlign="justify">
+                <TextAux clamp={4} textAlign="justify">
                   {description}
-                </StyledDescription>
+                </TextAux>
               ) : (
                 <TextTitle3 id={url} clamp={3}>
                   {title}
@@ -290,13 +288,13 @@ export const VideoCard = memo(function VideoCard({
           direction="vertical"
           spacingTop={4}
           flexGrow
-          css={{ minHeight: 155, "@bp2": { minHeight: 168 } }}
+          css={{ minHeight: 156, "@bp2": { minHeight: 140 } }}
         >
           <StyledLink href={url} ref={ref} variant="invisible">
             {isPreviewVisible ? (
-              <StyledDescription clamp={4} textAlign="justify">
+              <TextAux clamp={4} textAlign="justify">
                 {description}
-              </StyledDescription>
+              </TextAux>
             ) : (
               <TextHeadline clamp={3}>{title}</TextHeadline>
             )}

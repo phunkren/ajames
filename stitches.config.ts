@@ -69,11 +69,11 @@ export const {
       10: "40px",
     },
     shadows: {
-      1: `0px 2px 1px -1px ${blackA.blackA6}, 0px 1px 1px 0px ${blackA.blackA7}, 0px 1px 3px 0px ${blackA.blackA8}`, // Cards, Buttons
-      2: `0px 3px 1px -2px ${blackA.blackA6}, 0px 2px 2px 0px ${blackA.blackA7}, 0px 1px 5px 0px ${blackA.blackA8}`, // Scroll to Top, Toast
-      3: `0px 3px 3px -2px ${blackA.blackA6}, 0px 3px 4px 0px ${blackA.blackA7}, 0px 1px 8px 0px ${blackA.blackA8}`, // Dialog
-      4: `0px 2px 4px -1px ${blackA.blackA6}, 0px 4px 5px 0px ${blackA.blackA7}, 0px 1px 10px 0px ${blackA.blackA8}`, // :hover
-      5: `0px 3px 5px -1px ${blackA.blackA6}, 0px 5px 8px 0px ${blackA.blackA7}, 0px 1px 14px 0px ${blackA.blackA8}`, // :active
+      1: `0px 2px 4px -1px ${blackA.blackA6}, 0px 1px 2px 0px ${blackA.blackA7}, 0px 1px 2px 0px ${blackA.blackA8}`, // Cards, Buttons
+      2: `0px 3px 6px -2px ${blackA.blackA6}, 0px 2px 4px 0px ${blackA.blackA7}, 0px 1px 2px 0px ${blackA.blackA8}`, // Scroll to Top, Toast
+      3: `0px 3px 6px -2px ${blackA.blackA6}, 0px 3px 6px 0px ${blackA.blackA7}, 0px 1px 2px 0px ${blackA.blackA8}`, // Dialog
+      4: `0px 2px 4px -1px ${blackA.blackA6}, 0px 4px 8px 0px ${blackA.blackA7}, 0px 1px 2px 0px ${blackA.blackA8}`, // :hover
+      5: `0px 3px 6px -1px ${blackA.blackA6}, 0px 5px 10px 0px ${blackA.blackA7}, 0px 1px 2px 0px ${blackA.blackA8}`, // :active
       textShadow: "rgb(0 0 0 / 18%) 2px 2px",
     },
   },

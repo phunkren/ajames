@@ -108,9 +108,12 @@ export const TEXT_VARIANTS = {
 
 export const H1_STYLES = {
   fontSize: 36,
+  fontWeight: 600,
+  lineHeight: 1.2,
 
   "@bp2": {
     fontSize: 48,
+    lineHeight: 1,
   },
 
   "@bp3": {
@@ -124,9 +127,12 @@ export const H1_STYLES = {
 
 export const H2_STYLES = {
   fontSize: 28,
+  fontWeight: 600,
+  lineHeight: 1.6,
 
   "@bp2": {
     fontSize: 36,
+    lineHeight: 1.4,
   },
 
   "@bp3": {
@@ -140,9 +146,12 @@ export const H2_STYLES = {
 
 export const H3_STYLES = {
   fontSize: 20,
+  fontWeight: 500,
+  lineHeight: 1.8,
 
   "@bp3": {
     fontSize: 22,
+    lineHeight: 1.6,
   },
 
   "@print": {
@@ -152,9 +161,12 @@ export const H3_STYLES = {
 
 export const P_STYLES = {
   fontSize: 18,
+  fontWeight: 400,
+  lineHeight: 1.8,
 
   "@bp2": {
     fontSize: 20,
+    lineHeight: 1.6,
   },
 
   "@print": {
@@ -165,6 +177,8 @@ export const P_STYLES = {
 
 export const AUX_STYLES = {
   fontSize: 14,
+  fontWeight: 500,
+  lineHeight: 1.6,
 
   "@print": {
     fontSize: 12,
