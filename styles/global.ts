@@ -92,7 +92,7 @@ export const globalStyles = globalCss({
 
   // Default code block styling
   code: {
-    ...AUX_STYLES,
+    ...P_STYLES,
     paddingTop: 0,
     paddingRight: "$1",
     paddingBottom: 0,
