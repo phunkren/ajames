@@ -12,7 +12,7 @@ import {
 } from "../../components/Card";
 import { ActionButtons, HeroLayout, Layout } from "../../components/Layout";
 import { LayoutToggle } from "../../components/Toggle";
-import { TagToggle } from "../../components/Tags";
+import { TagDropdown, TagDropdownItem, TagToggle } from "../../components/Tags";
 import {
   TextAux,
   TextBody,
@@ -160,7 +160,6 @@ export const getStaticProps: GetStaticProps = async () => {
 
 const Writing: NextPageWithLayout = ({ posts, tags }: Props) => {
   const { pathname, push, query } = useRouter();
-  const [isFiltersOpen, setIsFiltersOpen] = useState(false);
   const queryTags = getQueryTags(query);
   const filteredPosts = filterPosts(posts, queryTags);
   const featuredPost = posts.find(
@@ -174,8 +173,18 @@ const Writing: NextPageWithLayout = ({ posts, tags }: Props) => {
   );
 
   const handleTagChange = useCallback(
-    (tagName: string[]) => {
-      push({ pathname, query: { ...query, tag: tagName } }, undefined, {
+    (e: Event) => {
+      const tagTarget = e.target as HTMLElement;
+      const tagName = tagTarget.id;
+      const activeTags = getQueryTags(query);
+      const isTagActive = activeTags.includes(tagName);
+      const tag = isTagActive
+        ? activeTags.filter((t) => t !== tagName)
+        : [...activeTags, tagName];
+
+      console.log({ a: getQueryTags(query), tagName });
+
+      push({ pathname, query: { ...query, tag } }, undefined, {
         scroll: false,
       });
     },
@@ -202,56 +211,49 @@ const Writing: NextPageWithLayout = ({ posts, tags }: Props) => {
         spacingTop={{ "@initial": 1, "@bp2": 9 }}
         spacingBottom={10}
       >
-        <Collapsible.Root open={isFiltersOpen} onOpenChange={setIsFiltersOpen}>
-          <Box direction="vertical" gap={10} spacingBottom={10}>
-            <Box justifyContent="space-between" alignItems="center">
-              <TextTitle2>Writing</TextTitle2>
+        <Box direction="vertical" gap={10} spacingBottom={10}>
+          <Box justifyContent="space-between" alignItems="center">
+            <TextTitle2>Writing</TextTitle2>
 
-              <BlogSubscriptionLink
-                type="icon"
-                css={{ display: "flex", "@bp2": { display: "none" } }}
-              />
-
-              <BlogSubscriptionLink
-                type="button"
-                css={{ display: "none", "@bp2": { display: "flex" } }}
-              />
-            </Box>
-
-            <Box justifyContent="space-between" alignItems="flex-end" gap={4}>
-              <Frontmatter flexGrow>
-                <TotalPosts total={posts.length} icon />
-                <TotalCategories total={tags.length} icon />
-                <ActiveTags tags={tags} queryTags={queryTags} icon />
-              </Frontmatter>
-
-              <ActionButtons css={{ flexBasis: "fit-content" }}>
-                <FilterClearButton filters={queryTags} />
-
-                <Collapsible.Trigger asChild>
-                  <FilterMenuButton open={isFiltersOpen} />
-                </Collapsible.Trigger>
-              </ActionButtons>
-            </Box>
-          </Box>
-
-          <Box spacingVertical={10}>
-            <Divider />
-          </Box>
-
-          <Collapsible.Content>
-            <TagToggle
-              type="multiple"
-              tags={tags}
-              value={queryTags}
-              onValueChange={handleTagChange}
+            <BlogSubscriptionLink
+              type="icon"
+              css={{ display: "flex", "@bp2": { display: "none" } }}
             />
 
-            <Box spacingVertical={10}>
-              <Divider />
-            </Box>
-          </Collapsible.Content>
-        </Collapsible.Root>
+            <BlogSubscriptionLink
+              type="button"
+              css={{ display: "none", "@bp2": { display: "flex" } }}
+            />
+          </Box>
+
+          <Box justifyContent="space-between" alignItems="flex-end" gap={4}>
+            <Frontmatter flexGrow>
+              <TotalPosts total={posts.length} icon />
+              <TotalCategories total={tags.length} icon />
+              <ActiveTags tags={tags} queryTags={queryTags} icon />
+            </Frontmatter>
+
+            <ActionButtons css={{ flexBasis: "fit-content" }}>
+              <FilterClearButton filters={queryTags} />
+
+              <TagDropdown>
+                {tags.map((tag) => (
+                  <TagDropdownItem
+                    key={tag.name}
+                    id={tag.name}
+                    color={tag.color}
+                    name={tag.name}
+                    onSelect={handleTagChange}
+                  />
+                ))}
+              </TagDropdown>
+            </ActionButtons>
+          </Box>
+        </Box>
+
+        <Box spacingVertical={10}>
+          <Divider />
+        </Box>
 
         {featuredPost ? (
           <>

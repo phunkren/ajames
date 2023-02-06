@@ -23,6 +23,7 @@ import { TextAux, TextBody } from "./Text";
 
 type PostTagProps = {
   as?: string;
+  active?: boolean;
   tags: Tag[];
   icon?: boolean;
 };
@@ -33,7 +34,7 @@ type ActiveTagsProps = {
   icon?: boolean;
 };
 
-const StyledTag = styled(Box, {
+export const StyledTag = styled(Box, {
   position: "relative",
   display: "flex",
   alignitems: "center",
@@ -94,6 +95,7 @@ export const FrontmatterItem = memo(function FrontmatterItem(props: any) {
 
 export const PostTags = memo(function PostTags({
   tags,
+  active,
   icon = false,
   ...props
 }: PostTagProps) {

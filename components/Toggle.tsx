@@ -35,14 +35,11 @@ export const ToggleGroupRoot = styled(ToggleGroup.Root, {
 
 export const ToggleGroupItem = styled(ToggleGroup.Item, {
   all: "unset",
-  height: 28,
-  width: 28,
+  height: 32,
+  width: 32,
   display: "flex",
-  fontSize: 15,
-  lineHeight: 1,
   alignItems: "center",
   justifyContent: "center",
-  marginLeft: 1,
   backgroundColor: "transparent",
   overflow: "hidden",
   transition: "backgroundColor 100ms ease-out, opacity 100ms ease-out",

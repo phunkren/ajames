@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import { memo } from "react";
 import { useTheme } from "../hooks/useTheme";
 import { Frontmatter } from "../pages/writing/[id]";
-import { getCssText } from "../stitches.config";
 import { PERSONAL, SITE, SOCIAL } from "../util/data";
 import { getPageTitle } from "../util/url";
 
