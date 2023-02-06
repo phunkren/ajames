@@ -111,6 +111,7 @@ export const globalStyles = globalCss({
       padding: "$4",
       borderRadius: 4,
       textAlign: "left",
+      lineHeight: "inherit",
     },
   },
 

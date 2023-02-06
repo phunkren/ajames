@@ -5,7 +5,6 @@ import { Box } from "../components/Box";
 import { Divider } from "../components/Divider";
 import { Layout } from "../components/Layout";
 import { Link } from "../components/Link";
-import { PageToggle } from "../components/Tags";
 import {
   Emoji,
   TextAux,
@@ -15,6 +14,7 @@ import {
   TextTitle2,
   TextTitle3,
 } from "../components/Text";
+import { PageToggle } from "../components/Toggle";
 import { keyframes, styled } from "../stitches.config";
 import { EMPLOYMENT, PERSONAL } from "../util/data";
 import { NextPageWithLayout } from "./_app";
