@@ -265,7 +265,7 @@ const About: NextPageWithLayout = () => {
           direction="horizontal"
           gap={{ "@print": 4, "@initial": 0, "@bp2": 10 }}
           spacingHorizontal={{ "@print": 3, "@initial": 4, "@bp2": 10 }}
-          spacingTop={{ "@print": 6, "@initial": 10 }}
+          spacingTop={{ "@print": 8, "@initial": 10 }}
           spacingBottom={{ "@print": 0, "@initial": 10 }}
           flexWrap={{
             "@print": "nowrap",
@@ -288,7 +288,7 @@ const About: NextPageWithLayout = () => {
               </TextTitle3>
 
               <Box
-                spacingTop={{ "@print": 2, "@initial": 4 }}
+                spacingTop={2}
                 spacingBottom={{ "@print": 4, "@initial": 6 }}
               >
                 <Divider />
@@ -359,7 +359,7 @@ const About: NextPageWithLayout = () => {
               </TextTitle3>
 
               <Box
-                spacingTop={{ "@print": 2, "@initial": 4 }}
+                spacingTop={2}
                 spacingBottom={{ "@print": 4, "@initial": 6 }}
               >
                 <Divider />
@@ -431,7 +431,7 @@ const About: NextPageWithLayout = () => {
               </TextTitle3>
 
               <Box
-                spacingTop={{ "@print": 2, "@initial": 4 }}
+                spacingTop={2}
                 spacingBottom={{ "@print": 4, "@initial": 6 }}
               >
                 <Divider />
@@ -460,7 +460,7 @@ const About: NextPageWithLayout = () => {
               </TextTitle3>
 
               <Box
-                spacingTop={{ "@print": 2, "@initial": 4 }}
+                spacingTop={2}
                 spacingBottom={{ "@print": 4, "@initial": 6 }}
               >
                 <Divider />
@@ -502,7 +502,7 @@ const About: NextPageWithLayout = () => {
               </Link>
 
               <Box
-                spacingTop={{ "@print": 2, "@initial": 4 }}
+                spacingTop={2}
                 spacingBottom={{ "@print": 4, "@initial": 6 }}
               >
                 <Divider />
@@ -563,16 +563,20 @@ const About: NextPageWithLayout = () => {
               </TextTitle3>
 
               <Box
-                spacingTop={{ "@print": 2, "@initial": 4 }}
+                spacingTop={2}
                 spacingBottom={{ "@print": 4, "@initial": 6 }}
               >
                 <Divider />
               </Box>
 
               <Box direction="vertical" gap={4}>
-                <TextBody textAlign="justify">{PERSONAL.profile1}</TextBody>
+                <TextBody textAlign="justify" color="secondary">
+                  {PERSONAL.profile1}
+                </TextBody>
 
-                <TextBody textAlign="justify">{PERSONAL.profile2}</TextBody>
+                <TextBody textAlign="justify" color="secondary">
+                  {PERSONAL.profile2}
+                </TextBody>
               </Box>
             </Box>
 
@@ -582,7 +586,7 @@ const About: NextPageWithLayout = () => {
               </TextTitle3>
 
               <Box
-                spacingTop={{ "@print": 2, "@initial": 4 }}
+                spacingTop={2}
                 spacingBottom={{ "@print": 4, "@initial": 6 }}
               >
                 <Divider />
@@ -591,10 +595,7 @@ const About: NextPageWithLayout = () => {
               <Box direction="vertical" gap={10}>
                 {EMPLOYMENT.map((employer) => (
                   <Box direction="vertical" gap={4} key={employer.id}>
-                    <Box
-                      direction="vertical"
-                      gap={{ "@print": 1, "@initial": 2 }}
-                    >
+                    <Box direction="vertical">
                       <TextTitle3>{employer.position}</TextTitle3>
 
                       <Box
@@ -611,7 +612,7 @@ const About: NextPageWithLayout = () => {
                           "@print": "space-between",
                           "@bp2": "space-between",
                         }}
-                        gap={2}
+                        gap={1}
                       >
                         <Box
                           direction="horizontal"
@@ -684,7 +685,9 @@ const About: NextPageWithLayout = () => {
                       </Box>
                     </Box>
 
-                    <TextBody textAlign="justify">{employer.content}</TextBody>
+                    <TextBody textAlign="justify" color="secondary">
+                      {employer.content}
+                    </TextBody>
 
                     {employer.notableWork?.length > 0 ? (
                       <Box direction="vertical" gap={2}>

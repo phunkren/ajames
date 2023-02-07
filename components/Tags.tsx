@@ -48,6 +48,7 @@ export const StyledTag = styled(Box, {
   borderStyle: "solid",
   borderWidth: 1,
   textTransform: "uppercase",
+  color: "$foregroundMuted",
 
   "& > *": {
     zIndex: 1,
@@ -113,7 +114,7 @@ export const TagDropdownItem = memo(function TagDropdownItem({
       <DropdownMenu.ItemIndicator>
         <CheckIcon />
       </DropdownMenu.ItemIndicator>
-      <StyledTag borderColor={color} active={true}>
+      <StyledTag borderColor={color}>
         <TextAux textTransform="uppercase">{name}</TextAux>
       </StyledTag>
     </StyledDropdownMenuItem>

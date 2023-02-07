@@ -39,7 +39,7 @@ export const Frontmatter = memo(function Frontmatter(props: any) {
       as="ul"
       role="list"
       direction="vertical"
-      gap={6}
+      gap={4}
       css={{ color: "$foregroundMuted" }}
       {...props}
     />
@@ -100,28 +100,32 @@ export const ActiveTags = memo(function ActiveTags({
   return (
     <FrontmatterItem
       alignItems="flex-start"
-      css={{ "@bp3": { maxWidth: "75%" } }}
+      css={{ "@bp3": { maxWidth: 400 } }}
       {...props}
     >
       {icon ? (
-        <Box flexShrink={false} css={{ height: 26 }} alignItems="center">
+        <Box flexShrink={false} css={{ height: 32 }} alignItems="center">
           <VisuallyHidden.Root>Tags</VisuallyHidden.Root>
           <EyeOpenIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
         </Box>
       ) : null}
 
       {activeTags.length ? (
-        <Box as="ul" role="list" gap={4} flexWrap="wrap">
+        <Box as="ul" role="list" gap={2} flexWrap="wrap">
           {activeTags.map((tag) => (
-            <StyledTag as="li" key={tag.id} borderColor={tag.color} active>
+            <StyledTag
+              as="li"
+              key={tag.id}
+              borderColor={tag.color}
+              css={{ margin: "$1 0" }}
+              active
+            >
               <TextAux>{tag.name}</TextAux>
             </StyledTag>
           ))}
         </Box>
       ) : (
-        <TextBody textTransform="capitalize" css={{ lineHeight: 1.3 }}>
-          All
-        </TextBody>
+        <TextBody textTransform="capitalize">All</TextBody>
       )}
     </FrontmatterItem>
   );

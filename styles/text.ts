@@ -110,10 +110,12 @@ export const H1_STYLES = {
   fontSize: 36,
   fontWeight: 600,
   lineHeight: 1.2,
+  letterSpacing: 0.72,
 
   "@bp2": {
     fontSize: 48,
     lineHeight: 1,
+    letterSpacing: 0.96,
   },
 
   "@bp3": {
@@ -123,6 +125,7 @@ export const H1_STYLES = {
   "@print": {
     fontSize: 24,
     lineHeight: 1.2,
+    letterSpacing: 1.44,
   },
 };
 
@@ -130,14 +133,17 @@ export const H2_STYLES = {
   fontSize: 28,
   fontWeight: 600,
   lineHeight: 1.6,
+  letterSpacing: 0.56,
 
   "@bp2": {
     fontSize: 36,
     lineHeight: 1.4,
+    letterSpacing: 0.72,
   },
 
   "@bp3": {
     fontSize: 48,
+    letterSpacing: 0.96,
   },
 
   "@print": {
@@ -150,15 +156,18 @@ export const H3_STYLES = {
   fontSize: 20,
   fontWeight: 500,
   lineHeight: 1.8,
+  letterSpacing: 0.4,
 
   "@bp3": {
     fontSize: 22,
     lineHeight: 1.6,
+    letterSpacing: 0.44,
   },
 
   "@print": {
     fontSize: 16,
     lineHeight: 1.4,
+    letterSpacing: 0.32,
   },
 };
 
@@ -166,15 +175,18 @@ export const P_STYLES = {
   fontSize: 18,
   fontWeight: 400,
   lineHeight: 1.8,
+  letterSpacing: 0.36,
 
   "@bp2": {
     fontSize: 20,
     lineHeight: 1.6,
+    letterSpacing: 0.4,
   },
 
   "@print": {
     fontSize: 14,
     lineHeight: 1.3,
+    letterSpacing: 0.28,
   },
 };
 
@@ -182,10 +194,12 @@ export const AUX_STYLES = {
   fontSize: 14,
   fontWeight: 500,
   lineHeight: 1.6,
+  letterSpacing: 0.28,
 
   "@print": {
     fontSize: 12,
     fontWeight: 400,
     lineHeight: 1,
+    letterSpacing: 0.24,
   },
 };

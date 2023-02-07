@@ -38,7 +38,7 @@ const StyledCardOuter = styled(Box, {
   display: "flex",
   flexDirection: "column",
   cursor: "pointer",
-  minWidth: `calc(300px - $space$3)`,
+  minWidth: 275,
   boxShadow: "$1",
   borderRadius: 4,
   borderWidth: 1,
@@ -116,7 +116,7 @@ export const StyledCardInner = styled(Box, {
 
 export const StyledCardImage = styled(Image, {
   objectFit: "cover",
-  filter: "brightness(90%)",
+  filter: "brightness(85%)",
   transition: "filter 200ms ease-out",
 
   // https://nextjs.org/docs/api-reference/next/image#known-browser-bugs

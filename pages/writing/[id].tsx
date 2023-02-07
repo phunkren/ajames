@@ -12,7 +12,6 @@ import {
 import { ActionButtons, HeroLayout, Layout } from "../../components/Layout";
 import {
   BlogSubscriptionLink,
-  Link,
   MarkdownLink,
   TwitterShareLink,
 } from "../../components/Link";
@@ -39,7 +38,6 @@ import { Box } from "../../components/Box";
 import { ReactElement } from "react";
 import { NextPageWithLayout } from "../_app";
 import { BlogSeo } from "../../components/SEO";
-import { ONE_HOUR_IN_SECONDS } from "../../util/date";
 
 export type Frontmatter = {
   title: string;
@@ -61,15 +59,47 @@ const StyledContainer = styled(Box, {
   h1: H1_STYLES,
   h2: H2_STYLES,
   h3: H3_STYLES,
-  p: P_STYLES,
-
-  img: {
-    margin: "0 auto",
+  p: {
+    ...P_STYLES,
+    color: "$foregroundMuted",
   },
 
-  "img, pre": {
-    boxShadow: "$1",
-    borderRadius: 4,
+  "a, a:hover, code": {
+    color: "$foreground",
+  },
+
+  img: {
+    position: "relative",
+    left: "-$6",
+    width: "100vw",
+    maxWidth: "none",
+
+    "@bp2": {
+      left: 0,
+      width: "auto",
+      maxWidth: "100%",
+      margin: "0 auto",
+      boxShadow: "$1",
+      borderRadius: 4,
+    },
+  },
+
+  pre: {
+    position: "relative",
+    left: "-$6",
+    width: "100vw",
+
+    "& > pre": {
+      left: 0,
+      width: "100%",
+    },
+
+    "@bp2": {
+      left: 0,
+      width: "100%",
+      boxShadow: "$1",
+      borderRadius: 4,
+    },
   },
 
   ul: {
@@ -164,21 +194,13 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
                     justifyContent="space-between"
                     alignItems="flex-start"
                     spacingTop={{ "@initial": 5, "@bp2": 10 }}
+                    spacingBottom={4}
                     gap={6}
                     css={{ marginTop: 3 }}
                   >
-                    <TextTitle2 css={{ spacingBottom: "$4" }}>
+                    <TextTitle2 css={{ flexGrow: 1 }}>
                       <Balancer>{frontmatter.title}</Balancer>
                     </TextTitle2>
-
-                    <BlogSubscriptionLink
-                      type="button"
-                      css={{
-                        display: "none",
-                        transform: "translateY(50%)",
-                        "@bp3": { display: "flex" },
-                      }}
-                    />
                   </Box>
                 </Box>
 
@@ -243,15 +265,26 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
                   <Divider />
                 </Box>
 
-                <Box direction="vertical" gap={10}>
+                <Box
+                  direction="vertical"
+                  gap={{
+                    "@initial": 6,
+                    "@bp2": 10,
+                  }}
+                >
                   <TextTitle3 textAlign="center" color="secondary">
-                    Enjoying the content?
+                    Enjoy the content?
                   </TextTitle3>
 
                   <Box
+                    direction={{
+                      "@initial": "vertical",
+                      "@bp2": "horizontal",
+                    }}
                     justifyContent="space-around"
                     alignItems="center"
-                    gap={7}
+                    spacingBottom={10}
+                    gap={8}
                   >
                     <TwitterShareLink
                       url={metaUrl}

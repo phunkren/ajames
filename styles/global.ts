@@ -35,7 +35,7 @@ export const globalStyles = globalCss({
   },
 
   /* block scroll when the mobile nav is open */
-  "body:has(div[role=dialog][data-state=open])": {
+  "body:has(#mobileNav[data-state=open])": {
     overflow: "hidden",
   },
 
@@ -93,10 +93,6 @@ export const globalStyles = globalCss({
   // Default code block styling
   code: {
     ...P_STYLES,
-    paddingTop: 0,
-    paddingRight: "$1",
-    paddingBottom: 0,
-    paddingLeft: "$1",
     lineHeight: "inherit",
   },
 

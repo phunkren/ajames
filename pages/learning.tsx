@@ -10,7 +10,6 @@ import { VideoCard } from "../components/Card";
 import { Divider } from "../components/Divider";
 import {
   Frontmatter,
-  PublishDate,
   SubscriberCount,
   VideosTotalCount,
   VideosViewsCount,
@@ -93,7 +92,11 @@ const StyledContentContainer = styled(Box, {
 const StyledYouTubePlayer = styled(YouTube, {
   position: "absolute",
   inset: 0,
-  boxShadow: "$1",
+
+  "& iframe": {
+    borderRadius: 4,
+    boxShadow: "$1",
+  },
 
   "&:hover": {
     boxShadow: "$4",
@@ -180,10 +183,10 @@ const Learning: NextPageWithLayout = ({
               <Box
                 justifyContent="space-between"
                 alignItems="center"
-                spacingTop={{ "@initial": 5, "@bp2": 10 }}
+                spacingTop={{ "@initial": 8, "@bp2": 10 }}
                 spacingBottom={10}
               >
-                <TextTitle2 as="h1">{channelInfoPreview.title}</TextTitle2>
+                <TextTitle2 as="h1">Learning</TextTitle2>
 
                 <Box css={{ ...H2_STYLES }}>
                   <YoutubeSubscribeLink
@@ -311,15 +314,13 @@ const Learning: NextPageWithLayout = ({
                     </TextTitle3>
                   </Link>
 
-                  <PublishDate date={videoPreview.publishedAt} />
-
-                  <TextBody clamp={3} textAlign="justify">
+                  <TextBody clamp={4} textAlign="justify" color="secondary">
                     {videoPreview.description}
                   </TextBody>
 
                   <Box>
                     <Link href={videoPreview.url} variant="tertiary">
-                      <TextAux color="secondary">Read more</TextAux>
+                      <TextAux>Read more</TextAux>
                     </Link>
                   </Box>
                 </Box>
@@ -374,6 +375,7 @@ const Learning: NextPageWithLayout = ({
                   </Box>
 
                   <TextBody
+                    color="secondary"
                     css={{
                       textAlign: "justify",
                       maxWidth: "none",
@@ -394,7 +396,10 @@ const Learning: NextPageWithLayout = ({
                               image={playlistVideo.thumbnail.src}
                               title={playlistVideo.title}
                               publishDate={playlistVideo.publishedAt}
-                              css={{ scrollSnapAlign: "start" }}
+                              css={{
+                                scrollSnapAlign: "center",
+                                "@bp2": { scrollSnapAlign: "start" },
+                              }}
                             />
                           )
                         )}
@@ -413,16 +418,26 @@ const Learning: NextPageWithLayout = ({
             <Divider />
           </Box>
 
-          <Box direction="vertical" gap={10}>
+          <Box
+            direction="vertical"
+            gap={{
+              "@initial": 6,
+              "@bp2": 10,
+            }}
+          >
             <TextTitle3 as="h2" textAlign="center" color="secondary">
-              Enjoying the content?
+              Enjoy the content?
             </TextTitle3>
 
             <Box
+              direction={{
+                "@initial": "vertical",
+                "@bp2": "horizontal",
+              }}
               justifyContent="space-around"
               alignItems="center"
               spacingBottom={10}
-              gap={7}
+              gap={8}
             >
               <TwitterShareLink
                 url={YOUTUBE_CHANNEL_URL}

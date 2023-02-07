@@ -240,7 +240,7 @@ export const NavigationMobile = memo(function NavigationMobile() {
       </Dialog.Trigger>
 
       <Dialog.Portal>
-        <StyledDialogContent className={theme}>
+        <StyledDialogContent id="mobileNav" className={theme}>
           <VisuallyHidden.Root asChild>
             <Dialog.Title>Mobile Navigation Menu</Dialog.Title>
           </VisuallyHidden.Root>

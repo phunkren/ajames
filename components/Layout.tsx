@@ -41,17 +41,12 @@ export const HeaderLayout = memo(function HeaderLayout() {
   return (
     <Box
       as="header"
-      spacingTop={7}
-      spacingBottom={10}
+      display={{ "@print": "none", "@initial": "flex" }}
+      spacingHorizontal={{ "@initial": 4, "@bp2": 0 }}
+      spacingVertical={8}
       gap={{ "@initial": 4, "@bp2": 7 }}
       justifyContent="space-between"
       alignItems="center"
-      css={{
-        paddingLeft: "$4",
-        paddingRight: "$4",
-        "@bp2": { paddingLeft: 0, paddingRight: 0 },
-        "@print": { display: "none" },
-      }}
     >
       <Box direction="horizontal" gap={10} alignItems="center">
         <Link href="/">
@@ -78,11 +73,11 @@ export const FooterLayout = memo(function FooterLayout() {
   return (
     <Box
       as="footer"
-      spacingTop={10}
-      spacingBottom={7}
+      spacingTop={8}
+      spacingBottom={8}
       spacingHorizontal={4}
       justifyContent="center"
-      css={{ "@print": { display: "none" } }}
+      css={{ marginTop: "$10", "@print": { display: "none" } }}
     >
       <Social />
     </Box>

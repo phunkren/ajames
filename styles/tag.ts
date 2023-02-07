@@ -6,7 +6,7 @@ export const NOTION_TAG_VARIANTS = {
       opacity: 1,
     },
     false: {
-      opacity: 0.4,
+      opacity: 1,
     },
   },
   borderColor: {

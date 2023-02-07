@@ -7,7 +7,6 @@ import Balancer from "react-wrap-balancer";
 import {
   BlogCard,
   StyledBlogContent,
-  StyledCardImage,
   StyledCardInner,
 } from "../../components/Card";
 import { ActionButtons, HeroLayout, Layout } from "../../components/Layout";
@@ -29,7 +28,7 @@ import {
 } from "../../util/posts";
 import { createPosts, generateRSSFeed, getPosts } from "../../lib/notion";
 import { Divider } from "../../components/Divider";
-import { FilterClearButton, FilterMenuButton } from "../../components/Button";
+import { FilterClearButton } from "../../components/Button";
 import { BlogSubscriptionLink, Link } from "../../components/Link";
 import {
   TotalCategories,
@@ -179,11 +178,10 @@ const Writing: NextPageWithLayout = ({ posts, tags }: Props) => {
       const tagName = tagTarget.id;
       const activeTags = getQueryTags(query);
       const isTagActive = activeTags.includes(tagName);
+
       const tag = isTagActive
         ? activeTags.filter((t) => t !== tagName)
         : [...activeTags, tagName];
-
-      console.log({ a: getQueryTags(query), tagName });
 
       push({ pathname, query: { ...query, tag } }, undefined, {
         scroll: false,
@@ -302,7 +300,7 @@ const Writing: NextPageWithLayout = ({ posts, tags }: Props) => {
                     />
                   </Box>
 
-                  <TextBody clamp={3} textAlign="justify">
+                  <TextBody clamp={3} textAlign="justify" color="secondary">
                     {featuredPost.properties.abstract.rich_text[0].plain_text}
                   </TextBody>
 
@@ -311,7 +309,7 @@ const Writing: NextPageWithLayout = ({ posts, tags }: Props) => {
                       href={`/writing/${featuredPost.properties.slug.rich_text[0].plain_text}`}
                       variant="tertiary"
                     >
-                      <TextAux color="secondary">Read more</TextAux>
+                      <TextAux>Read more</TextAux>
                     </Link>
                   </Box>
                 </Box>

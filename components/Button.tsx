@@ -165,8 +165,8 @@ export const ScrollToTopButton = memo(function ScrollToTopButton(props: any) {
 
   return (
     <StyledScrollToTop onClick={handleScrollToTop} {...props}>
-      <DoubleArrowUpIcon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
-      <TextHeadline>Scroll to Top</TextHeadline>
+      <DoubleArrowUpIcon width={ICON_SIZE.s} height={ICON_SIZE.s} aria-hidden />
+      <TextAux>Scroll to Top</TextAux>
     </StyledScrollToTop>
   );
 });
