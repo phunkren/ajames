@@ -19,6 +19,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "i.imgur.com", // Notion
       },
+      {
+        protocol: "https",
+        hostname: "www.notion.so",
+      },
     ],
   },
   publicRuntimeConfig: {

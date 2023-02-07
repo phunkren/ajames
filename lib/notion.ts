@@ -30,7 +30,13 @@ export const getPosts = async () => {
     process.env.NOTION_PROFESSIONAL_DATABASE_ID
   )) as BlogPost[];
 
-  return [...personalPosts, ...professionalPosts];
+  const posts = [...personalPosts, ...professionalPosts];
+
+  const publishedPosts = posts.filter(
+    (post) => post.properties.published.checkbox
+  );
+
+  return publishedPosts;
 };
 
 // Create markdown file from each Notion blog post
