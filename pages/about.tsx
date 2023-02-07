@@ -138,10 +138,10 @@ const StyledImage = styled(Image, {
   borderRadius: 0,
   position: "absolute",
   top: "9% !important",
-  zIndex: 1,
+  zIndex: 10,
   transform: "scale(0.8)",
   pointerEvents: "none",
-  filter: "brightness(75%)",
+  filter: "brightness(85%)",
 
   "@bp2": {
     display: "block",
@@ -622,8 +622,12 @@ const About: NextPageWithLayout = () => {
                           <Link href={employer.url} variant="primary">
                             <TextBody>{employer.displayName}</TextBody>
                           </Link>
-                          <TextBody as="span">/</TextBody>
-                          <TextBody as="span">{employer.location}</TextBody>
+                          <TextBody as="span" color="secondary">
+                            /
+                          </TextBody>
+                          <TextBody as="span" color="secondary">
+                            {employer.location}
+                          </TextBody>
                         </Box>
 
                         <Box>

@@ -412,7 +412,7 @@ export const YoutubeSubscribeLink = memo(function YoutubeSubscribeLink({
       {...props}
     >
       <Box alignItems="center" gap={2}>
-        <BellIcon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
+        <VideoIcon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
 
         {type === "button" && <TextAux color="primary">Subscribe</TextAux>}
 
