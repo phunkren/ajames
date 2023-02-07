@@ -17,7 +17,7 @@ import { Divider } from "./Divider";
 import { PROJECTS } from "../util/data";
 import { Project } from "../types/project";
 import { Link } from "./Link";
-import { TextAux, TextBody, TextHeadline } from "./Text";
+import { TextAux, TextHeadline } from "./Text";
 import { Button } from "./Button";
 import { Social } from "./Social";
 import { Box } from "./Box";

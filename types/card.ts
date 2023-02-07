@@ -27,6 +27,7 @@ export type VideoCardProps = CSS & {
   image: string;
   publishDate: string;
   title: string;
+  channel?: string;
   description?: string;
   css: any;
 };

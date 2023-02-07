@@ -4,23 +4,12 @@
         <title>ajames.dev | Blogs</title>
         <link>https://ajames.vercel.app</link>
         <description>I'm a software engineer based in Glasgow, Scotland. My passion for frontend web technology continually drives me to advance my skill set and adopt the latest industry best practices. An analytical mindset and strong communication skills allow me to excel in environments where I can learn from others and inspire my peers. Over the years I've refined a set of technical principles to strive towards, namely: complexity should only be introduced when it’s unavoidable; code should be easy to reason with and delete; avoid abstracting too early, and the top priority is always the best possible user experience.</description>
-        <lastBuildDate>Tue, 07 Feb 2023 18:10:06 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 07 Feb 2023 19:39:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <copyright>All rights reserved 2023, Andrew James</copyright>
         <atom:link href="https://ajames.vercel.app/rss.xml" rel="self" type="application/rss+xml"/>
-        <item>
-            <title><![CDATA[Unpublished article]]></title>
-            <link>https://ajames.vercel.app/blog/unpublished-article</link>
-            <guid>https://ajames.vercel.app/blog/unpublished-article</guid>
-            <pubDate>Tue, 07 Feb 2023 00:00:00 GMT</pubDate>
-            <description><![CDATA[example abstract]]></description>
-            <author>contact@ajames.dev (Andrew James)</author>
-            <category>Technology</category>
-            <category>Productivity</category>
-            <enclosure length="0" type="image/jpg" url="https://www.notion.so/images/page-cover/met_william_morris_1877_willow.jpg"/>
-        </item>
         <item>
             <title><![CDATA[So you want to work remotely?]]></title>
             <link>https://ajames.vercel.app/blog/work-remote</link>
@@ -1159,7 +1148,7 @@ Be sure to thank the bride, parents, wedding party, guests, and those who couldn
 
 Speak from the heart. An honest sentiment will always land easier than a punchline.
 
-When it came to structuring my speech, I found that focusing on a couple of key themes helped to keep it flowing smoothly. One of my main inspirations was the rule of three, which I incorporated by talking about the three times I met my wife. This helped to break up the speech and keep the audience engaged.
+When it came to structuring my speech, I found that focusing on a couple of key themes helped to keep it flowing smoothly. One of my main inspirations was the rule of three, which I incorporated by talking about the three relationship-defining moments with my wife. This helped to break up the speech and keep the audience engaged.
 
 I also structured the speech chronologically, starting with the moment I first thought about marrying her and ending with the day of the wedding. This allowed me to take the audience on a journey through our relationship and highlight defining moments along the way. Each moment was not only a way to tell our story, but also served as an opportunity to thank everyone who has been a part of our journey so far.
 
@@ -1243,7 +1232,7 @@ The third time I wanted to marry Mrs...Catriona…James, was about four and a ha
 
 My dog Kiwi was an *incredibly* close second. But you pipped her at the post, so well done you!
 
-What truly made that moment special, was being able to share it with each and every one of you here today. And it is my sincerest hope, that we are able to share many more of these memories with you all in the years to come.
+What truly made that moment special, was being able to share it with each and every one of you here today. And it is my sincerest hope that we are able to share many more of these memories with you all in the years to come.
 
 And with that I'd like to give my final thanks and propose a final toast.
 
@@ -2131,10 +2120,48 @@ For the moment the component serves to provide images as proof of authenticity, 
             <enclosure length="0" type="image/jpg" url="https://i.imgur.com/kau9Fcb.jpg"/>
         </item>
         <item>
+            <title><![CDATA[Mastering Modals in React with Context and Portals]]></title>
+            <link>https://ajames.vercel.app/blog/custom-modal</link>
+            <guid>https://ajames.vercel.app/blog/custom-modal</guid>
+            <pubDate>Tue, 16 Jul 2019 00:00:00 GMT</pubDate>
+            <description><![CDATA[Different methods to create modals, and how to trigger them from nested components using React context, hooks, and portals]]></description>
+            <content:encoded><![CDATA[Modals are a useful tool for displaying information on top of your application, and are often used for notifications, alerts, or standalone dialogs such as registration or login forms. Before building a custom modal, it's a good idea to check if there are any pre-existing solutions that meet your needs ([Reach UI's Dialog](https://reacttraining.com/reach-ui/dialog/) and [react-modal](http://reactcommunity.org/react-modal/) are both popular options). If you don't find a suitable solution, let's explore creating a bespoke modal component in React.
+
+To get started, we'll create a basic modal that appears and disappears based on some local state in our React app. The process is simple: when a button in the root of the app is clicked, the modal will appear. Then, when the button inside the modal is clicked, the modal will close. Let's start building!
+
+[embed](https://codesandbox.io/embed/zen-pare-76gl3?autoresize=1\&fontsize=14\&hidenavigation=1\&theme=dark\&view=preview)
+
+If you want to trigger the modal from a nested component rather than just from within `<App/>`, you can pass the `setState` action `setIsModalOpen` as a prop. Then, you can call this action as a callback when a button within the nested component is clicked, which will trigger the modal.
+
+[embed](https://codesandbox.io/embed/peaceful-bardeen-7jexx?autoresize=1\&fontsize=14\&hidenavigation=1\&theme=dark\&view=preview)
+
+This works for a single level of nesting, but it probably won’t scale very well. We could keep passing the callback down through the components, but that could get a bit tedious and create a lot of extra code that's tough to manage. Enter [React Context](https://reactjs.org/docs/context.html).
+
+Context allows you to store and access a value anywhere in your React app. You can use a Provider to store the value and a Consumer to access it, and the Consumer will search up the component tree for the first Provider that matches its context. This is useful when you want to trigger the modal from a nested component, rather than just from the top-level App component. You can use the `useContext` hook to consume the value in a nested component.
+
+Let’s wrap the previous example with a Provider, set the `setIsModalOpen` callback as its value, then utilise the [useContext()](https://reactjs.org/docs/hooks-reference.html#usecontext) hook to consume it in a nested component.
+
+[embed](https://codesandbox.io/embed/sweet-brown-yn44i?autoresize=1\&fontsize=14\&hidenavigation=1\&theme=dark\&view=preview)
+
+We now have a modal that can be opened from anywhere in our app, but it can only display static content for now. If we want it to render dynamic content, we'll need to refactor it to accept children. Plus, since React's data flow only goes one way, we'll need to find a good way to pass data from a nested component back up to the modal at the root level.
+
+My former colleague, [Jenna Smith](https://twitter.com/jjenzz), a highly skilled front-end developer, suggested using [React Portal](https://reactjs.org/docs/portals.html) as a solution. Portal's are designed to pass children to a DOM node outside the hierarchy of the parent component, which is perfect for our needs. To use a portal, we'll need to provide two arguments: a React element (for our dynamic content) and a DOM element to inject the content into (the modal's container). This should allow us to effectively pass the data from the nested component to the modal at the root level.
+
+[embed](https://codesandbox.io/embed/7w6mq72l2q?autoresize=1\&fontsize=14\&hidenavigation=1\&theme=dark\&view=preview)
+
+As demonstrated in the sandbox, Jenna created two functional components to provide dynamic content for the modal. The `<ModalProvider />` component includes a DOM element with a ref attached (`<div ref={modalRef}/>`), as well as a context provider that wraps the entire app and distributes the ref's current value to any relevant consumers within it. The second component is the modal itself. Each time a `<Modal />` component is rendered, it will try to retrieve the `modalRef` element using `useContext()`. If the ref exists, the component will create a React portal and inject the modal's children into the ref element, rather than mounting in its expected position in the DOM tree..
+
+With this approach, the `Modal` component can now be used anywhere within the `ModalProvider` to display dynamic content on top of the app. One thing to keep in mind is that the body will still be able to scroll on iOS when the modal is mounted. I highly recommend reading Will Po's article on [body scroll lock](https://medium.com/jsdownunder/locking-body-scroll-for-all-devices-22def9615177) for potential solutions to this issue.
+]]></content:encoded>
+            <author>contact@ajames.dev (Andrew James)</author>
+            <category>react</category>
+            <enclosure length="0" type="image/jpg" url="https://i.imgur.com/ihdlQLe.jpg"/>
+        </item>
+        <item>
             <title><![CDATA[So you want to buy a puppy? ]]></title>
             <link>https://ajames.vercel.app/blog/buy-puppy</link>
             <guid>https://ajames.vercel.app/blog/buy-puppy</guid>
-            <pubDate>Wed, 17 Jul 2019 00:00:00 GMT</pubDate>
+            <pubDate>Mon, 01 Jul 2019 00:00:00 GMT</pubDate>
             <description><![CDATA[Thinking about getting a puppy? This blog post provides an in-depth look at the responsibilities and challenges of owning a puppy]]></description>
             <content:encoded><![CDATA[A few people have recently asked me about whether or not to buy a puppy, so I figured I’d collect my thoughts here as a point of reference. I mention advice from friends, family, and trainers throughout, but ultimately all opinions are my own and formulated from experience with my dog only.
 
@@ -2193,44 +2220,6 @@ I now fully understand this statement.
             <category>Pets</category>
             <category>Family</category>
             <enclosure length="0" type="image/jpg" url="https://i.imgur.com/Wt4Lu7N.jpg"/>
-        </item>
-        <item>
-            <title><![CDATA[Mastering Modals in React with Context and Portals]]></title>
-            <link>https://ajames.vercel.app/blog/custom-modal</link>
-            <guid>https://ajames.vercel.app/blog/custom-modal</guid>
-            <pubDate>Tue, 16 Jul 2019 00:00:00 GMT</pubDate>
-            <description><![CDATA[Different methods to create modals, and how to trigger them from nested components using React context, hooks, and portals]]></description>
-            <content:encoded><![CDATA[Modals are a useful tool for displaying information on top of your application, and are often used for notifications, alerts, or standalone dialogs such as registration or login forms. Before building a custom modal, it's a good idea to check if there are any pre-existing solutions that meet your needs ([Reach UI's Dialog](https://reacttraining.com/reach-ui/dialog/) and [react-modal](http://reactcommunity.org/react-modal/) are both popular options). If you don't find a suitable solution, let's explore creating a bespoke modal component in React.
-
-To get started, we'll create a basic modal that appears and disappears based on some local state in our React app. The process is simple: when a button in the root of the app is clicked, the modal will appear. Then, when the button inside the modal is clicked, the modal will close. Let's start building!
-
-[embed](https://codesandbox.io/embed/zen-pare-76gl3?autoresize=1\&fontsize=14\&hidenavigation=1\&theme=dark\&view=preview)
-
-If you want to trigger the modal from a nested component rather than just from within `<App/>`, you can pass the `setState` action `setIsModalOpen` as a prop. Then, you can call this action as a callback when a button within the nested component is clicked, which will trigger the modal.
-
-[embed](https://codesandbox.io/embed/peaceful-bardeen-7jexx?autoresize=1\&fontsize=14\&hidenavigation=1\&theme=dark\&view=preview)
-
-This works for a single level of nesting, but it probably won’t scale very well. We could keep passing the callback down through the components, but that could get a bit tedious and create a lot of extra code that's tough to manage. Enter [React Context](https://reactjs.org/docs/context.html).
-
-Context allows you to store and access a value anywhere in your React app. You can use a Provider to store the value and a Consumer to access it, and the Consumer will search up the component tree for the first Provider that matches its context. This is useful when you want to trigger the modal from a nested component, rather than just from the top-level App component. You can use the `useContext` hook to consume the value in a nested component.
-
-Let’s wrap the previous example with a Provider, set the `setIsModalOpen` callback as its value, then utilise the [useContext()](https://reactjs.org/docs/hooks-reference.html#usecontext) hook to consume it in a nested component.
-
-[embed](https://codesandbox.io/embed/sweet-brown-yn44i?autoresize=1\&fontsize=14\&hidenavigation=1\&theme=dark\&view=preview)
-
-We now have a modal that can be opened from anywhere in our app, but it can only display static content for now. If we want it to render dynamic content, we'll need to refactor it to accept children. Plus, since React's data flow only goes one way, we'll need to find a good way to pass data from a nested component back up to the modal at the root level.
-
-My former colleague, [Jenna Smith](https://twitter.com/jjenzz), a highly skilled front-end developer, suggested using [React Portal](https://reactjs.org/docs/portals.html) as a solution. Portal's are designed to pass children to a DOM node outside the hierarchy of the parent component, which is perfect for our needs. To use a portal, we'll need to provide two arguments: a React element (for our dynamic content) and a DOM element to inject the content into (the modal's container). This should allow us to effectively pass the data from the nested component to the modal at the root level.
-
-[embed](https://codesandbox.io/embed/7w6mq72l2q?autoresize=1\&fontsize=14\&hidenavigation=1\&theme=dark\&view=preview)
-
-As demonstrated in the sandbox, Jenna created two functional components to provide dynamic content for the modal. The `<ModalProvider />` component includes a DOM element with a ref attached (`<div ref={modalRef}/>`), as well as a context provider that wraps the entire app and distributes the ref's current value to any relevant consumers within it. The second component is the modal itself. Each time a `<Modal />` component is rendered, it will try to retrieve the `modalRef` element using `useContext()`. If the ref exists, the component will create a React portal and inject the modal's children into the ref element, rather than mounting in its expected position in the DOM tree..
-
-With this approach, the `Modal` component can now be used anywhere within the `ModalProvider` to display dynamic content on top of the app. One thing to keep in mind is that the body will still be able to scroll on iOS when the modal is mounted. I highly recommend reading Will Po's article on [body scroll lock](https://medium.com/jsdownunder/locking-body-scroll-for-all-devices-22def9615177) for potential solutions to this issue.
-]]></content:encoded>
-            <author>contact@ajames.dev (Andrew James)</author>
-            <category>react</category>
-            <enclosure length="0" type="image/jpg" url="https://i.imgur.com/ihdlQLe.jpg"/>
         </item>
         <item>
             <title><![CDATA[Streamlining State Management in Storybook with React]]></title>

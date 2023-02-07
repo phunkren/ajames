@@ -3,8 +3,8 @@ import NextLink from "next/link";
 import { MdRssFeed } from "react-icons/md";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { CSS, darkTheme, lightTheme, styled } from "../stitches.config";
-import { YOUTUBE_SUBSCRIBE_URL } from "../util/youtube";
-import { TwitterLogoIcon, VideoIcon } from "@radix-ui/react-icons";
+import { YOUTUBE_CHANNEL_TITLE, YOUTUBE_SUBSCRIBE_URL } from "../util/youtube";
+import { BellIcon, TwitterLogoIcon, VideoIcon } from "@radix-ui/react-icons";
 import { TextAux, TextHeadline } from "./Text";
 import { LinkProps } from "../types/link";
 import { buildUrl } from "../util/url";
@@ -70,10 +70,6 @@ const StyledLink = styled("a", {
           textDecorationColor: "$blue10",
           textDecorationLine: "underline",
         },
-
-        "&:active": {
-          color: "$blue9",
-        },
       },
       tertiary: {
         textDecorationLine: "underline",
@@ -108,10 +104,6 @@ const StyledLink = styled("a", {
 
         "&:hover": {
           color: "$blue10",
-        },
-
-        "&:active": {
-          color: "$blue9",
         },
       },
     },
@@ -166,6 +158,10 @@ export const StyledIconLink = styled(Link, {
     borderColor: "$foreground",
     backgroundColor: "$foreground",
     color: "$background",
+
+    "& svg": {
+      color: "$background",
+    },
   },
 
   "&:active": {
@@ -411,11 +407,12 @@ export const YoutubeSubscribeLink = memo(function YoutubeSubscribeLink({
     <StyledYoutubeSubscription
       href={YOUTUBE_SUBSCRIBE_URL}
       type={type}
-      variant="secondary"
+      variant={type === "button" ? "invisible" : "secondary"}
+      title={`Subscribe to ${YOUTUBE_CHANNEL_TITLE}`}
       {...props}
     >
       <Box alignItems="center" gap={2}>
-        <VideoIcon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
+        <BellIcon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
 
         {type === "button" && <TextAux color="primary">Subscribe</TextAux>}
 
@@ -471,7 +468,7 @@ export const TwitterShareLink = memo(function TwitterShareLink({
 
   if (variant === "icon") {
     return (
-      <StyledIconLink href={href} title="Share on Twitter">
+      <StyledIconLink href={href} title="Share on Twitter" variant="icon">
         <TwitterLogoIcon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
         <VisuallyHidden.Root>Tweet</VisuallyHidden.Root>
       </StyledIconLink>

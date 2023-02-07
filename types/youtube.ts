@@ -13,6 +13,7 @@ export type VideoPreview = {
   url: string;
   playlistId: string;
   videoId: string;
+  videoOwnerChannelTitle: string;
 };
 
 export type PlaylistPreview = {

@@ -10,7 +10,7 @@ import Image from "next/image";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 import { blackA, whiteA } from "@radix-ui/colors";
 import { darkTheme, lightTheme, styled } from "../stitches.config";
-import { PostTags, PublishDate } from "./Frontmatter";
+import { PostTags, PublishDate, YoutubeChannel } from "./Frontmatter";
 import { Box } from "./Box";
 import { Emoji, TextAux, TextBody, TextHeadline, TextTitle3 } from "./Text";
 import { Link } from "./Link";
@@ -22,6 +22,7 @@ import {
 } from "../types/card";
 import { PreviewToggle } from "./Button";
 import { BLUR_DATA_URL } from "../util/images";
+import { YOUTUBE_LIKED_VIDEOS_PLAYLIST_ID } from "../util/youtube";
 
 const StyledLink = styled(Link, {
   "&:hover": {
@@ -271,13 +272,17 @@ export const BlogCard = memo(function BlogCard({
 });
 
 export const VideoCard = memo(function VideoCard({
+  id,
   url,
   title,
   description,
   image,
   publishDate,
+  channel,
   ...props
 }: VideoCardProps) {
+  const isLikedVideos = id === YOUTUBE_LIKED_VIDEOS_PLAYLIST_ID;
+
   return (
     <Card image={image} {...props}>
       {({ ref, isPreviewVisible, onPreviewToggle }) => (
@@ -303,7 +308,11 @@ export const VideoCard = memo(function VideoCard({
             alignItems="center"
             css={{ marginTop: "auto" }}
           >
-            <PublishDate date={publishDate} icon compact />
+            {channel && isLikedVideos ? (
+              <YoutubeChannel channel={channel} icon compact />
+            ) : (
+              <PublishDate date={publishDate} icon compact />
+            )}
 
             {description ? (
               <PreviewToggle

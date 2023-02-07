@@ -41,6 +41,7 @@ export const formatPlaylistVideo = (
     resourceId,
     playlistId,
     publishedAt,
+    videoOwnerChannelTitle,
   } = response.snippet;
 
   const publishDate = response.contentDetails?.videoPublishedAt ?? publishedAt;
@@ -65,6 +66,7 @@ export const formatPlaylistVideo = (
     description,
     url,
     playlistId,
+    videoOwnerChannelTitle,
   };
 };
 

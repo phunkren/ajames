@@ -391,11 +391,13 @@ const Learning: NextPageWithLayout = ({
                         {playlistVideosPreview[playlist.id].map(
                           (playlistVideo) => (
                             <VideoCard
+                              id={playlist.id}
                               key={playlistVideo.title}
                               url={playlistVideo.url}
                               image={playlistVideo.thumbnail.src}
                               title={playlistVideo.title}
                               publishDate={playlistVideo.publishedAt}
+                              channel={playlistVideo.videoOwnerChannelTitle}
                               css={{
                                 scrollSnapAlign: "center",
                                 "@bp2": { scrollSnapAlign: "start" },

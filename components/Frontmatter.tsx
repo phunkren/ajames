@@ -2,12 +2,15 @@ import { memo } from "react";
 import { useRouter } from "next/router";
 import {
   AvatarIcon,
+  BellIcon,
   CalendarIcon,
   ClockIcon,
   EyeOpenIcon,
+  IdCardIcon,
   ListBulletIcon,
   MixIcon,
   Pencil2Icon,
+  StarIcon,
   VideoIcon,
 } from "@radix-ui/react-icons";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
@@ -46,8 +49,11 @@ export const Frontmatter = memo(function Frontmatter(props: any) {
   );
 });
 
-export const FrontmatterItem = memo(function FrontmatterItem(props: any) {
-  return <Box as="li" gap={6} alignItems="center" {...props} />;
+export const FrontmatterItem = memo(function FrontmatterItem({
+  compact,
+  ...props
+}: any) {
+  return <Box as="li" gap={compact ? 4 : 6} alignItems="center" {...props} />;
 });
 
 export const PostTags = memo(function PostTags({
@@ -142,7 +148,7 @@ export const PublishDate = memo(function PublishDate({
 
   if (compact) {
     return (
-      <FrontmatterItem {...props}>
+      <FrontmatterItem compact {...props}>
         {icon ? (
           <Box flexShrink={false}>
             <VisuallyHidden.Root>Publish Date</VisuallyHidden.Root>
@@ -210,7 +216,7 @@ export const SubscriberCount = memo(function SubscriberCount({
       {icon ? (
         <Box flexShrink={false}>
           <VisuallyHidden.Root>Total Subscribers</VisuallyHidden.Root>
-          <AvatarIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
+          <BellIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
         </Box>
       ) : null}
       <TextBody textTransform="capitalize">{formattedSubscribers}</TextBody>
@@ -298,6 +304,41 @@ export const TotalCategories = memo(function TotalCategories({
         </Box>
       ) : null}
       <TextBody textTransform="capitalize">{formattedTotal}</TextBody>
+    </FrontmatterItem>
+  );
+});
+
+export const YoutubeChannel = memo(function TotalCategories({
+  channel,
+  icon = false,
+  compact = false,
+  ...props
+}: any) {
+  if (compact) {
+    return (
+      <FrontmatterItem compact {...props}>
+        {icon ? (
+          <Box flexShrink={false}>
+            <VisuallyHidden.Root>YouTube Channel</VisuallyHidden.Root>
+            <AvatarIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
+          </Box>
+        ) : null}
+
+        <TextAux clamp={1} color="secondary">
+          {channel}
+        </TextAux>
+      </FrontmatterItem>
+    );
+  }
+  return (
+    <FrontmatterItem {...props}>
+      {icon ? (
+        <Box flexShrink={false}>
+          <VisuallyHidden.Root>YouTube Channel</VisuallyHidden.Root>
+          <AvatarIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
+        </Box>
+      ) : null}
+      <TextBody color="secondary">{channel}</TextBody>
     </FrontmatterItem>
   );
 });

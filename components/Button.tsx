@@ -60,17 +60,23 @@ const StyledButton = styled("button", {
   "-webkit-appearance": "none",
   "-moz-appearance": "none",
 
-  "&:hover": {
-    color: "$blue10",
-  },
-
-  "&:active": {
-    color: "$blue9",
-  },
-
   "&[aria-disabled='true']": {
     pointerEvents: "none",
     opacity: 0.4,
+  },
+
+  variants: {
+    variant: {
+      link: {
+        textDecorationLine: "none",
+        textUnderlineOffset: "$space$1",
+
+        "&:hover": {
+          textDecorationColor: "$blue10",
+          textDecorationLine: "underline",
+        },
+      },
+    },
   },
 });
 
@@ -94,11 +100,15 @@ export const StyledIconButton = styled(Button, {
   minHeight: 44,
   boxShadow: "$1",
 
-  "&:hover": {
+  "&:hover, &:active": {
     boxShadow: "$4",
     borderColor: "$foreground",
     backgroundColor: "$foreground",
     color: "$background",
+
+    svg: {
+      color: "$background",
+    },
   },
 });
 
@@ -218,9 +228,9 @@ export const ShareButton = memo(function ShareButton({
             <VisuallyHidden.Root>Share</VisuallyHidden.Root>
           </StyledIconButton>
         ) : (
-          <Button title="Share" onClick={handleClick}>
+          <Button title="Share" variant="link" onClick={handleClick}>
             <Share2Icon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
-            <TextHeadline>Share</TextHeadline>
+            <TextHeadline css={{ spacingLeft: "$2" }}>Share</TextHeadline>
           </Button>
         )}
 
