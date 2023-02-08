@@ -1,7 +1,6 @@
 import { ReactElement } from "react";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import {
-  DownloadIcon,
   EnvelopeOpenIcon,
   GitHubLogoIcon,
   HomeIcon,
@@ -11,7 +10,7 @@ import Image from "next/image";
 import { PrintButton, StyledIconButton } from "../components/Button";
 import { Divider } from "../components/Divider";
 import { ActionButtons, Layout } from "../components/Layout";
-import { Link, StyledIconLink } from "../components/Link";
+import { DownloadLink, Link, StyledIconLink } from "../components/Link";
 import {
   TextAux,
   TextBody,
@@ -236,13 +235,7 @@ const About: NextPageWithLayout = () => {
               >
                 <PrintButton />
 
-                <StyledIconLink href="/download-cv" title="Download" download>
-                  <DownloadIcon
-                    width={ICON_SIZE.m}
-                    height={ICON_SIZE.m}
-                    aria-hidden
-                  />
-                </StyledIconLink>
+                <DownloadLink href="/download-cv" />
               </ActionButtons>
             </StyledHero>
           </AspectRatio>
@@ -489,15 +482,15 @@ const About: NextPageWithLayout = () => {
                 href={SOCIAL.linkedin.url}
                 title={`${SOCIAL.linkedin.displayName} references`}
               >
-                <Box direction="horizontal" gap={4} alignItems="center">
-                  <TextTitle3 id="references" as="h2">
-                    References
-                  </TextTitle3>
+                <Box direction="horizontal" gap={2} alignItems="center">
                   <LinkedInLogoIcon
                     width={ICON_SIZE.m}
                     height={ICON_SIZE.m}
                     aria-hidden
                   />
+                  <TextTitle3 id="references" as="h2">
+                    References
+                  </TextTitle3>
                 </Box>
               </Link>
 

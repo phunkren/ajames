@@ -167,7 +167,7 @@ export const Navigation = memo(function Navigation() {
 
             <NavigationMenu.Item>
               <NavigationMenu.Trigger asChild>
-                <Button css={{ padding: 0, gap: "$2" }}>
+                <Button variant="tertiary" css={{ padding: 0, gap: "$2" }}>
                   <TextHeadline>Projects</TextHeadline>
                   <ChevronDownIcon width={ICON_SIZE.s} height={ICON_SIZE.s} />
                 </Button>

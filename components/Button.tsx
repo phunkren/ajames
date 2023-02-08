@@ -49,7 +49,6 @@ const StyledButton = styled("button", {
   display: "inline-flex",
   alignItems: "center",
   justifyContent: "center",
-  appearance: "none",
   background: "none",
   border: "none",
   color: "inherit",
@@ -58,6 +57,7 @@ const StyledButton = styled("button", {
   padding: "0",
   transition: "background 100ms ease-out, boxShadow 100ms ease-out",
 
+  appearance: "none",
   "-webkit-appearance": "none",
   "-moz-appearance": "none",
 
@@ -68,16 +68,60 @@ const StyledButton = styled("button", {
 
   variants: {
     variant: {
-      link: {
-        textDecorationLine: "none",
-        textUnderlineOffset: "$space$1",
+      primary: {
+        boxShadow: "$1",
+        backgroundColor: "$foreground",
+        color: "$background",
 
         "&:hover": {
-          textDecorationColor: "$blue10",
-          textDecorationLine: "underline",
+          boxShadow: "$4",
+          borderColor: "$foreground",
+          backgroundColor: "$foregroundMuted",
+
+          svg: {
+            color: "$background",
+          },
+        },
+
+        "&:active": {
+          boxShadow: "$5",
+        },
+      },
+      secondary: {
+        borderColor: "$foregroundMuted",
+        boxShadow: "$1",
+
+        "&:hover": {
+          boxShadow: "$4",
+          borderColor: "$foreground",
+          backgroundColor: "$foreground",
+          color: "$background",
+
+          svg: {
+            color: "$background",
+          },
+        },
+      },
+      tertiary: {
+        backgroundColor: "transparent",
+
+        "&:hover": {
+          boxShadow: "none",
+          color: "unset",
+          backgroundImage: `linear-gradient(90deg, $blue11 0.04%, $blue9 100.04%)`,
+          backgroundClip: "text",
+          ["-webkit-text-fill-color"]: "transparent",
+        },
+
+        "&:hover svg": {
+          color: "$blue9",
         },
       },
     },
+  },
+
+  defaultVariants: {
+    variant: "secondary",
   },
 });
 
@@ -278,7 +322,7 @@ export const ShareButton = memo(function ShareButton({
             <VisuallyHidden.Root>Share</VisuallyHidden.Root>
           </StyledIconButton>
         ) : (
-          <Button variant="link" onClick={handleClick}>
+          <Button variant="tertiary" onClick={handleClick}>
             <Share2Icon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
             <TextHeadline css={{ spacingLeft: "$2" }}>Share</TextHeadline>
           </Button>

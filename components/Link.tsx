@@ -4,7 +4,11 @@ import { MdRssFeed } from "react-icons/md";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { CSS, darkTheme, lightTheme, styled } from "../stitches.config";
 import { YOUTUBE_SUBSCRIBE_URL } from "../util/youtube";
-import { TwitterLogoIcon, VideoIcon } from "@radix-ui/react-icons";
+import {
+  DownloadIcon,
+  TwitterLogoIcon,
+  VideoIcon,
+} from "@radix-ui/react-icons";
 import { TextAux, TextHeadline } from "./Text";
 import { LinkProps } from "../types/link";
 import { buildUrl } from "../util/url";
@@ -51,11 +55,12 @@ const StyledLink = styled("a", {
 
         "&:hover": {
           textDecorationLine: "underline",
-          textDecorationColor: "unset",
-        },
+          textDecorationColor: "$blue9",
 
-        "&:active": {
-          color: "$blue9",
+          /** React Balancer */
+          "& span": {
+            display: "flex !important",
+          },
         },
 
         "@print": {
@@ -67,8 +72,14 @@ const StyledLink = styled("a", {
       },
       secondary: {
         "&:hover": {
-          textDecorationColor: "$blue10",
-          textDecorationLine: "underline",
+          color: "unset",
+          backgroundImage: `linear-gradient(90deg, $blue11 0.04%, $blue9 100.04%)`,
+          backgroundClip: "text",
+          ["-webkit-text-fill-color"]: "transparent",
+        },
+
+        "&:hover svg": {
+          color: "$blue9",
         },
       },
       tertiary: {
@@ -79,10 +90,6 @@ const StyledLink = styled("a", {
           color: "inherit",
           textDecorationStyle: "solid",
           textDecorationColor: "$blue10",
-        },
-
-        "&:active": {
-          color: "$blue9",
         },
       },
       invisible: {
@@ -111,10 +118,6 @@ const StyledLink = styled("a", {
         },
       },
     },
-  },
-
-  defaultVariants: {
-    variant: "secondary",
   },
 });
 
@@ -190,31 +193,29 @@ const StyledYoutubeSubscription = styled(Link, {
     type: {
       button: {
         padding: "$2 $4",
-        color: "white",
         borderRadius: 4,
         boxShadow: "$1",
         transition: "background 100ms ease-out, boxShadow 100ms ease-out",
 
         [`.${lightTheme} &`]: {
-          backgroundColor: "$red9",
+          backgroundImage: `linear-gradient(90deg, $red11 0.04%, $red9 100.04%)`,
+          color: "$red1",
         },
 
         [`.${darkTheme} &`]: {
-          backgroundColor: "$red8",
+          backgroundImage: `linear-gradient(90deg, $red8 0.04%, $red7 100.04%)`,
+          color: "$red12",
         },
 
         "&:hover": {
           boxShadow: "$4",
-          color: "white",
-          textDecoration: "none",
 
           [`.${lightTheme} &`]: {
-            backgroundColor: "$red10",
-            color: "white",
+            backgroundColor: "$red11",
           },
 
           [`.${darkTheme} &`]: {
-            backgroundColor: "$red7",
+            backgroundColor: "$red11",
             color: "white",
           },
         },
@@ -239,13 +240,15 @@ const StyledYoutubeSubscription = styled(Link, {
         boxShadow: "$1",
 
         [`.${lightTheme} &`]: {
-          backgroundColor: "$red9",
-          borderColor: "$red9",
+          backgroundImage: `linear-gradient(90deg, $red11 0.04%, $red9 100.04%)`,
+          borderColor: "$red10",
+          color: "$red1",
         },
 
         [`.${darkTheme} &`]: {
-          backgroundColor: "$red8",
-          borderColor: "$red8",
+          backgroundImage: `linear-gradient(90deg, $red8 0.04%, $red7 100.04%)`,
+          borderColor: "$red7",
+          color: "$red12",
         },
 
         "&:hover": {
@@ -282,28 +285,29 @@ const StyledBlogSubscription = styled(Link, {
       button: {
         padding: "$2 $4",
         borderRadius: 4,
-        color: "white",
+        color: "$amber1",
         boxShadow: "$1",
 
         [`.${lightTheme} &`]: {
-          backgroundColor: "$blue11",
+          backgroundImage: `linear-gradient(90deg, $amber10 0.04%, $amber8 100.04%)`,
         },
 
         [`.${darkTheme} &`]: {
-          backgroundColor: "$sky8",
+          backgroundImage: `linear-gradient(90deg, $amber11 0.04%, $amber9 100.04%)`,
+          color: "$amber12",
         },
 
         "&:hover": {
           boxShadow: "$4",
-          color: "white",
-          textDecorationLine: "none",
 
           [`.${lightTheme} &`]: {
-            backgroundColor: "$blue10",
+            backgroundColor: "$amber9",
+            color: "$amber1",
           },
 
           [`.${darkTheme} &`]: {
-            backgroundColor: "$sky7",
+            backgroundColor: "$amber10",
+            color: "$amber12",
           },
         },
 
@@ -317,35 +321,32 @@ const StyledBlogSubscription = styled(Link, {
         spacing: "$2",
         borderWidth: 2,
         borderStyle: "solid",
-        borderColor: "$foreground",
-        color: "white",
+
         minWidth: 44,
         minHeight: 44,
         boxShadow: "$1",
 
         [`.${lightTheme} &`]: {
-          backgroundColor: "$blue11",
-          borderColor: "$blue11",
+          backgroundImage: `linear-gradient(90deg, $amber10 0.04%, $amber8 100.04%)`,
+          borderColor: "$amber8",
+          color: "$amber1",
         },
 
         [`.${darkTheme} &`]: {
-          backgroundColor: "$sky8",
-          borderColor: "$sky8",
+          backgroundImage: `linear-gradient(90deg, $amber11 0.04%, $amber9 100.04%)`,
+          borderColor: "$amber9",
+          color: "$amber12",
         },
 
         "&:hover": {
           boxShadow: "$4",
 
-          color: "white",
-
           [`.${lightTheme} &`]: {
-            backgroundColor: "$blue10",
-            borderColor: "$blue10",
+            backgroundColor: "$amber9",
           },
 
           [`.${darkTheme} &`]: {
-            backgroundColor: "$sky7",
-            borderColor: "$sky7",
+            backgroundColor: "$amber10",
           },
         },
 
@@ -435,7 +436,7 @@ export const BlogSubscriptionLink = memo(function BlogSubscribeLink({
     <StyledBlogSubscription
       href={rssFeedUrl}
       type={type}
-      variant="secondary"
+      variant={type === "button" ? "invisible" : "secondary"}
       {...props}
     >
       <Box alignItems="center" gap={2}>
@@ -485,5 +486,13 @@ export const TwitterShareLink = memo(function TwitterShareLink({
         <TextHeadline>Tweet</TextHeadline>
       </Box>
     </StyledLink>
+  );
+});
+
+export const DownloadLink = memo(function DownloadLink(props: any) {
+  return (
+    <StyledIconLink title="Download" download {...props}>
+      <DownloadIcon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
+    </StyledIconLink>
   );
 });

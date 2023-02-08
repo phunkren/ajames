@@ -34,6 +34,15 @@ const StyledLink = styled(Link, {
   },
 });
 
+export const StyledCardEmoji = styled(Emoji, {
+  position: "absolute",
+  bottom: "-$2",
+  right: "-$2",
+  transform: "scale(4)",
+  opacity: 0,
+  zIndex: -1,
+});
+
 const StyledCardOuter = styled(Box, {
   position: "relative",
   display: "flex",
@@ -84,6 +93,13 @@ const StyledCardOuter = styled(Box, {
     },
   },
 
+  "&:hover": {
+    [`${StyledCardEmoji}`]: {
+      transition: "opacity 200ms ease-out",
+      opacity: 0.02,
+    },
+  },
+
   [`.${darkTheme} &`]: {
     backgroundColor: whiteA.whiteA2,
     borderColor: whiteA.whiteA5,
@@ -112,13 +128,15 @@ const StyledCardOuter = styled(Box, {
 });
 
 export const StyledCardInner = styled(Box, {
-  zIndex: 5,
+  position: "relative",
+  zIndex: 15,
 });
 
 export const StyledCardImage = styled(Image, {
   objectFit: "cover",
   filter: "brightness(85%)",
   transition: "filter 200ms ease-out",
+  zIndex: 10,
 
   // https://nextjs.org/docs/api-reference/next/image#known-browser-bugs
   "img[loading='lazy']": {
@@ -265,6 +283,8 @@ export const BlogCard = memo(function BlogCard({
               onPressedChange={onPreviewToggle}
             />
           </Box>
+
+          <StyledCardEmoji emoji={emoji} size="l" />
         </>
       )}
     </Card>
