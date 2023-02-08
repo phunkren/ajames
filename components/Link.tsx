@@ -3,8 +3,8 @@ import NextLink from "next/link";
 import { MdRssFeed } from "react-icons/md";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { CSS, darkTheme, lightTheme, styled } from "../stitches.config";
-import { YOUTUBE_CHANNEL_TITLE, YOUTUBE_SUBSCRIBE_URL } from "../util/youtube";
-import { BellIcon, TwitterLogoIcon, VideoIcon } from "@radix-ui/react-icons";
+import { YOUTUBE_SUBSCRIBE_URL } from "../util/youtube";
+import { TwitterLogoIcon, VideoIcon } from "@radix-ui/react-icons";
 import { TextAux, TextHeadline } from "./Text";
 import { LinkProps } from "../types/link";
 import { buildUrl } from "../util/url";
@@ -100,6 +100,10 @@ const StyledLink = styled("a", {
         },
       },
       icon: {
+        minWidth: 44,
+        minHeight: 44,
+        alignItems: "center",
+        justifyContent: "center",
         color: "inherit",
 
         "&:hover": {
@@ -408,7 +412,6 @@ export const YoutubeSubscribeLink = memo(function YoutubeSubscribeLink({
       href={YOUTUBE_SUBSCRIBE_URL}
       type={type}
       variant={type === "button" ? "invisible" : "secondary"}
-      title={`Subscribe to ${YOUTUBE_CHANNEL_TITLE}`}
       {...props}
     >
       <Box alignItems="center" gap={2}>
@@ -476,7 +479,7 @@ export const TwitterShareLink = memo(function TwitterShareLink({
   }
 
   return (
-    <StyledLink href={href} title="Share on Twitter" variant="secondary">
+    <StyledLink href={href} variant="secondary">
       <Box alignItems="center" gap={2}>
         <TwitterLogoIcon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
         <TextHeadline>Tweet</TextHeadline>

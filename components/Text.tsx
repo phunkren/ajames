@@ -74,6 +74,9 @@ export const StyledEmoji = styled("span", {
       s: {
         fontSize: 32,
       },
+      m: {
+        fontSize: 44,
+      },
       l: {
         fontSize: 64,
       },

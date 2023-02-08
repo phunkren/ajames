@@ -111,7 +111,7 @@ const StyledContainer = styled(Box, {
 // The computed value is (fontSize * lineHeight) / 2.
 const StyledContent = styled(Box, {
   position: "relative",
-  top: -16,
+  top: -22,
 
   "@bp2": {
     top: -32,
@@ -173,13 +173,12 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
               as="article"
               direction="vertical"
               spacingHorizontal={{ "@initial": 4, "@bp2": 10 }}
-              gap={10}
             >
-              <Box direction="vertical">
+              <Box direction="vertical" spacingBottom={10}>
                 <Box direction="vertical">
                   <Emoji
                     emoji={frontmatter.emoji}
-                    size={{ "@initial": "s", "@bp2": "l" }}
+                    size={{ "@initial": "m", "@bp2": "l" }}
                     css={{
                       position: "relative",
                       right: "$1",
@@ -193,19 +192,27 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
                   <Box
                     justifyContent="space-between"
                     alignItems="flex-start"
-                    spacingTop={{ "@initial": 5, "@bp2": 10 }}
-                    spacingBottom={4}
-                    gap={6}
-                    css={{ marginTop: 3 }}
+                    spacingTop={{ "@initial": 8, "@bp2": 10 }}
+                    spacingBottom={10}
                   >
                     <TextTitle2 css={{ flexGrow: 1 }}>
                       <Balancer>{frontmatter.title}</Balancer>
                     </TextTitle2>
+
+                    <BlogSubscriptionLink
+                      type="icon"
+                      css={{ display: "flex", "@bp2": { display: "none" } }}
+                    />
+
+                    <BlogSubscriptionLink
+                      type="button"
+                      css={{ display: "none", "@bp2": { display: "flex" } }}
+                    />
                   </Box>
                 </Box>
 
-                <Box gap={10} alignItems="flex-end">
-                  <Frontmatter spacingTop={6}>
+                <Box alignItems="flex-end">
+                  <Frontmatter>
                     <PostTags tags={frontmatter.tags} icon />
                     <PublishDate date={frontmatter.date} icon />
                     <ReadingTime time={frontmatter.time} icon />

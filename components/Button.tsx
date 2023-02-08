@@ -20,6 +20,7 @@ import {
   DoubleArrowUpIcon,
   DropdownMenuIcon,
   FileIcon,
+  HamburgerMenuIcon,
   InfoCircledIcon,
   Share2Icon,
 } from "@radix-ui/react-icons";
@@ -90,25 +91,50 @@ export const StyledIconButton = styled(Button, {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  borderRadius: "50%",
-  spacing: "$2",
-  borderWidth: 1,
-  borderStyle: "solid",
-  borderColor: "$foregroundMuted",
-  backgroundColor: "transparent",
   minWidth: 44,
   minHeight: 44,
-  boxShadow: "$1",
+  borderRadius: "50%",
+  borderWidth: 1,
+  borderStyle: "solid",
+  backgroundColor: "transparent",
 
-  "&:hover, &:active": {
-    boxShadow: "$4",
-    borderColor: "$foreground",
-    backgroundColor: "$foreground",
-    color: "$background",
+  variants: {
+    variant: {
+      primary: {
+        boxShadow: "$1",
+        borderColor: "$foregroundMuted",
 
-    svg: {
-      color: "$background",
+        "&:hover, &:active": {
+          boxShadow: "$4",
+          borderColor: "$foreground",
+          backgroundColor: "$foreground",
+          color: "$background",
+
+          svg: {
+            color: "$background",
+          },
+        },
+      },
+      secondary: {
+        borderColor: "transparent",
+        boxShadow: "none",
+
+        "&:hover, &:active": {
+          boxShadow: "none",
+          borderColor: "transparent",
+          backgroundColor: "transparent",
+          color: "currentcolor",
+
+          svg: {
+            color: "currentcolor",
+          },
+        },
+      },
     },
+  },
+
+  defaultVariants: {
+    variant: "primary",
   },
 });
 
@@ -166,6 +192,30 @@ const StyledPreviewToggle = styled(Toggle.Root, {
   borderWidth: 1,
   borderStyle: "solid",
   borderColor: "transparent",
+});
+
+const StyledMobileNavigationButton = styled(StyledIconButton, {
+  borderWidth: 0,
+
+  "&[data-state=open]": {
+    "svg#mobileNav-hamburger": {
+      display: "none",
+    },
+
+    "svg#mobileNav-cross": {
+      display: "flex",
+    },
+  },
+
+  "&[data-state=closed]": {
+    "svg#mobileNav-hamburger": {
+      display: "flex",
+    },
+
+    "svg#mobileNav-cross": {
+      display: "none",
+    },
+  },
 });
 
 export const ScrollToTopButton = memo(function ScrollToTopButton(props: any) {
@@ -228,7 +278,7 @@ export const ShareButton = memo(function ShareButton({
             <VisuallyHidden.Root>Share</VisuallyHidden.Root>
           </StyledIconButton>
         ) : (
-          <Button title="Share" variant="link" onClick={handleClick}>
+          <Button variant="link" onClick={handleClick}>
             <Share2Icon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
             <TextHeadline css={{ spacingLeft: "$2" }}>Share</TextHeadline>
           </Button>
@@ -347,3 +397,29 @@ export const FilterMenuButton = memo(
     );
   })
 );
+
+export const MobileNavigationButton = memo(function MobileNavigationButton(
+  props: any
+) {
+  return (
+    <StyledMobileNavigationButton
+      title="Mobile Navigation Menu"
+      variant="secondary"
+      {...props}
+    >
+      <HamburgerMenuIcon
+        id="mobileNav-hamburger"
+        width={ICON_SIZE.l}
+        height={ICON_SIZE.l}
+        aria-hidden
+      />
+
+      <Cross1Icon
+        id="mobileNav-cross"
+        width={ICON_SIZE.l}
+        height={ICON_SIZE.l}
+        aria-hidden
+      />
+    </StyledMobileNavigationButton>
+  );
+});

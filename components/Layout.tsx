@@ -143,6 +143,7 @@ export const ActionButtons = memo(function ActionButtons(props: any) {
         "@bp2": "flex-end",
       }}
       alignItems={{ "@initial": "flex-end", "@bp2": "center" }}
+      spacingBottom={1}
       {...props}
     />
   );

@@ -55,7 +55,7 @@ import { Box } from "../components/Box";
 import { NextPageWithLayout } from "./_app";
 
 type Props = {
-  videoPreview: VideoPreview;
+  featuredVideo: VideoPreview;
   playlistsPreview: PlaylistPreview[];
   playlistVideosPreview: PlaylistVideosPreview;
   channelInfoPreview: ChannelInfoPreview;
@@ -120,7 +120,7 @@ export async function getStaticProps() {
   const { latestVideo, playlists, videos, channelInfo } =
     await getYoutubeData();
 
-  const videoPreview = formatPlaylistVideo(latestVideo);
+  const featuredVideo = formatPlaylistVideo(latestVideo);
 
   const playlistsPreview = formatPlaylist(playlists);
 
@@ -132,7 +132,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      videoPreview,
+      featuredVideo,
       playlistsPreview: sortedPlaylistsPreview,
       playlistVideosPreview,
       channelInfoPreview,
@@ -142,7 +142,7 @@ export async function getStaticProps() {
 }
 
 const Learning: NextPageWithLayout = ({
-  videoPreview,
+  featuredVideo,
   playlistsPreview,
   playlistVideosPreview,
   channelInfoPreview,
@@ -188,18 +188,16 @@ const Learning: NextPageWithLayout = ({
               >
                 <TextTitle2 as="h1">Learning</TextTitle2>
 
-                <Box css={{ ...H2_STYLES }}>
-                  <YoutubeSubscribeLink
-                    type="button"
-                    css={{
-                      display: "none",
+                <YoutubeSubscribeLink
+                  type="button"
+                  css={{
+                    display: "none",
 
-                      "@bp2": {
-                        display: "flex",
-                      },
-                    }}
-                  />
-                </Box>
+                    "@bp2": {
+                      display: "flex",
+                    },
+                  }}
+                />
 
                 <YoutubeSubscribeLink
                   type="icon"
@@ -248,7 +246,7 @@ const Learning: NextPageWithLayout = ({
         </Box>
 
         <Box direction="vertical" gap={10} spacingTop={10}>
-          {videoPreview ? (
+          {featuredVideo ? (
             <Box direction="vertical">
               <Box
                 justifyContent={{
@@ -261,7 +259,7 @@ const Learning: NextPageWithLayout = ({
               >
                 <TextTitle3 as="h2">Latest Video</TextTitle3>
 
-                <Link href={videoPreview.url} variant="tertiary">
+                <Link href={featuredVideo.url} variant="tertiary">
                   <PlayIcon
                     width={ICON_SIZE.m}
                     height={ICON_SIZE.m}
@@ -277,14 +275,14 @@ const Learning: NextPageWithLayout = ({
               >
                 <Box
                   direction="vertical"
-                  spacingBottom={4}
+                  spacingBottom={{ "@initial": 8, "@bp3": 4 }}
                   css={{
                     "@bp3": { flexGrow: 0, flexShrink: 0, flexBasis: 480 },
                   }}
                 >
                   <AspectRatio ratio={16 / 9}>
                     <StyledYouTubePlayer
-                      videoId={videoPreview.videoId}
+                      videoId={featuredVideo.videoId}
                       onReady={handlePlayerReady}
                       onPlay={handlePlayerPlay}
                       opts={{
@@ -308,18 +306,18 @@ const Learning: NextPageWithLayout = ({
                 </Box>
 
                 <Box direction="vertical" gap={4}>
-                  <Link href={videoPreview.url} variant="primary">
+                  <Link href={featuredVideo.url} variant="primary">
                     <TextTitle3>
-                      <Balancer>{videoPreview.title}</Balancer>
+                      <Balancer>{featuredVideo.title}</Balancer>
                     </TextTitle3>
                   </Link>
 
                   <TextBody clamp={4} textAlign="justify" color="secondary">
-                    {videoPreview.description}
+                    {featuredVideo.description}
                   </TextBody>
 
                   <Box>
-                    <Link href={videoPreview.url} variant="tertiary">
+                    <Link href={featuredVideo.url} variant="tertiary">
                       <TextAux>Read more</TextAux>
                     </Link>
                   </Box>

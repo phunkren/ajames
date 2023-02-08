@@ -18,7 +18,7 @@ import { PROJECTS } from "../util/data";
 import { Project } from "../types/project";
 import { Link } from "./Link";
 import { TextAux, TextHeadline } from "./Text";
-import { Button } from "./Button";
+import { Button, MobileNavigationButton } from "./Button";
 import { Social } from "./Social";
 import { Box } from "./Box";
 import { ThemeToggle } from "./Toggle";
@@ -61,26 +61,6 @@ const StyledNavigationMenuContent = styled(NavigationMenu.Content, {
   '&[data-state="open"]': { animation: `${scaleIn} 200ms ease-out` },
 
   '&[data-state="closed"]': { animation: `${scaleOut} 200ms ease-out` },
-});
-
-const StyledHamburgerMenuIcon = styled(HamburgerMenuIcon, {
-  "button[data-state=open] > &": {
-    display: "none",
-  },
-
-  "button[data-state=closed] > &": {
-    display: "flex",
-  },
-});
-
-const StyledCloseMenuIcon = styled(Cross1Icon, {
-  "button[data-state=open] > &": {
-    display: "flex",
-  },
-
-  "button[data-state=closed] > &": {
-    display: "none",
-  },
 });
 
 const StyledNavigationMenuList = styled(NavigationMenu.List, {
@@ -224,19 +204,7 @@ export const NavigationMobile = memo(function NavigationMobile() {
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
-        <Button title="Mobile Navigation Menu">
-          <StyledHamburgerMenuIcon
-            width={ICON_SIZE.l}
-            height={ICON_SIZE.l}
-            aria-hidden
-          />
-
-          <StyledCloseMenuIcon
-            width={ICON_SIZE.l}
-            height={ICON_SIZE.l}
-            aria-hidden
-          />
-        </Button>
+        <MobileNavigationButton />
       </Dialog.Trigger>
 
       <Dialog.Portal>

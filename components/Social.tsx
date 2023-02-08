@@ -5,7 +5,6 @@ import {
   VideoIcon,
 } from "@radix-ui/react-icons";
 import { MdRssFeed } from "react-icons/md";
-import { styled } from "../stitches.config";
 import { SOCIAL } from "../util/data";
 import { ICON_SIZE } from "../util/images";
 import { Box } from "./Box";
@@ -15,21 +14,15 @@ type Props = {
   size?: string;
 };
 
-const StyledLink = styled(Link, {
-  minWidth: 44,
-  minHeight: 44,
-});
-
 export const Social = memo(function Social({ size = "xl" }: Props) {
   return (
     <Box as="nav" aria-label="Social Media">
       <Box as="ul" role="list" gap={4} alignItems="center">
         <li>
-          <StyledLink
+          <Link
             href={SOCIAL.twitter.url}
             title={SOCIAL.twitter.displayName}
             variant="icon"
-            css={{ justifyContent: "center", spacing: "$1" }}
           >
             <TwitterLogoIcon
               width={ICON_SIZE[size]}
@@ -37,15 +30,14 @@ export const Social = memo(function Social({ size = "xl" }: Props) {
               aria-hidden
               focusable={false}
             />
-          </StyledLink>
+          </Link>
         </li>
 
         <li>
-          <StyledLink
+          <Link
             href={SOCIAL.linkedin.url}
             title={SOCIAL.linkedin.displayName}
             variant="icon"
-            css={{ justifyContent: "center", spacing: "$1" }}
           >
             <LinkedInLogoIcon
               width={ICON_SIZE[size]}
@@ -53,26 +45,20 @@ export const Social = memo(function Social({ size = "xl" }: Props) {
               aria-hidden
               focusable={false}
             />
-          </StyledLink>
+          </Link>
         </li>
 
         <li>
-          <StyledLink
-            title="RSS Feed"
-            href="/rss"
-            variant="icon"
-            css={{ justifyContent: "center", spacing: "$1" }}
-          >
+          <Link title="RSS Feed" href="/rss" variant="icon">
             <MdRssFeed size={ICON_SIZE[size]} />
-          </StyledLink>
+          </Link>
         </li>
 
         <li>
-          <StyledLink
+          <Link
             href={SOCIAL.youtube.url}
             title={SOCIAL.youtube.displayName}
             variant="icon"
-            css={{ justifyContent: "center", spacing: "$1" }}
           >
             <VideoIcon
               width={ICON_SIZE[size]}
@@ -80,7 +66,7 @@ export const Social = memo(function Social({ size = "xl" }: Props) {
               aria-hidden
               focusable={false}
             />
-          </StyledLink>
+          </Link>
         </li>
       </Box>
     </Box>

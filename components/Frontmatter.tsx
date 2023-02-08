@@ -68,7 +68,7 @@ export const PostTags = memo(function PostTags({
   return (
     <FrontmatterItem {...props}>
       {icon ? (
-        <Box flexShrink={false}>
+        <Box flexShrink={false} css={{ height: 32 }} alignItems="center">
           <VisuallyHidden.Root>Tags</VisuallyHidden.Root>
           <ListBulletIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
         </Box>
@@ -84,6 +84,7 @@ export const PostTags = memo(function PostTags({
               as="li"
               key={tag.id}
               borderColor={tag.color}
+              css={{ margin: "$1 0" }}
               active={isActive}
             >
               <TextAux>{tag.name}</TextAux>
@@ -105,12 +106,12 @@ export const ActiveTags = memo(function ActiveTags({
 
   return (
     <FrontmatterItem
-      alignItems="flex-start"
+      alignItems="center"
       css={{ "@bp3": { maxWidth: 400 } }}
       {...props}
     >
       {icon ? (
-        <Box flexShrink={false} css={{ height: 32 }} alignItems="center">
+        <Box flexShrink={false}>
           <VisuallyHidden.Root>Tags</VisuallyHidden.Root>
           <EyeOpenIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
         </Box>
@@ -119,13 +120,7 @@ export const ActiveTags = memo(function ActiveTags({
       {activeTags.length ? (
         <Box as="ul" role="list" gap={2} flexWrap="wrap">
           {activeTags.map((tag) => (
-            <StyledTag
-              as="li"
-              key={tag.id}
-              borderColor={tag.color}
-              css={{ margin: "$1 0" }}
-              active
-            >
+            <StyledTag as="li" key={tag.id} borderColor={tag.color} active>
               <TextAux>{tag.name}</TextAux>
             </StyledTag>
           ))}

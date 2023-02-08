@@ -207,7 +207,7 @@ const Writing: NextPageWithLayout = ({ posts, tags }: Props) => {
         direction="vertical"
         gap={10}
         spacingHorizontal={{ "@initial": 4, "@bp2": 10 }}
-        spacingTop={{ "@initial": 1, "@bp2": 9 }}
+        spacingTop={{ "@initial": 3, "@bp2": 9 }}
         spacingBottom={10}
       >
         <Box direction="vertical" gap={10}>
