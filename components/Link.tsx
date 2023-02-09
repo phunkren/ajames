@@ -94,16 +94,13 @@ const StyledLink = styled("a", {
       },
       invisible: {
         color: "inherit",
-        textDecorationLine: "none",
 
         "&:hover": {
           color: "inherit",
-          textDecorationLine: "none",
         },
 
         "&:active": {
           color: "inherit",
-          textDecorationLine: "none",
         },
       },
       icon: {
@@ -188,6 +185,7 @@ export const StyledIconLink = styled(Link, {
 const StyledYoutubeSubscription = styled(Link, {
   display: "flex",
   alignItems: "center",
+  transition: "boxShadow 100ms ease-out",
 
   variants: {
     type: {
@@ -195,15 +193,14 @@ const StyledYoutubeSubscription = styled(Link, {
         padding: "$2 $4",
         borderRadius: 4,
         boxShadow: "$1",
-        transition: "background 100ms ease-out, boxShadow 100ms ease-out",
 
         [`.${lightTheme} &`]: {
-          backgroundImage: `linear-gradient(90deg, $red11 0.04%, $red9 100.04%)`,
+          backgroundImage: `linear-gradient(185deg, $red11 0.04%, $red10 100.04%)`,
           color: "$red1",
         },
 
         [`.${darkTheme} &`]: {
-          backgroundImage: `linear-gradient(90deg, $red8 0.04%, $red7 100.04%)`,
+          backgroundImage: `linear-gradient(185deg, $red8 0.04%, $red7 100.04%)`,
           color: "$red12",
         },
 
@@ -211,12 +208,13 @@ const StyledYoutubeSubscription = styled(Link, {
           boxShadow: "$4",
 
           [`.${lightTheme} &`]: {
-            backgroundColor: "$red11",
+            backgroundImage: `linear-gradient(225deg, $red10 0.04%, $red10 100.04%)`,
+            color: "$red1",
           },
 
           [`.${darkTheme} &`]: {
-            backgroundColor: "$red11",
-            color: "white",
+            backgroundImage: `linear-gradient(225deg, $red7 0.04%, $red7 100.04%)`,
+            color: "$red12",
           },
         },
 
@@ -240,13 +238,13 @@ const StyledYoutubeSubscription = styled(Link, {
         boxShadow: "$1",
 
         [`.${lightTheme} &`]: {
-          backgroundImage: `linear-gradient(90deg, $red11 0.04%, $red9 100.04%)`,
+          backgroundImage: `linear-gradient(185deg, $red11 0.04%, $red10 100.04%)`,
           borderColor: "$red10",
           color: "$red1",
         },
 
         [`.${darkTheme} &`]: {
-          backgroundImage: `linear-gradient(90deg, $red8 0.04%, $red7 100.04%)`,
+          backgroundImage: `linear-gradient(185deg, $red8 0.04%, $red7 100.04%)`,
           borderColor: "$red7",
           color: "$red12",
         },
@@ -255,13 +253,13 @@ const StyledYoutubeSubscription = styled(Link, {
           boxShadow: "$4",
 
           [`.${lightTheme} &`]: {
-            backgroundColor: "$red9",
-            borderColor: "$red9",
+            backgroundImage: `linear-gradient(225deg, $red10 0.04%, $red10 100.04%)`,
+            borderColor: "$red10",
           },
 
           [`.${darkTheme} &`]: {
-            backgroundColor: "$red8",
-            borderColor: "$red8",
+            backgroundImage: `linear-gradient(225deg, $red7 0.04%, $red7 100.04%)`,
+            borderColor: "$red7",
           },
         },
 
@@ -276,6 +274,7 @@ const StyledYoutubeSubscription = styled(Link, {
 const StyledBlogSubscription = styled(Link, {
   display: "flex",
   alignItems: "center",
+  transition: "boxShadow 100ms ease-out",
 
   variants: {
     type: {
@@ -289,24 +288,26 @@ const StyledBlogSubscription = styled(Link, {
         boxShadow: "$1",
 
         [`.${lightTheme} &`]: {
-          backgroundImage: `linear-gradient(90deg, $amber10 0.04%, $amber8 100.04%)`,
+          backgroundImage: `linear-gradient(185deg, $amber10 0.04%, $amber9 100.04%)`,
+          color: "$amber1",
         },
 
         [`.${darkTheme} &`]: {
-          backgroundImage: `linear-gradient(90deg, $amber11 0.04%, $amber9 100.04%)`,
+          backgroundImage: `linear-gradient(185deg, $amber9 0.04%, $amber8 100.04%)`,
           color: "$amber12",
         },
 
         "&:hover": {
           boxShadow: "$4",
+          background: "red",
 
           [`.${lightTheme} &`]: {
-            backgroundColor: "$amber9",
+            backgroundImage: `linear-gradient(225deg, $amber9 0.04%, $amber9 100.04%)`,
             color: "$amber1",
           },
 
           [`.${darkTheme} &`]: {
-            backgroundColor: "$amber10",
+            backgroundImage: `linear-gradient(225deg, $amber8 0.04%, $amber8 100.04%)`,
             color: "$amber12",
           },
         },
@@ -327,14 +328,14 @@ const StyledBlogSubscription = styled(Link, {
         boxShadow: "$1",
 
         [`.${lightTheme} &`]: {
-          backgroundImage: `linear-gradient(90deg, $amber10 0.04%, $amber8 100.04%)`,
-          borderColor: "$amber8",
+          backgroundImage: `linear-gradient(185deg, $amber10 0.04%, $amber9 100.04%)`,
+          borderColor: "$amber9",
           color: "$amber1",
         },
 
         [`.${darkTheme} &`]: {
-          backgroundImage: `linear-gradient(90deg, $amber11 0.04%, $amber9 100.04%)`,
-          borderColor: "$amber9",
+          backgroundImage: `linear-gradient(185deg, $amber9 0.04%, $amber8 100.04%)`,
+          borderColor: "$amber8",
           color: "$amber12",
         },
 
@@ -342,11 +343,15 @@ const StyledBlogSubscription = styled(Link, {
           boxShadow: "$4",
 
           [`.${lightTheme} &`]: {
-            backgroundColor: "$amber9",
+            backgroundImage: `linear-gradient(-90deg, $amber9 0.04%, $amber9 100.04%)`,
+            borderColor: "$amber9",
+            color: "$amber1",
           },
 
           [`.${darkTheme} &`]: {
-            backgroundColor: "$amber10",
+            backgroundImage: `linear-gradient(225deg, $amber8 0.04%, $amber8 100.04%)`,
+            borderColor: "$amber8",
+            color: "$amber12",
           },
         },
 
@@ -354,6 +359,7 @@ const StyledBlogSubscription = styled(Link, {
           boxShadow: "$5",
         },
 
+        /** Optically aligns the RSS Icon */
         "& div": {
           position: "relative",
           right: 2,
@@ -412,7 +418,7 @@ export const YoutubeSubscribeLink = memo(function YoutubeSubscribeLink({
     <StyledYoutubeSubscription
       href={YOUTUBE_SUBSCRIBE_URL}
       type={type}
-      variant={type === "button" ? "invisible" : "secondary"}
+      variant={type === "link" ? "secondary" : "invisible"}
       {...props}
     >
       <Box alignItems="center" gap={2}>
@@ -436,7 +442,7 @@ export const BlogSubscriptionLink = memo(function BlogSubscribeLink({
     <StyledBlogSubscription
       href={rssFeedUrl}
       type={type}
-      variant={type === "button" ? "invisible" : "secondary"}
+      variant="invisible"
       {...props}
     >
       <Box alignItems="center" gap={2}>

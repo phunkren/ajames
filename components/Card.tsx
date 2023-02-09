@@ -12,7 +12,7 @@ import { blackA, whiteA } from "@radix-ui/colors";
 import { darkTheme, lightTheme, styled } from "../stitches.config";
 import { PostTags, PublishDate, YoutubeChannel } from "./Frontmatter";
 import { Box } from "./Box";
-import { Emoji, TextAux, TextBody, TextHeadline, TextTitle3 } from "./Text";
+import { Emoji, TextAux, TextHeadline, TextTitle3 } from "./Text";
 import { Link } from "./Link";
 import {
   BlogCardProps,

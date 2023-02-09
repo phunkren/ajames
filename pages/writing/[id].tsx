@@ -200,11 +200,6 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
                     </TextTitle2>
 
                     <BlogSubscriptionLink
-                      type="icon"
-                      css={{ display: "flex", "@bp2": { display: "none" } }}
-                    />
-
-                    <BlogSubscriptionLink
                       type="button"
                       css={{ display: "none", "@bp2": { display: "flex" } }}
                     />

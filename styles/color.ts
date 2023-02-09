@@ -5,7 +5,7 @@ export const LIGHT_THEME_COLORS = {
   foregroundMuted: slate.slate12,
   background: slate.slate2,
   backgroundMuted: gray.gray1,
-  backgroundGradient: `radial-gradient(circle at bottom, ${slate.slate3} 0%, ${gray.gray4} 100%)`,
+  backgroundGradient: `radial-gradient(circle at bottom, ${slate.slate6} 0%, ${gray.gray6} 100%)`,
 };
 
 export const DARK_THEME_COLORS = {

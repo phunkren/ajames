@@ -85,7 +85,7 @@ const StyledCardContainer = styled(Box, {
       gridRow: "span 1",
 
       [`${StyledCardInner}`]: {
-        top: 32,
+        top: 0,
         padding: "0 $6 $6",
       },
 
@@ -115,7 +115,7 @@ const StyledCardContainer = styled(Box, {
       gridRow: "span 1",
 
       [`${StyledCardInner}`]: {
-        top: 32,
+        top: 0,
         padding: "0 $6 $6",
       },
 
@@ -267,7 +267,7 @@ const Writing: NextPageWithLayout = ({ posts, tags }: Props) => {
               >
                 <Box
                   direction="vertical"
-                  spacingBottom={4}
+                  spacingBottom={{ "@initial": 8, "@bp3": 0 }}
                   css={{
                     "@bp3": { flexGrow: 0, flexShrink: 0, flexBasis: 480 },
                   }}

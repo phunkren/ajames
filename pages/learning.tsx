@@ -275,7 +275,7 @@ const Learning: NextPageWithLayout = ({
               >
                 <Box
                   direction="vertical"
-                  spacingBottom={{ "@initial": 8, "@bp3": 4 }}
+                  spacingBottom={{ "@initial": 8, "@bp3": 0 }}
                   css={{
                     "@bp3": { flexGrow: 0, flexShrink: 0, flexBasis: 480 },
                   }}
