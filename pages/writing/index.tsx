@@ -200,14 +200,13 @@ const Writing: NextPageWithLayout = ({ posts, tags }: Props) => {
   );
 
   return (
-    <Box direction="vertical" spacingBottom={10} gap={10}>
-      <HeroLayout src={banner} />
+    <Box direction="vertical" spacingBottom={10} gap={9}>
+      <HeroLayout />
 
       <Box
         direction="vertical"
         gap={10}
         spacingHorizontal={{ "@initial": 4, "@bp2": 10 }}
-        spacingTop={{ "@initial": 3, "@bp2": 9 }}
         spacingBottom={10}
       >
         <Box direction="vertical" gap={10}>

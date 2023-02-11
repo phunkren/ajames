@@ -41,6 +41,7 @@ export const StyledCardEmoji = styled(Emoji, {
   transform: "scale(4)",
   opacity: 0,
   zIndex: -1,
+  filter: "grayscale(1)",
 });
 
 const StyledCardOuter = styled(Box, {

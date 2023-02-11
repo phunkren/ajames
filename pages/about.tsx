@@ -9,7 +9,7 @@ import {
 import Image from "next/image";
 import { PrintButton, StyledIconButton } from "../components/Button";
 import { Divider } from "../components/Divider";
-import { ActionButtons, Layout } from "../components/Layout";
+import { ActionButtons, HeroLayout, Layout } from "../components/Layout";
 import { DownloadLink, Link, StyledIconLink } from "../components/Link";
 import {
   TextAux,
@@ -46,22 +46,15 @@ const StyledPrintHeader = styled(Box, {
 const StyledPageHeader = styled(Box, {
   display: "block",
   position: "relative",
-  left: "-$2",
-  width: "100vw",
-  overflow: "hidden",
-  borderRadius: 0,
-  marginBottom: "$2",
   color: "$foreground",
 
   "@bp2": {
     marginBottom: "$10",
-    left: "-$7",
   },
 
   "@bp3": {
     left: 0,
     width: "100%",
-    borderRadius: 4,
   },
 
   "@print": {
@@ -72,61 +65,26 @@ const StyledPageHeader = styled(Box, {
 const StyledHero = styled(Box, {
   position: "absolute",
   inset: 0,
-  zIndex: 1,
   borderBottomWidth: 5,
   borderBottomStyle: "solid",
   borderBottomColor: "$foreground",
 
-  "@bp2": {
-    [`.${lightTheme} &`]: {
-      color: "white",
+  [`.${lightTheme} &`]: {
+    color: "white",
 
-      [`${TextTitle1}, ${TextHeadline}`]: {
-        color: "inherit",
-      },
-
-      [`${StyledIconButton}, ${StyledIconLink}`]: {
-        color: "inherit",
-        borderColor: "inherit",
-
-        "&:hover": {
-          background: "white",
-          borderColor: "white",
-          color: "black",
-        },
-      },
+    [`${TextTitle1}, ${TextHeadline}`]: {
+      color: "inherit",
     },
 
-    "&::after": {
-      content: "",
-      position: "absolute",
-      inset: 0,
+    [`${StyledIconButton}, ${StyledIconLink}`]: {
+      color: "inherit",
+      borderColor: "inherit",
 
-      [`.${darkTheme} &`]: {
-        background: "rgba(0,0,0,0.15)",
+      "&:hover": {
+        background: "white",
+        borderColor: "white",
+        color: "black",
       },
-
-      [`.${lightTheme} &`]: {
-        background: "rgba(0,0,0,0.75)",
-      },
-    },
-  },
-});
-
-const StyledFilter = styled(Box, {
-  position: "absolute",
-  inset: 0,
-  zIndex: 0,
-  filter: "blur(80px)",
-
-  "@bp2": {
-    [`.${darkTheme} &`]: {
-      background: "conic-gradient(from 50deg, $red3, $red2, $blue2, $blue4)",
-    },
-
-    [`.${lightTheme} &`]: {
-      background:
-        "conic-gradient(from 50deg, $red11, $red11, $blue10, $blue11)",
     },
   },
 });
@@ -134,23 +92,24 @@ const StyledFilter = styled(Box, {
 const StyledImage = styled(Image, {
   display: "none",
   objectFit: "contain",
-  borderRadius: 0,
   position: "absolute",
-  top: "9% !important",
-  zIndex: 10,
+  top: "10% !important",
+  zIndex: 0,
   transform: "scale(0.8)",
   pointerEvents: "none",
-  filter: "brightness(85%)",
+
+  [`.${lightTheme} &`]: {
+    zIndex: 1,
+    filter: "brightness(50%)",
+  },
 
   "@bp2": {
     display: "block",
-    borderRadius: 4,
     left: "25% !important",
   },
 
   "@bp3": {
     display: "block",
-    borderRadius: 4,
     left: "18% !important",
   },
 });
@@ -205,11 +164,7 @@ const About: NextPageWithLayout = () => {
     <Box>
       <Box direction="vertical">
         <StyledPageHeader>
-          <AspectRatio ratio={2.5 / 1}>
-            <StyledImage src={banner} alt="" sizes="100vw" priority fill />
-
-            <StyledFilter />
-
+          <HeroLayout>
             <StyledHero
               spacingHorizontal={{ "@initial": 6, "@bp2": 10 }}
               spacingVertical={{ "@initial": 10, "@bp2": 7 }}
@@ -218,7 +173,7 @@ const About: NextPageWithLayout = () => {
             >
               <Box
                 direction="vertical"
-                spacingLeft={{ "@bp2": 10, "@bp3": 0 }}
+                spacingLeft={{ "@bp2": 6, "@bp3": 0 }}
                 css={{ zIndex: 1 }}
               >
                 <TextTitle1 css={{ "@bp2": { textShadow: "$textShadow" } }}>
@@ -229,6 +184,8 @@ const About: NextPageWithLayout = () => {
                 </TextHeadline>
               </Box>
 
+              <StyledImage src={banner} alt="" sizes="100vw" priority fill />
+
               <ActionButtons
                 display={{ "@initial": "none", "@bp3": "flex" }}
                 css={{ zIndex: 1 }}
@@ -238,7 +195,7 @@ const About: NextPageWithLayout = () => {
                 <DownloadLink href="/download-cv" />
               </ActionButtons>
             </StyledHero>
-          </AspectRatio>
+          </HeroLayout>
         </StyledPageHeader>
 
         <StyledPrintHeader>

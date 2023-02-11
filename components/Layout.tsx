@@ -2,21 +2,38 @@ import { memo } from "react";
 import Image from "next/image";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 import { useTheme } from "../hooks/useTheme";
-import { styled } from "../stitches.config";
+import { darkTheme, lightTheme, styled } from "../stitches.config";
 import { BLUR_DATA_URL } from "../util/images";
 import { Avatar } from "./Avatar";
 import { Link } from "./Link";
 import { Navigation, NavigationMobile } from "./Navigation";
 import { Social } from "./Social";
 import { ThemeToggle } from "./Toggle";
-import { PERSONAL } from "../util/data";
 import { Box } from "./Box";
 import { PageSeo } from "./SEO";
 
 const StyledHeroLayout = styled(Box, {
   width: "100vw",
   position: "relative",
+  overflow: "hidden",
+  margin: "$10 0",
   left: "-$2",
+  borderRadius: 0,
+
+  "&::after": {
+    content: "",
+    position: "absolute",
+    inset: 0,
+    zIndex: 0,
+
+    [`.${darkTheme} &`]: {
+      background: "rgba(0,0,0,0.15)",
+    },
+
+    [`.${lightTheme} &`]: {
+      background: "rgba(0,0,0,0.5)",
+    },
+  },
 
   "@bp2": {
     left: "-$7",
@@ -25,6 +42,7 @@ const StyledHeroLayout = styled(Box, {
   "@bp3": {
     left: 0,
     width: "100%",
+    borderRadius: 4,
   },
 });
 
@@ -34,6 +52,21 @@ const StyledImage = styled(Image, {
 
   "@bp3": {
     borderRadius: 4,
+  },
+});
+
+const StyledFilter = styled(Box, {
+  position: "absolute",
+  inset: 0,
+  zIndex: 0,
+  filter: "blur(75px)",
+
+  [`.${darkTheme} &`]: {
+    background: "conic-gradient(from 50deg, $red3, $red2, $blue2, $blue4)",
+  },
+
+  [`.${lightTheme} &`]: {
+    background: "conic-gradient(from 50deg, $red9, $red9, $blue10, $blue11)",
   },
 });
 
@@ -95,6 +128,7 @@ export const Layout = memo(function Layout({ children }: any) {
         id="__root"
         direction="vertical"
         spacingHorizontal={{ "@initial": 2, "@bp2": 7 }}
+        css={{ overflowX: "hidden", "@bp3": { overflowX: "visible" } }}
         container="l"
         className={theme}
       >
@@ -115,19 +149,25 @@ export const Layout = memo(function Layout({ children }: any) {
   );
 });
 
-export const HeroLayout = memo(function HeroLayout({ src }: any) {
+export const HeroLayout = memo(function HeroLayout({ src, children }: any) {
   return (
-    <StyledHeroLayout id={PERSONAL.initials}>
+    <StyledHeroLayout>
       <AspectRatio.Root ratio={2.5 / 1}>
-        <StyledImage
-          placeholder="blur"
-          blurDataURL={BLUR_DATA_URL}
-          src={src}
-          alt=""
-          sizes="100vw"
-          fill
-          priority
-        />
+        <StyledFilter />
+
+        {src ? (
+          <StyledImage
+            placeholder="blur"
+            blurDataURL={BLUR_DATA_URL}
+            src={src}
+            alt=""
+            sizes="100vw"
+            fill
+            priority
+          />
+        ) : null}
+
+        {children}
       </AspectRatio.Root>
     </StyledHeroLayout>
   );

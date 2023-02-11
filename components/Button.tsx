@@ -56,6 +56,7 @@ const StyledButton = styled("button", {
   overflow: "visible",
   padding: "0",
   transition: "background 100ms ease-out, boxShadow 100ms ease-out",
+  borderRadius: 4,
 
   appearance: "none",
   "-webkit-appearance": "none",
@@ -88,12 +89,12 @@ const StyledButton = styled("button", {
         },
       },
       secondary: {
-        borderColor: "$foregroundMuted",
+        borderColor: "$foreground",
         boxShadow: "$1",
 
         "&:hover": {
           boxShadow: "$4",
-          borderColor: "$foreground",
+          borderColor: "$foregroundMuted",
           backgroundColor: "$foreground",
           color: "$background",
 
@@ -221,10 +222,9 @@ const StyledToastRoot = styled(Toast.Root, {
   },
 });
 
-const StyledScrollToTop = styled(StyledIconButton, {
+const StyledScrollToTop = styled(StyledButton, {
   gap: "$2",
-  borderRadius: 4,
-  width: "fit-content",
+  padding: "$2 $4",
 });
 
 const StyledPreviewToggle = styled(Toggle.Root, {
@@ -268,7 +268,7 @@ export const ScrollToTopButton = memo(function ScrollToTopButton(props: any) {
   }, []);
 
   return (
-    <StyledScrollToTop onClick={handleScrollToTop} {...props}>
+    <StyledScrollToTop variant="primary" onClick={handleScrollToTop} {...props}>
       <DoubleArrowUpIcon width={ICON_SIZE.s} height={ICON_SIZE.s} aria-hidden />
       <TextAux>Scroll to Top</TextAux>
     </StyledScrollToTop>

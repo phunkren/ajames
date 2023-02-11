@@ -111,7 +111,7 @@ const StyledLink = styled("a", {
         color: "inherit",
 
         "&:hover": {
-          color: "$blue10",
+          color: "$blue9",
         },
       },
     },
@@ -284,17 +284,17 @@ const StyledBlogSubscription = styled(Link, {
       button: {
         padding: "$2 $4",
         borderRadius: 4,
-        color: "$amber1",
+        color: "$blue1",
         boxShadow: "$1",
 
         [`.${lightTheme} &`]: {
-          backgroundImage: `linear-gradient(185deg, $amber10 0.04%, $amber9 100.04%)`,
-          color: "$amber1",
+          backgroundImage: `linear-gradient(185deg, $blue11 0.04%, $blue10 100.04%)`,
+          color: "$blue1",
         },
 
         [`.${darkTheme} &`]: {
-          backgroundImage: `linear-gradient(185deg, $amber9 0.04%, $amber8 100.04%)`,
-          color: "$amber12",
+          backgroundImage: `linear-gradient(185deg, $blue8 0.04%, $blue7 100.04%)`,
+          color: "$blue12",
         },
 
         "&:hover": {
@@ -302,13 +302,13 @@ const StyledBlogSubscription = styled(Link, {
           background: "red",
 
           [`.${lightTheme} &`]: {
-            backgroundImage: `linear-gradient(225deg, $amber9 0.04%, $amber9 100.04%)`,
-            color: "$amber1",
+            backgroundImage: `linear-gradient(225deg, $blue10 0.04%, $blue10 100.04%)`,
+            color: "$blue1",
           },
 
           [`.${darkTheme} &`]: {
-            backgroundImage: `linear-gradient(225deg, $amber8 0.04%, $amber8 100.04%)`,
-            color: "$amber12",
+            backgroundImage: `linear-gradient(225deg, $blue8 0.04%, $blue8 100.04%)`,
+            color: "$blue12",
           },
         },
 
@@ -328,30 +328,30 @@ const StyledBlogSubscription = styled(Link, {
         boxShadow: "$1",
 
         [`.${lightTheme} &`]: {
-          backgroundImage: `linear-gradient(185deg, $amber10 0.04%, $amber9 100.04%)`,
-          borderColor: "$amber9",
-          color: "$amber1",
+          backgroundImage: `linear-gradient(185deg, $blue10 0.04%, $blue9 100.04%)`,
+          borderColor: "$blue9",
+          color: "$blue1",
         },
 
         [`.${darkTheme} &`]: {
-          backgroundImage: `linear-gradient(185deg, $amber9 0.04%, $amber8 100.04%)`,
-          borderColor: "$amber8",
-          color: "$amber12",
+          backgroundImage: `linear-gradient(185deg, $blue9 0.04%, $blue8 100.04%)`,
+          borderColor: "$blue8",
+          color: "$blue12",
         },
 
         "&:hover": {
           boxShadow: "$4",
 
           [`.${lightTheme} &`]: {
-            backgroundImage: `linear-gradient(-90deg, $amber9 0.04%, $amber9 100.04%)`,
-            borderColor: "$amber9",
-            color: "$amber1",
+            backgroundImage: `linear-gradient(-90deg, $blue9 0.04%, $blue9 100.04%)`,
+            borderColor: "$blue9",
+            color: "$blue1",
           },
 
           [`.${darkTheme} &`]: {
-            backgroundImage: `linear-gradient(225deg, $amber8 0.04%, $amber8 100.04%)`,
-            borderColor: "$amber8",
-            color: "$amber12",
+            backgroundImage: `linear-gradient(225deg, $blue8 0.04%, $blue8 100.04%)`,
+            borderColor: "$blue8",
+            color: "$blue12",
           },
         },
 

@@ -111,10 +111,10 @@ const StyledContainer = styled(Box, {
 // The computed value is (fontSize * lineHeight) / 2.
 const StyledContent = styled(Box, {
   position: "relative",
-  top: -22,
+  top: -62,
 
   "@bp2": {
-    top: -32,
+    top: -72,
   },
 });
 
@@ -173,6 +173,7 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
               as="article"
               direction="vertical"
               spacingHorizontal={{ "@initial": 4, "@bp2": 10 }}
+              spacingTop={1}
             >
               <Box direction="vertical" spacingBottom={10}>
                 <Box direction="vertical">
@@ -199,10 +200,12 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
                       <Balancer>{frontmatter.title}</Balancer>
                     </TextTitle2>
 
-                    <BlogSubscriptionLink
-                      type="button"
-                      css={{ display: "none", "@bp2": { display: "flex" } }}
-                    />
+                    <Box spacingTop={{ "@initial": 2, "@bp3": 4 }}>
+                      <BlogSubscriptionLink
+                        type="button"
+                        css={{ display: "none", "@bp2": { display: "flex" } }}
+                      />
+                    </Box>
                   </Box>
                 </Box>
 
@@ -240,6 +243,7 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
               <StyledContainer
                 direction="vertical"
                 container="m"
+                spacingVertical={10}
                 gap={10}
                 css={{
                   textAlign: "justify",

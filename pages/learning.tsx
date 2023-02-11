@@ -82,10 +82,10 @@ const StyledVideoCardContainer = styled(Box, {
 
 const StyledContentContainer = styled(Box, {
   position: "relative",
-  top: -24,
+  top: -64,
 
   "@bp2": {
-    top: -36,
+    top: -76,
   },
 });
 
@@ -164,7 +164,7 @@ const Learning: NextPageWithLayout = ({
 
   return (
     <Box direction="vertical">
-      <HeroLayout src={banner} />
+      <HeroLayout />
 
       <StyledContentContainer
         direction="vertical"
