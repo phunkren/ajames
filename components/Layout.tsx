@@ -91,7 +91,6 @@ const StyledHeroContainer = styled(Box, {
 const StyledImage = styled(Image, {
   objectFit: "cover",
   borderRadius: 0,
-  zIndex: 1,
 
   "@bp3": {
     borderRadius: 4,
