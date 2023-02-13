@@ -48,10 +48,6 @@ const StyledPageHeader = styled(Box, {
   position: "relative",
   color: "$foreground",
 
-  "@bp2": {
-    marginBottom: "$10",
-  },
-
   "@bp3": {
     left: 0,
     width: "100%",
@@ -66,23 +62,28 @@ const StyledImage = styled(Image, {
   display: "none",
   objectFit: "contain",
   position: "absolute",
-  top: "10% !important",
+  top: "5% !important",
   zIndex: -1,
-  transform: "scale(0.8)",
+  transform: "scale(0.9)",
   pointerEvents: "none",
 
   [`.${lightTheme} &`]: {
-    filter: "brightness(50%)",
+    filter: "brightness(75%)",
+  },
+
+  [`.${darkTheme} &`]: {
+    filter: "brightness(75%)",
+    opacity: 0.9,
   },
 
   "@bp2": {
     display: "block",
-    left: "25% !important",
+    left: "27% !important",
   },
 
   "@bp3": {
     display: "block",
-    left: "18% !important",
+    left: "25% !important",
   },
 });
 
@@ -137,24 +138,43 @@ const About: NextPageWithLayout = () => {
       <Box direction="vertical">
         <StyledPageHeader>
           <HeroLayout bordered>
-            <Box flexGrow alignItems="flex-end" justifyContent="space-between">
-              <Box direction="vertical" spacingLeft={{ "@bp2": 6, "@bp3": 0 }}>
-                <TextTitle1 css={{ "@bp2": { textShadow: "$textShadow" } }}>
-                  {PERSONAL.name}
-                </TextTitle1>
+            <Box direction="vertical" flexGrow>
+              <Box
+                direction="vertical"
+                spacingLeft={{ "@bp2": 6, "@bp3": 0 }}
+                justifyContent={{
+                  "@initial": "center",
+                  "@bp2": "flex-end",
+                  "@bp3": "space-between",
+                }}
+                flexGrow
+              >
+                <Box
+                  flexGrow
+                  direction="vertical"
+                  display={{
+                    "@initial": "none",
+                    "@bp3": "flex",
+                  }}
+                >
+                  <Box gap={4} spacingTop={3}>
+                    <PrintButton />
+                    <DownloadLink href="/download-cv" />
+                  </Box>
+                </Box>
 
-                <TextHeadline css={{ "@bp2": { textShadow: "$textShadow" } }}>
-                  {PERSONAL.occupation} / {PERSONAL.location}
-                </TextHeadline>
+                <Box direction="vertical" justifyContent="flex-end">
+                  <TextTitle1 css={{ "@bp2": { textShadow: "$textShadow" } }}>
+                    {PERSONAL.name}
+                  </TextTitle1>
+
+                  <TextHeadline css={{ "@bp2": { textShadow: "$textShadow" } }}>
+                    {PERSONAL.occupation} / {PERSONAL.location}
+                  </TextHeadline>
+                </Box>
               </Box>
 
-              <StyledImage src={banner} alt="" sizes="100vw" priority fill />
-
-              <ActionButtons display={{ "@initial": "none", "@bp3": "flex" }}>
-                <PrintButton />
-
-                <DownloadLink href="/download-cv" />
-              </ActionButtons>
+              <StyledImage src={banner} alt="" sizes="50vw" priority fill />
             </Box>
           </HeroLayout>
         </StyledPageHeader>

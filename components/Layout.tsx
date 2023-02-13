@@ -4,7 +4,6 @@ import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 import { useTheme } from "../hooks/useTheme";
 import { darkTheme, lightTheme, styled } from "../stitches.config";
 import { BLUR_DATA_URL } from "../util/images";
-import { Avatar } from "./Avatar";
 import { Link, StyledIconLink } from "./Link";
 import { Navigation, NavigationMobile } from "./Navigation";
 import { Social } from "./Social";
@@ -13,12 +12,14 @@ import { Box } from "./Box";
 import { PageSeo } from "./SEO";
 import { TextHeadline, TextTitle1 } from "./Text";
 import { StyledIconButton } from "./Button";
+import { Logo } from "./Logo";
+import { blueDark, redDark } from "@radix-ui/colors";
 
 const StyledHeroLayout = styled(Box, {
   width: "100vw",
   position: "relative",
   overflow: "hidden",
-  margin: "$10 0",
+  margin: "0 0 $10",
   left: "-$2",
   borderRadius: 0,
 
@@ -33,7 +34,7 @@ const StyledHeroLayout = styled(Box, {
     },
 
     [`.${lightTheme} &`]: {
-      background: "rgba(0,0,0,0.5)",
+      background: "rgba(0,0,0,0.33)",
     },
   },
 
@@ -65,7 +66,7 @@ const StyledHeroContainer = styled(Box, {
       "&:hover": {
         background: "white",
         borderColor: "white",
-        color: "black",
+        color: "black !important",
       },
     },
   },
@@ -101,14 +102,15 @@ const StyledFilter = styled(Box, {
   position: "absolute",
   inset: 0,
   zIndex: -1,
-  filter: "blur(75px)",
+  background: `conic-gradient(from -25deg, ${redDark.red2}, ${redDark.red4}, ${redDark.red6}, ${redDark.red8}, ${blueDark.blue2}, ${blueDark.blue6}, ${blueDark.blue8})`,
 
   [`.${darkTheme} &`]: {
-    background: "conic-gradient(from 50deg, $red3, $red2, $blue2, $blue4)",
+    filter: "blur(50px)",
+    opacity: 0.5,
   },
 
   [`.${lightTheme} &`]: {
-    background: "conic-gradient(from 50deg, $red9, $red9, $blue10, $blue11)",
+    filter: "blur(50px)",
   },
 });
 
@@ -117,7 +119,7 @@ export const HeaderLayout = memo(function HeaderLayout() {
     <Box
       as="header"
       display={{ "@print": "none", "@initial": "flex" }}
-      spacingHorizontal={{ "@initial": 4, "@bp2": 0 }}
+      spacingHorizontal={{ "@initial": 4, "@bp2": 1 }}
       spacingVertical={8}
       gap={{ "@initial": 4, "@bp2": 7 }}
       justifyContent="space-between"
@@ -125,7 +127,7 @@ export const HeaderLayout = memo(function HeaderLayout() {
     >
       <Box direction="horizontal" gap={10} alignItems="center">
         <Link href="/">
-          <Avatar />
+          <Logo />
         </Link>
 
         <Box display={{ "@initial": "none", "@bp2": "flex" }}>
@@ -197,7 +199,7 @@ export const HeroLayout = memo(function HeroLayout({
   bordered = false,
 }: any) {
   return (
-    <StyledHeroLayout direction="vertical">
+    <StyledHeroLayout>
       <AspectRatio.Root ratio={2.5 / 1} asChild>
         <StyledHeroContainer direction="vertical" bordered={bordered} flexGrow>
           <StyledFilter />
