@@ -5,12 +5,14 @@ import { useTheme } from "../hooks/useTheme";
 import { darkTheme, lightTheme, styled } from "../stitches.config";
 import { BLUR_DATA_URL } from "../util/images";
 import { Avatar } from "./Avatar";
-import { Link } from "./Link";
+import { Link, StyledIconLink } from "./Link";
 import { Navigation, NavigationMobile } from "./Navigation";
 import { Social } from "./Social";
 import { ThemeToggle } from "./Toggle";
 import { Box } from "./Box";
 import { PageSeo } from "./SEO";
+import { TextHeadline, TextTitle1 } from "./Text";
+import { StyledIconButton } from "./Button";
 
 const StyledHeroLayout = styled(Box, {
   width: "100vw",
@@ -24,7 +26,7 @@ const StyledHeroLayout = styled(Box, {
     content: "",
     position: "absolute",
     inset: 0,
-    zIndex: 0,
+    zIndex: -1,
 
     [`.${darkTheme} &`]: {
       background: "rgba(0,0,0,0.15)",
@@ -46,9 +48,50 @@ const StyledHeroLayout = styled(Box, {
   },
 });
 
+const StyledHeroContainer = styled(Box, {
+  position: "relative",
+
+  [`.${lightTheme} &`]: {
+    color: "white",
+
+    [`${TextTitle1}, ${TextHeadline}`]: {
+      color: "inherit",
+    },
+
+    [`${StyledIconButton}, ${StyledIconLink}`]: {
+      color: "inherit",
+      borderColor: "inherit",
+
+      "&:hover": {
+        background: "white",
+        borderColor: "white",
+        color: "black",
+      },
+    },
+  },
+
+  variants: {
+    bordered: {
+      true: {
+        "&::after": {
+          content: "",
+          position: "absolute",
+          height: "$space$1",
+          width: "100%",
+          bottom: 0,
+          left: 0,
+          background: "$foreground",
+          zIndex: 1,
+        },
+      },
+    },
+  },
+});
+
 const StyledImage = styled(Image, {
   objectFit: "cover",
   borderRadius: 0,
+  zIndex: 1,
 
   "@bp3": {
     borderRadius: 4,
@@ -58,7 +101,7 @@ const StyledImage = styled(Image, {
 const StyledFilter = styled(Box, {
   position: "absolute",
   inset: 0,
-  zIndex: 0,
+  zIndex: -1,
   filter: "blur(75px)",
 
   [`.${darkTheme} &`]: {
@@ -149,25 +192,43 @@ export const Layout = memo(function Layout({ children }: any) {
   );
 });
 
-export const HeroLayout = memo(function HeroLayout({ src, children }: any) {
+export const HeroLayout = memo(function HeroLayout({
+  src,
+  children,
+  bordered = false,
+}: any) {
   return (
-    <StyledHeroLayout>
-      <AspectRatio.Root ratio={2.5 / 1}>
-        <StyledFilter />
+    <StyledHeroLayout direction="vertical">
+      <AspectRatio.Root ratio={2.5 / 1} asChild>
+        <StyledHeroContainer direction="vertical" bordered={bordered} flexGrow>
+          <StyledFilter />
 
-        {src ? (
-          <StyledImage
-            placeholder="blur"
-            blurDataURL={BLUR_DATA_URL}
-            src={src}
-            alt=""
-            sizes="100vw"
-            fill
-            priority
-          />
-        ) : null}
+          {src ? (
+            <StyledImage
+              placeholder="blur"
+              blurDataURL={BLUR_DATA_URL}
+              src={src}
+              alt=""
+              sizes="100vw"
+              fill
+              priority
+            />
+          ) : null}
 
-        {children}
+          {children ? (
+            <Box
+              direction="vertical"
+              spacingHorizontal={{ "@initial": 6, "@bp2": 10 }}
+              spacingVertical={{ "@initial": 10, "@bp2": 7 }}
+              css={{
+                zIndex: 1,
+              }}
+              flexGrow
+            >
+              {children}
+            </Box>
+          ) : null}
+        </StyledHeroContainer>
       </AspectRatio.Root>
     </StyledHeroLayout>
   );

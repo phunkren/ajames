@@ -62,44 +62,16 @@ const StyledPageHeader = styled(Box, {
   },
 });
 
-const StyledHero = styled(Box, {
-  position: "absolute",
-  inset: 0,
-  borderBottomWidth: 5,
-  borderBottomStyle: "solid",
-  borderBottomColor: "$foreground",
-
-  [`.${lightTheme} &`]: {
-    color: "white",
-
-    [`${TextTitle1}, ${TextHeadline}`]: {
-      color: "inherit",
-    },
-
-    [`${StyledIconButton}, ${StyledIconLink}`]: {
-      color: "inherit",
-      borderColor: "inherit",
-
-      "&:hover": {
-        background: "white",
-        borderColor: "white",
-        color: "black",
-      },
-    },
-  },
-});
-
 const StyledImage = styled(Image, {
   display: "none",
   objectFit: "contain",
   position: "absolute",
   top: "10% !important",
-  zIndex: 0,
+  zIndex: -1,
   transform: "scale(0.8)",
   pointerEvents: "none",
 
   [`.${lightTheme} &`]: {
-    zIndex: 1,
     filter: "brightness(50%)",
   },
 
@@ -164,21 +136,13 @@ const About: NextPageWithLayout = () => {
     <Box>
       <Box direction="vertical">
         <StyledPageHeader>
-          <HeroLayout>
-            <StyledHero
-              spacingHorizontal={{ "@initial": 6, "@bp2": 10 }}
-              spacingVertical={{ "@initial": 10, "@bp2": 7 }}
-              alignItems="flex-end"
-              justifyContent="space-between"
-            >
-              <Box
-                direction="vertical"
-                spacingLeft={{ "@bp2": 6, "@bp3": 0 }}
-                css={{ zIndex: 1 }}
-              >
+          <HeroLayout bordered>
+            <Box flexGrow alignItems="flex-end" justifyContent="space-between">
+              <Box direction="vertical" spacingLeft={{ "@bp2": 6, "@bp3": 0 }}>
                 <TextTitle1 css={{ "@bp2": { textShadow: "$textShadow" } }}>
                   {PERSONAL.name}
                 </TextTitle1>
+
                 <TextHeadline css={{ "@bp2": { textShadow: "$textShadow" } }}>
                   {PERSONAL.occupation} / {PERSONAL.location}
                 </TextHeadline>
@@ -186,15 +150,12 @@ const About: NextPageWithLayout = () => {
 
               <StyledImage src={banner} alt="" sizes="100vw" priority fill />
 
-              <ActionButtons
-                display={{ "@initial": "none", "@bp3": "flex" }}
-                css={{ zIndex: 1 }}
-              >
+              <ActionButtons display={{ "@initial": "none", "@bp3": "flex" }}>
                 <PrintButton />
 
                 <DownloadLink href="/download-cv" />
               </ActionButtons>
-            </StyledHero>
+            </Box>
           </HeroLayout>
         </StyledPageHeader>
 
@@ -303,6 +264,64 @@ const About: NextPageWithLayout = () => {
               </GridRoot>
             </Box>
 
+            <Box as="section" aria-labelledby="expertise" direction="vertical">
+              <TextTitle3 id="expertise" as="h2">
+                Expertise
+              </TextTitle3>
+
+              <Box
+                spacingTop={2}
+                spacingBottom={{ "@print": 4, "@initial": 6 }}
+              >
+                <Divider />
+              </Box>
+
+              <GridRoot>
+                {EXPERTISE.map((topic) => (
+                  <GridItem key={topic}>
+                    <TextAux
+                      color="primary"
+                      textTransform={{
+                        "@print": "capitalize",
+                        "@initial": "uppercase",
+                      }}
+                    >
+                      {topic}
+                    </TextAux>
+                  </GridItem>
+                ))}
+              </GridRoot>
+            </Box>
+
+            <Box as="section" aria-labelledby="interests" direction="vertical">
+              <TextTitle3 id="interests" as="h2">
+                Interests
+              </TextTitle3>
+
+              <Box
+                spacingTop={2}
+                spacingBottom={{ "@print": 4, "@initial": 6 }}
+              >
+                <Divider />
+              </Box>
+
+              <GridRoot>
+                {INTERESTS.map((interest) => (
+                  <GridItem key={interest}>
+                    <TextAux
+                      color="primary"
+                      textTransform={{
+                        "@print": "capitalize",
+                        "@initial": "uppercase",
+                      }}
+                    >
+                      {interest}
+                    </TextAux>
+                  </GridItem>
+                ))}
+              </GridRoot>
+            </Box>
+
             <Box as="section" aria-labelledby="education" direction="vertical">
               <TextTitle3 id="education" as="h2">
                 Education
@@ -371,64 +390,6 @@ const About: NextPageWithLayout = () => {
                       )}
                     </Box>
                   </Box>
-                ))}
-              </GridRoot>
-            </Box>
-
-            <Box as="section" aria-labelledby="expertise" direction="vertical">
-              <TextTitle3 id="expertise" as="h2">
-                Expertise
-              </TextTitle3>
-
-              <Box
-                spacingTop={2}
-                spacingBottom={{ "@print": 4, "@initial": 6 }}
-              >
-                <Divider />
-              </Box>
-
-              <GridRoot>
-                {EXPERTISE.map((topic) => (
-                  <GridItem key={topic}>
-                    <TextAux
-                      color="primary"
-                      textTransform={{
-                        "@print": "capitalize",
-                        "@initial": "uppercase",
-                      }}
-                    >
-                      {topic}
-                    </TextAux>
-                  </GridItem>
-                ))}
-              </GridRoot>
-            </Box>
-
-            <Box as="section" aria-labelledby="interests" direction="vertical">
-              <TextTitle3 id="interests" as="h2">
-                Interests
-              </TextTitle3>
-
-              <Box
-                spacingTop={2}
-                spacingBottom={{ "@print": 4, "@initial": 6 }}
-              >
-                <Divider />
-              </Box>
-
-              <GridRoot>
-                {INTERESTS.map((interest) => (
-                  <GridItem key={interest}>
-                    <TextAux
-                      color="primary"
-                      textTransform={{
-                        "@print": "capitalize",
-                        "@initial": "uppercase",
-                      }}
-                    >
-                      {interest}
-                    </TextAux>
-                  </GridItem>
                 ))}
               </GridRoot>
             </Box>
