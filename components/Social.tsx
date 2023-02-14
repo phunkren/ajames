@@ -14,10 +14,10 @@ type Props = {
   size?: string;
 };
 
-export const Social = memo(function Social({ size = "xl" }: Props) {
+export const Social = memo(function Social() {
   return (
     <Box as="nav" aria-label="Social Media">
-      <Box as="ul" role="list" gap={4} alignItems="center">
+      <Box as="ul" role="list" gap={6} alignItems="center">
         <li>
           <Link
             href={SOCIAL.twitter.url}
@@ -25,8 +25,8 @@ export const Social = memo(function Social({ size = "xl" }: Props) {
             variant="icon"
           >
             <TwitterLogoIcon
-              width={ICON_SIZE[size]}
-              height={ICON_SIZE[size]}
+              width={32}
+              height={32}
               aria-hidden
               focusable={false}
             />
@@ -38,10 +38,11 @@ export const Social = memo(function Social({ size = "xl" }: Props) {
             href={SOCIAL.linkedin.url}
             title={SOCIAL.linkedin.displayName}
             variant="icon"
+            css={{ position: "relative", top: -1 }}
           >
             <LinkedInLogoIcon
-              width={ICON_SIZE[size]}
-              height={ICON_SIZE[size]}
+              width={28}
+              height={28}
               aria-hidden
               focusable={false}
             />
@@ -50,7 +51,7 @@ export const Social = memo(function Social({ size = "xl" }: Props) {
 
         <li>
           <Link title="RSS Feed" href="/rss" variant="icon">
-            <MdRssFeed size={ICON_SIZE[size]} />
+            <MdRssFeed size={36} />
           </Link>
         </li>
 
@@ -60,12 +61,7 @@ export const Social = memo(function Social({ size = "xl" }: Props) {
             title={SOCIAL.youtube.displayName}
             variant="icon"
           >
-            <VideoIcon
-              width={ICON_SIZE[size]}
-              height={ICON_SIZE[size]}
-              aria-hidden
-              focusable={false}
-            />
+            <VideoIcon width={33} height={33} aria-hidden focusable={false} />
           </Link>
         </li>
       </Box>

@@ -80,15 +80,6 @@ const StyledVideoCardContainer = styled(Box, {
   },
 });
 
-const StyledContentContainer = styled(Box, {
-  position: "relative",
-  top: -64,
-
-  "@bp2": {
-    top: -76,
-  },
-});
-
 const StyledYouTubePlayer = styled(YouTube, {
   position: "absolute",
   inset: 0,
@@ -166,19 +157,12 @@ const Learning: NextPageWithLayout = ({
     <Box direction="vertical">
       <HeroLayout />
 
-      <StyledContentContainer
+      <Box
         direction="vertical"
         spacingHorizontal={{ "@initial": 4, "@bp2": 10 }}
       >
         <Box direction="vertical" spacingBottom={10}>
           <Box direction="vertical">
-            <Link href={YOUTUBE_CHANNEL_URL} css={{ display: "contents" }}>
-              <YouTubeAvatar
-                src={channelInfoPreview.thumbnail.src}
-                alt={channelInfoPreview.thumbnail.alt}
-              />
-            </Link>
-
             <Box direction="vertical" justifyContent="space-between">
               <Box
                 justifyContent="space-between"
@@ -453,7 +437,7 @@ const Learning: NextPageWithLayout = ({
             </Box>
           </Box>
         </Box>
-      </StyledContentContainer>
+      </Box>
     </Box>
   );
 };

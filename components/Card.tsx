@@ -58,17 +58,6 @@ const StyledCardOuter = styled(Box, {
   transition:
     "background 200ms ease-out, boxShadow 200ms ease-out, transform 200ms ease-out",
 
-  "&::after": {
-    content: "",
-    position: "absolute",
-    height: 2,
-    width: "calc(100% + 2px)",
-    bottom: 0,
-    left: -1,
-    background: "transparent",
-    transition: "background 200ms ease-out",
-  },
-
   "& div[data-radix-aspect-ratio-wrapper]": {
     overflow: "hidden",
   },
@@ -97,7 +86,15 @@ const StyledCardOuter = styled(Box, {
   "&:hover": {
     [`${StyledCardEmoji}`]: {
       transition: "opacity 200ms ease-out",
-      opacity: 0.02,
+      opacity: 0.01,
+
+      [`.${darkTheme} &`]: {
+        opacity: 0.01,
+      },
+
+      [`.${lightTheme} &`]: {
+        opacity: 0.02,
+      },
     },
   },
 

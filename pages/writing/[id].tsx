@@ -107,14 +107,12 @@ const StyledContainer = styled(Box, {
   },
 });
 
-// These magic numbers are calculated based on the font size of the TextTitle1 component
-// The computed value is (fontSize * lineHeight) / 2.
 const StyledContent = styled(Box, {
   position: "relative",
   top: -62,
 
   "@bp2": {
-    top: -72,
+    top: -112,
   },
 });
 
@@ -173,7 +171,7 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
               as="article"
               direction="vertical"
               spacingHorizontal={{ "@initial": 4, "@bp2": 10 }}
-              spacingTop={1}
+              spacingVertical={10}
             >
               <Box direction="vertical" spacingBottom={10}>
                 <Box direction="vertical">
@@ -183,6 +181,7 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
                     css={{
                       position: "relative",
                       right: "$1",
+                      spacingBottom: "$2",
                       alignSelf: "flex-start",
                       "@bp2": {
                         right: "$2",

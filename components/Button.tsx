@@ -139,7 +139,7 @@ export const StyledIconButton = styled(Button, {
   minWidth: 44,
   minHeight: 44,
   borderRadius: "50%",
-  borderWidth: 1,
+  borderWidth: 2,
   borderStyle: "solid",
   backgroundColor: "transparent",
 

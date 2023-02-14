@@ -14,28 +14,31 @@ import { TextHeadline, TextTitle1 } from "./Text";
 import { StyledIconButton } from "./Button";
 import { Logo } from "./Logo";
 import { blueDark, redDark } from "@radix-ui/colors";
+import { DARK_THEME_COLORS, LIGHT_THEME_COLORS } from "../styles/color";
 
 const StyledHeroLayout = styled(Box, {
   width: "100vw",
   position: "relative",
   overflow: "hidden",
-  margin: "0 0 $10",
+  margin: "$10 0",
   left: "-$2",
   borderRadius: 0,
+
+  "&::before": {
+    content: "",
+    position: "absolute",
+    inset: 0,
+    zIndex: -1,
+    backgroundColor: DARK_THEME_COLORS.background,
+  },
 
   "&::after": {
     content: "",
     position: "absolute",
     inset: 0,
-    zIndex: -1,
+    zIndex: 0,
 
-    [`.${darkTheme} &`]: {
-      background: "rgba(0,0,0,0.15)",
-    },
-
-    [`.${lightTheme} &`]: {
-      background: "rgba(0,0,0,0.33)",
-    },
+    background: "rgba(0,0,0,0.15)",
   },
 
   "@bp2": {
@@ -53,7 +56,7 @@ const StyledHeroContainer = styled(Box, {
   position: "relative",
 
   [`.${lightTheme} &`]: {
-    color: "white",
+    color: LIGHT_THEME_COLORS.background,
 
     [`${TextTitle1}, ${TextHeadline}`]: {
       color: "inherit",
@@ -64,9 +67,12 @@ const StyledHeroContainer = styled(Box, {
       borderColor: "inherit",
 
       "&:hover": {
-        background: "white",
-        borderColor: "white",
-        color: "black !important",
+        background: DARK_THEME_COLORS.foreground,
+        borderColor: DARK_THEME_COLORS.foreground,
+      },
+
+      "&:hover svg": {
+        color: DARK_THEME_COLORS.background,
       },
     },
   },
@@ -101,7 +107,7 @@ const StyledImage = styled(Image, {
 const StyledFilter = styled(Box, {
   position: "absolute",
   inset: 0,
-  zIndex: -1,
+  zIndex: 0,
   background: `conic-gradient(from -25deg, ${redDark.red2}, ${redDark.red4}, ${redDark.red6}, ${redDark.red8}, ${blueDark.blue2}, ${blueDark.blue6}, ${blueDark.blue8})`,
 
   [`.${darkTheme} &`]: {
@@ -120,7 +126,7 @@ export const HeaderLayout = memo(function HeaderLayout() {
       as="header"
       display={{ "@print": "none", "@initial": "flex" }}
       spacingHorizontal={{ "@initial": 4, "@bp2": 1 }}
-      spacingVertical={8}
+      spacingVertical={10}
       gap={{ "@initial": 4, "@bp2": 7 }}
       justifyContent="space-between"
       alignItems="center"
@@ -150,8 +156,7 @@ export const FooterLayout = memo(function FooterLayout() {
   return (
     <Box
       as="footer"
-      spacingTop={8}
-      spacingBottom={8}
+      spacingVertical={10}
       spacingHorizontal={4}
       justifyContent="center"
       css={{ marginTop: "$10", "@print": { display: "none" } }}

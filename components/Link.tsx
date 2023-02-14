@@ -149,7 +149,7 @@ export const StyledIconLink = styled(Link, {
   justifyContent: "center",
   borderRadius: "50%",
   spacing: "$2",
-  borderWidth: 1,
+  borderWidth: 2,
   borderStyle: "solid",
   borderColor: "$foregroundMuted",
   minWidth: 44,

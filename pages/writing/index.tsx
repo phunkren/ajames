@@ -37,7 +37,6 @@ import {
   Frontmatter,
   PostTags,
 } from "../../components/Frontmatter";
-import banner from "../../public/images/test.jpg";
 import { Box } from "../../components/Box";
 import { NextPageWithLayout } from "../_app";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
@@ -200,7 +199,7 @@ const Writing: NextPageWithLayout = ({ posts, tags }: Props) => {
   );
 
   return (
-    <Box direction="vertical" spacingBottom={10} gap={9}>
+    <Box direction="vertical" spacingBottom={10} gap={10}>
       <HeroLayout />
 
       <Box
@@ -340,64 +339,65 @@ const Writing: NextPageWithLayout = ({ posts, tags }: Props) => {
             />
           </Box>
 
-          {storageLayout === "grid" ? (
-            <StyledCardContainer>
-              {filteredPosts.map((post) => {
-                return (
-                  <BlogCard
-                    key={post.id}
-                    url={`/writing/${post.properties.slug.rich_text[0].plain_text}`}
-                    image={post.cover.external.url}
-                    emoji={post.icon.type === "emoji" ? post.icon.emoji : "👨‍💻"}
-                    title={post.properties.page.title[0].plain_text}
-                    description={
-                      post.properties.abstract.rich_text[0].plain_text
-                    }
-                    publishDate={post.properties.date.date.start}
-                    tags={post.properties.tags.multi_select}
-                  />
-                );
-              })}
-            </StyledCardContainer>
-          ) : null}
+          <StyledCardContainer
+            display={storageLayout === "grid" ? "grid" : "none"}
+          >
+            {filteredPosts.map((post) => {
+              return (
+                <BlogCard
+                  key={post.id}
+                  url={`/writing/${post.properties.slug.rich_text[0].plain_text}`}
+                  image={post.cover.external.url}
+                  emoji={post.icon.type === "emoji" ? post.icon.emoji : "👨‍💻"}
+                  title={post.properties.page.title[0].plain_text}
+                  description={post.properties.abstract.rich_text[0].plain_text}
+                  publishDate={post.properties.date.date.start}
+                  tags={post.properties.tags.multi_select}
+                />
+              );
+            })}
+          </StyledCardContainer>
 
-          {storageLayout === "rows" ? (
-            <Box as="ul" direction="vertical" gap={10}>
-              {filteredPosts.map((post) => {
-                return (
-                  <Box as="li" key={post.id}>
-                    <Box as="article" direction="vertical">
-                      <Link
-                        href={`/writing/${post.properties.slug.rich_text[0].plain_text}`}
-                        variant="primary"
-                      >
-                        <TextTitle3>
-                          {post.properties.page.title[0].plain_text}
-                        </TextTitle3>
-                      </Link>
+          <Box
+            as="ul"
+            direction="vertical"
+            gap={10}
+            display={storageLayout === "rows" ? "flex" : "none"}
+          >
+            {filteredPosts.map((post) => {
+              return (
+                <Box as="li" key={post.id}>
+                  <Box as="article" direction="vertical">
+                    <Link
+                      href={`/writing/${post.properties.slug.rich_text[0].plain_text}`}
+                      variant="primary"
+                    >
+                      <TextTitle3>
+                        {post.properties.page.title[0].plain_text}
+                      </TextTitle3>
+                    </Link>
 
-                      <TextBody
-                        color="secondary"
-                        textAlign="justify"
-                        css={{
-                          maxWidth: "none",
-                          spacingBottom: "$2",
-                          "@bp3": { maxWidth: "75%" },
-                        }}
-                      >
-                        {post.properties.abstract.rich_text[0].plain_text}
-                      </TextBody>
+                    <TextBody
+                      color="secondary"
+                      textAlign="justify"
+                      css={{
+                        maxWidth: "none",
+                        spacingBottom: "$2",
+                        "@bp3": { maxWidth: "75%" },
+                      }}
+                    >
+                      {post.properties.abstract.rich_text[0].plain_text}
+                    </TextBody>
 
-                      <PostTags
-                        as="div"
-                        tags={post.properties.tags.multi_select}
-                      />
-                    </Box>
+                    <PostTags
+                      as="div"
+                      tags={post.properties.tags.multi_select}
+                    />
                   </Box>
-                );
-              })}
-            </Box>
-          ) : null}
+                </Box>
+              );
+            })}
+          </Box>
         </Box>
       </Box>
     </Box>

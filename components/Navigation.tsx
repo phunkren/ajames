@@ -323,7 +323,7 @@ export const NavigationMobile = memo(function NavigationMobile() {
             </Box>
 
             <Box justifyContent="center" css={{ marginTop: "auto" }}>
-              <Social size="l" />
+              <Social />
             </Box>
           </Box>
         </StyledDialogContent>
