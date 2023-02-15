@@ -167,7 +167,7 @@ const Learning: NextPageWithLayout = ({
               <Box
                 justifyContent="space-between"
                 alignItems="center"
-                spacingTop={{ "@initial": 8, "@bp2": 10 }}
+                spacingTop={10}
                 spacingBottom={10}
               >
                 <TextTitle2 as="h1">Learning</TextTitle2>
@@ -194,7 +194,7 @@ const Learning: NextPageWithLayout = ({
                 />
               </Box>
 
-              <Box alignItems="flex-end">
+              <Box alignItems="flex-end" justifyContent="space-between">
                 <Frontmatter>
                   <VideosViewsCount total={channelInfoPreview.viewCount} icon />
                   <SubscriberCount

@@ -20,7 +20,7 @@ const StyledHeroLayout = styled(Box, {
   width: "100vw",
   position: "relative",
   overflow: "hidden",
-  margin: "$10 0",
+  margin: "$4 0",
   left: "-$2",
   borderRadius: 0,
 
@@ -43,6 +43,7 @@ const StyledHeroLayout = styled(Box, {
 
   "@bp2": {
     left: "-$7",
+    margin: "$10 0",
   },
 
   "@bp3": {
@@ -132,7 +133,7 @@ export const HeaderLayout = memo(function HeaderLayout() {
       alignItems="center"
     >
       <Box direction="horizontal" gap={10} alignItems="center">
-        <Link href="/">
+        <Link variant="icon" href="/">
           <Logo />
         </Link>
 

@@ -67,6 +67,10 @@ export const StyledTag = styled(Box, {
     lineHeight: 1,
   },
 
+  "@bp2": {
+    padding: "$2 $3",
+  },
+
   variants: {
     ...NOTION_TAG_VARIANTS,
   },

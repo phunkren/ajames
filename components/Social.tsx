@@ -17,7 +17,7 @@ type Props = {
 export const Social = memo(function Social() {
   return (
     <Box as="nav" aria-label="Social Media">
-      <Box as="ul" role="list" gap={6} alignItems="center">
+      <Box as="ul" role="list" gap={4} alignItems="center">
         <li>
           <Link
             href={SOCIAL.twitter.url}
@@ -41,8 +41,8 @@ export const Social = memo(function Social() {
             css={{ position: "relative", top: -1 }}
           >
             <LinkedInLogoIcon
-              width={28}
-              height={28}
+              width={30}
+              height={30}
               aria-hidden
               focusable={false}
             />

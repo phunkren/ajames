@@ -68,7 +68,7 @@ export const PostTags = memo(function PostTags({
   return (
     <FrontmatterItem {...props}>
       {icon ? (
-        <Box flexShrink={false} css={{ height: 32 }} alignItems="center">
+        <Box flexShrink={false} alignItems="center">
           <VisuallyHidden.Root>Tags</VisuallyHidden.Root>
           <ListBulletIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
         </Box>

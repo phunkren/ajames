@@ -109,7 +109,7 @@ const StyledContainer = styled(Box, {
 
 const StyledContent = styled(Box, {
   position: "relative",
-  top: -62,
+  top: -78,
 
   "@bp2": {
     top: -112,
@@ -181,7 +181,6 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
                     css={{
                       position: "relative",
                       right: "$1",
-                      spacingBottom: "$2",
                       alignSelf: "flex-start",
                       "@bp2": {
                         right: "$2",
@@ -208,7 +207,7 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
                   </Box>
                 </Box>
 
-                <Box alignItems="flex-end">
+                <Box alignItems="flex-end" justifyContent="space-between">
                   <Frontmatter>
                     <PostTags tags={frontmatter.tags} icon />
                     <PublishDate date={frontmatter.date} icon />
