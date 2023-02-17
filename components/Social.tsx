@@ -17,8 +17,8 @@ type Props = {
 export const Social = memo(function Social() {
   return (
     <Box as="nav" aria-label="Social Media">
-      <Box as="ul" role="list" gap={4} alignItems="center">
-        <li>
+      <Box as="ul" role="list" gap={4} alignItems="flex-end">
+        <Box as="li" alignItems="flex-end">
           <Link
             href={SOCIAL.twitter.url}
             title={SOCIAL.twitter.displayName}
@@ -31,9 +31,9 @@ export const Social = memo(function Social() {
               focusable={false}
             />
           </Link>
-        </li>
+        </Box>
 
-        <li>
+        <Box as="li" alignItems="flex-end">
           <Link
             href={SOCIAL.linkedin.url}
             title={SOCIAL.linkedin.displayName}
@@ -47,15 +47,15 @@ export const Social = memo(function Social() {
               focusable={false}
             />
           </Link>
-        </li>
+        </Box>
 
-        <li>
+        <Box as="li" alignItems="flex-end">
           <Link title="RSS Feed" href="/rss" variant="icon">
             <MdRssFeed size={36} />
           </Link>
-        </li>
+        </Box>
 
-        <li>
+        <Box as="li" alignItems="flex-end">
           <Link
             href={SOCIAL.youtube.url}
             title={SOCIAL.youtube.displayName}
@@ -63,7 +63,7 @@ export const Social = memo(function Social() {
           >
             <VideoIcon width={33} height={33} aria-hidden focusable={false} />
           </Link>
-        </li>
+        </Box>
       </Box>
     </Box>
   );

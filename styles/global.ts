@@ -8,12 +8,12 @@ export const globalStyles = globalCss({
     margin: 0,
     padding: 0,
     boxSizing: "border-box",
-    borderRadius: 4,
   },
 
   "*:focus": {
+    borderRadius: 4,
     outline: "2px solid $crimson7",
-    outlineOffset: "$space$1",
+    outlineOffset: 2,
   },
 
   /* Set core root defaults */

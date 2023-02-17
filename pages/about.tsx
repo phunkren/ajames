@@ -1,16 +1,15 @@
 import { ReactElement } from "react";
-import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import {
   EnvelopeOpenIcon,
   GitHubLogoIcon,
-  HomeIcon,
+  GlobeIcon,
   LinkedInLogoIcon,
 } from "@radix-ui/react-icons";
 import Image from "next/image";
-import { PrintButton, StyledIconButton } from "../components/Button";
+import { PrintButton } from "../components/Button";
 import { Divider } from "../components/Divider";
-import { ActionButtons, HeroLayout, Layout } from "../components/Layout";
-import { DownloadLink, Link, StyledIconLink } from "../components/Link";
+import { HeroLayout, Layout } from "../components/Layout";
+import { DownloadLink, Link } from "../components/Link";
 import {
   TextAux,
   TextBody,
@@ -32,6 +31,7 @@ import {
 import { formatLongDate } from "../util/date";
 import { ICON_SIZE } from "../util/images";
 import banner from "../public/images/mugshot.png";
+import cv from "../public/cv.pdf";
 import { Box } from "../components/Box";
 import { NextPageWithLayout } from "./_app";
 
@@ -159,7 +159,7 @@ const About: NextPageWithLayout = () => {
                 >
                   <Box gap={4} spacingTop={3}>
                     <PrintButton />
-                    <DownloadLink href="/download-cv" />
+                    <DownloadLink href="../Andrew%20James%20CV.pdf" download />
                   </Box>
                 </Box>
 
@@ -233,8 +233,8 @@ const About: NextPageWithLayout = () => {
                 >
                   <Box direction="horizontal" gap={4} alignItems="center">
                     <LinkedInLogoIcon
-                      width={ICON_SIZE.m}
-                      height={ICON_SIZE.m}
+                      width={ICON_SIZE.l}
+                      height={ICON_SIZE.l}
                       aria-hidden
                     />
                     <TextHeadline>Andrew James</TextHeadline>
@@ -248,8 +248,8 @@ const About: NextPageWithLayout = () => {
                 >
                   <Box direction="horizontal" gap={4} alignItems="center">
                     <EnvelopeOpenIcon
-                      width={ICON_SIZE.m}
-                      height={ICON_SIZE.m}
+                      width={ICON_SIZE.l}
+                      height={ICON_SIZE.l}
                       aria-hidden
                     />
                     <TextHeadline>contact@ajames.dev</TextHeadline>
@@ -257,10 +257,15 @@ const About: NextPageWithLayout = () => {
                 </Link>
 
                 <Link variant="secondary" href={SITE.url} title="Website">
-                  <Box direction="horizontal" gap={4} alignItems="center">
-                    <HomeIcon
-                      width={ICON_SIZE.m}
-                      height={ICON_SIZE.m}
+                  <Box
+                    direction="horizontal"
+                    gap={4}
+                    alignItems="center"
+                    flexShrink={false}
+                  >
+                    <GlobeIcon
+                      width={ICON_SIZE.l}
+                      height={ICON_SIZE.l}
                       aria-hidden
                     />
                     <TextHeadline>ajames.dev</TextHeadline>
@@ -274,8 +279,8 @@ const About: NextPageWithLayout = () => {
                 >
                   <Box direction="horizontal" gap={4} alignItems="center">
                     <GitHubLogoIcon
-                      width={ICON_SIZE.m}
-                      height={ICON_SIZE.m}
+                      width={ICON_SIZE.l}
+                      height={ICON_SIZE.l}
                       aria-hidden
                     />
                     <TextHeadline>phunkren</TextHeadline>

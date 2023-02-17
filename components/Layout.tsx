@@ -55,6 +55,7 @@ const StyledHeroLayout = styled(Box, {
 
 const StyledHeroContainer = styled(Box, {
   position: "relative",
+  borderRadius: 0,
 
   [`.${lightTheme} &`]: {
     color: LIGHT_THEME_COLORS.background,
@@ -89,6 +90,7 @@ const StyledHeroContainer = styled(Box, {
           bottom: 0,
           left: 0,
           background: "$foreground",
+          borderRadius: 0,
           zIndex: 1,
         },
       },

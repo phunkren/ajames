@@ -40,13 +40,16 @@ const ToggleGroupItem = styled(ToggleGroup.Item, {
   transition: "backgroundColor 100ms ease-out, opacity 100ms ease-out",
 
   "&:focus": {
-    outline: "2px solid $foreground",
+    outline: "2px solid $crimson8",
+    opacity: 1,
   },
 
   "&[data-state=off]": {
-    opacity: 0.5,
+    "&:not(:focus)": {
+      opacity: 0.5,
+    },
 
-    "&:hover": {
+    "&:hover:not(:focus)": {
       opacity: 0.75,
     },
 
@@ -54,7 +57,7 @@ const ToggleGroupItem = styled(ToggleGroup.Item, {
       backgroundColor: whiteA.whiteA7,
     },
 
-    [`.${darkTheme} &:hover, .${darkTheme} &:has(a:focus)`]: {
+    [`.${darkTheme} &:hover`]: {
       backgroundColor: whiteA.whiteA8,
     },
 
@@ -62,7 +65,7 @@ const ToggleGroupItem = styled(ToggleGroup.Item, {
       backgroundColor: blackA.blackA7,
     },
 
-    [`.${lightTheme} &:hover, .${lightTheme} &:has(a:focus)`]: {
+    [`.${lightTheme} &:hover`]: {
       backgroundColor: blackA.blackA8,
     },
   },
