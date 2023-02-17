@@ -31,7 +31,6 @@ import {
 import { formatLongDate } from "../util/date";
 import { ICON_SIZE } from "../util/images";
 import banner from "../public/images/mugshot.png";
-import cv from "../public/cv.pdf";
 import { Box } from "../components/Box";
 import { NextPageWithLayout } from "./_app";
 
