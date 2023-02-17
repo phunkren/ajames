@@ -117,7 +117,7 @@ const GridRoot = styled("ul", {
 });
 
 const GridItem = styled("li", {
-  padding: "$2",
+  padding: "$1",
   borderWidth: 1,
   borderStyle: "solid",
   borderColor: "$foregroundMuted",
