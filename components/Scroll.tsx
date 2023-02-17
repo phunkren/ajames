@@ -1,41 +1,21 @@
 import * as ScrollArea from "@radix-ui/react-scroll-area";
-import { blackA } from "@radix-ui/colors";
 import { styled } from "../stitches.config";
+import { memo } from "react";
+import { useTheme } from "../hooks/useTheme";
+import { blueDark, redDark } from "@radix-ui/colors";
 
-const SCROLLBAR_SIZE = 10;
+const SCROLLBAR_SIZE = 12;
 
-export const ScrollAreaRoot = styled(ScrollArea.Root, {
-  maxWidth: "100%",
-  overflow: "hidden",
-});
+type ScrollBarProps = ScrollArea.ScrollAreaScrollbarProps & {
+  thumb?: "phunk" | "boring";
+};
 
-export const ScrollAreaViewport = styled(ScrollArea.Viewport, {
-  width: "100%",
-});
-
-export const ScrollAreaScrollbar = styled(ScrollArea.Scrollbar, {
-  display: "flex",
-  // ensures no selection
-  userSelect: "none",
-  // disable browser handling of all panning and zooming gestures on touch devices
-  touchAction: "none",
-  padding: 2,
-  background: blackA.blackA6,
-  transition: "background 160ms ease-out",
-  "&:hover": { background: blackA.blackA8 },
-  '&[data-orientation="vertical"]': { width: SCROLLBAR_SIZE },
-  '&[data-orientation="horizontal"]': {
-    flexDirection: "column",
-    height: SCROLLBAR_SIZE,
-  },
-});
-
-export const ScrollAreaThumb = styled(ScrollArea.Thumb, {
+export const StyledThumb = styled(ScrollArea.Thumb, {
   flex: 1,
-  background: "white",
-  borderRadius: SCROLLBAR_SIZE,
-  // increase target size for touch devices https://www.w3.org/WAI/WCAG21/Understanding/target-size.html
   position: "relative",
+  borderRadius: SCROLLBAR_SIZE,
+
+  // increase target size for touch devices https://www.w3.org/WAI/WCAG21/Understanding/target-size.html
   "&::before": {
     content: '""',
     position: "absolute",
@@ -47,8 +27,89 @@ export const ScrollAreaThumb = styled(ScrollArea.Thumb, {
     minWidth: 44,
     minHeight: 44,
   },
+
+  variants: {
+    thumb: {
+      phunk: {
+        background: `linear-gradient(-45deg, ${redDark.red4}, ${redDark.red6}, ${blueDark.blue4}, ${blueDark.blue6})`,
+      },
+      boring: {
+        background: "$foregroundMuted",
+        opacity: 0.25,
+      },
+    },
+  },
+
+  defaultVariants: {
+    thumb: "boring",
+  },
 });
 
-export const ScrollAreaCorner = styled(ScrollArea.Corner, {
-  background: blackA.blackA8,
+export const StyledScrollbar = styled(ScrollArea.Scrollbar, {
+  display: "flex",
+  // ensures no selection
+  userSelect: "none",
+  // disable browser handling of all panning and zooming gestures on touch devices
+  touchAction: "none",
+  padding: 2,
+  background: "$backgroundMuted",
+  boxShadow: "$2",
+
+  '&[data-orientation="vertical"]': {
+    width: SCROLLBAR_SIZE,
+  },
+
+  '&[data-orientation="horizontal"]': {
+    flexDirection: "column",
+    height: SCROLLBAR_SIZE,
+  },
+
+  "&:hover": {
+    boxShadow: "$4",
+  },
+
+  "&:active": {
+    boxShadow: "$5",
+  },
+
+  [`&:hover > ${StyledThumb}`]: {
+    cursor: "grab",
+  },
+
+  [`&:active, &:active > ${StyledThumb}`]: {
+    cursor: "grabbing",
+  },
+});
+
+export const Scrollbar = memo(function Scrollbar({
+  thumb,
+  ...props
+}: ScrollBarProps) {
+  const { theme } = useTheme();
+
+  return (
+    <StyledScrollbar className={theme} {...props}>
+      <StyledThumb thumb={thumb} />
+    </StyledScrollbar>
+  );
+});
+
+export const CardScrollRoot = styled(ScrollArea.Root, {
+  maxWidth: "100%",
+  overflowY: "hidden",
+});
+
+export const CardScrollViewport = styled(ScrollArea.Viewport, {
+  scrollSnapType: "x mandatory",
+  scrollPadding: "0 $1",
+});
+
+export const BodyScrollRoot = styled(ScrollArea.Root, {
+  width: "100vw",
+  height: "100vh",
+});
+
+export const BodyScrollViewport = styled(ScrollArea.Viewport, {
+  width: "100%",
+  height: "100%",
 });

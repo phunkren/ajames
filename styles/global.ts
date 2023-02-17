@@ -26,6 +26,7 @@ export const globalStyles = globalCss({
     display: "flex",
     flexDirection: "column",
     width: "100%",
+    minHeight: "100vh",
   },
 
   /* Set core body defaults */
@@ -36,7 +37,7 @@ export const globalStyles = globalCss({
     backgroundBlendMode: "multiply",
     width: "100%",
     minHeight: "100dvh",
-    overflowX: "hidden",
+    overflow: "hidden",
     ...P_STYLES,
   },
 

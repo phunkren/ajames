@@ -1,11 +1,9 @@
 import { MouseEvent, ReactElement, useCallback, useRef } from "react";
 import Image from "next/image";
-import { ScrollAreaViewport } from "@radix-ui/react-scroll-area";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import Balancer from "react-wrap-balancer";
 import { PlayIcon } from "@radix-ui/react-icons";
 import YouTube from "react-youtube";
-import { YouTubeAvatar } from "../components/Avatar";
 import { VideoCard } from "../components/Card";
 import { Divider } from "../components/Divider";
 import {
@@ -41,15 +39,13 @@ import {
   VideoPreview,
 } from "../types/youtube";
 import {
-  ScrollAreaRoot,
-  ScrollAreaScrollbar,
-  ScrollAreaThumb,
+  CardScrollRoot,
+  CardScrollViewport,
+  Scrollbar,
 } from "../components/Scroll";
 import { SITE } from "../util/data";
 import { Button, ShareButton } from "../components/Button";
-import { H2_STYLES } from "../styles/text";
 import { ICON_SIZE } from "../util/images";
-import banner from "../public/images/test2.jpg";
 import poster from "../public/images/poster.gif";
 import { Box } from "../components/Box";
 import { NextPageWithLayout } from "./_app";
@@ -61,11 +57,6 @@ type Props = {
   channelInfoPreview: ChannelInfoPreview;
   timestamp: number;
 };
-
-const StyledVideoCardViewport = styled(ScrollAreaViewport, {
-  scrollSnapType: "x mandatory",
-  scrollPadding: 0,
-});
 
 const StyledVideoCardContainer = styled(Box, {
   display: "grid",
@@ -367,8 +358,8 @@ const Learning: NextPageWithLayout = ({
                     {playlist.description}
                   </TextBody>
 
-                  <ScrollAreaRoot>
-                    <StyledVideoCardViewport>
+                  <CardScrollRoot>
+                    <CardScrollViewport>
                       <StyledVideoCardContainer spacingVertical={8}>
                         {playlistVideosPreview[playlist.id].map(
                           (playlistVideo) => (
@@ -388,11 +379,13 @@ const Learning: NextPageWithLayout = ({
                           )
                         )}
                       </StyledVideoCardContainer>
-                    </StyledVideoCardViewport>
-                    <ScrollAreaScrollbar orientation="horizontal">
-                      <ScrollAreaThumb />
-                    </ScrollAreaScrollbar>
-                  </ScrollAreaRoot>
+                    </CardScrollViewport>
+                    <Scrollbar
+                      orientation="horizontal"
+                      thumb="phunk"
+                      forceMount
+                    />
+                  </CardScrollRoot>
                 </Box>
               </Box>
             );

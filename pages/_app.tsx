@@ -5,6 +5,11 @@ import localFont from "@next/font/local";
 import { ErrorBoundary } from "react-error-boundary";
 import { ErrorFallback } from "../components/ErrorFallback";
 import { ThemeProvider } from "../components/Theme";
+import {
+  BodyScrollRoot,
+  BodyScrollViewport,
+  Scrollbar,
+} from "../components/Scroll";
 
 const euclid = localFont({
   src: [
@@ -96,7 +101,14 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
       `}</style>
 
       <ErrorBoundary FallbackComponent={ErrorFallback}>
-        <ThemeProvider>{getLayout(<Component {...pageProps} />)}</ThemeProvider>
+        <ThemeProvider>
+          <BodyScrollRoot type="scroll" scrollHideDelay={2000}>
+            <BodyScrollViewport>
+              {getLayout(<Component {...pageProps} />)}
+            </BodyScrollViewport>
+            <Scrollbar orientation="vertical" />
+          </BodyScrollRoot>
+        </ThemeProvider>
       </ErrorBoundary>
     </>
   );
