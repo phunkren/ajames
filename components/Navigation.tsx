@@ -20,8 +20,8 @@ import { Box } from "./Box";
 import { ThemeToggle } from "./Toggle";
 
 const dialogSlideIn = keyframes({
-  "0%": { transform: "translateX(-100%)" },
-  "100%": { transform: "translateX(0)" },
+  "0%": { transform: "translateX(0)" },
+  "100%": { transform: "translateX(100%)" },
 });
 
 const scaleIn = keyframes({
@@ -46,8 +46,8 @@ const StyledDialogContent = styled(Dialog.Content, {
   minWidth: 300,
   zIndex: 99,
   top: 0,
-  left: 0,
-  transform: "translateX(-100%)",
+  left: "-100%",
+  transform: "translateX(0)",
   animation: `${dialogSlideIn} 350ms linear 150ms forwards`,
 });
 
