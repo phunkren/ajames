@@ -188,10 +188,13 @@ export const TagDrawer = memo(function TagDrawer({
     setOpen(true);
   }, []);
 
-  const handleClick = useCallback((e) => {
-    onClick?.(e);
-    setOpen(false);
-  }, []);
+  const handleClick = useCallback(
+    (e) => {
+      onClick?.(e);
+      setOpen(false);
+    },
+    [onClick]
+  );
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
@@ -215,7 +218,7 @@ export const TagDrawer = memo(function TagDrawer({
             <Dialog.Description>
               This menu contains filters for each of the blog articles. Select a
               tag to filter the feed by that category, or to remove the filter
-              if it's already active.
+              if it&apos;s already active.
             </Dialog.Description>
           </VisuallyHidden.Root>
 
