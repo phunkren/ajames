@@ -173,7 +173,7 @@ const Writing: NextPageWithLayout = ({ posts, tags }: Props) => {
       const activeTag = query.tag as string;
       const isTagActive = activeTag === tagName;
 
-      const tag = !isTagActive ? tagName : undefined;
+      const tag = isTagActive ? undefined : tagName;
 
       push({ pathname, query: { ...query, tag } }, undefined, {
         scroll: false,
