@@ -5,6 +5,9 @@ import {
   slateDark,
   sandDark,
   crimson,
+  crimsonDark,
+  blueDark,
+  blue,
 } from "@radix-ui/colors";
 
 export const LIGHT_THEME_COLORS = {
@@ -14,6 +17,7 @@ export const LIGHT_THEME_COLORS = {
   backgroundMuted: gray.gray1,
   backgroundGradient: `radial-gradient(circle at bottom, ${slate.slate2} 0%, ${gray.gray2} 100%)`,
   focus: crimson.crimson8,
+  hover: blue.blue9,
 };
 
 export const DARK_THEME_COLORS = {
@@ -22,5 +26,6 @@ export const DARK_THEME_COLORS = {
   background: slateDark.slate1,
   backgroundMuted: grayDark.gray2,
   backgroundGradient: `radial-gradient(circle at bottom, ${slateDark.slate1} 0%, ${sandDark.sand1} 100%)`,
-  focus: crimson.crimson8,
+  focus: crimsonDark.crimson9,
+  hover: blueDark.blue9,
 };

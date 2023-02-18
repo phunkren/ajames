@@ -34,16 +34,6 @@ const StyledLink = styled(Link, {
   },
 });
 
-export const StyledCardEmoji = styled(Emoji, {
-  position: "absolute",
-  bottom: "-$2",
-  right: "-$2",
-  transform: "scale(4)",
-  opacity: 0,
-  zIndex: -1,
-  filter: "grayscale(1)",
-});
-
 const StyledCardOuter = styled(Box, {
   position: "relative",
   display: "flex",
@@ -52,7 +42,7 @@ const StyledCardOuter = styled(Box, {
   minWidth: 275,
   boxShadow: "$1",
   borderRadius: 4,
-  borderWidth: 1,
+  borderWidth: 2,
   borderStyle: "solid",
   overflow: "hidden",
   transition:
@@ -64,37 +54,29 @@ const StyledCardOuter = styled(Box, {
 
   "&:hover:not(:has(button:hover))": {
     boxShadow: "$4",
-
-    "&::after": {
-      background: "$blue10",
-    },
+    borderColor: "$hover",
 
     "& img": {
       filter: "brightness(95%)",
     },
   },
 
+  "&:focus": {
+    outline: "none",
+  },
+
+  "& button:focus": {
+    outline: "2px solid $focus",
+    outlineOffset: 2,
+  },
+
   "&:active:not(:has(button:active))": {
     boxShadow: "$5",
     transform: "scale(0.99)",
+    borderColor: "$focus",
 
     "& img": {
       filter: "brightness(100%)",
-    },
-  },
-
-  "&:hover": {
-    [`${StyledCardEmoji}`]: {
-      transition: "opacity 200ms ease-out",
-      opacity: 0.01,
-
-      [`.${darkTheme} &`]: {
-        opacity: 0.01,
-      },
-
-      [`.${lightTheme} &`]: {
-        opacity: 0.02,
-      },
     },
   },
 
@@ -103,8 +85,14 @@ const StyledCardOuter = styled(Box, {
     borderColor: whiteA.whiteA5,
   },
 
-  [`.${darkTheme} &:hover, .${darkTheme} &:has(a:focus)`]: {
+  [`.${darkTheme} &:hover`]: {
     backgroundColor: whiteA.whiteA3,
+  },
+
+  [`.${darkTheme} &:has(a:focus)`]: {
+    backgroundColor: whiteA.whiteA3,
+    borderColor: "$focus",
+    outline: "none",
   },
 
   [`.${darkTheme} &:active:not(:has(button:active))`]: {
@@ -116,8 +104,14 @@ const StyledCardOuter = styled(Box, {
     borderColor: whiteA.whiteA4,
   },
 
-  [`.${lightTheme} &:hover, .${lightTheme} &:has(a:focus)`]: {
+  [`.${lightTheme} &:hover`]: {
     backgroundColor: blackA.blackA2,
+  },
+
+  [`.${lightTheme} &:has(a:focus)`]: {
+    backgroundColor: whiteA.whiteA3,
+    borderColor: "$focus",
+    outline: "none",
   },
 
   [`.${lightTheme} &:active:not(:has(button:active))`]: {
@@ -281,8 +275,6 @@ export const BlogCard = memo(function BlogCard({
               onPressedChange={onPreviewToggle}
             />
           </Box>
-
-          <StyledCardEmoji emoji={emoji} size="l" />
         </>
       )}
     </Card>

@@ -103,13 +103,3 @@ export const CardScrollViewport = styled(ScrollArea.Viewport, {
   scrollSnapType: "x mandatory",
   scrollPadding: "0 $1",
 });
-
-export const BodyScrollRoot = styled(ScrollArea.Root, {
-  width: "100vw",
-  height: "100vh",
-});
-
-export const BodyScrollViewport = styled(ScrollArea.Viewport, {
-  width: "100%",
-  height: "100%",
-});

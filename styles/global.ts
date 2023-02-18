@@ -12,7 +12,7 @@ export const globalStyles = globalCss({
 
   "*:focus": {
     borderRadius: 4,
-    outline: "2px solid $crimson7",
+    outline: "2px solid $focus",
     outlineOffset: 2,
   },
 
@@ -26,7 +26,6 @@ export const globalStyles = globalCss({
     display: "flex",
     flexDirection: "column",
     width: "100%",
-    minHeight: "100vh",
   },
 
   /* Set core body defaults */
@@ -37,7 +36,6 @@ export const globalStyles = globalCss({
     backgroundBlendMode: "multiply",
     width: "100%",
     minHeight: "100dvh",
-    overflow: "hidden",
     ...P_STYLES,
   },
 

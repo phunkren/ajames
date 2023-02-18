@@ -49,13 +49,13 @@ const StyledLink = styled("a", {
     variant: {
       primary: {
         color: "unset",
-        backgroundImage: `linear-gradient(90deg, $blue11 0.04%, $blue9 100.04%)`,
+        backgroundImage: `linear-gradient(90deg, $blue11 0.04%, $hover 100.04%)`,
         backgroundClip: "text",
         ["-webkit-text-fill-color"]: "transparent",
 
         "&:hover": {
           textDecorationLine: "underline",
-          textDecorationColor: "$blue9",
+          textDecorationColor: "$hover",
 
           /** React Balancer */
           "& span": {
@@ -73,13 +73,13 @@ const StyledLink = styled("a", {
       secondary: {
         "&:hover": {
           color: "unset",
-          backgroundImage: `linear-gradient(90deg, $blue11 0.04%, $blue9 100.04%)`,
+          backgroundImage: `linear-gradient(90deg, $blue11 0.04%, $hover 100.04%)`,
           backgroundClip: "text",
           ["-webkit-text-fill-color"]: "transparent",
         },
 
         "&:hover svg": {
-          color: "$blue9",
+          color: "$hover",
         },
       },
       tertiary: {
@@ -89,7 +89,7 @@ const StyledLink = styled("a", {
         "&:hover": {
           color: "inherit",
           textDecorationStyle: "solid",
-          textDecorationColor: "$blue10",
+          textDecorationColor: "$hover",
         },
       },
       invisible: {
@@ -111,7 +111,7 @@ const StyledLink = styled("a", {
         color: "inherit",
 
         "&:hover": {
-          color: "$blue9",
+          color: "$hover",
         },
       },
     },
@@ -328,13 +328,13 @@ const StyledBlogSubscription = styled(Link, {
         boxShadow: "$1",
 
         [`.${lightTheme} &`]: {
-          backgroundImage: `linear-gradient(185deg, $blue10 0.04%, $blue9 100.04%)`,
-          borderColor: "$blue9",
+          backgroundImage: `linear-gradient(185deg, $blue10 0.04%, $hover 100.04%)`,
+          borderColor: "$hover",
           color: "$blue1",
         },
 
         [`.${darkTheme} &`]: {
-          backgroundImage: `linear-gradient(185deg, $blue9 0.04%, $blue8 100.04%)`,
+          backgroundImage: `linear-gradient(185deg, $hover 0.04%, $blue8 100.04%)`,
           borderColor: "$blue8",
           color: "$blue12",
         },
@@ -343,8 +343,8 @@ const StyledBlogSubscription = styled(Link, {
           boxShadow: "$4",
 
           [`.${lightTheme} &`]: {
-            backgroundImage: `linear-gradient(-90deg, $blue9 0.04%, $blue9 100.04%)`,
-            borderColor: "$blue9",
+            backgroundImage: `linear-gradient(-90deg, $hover 0.04%, $hover 100.04%)`,
+            borderColor: "$hover",
             color: "$blue1",
           },
 

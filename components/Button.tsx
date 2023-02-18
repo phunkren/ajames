@@ -109,13 +109,13 @@ const StyledButton = styled("button", {
         "&:hover": {
           boxShadow: "none",
           color: "unset",
-          backgroundImage: `linear-gradient(90deg, $blue11 0.04%, $blue9 100.04%)`,
+          backgroundImage: `linear-gradient(90deg, $blue11 0.04%, $hover 100.04%)`,
           backgroundClip: "text",
           ["-webkit-text-fill-color"]: "transparent",
         },
 
         "&:hover svg": {
-          color: "$blue9",
+          color: "$hover",
         },
       },
     },
