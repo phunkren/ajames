@@ -21,7 +21,7 @@ import { ThemeToggle } from "./Toggle";
 
 const dialogSlideIn = keyframes({
   "0%": { transform: "translateX(0)" },
-  "100%": { transform: "translateX(100%)" },
+  "100%": { transform: "translateX(300px)" },
 });
 
 const scaleIn = keyframes({
@@ -36,19 +36,18 @@ const scaleOut = keyframes({
 
 const StyledDialogContent = styled(Dialog.Content, {
   position: "fixed",
+  top: 0,
+  left: -300,
   display: "flex",
   flexDirection: "column",
   backgroundColor: "$backgroundMuted",
   borderRadius: 0,
   boxShadow: "$3",
-  width: "75vw",
   height: "100dvh",
-  minWidth: 300,
+  width: 300,
   zIndex: 99,
-  top: 0,
-  left: "-100%",
   transform: "translateX(0)",
-  animation: `${dialogSlideIn} 350ms linear 150ms forwards`,
+  animation: `${dialogSlideIn} 300ms linear 50ms forwards`,
 });
 
 const StyledNavigationMenuContent = styled(NavigationMenu.Content, {

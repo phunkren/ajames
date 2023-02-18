@@ -17,7 +17,7 @@ type TagDropdownItemProps = DropdownMenu.DropdownMenuCheckboxItemProps & Tag;
 
 const dialogSlideUp = keyframes({
   "0%": { transform: "translateY(0)" },
-  "100%": { transform: "translateY(100%)" },
+  "100%": { transform: "translateY(-400px)" },
 });
 
 const StyledDropdownMenuContent = styled(DropdownMenu.Content, {
@@ -48,20 +48,19 @@ const StyledDropdownMenuItem = styled(DropdownMenu.CheckboxItem, {
 
 const StyledDialogContent = styled(Dialog.Content, {
   position: "fixed",
-  bottom: "-100%",
+  bottom: -400,
   left: 0,
   display: "flex",
   flexDirection: "column",
   backgroundColor: "$backgroundMuted",
   boxShadow: "$3",
-  height: "50vh",
-  minHeight: 300,
+  height: 400,
   width: "100dvw",
   borderRadius: 0,
   minWidth: 300,
   zIndex: 99,
   transform: "translateY(0)",
-  animation: `${dialogSlideUp} 350ms linear 150ms forwards`,
+  animation: `${dialogSlideUp} 300ms linear 50ms forwards`,
 });
 
 const StyledTagGrid = styled("ul", {
