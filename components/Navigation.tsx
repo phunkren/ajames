@@ -47,7 +47,7 @@ const StyledDialogContent = styled(Dialog.Content, {
   width: 300,
   zIndex: 99,
   transform: "translateX(0)",
-  animation: `${dialogSlideIn} 300ms linear 50ms forwards`,
+  animation: `${dialogSlideIn} 200ms ease-out 50ms forwards`,
 });
 
 const StyledNavigationMenuContent = styled(NavigationMenu.Content, {

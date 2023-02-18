@@ -60,7 +60,7 @@ const StyledDialogContent = styled(Dialog.Content, {
   minWidth: 300,
   zIndex: 99,
   transform: "translateY(0)",
-  animation: `${dialogSlideUp} 300ms linear 50ms forwards`,
+  animation: `${dialogSlideUp} 200ms ease-out 50ms forwards`,
 });
 
 const StyledTagGrid = styled("ul", {
