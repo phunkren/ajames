@@ -49,6 +49,7 @@ const StyledDropdownMenuItem = styled(DropdownMenu.CheckboxItem, {
 const StyledDialogContent = styled(Dialog.Content, {
   position: "fixed",
   bottom: 0,
+  left: 0,
   display: "flex",
   flexDirection: "column",
   backgroundColor: "$backgroundMuted",
@@ -59,13 +60,8 @@ const StyledDialogContent = styled(Dialog.Content, {
   borderRadius: 0,
   minWidth: 300,
   zIndex: 99,
-  transition: "right 3s ease-out",
   transform: "translateY(100%)",
-  animation: `${dialogSlideUp} 200ms ease-out forwards`,
-
-  "&[data-state=open]": {
-    left: 0,
-  },
+  animation: `${dialogSlideUp} 350ms linear 150ms forwards`,
 });
 
 const StyledTagGrid = styled("ul", {
