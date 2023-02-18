@@ -4,6 +4,10 @@ import { memo } from "react";
 import { useTheme } from "../hooks/useTheme";
 import { blueDark, redDark } from "@radix-ui/colors";
 
+type ScrollbarProps = ScrollArea.ScrollAreaScrollbarProps & {
+  variant?: "primary" | "secondary" | "tertiary";
+};
+
 const SCROLLBAR_SIZE = 12;
 
 export const StyledThumb = styled(ScrollArea.Thumb, {
@@ -109,7 +113,7 @@ export const StyledScrollbar = styled(ScrollArea.Scrollbar, {
 export const Scrollbar = memo(function Scrollbar({
   variant,
   ...props
-}: ScrollArea.ScrollAreaScrollbarProps) {
+}: ScrollbarProps) {
   const { theme } = useTheme();
 
   return (

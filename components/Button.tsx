@@ -119,10 +119,14 @@ const StyledButton = styled("button", {
         },
       },
     },
+    display: {
+      ...DISPLAY_VARIANTS.display,
+    },
   },
 
   defaultVariants: {
     variant: "secondary",
+    display: "flex",
   },
 });
 
@@ -176,7 +180,6 @@ export const StyledIconButton = styled(Button, {
         },
       },
     },
-    ...DISPLAY_VARIANTS,
   },
 
   defaultVariants: {
