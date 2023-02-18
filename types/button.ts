@@ -11,7 +11,7 @@ export type ShareButtonProps = ButtonProps & {
 };
 
 export type FilterClearProps = ButtonProps & {
-  filters: string[];
+  filter?: string;
 };
 
 export type FilterMenuProps = ButtonProps & {

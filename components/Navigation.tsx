@@ -1,9 +1,5 @@
 import { memo, useCallback, useRef } from "react";
-import {
-  ChevronDownIcon,
-  Cross1Icon,
-  HamburgerMenuIcon,
-} from "@radix-ui/react-icons";
+import { ChevronDownIcon } from "@radix-ui/react-icons";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { blackA, greenDark, whiteA } from "@radix-ui/colors";
@@ -24,8 +20,8 @@ import { Box } from "./Box";
 import { ThemeToggle } from "./Toggle";
 
 const dialogSlideIn = keyframes({
-  "0%": { left: "-100%" },
-  "100%": { left: 0 },
+  "0%": { transform: "translateX(-100%)" },
+  "100%": { transform: "translateX(0)" },
 });
 
 const scaleIn = keyframes({
@@ -43,18 +39,16 @@ const StyledDialogContent = styled(Dialog.Content, {
   display: "flex",
   flexDirection: "column",
   backgroundColor: "$backgroundMuted",
+  borderRadius: 0,
   boxShadow: "$3",
   width: "75vw",
   height: "100dvh",
   minWidth: 300,
   zIndex: 99,
-  left: "100vw",
-  transition: "right 3s ease-out",
-  animation: `${dialogSlideIn} 200ms ease-out`,
-
-  "&[data-state=open]": {
-    left: 0,
-  },
+  left: 0,
+  transform: "translateX(-100%)",
+  transition: "transform 3s ease-out",
+  animation: `${dialogSlideIn} 200ms ease-out forwards`,
 });
 
 const StyledNavigationMenuContent = styled(NavigationMenu.Content, {

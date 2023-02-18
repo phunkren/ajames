@@ -6,10 +6,6 @@ import { blueDark, redDark } from "@radix-ui/colors";
 
 const SCROLLBAR_SIZE = 12;
 
-type ScrollBarProps = ScrollArea.ScrollAreaScrollbarProps & {
-  thumb?: "phunk" | "boring";
-};
-
 export const StyledThumb = styled(ScrollArea.Thumb, {
   flex: 1,
   position: "relative",
@@ -29,19 +25,22 @@ export const StyledThumb = styled(ScrollArea.Thumb, {
   },
 
   variants: {
-    thumb: {
-      phunk: {
+    variant: {
+      primary: {
         background: `linear-gradient(-45deg, ${redDark.red4}, ${redDark.red6}, ${blueDark.blue4}, ${blueDark.blue6})`,
       },
-      boring: {
+      secondary: {
         background: "$foregroundMuted",
         opacity: 0.25,
+      },
+      tertiary: {
+        background: "transparent",
       },
     },
   },
 
   defaultVariants: {
-    thumb: "boring",
+    variant: "secondary",
   },
 });
 
@@ -52,8 +51,6 @@ export const StyledScrollbar = styled(ScrollArea.Scrollbar, {
   // disable browser handling of all panning and zooming gestures on touch devices
   touchAction: "none",
   padding: 2,
-  background: "$backgroundMuted",
-  boxShadow: "$2",
 
   '&[data-orientation="vertical"]': {
     width: SCROLLBAR_SIZE,
@@ -64,14 +61,6 @@ export const StyledScrollbar = styled(ScrollArea.Scrollbar, {
     height: SCROLLBAR_SIZE,
   },
 
-  "&:hover": {
-    boxShadow: "$4",
-  },
-
-  "&:active": {
-    boxShadow: "$5",
-  },
-
   [`&:hover > ${StyledThumb}`]: {
     cursor: "grab",
   },
@@ -79,17 +68,53 @@ export const StyledScrollbar = styled(ScrollArea.Scrollbar, {
   [`&:active, &:active > ${StyledThumb}`]: {
     cursor: "grabbing",
   },
+
+  variants: {
+    variant: {
+      primary: {
+        background: "$backgroundMuted",
+        boxShadow: "$2",
+        "&:hover": {
+          boxShadow: "$4",
+        },
+
+        "&:active": {
+          boxShadow: "$5",
+        },
+      },
+      secondary: {
+        background: "$backgroundMuted",
+        boxShadow: "$2",
+        opacity: 0.25,
+
+        "&:hover": {
+          boxShadow: "$4",
+        },
+
+        "&:active": {
+          boxShadow: "$5",
+        },
+      },
+      tertiary: {
+        background: "transparent",
+      },
+    },
+  },
+
+  defaultVariants: {
+    variant: "secondary",
+  },
 });
 
 export const Scrollbar = memo(function Scrollbar({
-  thumb,
+  variant,
   ...props
-}: ScrollBarProps) {
+}: ScrollArea.ScrollAreaScrollbarProps) {
   const { theme } = useTheme();
 
   return (
-    <StyledScrollbar className={theme} {...props}>
-      <StyledThumb thumb={thumb} />
+    <StyledScrollbar className={theme} variant={variant} {...props}>
+      <StyledThumb variant={variant} />
     </StyledScrollbar>
   );
 });
@@ -102,4 +127,18 @@ export const CardScrollRoot = styled(ScrollArea.Root, {
 export const CardScrollViewport = styled(ScrollArea.Viewport, {
   scrollSnapType: "x mandatory",
   scrollPadding: "0 $1",
+  width: "100%",
+  height: "100%",
+});
+
+export const DrawerScrollRoot = styled(ScrollArea.Root, {
+  maxHeight: "100%",
+  overflowX: "hidden",
+});
+
+export const DrawerScrollViewport = styled(ScrollArea.Viewport, {
+  scrollSnapType: "y mandatory",
+  scrollPadding: "$1 $0",
+  width: "100%",
+  height: "100%",
 });

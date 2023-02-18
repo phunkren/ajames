@@ -34,6 +34,7 @@ import {
   FilterMenuProps,
   ShareButtonProps,
 } from "../types/button";
+import { DISPLAY_VARIANTS } from "../styles/display";
 
 const scaleIn = keyframes({
   from: { transform: "rotateX(-30deg) scale(0.9)", opacity: 0 },
@@ -111,7 +112,6 @@ const StyledButton = styled("button", {
           color: "unset",
           backgroundImage: `linear-gradient(90deg, $blue11 0.04%, $hover 100.04%)`,
           backgroundClip: "text",
-          ["-webkit-text-fill-color"]: "transparent",
         },
 
         "&:hover svg": {
@@ -176,6 +176,7 @@ export const StyledIconButton = styled(Button, {
         },
       },
     },
+    ...DISPLAY_VARIANTS,
   },
 
   defaultVariants: {
@@ -382,7 +383,7 @@ export const PrintButton = memo(function PrintButton(props: any) {
 });
 
 export const FilterClearButton = memo(function FilterClearButton({
-  filters,
+  filter,
   ...props
 }: FilterClearProps) {
   const { pathname, push } = useRouter();
@@ -396,7 +397,7 @@ export const FilterClearButton = memo(function FilterClearButton({
   return (
     <StyledIconButton
       title="Clear Filters"
-      aria-disabled={!filters.length}
+      aria-disabled={!filter}
       onClick={handleClick}
       {...props}
     >
@@ -465,5 +466,13 @@ export const MobileNavigationButton = memo(function MobileNavigationButton(
         aria-hidden
       />
     </StyledMobileNavigationButton>
+  );
+});
+
+export const CloseButton = memo(function CloseButton(props: any) {
+  return (
+    <StyledIconButton title="Close" variant="secondary" {...props}>
+      <Cross1Icon width={ICON_SIZE.l} height={ICON_SIZE.l} aria-hidden />
+    </StyledIconButton>
   );
 });

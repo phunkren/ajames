@@ -18,21 +18,20 @@ import { Tag } from "../types/notion";
 import { formatShortDate } from "../util/date";
 import { ICON_SIZE } from "../util/images";
 import { formatNumber } from "../util/number";
-import { formatReadingTime, getQueryTags } from "../util/posts";
+import { formatReadingTime } from "../util/posts";
 import { Box } from "./Box";
 import { TextAux, TextBody } from "./Text";
 import { StyledTag } from "./Tags";
 
 type PostTagProps = {
   as?: string;
-  active?: boolean;
   tags: Tag[];
   icon?: boolean;
 };
 
 type ActiveTagsProps = {
   tags: Tag[];
-  queryTags: string[];
+  queryTag: string;
   icon?: boolean;
 };
 
@@ -58,13 +57,9 @@ export const FrontmatterItem = memo(function FrontmatterItem({
 
 export const PostTags = memo(function PostTags({
   tags,
-  active,
   icon = false,
   ...props
 }: PostTagProps) {
-  const { query } = useRouter();
-  const queryTags = getQueryTags(query);
-
   return (
     <FrontmatterItem {...props}>
       {icon ? (
@@ -76,16 +71,12 @@ export const PostTags = memo(function PostTags({
 
       <Box as="ul" role="list" gap={4} flexWrap="wrap">
         {tags.map((tag) => {
-          const isActive =
-            !queryTags.length || queryTags.includes(tag.name.toLowerCase());
-
           return (
             <StyledTag
               as="li"
               key={tag.id}
               borderColor={tag.color}
               css={{ margin: "$1 0" }}
-              active={isActive}
             >
               <TextAux>{tag.name}</TextAux>
             </StyledTag>
@@ -96,13 +87,13 @@ export const PostTags = memo(function PostTags({
   );
 });
 
-export const ActiveTags = memo(function ActiveTags({
+export const ActiveTag = memo(function ActiveTag({
   tags,
-  queryTags,
+  queryTag,
   icon = false,
   ...props
 }: ActiveTagsProps) {
-  const activeTags = tags.filter((tag) => queryTags.includes(tag.name));
+  const activeTag = tags.find((tag) => queryTag === tag.name);
 
   return (
     <FrontmatterItem
@@ -117,14 +108,10 @@ export const ActiveTags = memo(function ActiveTags({
         </Box>
       ) : null}
 
-      {activeTags.length ? (
-        <Box as="ul" role="list" gap={2} flexWrap="wrap">
-          {activeTags.map((tag) => (
-            <StyledTag as="li" key={tag.id} borderColor={tag.color} active>
-              <TextAux>{tag.name}</TextAux>
-            </StyledTag>
-          ))}
-        </Box>
+      {activeTag ? (
+        <StyledTag borderColor={activeTag.color} active>
+          <TextAux>{activeTag.name}</TextAux>
+        </StyledTag>
       ) : (
         <TextBody textTransform="capitalize">All</TextBody>
       )}

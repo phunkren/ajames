@@ -11,7 +11,7 @@ import {
 } from "../../components/Card";
 import { ActionButtons, HeroLayout, Layout } from "../../components/Layout";
 import { LayoutToggle } from "../../components/Toggle";
-import { TagDropdown, TagDropdownItem } from "../../components/Tags";
+import { TagDrawer, TagDropdown, TagDropdownItem } from "../../components/Tags";
 import {
   TextAux,
   TextBody,
@@ -20,12 +20,7 @@ import {
 } from "../../components/Text";
 import { styled } from "../../stitches.config";
 import { BlogPost, Tag } from "../../types/notion";
-import {
-  filterPosts,
-  getQueryTags,
-  getTags,
-  sortPosts,
-} from "../../util/posts";
+import { filterPosts, getTags, sortPosts } from "../../util/posts";
 import { createPosts, generateRSSFeed, getPosts } from "../../lib/notion";
 import { Divider } from "../../components/Divider";
 import { FilterClearButton } from "../../components/Button";
@@ -33,7 +28,7 @@ import { BlogSubscriptionLink, Link } from "../../components/Link";
 import {
   TotalCategories,
   TotalPosts,
-  ActiveTags,
+  ActiveTag,
   Frontmatter,
   PostTags,
 } from "../../components/Frontmatter";
@@ -159,8 +154,8 @@ export const getStaticProps: GetStaticProps = async () => {
 
 const Writing: NextPageWithLayout = ({ posts, tags }: Props) => {
   const { pathname, push, query } = useRouter();
-  const queryTags = getQueryTags(query);
-  const filteredPosts = filterPosts(posts, queryTags);
+  const queryTag = query.tag as string;
+  const filteredPosts = filterPosts(posts, queryTag);
   const featuredPost = posts.find(
     (post) =>
       post.properties.slug.rich_text[0].plain_text === "accessible-menubar"
@@ -175,12 +170,10 @@ const Writing: NextPageWithLayout = ({ posts, tags }: Props) => {
     (e: Event) => {
       const tagTarget = e.target as HTMLElement;
       const tagName = tagTarget.id;
-      const activeTags = getQueryTags(query);
-      const isTagActive = activeTags.includes(tagName);
+      const activeTag = query.tag as string;
+      const isTagActive = activeTag === tagName;
 
-      const tag = isTagActive
-        ? activeTags.filter((t) => t !== tagName)
-        : [...activeTags, tagName];
+      const tag = !isTagActive ? tagName : undefined;
 
       push({ pathname, query: { ...query, tag } }, undefined, {
         scroll: false,
@@ -227,11 +220,13 @@ const Writing: NextPageWithLayout = ({ posts, tags }: Props) => {
             <Frontmatter flexGrow>
               <TotalPosts total={posts.length} icon />
               <TotalCategories total={tags.length} icon />
-              <ActiveTags tags={tags} queryTags={queryTags} icon />
+              <ActiveTag tags={tags} queryTag={queryTag} icon />
             </Frontmatter>
 
             <ActionButtons css={{ flexBasis: "fit-content" }}>
-              <FilterClearButton filters={queryTags} />
+              <FilterClearButton filters={queryTag} />
+
+              <TagDrawer tags={tags} onClick={handleTagChange} />
 
               <TagDropdown>
                 {tags.map((tag) => (

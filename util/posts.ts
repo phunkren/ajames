@@ -24,16 +24,16 @@ export function getTags(posts: BlogPost[]): Tag[] {
   return formattedTags;
 }
 
-export function filterPosts(posts: BlogPost[], queryTags: string[]) {
-  if (!queryTags.length) {
+export function filterPosts(posts: BlogPost[], queryTag: string) {
+  if (!queryTag) {
     return posts;
   }
 
   return posts.filter((post) => {
     const postTags = post.properties.tags.multi_select;
 
-    const isActive = postTags.some(({ name }) =>
-      queryTags?.includes(name.toLowerCase())
+    const isActive = postTags.some(
+      ({ name }) => queryTag === name.toLowerCase()
     );
 
     return isActive;
@@ -73,16 +73,4 @@ export function formatCount(count: number) {
   }
 
   return `${count} videos`;
-}
-
-export function getQueryTags(query: ParsedUrlQuery) {
-  if (!query.tag) {
-    return [];
-  }
-
-  if (typeof query.tag === "string") {
-    return query.tag.split(",");
-  }
-
-  return query.tag;
 }

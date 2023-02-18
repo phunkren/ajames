@@ -40,9 +40,10 @@ export const globalStyles = globalCss({
   },
 
   /* block scroll when the mobile nav is open */
-  "body:has(#mobileNav[data-state=open])": {
-    overflow: "hidden",
-  },
+  "body:has(#mobileNav[data-state=open]), body:has(#filterDrawer[data-state=open])":
+    {
+      overflow: "hidden",
+    },
 
   /* Remove default margin */
   "body, h1, h2, h3, h4, p, figure, blockquote, dl, dd, a": {
