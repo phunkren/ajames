@@ -151,6 +151,7 @@ const Learning: NextPageWithLayout = ({
       <Box
         direction="vertical"
         spacingHorizontal={{ "@initial": 4, "@bp2": 10 }}
+        spacingBottom={10}
       >
         <Box direction="vertical" spacingBottom={10}>
           <Box direction="vertical">

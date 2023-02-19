@@ -112,6 +112,7 @@ const StyledButton = styled("button", {
           color: "unset",
           backgroundImage: `linear-gradient(90deg, $blue11 0.04%, $hover 100.04%)`,
           backgroundClip: "text",
+          ["-webkit-text-fill-color"]: "transparent",
         },
 
         "&:hover svg": {

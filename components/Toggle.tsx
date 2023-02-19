@@ -9,13 +9,13 @@ import { useTheme } from "../hooks/useTheme";
 import { TextAux } from "./Text";
 
 const rise = keyframes({
-  "0%": { transform: "translateY(75%)" },
-  "100%": { transform: "translateY(0)" },
+  "0%": { transform: "translate3d(0, 75%, 0)" },
+  "100%": { transform: "translate3d(0, 0, 0)" },
 });
 
 const set = keyframes({
-  "0%": { transform: "translateY(0)" },
-  "100%": { transform: "translateY(100%)" },
+  "0%": { transform: "translate3d(0, 0, 0)" },
+  "100%": { transform: "translate3d(0, 100%, 0)" },
 });
 
 const ToggleGroupRoot = styled(ToggleGroup.Root, {
@@ -88,13 +88,13 @@ const ToggleGroupItem = styled(ToggleGroup.Item, {
 const LightToggle = styled(ToggleGroupItem, {
   "&[data-state=off]": {
     "& > *": {
-      transform: "translateY(100%)",
+      transform: "translate3d(0, 100%, 0)",
       animation: `${set} 200ms ease-out forwards running`,
     },
   },
 
   "&[data-state=on]": {
-    transform: "translateY(0)",
+    transform: "translate3d(0, 0, 0)",
 
     "& > *": {
       animation: `${rise} 200ms ease-out forwards`,

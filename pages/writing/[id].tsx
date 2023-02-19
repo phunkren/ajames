@@ -162,7 +162,7 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
     <>
       <BlogSeo frontmatter={frontmatter} />
 
-      <Box direction="vertical">
+      <Box direction="vertical" spacingBottom={10}>
         <Box direction="vertical">
           <HeroLayout src={frontmatter.cover} />
 
