@@ -65,7 +65,7 @@ export const PostTags = memo(function PostTags({
       {icon ? (
         <Box flexShrink={false} alignItems="center">
           <VisuallyHidden.Root>Tags</VisuallyHidden.Root>
-          <ListBulletIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
+          <MixIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
         </Box>
       ) : null}
 

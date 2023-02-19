@@ -273,9 +273,13 @@ export const ScrollToTopButton = memo(function ScrollToTopButton(props: any) {
   }, []);
 
   return (
-    <StyledScrollToTop variant="primary" onClick={handleScrollToTop} {...props}>
+    <StyledScrollToTop
+      variant="tertiary"
+      onClick={handleScrollToTop}
+      {...props}
+    >
       <DoubleArrowUpIcon width={ICON_SIZE.s} height={ICON_SIZE.s} aria-hidden />
-      <TextAux>Scroll to Top</TextAux>
+      <TextHeadline>Scroll to Top</TextHeadline>
     </StyledScrollToTop>
   );
 });

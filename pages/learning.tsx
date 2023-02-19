@@ -404,7 +404,7 @@ const Learning: NextPageWithLayout = ({
             }}
           >
             <TextTitle3 as="h2" textAlign="center" color="secondary">
-              Enjoy the content?
+              Enjoying the content?
             </TextTitle3>
 
             <Box
@@ -414,7 +414,6 @@ const Learning: NextPageWithLayout = ({
               }}
               justifyContent="space-around"
               alignItems="center"
-              spacingBottom={10}
               gap={8}
             >
               <TwitterShareLink
@@ -429,6 +428,10 @@ const Learning: NextPageWithLayout = ({
                 text={YOUTUBE_SHARE_TEXT}
               />
             </Box>
+          </Box>
+
+          <Box spacingVertical={10}>
+            <Divider />
           </Box>
         </Box>
       </Box>

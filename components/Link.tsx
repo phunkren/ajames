@@ -442,7 +442,7 @@ export const BlogSubscriptionLink = memo(function BlogSubscribeLink({
     <StyledBlogSubscription
       href={rssFeedUrl}
       type={type}
-      variant="invisible"
+      variant={type === "link" ? "secondary" : "invisible"}
       {...props}
     >
       <Box alignItems="center" gap={2}>

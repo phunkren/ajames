@@ -31,7 +31,7 @@ import {
   ReadingTime,
 } from "../../components/Frontmatter";
 import { SITE } from "../../util/data";
-import { ScrollToTopButton, ShareButton } from "../../components/Button";
+import { ShareButton } from "../../components/Button";
 import { styled } from "../../stitches.config";
 import { H1_STYLES, H2_STYLES, H3_STYLES, P_STYLES } from "../../styles/text";
 import { Box } from "../../components/Box";
@@ -261,10 +261,6 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
                   {postData}
                 </ReactMarkdown>
 
-                <Box direction="vertical" spacingTop={10}>
-                  <ScrollToTopButton css={{ alignSelf: "center" }} />
-                </Box>
-
                 <Box spacingVertical={10}>
                   <Divider />
                 </Box>
@@ -277,7 +273,7 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
                   }}
                 >
                   <TextTitle3 textAlign="center" color="secondary">
-                    Enjoy the content?
+                    Enjoying the content?
                   </TextTitle3>
 
                   <Box
@@ -287,7 +283,6 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
                     }}
                     justifyContent="space-around"
                     alignItems="center"
-                    spacingBottom={10}
                     gap={8}
                   >
                     <TwitterShareLink
@@ -306,6 +301,10 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
                       />
                     </Box>
                   </Box>
+                </Box>
+
+                <Box spacingVertical={10}>
+                  <Divider />
                 </Box>
               </StyledContainer>
             </Box>
