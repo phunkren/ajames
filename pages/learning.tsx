@@ -3,7 +3,6 @@ import Image from "next/image";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import Balancer from "react-wrap-balancer";
 import { PlayIcon } from "@radix-ui/react-icons";
-import YouTube from "react-youtube";
 import { VideoCard } from "../components/Card";
 import { Divider } from "../components/Divider";
 import {
@@ -49,6 +48,7 @@ import { ICON_SIZE } from "../util/images";
 import poster from "../public/images/poster.gif";
 import { Box } from "../components/Box";
 import { NextPageWithLayout } from "./_app";
+import dynamic from "next/dynamic";
 
 type Props = {
   featuredVideo: VideoPreview;
@@ -71,7 +71,20 @@ const StyledVideoCardContainer = styled(Box, {
   },
 });
 
-const StyledYouTubePlayer = styled(YouTube, {
+const StyledPoster = styled(Button, {
+  width: "100%",
+  height: "100%;",
+
+  "@bp3": {
+    display: "none",
+  },
+});
+
+const DynamicYouTube = dynamic(() => import("react-youtube"), {
+  ssr: false,
+});
+
+const StyledYouTubePlayer = styled(DynamicYouTube, {
   position: "absolute",
   inset: 0,
 
@@ -86,15 +99,6 @@ const StyledYouTubePlayer = styled(YouTube, {
 
   "&:active": {
     boxShadow: "$5",
-  },
-});
-
-const StyledPoster = styled(Button, {
-  width: "100%",
-  height: "100%;",
-
-  "@bp3": {
-    display: "none",
   },
 });
 

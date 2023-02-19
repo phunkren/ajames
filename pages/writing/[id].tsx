@@ -1,7 +1,8 @@
+import { ReactElement } from "react";
+import Balancer from "react-wrap-balancer";
+import ReactMarkdown from "react-markdown";
 import { useRouter } from "next/router";
 import remarkMdx from "remark-mdx";
-import ReactMarkdown from "react-markdown";
-import Balancer from "react-wrap-balancer";
 import { Tag } from "../../types/notion";
 import {
   getAllPostIds,
@@ -22,7 +23,6 @@ import {
   TextTitle2,
   TextTitle3,
 } from "../../components/Text";
-import { Code } from "../../components/Code";
 import { Divider } from "../../components/Divider";
 import {
   Frontmatter,
@@ -35,9 +35,9 @@ import { ShareButton } from "../../components/Button";
 import { styled } from "../../stitches.config";
 import { H1_STYLES, H2_STYLES, H3_STYLES, P_STYLES } from "../../styles/text";
 import { Box } from "../../components/Box";
-import { ReactElement } from "react";
 import { NextPageWithLayout } from "../_app";
 import { BlogSeo } from "../../components/SEO";
+import dynamic from "next/dynamic";
 
 export type Frontmatter = {
   title: string;
@@ -54,6 +54,13 @@ type Props = {
   frontmatter: Frontmatter;
   postData: string;
 };
+
+const DynamicCode = dynamic(
+  () => import("../../components/Code").then((mod) => mod.Code),
+  {
+    ssr: false,
+  }
+);
 
 const StyledContainer = styled(Box, {
   h1: H1_STYLES,
@@ -251,7 +258,7 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
                 <ReactMarkdown
                   components={{
                     a: MarkdownLink,
-                    code: Code,
+                    code: DynamicCode,
                     h1: TextTitle2 as any,
                     h2: MarkdownTitle as any,
                     h3: TextHeadline as any,
