@@ -135,7 +135,7 @@ export const HeaderLayout = memo(function HeaderLayout() {
       alignItems="center"
     >
       <Box direction="horizontal" gap={10} alignItems="center">
-        <Link variant="icon" href="/">
+        <Link aria-label="Home" href="/" variant="icon">
           <Logo />
         </Link>
 

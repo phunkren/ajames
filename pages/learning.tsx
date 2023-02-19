@@ -293,8 +293,12 @@ const Learning: NextPageWithLayout = ({
                   </TextBody>
 
                   <Box>
-                    <Link href={featuredVideo.url} variant="tertiary">
-                      <TextAux>Read more</TextAux>
+                    <Link
+                      aria-label="Watch video"
+                      href={featuredVideo.url}
+                      variant="tertiary"
+                    >
+                      <TextAux>Read the full description</TextAux>
                     </Link>
                   </Box>
                 </Box>

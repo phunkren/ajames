@@ -1,16 +1,12 @@
 import { memo } from "react";
-import { useRouter } from "next/router";
 import {
   AvatarIcon,
   BellIcon,
   CalendarIcon,
   ClockIcon,
   EyeOpenIcon,
-  IdCardIcon,
-  ListBulletIcon,
   MixIcon,
   Pencil2Icon,
-  StarIcon,
   VideoIcon,
 } from "@radix-ui/react-icons";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";

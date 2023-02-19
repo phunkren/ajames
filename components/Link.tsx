@@ -440,6 +440,7 @@ export const BlogSubscriptionLink = memo(function BlogSubscribeLink({
 
   return (
     <StyledBlogSubscription
+      aria-label={type === "icon" ? "Subscribe" : undefined}
       href={rssFeedUrl}
       type={type}
       variant={type === "link" ? "secondary" : "invisible"}

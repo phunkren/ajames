@@ -61,7 +61,7 @@ const StyledImage = styled(Image, {
   display: "none",
   objectFit: "contain",
   position: "absolute",
-  top: "5% !important",
+  top: "15% !important",
   zIndex: -1,
   transform: "scale(0.9)",
   pointerEvents: "none",
@@ -77,7 +77,7 @@ const StyledImage = styled(Image, {
 
   "@bp2": {
     display: "block",
-    left: "27% !important",
+    left: "30% !important",
   },
 
   "@bp3": {
@@ -137,7 +137,7 @@ const About: NextPageWithLayout = () => {
       <Box direction="vertical">
         <StyledPageHeader>
           <HeroLayout bordered>
-            <Box direction="vertical" flexGrow>
+            <Box direction="vertical" position="relative" flexGrow>
               <Box
                 direction="vertical"
                 spacingLeft={{ "@bp2": 6, "@bp3": 0 }}
@@ -173,7 +173,7 @@ const About: NextPageWithLayout = () => {
                 </Box>
               </Box>
 
-              <StyledImage src={banner} alt="" sizes="50vw" priority fill />
+              <StyledImage src={banner} alt="" sizes="25vw" priority fill />
             </Box>
           </HeroLayout>
         </StyledPageHeader>
@@ -225,66 +225,74 @@ const About: NextPageWithLayout = () => {
               </Box>
 
               <GridRoot>
-                <Link
-                  variant="secondary"
-                  href={SOCIAL.linkedin.url}
-                  title={SOCIAL.linkedin.displayName}
-                >
-                  <Box direction="horizontal" gap={4} alignItems="center">
-                    <LinkedInLogoIcon
-                      width={ICON_SIZE.l}
-                      height={ICON_SIZE.l}
-                      aria-hidden
-                    />
-                    <TextHeadline>Andrew James</TextHeadline>
-                  </Box>
-                </Link>
-
-                <Link
-                  variant="secondary"
-                  href="mailto:contact@ajames.dev"
-                  title="Email"
-                >
-                  <Box direction="horizontal" gap={4} alignItems="center">
-                    <EnvelopeOpenIcon
-                      width={ICON_SIZE.l}
-                      height={ICON_SIZE.l}
-                      aria-hidden
-                    />
-                    <TextHeadline>contact@ajames.dev</TextHeadline>
-                  </Box>
-                </Link>
-
-                <Link variant="secondary" href={SITE.url} title="Website">
-                  <Box
-                    direction="horizontal"
-                    gap={4}
-                    alignItems="center"
-                    flexShrink={false}
+                <Box as="li" alignItems="center">
+                  <Link
+                    variant="secondary"
+                    href={SOCIAL.linkedin.url}
+                    title={SOCIAL.linkedin.displayName}
                   >
-                    <GlobeIcon
-                      width={ICON_SIZE.l}
-                      height={ICON_SIZE.l}
-                      aria-hidden
-                    />
-                    <TextHeadline>ajames.dev</TextHeadline>
-                  </Box>
-                </Link>
+                    <Box direction="horizontal" gap={4} alignItems="center">
+                      <LinkedInLogoIcon
+                        width={ICON_SIZE.l}
+                        height={ICON_SIZE.l}
+                        aria-hidden
+                      />
+                      <TextHeadline>Andrew James</TextHeadline>
+                    </Box>
+                  </Link>
+                </Box>
 
-                <Link
-                  variant="secondary"
-                  href={SOCIAL.github.url}
-                  title={SOCIAL.github.displayName}
-                >
-                  <Box direction="horizontal" gap={4} alignItems="center">
-                    <GitHubLogoIcon
-                      width={ICON_SIZE.l}
-                      height={ICON_SIZE.l}
-                      aria-hidden
-                    />
-                    <TextHeadline>phunkren</TextHeadline>
-                  </Box>
-                </Link>
+                <Box as="li" alignItems="center">
+                  <Link
+                    variant="secondary"
+                    href="mailto:contact@ajames.dev"
+                    title="Email"
+                  >
+                    <Box direction="horizontal" gap={4} alignItems="center">
+                      <EnvelopeOpenIcon
+                        width={ICON_SIZE.l}
+                        height={ICON_SIZE.l}
+                        aria-hidden
+                      />
+                      <TextHeadline>contact@ajames.dev</TextHeadline>
+                    </Box>
+                  </Link>
+                </Box>
+
+                <Box as="li" alignItems="center">
+                  <Link variant="secondary" href={SITE.url} title="Website">
+                    <Box
+                      direction="horizontal"
+                      gap={4}
+                      alignItems="center"
+                      flexShrink={false}
+                    >
+                      <GlobeIcon
+                        width={ICON_SIZE.l}
+                        height={ICON_SIZE.l}
+                        aria-hidden
+                      />
+                      <TextHeadline>ajames.dev</TextHeadline>
+                    </Box>
+                  </Link>
+                </Box>
+
+                <Box as="li" alignItems="center">
+                  <Link
+                    variant="secondary"
+                    href={SOCIAL.github.url}
+                    title={SOCIAL.github.displayName}
+                  >
+                    <Box direction="horizontal" gap={4} alignItems="center">
+                      <GitHubLogoIcon
+                        width={ICON_SIZE.l}
+                        height={ICON_SIZE.l}
+                        aria-hidden
+                      />
+                      <TextHeadline>phunkren</TextHeadline>
+                    </Box>
+                  </Link>
+                </Box>
               </GridRoot>
             </Box>
 
@@ -366,6 +374,7 @@ const About: NextPageWithLayout = () => {
               >
                 {EDUCATION.map((education) => (
                   <Box
+                    as="li"
                     direction="vertical"
                     key={education.id}
                     gap={2}

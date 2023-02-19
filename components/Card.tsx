@@ -253,7 +253,7 @@ export const BlogCard = memo(function BlogCard({
             alignItems="center"
             css={{ marginTop: "auto" }}
           >
-            <PostTags tags={tags} />
+            <PostTags as="div" tags={tags} />
 
             <PreviewToggle
               aria-label="Toggle article preview"
@@ -319,9 +319,9 @@ export const VideoCard = memo(function VideoCard({
             css={{ marginTop: "auto" }}
           >
             {channel && isLikedVideos ? (
-              <YoutubeChannel channel={channel} icon compact />
+              <YoutubeChannel as="div" channel={channel} icon compact />
             ) : (
-              <PublishDate date={publishDate} icon compact />
+              <PublishDate as="div" date={publishDate} icon compact />
             )}
 
             {description ? (

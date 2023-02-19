@@ -130,58 +130,57 @@ export const Navigation = memo(function Navigation() {
   const { asPath } = useRouter();
 
   return (
-    <Box aria-label="Primary navigation" as="nav">
-      <Box as="ul" role="list">
-        <NavigationMenu.Root orientation="horizontal">
-          <StyledNavigationMenuList role="list">
-            <NavigationMenu.Item>
-              <NavigationMenu.Link asChild active={asPath === "/about"}>
-                <Link variant="secondary" href="/about">
-                  <TextHeadline>About</TextHeadline>
-                </Link>
-              </NavigationMenu.Link>
-            </NavigationMenu.Item>
+    <NavigationMenu.Root
+      aria-label="Primary navigation"
+      orientation="horizontal"
+    >
+      <StyledNavigationMenuList aria-label="Primary navigation" role="list">
+        <NavigationMenu.Item>
+          <NavigationMenu.Link asChild active={asPath === "/about"}>
+            <Link variant="secondary" href="/about">
+              <TextHeadline>About</TextHeadline>
+            </Link>
+          </NavigationMenu.Link>
+        </NavigationMenu.Item>
 
-            <NavigationMenu.Item>
-              <NavigationMenu.Link asChild active={asPath.includes("writing")}>
-                <Link variant="secondary" href="/writing">
-                  <TextHeadline>Writing</TextHeadline>
-                </Link>
-              </NavigationMenu.Link>
-            </NavigationMenu.Item>
+        <NavigationMenu.Item>
+          <NavigationMenu.Link asChild active={asPath.includes("writing")}>
+            <Link variant="secondary" href="/writing">
+              <TextHeadline>Writing</TextHeadline>
+            </Link>
+          </NavigationMenu.Link>
+        </NavigationMenu.Item>
 
-            <NavigationMenu.Item>
-              <NavigationMenu.Link asChild active={asPath === "/learning"}>
-                <Link variant="secondary" href="/learning">
-                  <TextHeadline>Learning</TextHeadline>
-                </Link>
-              </NavigationMenu.Link>
-            </NavigationMenu.Item>
+        <NavigationMenu.Item>
+          <NavigationMenu.Link asChild active={asPath === "/learning"}>
+            <Link variant="secondary" href="/learning">
+              <TextHeadline>Learning</TextHeadline>
+            </Link>
+          </NavigationMenu.Link>
+        </NavigationMenu.Item>
 
-            <NavigationMenu.Item>
-              <NavigationMenu.Trigger asChild>
-                <Button variant="tertiary" css={{ padding: 0, gap: "$2" }}>
-                  <TextHeadline>Projects</TextHeadline>
-                  <ChevronDownIcon width={ICON_SIZE.s} height={ICON_SIZE.s} />
-                </Button>
-              </NavigationMenu.Trigger>
+        <NavigationMenu.Item>
+          <NavigationMenu.Trigger asChild>
+            <Button variant="tertiary" css={{ padding: 0, gap: "$2" }}>
+              <TextHeadline>Projects</TextHeadline>
+              <ChevronDownIcon width={ICON_SIZE.s} height={ICON_SIZE.s} />
+            </Button>
+          </NavigationMenu.Trigger>
 
-              <StyledNavigationMenuContent asChild>
-                <StyledNavigationSubmenu as="ul">
-                  {PROJECTS.map((project) => (
-                    <Box key={project.id} as="li" flexGrow>
-                      <NavigationProjectLink {...project} />
-                    </Box>
-                  ))}
-                </StyledNavigationSubmenu>
-              </StyledNavigationMenuContent>
-            </NavigationMenu.Item>
+          <StyledNavigationMenuContent asChild>
+            <StyledNavigationSubmenu as="ul">
+              {PROJECTS.map((project) => (
+                <Box key={project.id} as="li" flexGrow>
+                  <NavigationProjectLink {...project} />
+                </Box>
+              ))}
+            </StyledNavigationSubmenu>
+          </StyledNavigationMenuContent>
+        </NavigationMenu.Item>
 
-            <NavigationMenu.Indicator />
-          </StyledNavigationMenuList>
-        </NavigationMenu.Root>
-      </Box>
-    </Box>
+        <NavigationMenu.Indicator />
+      </StyledNavigationMenuList>
+    </NavigationMenu.Root>
   );
 });
 

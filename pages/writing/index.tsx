@@ -286,6 +286,7 @@ const Writing: NextPageWithLayout = ({ posts, tags }: Props) => {
 
                   <Box>
                     <PostTags
+                      as="div"
                       tags={featuredPost.properties.tags.multi_select}
                     />
                   </Box>
@@ -299,7 +300,7 @@ const Writing: NextPageWithLayout = ({ posts, tags }: Props) => {
                       href={`/writing/${featuredPost.properties.slug.rich_text[0].plain_text}`}
                       variant="tertiary"
                     >
-                      <TextAux>Read more</TextAux>
+                      <TextAux>Read the article</TextAux>
                     </Link>
                   </Box>
                 </Box>
