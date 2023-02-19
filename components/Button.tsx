@@ -446,31 +446,32 @@ export const FilterMenuButton = memo(
   })
 );
 
-export const MobileNavigationButton = memo(function MobileNavigationButton(
-  props: any
-) {
-  return (
-    <StyledMobileNavigationButton
-      title="Mobile Navigation Menu"
-      variant="secondary"
-      {...props}
-    >
-      <HamburgerMenuIcon
-        id="mobileNav-hamburger"
-        width={ICON_SIZE.l}
-        height={ICON_SIZE.l}
-        aria-hidden
-      />
+export const MobileNavigationButton = memo(
+  forwardRef((props: any, ref: Ref<HTMLButtonElement>) => {
+    return (
+      <StyledMobileNavigationButton
+        ref={ref}
+        title="Mobile Navigation Menu"
+        variant="secondary"
+        {...props}
+      >
+        <HamburgerMenuIcon
+          id="mobileNav-hamburger"
+          width={ICON_SIZE.l}
+          height={ICON_SIZE.l}
+          aria-hidden
+        />
 
-      <Cross1Icon
-        id="mobileNav-cross"
-        width={ICON_SIZE.l}
-        height={ICON_SIZE.l}
-        aria-hidden
-      />
-    </StyledMobileNavigationButton>
-  );
-});
+        <Cross1Icon
+          id="mobileNav-cross"
+          width={ICON_SIZE.l}
+          height={ICON_SIZE.l}
+          aria-hidden
+        />
+      </StyledMobileNavigationButton>
+    );
+  })
+);
 
 export const CloseButton = memo(function CloseButton(props: any) {
   return (

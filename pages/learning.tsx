@@ -359,7 +359,7 @@ const Learning: NextPageWithLayout = ({
                   </TextBody>
 
                   <CardScrollRoot>
-                    <CardScrollViewport asChild>
+                    <CardScrollViewport>
                       <StyledVideoCardContainer spacingVertical={8}>
                         {playlistVideosPreview[playlist.id].map(
                           (playlistVideo) => (

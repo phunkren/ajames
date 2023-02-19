@@ -11,7 +11,7 @@ import {
 } from "../../components/Card";
 import { ActionButtons, HeroLayout, Layout } from "../../components/Layout";
 import { LayoutToggle } from "../../components/Toggle";
-import { TagDrawer, TagDropdown, TagDropdownItem } from "../../components/Tags";
+import { TagDrawer, TagSelect, TagSelectItem } from "../../components/Tags";
 import {
   TextAux,
   TextBody,
@@ -167,9 +167,7 @@ const Writing: NextPageWithLayout = ({ posts, tags }: Props) => {
   );
 
   const handleTagChange = useCallback(
-    (e: Event) => {
-      const tagTarget = e.target as HTMLElement;
-      const tagName = tagTarget.id;
+    (tagName: string) => {
       const activeTag = query.tag as string;
       const isTagActive = activeTag === tagName;
 
@@ -224,21 +222,20 @@ const Writing: NextPageWithLayout = ({ posts, tags }: Props) => {
             </Frontmatter>
 
             <ActionButtons css={{ flexBasis: "fit-content" }}>
-              <FilterClearButton filters={queryTag} />
+              <FilterClearButton filter={queryTag} />
 
               <TagDrawer tags={tags} onClick={handleTagChange} />
 
-              <TagDropdown>
+              <TagSelect value={queryTag} onValueChange={handleTagChange}>
                 {tags.map((tag) => (
-                  <TagDropdownItem
-                    key={tag.name}
+                  <TagSelectItem
+                    key={tag.id}
                     id={tag.name}
                     color={tag.color}
-                    name={tag.name}
-                    onSelect={handleTagChange}
+                    value={tag.name}
                   />
                 ))}
-              </TagDropdown>
+              </TagSelect>
             </ActionButtons>
           </Box>
         </Box>

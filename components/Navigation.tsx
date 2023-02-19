@@ -1,4 +1,4 @@
-import { memo, useCallback, useRef } from "react";
+import { memo, useCallback, useState } from "react";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 import { useRouter } from "next/router";
 import Image from "next/image";
@@ -20,8 +20,8 @@ import { Box } from "./Box";
 import { ThemeToggle } from "./Toggle";
 
 const dialogSlideIn = keyframes({
-  "0%": { transform: "translateX(0)" },
-  "100%": { transform: "translateX(300px)" },
+  "0%": { transform: "translate3d(0,0,0)" },
+  "100%": { transform: "translate3d(300px,0,0)" },
 });
 
 const scaleIn = keyframes({
@@ -46,7 +46,7 @@ const StyledDialogContent = styled(Dialog.Content, {
   height: "100dvh",
   width: 300,
   zIndex: 99,
-  transform: "translateX(0)",
+  transform: "translate3d(0,0,0)",
   animation: `${dialogSlideIn} 200ms ease-out 50ms forwards`,
 });
 
@@ -186,22 +186,31 @@ export const Navigation = memo(function Navigation() {
 });
 
 export const NavigationMobile = memo(function NavigationMobile() {
+  const [open, setOpen] = useState(false);
   const { theme } = useTheme();
   const { asPath } = useRouter();
-  const closeButtonRef = useRef<HTMLButtonElement>(null);
 
-  const handleLinkClick = useCallback(() => {
-    closeButtonRef.current?.click();
+  const handleOpen = useCallback(() => {
+    setOpen(true);
+  }, []);
+
+  const handleClose = useCallback(() => {
+    setOpen(false);
   }, []);
 
   return (
-    <Dialog.Root>
+    <Dialog.Root open={open}>
       <Dialog.Trigger asChild>
-        <MobileNavigationButton />
+        <MobileNavigationButton onClick={handleOpen} />
       </Dialog.Trigger>
 
       <Dialog.Portal>
-        <StyledDialogContent id="mobileNav" className={theme}>
+        <StyledDialogContent
+          id="mobileNav"
+          className={theme}
+          onEscapeKeyDown={handleClose}
+          onInteractOutside={handleClose}
+        >
           <VisuallyHidden.Root asChild>
             <Dialog.Title>Mobile Navigation Menu</Dialog.Title>
           </VisuallyHidden.Root>
@@ -221,10 +230,6 @@ export const NavigationMobile = memo(function NavigationMobile() {
             flexGrow
           >
             <Box justifyContent="flex-end">
-              <VisuallyHidden.Root>
-                <Dialog.Close ref={closeButtonRef}>Close menu</Dialog.Close>
-              </VisuallyHidden.Root>
-
               <ThemeToggle />
             </Box>
 
@@ -250,7 +255,7 @@ export const NavigationMobile = memo(function NavigationMobile() {
                         <Link
                           href="/"
                           variant="secondary"
-                          onClick={handleLinkClick}
+                          onClick={handleClose}
                         >
                           <TextHeadline>Home</TextHeadline>
                         </Link>
@@ -266,7 +271,7 @@ export const NavigationMobile = memo(function NavigationMobile() {
                         <Link
                           href="/about"
                           variant="secondary"
-                          onClick={handleLinkClick}
+                          onClick={handleClose}
                         >
                           <TextHeadline>About</TextHeadline>
                         </Link>
@@ -285,7 +290,7 @@ export const NavigationMobile = memo(function NavigationMobile() {
                         <Link
                           href="/writing"
                           variant="secondary"
-                          onClick={handleLinkClick}
+                          onClick={handleClose}
                         >
                           <TextHeadline>Writing</TextHeadline>
                         </Link>
@@ -304,7 +309,7 @@ export const NavigationMobile = memo(function NavigationMobile() {
                         <Link
                           href="/learning"
                           variant="secondary"
-                          onClick={handleLinkClick}
+                          onClick={handleClose}
                         >
                           <TextHeadline>Learning</TextHeadline>
                         </Link>

@@ -1,26 +1,22 @@
 import { memo, useCallback, useState } from "react";
-import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import * as Dialog from "@radix-ui/react-dialog";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
+import * as Select from "@radix-ui/react-select";
 import { darkTheme, keyframes, lightTheme, styled } from "../stitches.config";
 import { NOTION_TAG_VARIANTS } from "../styles/tag";
 import { Tag } from "../types/notion";
 import { TextAux, TextTitle3 } from "./Text";
-import { blackA, whiteA } from "@radix-ui/colors";
 import { Button, CloseButton, FilterMenuButton } from "./Button";
-import { CheckIcon } from "@radix-ui/react-icons";
 import { useTheme } from "../hooks/useTheme";
 import { Box } from "./Box";
 import { DrawerScrollRoot, DrawerScrollViewport, Scrollbar } from "./Scroll";
 
-type TagDropdownItemProps = DropdownMenu.DropdownMenuCheckboxItemProps & Tag;
-
 const dialogSlideUp = keyframes({
-  "0%": { transform: "translateY(0)" },
-  "100%": { transform: "translateY(-400px)" },
+  "0%": { transform: "translate3d(0, 0, 0)" },
+  "100%": { transform: "translate3d(0, -400px, 0)" },
 });
 
-const StyledDropdownMenuContent = styled(DropdownMenu.Content, {
+const StyledSelectContent = styled(Select.Content, {
   background: "$backgroundMuted",
   borderRadius: 4,
   spacing: "$2",
@@ -32,21 +28,34 @@ const StyledDropdownMenuContent = styled(DropdownMenu.Content, {
   },
 });
 
-const StyledDropdownMenuItem = styled(DropdownMenu.CheckboxItem, {
-  flexGrow: 1,
-  padding: "$2",
-  borderRadius: 4,
+const StyledSelectItem = styled(Select.Item, {
+  spacingHorizontal: "$4",
+  spacingVertical: "$1",
+  cursor: "pointer",
 
-  [`.${darkTheme} &:hover`]: {
-    backgroundColor: whiteA.whiteA3,
+  "&:hover, &:focus": {
+    outline: "none",
+    color: "$hover",
+
+    [`.${lightTheme} &`]: {
+      background: "rgba(0,0,0,0.05)",
+    },
+
+    [`.${darkTheme} &`]: {
+      background: "rgba(255,255,255,0.05)",
+    },
   },
 
-  [`.${lightTheme} &:hover`]: {
-    backgroundColor: blackA.blackA3,
+  "&[data-state='checked']": {
+    color: "$focus",
   },
 });
 
-const StyledDialogContent = styled(Dialog.Content, {
+const StyledSelectArrow = styled(Select.Arrow, {
+  fill: "$backgroundMuted",
+});
+
+const StyledDrawerContent = styled(Dialog.Content, {
   position: "fixed",
   bottom: -400,
   left: 0,
@@ -59,11 +68,11 @@ const StyledDialogContent = styled(Dialog.Content, {
   borderRadius: 0,
   minWidth: 300,
   zIndex: 99,
-  transform: "translateY(0)",
+  transform: "translate3d(0, 0, 0)",
   animation: `${dialogSlideUp} 200ms ease-out 50ms forwards`,
 });
 
-const StyledTagGrid = styled("ul", {
+const StyledDrawerGrid = styled("ul", {
   display: "grid",
   gridTemplateColumns: "1fr",
   gridTemplateRows: "repeat(auto, 1fr)",
@@ -115,57 +124,49 @@ export const StyledTag = styled(Box, {
   },
 });
 
-export const TagDropdown = memo(function TagDropdown(props: any) {
+export const TagSelect = memo(function TagSelect({
+  value,
+  children,
+  onValueChange,
+}: any) {
   const { theme } = useTheme();
 
   return (
-    <DropdownMenu.Root>
-      <DropdownMenu.Trigger asChild>
+    <Select.Root name="Filter" value={value} onValueChange={onValueChange}>
+      <Select.Trigger aria-label="Article Filter" asChild>
         <FilterMenuButton
           display={{
             "@initial": "none",
             "@bp2": "flex",
           }}
         />
-      </DropdownMenu.Trigger>
+      </Select.Trigger>
 
-      <DropdownMenu.Portal>
-        <StyledDropdownMenuContent className={theme}>
-          {props.children}
-
-          <DropdownMenu.Arrow />
-        </StyledDropdownMenuContent>
-      </DropdownMenu.Portal>
-    </DropdownMenu.Root>
+      <StyledSelectContent
+        position="popper"
+        align="end"
+        arrowPadding={4}
+        sideOffset={8}
+        sticky="always"
+        className={theme}
+        hideWhenDetached
+      >
+        <Select.Viewport>{children}</Select.Viewport>
+        <StyledSelectArrow />
+      </StyledSelectContent>
+    </Select.Root>
   );
 });
 
-export const TagDropdownItem = memo(function TagDropdownItem({
+export const TagSelectItem = memo(function TagSelectItem({
   id,
-  children,
-  color,
-  checked,
-  name,
-  onSelect,
+  value,
   ...props
-}: TagDropdownItemProps) {
-  const handleSelect = useCallback(
-    (e: Event) => {
-      e.preventDefault();
-      onSelect?.(e);
-    },
-    [onSelect]
-  );
-
+}: Select.SelectItemProps) {
   return (
-    <StyledDropdownMenuItem id={id} onSelect={handleSelect} {...props}>
-      <DropdownMenu.ItemIndicator>
-        <CheckIcon />
-      </DropdownMenu.ItemIndicator>
-      <StyledTag borderColor={color}>
-        <TextAux textTransform="uppercase">{name}</TextAux>
-      </StyledTag>
-    </StyledDropdownMenuItem>
+    <StyledSelectItem id={id} value={value} {...props}>
+      <TextAux textTransform="uppercase">{value}</TextAux>
+    </StyledSelectItem>
   );
 });
 
@@ -185,7 +186,10 @@ export const TagDrawer = memo(function TagDrawer({
 
   const handleClick = useCallback(
     (e) => {
-      onClick?.(e);
+      const tagTarget = e.target as HTMLElement;
+      const tagName = tagTarget.id;
+
+      onClick?.(tagName);
       setOpen(false);
     },
     [onClick]
@@ -204,7 +208,7 @@ export const TagDrawer = memo(function TagDrawer({
       </Dialog.Trigger>
 
       <Dialog.Portal>
-        <StyledDialogContent id="filterDrawer" className={theme}>
+        <StyledDrawerContent id="filterDrawer" className={theme}>
           <VisuallyHidden.Root asChild>
             <Dialog.Title>Article filters</Dialog.Title>
           </VisuallyHidden.Root>
@@ -232,12 +236,16 @@ export const TagDrawer = memo(function TagDrawer({
             </Box>
 
             <DrawerScrollRoot>
-              <DrawerScrollViewport>
-                <Scrollbar orientation="vertical" variant="tertiary" />
-
-                <StyledTagGrid>
+              <DrawerScrollViewport className={theme}>
+                <StyledDrawerGrid>
                   {tags.map((tag) => (
-                    <Box key={tag.id} as="li" direction="vertical" spacing={1}>
+                    <Box
+                      key={tag.id}
+                      as="li"
+                      direction="vertical"
+                      spacing={1}
+                      css={{ scrollSnapAlign: "center" }}
+                    >
                       <Button variant="tertiary" onClick={handleClick}>
                         <StyledTag
                           id={tag.name}
@@ -245,18 +253,20 @@ export const TagDrawer = memo(function TagDrawer({
                           spacing={4}
                           flexGrow
                         >
-                          <TextAux textTransform="uppercase">
+                          <TextAux color="primary" textTransform="uppercase">
                             {tag.name}
                           </TextAux>
                         </StyledTag>
                       </Button>
                     </Box>
                   ))}
-                </StyledTagGrid>
+                </StyledDrawerGrid>
+
+                <Scrollbar orientation="vertical" variant="tertiary" />
               </DrawerScrollViewport>
             </DrawerScrollRoot>
           </Box>
-        </StyledDialogContent>
+        </StyledDrawerContent>
       </Dialog.Portal>
     </Dialog.Root>
   );

@@ -162,7 +162,7 @@ export const FooterLayout = memo(function FooterLayout() {
       spacingVertical={10}
       spacingHorizontal={4}
       justifyContent="center"
-      css={{ marginTop: "$10", "@print": { display: "none" } }}
+      css={{ "@print": { display: "none" } }}
     >
       <Social />
     </Box>
