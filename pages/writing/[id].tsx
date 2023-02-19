@@ -258,7 +258,7 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
                 <ReactMarkdown
                   components={{
                     a: MarkdownLink,
-                    code: DynamicCode,
+                    code: DynamicCode as any,
                     h1: TextTitle2 as any,
                     h2: MarkdownTitle as any,
                     h3: TextHeadline as any,
