@@ -404,13 +404,13 @@ export const FilterClearButton = memo(function FilterClearButton({
 
   return (
     <StyledIconButton
-      title="Clear Filters"
+      title="Clear Filter"
       aria-disabled={!filter}
       onClick={handleClick}
       {...props}
     >
       <VisuallyHidden.Root>
-        <TextAux>Clear filters</TextAux>
+        <TextAux>Clear filter</TextAux>
       </VisuallyHidden.Root>
 
       <Cross2Icon width={ICON_SIZE.m} height={ICON_SIZE.m} />
@@ -426,7 +426,7 @@ export const FilterMenuButton = memo(
     return (
       <StyledIconButton
         ref={ref}
-        title={open ? "Collapse Filters" : "Expand Filters"}
+        title={open ? "Collapse Filters" : "Filter Articles"}
         {...props}
       >
         {open ? (

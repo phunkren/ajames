@@ -29,11 +29,11 @@ export const EMPLOYMENT: Employer[] = [
     id: "coinbase",
     displayName: "Coinbase",
     url: "https://www.coinbase.com/",
-    position: "IC4 Engineer",
+    position: "Frontend Engineer (IC4)",
     startDate: "2022-03-01",
     location: "Remote, EMEA",
     content:
-      "Currently working with a multidisciplinary team to create intuitive and trustworthy user experiences for institutional customers on Coinbase Prime. The focus is on efficiently executing and maintaining frontend features on the platform and admin interface. Latest opportunity was leading the UI development for the initial launch of the Data Marketplace, which provides a collection of historical datasets from the Coinbase Exchange.",
+      "Current working within a multidisciplinary team to create intuitive and trustworthy user experiences for institutional customers on Coinbase Prime, enabling them to execute trades and manage large portfolio positions across spot and derivative crypto markets. Recently was the lead UI developer for the build and launch of the Data Marketplace, which provides a collection of historical datasets from the Coinbase Exchange.",
     notableWork: [
       {
         id: "insto-prime",

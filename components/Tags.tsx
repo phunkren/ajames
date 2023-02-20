@@ -216,8 +216,7 @@ export const TagDrawer = memo(function TagDrawer({
           <VisuallyHidden.Root asChild>
             <Dialog.Description>
               This menu contains filters for each of the blog articles. Select a
-              tag to filter the feed by that category, or to remove the filter
-              if it&apos;s already active.
+              tag to filter the feed by that category.
             </Dialog.Description>
           </VisuallyHidden.Root>
 

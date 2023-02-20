@@ -10,7 +10,7 @@ import { Social } from "./Social";
 import { ThemeToggle } from "./Toggle";
 import { Box } from "./Box";
 import { PageSeo } from "./SEO";
-import { TextHeadline, TextTitle1 } from "./Text";
+import { TextAux, TextHeadline, TextTitle1 } from "./Text";
 import { StyledIconButton } from "./Button";
 import { Logo } from "./Logo";
 import { blueDark, redDark } from "@radix-ui/colors";
@@ -256,5 +256,13 @@ export const ActionButtons = memo(function ActionButtons(props: any) {
       spacingBottom={1}
       {...props}
     />
+  );
+});
+
+export const LoadingLayout = memo(function LoadingLayout() {
+  return (
+    <Box direction="vertical">
+      <TextAux>Loading...</TextAux>
+    </Box>
   );
 });

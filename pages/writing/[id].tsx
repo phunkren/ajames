@@ -10,7 +10,12 @@ import {
   getPostData,
   getPostTime,
 } from "../../lib/notion";
-import { ActionButtons, HeroLayout, Layout } from "../../components/Layout";
+import {
+  ActionButtons,
+  HeroLayout,
+  Layout,
+  LoadingLayout,
+} from "../../components/Layout";
 import {
   BlogSubscriptionLink,
   MarkdownLink,
@@ -58,6 +63,7 @@ type Props = {
 const DynamicCode = dynamic(
   () => import("../../components/Code").then((mod) => mod.Code),
   {
+    loading: () => <LoadingLayout />,
     ssr: false,
   }
 );

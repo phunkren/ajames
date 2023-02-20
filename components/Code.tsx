@@ -1,9 +1,7 @@
 import { memo } from "react";
 import { LightAsync as SyntaxHighlighter } from "react-syntax-highlighter";
-import {
-  atomOneDark,
-  atomOneLight,
-} from "react-syntax-highlighter/dist/cjs/styles/hljs";
+import atomOneDark from "react-syntax-highlighter/dist/cjs/styles/hljs/atom-one-dark";
+import atomOneLight from "react-syntax-highlighter/dist/cjs/styles/hljs/atom-one-light";
 import typescript from "react-syntax-highlighter/dist/esm/languages/hljs/typescript";
 import javascript from "react-syntax-highlighter/dist/esm/languages/hljs/javascript";
 import htmlbars from "react-syntax-highlighter/dist/esm/languages/hljs/htmlbars";

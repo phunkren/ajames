@@ -6,7 +6,6 @@ import {
 } from "@radix-ui/react-icons";
 import { MdRssFeed } from "react-icons/md";
 import { SOCIAL } from "../util/data";
-import { ICON_SIZE } from "../util/images";
 import { Box } from "./Box";
 import { Link } from "./Link";
 

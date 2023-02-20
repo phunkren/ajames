@@ -8,7 +8,6 @@ import { Client } from "@notionhq/client";
 import { NotionToMarkdown } from "notion-to-md";
 import { BlogPost } from "../types/notion";
 import { PERSONAL, SITE, SOCIAL } from "../util/data";
-import { Social } from "../components/Social";
 import { Feed } from "feed";
 
 const POSTS_DIR = path.join(process.cwd(), "posts");
@@ -155,7 +154,6 @@ export async function generateRSSFeed(posts: BlogPost[]) {
     });
   }
 
-  // Write the RSS output to a public file, making it
-  // accessible at ashleemboyer.com/rss.xml
+  // Write the RSS output to a public file
   fs.writeFileSync("public/rss.xml", feed.rss2());
 }

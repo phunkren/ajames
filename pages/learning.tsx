@@ -280,7 +280,7 @@ const Learning: NextPageWithLayout = ({
                     />
 
                     <StyledPoster ref={posterRef} onClick={handlePosterClick}>
-                      <Image src={poster} sizes="100vw" fill alt="" />
+                      <Image src={poster} sizes="480px" fill alt="" />
                     </StyledPoster>
                   </AspectRatio>
                 </Box>
@@ -292,7 +292,11 @@ const Learning: NextPageWithLayout = ({
                     </TextTitle3>
                   </Link>
 
-                  <TextBody clamp={4} textAlign="justify" color="secondary">
+                  <TextBody
+                    clamp={4}
+                    textAlign={{ "@initial": "left", "@bp3": "justify" }}
+                    color="secondary"
+                  >
                     {featuredVideo.description}
                   </TextBody>
 

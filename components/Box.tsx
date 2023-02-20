@@ -1,4 +1,4 @@
-import { ComponentProps, forwardRef, memo, Ref } from "react";
+import { forwardRef, memo, Ref } from "react";
 import { styled } from "../stitches.config";
 import { DISPLAY_VARIANTS } from "../styles/display";
 import { FLEX_VARIANTS } from "../styles/flex";
