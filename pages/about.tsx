@@ -28,7 +28,7 @@ import {
   SOCIAL,
   TESTIMONIALS,
 } from "../util/data";
-import { formatLongDate } from "../util/date";
+import { formatShortDate } from "../util/date";
 import { ICON_SIZE } from "../util/images";
 import banner from "../public/images/mugshot.png";
 import { Box } from "../components/Box";
@@ -61,7 +61,7 @@ const StyledImage = styled(Image, {
   display: "none",
   objectFit: "contain",
   position: "absolute",
-  top: "15% !important",
+  top: "10% !important",
   zIndex: -1,
   transform: "scale(0.9)",
   pointerEvents: "none",
@@ -82,7 +82,9 @@ const StyledImage = styled(Image, {
 
   "@bp3": {
     display: "block",
-    left: "25% !important",
+    transform: "scale(1)",
+    top: "7% !important",
+    left: "27% !important",
   },
 });
 
@@ -589,7 +591,7 @@ const About: NextPageWithLayout = () => {
                                 ).toISOString()}
                                 css={{ lineHeight: "inherit" }}
                               >
-                                {formatLongDate(new Date(employer.startDate))}
+                                {formatShortDate(new Date(employer.startDate))}
                               </TextAux>
                               <TextAux
                                 color="secondary"
@@ -613,7 +615,7 @@ const About: NextPageWithLayout = () => {
                               ).toISOString()}
                               css={{ lineHeight: "inherit" }}
                             >
-                              {formatLongDate(new Date(employer.endDate))}
+                              {formatShortDate(new Date(employer.endDate))}
                             </TextAux>
                           ) : (
                             <TextAux

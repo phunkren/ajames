@@ -1,5 +1,4 @@
-import { globalCss } from "../stitches.config";
-import { DARK_THEME_COLORS, LIGHT_THEME_COLORS } from "./color";
+import { globalCss, lightTheme, darkTheme } from "../stitches.config";
 import { AUX_STYLES, P_STYLES } from "./text";
 
 /* https://piccalil.li/blog/a-modern-css-reset/ */
@@ -10,10 +9,12 @@ export const globalStyles = globalCss({
     boxSizing: "border-box",
   },
 
-  "*:focus": {
-    borderRadius: 4,
-    outline: "2px solid $focus",
-    outlineOffset: 2,
+  "@media(hover)": {
+    "*:focus": {
+      borderRadius: 4,
+      outline: "2px solid $focus",
+      outlineOffset: 2,
+    },
   },
 
   /* Set core root defaults */
@@ -51,13 +52,13 @@ export const globalStyles = globalCss({
   },
 
   "body[data-theme='light']": {
-    background: LIGHT_THEME_COLORS.backgroundGradient,
-    color: LIGHT_THEME_COLORS.foreground,
+    background: lightTheme.colors.backgroundGradient,
+    color: lightTheme.colors.foreground,
   },
 
   "body[data-theme='dark']": {
-    background: DARK_THEME_COLORS.backgroundGradient,
-    color: DARK_THEME_COLORS.foreground,
+    background: darkTheme.colors.backgroundGradient,
+    color: darkTheme.colors.foreground,
   },
 
   "a, button": {

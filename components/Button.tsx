@@ -51,7 +51,9 @@ const StyledButton = styled("button", {
   alignItems: "center",
   justifyContent: "center",
   background: "none",
-  border: "none",
+  borderWidth: 2,
+  borderColor: "transparent",
+  borderStyle: "solid",
   color: "inherit",
   font: "inherit",
   overflow: "visible",
@@ -72,12 +74,13 @@ const StyledButton = styled("button", {
     variant: {
       primary: {
         boxShadow: "$1",
-        backgroundColor: "$foreground",
+        backgroundColor: "$foregroundMuted",
         color: "$background",
+        spacing: "$2",
 
         "&:hover": {
           boxShadow: "$4",
-          borderColor: "$foreground",
+          borderColor: "$foregroundMuted",
           backgroundColor: "$foregroundMuted",
 
           svg: {
@@ -92,10 +95,11 @@ const StyledButton = styled("button", {
       secondary: {
         borderColor: "$foreground",
         boxShadow: "$1",
+        spacing: "$2",
 
         "&:hover": {
           boxShadow: "$4",
-          borderColor: "$foregroundMuted",
+          borderColor: "$foreground",
           backgroundColor: "$foreground",
           color: "$background",
 

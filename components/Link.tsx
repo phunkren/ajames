@@ -299,7 +299,6 @@ const StyledBlogSubscription = styled(Link, {
 
         "&:hover": {
           boxShadow: "$4",
-          background: "red",
 
           [`.${lightTheme} &`]: {
             backgroundImage: `linear-gradient(225deg, $blue10 0.04%, $blue10 100.04%)`,
@@ -427,6 +426,10 @@ export const YoutubeSubscribeLink = memo(function YoutubeSubscribeLink({
         {type === "button" && <TextAux color="primary">Subscribe</TextAux>}
 
         {type === "link" && <TextHeadline>Subscribe</TextHeadline>}
+
+        {type === "icon" && (
+          <VisuallyHidden.Root>Subscribe</VisuallyHidden.Root>
+        )}
       </Box>
     </StyledYoutubeSubscription>
   );
@@ -440,7 +443,6 @@ export const BlogSubscriptionLink = memo(function BlogSubscribeLink({
 
   return (
     <StyledBlogSubscription
-      aria-label={type === "icon" ? "Subscribe" : undefined}
       href={rssFeedUrl}
       type={type}
       variant={type === "link" ? "secondary" : "invisible"}
@@ -452,6 +454,10 @@ export const BlogSubscriptionLink = memo(function BlogSubscribeLink({
         {type === "button" && <TextAux color="inherit">Subscribe</TextAux>}
 
         {type === "link" && <TextHeadline>Subscribe</TextHeadline>}
+
+        {type === "icon" && (
+          <VisuallyHidden.Root>Subscribe</VisuallyHidden.Root>
+        )}
       </Box>
     </StyledBlogSubscription>
   );
@@ -500,6 +506,7 @@ export const DownloadLink = memo(function DownloadLink(props: any) {
   return (
     <StyledIconLink title="Download" download {...props}>
       <DownloadIcon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
+      <VisuallyHidden.Root>Download</VisuallyHidden.Root>
     </StyledIconLink>
   );
 });

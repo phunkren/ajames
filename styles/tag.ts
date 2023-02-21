@@ -12,11 +12,11 @@ export const NOTION_TAG_VARIANTS = {
   borderColor: {
     red: {
       [`.${lightTheme} &`]: {
-        borderColor: "$tomato11",
+        borderColor: "$red11",
       },
 
       [`.${darkTheme} &`]: {
-        borderColor: "$tomato9",
+        borderColor: "$red9",
       },
     },
     orange: {
@@ -48,11 +48,11 @@ export const NOTION_TAG_VARIANTS = {
     },
     blue: {
       [`.${lightTheme} &`]: {
-        borderColor: "$sky11",
+        borderColor: "$blue11",
       },
 
       [`.${darkTheme} &`]: {
-        borderColor: "$sky9",
+        borderColor: "$blue9",
       },
     },
     purple: {

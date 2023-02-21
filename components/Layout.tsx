@@ -14,7 +14,6 @@ import { TextAux, TextHeadline, TextTitle1 } from "./Text";
 import { StyledIconButton } from "./Button";
 import { Logo } from "./Logo";
 import { blueDark, redDark } from "@radix-ui/colors";
-import { DARK_THEME_COLORS, LIGHT_THEME_COLORS } from "../styles/color";
 
 const StyledHeroLayout = styled(Box, {
   width: "100vw",
@@ -29,7 +28,7 @@ const StyledHeroLayout = styled(Box, {
     position: "absolute",
     inset: 0,
     zIndex: -1,
-    backgroundColor: DARK_THEME_COLORS.background,
+    backgroundColor: darkTheme.colors.background,
   },
 
   "&::after": {
@@ -58,7 +57,7 @@ const StyledHeroContainer = styled(Box, {
   borderRadius: 0,
 
   [`.${lightTheme} &`]: {
-    color: LIGHT_THEME_COLORS.background,
+    color: lightTheme.colors.background,
 
     [`${TextTitle1}, ${TextHeadline}`]: {
       color: "inherit",
@@ -69,12 +68,12 @@ const StyledHeroContainer = styled(Box, {
       borderColor: "inherit",
 
       "&:hover": {
-        background: DARK_THEME_COLORS.foreground,
-        borderColor: DARK_THEME_COLORS.foreground,
+        background: darkTheme.colors.foreground,
+        borderColor: darkTheme.colors.foreground,
       },
 
       "&:hover svg": {
-        color: DARK_THEME_COLORS.background,
+        color: darkTheme.colors.background,
       },
     },
   },
@@ -213,15 +212,7 @@ export const HeroLayout = memo(function HeroLayout({
           <StyledFilter />
 
           {src ? (
-            <StyledImage
-              placeholder="blur"
-              blurDataURL={BLUR_DATA_URL}
-              src={src}
-              alt=""
-              sizes="100vw"
-              fill
-              priority
-            />
+            <StyledImage src={src} alt="" sizes="100vw" fill priority />
           ) : null}
 
           {children ? (

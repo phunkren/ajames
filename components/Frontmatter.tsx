@@ -11,7 +11,7 @@ import {
 } from "@radix-ui/react-icons";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { Tag } from "../types/notion";
-import { formatShortDate } from "../util/date";
+import { formatLongDate } from "../util/date";
 import { ICON_SIZE } from "../util/images";
 import { formatNumber } from "../util/number";
 import { formatReadingTime } from "../util/posts";
@@ -46,9 +46,18 @@ export const Frontmatter = memo(function Frontmatter(props: any) {
 
 export const FrontmatterItem = memo(function FrontmatterItem({
   compact,
+  css,
   ...props
 }: any) {
-  return <Box as="li" gap={compact ? 4 : 6} alignItems="center" {...props} />;
+  return (
+    <Box
+      as="li"
+      gap={compact ? 4 : 6}
+      alignItems="center"
+      css={{ minHeight: 32, ...css }}
+      {...props}
+    />
+  );
 });
 
 export const PostTags = memo(function PostTags({
@@ -59,7 +68,7 @@ export const PostTags = memo(function PostTags({
   return (
     <FrontmatterItem {...props}>
       {icon ? (
-        <Box flexShrink={false} alignItems="center">
+        <Box flexShrink={false} alignItems="flex-start">
           <VisuallyHidden.Root>Tags</VisuallyHidden.Root>
           <MixIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
         </Box>
@@ -68,12 +77,7 @@ export const PostTags = memo(function PostTags({
       <Box as="ul" role="list" gap={4} flexWrap="wrap">
         {tags.map((tag) => {
           return (
-            <StyledTag
-              as="li"
-              key={tag.id}
-              borderColor={tag.color}
-              css={{ margin: "$1 0" }}
-            >
+            <StyledTag as="li" key={tag.id} borderColor={tag.color}>
               <TextAux>{tag.name}</TextAux>
             </StyledTag>
           );
@@ -122,7 +126,7 @@ export const PublishDate = memo(function PublishDate({
   ...props
 }: any) {
   const dateObject = new Date(date);
-  const formattedDate = formatShortDate(dateObject);
+  const formattedDate = formatLongDate(dateObject);
 
   if (compact) {
     return (

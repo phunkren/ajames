@@ -40,7 +40,7 @@ const ToggleGroupItem = styled(ToggleGroup.Item, {
   transition: "backgroundColor 100ms ease-out, opacity 100ms ease-out",
 
   "&:focus": {
-    outline: "2px solid $crimson8",
+    outline: "2px solid $focus",
     opacity: 1,
   },
 
