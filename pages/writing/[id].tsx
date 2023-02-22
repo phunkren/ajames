@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import { memo, ReactElement } from "react";
 import Balancer from "react-wrap-balancer";
 import ReactMarkdown from "react-markdown";
 import { useRouter } from "next/router";
@@ -24,6 +24,7 @@ import {
 import {
   Emoji,
   MarkdownTitle,
+  TextAux,
   TextHeadline,
   TextTitle2,
   TextTitle3,
@@ -59,6 +60,11 @@ export type Frontmatter = {
 type Props = {
   frontmatter: Frontmatter;
   postData: string;
+};
+
+type FigureProps = {
+  src: string;
+  alt: string;
 };
 
 const DynamicCode = dynamic(
@@ -128,6 +134,15 @@ const StyledContent = styled(Box, {
   "@bp2": {
     top: -112,
   },
+});
+
+const Figure = memo(function Figure({ src, alt, ...props }: FigureProps) {
+  return (
+    <Box as="figure" direction="vertical" gap={2} css={{ width: "auto" }}>
+      <img src={src} alt={alt} {...props} />
+      <TextAux as="figcaption">{alt}</TextAux>
+    </Box>
+  );
 });
 
 export async function getStaticPaths() {
@@ -269,6 +284,7 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
                     h1: TextTitle2 as any,
                     h2: MarkdownTitle as any,
                     h3: TextHeadline as any,
+                    img: Figure as any,
                   }}
                   remarkPlugins={[remarkMdx]}
                 >
