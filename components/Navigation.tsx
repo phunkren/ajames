@@ -110,12 +110,15 @@ export const NavigationProjectLink = memo(function NavigationProjectLink({
               flexShrink: 0,
               backgroundColor: grassDark.grass8,
               borderRadius: 4,
+              overflow: "hidden",
             }}
           >
             <Image src={src} alt="" width={44} height={44} />
           </Box>
-          <Box direction="vertical" flexGrow gap={1}>
-            <TextAux>{name}</TextAux>
+          <Box direction="vertical" flexGrow>
+            <TextHeadline as="span" css={{ lineHeight: 1 }}>
+              {name}
+            </TextHeadline>
             <TextAux color="secondary" clamp={1}>
               {description}
             </TextAux>
@@ -134,7 +137,11 @@ export const Navigation = memo(function Navigation() {
       aria-label="Primary navigation"
       orientation="horizontal"
     >
-      <StyledNavigationMenuList aria-label="Primary navigation" role="list">
+      <StyledNavigationMenuList
+        aria-label="Primary navigation"
+        role="list"
+        css={{ alignItems: "center" }}
+      >
         <NavigationMenu.Item>
           <NavigationMenu.Link asChild active={asPath === "/about"}>
             <Link variant="secondary" href="/about">

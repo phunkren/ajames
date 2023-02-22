@@ -23,7 +23,7 @@ export const globalStyles = globalCss({
   },
 
   html: {
-    scrollbarGutter: "stable both-edges",
+    scrollbarGutter: "stable",
     overflowY: "auto",
   },
 
