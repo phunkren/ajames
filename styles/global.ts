@@ -22,6 +22,11 @@ export const globalStyles = globalCss({
     scrollBehavior: "smooth",
   },
 
+  html: {
+    scrollbarGutter: "stable both-edges",
+    overflowY: "auto",
+  },
+
   "div#__next, div#__root": {
     flexGrow: 1,
     display: "flex",
@@ -37,6 +42,7 @@ export const globalStyles = globalCss({
     backgroundBlendMode: "multiply",
     width: "100%",
     minHeight: "100dvh",
+
     ...P_STYLES,
   },
 
@@ -51,12 +57,12 @@ export const globalStyles = globalCss({
     margin: 0,
   },
 
-  "body[data-theme='light']": {
+  [`body.${lightTheme}`]: {
     background: lightTheme.colors.backgroundGradient,
     color: lightTheme.colors.foreground,
   },
 
-  "body[data-theme='dark']": {
+  [`body.${darkTheme}`]: {
     background: darkTheme.colors.backgroundGradient,
     color: darkTheme.colors.foreground,
   },

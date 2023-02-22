@@ -1,154 +1,95 @@
 import { memo, useCallback } from "react";
-import * as ToggleGroup from "@radix-ui/react-toggle-group";
-import { blackA, whiteA } from "@radix-ui/colors";
+import * as Switch from "@radix-ui/react-switch";
 import { GridIcon, MoonIcon, RowsIcon, SunIcon } from "@radix-ui/react-icons";
-import { darkTheme, keyframes, lightTheme, styled } from "../stitches.config";
+import { darkTheme, lightTheme, styled } from "../stitches.config";
 import { Theme } from "../types/theme";
 import { ICON_SIZE } from "../util/images";
 import { useTheme } from "../hooks/useTheme";
-import { TextAux } from "./Text";
 
-const rise = keyframes({
-  "0%": { transform: "translate3d(0, 75%, 0)" },
-  "100%": { transform: "translate3d(0, 0, 0)" },
+const StyledSunIcon = styled(SunIcon, {
+  position: "absolute",
+  top: 7,
+  left: 9,
+  color: "$background",
 });
 
-const set = keyframes({
-  "0%": { transform: "translate3d(0, 0, 0)" },
-  "100%": { transform: "translate3d(0, 100%, 0)" },
+const StyledMoonIcon = styled(MoonIcon, {
+  position: "absolute",
+  top: 7,
+  right: 9,
+  color: "white",
 });
 
-const ToggleGroupRoot = styled(ToggleGroup.Root, {
+const StyledGridIcon = styled(GridIcon, {
+  position: "absolute",
+  top: 7,
+  left: 9,
+  color: "white",
+});
+
+const StyledRowsIcon = styled(RowsIcon, {
+  position: "absolute",
+  top: 7,
+  right: 9,
+  color: "white",
+});
+
+const SwitchThumb = styled(Switch.Thumb, {
+  display: "block",
+  width: 34,
+  height: 34,
+  borderTopLeftRadius: 4,
+  borderBottomLeftRadius: 4,
+  willChange: "transform, backgroundColor, borderRadius",
+  backgroundColor: "$background",
+  transform: "translate3d(0, 0, 0)",
+  transition:
+    "transform 100ms ease-out, backgroundColor 200ms ease-out, borderRadius 200ms ease-out",
+  zIndex: 1,
+
+  '&[data-state="checked"]': {
+    transform: "translate3d(36px, 0, 0)",
+    borderTopRightRadius: 4,
+    borderBottomRightRadius: 4,
+    borderBottomLeftRadius: 0,
+    borderTopLeftRadius: 0,
+  },
+});
+
+const SwitchRoot = styled(Switch.Root, {
   display: "inline-flex",
+  position: "relative",
   borderRadius: 4,
   borderWidth: 1,
   borderStyle: "solid",
   borderColor: "$foregroundMuted",
-  backgroundColor: "$backgroundMuted",
+  background: `radial-gradient(circle at bottom, $hover, $focus)`,
   boxShadow: "$1",
-});
+  width: 72,
+  height: 36,
 
-const ToggleGroupItem = styled(ToggleGroup.Item, {
-  all: "unset",
-  height: 32,
-  width: 32,
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  backgroundColor: "transparent",
-  overflow: "hidden",
-  transition: "backgroundColor 100ms ease-out, opacity 100ms ease-out",
+  "&::before": {
+    content: "",
+    position: "absolute",
+    borderRadius: 4,
+    inset: 0,
+    willChange: "background",
+    backgroundColor: "black",
+    opacity: 0.5,
+    transition: "opacity 200ms ease-out",
 
-  "&:focus": {
-    outline: "2px solid $focus",
-    opacity: 1,
-  },
-
-  "&[data-state=off]": {
-    "&:not(:focus)": {
-      opacity: 0.5,
-    },
-
-    "&:hover:not(:focus)": {
-      opacity: 0.75,
+    [`.${lightTheme} &`]: {
+      opacity: 0.3,
+      color: "$background",
     },
 
     [`.${darkTheme} &`]: {
-      backgroundColor: whiteA.whiteA7,
-    },
-
-    [`.${darkTheme} &:hover`]: {
-      backgroundColor: whiteA.whiteA8,
-    },
-
-    [`.${lightTheme} &`]: {
-      backgroundColor: blackA.blackA7,
-    },
-
-    [`.${lightTheme} &:hover`]: {
-      backgroundColor: blackA.blackA8,
+      opacity: 0.5,
     },
   },
 
-  "&[data-state=on]": {
-    opacity: 1,
-    cursor: "default",
-    pointerEvents: "none",
-  },
-
-  "&:first-child": {
-    marginLeft: 0,
-    borderTopLeftRadius: 4,
-    borderBottomLeftRadius: 4,
-  },
-
-  "&:last-child": { borderTopRightRadius: 4, borderBottomRightRadius: 4 },
-});
-
-const LightToggle = styled(ToggleGroupItem, {
-  "&[data-state=off]": {
-    "& > *": {
-      transform: "translate3d(0, 100%, 0)",
-      animation: `${set} 200ms ease-out forwards running`,
-    },
-  },
-
-  "&[data-state=on]": {
-    transform: "translate3d(0, 0, 0)",
-
-    "& > *": {
-      animation: `${rise} 200ms ease-out forwards`,
-    },
-  },
-});
-
-const DarkToggle = styled(ToggleGroupItem, {
-  "&[data-state=off]": {
-    "& > *": {
-      transform: "translateY(100%)",
-      animation: `${set} 200ms ease-out forwards running`,
-    },
-  },
-
-  "&[data-state=on]": {
-    transform: "translateY(0)",
-
-    "& > *": {
-      animation: `${rise} 200ms ease-out forwards`,
-    },
-  },
-});
-
-const PageToggleRoot = styled(ToggleGroup.Root, {
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
-  alignItems: "center",
-  gap: "$8",
-});
-
-const PageToggleItem = styled(ToggleGroup.Item, {
-  all: "unset",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  backgroundColor: "transparent",
-  opacity: 0.4,
-  textTransform: "uppercase",
-  borderRadius: 4,
-  borderWidth: 1,
-  borderStyle: "solid",
-  borderColor: "transparent",
-  transition: "opacity 75ms ease-out",
-
-  "&:hover": {
-    opacity: 0.75,
-  },
-
-  "&[data-state=on]": {
-    opacity: 1,
-    cursor: "default",
-    transition: "opacity 0 ease-out",
+  "&:hover:not(:focus)": {
+    outline: "2px solid $hover",
   },
 });
 
@@ -156,62 +97,38 @@ export const ThemeToggle = memo(function ThemeToggle() {
   const { themeName: theme, onThemeChange } = useTheme();
 
   const handleThemeChange = useCallback(
-    (newTheme: Theme) => {
-      if (newTheme) {
-        onThemeChange(newTheme);
-      }
+    (checked: boolean) => {
+      onThemeChange(checked ? Theme.LIGHT : Theme.DARK);
     },
     [onThemeChange]
   );
 
   return (
-    <ToggleGroupRoot
-      type="single"
-      defaultValue={Theme.DARK}
+    <SwitchRoot
+      defaultChecked={theme === Theme.LIGHT}
       aria-label="Theme toggle"
-      orientation="horizontal"
       value={theme}
-      onValueChange={handleThemeChange}
+      onCheckedChange={handleThemeChange}
     >
-      <DarkToggle value={Theme.DARK} aria-label="Dark mode">
-        <MoonIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
-      </DarkToggle>
+      <SwitchThumb />
 
-      <LightToggle value={Theme.LIGHT} aria-label="Light mode">
-        <SunIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
-      </LightToggle>
-    </ToggleGroupRoot>
+      <StyledSunIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
+
+      <StyledMoonIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
+    </SwitchRoot>
   );
 });
 
 export const LayoutToggle = memo(function LayoutToggle(
-  props: ToggleGroup.ToggleGroupSingleProps
+  props: Switch.SwitchProps
 ) {
   return (
-    <ToggleGroupRoot {...props}>
-      <ToggleGroupItem value="grid" aria-label="grid tiles">
-        <GridIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
-      </ToggleGroupItem>
+    <SwitchRoot {...props}>
+      <SwitchThumb />
 
-      <ToggleGroupItem value="rows" aria-label="vertical list">
-        <RowsIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
-      </ToggleGroupItem>
-    </ToggleGroupRoot>
-  );
-});
+      <StyledGridIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
 
-export const PageToggle = memo(function PageToggle(
-  props: ToggleGroup.ToggleGroupSingleProps
-) {
-  return (
-    <PageToggleRoot aria-label="Nav toggle" orientation="vertical" {...props}>
-      <PageToggleItem value="short">
-        <TextAux textTransform="capitalize">Short</TextAux>
-      </PageToggleItem>
-
-      <PageToggleItem value="long">
-        <TextAux textTransform="capitalize">Long</TextAux>
-      </PageToggleItem>
-    </PageToggleRoot>
+      <StyledRowsIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
+    </SwitchRoot>
   );
 });

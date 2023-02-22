@@ -181,10 +181,8 @@ const Writing: NextPageWithLayout = ({ posts, tags }: Props) => {
   );
 
   const handleLayoutChange = useCallback(
-    (newLayout: string) => {
-      if (newLayout) {
-        setStorageLayout(newLayout);
-      }
+    (checked: boolean) => {
+      setStorageLayout(checked ? "grid" : "rows");
     },
     [setStorageLayout]
   );
@@ -325,10 +323,10 @@ const Writing: NextPageWithLayout = ({ posts, tags }: Props) => {
             </Box>
 
             <LayoutToggle
-              type="single"
-              aria-label="Article layout"
+              aria-label="Articles layout"
+              defaultChecked={storageLayout === "grid"}
               value={storageLayout}
-              onValueChange={handleLayoutChange}
+              onCheckedChange={handleLayoutChange}
             />
           </Box>
 

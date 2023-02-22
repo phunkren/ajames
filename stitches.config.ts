@@ -83,7 +83,7 @@ export const lightTheme = createTheme({
     background: slate.slate2,
     backgroundMuted: gray.gray1,
     backgroundGradient: `radial-gradient(circle at bottom, ${slate.slate2} 0%, ${gray.gray2} 100%)`,
-    focus: crimson.crimson8,
+    focus: crimson.crimson9,
     hover: blue.blue9,
     ...blackA,
     ...whiteA,

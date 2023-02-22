@@ -48,15 +48,8 @@ export const ThemeProvider = memo(function ThemeProvider({
     if (!storageTheme) {
       handleThemeChange(Theme.DARK);
     }
-
-    // Update the data-theme attribute on the body element
-    // This allows us to set the background gradient on the parent element
-    if (theme) {
-      document.body.setAttribute("data-theme", theme);
-    }
   }, [theme, storageTheme, setStorageTheme, handleThemeChange]);
 
-  // [HACK]: Prevent light theme flash on page load if system prefers dark
   // [TODO] - There's gotta be a better way!?
   if (!theme) {
     return null;

@@ -22,12 +22,12 @@ const StyledHeroLayout = styled(Box, {
   left: "-$2",
   borderRadius: 0,
 
-  "&::before": {
+  [`.${lightTheme} &::before`]: {
     content: "",
     position: "absolute",
     inset: 0,
     zIndex: -1,
-    backgroundColor: "rgba(0,0,0,0.15)",
+    backgroundColor: "rgba(0,0,0,0.66)",
   },
 
   "&::after": {
@@ -124,12 +124,14 @@ export const HeaderLayout = memo(function HeaderLayout() {
   return (
     <Box
       as="header"
+      position="relative"
       display={{ "@print": "none", "@initial": "flex" }}
-      spacingHorizontal={{ "@initial": 4, "@bp2": 1 }}
+      spacingHorizontal={{ "@initial": 4, "@bp2": 9 }}
       spacingVertical={10}
       gap={{ "@initial": 4, "@bp2": 7 }}
       justifyContent="space-between"
       alignItems="center"
+      css={{ left: -4 }}
     >
       <Box direction="horizontal" gap={10} alignItems="center">
         <Link aria-label="Home" href="/" variant="icon">

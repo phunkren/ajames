@@ -185,6 +185,7 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
               direction="vertical"
               spacingHorizontal={{ "@initial": 4, "@bp2": 10 }}
               spacingVertical={10}
+              container="m"
             >
               <Box direction="vertical" spacingBottom={10}>
                 <Box direction="vertical">
@@ -253,7 +254,6 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
 
               <StyledContainer
                 direction="vertical"
-                container="m"
                 spacingVertical={10}
                 gap={10}
                 css={{

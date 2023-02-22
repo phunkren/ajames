@@ -560,7 +560,7 @@ const About: NextPageWithLayout = () => {
                           alignItems="flex-end"
                         >
                           <Link href={employer.url} variant="primary">
-                            <TextBody>{employer.displayName}</TextBody>
+                            <TextHeadline>{employer.displayName}</TextHeadline>
                           </Link>
                           <TextBody as="span" color="secondary">
                             /
@@ -654,9 +654,7 @@ const About: NextPageWithLayout = () => {
                           {employer.notableWork.map((work) => (
                             <li key={work.id}>
                               <Link href={work.url} variant="tertiary">
-                                <TextBody as="span">
-                                  {work.displayName}
-                                </TextBody>
+                                <TextHeadline>{work.displayName}</TextHeadline>
                               </Link>
                             </li>
                           ))}
