@@ -43,6 +43,7 @@ import { Box } from "../../components/Box";
 import { NextPageWithLayout } from "../_app";
 import { BlogSeo } from "../../components/SEO";
 import dynamic from "next/dynamic";
+import { ONE_HOUR_IN_SECONDS } from "../../util/date";
 
 export type Frontmatter = {
   title: string;
@@ -163,7 +164,7 @@ export async function getStaticProps({ params }: any) {
       postData,
       pageData,
     },
-    // revalidate: ONE_HOUR_IN_SECONDS,
+    revalidate: ONE_HOUR_IN_SECONDS,
   };
 }
 
@@ -185,7 +186,6 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
               direction="vertical"
               spacingHorizontal={{ "@initial": 4, "@bp2": 10 }}
               spacingVertical={10}
-              container="m"
             >
               <Box direction="vertical" spacingBottom={10}>
                 <Box direction="vertical">
@@ -255,6 +255,7 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
               <StyledContainer
                 direction="vertical"
                 spacingVertical={10}
+                container="m"
                 gap={10}
                 css={{
                   textAlign: "justify",

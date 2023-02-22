@@ -77,13 +77,8 @@ const StyledImage = styled(Image, {
 
   "@bp2": {
     display: "block",
-    left: "30% !important",
-  },
-
-  "@bp3": {
-    display: "block",
     transform: "scale(1)",
-    top: "7% !important",
+    top: "8% !important",
     left: "27% !important",
   },
 });
