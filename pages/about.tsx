@@ -67,7 +67,7 @@ const StyledImage = styled(Image, {
   pointerEvents: "none",
 
   [`.${lightTheme} &`]: {
-    filter: "brightness(75%)",
+    filter: "brightness(85%)",
   },
 
   [`.${darkTheme} &`]: {
@@ -235,8 +235,8 @@ const About: NextPageWithLayout = () => {
                   >
                     <Box direction="horizontal" gap={4} alignItems="center">
                       <LinkedInLogoIcon
-                        width={ICON_SIZE.l}
-                        height={ICON_SIZE.l}
+                        width={ICON_SIZE.m}
+                        height={ICON_SIZE.m}
                         aria-hidden
                       />
                       <TextHeadline>Andrew James</TextHeadline>
@@ -252,8 +252,8 @@ const About: NextPageWithLayout = () => {
                   >
                     <Box direction="horizontal" gap={4} alignItems="center">
                       <EnvelopeOpenIcon
-                        width={ICON_SIZE.l}
-                        height={ICON_SIZE.l}
+                        width={ICON_SIZE.m}
+                        height={ICON_SIZE.m}
                         aria-hidden
                       />
                       <TextHeadline>contact@ajames.dev</TextHeadline>
@@ -270,8 +270,8 @@ const About: NextPageWithLayout = () => {
                       flexShrink={false}
                     >
                       <GlobeIcon
-                        width={ICON_SIZE.l}
-                        height={ICON_SIZE.l}
+                        width={ICON_SIZE.m}
+                        height={ICON_SIZE.m}
                         aria-hidden
                       />
                       <TextHeadline>ajames.dev</TextHeadline>
@@ -287,8 +287,8 @@ const About: NextPageWithLayout = () => {
                   >
                     <Box direction="horizontal" gap={4} alignItems="center">
                       <GitHubLogoIcon
-                        width={ICON_SIZE.l}
-                        height={ICON_SIZE.l}
+                        width={ICON_SIZE.m}
+                        height={ICON_SIZE.m}
                         aria-hidden
                       />
                       <TextHeadline>phunkren</TextHeadline>
@@ -430,16 +430,12 @@ const About: NextPageWithLayout = () => {
             </Box>
 
             <Box as="section" aria-labelledby="references" direction="vertical">
-              <Link
-                variant="secondary"
-                href={SOCIAL.linkedin.url}
-                title={`${SOCIAL.linkedin.displayName} references`}
-              >
+              <Link variant="secondary" href={SOCIAL.linkedin.url}>
                 <Box direction="horizontal" gap={2} alignItems="center">
                   <LinkedInLogoIcon
                     width={ICON_SIZE.m}
                     height={ICON_SIZE.m}
-                    aria-hidden
+                    aria-label="linkedIn logo"
                   />
                   <TextTitle3 id="references" as="h2">
                     References
@@ -472,9 +468,7 @@ const About: NextPageWithLayout = () => {
                         </StyledBlockQuote>
 
                         <Box direction="vertical" spacingTop={4}>
-                          <Link href={testimonial.url}>
-                            <TextHeadline>{testimonial.name}</TextHeadline>
-                          </Link>
+                          <TextHeadline>{testimonial.name}</TextHeadline>
 
                           <TextAux>{testimonial.position}</TextAux>
                         </Box>

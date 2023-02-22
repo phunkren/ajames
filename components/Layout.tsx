@@ -3,7 +3,6 @@ import Image from "next/image";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 import { useTheme } from "../hooks/useTheme";
 import { darkTheme, lightTheme, styled } from "../stitches.config";
-import { BLUR_DATA_URL } from "../util/images";
 import { Link, StyledIconLink } from "./Link";
 import { Navigation, NavigationMobile } from "./Navigation";
 import { Social } from "./Social";
@@ -28,7 +27,7 @@ const StyledHeroLayout = styled(Box, {
     position: "absolute",
     inset: 0,
     zIndex: -1,
-    backgroundColor: darkTheme.colors.background,
+    backgroundColor: "rgba(0,0,0,0.15)",
   },
 
   "&::after": {
@@ -36,7 +35,6 @@ const StyledHeroLayout = styled(Box, {
     position: "absolute",
     inset: 0,
     zIndex: 0,
-
     background: "rgba(0,0,0,0.15)",
   },
 
@@ -88,7 +86,7 @@ const StyledHeroContainer = styled(Box, {
           width: "100%",
           bottom: 0,
           left: 0,
-          background: "$foreground",
+          background: "$foregroundMuted",
           borderRadius: 0,
           zIndex: 1,
         },
@@ -188,7 +186,7 @@ export const Layout = memo(function Layout({ children }: any) {
         <Box
           as="main"
           direction="vertical"
-          spacingVertical={{ "@print": 4, "@bp2": 10 }}
+          spacingBottom={{ "@print": 4, "@bp2": 10 }}
           flexGrow
         >
           {children}

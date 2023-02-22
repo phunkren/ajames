@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { ThemeContext } from "../components/Theme";
 import { darkTheme, lightTheme } from "../stitches.config";
 
@@ -14,6 +14,11 @@ export function useTheme() {
   const theme = THEME_MAP.get(themeName);
 
   const themeColor = theme?.colors.background.value;
+
+  // https://github.com/stitchesjs/stitches/issues/180
+  useEffect(() => {
+    document.body.className = theme;
+  }, [theme]);
 
   return { theme, themeName, themeColor, onThemeChange };
 }
