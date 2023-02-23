@@ -40,11 +40,10 @@ const SwitchThumb = styled(Switch.Thumb, {
   height: 34,
   borderTopLeftRadius: 4,
   borderBottomLeftRadius: 4,
-  willChange: "transform, backgroundColor, borderRadius",
-  backgroundColor: "$background",
+  willChange: "transform, borderRadius",
+  background: "$backgroundGradient",
   transform: "translate3d(0, 0, 0)",
-  transition:
-    "transform 100ms ease-out, backgroundColor 200ms ease-out, borderRadius 200ms ease-out",
+  transition: "transform 100ms ease-out, borderRadius 200ms ease-out",
   zIndex: 1,
 
   '&[data-state="checked"]': {
