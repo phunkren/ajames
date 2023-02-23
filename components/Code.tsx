@@ -14,12 +14,16 @@ import { CodeProps } from "../types/code";
 
 SyntaxHighlighter.registerLanguage("typescript", typescript);
 SyntaxHighlighter.registerLanguage("javascript", javascript);
-SyntaxHighlighter.registerLanguage("javascript", javascript);
 SyntaxHighlighter.registerLanguage("htmlbars", htmlbars);
 SyntaxHighlighter.registerLanguage("css", css);
 SyntaxHighlighter.registerLanguage("scss", scss);
 SyntaxHighlighter.registerLanguage("json", json);
 SyntaxHighlighter.registerLanguage("markdown", markdown);
+
+const LANGUAGE_MAP = {
+  html: "htmlbars",
+  text: "htmlbars",
+};
 
 const STYLE_MAP = {
   light: atomOneLight,
@@ -40,7 +44,7 @@ export const Code = memo(function Code({
 
   return (
     <SyntaxHighlighter
-      language={language}
+      language={LANGUAGE_MAP[language] ?? language}
       style={STYLE_MAP[themeName]}
       wrapLongLines
     >
