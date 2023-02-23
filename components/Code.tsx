@@ -15,7 +15,7 @@ import { CodeProps } from "../types/code";
 SyntaxHighlighter.registerLanguage("typescript", typescript);
 SyntaxHighlighter.registerLanguage("javascript", javascript);
 SyntaxHighlighter.registerLanguage("javascript", javascript);
-SyntaxHighlighter.registerLanguage("htmlbars", htmlbars);
+SyntaxHighlighter.registerLanguage("html", htmlbars);
 SyntaxHighlighter.registerLanguage("css", css);
 SyntaxHighlighter.registerLanguage("scss", scss);
 SyntaxHighlighter.registerLanguage("json", json);

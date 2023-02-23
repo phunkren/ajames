@@ -131,7 +131,7 @@ export const HeaderLayout = memo(function HeaderLayout() {
       gap={{ "@initial": 4, "@bp2": 7 }}
       justifyContent="space-between"
       alignItems="center"
-      css={{ left: -4 }}
+      css={{ left: "-$1" }}
     >
       <Box direction="horizontal" gap={10} alignItems="center">
         <Link aria-label="Home" href="/" variant="icon">
@@ -211,9 +211,7 @@ export const HeroLayout = memo(function HeroLayout({
         <StyledHeroContainer direction="vertical" bordered={bordered} flexGrow>
           <StyledFilter />
 
-          {src ? (
-            <StyledImage src={src} alt="" sizes="100vw" fill priority />
-          ) : null}
+          {src ? <StyledImage src={src} alt="" fill priority /> : null}
 
           {children ? (
             <Box
