@@ -56,7 +56,7 @@ export const EMPLOYMENT: Employer[] = [
     endDate: "2022-02-01",
     location: "Edinburgh, UK",
     content:
-      "Worked with teams across Rockstar's worldwide studios to develop frontend features and applications for the company's online services. This involved delivering feature-flagged content under time-sensitive release cycles, and maintaining legacy architecture. Key achievements included working with other engineers to update the Social Club to meet AA accessibility standards, and developing the foundations of an accessible design system that could be used across all Rockstar-branded websites.",
+      "Worked with teams across Rockstar's worldwide studios to develop frontend features and applications for the company's online services. This involved delivering feature-flagged content under time-sensitive release cycles, and maintaining legacy architecture. Key contributions included working with other engineers to update the Social Club to meet AA accessibility standards, and developing the foundations of an accessible design system that could be used across all Rockstar-branded websites.",
     notableWork: [
       {
         id: "social-club",
@@ -79,7 +79,7 @@ export const EMPLOYMENT: Employer[] = [
     endDate: "2020-10-01",
     location: "London, UK",
     content:
-      "Played a key role in the development and launch of several successful startup businesses. Responsibilities centred around engineering and delivering robust and well-documented products that could be taken to market. Also participated as a mentor in the Code First Girls program, directly contributing to the community by supporting the growth and development of future engineers.",
+      "Led the UI development of several successful startup businesses. Responsibilities centred around engineering robust and well-documented products that could be taken to market. Also participated as a mentor in the Code First Girls program, directly contributing to the community by supporting the growth and development of future engineers.",
     notableWork: [
       {
         id: "vanguard",
@@ -102,7 +102,7 @@ export const EMPLOYMENT: Employer[] = [
     endDate: "2019-03-01",
     location: "London, UK",
     content:
-      "Collaborated on exciting data visualization and trading platform projects for fintech clients and major banks, including a React Native prototype. Also contributed to the redesign of the company's website and participated in various internal events such as hackathons, live streams, and technical presentations.",
+      "Contributed to exciting data visualization and trading platform projects for fintech clients and major banks, including a React Native prototype. Also involved in the redesign of the company's website, and participated in various internal events such as hackathons, live streams, and technical presentations.",
     notableWork: [
       {
         id: "access-fintech",
@@ -130,7 +130,7 @@ export const EMPLOYMENT: Employer[] = [
     endDate: "2017-06-01",
     location: "London, UK",
     content:
-      "Cohaesus is a commercial advertising agency where I learned the fundamentals of frontend web development, both in-house and at some of Londons top advertising agencies. Working with both green field and legacy codebases provided the chance to learn new technologies and approaches, and gain a deeper understanding of how to maintain and improve existing systems.",
+      "Cohaesus is where I learned the fundamentals of frontend web development, both in-house and at some of Londons top advertising agencies. Working with both green field and legacy codebases provided the chance to learn new technologies and approaches, and gain a deeper understanding of how to maintain and improve existing systems.",
     notableWork: [
       {
         id: "WWF",

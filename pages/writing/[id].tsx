@@ -129,7 +129,7 @@ const StyledContainer = styled(Box, {
 
 const StyledContent = styled(Box, {
   position: "relative",
-  top: -78,
+  top: -72,
 
   "@bp2": {
     top: -112,
@@ -206,13 +206,13 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
                 <Box direction="vertical">
                   <Emoji
                     emoji={frontmatter.emoji}
-                    size={{ "@initial": "m", "@bp2": "l" }}
+                    size={{ "@initial": "s", "@bp2": "l" }}
                     css={{
                       position: "relative",
                       right: "$1",
                       alignSelf: "flex-start",
                       "@bp2": {
-                        right: "$2",
+                        right: "$4",
                       },
                     }}
                   />

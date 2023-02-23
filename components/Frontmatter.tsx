@@ -16,7 +16,7 @@ import { ICON_SIZE } from "../util/images";
 import { formatNumber } from "../util/number";
 import { formatReadingTime } from "../util/posts";
 import { Box } from "./Box";
-import { TextAux, TextBody } from "./Text";
+import { TextAux, TextBody, TextHeadline, TextTitle3 } from "./Text";
 import { StyledTag } from "./Tags";
 
 type PostTagProps = {
@@ -113,7 +113,7 @@ export const ActiveTag = memo(function ActiveTag({
           <TextAux>{activeTag.name}</TextAux>
         </StyledTag>
       ) : (
-        <TextBody textTransform="capitalize">All</TextBody>
+        <TextHeadline textTransform="capitalize">All</TextHeadline>
       )}
     </FrontmatterItem>
   );
@@ -158,9 +158,13 @@ export const PublishDate = memo(function PublishDate({
         </Box>
       ) : null}
 
-      <TextBody as="time" dateTime={dateObject.toISOString()} color="secondary">
+      <TextHeadline
+        as="time"
+        dateTime={dateObject.toISOString()}
+        color="secondary"
+      >
         {formattedDate}
-      </TextBody>
+      </TextHeadline>
     </FrontmatterItem>
   );
 });
@@ -180,7 +184,7 @@ export const ReadingTime = memo(function ReadingTime({
           <ClockIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
         </Box>
       ) : null}
-      <TextBody textTransform="capitalize">{formattedTime}</TextBody>
+      <TextHeadline textTransform="capitalize">{formattedTime}</TextHeadline>
     </FrontmatterItem>
   );
 });
@@ -201,7 +205,9 @@ export const SubscriberCount = memo(function SubscriberCount({
           <BellIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
         </Box>
       ) : null}
-      <TextBody textTransform="capitalize">{formattedSubscribers}</TextBody>
+      <TextHeadline textTransform="capitalize">
+        {formattedSubscribers}
+      </TextHeadline>
     </FrontmatterItem>
   );
 });
@@ -222,7 +228,7 @@ export const VideosViewsCount = memo(function VideosViewsCount({
           <EyeOpenIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
         </Box>
       ) : null}
-      <TextBody textTransform="capitalize">{formattedViews}</TextBody>
+      <TextHeadline textTransform="capitalize">{formattedViews}</TextHeadline>
     </FrontmatterItem>
   );
 });
@@ -243,7 +249,7 @@ export const VideosTotalCount = memo(function VideosTotalCount({
           <VideoIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
         </Box>
       ) : null}
-      <TextBody textTransform="capitalize">{formattedTotal}</TextBody>
+      <TextHeadline textTransform="capitalize">{formattedTotal}</TextHeadline>
     </FrontmatterItem>
   );
 });
@@ -264,7 +270,7 @@ export const TotalPosts = memo(function TotalPosts({
           <Pencil2Icon width={ICON_SIZE.l} height={ICON_SIZE.l} />
         </Box>
       ) : null}
-      <TextBody textTransform="capitalize">{formattedTotal}</TextBody>
+      <TextHeadline textTransform="capitalize">{formattedTotal}</TextHeadline>
     </FrontmatterItem>
   );
 });
@@ -285,7 +291,7 @@ export const TotalCategories = memo(function TotalCategories({
           <MixIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
         </Box>
       ) : null}
-      <TextBody textTransform="capitalize">{formattedTotal}</TextBody>
+      <TextHeadline textTransform="capitalize">{formattedTotal}</TextHeadline>
     </FrontmatterItem>
   );
 });
@@ -320,7 +326,7 @@ export const YoutubeChannel = memo(function TotalCategories({
           <AvatarIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
         </Box>
       ) : null}
-      <TextBody color="secondary">{channel}</TextBody>
+      <TextHeadline color="secondary">{channel}</TextHeadline>
     </FrontmatterItem>
   );
 });

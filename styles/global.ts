@@ -25,6 +25,11 @@ export const globalStyles = globalCss({
   html: {
     scrollbarGutter: "stable",
     overflowY: "auto",
+
+    "@print": {
+      scrollbarGutter: "auto",
+      overflowY: "visible",
+    },
   },
 
   "div#__next, div#__root": {

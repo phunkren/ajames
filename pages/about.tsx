@@ -242,7 +242,7 @@ const About: NextPageWithLayout = () => {
                 <Box as="li" alignItems="center">
                   <Link
                     variant="secondary"
-                    href="mailto:contact@ajames.dev"
+                    href={`mailto:${PERSONAL.email}`}
                     title="Email"
                   >
                     <Box direction="horizontal" gap={4} alignItems="center">
@@ -258,12 +258,7 @@ const About: NextPageWithLayout = () => {
 
                 <Box as="li" alignItems="center">
                   <Link variant="secondary" href={SITE.url} title="Website">
-                    <Box
-                      direction="horizontal"
-                      gap={4}
-                      alignItems="center"
-                      flexShrink={false}
-                    >
+                    <Box direction="horizontal" gap={4} alignItems="center">
                       <GlobeIcon
                         width={ICON_SIZE.m}
                         height={ICON_SIZE.m}
@@ -529,7 +524,12 @@ const About: NextPageWithLayout = () => {
 
               <Box direction="vertical" gap={10}>
                 {EMPLOYMENT.map((employer) => (
-                  <Box direction="vertical" gap={4} key={employer.id}>
+                  <Box
+                    direction="vertical"
+                    gap={4}
+                    key={employer.id}
+                    spacingBottom={1}
+                  >
                     <Box direction="vertical">
                       <TextTitle3>{employer.position}</TextTitle3>
 
