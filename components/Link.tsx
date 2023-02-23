@@ -35,6 +35,7 @@ const StyledLink = styled("a", {
   textDecorationLine: "none",
   textUnderlineOffset: "$space$1",
   transition: "color 75ms ease-out",
+  width: "fit-content",
 
   "&[aria-current='page']": {
     color: "$blue11",
