@@ -11,9 +11,14 @@ export const globalStyles = globalCss({
 
   "@media(hover)": {
     "*:focus": {
-      borderRadius: 4,
+      borderRadius: "$1",
       outline: "2px solid $focus",
       outlineOffset: 2,
+    },
+
+    /* Come at me bro */
+    "button:hover": {
+      cursor: "pointer",
     },
   },
 
@@ -96,10 +101,6 @@ export const globalStyles = globalCss({
     font: "inherit",
   },
 
-  /* Come at me bro */
-  "button:hover": {
-    cursor: "pointer",
-  },
   "blockquote:before": {
     content: "open-quote",
   },
@@ -123,7 +124,7 @@ export const globalStyles = globalCss({
       whiteSpace: "pre !important",
       overflowX: "auto",
       padding: "$4",
-      borderRadius: 4,
+      borderRadius: "$1",
       textAlign: "left",
       lineHeight: "inherit",
     },

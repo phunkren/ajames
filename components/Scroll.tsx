@@ -65,8 +65,10 @@ export const StyledScrollbar = styled(ScrollArea.Scrollbar, {
     height: SCROLLBAR_SIZE,
   },
 
-  [`&:hover > ${StyledThumb}`]: {
-    cursor: "grab",
+  "@media(hover)": {
+    [`&:hover > ${StyledThumb}`]: {
+      cursor: "grab",
+    },
   },
 
   [`&:active, &:active > ${StyledThumb}`]: {
@@ -78,8 +80,11 @@ export const StyledScrollbar = styled(ScrollArea.Scrollbar, {
       primary: {
         background: "$backgroundMuted",
         boxShadow: "$2",
-        "&:hover": {
-          boxShadow: "$4",
+
+        "@media(hover)": {
+          "&:hover": {
+            boxShadow: "$4",
+          },
         },
 
         "&:active": {
@@ -91,8 +96,10 @@ export const StyledScrollbar = styled(ScrollArea.Scrollbar, {
         boxShadow: "$2",
         opacity: 0.25,
 
-        "&:hover": {
-          boxShadow: "$4",
+        "@media(hover)": {
+          "&:hover": {
+            boxShadow: "$4",
+          },
         },
 
         "&:active": {

@@ -1,4 +1,4 @@
-import { memo, useCallback, useState } from "react";
+import { memo, MouseEvent, useCallback, useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import * as Select from "@radix-ui/react-select";
@@ -13,18 +13,20 @@ import { DrawerScrollRoot, DrawerScrollViewport, Scrollbar } from "./Scroll";
 
 const dialogSlideUp = keyframes({
   "0%": { transform: "translate3d(0, 0, 0)" },
-  "100%": { transform: "translate3d(0, -400px, 0)" },
+  "100%": { transform: "translate3d(0, -325px, 0)" },
 });
 
 const StyledSelectContent = styled(Select.Content, {
   background: "$backgroundMuted",
-  borderRadius: 4,
+  borderRadius: "$1",
   spacing: "$2",
   boxShadow: "$2",
   zIndex: 10,
 
-  "&:hover": {
-    boxShadow: "$4",
+  "@media(hover)": {
+    "&:hover": {
+      boxShadow: "$4",
+    },
   },
 });
 
@@ -33,7 +35,22 @@ const StyledSelectItem = styled(Select.Item, {
   spacingVertical: "$1",
   cursor: "pointer",
 
-  "&:hover, &:focus": {
+  "@media(hover)": {
+    "&:hover": {
+      outline: "none",
+      color: "$hover",
+
+      [`.${lightTheme} &`]: {
+        background: "rgba(0,0,0,0.05)",
+      },
+
+      [`.${darkTheme} &`]: {
+        background: "rgba(255,255,255,0.05)",
+      },
+    },
+  },
+
+  "&:focus": {
     outline: "none",
     color: "$hover",
 
@@ -57,15 +74,15 @@ const StyledSelectArrow = styled(Select.Arrow, {
 
 const StyledDrawerContent = styled(Dialog.Content, {
   position: "fixed",
-  bottom: -400,
+  bottom: -325,
   left: 0,
   display: "flex",
   flexDirection: "column",
   backgroundColor: "$backgroundMuted",
   boxShadow: "$3",
-  height: 400,
+  height: 325,
   width: "100dvw",
-  borderRadius: 0,
+  borderRadius: 8,
   minWidth: 300,
   zIndex: 99,
   transform: "translate3d(0, 0, 0)",
@@ -92,7 +109,7 @@ export const StyledTag = styled(Box, {
   alignitems: "center",
   justifyContent: "center",
   padding: "$1 $2",
-  borderRadius: 4,
+  borderRadius: "$1",
   borderStyle: "solid",
   borderWidth: 1,
   textTransform: "uppercase",
@@ -108,7 +125,7 @@ export const StyledTag = styled(Box, {
     inset: -1,
     backgroundColor: "$background",
     opacity: 0.4,
-    borderRadius: 4,
+    borderRadius: "$1",
   },
 
   [`${TextAux}`]: {
@@ -185,7 +202,7 @@ export const TagDrawer = memo(function TagDrawer({
   }, []);
 
   const handleClick = useCallback(
-    (e) => {
+    (e: MouseEvent<HTMLButtonElement>) => {
       const tagTarget = e.target as HTMLElement;
       const tagName = tagTarget.id;
 

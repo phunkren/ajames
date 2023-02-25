@@ -38,8 +38,8 @@ const SwitchThumb = styled(Switch.Thumb, {
   display: "block",
   width: 34,
   height: 34,
-  borderTopLeftRadius: 4,
-  borderBottomLeftRadius: 4,
+  borderTopLeftRadius: "$1",
+  borderBottomLeftRadius: "$1",
   willChange: "transform, borderRadius",
   background: "$backgroundGradient",
   transform: "translate3d(0, 0, 0)",
@@ -48,8 +48,8 @@ const SwitchThumb = styled(Switch.Thumb, {
 
   '&[data-state="checked"]': {
     transform: "translate3d(36px, 0, 0)",
-    borderTopRightRadius: 4,
-    borderBottomRightRadius: 4,
+    borderTopRightRadius: "$1",
+    borderBottomRightRadius: "$1",
     borderBottomLeftRadius: 0,
     borderTopLeftRadius: 0,
   },
@@ -58,7 +58,7 @@ const SwitchThumb = styled(Switch.Thumb, {
 const SwitchRoot = styled(Switch.Root, {
   display: "inline-flex",
   position: "relative",
-  borderRadius: 4,
+  borderRadius: "$1",
   borderWidth: 1,
   borderStyle: "solid",
   borderColor: "$foregroundMuted",
@@ -70,7 +70,7 @@ const SwitchRoot = styled(Switch.Root, {
   "&::before": {
     content: "",
     position: "absolute",
-    borderRadius: 4,
+    borderRadius: "$1",
     inset: 0,
     willChange: "background",
     backgroundColor: "black",
@@ -87,8 +87,10 @@ const SwitchRoot = styled(Switch.Root, {
     },
   },
 
-  "&:hover:not(:focus)": {
-    outline: "2px solid $hover",
+  "@media(hover)": {
+    "&:hover:not(:focus)": {
+      outline: "2px solid $hover",
+    },
   },
 });
 

@@ -62,6 +62,10 @@ export const {
       5: `0px 3px 6px -1px ${blackA.blackA6}, 0px 5px 10px 0px ${blackA.blackA7}, 0px 1px 2px 0px ${blackA.blackA8}`, // :active
       textShadow: "rgb(0 0 0 / 18%) 2px 2px",
     },
+    radii: {
+      1: "4px",
+      2: "8px",
+    },
   },
   media: {
     bp1: "(min-width: 480px)",

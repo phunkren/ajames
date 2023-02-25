@@ -46,7 +46,7 @@ const StyledHeroLayout = styled(Box, {
   "@bp3": {
     left: 0,
     width: "100%",
-    borderRadius: 4,
+    borderRadius: "$1",
   },
 });
 
@@ -65,13 +65,15 @@ const StyledHeroContainer = styled(Box, {
       color: "inherit",
       borderColor: "inherit",
 
-      "&:hover": {
-        background: darkTheme.colors.foreground,
-        borderColor: darkTheme.colors.foreground,
-      },
+      "@media(hover)": {
+        "&:hover": {
+          background: darkTheme.colors.foreground,
+          borderColor: darkTheme.colors.foreground,
+        },
 
-      "&:hover svg": {
-        color: darkTheme.colors.background,
+        "&:hover svg": {
+          color: darkTheme.colors.background,
+        },
       },
     },
   },
@@ -100,7 +102,7 @@ const StyledImage = styled(Image, {
   borderRadius: 0,
 
   "@bp3": {
-    borderRadius: 4,
+    borderRadius: "$1",
   },
 });
 

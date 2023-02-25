@@ -25,8 +25,10 @@ import { BLUR_DATA_URL } from "../util/images";
 import { YOUTUBE_LIKED_VIDEOS_PLAYLIST_ID } from "../util/youtube";
 
 const StyledLink = styled(Link, {
-  "&:hover": {
-    color: "inherit",
+  "@media(hover)": {
+    "&:hover": {
+      color: "inherit",
+    },
   },
 
   "&:focus": {
@@ -41,7 +43,7 @@ const StyledCardOuter = styled(Box, {
   cursor: "pointer",
   minWidth: 275,
   boxShadow: "$1",
-  borderRadius: 4,
+  borderRadius: "$1",
   borderWidth: 2,
   borderStyle: "solid",
   overflow: "hidden",
@@ -52,12 +54,21 @@ const StyledCardOuter = styled(Box, {
     overflow: "hidden",
   },
 
-  "&:hover:not(:has(button:hover))": {
-    boxShadow: "$4",
-    borderColor: "$hover",
+  "@media(hover)": {
+    "&:hover:not(:has(button:hover))": {
+      boxShadow: "$4",
+      borderColor: "$hover",
 
-    "& img": {
-      filter: "brightness(95%)",
+      "& img": {
+        filter: "brightness(95%)",
+      },
+    },
+    [`.${darkTheme} &:hover`]: {
+      backgroundColor: whiteA.whiteA3,
+    },
+
+    [`.${lightTheme} &:hover`]: {
+      backgroundColor: blackA.blackA2,
     },
   },
 
@@ -85,10 +96,6 @@ const StyledCardOuter = styled(Box, {
     borderColor: whiteA.whiteA5,
   },
 
-  [`.${darkTheme} &:hover`]: {
-    backgroundColor: whiteA.whiteA3,
-  },
-
   [`.${darkTheme} &:has(a:focus)`]: {
     backgroundColor: whiteA.whiteA3,
     borderColor: "$focus",
@@ -102,10 +109,6 @@ const StyledCardOuter = styled(Box, {
   [`.${lightTheme} &`]: {
     backgroundColor: blackA.blackA1,
     borderColor: whiteA.whiteA4,
-  },
-
-  [`.${lightTheme} &:hover`]: {
-    backgroundColor: blackA.blackA2,
   },
 
   [`.${lightTheme} &:has(a:focus)`]: {

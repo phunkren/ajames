@@ -57,9 +57,9 @@ const StyledButton = styled("button", {
   color: "inherit",
   font: "inherit",
   overflow: "visible",
-  padding: "0",
+  padding: 0,
   transition: "background 100ms ease-out, boxShadow 100ms ease-out",
-  borderRadius: 4,
+  borderRadius: "$1",
 
   appearance: "none",
   "-webkit-appearance": "none",
@@ -78,13 +78,15 @@ const StyledButton = styled("button", {
         color: "$background",
         spacing: "$2",
 
-        "&:hover": {
-          boxShadow: "$4",
-          borderColor: "$foregroundMuted",
-          backgroundColor: "$foregroundMuted",
+        "@media(hover)": {
+          "&:hover": {
+            boxShadow: "$4",
+            borderColor: "$foregroundMuted",
+            backgroundColor: "$foregroundMuted",
 
-          svg: {
-            color: "$background",
+            svg: {
+              color: "$background",
+            },
           },
         },
 
@@ -97,30 +99,34 @@ const StyledButton = styled("button", {
         boxShadow: "$1",
         spacing: "$2",
 
-        "&:hover": {
-          boxShadow: "$4",
-          borderColor: "$foreground",
-          backgroundColor: "$foreground",
-          color: "$background",
-
-          svg: {
+        "@media(hover)": {
+          "&:hover": {
+            boxShadow: "$4",
+            borderColor: "$foreground",
+            backgroundColor: "$foreground",
             color: "$background",
+
+            svg: {
+              color: "$background",
+            },
           },
         },
       },
       tertiary: {
         backgroundColor: "transparent",
 
-        "&:hover": {
-          boxShadow: "none",
-          color: "unset",
-          backgroundImage: `linear-gradient(90deg, $blue11 0.04%, $hover 100.04%)`,
-          backgroundClip: "text",
-          ["-webkit-text-fill-color"]: "transparent",
-        },
+        "@media(hover)": {
+          "&:hover": {
+            boxShadow: "none",
+            color: "unset",
+            backgroundImage: `linear-gradient(90deg, $blue11 0.04%, $hover 100.04%)`,
+            backgroundClip: "text",
+            ["-webkit-text-fill-color"]: "transparent",
+          },
 
-        "&:hover svg": {
-          color: "$hover",
+          "&:hover svg": {
+            color: "$hover",
+          },
         },
       },
     },
@@ -158,7 +164,20 @@ export const StyledIconButton = styled(Button, {
         boxShadow: "$1",
         borderColor: "$foregroundMuted",
 
-        "&:hover, &:active": {
+        "@media(hover)": {
+          "&:hover": {
+            boxShadow: "$4",
+            borderColor: "$foreground",
+            backgroundColor: "$foreground",
+            color: "$background",
+
+            svg: {
+              color: "$background",
+            },
+          },
+        },
+
+        "&:active": {
           boxShadow: "$4",
           borderColor: "$foreground",
           backgroundColor: "$foreground",
@@ -173,7 +192,20 @@ export const StyledIconButton = styled(Button, {
         borderColor: "transparent",
         boxShadow: "none",
 
-        "&:hover, &:active": {
+        "@media(hover)": {
+          "&:hover": {
+            boxShadow: "none",
+            borderColor: "transparent",
+            backgroundColor: "transparent",
+            color: "currentcolor",
+
+            svg: {
+              color: "currentcolor",
+            },
+          },
+        },
+
+        "&:active": {
           boxShadow: "none",
           borderColor: "transparent",
           backgroundColor: "transparent",
@@ -222,8 +254,10 @@ const StyledToastRoot = styled(Toast.Root, {
   '&[data-state="open"]': { animation: `${scaleIn} 200ms ease-out` },
   '&[data-state="closed"]': { animation: `${scaleOut} 200ms ease-out` },
 
-  "&:hover": {
-    boxShadow: "$4",
+  "@media(hover)": {
+    "&:hover": {
+      boxShadow: "$4",
+    },
   },
 
   "&:active": {

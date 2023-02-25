@@ -62,7 +62,7 @@ const StyledVideoCardContainer = styled(Box, {
   display: "grid",
   gridTemplateColumns: "repeat(12, minmax(auto, 1fr))",
   gridColumnGap: "$4",
-  borderRadius: 4,
+  borderRadius: "$1",
   padding: "$2",
   width: "100%",
 
@@ -89,12 +89,14 @@ const StyledYouTubePlayer = styled(DynamicYouTube, {
   inset: 0,
 
   "& iframe": {
-    borderRadius: 4,
+    borderRadius: "$1",
     boxShadow: "$1",
   },
 
-  "&:hover": {
-    boxShadow: "$4",
+  "@media(hover)": {
+    "&:hover": {
+      boxShadow: "$4",
+    },
   },
 
   "&:active": {

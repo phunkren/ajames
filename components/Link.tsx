@@ -54,13 +54,15 @@ const StyledLink = styled("a", {
         backgroundClip: "text",
         ["-webkit-text-fill-color"]: "transparent",
 
-        "&:hover": {
-          textDecorationLine: "underline",
-          textDecorationColor: "$hover",
+        "@media(hover)": {
+          "&:hover": {
+            textDecorationLine: "underline",
+            textDecorationColor: "$hover",
 
-          /** React Balancer */
-          "& span": {
-            display: "flex !important",
+            /** React Balancer */
+            "& span": {
+              display: "flex !important",
+            },
           },
         },
 
@@ -72,32 +74,38 @@ const StyledLink = styled("a", {
         },
       },
       secondary: {
-        "&:hover": {
-          color: "unset",
-          backgroundImage: `linear-gradient(90deg, $blue11 0.04%, $hover 100.04%)`,
-          backgroundClip: "text",
-          ["-webkit-text-fill-color"]: "transparent",
-        },
+        "@media(hover)": {
+          "&:hover": {
+            color: "unset",
+            backgroundImage: `linear-gradient(90deg, $blue11 0.04%, $hover 100.04%)`,
+            backgroundClip: "text",
+            ["-webkit-text-fill-color"]: "transparent",
+          },
 
-        "&:hover svg": {
-          color: "$hover",
+          "&:hover svg": {
+            color: "$hover",
+          },
         },
       },
       tertiary: {
         textDecorationLine: "underline",
         textDecorationStyle: "dotted",
 
-        "&:hover": {
-          color: "inherit",
-          textDecorationStyle: "solid",
-          textDecorationColor: "$hover",
+        "@media(hover)": {
+          "&:hover": {
+            color: "inherit",
+            textDecorationStyle: "solid",
+            textDecorationColor: "$hover",
+          },
         },
       },
       invisible: {
         color: "inherit",
 
-        "&:hover": {
-          color: "inherit",
+        "@media(hover)": {
+          "&:hover": {
+            color: "inherit",
+          },
         },
 
         "&:active": {
@@ -111,8 +119,10 @@ const StyledLink = styled("a", {
         justifyContent: "center",
         color: "inherit",
 
-        "&:hover": {
-          color: "$hover",
+        "@media(hover)": {
+          "&:hover": {
+            color: "$hover",
+          },
         },
       },
     },
@@ -158,14 +168,16 @@ export const StyledIconLink = styled(Link, {
   boxShadow: "$1",
   transition: "background 100ms ease-out, box-shadow 100ms ease-out",
 
-  "&:hover": {
-    boxShadow: "$4",
-    borderColor: "$foreground",
-    backgroundColor: "$foreground",
-    color: "$background",
-
-    "& svg": {
+  "@media(hover)": {
+    "&:hover": {
+      boxShadow: "$4",
+      borderColor: "$foreground",
+      backgroundColor: "$foreground",
       color: "$background",
+
+      "& svg": {
+        color: "$background",
+      },
     },
   },
 
@@ -192,7 +204,7 @@ const StyledYoutubeSubscription = styled(Link, {
     type: {
       button: {
         padding: "$2 $4",
-        borderRadius: 4,
+        borderRadius: "$1",
         boxShadow: "$1",
 
         [`.${lightTheme} &`]: {
@@ -205,17 +217,19 @@ const StyledYoutubeSubscription = styled(Link, {
           color: "$red12",
         },
 
-        "&:hover": {
-          boxShadow: "$4",
+        "@media(hover)": {
+          "&:hover": {
+            boxShadow: "$4",
 
-          [`.${lightTheme} &`]: {
-            backgroundImage: `linear-gradient(225deg, $red10 0.04%, $red10 100.04%)`,
-            color: "$red1",
-          },
+            [`.${lightTheme} &`]: {
+              backgroundImage: `linear-gradient(225deg, $red10 0.04%, $red10 100.04%)`,
+              color: "$red1",
+            },
 
-          [`.${darkTheme} &`]: {
-            backgroundImage: `linear-gradient(225deg, $red7 0.04%, $red7 100.04%)`,
-            color: "$red12",
+            [`.${darkTheme} &`]: {
+              backgroundImage: `linear-gradient(225deg, $red7 0.04%, $red7 100.04%)`,
+              color: "$red12",
+            },
           },
         },
 
@@ -250,17 +264,19 @@ const StyledYoutubeSubscription = styled(Link, {
           color: "$red12",
         },
 
-        "&:hover": {
-          boxShadow: "$4",
+        "@media(hover)": {
+          "&:hover": {
+            boxShadow: "$4",
 
-          [`.${lightTheme} &`]: {
-            backgroundImage: `linear-gradient(225deg, $red10 0.04%, $red10 100.04%)`,
-            borderColor: "$red10",
-          },
+            [`.${lightTheme} &`]: {
+              backgroundImage: `linear-gradient(225deg, $red10 0.04%, $red10 100.04%)`,
+              borderColor: "$red10",
+            },
 
-          [`.${darkTheme} &`]: {
-            backgroundImage: `linear-gradient(225deg, $red7 0.04%, $red7 100.04%)`,
-            borderColor: "$red7",
+            [`.${darkTheme} &`]: {
+              backgroundImage: `linear-gradient(225deg, $red7 0.04%, $red7 100.04%)`,
+              borderColor: "$red7",
+            },
           },
         },
 
@@ -284,7 +300,7 @@ const StyledBlogSubscription = styled(Link, {
       },
       button: {
         padding: "$2 $4",
-        borderRadius: 4,
+        borderRadius: "$1",
         color: "$blue1",
         boxShadow: "$1",
 
@@ -298,17 +314,19 @@ const StyledBlogSubscription = styled(Link, {
           color: "$blue12",
         },
 
-        "&:hover": {
-          boxShadow: "$4",
+        "@media(hover)": {
+          "&:hover": {
+            boxShadow: "$4",
 
-          [`.${lightTheme} &`]: {
-            backgroundImage: `linear-gradient(225deg, $blue10 0.04%, $blue10 100.04%)`,
-            color: "$blue1",
-          },
+            [`.${lightTheme} &`]: {
+              backgroundImage: `linear-gradient(225deg, $blue10 0.04%, $blue10 100.04%)`,
+              color: "$blue1",
+            },
 
-          [`.${darkTheme} &`]: {
-            backgroundImage: `linear-gradient(225deg, $blue8 0.04%, $blue8 100.04%)`,
-            color: "$blue12",
+            [`.${darkTheme} &`]: {
+              backgroundImage: `linear-gradient(225deg, $blue8 0.04%, $blue8 100.04%)`,
+              color: "$blue12",
+            },
           },
         },
 
@@ -339,19 +357,21 @@ const StyledBlogSubscription = styled(Link, {
           color: "$blue12",
         },
 
-        "&:hover": {
-          boxShadow: "$4",
+        "@media(hover)": {
+          "&:hover": {
+            boxShadow: "$4",
 
-          [`.${lightTheme} &`]: {
-            backgroundImage: `linear-gradient(-90deg, $hover 0.04%, $hover 100.04%)`,
-            borderColor: "$hover",
-            color: "$blue1",
-          },
+            [`.${lightTheme} &`]: {
+              backgroundImage: `linear-gradient(-90deg, $hover 0.04%, $hover 100.04%)`,
+              borderColor: "$hover",
+              color: "$blue1",
+            },
 
-          [`.${darkTheme} &`]: {
-            backgroundImage: `linear-gradient(225deg, $blue8 0.04%, $blue8 100.04%)`,
-            borderColor: "$blue8",
-            color: "$blue12",
+            [`.${darkTheme} &`]: {
+              backgroundImage: `linear-gradient(225deg, $blue8 0.04%, $blue8 100.04%)`,
+              borderColor: "$blue8",
+              color: "$blue12",
+            },
           },
         },
 
@@ -384,14 +404,16 @@ export const StyledClearFilterLink = styled(Link, {
   borderRadius: "50%",
   boxShadow: "$1",
 
-  "&:hover": {
-    boxShadow: "$4",
-    background: "$foreground",
-    color: "$background",
-  },
+  "@media(hover)": {
+    "&:hover": {
+      boxShadow: "$4",
+      background: "$foreground",
+      color: "$background",
+    },
 
-  "&:active": {
-    boxShadow: "$5",
+    "&:active": {
+      boxShadow: "$5",
+    },
   },
 });
 

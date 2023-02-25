@@ -84,8 +84,14 @@ const StyledContainer = styled(Box, {
     color: "$foregroundMuted",
   },
 
-  "a, a:hover, code": {
+  "a, code": {
     color: "$foreground",
+  },
+
+  "@media(hover)": {
+    "a:hover": {
+      color: "$foreground",
+    },
   },
 
   img: {
@@ -100,7 +106,7 @@ const StyledContainer = styled(Box, {
       maxWidth: "100%",
       margin: "0 auto",
       boxShadow: "$1",
-      borderRadius: 4,
+      borderRadius: "$1",
     },
   },
 
@@ -118,7 +124,7 @@ const StyledContainer = styled(Box, {
       left: 0,
       width: "100%",
       boxShadow: "$1",
-      borderRadius: 4,
+      borderRadius: "$1",
     },
   },
 

@@ -41,7 +41,8 @@ const StyledDialogContent = styled(Dialog.Content, {
   display: "flex",
   flexDirection: "column",
   backgroundColor: "$backgroundMuted",
-  borderRadius: 0,
+  borderTopRightRadius: "$2",
+  borderBottomRightRadius: "$2",
   boxShadow: "$3",
   height: "100dvh",
   width: 300,
@@ -65,27 +66,31 @@ const StyledNavigationSubmenu = styled(Box, {
   position: "absolute",
   top: "$10",
   background: "$backgroundMuted",
-  borderRadius: 4,
+  borderRadius: "$1",
   minWidth: 350,
   boxShadow: "$2",
   zIndex: 10,
 
-  "&:hover": {
-    boxShadow: "$4",
+  "@media(hover)": {
+    "&:hover": {
+      boxShadow: "$4",
+    },
   },
 });
 
 const StyledNavigationSubmenuLink = styled(Link, {
   flexGrow: 1,
   padding: "$2",
-  borderRadius: 4,
+  borderRadius: "$1",
 
-  [`.${darkTheme} &:hover`]: {
-    backgroundColor: whiteA.whiteA3,
-  },
+  "@media(hover)": {
+    [`.${darkTheme} &:hover`]: {
+      backgroundColor: whiteA.whiteA3,
+    },
 
-  [`.${lightTheme} &:hover`]: {
-    backgroundColor: blackA.blackA3,
+    [`.${lightTheme} &:hover`]: {
+      backgroundColor: blackA.blackA3,
+    },
   },
 });
 
@@ -109,7 +114,7 @@ export const NavigationProjectLink = memo(function NavigationProjectLink({
             css={{
               flexShrink: 0,
               backgroundColor: grassDark.grass8,
-              borderRadius: 4,
+              borderRadius: "$1",
               overflow: "hidden",
             }}
           >

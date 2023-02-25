@@ -43,7 +43,7 @@ type Props = {
 
 const StyledImage = styled(Image, {
   objectFit: "cover",
-  borderRadius: 4,
+  borderRadius: "$1",
   boxShadow: "$1",
 });
 
@@ -53,7 +53,7 @@ const StyledCardContainer = styled(Box, {
   gridTemplateRows: "1fr",
   gridColumnGap: "$2",
   gridRowGap: "$10",
-  borderRadius: 4,
+  borderRadius: "$1",
   width: "100%",
 
   "@bp2": {

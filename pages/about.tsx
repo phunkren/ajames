@@ -118,7 +118,7 @@ const GridItem = styled("li", {
   borderStyle: "solid",
   borderColor: "$foregroundMuted",
   textAlign: "center",
-  borderRadius: 4,
+  borderRadius: "$1",
 
   "@print": {
     padding: 0,
