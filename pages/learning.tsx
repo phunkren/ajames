@@ -1,5 +1,4 @@
 import { MouseEvent, ReactElement, useCallback, useRef } from "react";
-import Image from "next/image";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import Balancer from "react-wrap-balancer";
 import { PlayIcon } from "@radix-ui/react-icons";
@@ -43,9 +42,8 @@ import {
   Scrollbar,
 } from "../components/Scroll";
 import { SITE } from "../util/data";
-import { Button, ShareButton } from "../components/Button";
+import { ShareButton } from "../components/Button";
 import { ICON_SIZE } from "../util/images";
-import poster from "../public/images/poster.gif";
 import { Box } from "../components/Box";
 import { NextPageWithLayout } from "./_app";
 import dynamic from "next/dynamic";
@@ -68,15 +66,6 @@ const StyledVideoCardContainer = styled(Box, {
 
   bp2: {
     gridTemplateColumns: "repeat(12, 1fr)",
-  },
-});
-
-const StyledPoster = styled(Button, {
-  width: "100%",
-  height: "100%;",
-
-  "@bp3": {
-    display: "none",
   },
 });
 
@@ -135,21 +124,6 @@ const Learning: NextPageWithLayout = ({
   playlistVideosPreview,
   channelInfoPreview,
 }: Props) => {
-  const youtubeRef = useRef(null);
-  const posterRef = useRef<HTMLButtonElement>(null);
-
-  const handlePlayerReady = useCallback((e) => {
-    youtubeRef.current = e.target;
-  }, []);
-
-  const handlePlayerPlay = useCallback((e: MouseEvent<HTMLButtonElement>) => {
-    posterRef.current.style.display = "none";
-  }, []);
-
-  const handlePosterClick = useCallback(() => {
-    youtubeRef.current?.playVideo();
-  }, []);
-
   return (
     <Box direction="vertical">
       <HeroLayout />
@@ -265,8 +239,6 @@ const Learning: NextPageWithLayout = ({
                   <AspectRatio ratio={16 / 9}>
                     <StyledYouTubePlayer
                       videoId={featuredVideo.videoId}
-                      onReady={handlePlayerReady}
-                      onPlay={handlePlayerPlay}
                       opts={{
                         width: "100%",
                         height: "100%",
@@ -280,10 +252,6 @@ const Learning: NextPageWithLayout = ({
                         },
                       }}
                     />
-
-                    <StyledPoster ref={posterRef} onClick={handlePosterClick}>
-                      <Image src={poster} sizes="480px" fill alt="" />
-                    </StyledPoster>
                   </AspectRatio>
                 </Box>
 
