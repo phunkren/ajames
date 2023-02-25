@@ -1,6 +1,8 @@
 import { memo } from "react";
 import Image from "next/image";
+import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
+import { blueDark, redDark } from "@radix-ui/colors";
 import { useTheme } from "../hooks/useTheme";
 import { darkTheme, lightTheme, styled } from "../stitches.config";
 import { Link, StyledIconLink } from "./Link";
@@ -12,7 +14,7 @@ import { PageSeo } from "./SEO";
 import { TextAux, TextHeadline, TextTitle1 } from "./Text";
 import { StyledIconButton } from "./Button";
 import { Logo } from "./Logo";
-import { blueDark, redDark } from "@radix-ui/colors";
+import { Tooltip } from "./Tooltip";
 
 const StyledHeroLayout = styled(Box, {
   width: "100vw",
@@ -133,12 +135,14 @@ export const HeaderLayout = memo(function HeaderLayout() {
       gap={{ "@initial": 4, "@bp2": 7 }}
       justifyContent="space-between"
       alignItems="center"
-      css={{ left: "-$1" }}
     >
       <Box direction="horizontal" gap={10} alignItems="center">
-        <Link aria-label="Home" href="/" variant="icon">
-          <Logo />
-        </Link>
+        <Tooltip title="Home">
+          <Link href="/" variant="icon">
+            <VisuallyHidden.Root>Home</VisuallyHidden.Root>
+            <Logo />
+          </Link>
+        </Tooltip>
 
         <Box display={{ "@initial": "none", "@bp2": "flex" }}>
           <Navigation />

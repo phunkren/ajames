@@ -124,14 +124,12 @@ const StyledCardOuter = styled(Box, {
 
 export const StyledCardInner = styled(Box, {
   position: "relative",
-  zIndex: 15,
 });
 
 export const StyledCardImage = styled(Image, {
   objectFit: "cover",
   filter: "brightness(85%)",
   transition: "filter 200ms ease-out",
-  zIndex: 10,
 
   // https://nextjs.org/docs/api-reference/next/image#known-browser-bugs
   "img[loading='lazy']": {
@@ -273,7 +271,6 @@ export const BlogCard = memo(function BlogCard({
                   zIndex: 0,
                 },
               }}
-              title="View description"
               pressed={isPreviewVisible}
               onPressedChange={onPreviewToggle}
             />

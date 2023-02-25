@@ -15,6 +15,7 @@ import { buildUrl } from "../util/url";
 import { SITE, SOCIAL } from "../util/data";
 import { Box } from "./Box";
 import { ICON_SIZE } from "../util/images";
+import { Tooltip } from "./Tooltip";
 
 type TwitterShareProps = {
   url: string;
@@ -436,6 +437,24 @@ export const YoutubeSubscribeLink = memo(function YoutubeSubscribeLink({
   type = "link",
   ...props
 }: SubscribeProps) {
+  if (type === "icon") {
+    return (
+      <Tooltip title="Subscribe">
+        <StyledYoutubeSubscription
+          href={YOUTUBE_SUBSCRIBE_URL}
+          type={type}
+          variant="invisible"
+          {...props}
+        >
+          <Box alignItems="center" gap={2}>
+            <VideoIcon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
+            <VisuallyHidden.Root>Subscribe</VisuallyHidden.Root>
+          </Box>
+        </StyledYoutubeSubscription>
+      </Tooltip>
+    );
+  }
+
   return (
     <StyledYoutubeSubscription
       href={YOUTUBE_SUBSCRIBE_URL}
@@ -449,10 +468,6 @@ export const YoutubeSubscribeLink = memo(function YoutubeSubscribeLink({
         {type === "button" && <TextAux color="primary">Subscribe</TextAux>}
 
         {type === "link" && <TextHeadline>Subscribe</TextHeadline>}
-
-        {type === "icon" && (
-          <VisuallyHidden.Root>Subscribe</VisuallyHidden.Root>
-        )}
       </Box>
     </StyledYoutubeSubscription>
   );
@@ -463,6 +478,24 @@ export const BlogSubscriptionLink = memo(function BlogSubscribeLink({
   ...props
 }: SubscribeProps) {
   const rssFeedUrl = `${SITE.url}/rss`;
+
+  if (type === "icon") {
+    return (
+      <Tooltip title="Subscribe">
+        <StyledBlogSubscription
+          href={rssFeedUrl}
+          type={type}
+          variant="invisible"
+          {...props}
+        >
+          <Box alignItems="center" gap={2}>
+            <StyledRssIcon size={ICON_SIZE.m} />
+            <VisuallyHidden.Root>Subscribe</VisuallyHidden.Root>
+          </Box>
+        </StyledBlogSubscription>
+      </Tooltip>
+    );
+  }
 
   return (
     <StyledBlogSubscription
@@ -477,10 +510,6 @@ export const BlogSubscriptionLink = memo(function BlogSubscribeLink({
         {type === "button" && <TextAux color="inherit">Subscribe</TextAux>}
 
         {type === "link" && <TextHeadline>Subscribe</TextHeadline>}
-
-        {type === "icon" && (
-          <VisuallyHidden.Root>Subscribe</VisuallyHidden.Root>
-        )}
       </Box>
     </StyledBlogSubscription>
   );
@@ -508,10 +537,16 @@ export const TwitterShareLink = memo(function TwitterShareLink({
 
   if (variant === "icon") {
     return (
-      <StyledIconLink href={href} title="Share on Twitter" variant="icon">
-        <TwitterLogoIcon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
-        <VisuallyHidden.Root>Tweet</VisuallyHidden.Root>
-      </StyledIconLink>
+      <Tooltip title="Share on Twitter">
+        <StyledIconLink href={href} variant="icon">
+          <TwitterLogoIcon
+            width={ICON_SIZE.m}
+            height={ICON_SIZE.m}
+            aria-hidden
+          />
+          <VisuallyHidden.Root>Tweet</VisuallyHidden.Root>
+        </StyledIconLink>
+      </Tooltip>
     );
   }
 
@@ -527,9 +562,11 @@ export const TwitterShareLink = memo(function TwitterShareLink({
 
 export const DownloadLink = memo(function DownloadLink(props: any) {
   return (
-    <StyledIconLink title="Download" download {...props}>
-      <DownloadIcon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
-      <VisuallyHidden.Root>Download</VisuallyHidden.Root>
-    </StyledIconLink>
+    <Tooltip title="Download">
+      <StyledIconLink download {...props}>
+        <DownloadIcon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
+        <VisuallyHidden.Root>Download</VisuallyHidden.Root>
+      </StyledIconLink>
+    </Tooltip>
   );
 });

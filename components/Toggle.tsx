@@ -5,6 +5,7 @@ import { darkTheme, lightTheme, styled } from "../stitches.config";
 import { Theme } from "../types/theme";
 import { ICON_SIZE } from "../util/images";
 import { useTheme } from "../hooks/useTheme";
+import { Tooltip } from "./Tooltip";
 
 const StyledSunIcon = styled(SunIcon, {
   position: "absolute",
@@ -105,18 +106,20 @@ export const ThemeToggle = memo(function ThemeToggle() {
   );
 
   return (
-    <SwitchRoot
-      defaultChecked={theme === Theme.LIGHT}
-      aria-label="Theme toggle"
-      value={theme}
-      onCheckedChange={handleThemeChange}
-    >
-      <SwitchThumb />
+    <Tooltip title="Theme">
+      <SwitchRoot
+        defaultChecked={theme === Theme.LIGHT}
+        aria-label="Theme"
+        value={theme}
+        onCheckedChange={handleThemeChange}
+      >
+        <SwitchThumb />
 
-      <StyledSunIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
+        <StyledSunIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
 
-      <StyledMoonIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
-    </SwitchRoot>
+        <StyledMoonIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
+      </SwitchRoot>
+    </Tooltip>
   );
 });
 
@@ -124,12 +127,14 @@ export const LayoutToggle = memo(function LayoutToggle(
   props: Switch.SwitchProps
 ) {
   return (
-    <SwitchRoot {...props}>
-      <SwitchThumb />
+    <Tooltip title="Layout">
+      <SwitchRoot {...props}>
+        <SwitchThumb />
 
-      <StyledGridIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
+        <StyledGridIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
 
-      <StyledRowsIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
-    </SwitchRoot>
+        <StyledRowsIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
+      </SwitchRoot>
+    </Tooltip>
   );
 });

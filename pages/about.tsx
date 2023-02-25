@@ -33,6 +33,7 @@ import { ICON_SIZE } from "../util/images";
 import banner from "../public/images/mugshot.png";
 import { Box } from "../components/Box";
 import { NextPageWithLayout } from "./_app";
+import { Tooltip } from "../components/Tooltip";
 
 const StyledPrintHeader = styled(Box, {
   display: "none",
@@ -223,67 +224,63 @@ const About: NextPageWithLayout = () => {
 
               <GridRoot>
                 <Box as="li" alignItems="center">
-                  <Link
-                    variant="secondary"
-                    href={SOCIAL.linkedin.url}
-                    title={SOCIAL.linkedin.displayName}
-                  >
-                    <Box direction="horizontal" gap={4} alignItems="center">
-                      <LinkedInLogoIcon
-                        width={ICON_SIZE.m}
-                        height={ICON_SIZE.m}
-                        aria-hidden
-                      />
-                      <TextHeadline>Andrew James</TextHeadline>
-                    </Box>
-                  </Link>
+                  <Tooltip title={SOCIAL.linkedin.displayName}>
+                    <Link variant="secondary" href={SOCIAL.linkedin.url}>
+                      <Box direction="horizontal" gap={4} alignItems="center">
+                        <LinkedInLogoIcon
+                          width={ICON_SIZE.m}
+                          height={ICON_SIZE.m}
+                          aria-hidden
+                        />
+                        <TextHeadline>Andrew James</TextHeadline>
+                      </Box>
+                    </Link>
+                  </Tooltip>
                 </Box>
 
                 <Box as="li" alignItems="center">
-                  <Link
-                    variant="secondary"
-                    href={`mailto:${PERSONAL.email}`}
-                    title="Email"
-                  >
-                    <Box direction="horizontal" gap={4} alignItems="center">
-                      <EnvelopeOpenIcon
-                        width={ICON_SIZE.m}
-                        height={ICON_SIZE.m}
-                        aria-hidden
-                      />
-                      <TextHeadline>contact@ajames.dev</TextHeadline>
-                    </Box>
-                  </Link>
+                  <Tooltip title="Email">
+                    <Link variant="secondary" href={`mailto:${PERSONAL.email}`}>
+                      <Box direction="horizontal" gap={4} alignItems="center">
+                        <EnvelopeOpenIcon
+                          width={ICON_SIZE.m}
+                          height={ICON_SIZE.m}
+                          aria-hidden
+                        />
+                        <TextHeadline>contact@ajames.dev</TextHeadline>
+                      </Box>
+                    </Link>
+                  </Tooltip>
                 </Box>
 
                 <Box as="li" alignItems="center">
-                  <Link variant="secondary" href={SITE.url} title="Website">
-                    <Box direction="horizontal" gap={4} alignItems="center">
-                      <GlobeIcon
-                        width={ICON_SIZE.m}
-                        height={ICON_SIZE.m}
-                        aria-hidden
-                      />
-                      <TextHeadline>ajames.dev</TextHeadline>
-                    </Box>
-                  </Link>
+                  <Tooltip title="Website">
+                    <Link variant="secondary" href={SITE.url}>
+                      <Box direction="horizontal" gap={4} alignItems="center">
+                        <GlobeIcon
+                          width={ICON_SIZE.m}
+                          height={ICON_SIZE.m}
+                          aria-hidden
+                        />
+                        <TextHeadline>ajames.dev</TextHeadline>
+                      </Box>
+                    </Link>
+                  </Tooltip>
                 </Box>
 
                 <Box as="li" alignItems="center">
-                  <Link
-                    variant="secondary"
-                    href={SOCIAL.github.url}
-                    title={SOCIAL.github.displayName}
-                  >
-                    <Box direction="horizontal" gap={4} alignItems="center">
-                      <GitHubLogoIcon
-                        width={ICON_SIZE.m}
-                        height={ICON_SIZE.m}
-                        aria-hidden
-                      />
-                      <TextHeadline>phunkren</TextHeadline>
-                    </Box>
-                  </Link>
+                  <Tooltip title={SOCIAL.github.displayName}>
+                    <Link variant="secondary" href={SOCIAL.github.url}>
+                      <Box direction="horizontal" gap={4} alignItems="center">
+                        <GitHubLogoIcon
+                          width={ICON_SIZE.m}
+                          height={ICON_SIZE.m}
+                          aria-hidden
+                        />
+                        <TextHeadline>phunkren</TextHeadline>
+                      </Box>
+                    </Link>
+                  </Tooltip>
                 </Box>
               </GridRoot>
             </Box>

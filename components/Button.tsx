@@ -28,6 +28,7 @@ import { CSS, keyframes, styled } from "../stitches.config";
 import { PERSONAL } from "../util/data";
 import { ICON_SIZE } from "../util/images";
 import { TextAux, TextHeadline } from "./Text";
+import { Tooltip } from "./Tooltip";
 import { Box } from "./Box";
 import {
   FilterClearProps,
@@ -364,10 +365,16 @@ export const ShareButton = memo(function ShareButton({
     <Toast.Provider label="Share notification" duration={5000}>
       <Box>
         {variant === "icon" ? (
-          <StyledIconButton title="Share" onClick={handleClick}>
-            <Share2Icon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
-            <VisuallyHidden.Root>Share</VisuallyHidden.Root>
-          </StyledIconButton>
+          <Tooltip title="Share">
+            <StyledIconButton onClick={handleClick}>
+              <Share2Icon
+                width={ICON_SIZE.m}
+                height={ICON_SIZE.m}
+                aria-hidden
+              />
+              <VisuallyHidden.Root>Share</VisuallyHidden.Root>
+            </StyledIconButton>
+          </Tooltip>
         ) : (
           <Button variant="tertiary" onClick={handleClick}>
             <Share2Icon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
@@ -394,24 +401,26 @@ export const PreviewToggle = memo(function PreviewToggle({
   }, []);
 
   return (
-    <StyledPreviewToggle
-      aria-label="Preview toggle"
-      pressed={pressed}
-      onClick={handleClick}
-      {...props}
-    >
-      {pressed ? (
-        <>
-          <VisuallyHidden.Root>Hide Description</VisuallyHidden.Root>
-          <Cross1Icon width={ICON_SIZE.m} height={ICON_SIZE.m} />
-        </>
-      ) : (
-        <>
-          <VisuallyHidden.Root>Show Description</VisuallyHidden.Root>
-          <InfoCircledIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
-        </>
-      )}
-    </StyledPreviewToggle>
+    <Tooltip title={pressed ? "Hide Description" : "Show Description"}>
+      <StyledPreviewToggle
+        aria-label="Preview toggle"
+        pressed={pressed}
+        onClick={handleClick}
+        {...props}
+      >
+        {pressed ? (
+          <>
+            <VisuallyHidden.Root>Hide Description</VisuallyHidden.Root>
+            <Cross1Icon width={ICON_SIZE.m} height={ICON_SIZE.m} />
+          </>
+        ) : (
+          <>
+            <VisuallyHidden.Root>Show Description</VisuallyHidden.Root>
+            <InfoCircledIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
+          </>
+        )}
+      </StyledPreviewToggle>
+    </Tooltip>
   );
 });
 
@@ -421,10 +430,12 @@ export const PrintButton = memo(function PrintButton(props: any) {
   }, []);
 
   return (
-    <StyledIconButton title="Print" onClick={handleClick} {...props}>
-      <VisuallyHidden.Root>Print</VisuallyHidden.Root>
-      <FileIcon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
-    </StyledIconButton>
+    <Tooltip title="Print">
+      <StyledIconButton onClick={handleClick} {...props}>
+        <VisuallyHidden.Root>Print</VisuallyHidden.Root>
+        <FileIcon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
+      </StyledIconButton>
+    </Tooltip>
   );
 });
 
@@ -441,18 +452,19 @@ export const FilterClearButton = memo(function FilterClearButton({
   }, [pathname, push]);
 
   return (
-    <StyledIconButton
-      title="Clear Filter"
-      aria-disabled={!filter}
-      onClick={handleClick}
-      {...props}
-    >
-      <VisuallyHidden.Root>
-        <TextAux>Clear filter</TextAux>
-      </VisuallyHidden.Root>
+    <Tooltip title="Clear Filter">
+      <StyledIconButton
+        aria-disabled={!filter}
+        onClick={handleClick}
+        {...props}
+      >
+        <VisuallyHidden.Root>
+          <TextAux>Clear filter</TextAux>
+        </VisuallyHidden.Root>
 
-      <Cross2Icon width={ICON_SIZE.m} height={ICON_SIZE.m} />
-    </StyledIconButton>
+        <Cross2Icon width={ICON_SIZE.m} height={ICON_SIZE.m} />
+      </StyledIconButton>
+    </Tooltip>
   );
 });
 
@@ -462,29 +474,27 @@ export const FilterMenuButton = memo(
     ref: Ref<HTMLButtonElement>
   ) {
     return (
-      <StyledIconButton
-        ref={ref}
-        title={open ? "Collapse Filters" : "Filter Articles"}
-        {...props}
-      >
-        {open ? (
-          <>
-            <VisuallyHidden.Root>
-              <TextAux>Close menu</TextAux>
-            </VisuallyHidden.Root>
+      <Tooltip title={open ? "Collapse Filters" : "Filter Articles"}>
+        <StyledIconButton ref={ref} {...props}>
+          {open ? (
+            <>
+              <VisuallyHidden.Root>
+                <TextAux>Close menu</TextAux>
+              </VisuallyHidden.Root>
 
-            <ChevronUpIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
-          </>
-        ) : (
-          <>
-            <VisuallyHidden.Root>
-              <TextAux>Open menu</TextAux>
-            </VisuallyHidden.Root>
+              <ChevronUpIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
+            </>
+          ) : (
+            <>
+              <VisuallyHidden.Root>
+                <TextAux>Open menu</TextAux>
+              </VisuallyHidden.Root>
 
-            <DropdownMenuIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
-          </>
-        )}
-      </StyledIconButton>
+              <DropdownMenuIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
+            </>
+          )}
+        </StyledIconButton>
+      </Tooltip>
     );
   })
 );
@@ -492,34 +502,33 @@ export const FilterMenuButton = memo(
 export const MobileNavigationButton = memo(
   forwardRef((props: any, ref: Ref<HTMLButtonElement>) => {
     return (
-      <StyledMobileNavigationButton
-        ref={ref}
-        title="Mobile Navigation Menu"
-        variant="secondary"
-        {...props}
-      >
-        <HamburgerMenuIcon
-          id="mobileNav-hamburger"
-          width={ICON_SIZE.l}
-          height={ICON_SIZE.l}
-          aria-hidden
-        />
+      <Tooltip title="Mobile Navigation Menu">
+        <StyledMobileNavigationButton ref={ref} variant="secondary" {...props}>
+          <HamburgerMenuIcon
+            id="mobileNav-hamburger"
+            width={ICON_SIZE.l}
+            height={ICON_SIZE.l}
+            aria-hidden
+          />
 
-        <Cross1Icon
-          id="mobileNav-cross"
-          width={ICON_SIZE.l}
-          height={ICON_SIZE.l}
-          aria-hidden
-        />
-      </StyledMobileNavigationButton>
+          <Cross1Icon
+            id="mobileNav-cross"
+            width={ICON_SIZE.l}
+            height={ICON_SIZE.l}
+            aria-hidden
+          />
+        </StyledMobileNavigationButton>
+      </Tooltip>
     );
   })
 );
 
 export const CloseButton = memo(function CloseButton(props: any) {
   return (
-    <StyledIconButton title="Close" variant="secondary" {...props}>
-      <Cross1Icon width={ICON_SIZE.l} height={ICON_SIZE.l} aria-hidden />
-    </StyledIconButton>
+    <Tooltip title="Close">
+      <StyledIconButton variant="secondary" {...props}>
+        <Cross1Icon width={ICON_SIZE.l} height={ICON_SIZE.l} aria-hidden />
+      </StyledIconButton>
+    </Tooltip>
   );
 });
