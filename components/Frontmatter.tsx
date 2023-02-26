@@ -15,20 +15,38 @@ import { formatLongDate } from "../util/date";
 import { ICON_SIZE } from "../util/images";
 import { formatNumber } from "../util/number";
 import { formatReadingTime } from "../util/posts";
-import { Box } from "./Box";
-import { TextAux, TextBody, TextHeadline, TextTitle3 } from "./Text";
+import { Box, BoxProps } from "./Box";
+import { TextAux, TextHeadline } from "./Text";
 import { StyledTag } from "./Tags";
 
-type PostTagProps = {
-  as?: string;
-  tags: Tag[];
+type FrontMatterItemProps = BoxProps & {
+  compact?: boolean;
   icon?: boolean;
 };
 
-type ActiveTagsProps = {
+type PostTagProps = FrontMatterItemProps & {
+  tags: Tag[];
+};
+
+type PublishDateProps = FrontMatterItemProps & {
+  date: string;
+};
+
+type ActiveTagsProps = FrontMatterItemProps & {
   tags: Tag[];
   queryTag: string;
-  icon?: boolean;
+};
+
+type ReadingTimeProps = FrontMatterItemProps & {
+  time: number;
+};
+
+type TotalProps = FrontMatterItemProps & {
+  total: number;
+};
+
+type YoutubeChannelProps = FrontMatterItemProps & {
+  channel: string;
 };
 
 export const Frontmatter = memo(function Frontmatter(props: any) {
@@ -48,7 +66,7 @@ export const FrontmatterItem = memo(function FrontmatterItem({
   compact,
   css,
   ...props
-}: any) {
+}: FrontMatterItemProps) {
   return (
     <Box
       as="li"
@@ -124,7 +142,7 @@ export const PublishDate = memo(function PublishDate({
   icon = false,
   compact = false,
   ...props
-}: any) {
+}: PublishDateProps) {
   const dateObject = new Date(date);
   const formattedDate = formatLongDate(dateObject);
 
@@ -173,7 +191,7 @@ export const ReadingTime = memo(function ReadingTime({
   time,
   icon = false,
   ...props
-}: any) {
+}: ReadingTimeProps) {
   const formattedTime = formatReadingTime(time);
 
   return (
@@ -193,7 +211,7 @@ export const SubscriberCount = memo(function SubscriberCount({
   total,
   icon = false,
   ...props
-}: any) {
+}: TotalProps) {
   const formattedNumber = formatNumber(total);
   const formattedSubscribers = `${formattedNumber} subscribers`;
 
@@ -216,7 +234,7 @@ export const VideosViewsCount = memo(function VideosViewsCount({
   total,
   icon = false,
   ...props
-}: any) {
+}: TotalProps) {
   const formattedNumber = formatNumber(total);
   const formattedViews = `${formattedNumber} total views`;
 
@@ -237,7 +255,7 @@ export const VideosTotalCount = memo(function VideosTotalCount({
   total,
   icon = false,
   ...props
-}: any) {
+}: TotalProps) {
   const formattedNumber = formatNumber(total);
   const formattedTotal = `${formattedNumber} videos`;
 
@@ -258,7 +276,7 @@ export const TotalPosts = memo(function TotalPosts({
   total,
   icon = false,
   ...props
-}: any) {
+}: TotalProps) {
   const formattedNumber = formatNumber(total);
   const formattedTotal = `${formattedNumber} articles`;
 
@@ -279,7 +297,7 @@ export const TotalCategories = memo(function TotalCategories({
   total,
   icon = false,
   ...props
-}: any) {
+}: TotalProps) {
   const formattedNumber = formatNumber(total);
   const formattedTotal = `${formattedNumber} categories`;
 
@@ -301,7 +319,7 @@ export const YoutubeChannel = memo(function TotalCategories({
   icon = false,
   compact = false,
   ...props
-}: any) {
+}: YoutubeChannelProps) {
   if (compact) {
     return (
       <FrontmatterItem compact {...props}>
