@@ -1,7 +1,7 @@
 import { memo, useCallback, useState } from "react";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 import { useRouter } from "next/router";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { blackA, grassDark, whiteA } from "@radix-ui/colors";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import * as Dialog from "@radix-ui/react-dialog";
@@ -11,13 +11,20 @@ import { ICON_SIZE } from "../util/images";
 import { useTheme } from "../hooks/useTheme";
 import { Divider } from "./Divider";
 import { PROJECTS } from "../util/data";
-import { Project } from "../types/project";
 import { Link } from "./Link";
 import { TextAux, TextHeadline } from "./Text";
 import { Button, MobileNavigationButton } from "./Button";
 import { Social } from "./Social";
 import { Box } from "./Box";
 import { ThemeToggle } from "./Toggle";
+
+export type NavigationProjectLinkProps = {
+  id: string;
+  name: string;
+  url: string;
+  description: string;
+  src: StaticImageData;
+};
 
 const dialogSlideIn = keyframes({
   "0%": { transform: "translate3d(0,0,0)" },
@@ -99,7 +106,7 @@ export const NavigationProjectLink = memo(function NavigationProjectLink({
   name,
   description,
   url,
-}: Project) {
+}: NavigationProjectLinkProps) {
   return (
     <NavigationMenu.Link asChild>
       <StyledNavigationSubmenuLink variant="invisible" href={url}>
@@ -223,7 +230,7 @@ export const NavigationMobile = memo(function NavigationMobile() {
           onInteractOutside={handleClose}
         >
           <VisuallyHidden.Root asChild>
-            <Dialog.Title>Mobile Navigation Menu</Dialog.Title>
+            <Dialog.Title>Navigation</Dialog.Title>
           </VisuallyHidden.Root>
 
           <VisuallyHidden.Root asChild>
