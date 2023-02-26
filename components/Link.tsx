@@ -160,7 +160,7 @@ export const StyledIconLink = styled(Link, {
   alignItems: "center",
   justifyContent: "center",
   borderRadius: "50%",
-  spacing: "$2",
+  padding: "$2",
   borderWidth: 2,
   borderStyle: "solid",
   borderColor: "$foregroundMuted",
@@ -244,7 +244,7 @@ const StyledYoutubeSubscription = styled(Link, {
       icon: {
         justifyContent: "center",
         borderRadius: "50%",
-        spacing: "$2",
+        padding: "$2",
         borderWidth: 2,
         borderStyle: "solid",
         borderColor: "$foreground",
@@ -338,7 +338,7 @@ const StyledBlogSubscription = styled(Link, {
       icon: {
         justifyContent: "center",
         borderRadius: "50%",
-        spacing: "$2",
+        padding: "$2",
         borderWidth: 2,
         borderStyle: "solid",
 
