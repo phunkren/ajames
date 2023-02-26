@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { ComponentProps, memo } from "react";
 import { styled } from "../stitches.config";
 import {
   AUX_STYLES,
@@ -8,7 +8,10 @@ import {
   P_STYLES,
   TEXT_VARIANTS,
 } from "../styles/text";
-import { EmojiProps } from "../types/emoji";
+
+type EmojiProps = ComponentProps<typeof StyledEmoji> & {
+  emoji: string;
+};
 
 export const TextTitle1 = styled("h1", {
   ...H1_STYLES,
