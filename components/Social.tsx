@@ -11,10 +11,6 @@ import { Box } from "./Box";
 import { Link } from "./Link";
 import { Tooltip } from "./Tooltip";
 
-type Props = {
-  size?: string;
-};
-
 export const Social = memo(function Social() {
   return (
     <Box as="nav" aria-label="Social Media">
