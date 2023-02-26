@@ -1,14 +1,18 @@
-import { memo, useCallback } from "react";
+import { memo, ReactNode, useCallback } from "react";
 import Router from "next/router";
 import Image from "next/image";
-import { ErrorBoundaryProps } from "../types/error";
 import { Button } from "./Button";
-import { TextHeadline, TextTitle1 } from "./Text";
+import { TextAux, TextHeadline, TextTitle1 } from "./Text";
 import { Box } from "./Box";
 import { HeroLayout, Layout } from "./Layout";
 import { ThemeProvider } from "./Theme";
 import { darkTheme, lightTheme, styled } from "../stitches.config";
 import uhoh from "../public/images/500.png";
+
+export type ErrorBoundaryProps = {
+  error?: Error;
+  resetErrorBoundary?: (...args: Array<unknown>) => void;
+};
 
 const StyledImage = styled(Image, {
   display: "none",
@@ -90,7 +94,7 @@ export const ErrorFallback = memo(function ErrorFallback({
 
             {error?.cause ? (
               <Box as="pre" css={{ whiteSpace: "normal" }}>
-                {error.cause}
+                {error.cause as ReactNode}
               </Box>
             ) : null}
 

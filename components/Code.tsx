@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, ReactNode } from "react";
 import { LightAsync as SyntaxHighlighter } from "react-syntax-highlighter";
 import atomOneDark from "react-syntax-highlighter/dist/cjs/styles/hljs/atom-one-dark";
 import atomOneLight from "react-syntax-highlighter/dist/cjs/styles/hljs/atom-one-light";
@@ -10,7 +10,12 @@ import css from "react-syntax-highlighter/dist/esm/languages/hljs/css";
 import json from "react-syntax-highlighter/dist/esm/languages/hljs/json";
 import markdown from "react-syntax-highlighter/dist/esm/languages/hljs/markdown";
 import { useTheme } from "../hooks/useTheme";
-import { CodeProps } from "../types/code";
+
+export type CodeProps = {
+  inline?: boolean;
+  className?: string;
+  children: ReactNode;
+};
 
 SyntaxHighlighter.registerLanguage("typescript", typescript);
 SyntaxHighlighter.registerLanguage("javascript", javascript);

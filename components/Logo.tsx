@@ -1,10 +1,15 @@
 import { memo } from "react";
 import { ICON_SIZE } from "../util/images";
 
+type Props = {
+  width?: number;
+  height?: number;
+};
+
 export const Logo = memo(function Logo({
   width = ICON_SIZE.xl,
   height = ICON_SIZE.xl,
-}: any) {
+}: Props) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
