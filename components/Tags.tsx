@@ -3,13 +3,18 @@ import * as Dialog from "@radix-ui/react-dialog";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import * as Select from "@radix-ui/react-select";
 import { darkTheme, keyframes, lightTheme, styled } from "../stitches.config";
+import { useTheme } from "../hooks/useTheme";
 import { NOTION_TAG_VARIANTS } from "../styles/tag";
 import { Tag } from "../types/notion";
 import { TextAux, TextTitle3 } from "./Text";
 import { Button, CloseButton, FilterMenuButton } from "./Button";
-import { useTheme } from "../hooks/useTheme";
 import { Box } from "./Box";
 import { DrawerScrollRoot, DrawerScrollViewport, Scrollbar } from "./Scroll";
+
+type TagSelectProps = Pick<Select.SelectViewportProps, "children"> &
+  Pick<Select.SelectProps, "value" | "onValueChange">;
+
+type TagDrawerProps = { tags: Tag[]; onClick: (tagName: string) => void };
 
 const dialogSlideUp = keyframes({
   "0%": { transform: "translate3d(0, 0, 0)" },
@@ -19,7 +24,7 @@ const dialogSlideUp = keyframes({
 const StyledSelectContent = styled(Select.Content, {
   background: "$backgroundMuted",
   borderRadius: "$1",
-  spacing: "$2",
+  padding: "$2",
   boxShadow: "$2",
   zIndex: 10,
 
@@ -145,18 +150,13 @@ export const TagSelect = memo(function TagSelect({
   value,
   children,
   onValueChange,
-}: any) {
+}: TagSelectProps) {
   const { theme } = useTheme();
 
   return (
     <Select.Root name="Filter" value={value} onValueChange={onValueChange}>
       <Select.Trigger aria-label="Article Filter" asChild>
-        <FilterMenuButton
-          display={{
-            "@initial": "none",
-            "@bp2": "flex",
-          }}
-        />
+        <FilterMenuButton display={{ "@initial": "none", "@bp2": "flex" }} />
       </Select.Trigger>
 
       <StyledSelectContent
@@ -190,10 +190,7 @@ export const TagSelectItem = memo(function TagSelectItem({
 export const TagDrawer = memo(function TagDrawer({
   tags,
   onClick,
-}: {
-  tags: Tag[];
-  onClick: any;
-}) {
+}: TagDrawerProps) {
   const [open, setOpen] = useState(false);
   const { theme } = useTheme();
 

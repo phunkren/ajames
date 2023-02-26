@@ -1,5 +1,6 @@
 import { ComponentProps, memo } from "react";
 import { styled } from "../stitches.config";
+import { SPACING_VARIANTS } from "../styles/spacing";
 import {
   AUX_STYLES,
   H1_STYLES,
@@ -18,6 +19,7 @@ export const TextTitle1 = styled("h1", {
 
   variants: {
     ...TEXT_VARIANTS,
+    ...SPACING_VARIANTS,
   },
 });
 
@@ -26,6 +28,7 @@ export const TextTitle2 = styled("h2", {
 
   variants: {
     ...TEXT_VARIANTS,
+    ...SPACING_VARIANTS,
   },
 });
 
@@ -34,6 +37,7 @@ export const TextTitle3 = styled("h3", {
 
   variants: {
     ...TEXT_VARIANTS,
+    ...SPACING_VARIANTS,
   },
 });
 
@@ -42,6 +46,7 @@ export const TextBody = styled("p", {
 
   variants: {
     ...TEXT_VARIANTS,
+    ...SPACING_VARIANTS,
   },
 });
 
@@ -51,6 +56,7 @@ export const TextHeadline = styled("span", {
 
   variants: {
     ...TEXT_VARIANTS,
+    ...SPACING_VARIANTS,
   },
 });
 
@@ -63,6 +69,7 @@ export const TextAux = styled("span", {
 
   variants: {
     ...TEXT_VARIANTS,
+    ...SPACING_VARIANTS,
   },
 });
 
@@ -73,6 +80,7 @@ export const StyledEmoji = styled("span", {
   textShadow: "$textShadow",
 
   variants: {
+    ...SPACING_VARIANTS,
     size: {
       s: {
         fontSize: 32,

@@ -4,15 +4,22 @@ import { DISPLAY_VARIANTS } from "../styles/display";
 import { FLEX_VARIANTS } from "../styles/flex";
 import { SPACING_VARIANTS } from "../styles/spacing";
 
-const StyledBox = styled("div", {
-  display: "flex",
-  flexDirection: "row",
+type BoxBaseProps = any; // ComponentProps<typeof StyledBox>;
 
+export type BoxProps = BoxBaseProps & {
+  as?: string;
+};
+
+const StyledBox = styled("div", {
   variants: { ...FLEX_VARIANTS, ...SPACING_VARIANTS, ...DISPLAY_VARIANTS },
+
+  defaultVariants: {
+    display: "flex",
+  },
 });
 
 export const Box = memo(
-  forwardRef((props: any, ref: Ref<HTMLDivElement>) => {
+  forwardRef((props: BoxProps, ref: Ref<HTMLDivElement>) => {
     return <StyledBox ref={ref} {...props} />;
   })
 );

@@ -29,7 +29,6 @@ import {
   sandDark,
 } from "@radix-ui/colors";
 import { SPACING_UTILS } from "./styles/spacing";
-import { DISPLAY_UTILS } from "./styles/display";
 
 export const {
   styled,
@@ -76,7 +75,6 @@ export const {
   },
   utils: {
     ...SPACING_UTILS,
-    ...DISPLAY_UTILS,
   },
 });
 

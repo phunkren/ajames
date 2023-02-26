@@ -75,11 +75,11 @@ export const NOTION_TAG_VARIANTS = {
     },
     gray: {
       [`.${lightTheme} &`]: {
-        borderColor: "$slate11",
+        borderColor: "$crimson11",
       },
 
       [`.${darkTheme} &`]: {
-        borderColor: "$slate9",
+        borderColor: "$crimson9",
       },
     },
     brown: {

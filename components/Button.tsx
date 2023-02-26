@@ -37,6 +37,10 @@ import {
 } from "../types/button";
 import { DISPLAY_VARIANTS } from "../styles/display";
 
+type ButtonProps = any; // ComponentProps<typeof StyledButton>;
+
+type IconButtonProps = any; // ComponentProps<typeof StyledIconButton>;
+
 const scaleIn = keyframes({
   from: { transform: "rotateX(-30deg) scale(0.9)", opacity: 0 },
   to: { transform: "rotateX(0deg) scale(1)", opacity: 1 },
@@ -72,12 +76,13 @@ const StyledButton = styled("button", {
   },
 
   variants: {
+    ...DISPLAY_VARIANTS,
     variant: {
       primary: {
         boxShadow: "$1",
         backgroundColor: "$foregroundMuted",
         color: "$background",
-        spacing: "$2",
+        padding: "$2",
 
         "@media(hover)": {
           "&:hover": {
@@ -98,7 +103,7 @@ const StyledButton = styled("button", {
       secondary: {
         borderColor: "$foreground",
         boxShadow: "$1",
-        spacing: "$2",
+        padding: "$2",
 
         "@media(hover)": {
           "&:hover": {
@@ -131,25 +136,15 @@ const StyledButton = styled("button", {
         },
       },
     },
-    display: {
-      ...DISPLAY_VARIANTS.display,
-    },
   },
 
   defaultVariants: {
-    variant: "secondary",
     display: "flex",
+    variant: "secondary",
   },
 });
 
-export const Button = memo(
-  forwardRef((props: any, ref: Ref<HTMLButtonElement>) => {
-    return <StyledButton ref={ref} type="button" {...props} />;
-  })
-);
-
-export const StyledIconButton = styled(Button, {
-  display: "flex",
+export const StyledIconButton = styled("button", {
   alignItems: "center",
   justifyContent: "center",
   minWidth: 44,
@@ -158,8 +153,19 @@ export const StyledIconButton = styled(Button, {
   borderWidth: 2,
   borderStyle: "solid",
   backgroundColor: "transparent",
+  transition: "background 100ms ease-out, boxShadow 100ms ease-out",
+
+  appearance: "none",
+  "-webkit-appearance": "none",
+  "-moz-appearance": "none",
+
+  "&[aria-disabled='true']": {
+    pointerEvents: "none",
+    opacity: 0.4,
+  },
 
   variants: {
+    ...DISPLAY_VARIANTS,
     variant: {
       primary: {
         boxShadow: "$1",
@@ -221,9 +227,22 @@ export const StyledIconButton = styled(Button, {
   },
 
   defaultVariants: {
+    display: "flex",
     variant: "primary",
   },
 });
+
+export const Button = memo(
+  forwardRef((props: ButtonProps, ref: Ref<HTMLButtonElement>) => {
+    return <StyledButton ref={ref} type="button" {...props} />;
+  })
+);
+
+export const IconButton = memo(
+  forwardRef((props: IconButtonProps, ref: Ref<HTMLButtonElement>) => {
+    return <StyledIconButton ref={ref} type="button" {...props} />;
+  })
+);
 
 const StyledToastViewport = styled(Toast.Viewport, {
   position: "fixed",
@@ -282,7 +301,7 @@ const StyledPreviewToggle = styled(Toggle.Root, {
   borderColor: "transparent",
 });
 
-const StyledMobileNavigationButton = styled(StyledIconButton, {
+const StyledMobileNavigationButton = styled(IconButton, {
   borderWidth: 0,
 
   "&[data-state=open]": {
@@ -306,7 +325,9 @@ const StyledMobileNavigationButton = styled(StyledIconButton, {
   },
 });
 
-export const ScrollToTopButton = memo(function ScrollToTopButton(props: any) {
+export const ScrollToTopButton = memo(function ScrollToTopButton(
+  props: ButtonProps
+) {
   const handleScrollToTop = useCallback(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
@@ -366,19 +387,19 @@ export const ShareButton = memo(function ShareButton({
       <Box>
         {variant === "icon" ? (
           <Tooltip title="Share">
-            <StyledIconButton onClick={handleClick}>
+            <IconButton onClick={handleClick}>
               <Share2Icon
                 width={ICON_SIZE.m}
                 height={ICON_SIZE.m}
                 aria-hidden
               />
               <VisuallyHidden.Root>Share</VisuallyHidden.Root>
-            </StyledIconButton>
+            </IconButton>
           </Tooltip>
         ) : (
           <Button variant="tertiary" onClick={handleClick}>
             <Share2Icon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
-            <TextHeadline css={{ spacingLeft: "$2" }}>Share</TextHeadline>
+            <TextHeadline spacingLeft={2}>Share</TextHeadline>
           </Button>
         )}
 
@@ -431,10 +452,10 @@ export const PrintButton = memo(function PrintButton(props: any) {
 
   return (
     <Tooltip title="Print">
-      <StyledIconButton onClick={handleClick} {...props}>
+      <IconButton onClick={handleClick} {...props}>
         <VisuallyHidden.Root>Print</VisuallyHidden.Root>
         <FileIcon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
-      </StyledIconButton>
+      </IconButton>
     </Tooltip>
   );
 });
@@ -453,17 +474,13 @@ export const FilterClearButton = memo(function FilterClearButton({
 
   return (
     <Tooltip title="Clear Filter">
-      <StyledIconButton
-        aria-disabled={!filter}
-        onClick={handleClick}
-        {...props}
-      >
+      <IconButton aria-disabled={!filter} onClick={handleClick} {...props}>
         <VisuallyHidden.Root>
           <TextAux>Clear filter</TextAux>
         </VisuallyHidden.Root>
 
         <Cross2Icon width={ICON_SIZE.m} height={ICON_SIZE.m} />
-      </StyledIconButton>
+      </IconButton>
     </Tooltip>
   );
 });
@@ -475,7 +492,7 @@ export const FilterMenuButton = memo(
   ) {
     return (
       <Tooltip title={open ? "Collapse Filters" : "Filter Articles"}>
-        <StyledIconButton ref={ref} {...props}>
+        <IconButton ref={ref} {...props}>
           {open ? (
             <>
               <VisuallyHidden.Root>
@@ -493,7 +510,7 @@ export const FilterMenuButton = memo(
               <DropdownMenuIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
             </>
           )}
-        </StyledIconButton>
+        </IconButton>
       </Tooltip>
     );
   })
@@ -502,7 +519,7 @@ export const FilterMenuButton = memo(
 export const MobileNavigationButton = memo(
   forwardRef((props: any, ref: Ref<HTMLButtonElement>) => {
     return (
-      <Tooltip title="Mobile Navigation Menu">
+      <Tooltip title="Navigation">
         <StyledMobileNavigationButton ref={ref} variant="secondary" {...props}>
           <HamburgerMenuIcon
             id="mobileNav-hamburger"
@@ -526,9 +543,9 @@ export const MobileNavigationButton = memo(
 export const CloseButton = memo(function CloseButton(props: any) {
   return (
     <Tooltip title="Close">
-      <StyledIconButton variant="secondary" {...props}>
+      <IconButton variant="secondary" {...props}>
         <Cross1Icon width={ICON_SIZE.l} height={ICON_SIZE.l} aria-hidden />
-      </StyledIconButton>
+      </IconButton>
     </Tooltip>
   );
 });
