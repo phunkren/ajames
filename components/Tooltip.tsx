@@ -29,21 +29,23 @@ const slideLeftAndFade = keyframes({
 });
 
 const StyledTooltipContent = styled(RadixTooltip.Content, {
-  display: "flex",
-  alignItems: "center",
-  borderRadius: "$1",
-  padding: "$2 $4",
-  backgroundColor: "$backgroundMuted",
-  boxShadow: "$2",
-  userSelect: "none",
-  animationDuration: "200ms",
-  animationTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
-  willChange: "transform, opacity",
-  '&[data-state="delayed-open"]': {
-    '&[data-side="top"]': { animationName: slideDownAndFade },
-    '&[data-side="right"]': { animationName: slideLeftAndFade },
-    '&[data-side="bottom"]': { animationName: slideUpAndFade },
-    '&[data-side="left"]': { animationName: slideRightAndFade },
+  "@media(hover)": {
+    display: "flex",
+    alignItems: "center",
+    borderRadius: "$1",
+    padding: "$2 $4",
+    backgroundColor: "$backgroundMuted",
+    boxShadow: "$2",
+    userSelect: "none",
+    animationDuration: "200ms",
+    animationTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
+    willChange: "transform, opacity",
+    '&[data-state="delayed-open"]': {
+      '&[data-side="top"]': { animationName: slideDownAndFade },
+      '&[data-side="right"]': { animationName: slideLeftAndFade },
+      '&[data-side="bottom"]': { animationName: slideUpAndFade },
+      '&[data-side="left"]': { animationName: slideRightAndFade },
+    },
   },
 });
 
