@@ -1,5 +1,5 @@
-import { memo } from "react";
-import Image from "next/image";
+import { memo, ReactElement } from "react";
+import Image, { StaticImageData } from "next/image";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 import { blueDark, redDark } from "@radix-ui/colors";
@@ -12,9 +12,19 @@ import { ThemeToggle } from "./Toggle";
 import { Box } from "./Box";
 import { PageSeo } from "./SEO";
 import { TextAux, TextHeadline, TextTitle1 } from "./Text";
-import { StyledIconButton } from "./Button";
+import { IconButton } from "./Button";
 import { Logo } from "./Logo";
 import { Tooltip } from "./Tooltip";
+
+type LayoutProps = {
+  children: ReactElement;
+};
+
+type HeroLayoutProps = {
+  children?: ReactElement;
+  src?: StaticImageData;
+  bordered?: boolean;
+};
 
 const StyledHeroLayout = styled(Box, {
   width: "100vw",
@@ -63,7 +73,7 @@ const StyledHeroContainer = styled(Box, {
       color: "inherit",
     },
 
-    [`${StyledIconButton}, ${StyledIconLink}`]: {
+    [`${IconButton}, ${StyledIconLink}`]: {
       color: "inherit",
       borderColor: "inherit",
 
@@ -174,7 +184,7 @@ export const FooterLayout = memo(function FooterLayout() {
   );
 });
 
-export const Layout = memo(function Layout({ children }: any) {
+export const Layout = memo(function Layout({ children }: LayoutProps) {
   const { theme } = useTheme();
 
   return (
@@ -210,7 +220,7 @@ export const HeroLayout = memo(function HeroLayout({
   src,
   children,
   bordered = false,
-}: any) {
+}: HeroLayoutProps) {
   return (
     <StyledHeroLayout>
       <AspectRatio.Root ratio={2.5 / 1} asChild>
