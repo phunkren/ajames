@@ -74,6 +74,7 @@ const StyledNavigationSubmenu = styled(Box, {
   top: "$10",
   background: "$backgroundMuted",
   borderRadius: "$1",
+  padding: "$1",
   minWidth: 350,
   boxShadow: "$2",
   zIndex: 10,
@@ -87,6 +88,7 @@ const StyledNavigationSubmenu = styled(Box, {
 
 const StyledNavigationSubmenuLink = styled(Link, {
   flexGrow: 1,
+  alignItems: "center",
   padding: "$2",
   borderRadius: "$1",
 

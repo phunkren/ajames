@@ -3,7 +3,7 @@ import Balancer from "react-wrap-balancer";
 import ReactMarkdown from "react-markdown";
 import { useRouter } from "next/router";
 import remarkMdx from "remark-mdx";
-import { Tag } from "../../types/notion";
+import { Tag } from "../../util/notion";
 import {
   getAllPostIds,
   getPageData,
@@ -45,6 +45,7 @@ import { NextPageWithLayout } from "../_app";
 import { BlogSeo } from "../../components/SEO";
 import dynamic from "next/dynamic";
 import { ONE_HOUR_IN_SECONDS } from "../../util/date";
+import { GetStaticPaths, GetStaticProps } from "next";
 
 export type Frontmatter = {
   title: string;
@@ -135,7 +136,7 @@ const StyledContainer = styled(Box, {
 
 const StyledContent = styled(Box, {
   position: "relative",
-  top: -72,
+  top: -78,
 
   "@bp2": {
     top: -112,
@@ -151,18 +152,18 @@ const Figure = memo(function Figure({ src, alt, ...props }: FigureProps) {
   );
 });
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const paths = getAllPostIds();
 
   return {
     paths,
     fallback: false,
   };
-}
+};
 
-export async function getStaticProps({ params }: any) {
-  const pageData = await getPageData(params.id);
-  const postData = await getPostData(params.id);
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const pageData = await getPageData(params.id as string);
+  const postData = await getPostData(params.id as string);
   const postTime = await getPostTime(postData);
 
   const slug = pageData.properties.slug.rich_text[0].plain_text;
@@ -187,7 +188,7 @@ export async function getStaticProps({ params }: any) {
     },
     revalidate: ONE_HOUR_IN_SECONDS,
   };
-}
+};
 
 const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
   const { asPath } = useRouter();
@@ -212,7 +213,7 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
                 <Box direction="vertical">
                   <Emoji
                     emoji={frontmatter.emoji}
-                    size={{ "@initial": "s", "@bp2": "l" }}
+                    size={{ "@initial": "m", "@bp2": "l" }}
                     css={{
                       position: "relative",
                       right: "$1",

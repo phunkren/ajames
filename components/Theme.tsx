@@ -5,9 +5,18 @@ import React, {
   useMemo,
   useCallback,
   memo,
+  ReactNode,
 } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
-import { Theme, ThemeProviderProps } from "../types/theme";
+
+export enum Theme {
+  LIGHT = "light",
+  DARK = "dark",
+}
+
+export type ThemeProviderProps = {
+  children: ReactNode;
+};
 
 export const ThemeContext = createContext({
   theme: Theme.LIGHT,

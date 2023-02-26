@@ -1,4 +1,15 @@
-import { SpacingUnit } from "../types/spacing";
+export type SpacingUnit =
+  | "0.5"
+  | "1"
+  | "2"
+  | "3"
+  | "4"
+  | "5"
+  | "6"
+  | "7"
+  | "8"
+  | "9"
+  | "10";
 
 export const FLEX_UTILS = {
   gap: (value: SpacingUnit) => ({

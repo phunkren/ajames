@@ -9,10 +9,10 @@ import { Link, StyledIconLink } from "./Link";
 import { Navigation, NavigationMobile } from "./Navigation";
 import { Social } from "./Social";
 import { ThemeToggle } from "./Toggle";
-import { Box } from "./Box";
+import { Box, BoxProps } from "./Box";
 import { PageSeo } from "./SEO";
 import { TextAux, TextHeadline, TextTitle1 } from "./Text";
-import { IconButton } from "./Button";
+import { StyledIconButton } from "./Button";
 import { Logo } from "./Logo";
 import { Tooltip } from "./Tooltip";
 
@@ -22,7 +22,7 @@ type LayoutProps = {
 
 type HeroLayoutProps = {
   children?: ReactElement;
-  src?: StaticImageData;
+  src?: StaticImageData | string;
   bordered?: boolean;
 };
 
@@ -73,7 +73,7 @@ const StyledHeroContainer = styled(Box, {
       color: "inherit",
     },
 
-    [`${IconButton}, ${StyledIconLink}`]: {
+    [`${StyledIconButton}, ${StyledIconLink}`]: {
       color: "inherit",
       borderColor: "inherit",
 
@@ -248,7 +248,7 @@ export const HeroLayout = memo(function HeroLayout({
   );
 });
 
-export const ActionButtons = memo(function ActionButtons(props: any) {
+export const ActionButtons = memo(function ActionButtons(props: BoxProps) {
   return (
     <Box
       direction={{ "@initial": "vertical", "@bp2": "horizontal" }}

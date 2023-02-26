@@ -19,8 +19,8 @@ import {
   TextTitle3,
 } from "../../components/Text";
 import { styled } from "../../stitches.config";
-import { BlogPost, Tag } from "../../types/notion";
-import { filterPosts, getTags, sortPosts } from "../../util/posts";
+import { BlogPost, Tag } from "../../util/notion";
+import { filterPosts, getTags, sortPosts } from "../../util/notion";
 import { createPosts, generateRSSFeed, getPosts } from "../../lib/notion";
 import { Divider } from "../../components/Divider";
 import { FilterClearButton } from "../../components/Button";

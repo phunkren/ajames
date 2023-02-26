@@ -30,16 +30,26 @@ import { ICON_SIZE } from "../util/images";
 import { TextAux, TextHeadline } from "./Text";
 import { Tooltip } from "./Tooltip";
 import { Box } from "./Box";
-import {
-  FilterClearProps,
-  FilterMenuProps,
-  ShareButtonProps,
-} from "../types/button";
 import { DISPLAY_VARIANTS } from "../styles/display";
 
 type ButtonProps = any; // ComponentProps<typeof StyledButton>;
 
 type IconButtonProps = any; // ComponentProps<typeof StyledIconButton>;
+
+type ShareButtonProps = ButtonProps & {
+  url: string;
+  text: string;
+  emoji?: string;
+  variant?: string;
+};
+
+type FilterClearProps = ButtonProps & {
+  filter?: string;
+};
+
+type FilterMenuProps = ButtonProps & {
+  open: boolean;
+};
 
 const scaleIn = keyframes({
   from: { transform: "rotateX(-30deg) scale(0.9)", opacity: 0 },
@@ -445,7 +455,7 @@ export const PreviewToggle = memo(function PreviewToggle({
   );
 });
 
-export const PrintButton = memo(function PrintButton(props: any) {
+export const PrintButton = memo(function PrintButton(props: IconButtonProps) {
   const handleClick = useCallback(() => {
     window.print();
   }, []);
@@ -517,7 +527,7 @@ export const FilterMenuButton = memo(
 );
 
 export const MobileNavigationButton = memo(
-  forwardRef((props: any, ref: Ref<HTMLButtonElement>) => {
+  forwardRef((props: IconButtonProps, ref: Ref<HTMLButtonElement>) => {
     return (
       <Tooltip title="Navigation">
         <StyledMobileNavigationButton ref={ref} variant="secondary" {...props}>
@@ -540,7 +550,7 @@ export const MobileNavigationButton = memo(
   })
 );
 
-export const CloseButton = memo(function CloseButton(props: any) {
+export const CloseButton = memo(function CloseButton(props: IconButtonProps) {
   return (
     <Tooltip title="Close">
       <IconButton variant="secondary" {...props}>

@@ -1,9 +1,55 @@
-import { Education } from "../types/education";
-import { Employer } from "../types/employer";
-import { Social } from "../types/social";
-import { Testimonial } from "../types/testimonial";
+import { StaticImageData } from "next/image";
 import ooft from "../public/images/ooft.png";
-import { Project } from "../types/project";
+
+type Education = {
+  id: string;
+  qualification?: string;
+  course: string;
+  institution: string;
+  startDate?: string;
+  endDate: string;
+};
+
+type NoteableWork = {
+  id: string;
+  displayName: string;
+  url?: string;
+};
+
+type Employer = {
+  id: string;
+  displayName: string;
+  url: string;
+  position: string;
+  startDate?: string;
+  endDate?: string;
+  location: string;
+  content: string;
+  notableWork?: NoteableWork[];
+};
+
+type Social = {
+  id: string;
+  displayName: string;
+  url: string;
+  handle: string;
+};
+
+type Testimonial = {
+  id: string;
+  name: string;
+  url: string;
+  position: string;
+  quote: string;
+};
+
+type Project = {
+  id: string;
+  name: string;
+  url: string;
+  description: string;
+  src: StaticImageData;
+};
 
 export const EDUCATION: Education[] = [
   {

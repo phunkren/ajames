@@ -1,4 +1,4 @@
-import { MouseEvent, ReactElement, useCallback, useRef } from "react";
+import { ReactElement } from "react";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import Balancer from "react-wrap-balancer";
 import { PlayIcon } from "@radix-ui/react-icons";
@@ -35,7 +35,7 @@ import {
   PlaylistPreview,
   PlaylistVideosPreview,
   VideoPreview,
-} from "../types/youtube";
+} from "../util/youtube";
 import {
   CardScrollRoot,
   CardScrollViewport,
@@ -47,6 +47,7 @@ import { ICON_SIZE } from "../util/images";
 import { Box } from "../components/Box";
 import { NextPageWithLayout } from "./_app";
 import dynamic from "next/dynamic";
+import { GetStaticProps } from "next";
 
 type Props = {
   featuredVideo: VideoPreview;
@@ -93,7 +94,7 @@ const StyledYouTubePlayer = styled(DynamicYouTube, {
   },
 });
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   const { latestVideo, playlists, videos, channelInfo } =
     await getYoutubeData();
 
@@ -116,7 +117,7 @@ export async function getStaticProps() {
     },
     revalidate: ONE_HOUR_IN_SECONDS,
   };
-}
+};
 
 const Learning: NextPageWithLayout = ({
   featuredVideo,

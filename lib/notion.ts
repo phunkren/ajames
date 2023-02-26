@@ -6,7 +6,7 @@ import mdx from "remark-mdx";
 import rehypeInferReadingTimeMeta from "rehype-infer-reading-time-meta";
 import { Client } from "@notionhq/client";
 import { NotionToMarkdown } from "notion-to-md";
-import { BlogPost } from "../types/notion";
+import { BlogPost } from "../util/notion";
 import { PERSONAL, SITE, SOCIAL } from "../util/data";
 import { Feed } from "feed";
 

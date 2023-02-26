@@ -5,11 +5,11 @@ import * as Select from "@radix-ui/react-select";
 import { darkTheme, keyframes, lightTheme, styled } from "../stitches.config";
 import { useTheme } from "../hooks/useTheme";
 import { NOTION_TAG_VARIANTS } from "../styles/tag";
-import { Tag } from "../types/notion";
 import { TextAux, TextTitle3 } from "./Text";
 import { Button, CloseButton, FilterMenuButton } from "./Button";
 import { Box } from "./Box";
 import { DrawerScrollRoot, DrawerScrollViewport, Scrollbar } from "./Scroll";
+import { Tag } from "../util/notion";
 
 type TagSelectProps = Pick<Select.SelectViewportProps, "children"> &
   Pick<Select.SelectProps, "value" | "onValueChange">;

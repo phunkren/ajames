@@ -5,6 +5,8 @@ import {
   useMemo,
   useRef,
   useState,
+  ReactNode,
+  Ref,
 } from "react";
 import Image from "next/image";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
@@ -14,15 +16,41 @@ import { PostTags, PublishDate, YoutubeChannel } from "./Frontmatter";
 import { Box } from "./Box";
 import { Emoji, TextAux, TextHeadline, TextTitle3 } from "./Text";
 import { Link } from "./Link";
-import {
-  BlogCardProps,
-  CardChildProps,
-  CardProps,
-  VideoCardProps,
-} from "../types/card";
 import { PreviewToggle } from "./Button";
 import { BLUR_DATA_URL } from "../util/images";
 import { YOUTUBE_LIKED_VIDEOS_PLAYLIST_ID } from "../util/youtube";
+import { CSS } from "../stitches.config";
+import { Tag } from "../util/notion";
+
+export type CardChildProps = {
+  ref: Ref<HTMLAnchorElement>;
+  isPreviewVisible: boolean;
+  onPreviewToggle: (pressed: boolean) => void;
+};
+
+export type CardProps = {
+  image: string;
+  children: (props: CardChildProps) => ReactNode;
+};
+
+export type BlogCardProps = CSS & {
+  url: string;
+  image: string;
+  description: string;
+  title: string;
+  emoji: string;
+  tags: Tag[];
+};
+
+export type VideoCardProps = CSS & {
+  url: string;
+  image: string;
+  publishDate: string;
+  title: string;
+  channel?: string;
+  description?: string;
+  css: any;
+};
 
 const StyledLink = styled(Link, {
   "@media(hover)": {

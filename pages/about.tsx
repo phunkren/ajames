@@ -35,26 +35,13 @@ import { Box } from "../components/Box";
 import { NextPageWithLayout } from "./_app";
 import { Tooltip } from "../components/Tooltip";
 
-const StyledPrintHeader = styled(Box, {
-  display: "none",
-
-  "@print": {
-    display: "block",
-  },
-});
-
 const StyledPageHeader = styled(Box, {
-  display: "block",
   position: "relative",
   color: "$foreground",
 
   "@bp3": {
     left: 0,
     width: "100%",
-  },
-
-  "@print": {
-    display: "none",
   },
 });
 
@@ -133,7 +120,7 @@ const About: NextPageWithLayout = () => {
   return (
     <Box>
       <Box direction="vertical">
-        <StyledPageHeader>
+        <StyledPageHeader display={{ "@print": "none", "@initial": "flex" }}>
           <HeroLayout bordered>
             <Box direction="vertical" position="relative" flexGrow>
               <Box
@@ -176,25 +163,29 @@ const About: NextPageWithLayout = () => {
           </HeroLayout>
         </StyledPageHeader>
 
-        <StyledPrintHeader>
+        <Box
+          display={{ "@print": "flex", "@initial": "none" }}
+          spacingBottom={{ "@print": 6, "@initial": 10 }}
+        >
           <Box
             direction="vertical"
             spacingHorizontal={3}
-            spacingBottom={4}
+            spacingBottom={3}
             css={{ borderBottom: "2px solid black" }}
           >
             <TextTitle1>{PERSONAL.name}</TextTitle1>
-            <TextHeadline>{PERSONAL.occupation} / Glasgow, UK</TextHeadline>
+            <TextHeadline>
+              {PERSONAL.occupation} / {PERSONAL.location}
+            </TextHeadline>
           </Box>
-        </StyledPrintHeader>
+        </Box>
 
         <Box
           id="__cv"
           direction="horizontal"
           gap={{ "@print": 4, "@initial": 0, "@bp2": 10 }}
           spacingHorizontal={{ "@print": 3, "@initial": 4, "@bp2": 10 }}
-          spacingTop={{ "@print": 8, "@initial": 10 }}
-          spacingBottom={{ "@print": 0, "@initial": 10 }}
+          spacingVertical={{ "@print": 0, "@initial": 10 }}
           flexWrap={{
             "@print": "nowrap",
             "@initial": "wrapReverse",
@@ -215,10 +206,7 @@ const About: NextPageWithLayout = () => {
                 Contact
               </TextTitle3>
 
-              <Box
-                spacingTop={2}
-                spacingBottom={{ "@print": 4, "@initial": 6 }}
-              >
+              <Box spacingTop={2} spacingBottom={6}>
                 <Divider />
               </Box>
 
@@ -290,10 +278,7 @@ const About: NextPageWithLayout = () => {
                 Expertise
               </TextTitle3>
 
-              <Box
-                spacingTop={2}
-                spacingBottom={{ "@print": 4, "@initial": 6 }}
-              >
+              <Box spacingTop={2} spacingBottom={6}>
                 <Divider />
               </Box>
 
@@ -319,10 +304,7 @@ const About: NextPageWithLayout = () => {
                 Interests
               </TextTitle3>
 
-              <Box
-                spacingTop={2}
-                spacingBottom={{ "@print": 4, "@initial": 6 }}
-              >
+              <Box spacingTop={2} spacingBottom={6}>
                 <Divider />
               </Box>
 
@@ -348,10 +330,7 @@ const About: NextPageWithLayout = () => {
                 Education
               </TextTitle3>
 
-              <Box
-                spacingTop={2}
-                spacingBottom={{ "@print": 4, "@initial": 6 }}
-              >
+              <Box spacingTop={2} spacingBottom={6}>
                 <Divider />
               </Box>
 
@@ -430,10 +409,7 @@ const About: NextPageWithLayout = () => {
                 </Box>
               </Link>
 
-              <Box
-                spacingTop={2}
-                spacingBottom={{ "@print": 4, "@initial": 6 }}
-              >
+              <Box spacingTop={2} spacingBottom={6}>
                 <Divider />
               </Box>
 
@@ -481,7 +457,7 @@ const About: NextPageWithLayout = () => {
           <Box
             direction="vertical"
             gap={{ "@print": 8, "@initial": 10 }}
-            spacingBottom={10}
+            spacingBottom={{ "@print": 0, "@initial": 10 }}
             flexGrow
           >
             <Box as="section" aria-labelledby="profile" direction="vertical">
@@ -489,10 +465,7 @@ const About: NextPageWithLayout = () => {
                 Profile
               </TextTitle3>
 
-              <Box
-                spacingTop={2}
-                spacingBottom={{ "@print": 4, "@initial": 6 }}
-              >
+              <Box spacingTop={2} spacingBottom={6}>
                 <Divider />
               </Box>
 
@@ -512,10 +485,7 @@ const About: NextPageWithLayout = () => {
                 Experience
               </TextTitle3>
 
-              <Box
-                spacingTop={2}
-                spacingBottom={{ "@print": 4, "@initial": 6 }}
-              >
+              <Box spacingTop={2} spacingBottom={6}>
                 <Divider />
               </Box>
 
@@ -525,7 +495,7 @@ const About: NextPageWithLayout = () => {
                     direction="vertical"
                     gap={4}
                     key={employer.id}
-                    spacingBottom={1}
+                    spacingBottom={2}
                   >
                     <Box direction="vertical">
                       <TextTitle3>{employer.position}</TextTitle3>

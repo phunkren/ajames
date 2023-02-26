@@ -1,21 +1,28 @@
-import { forwardRef, memo, Ref } from "react";
-import NextLink from "next/link";
+import { forwardRef, memo, Ref, AnchorHTMLAttributes } from "react";
+import NextLink, { LinkProps as NextLinkProps } from "next/link";
+import { UrlObject } from "url";
 import { MdRssFeed } from "react-icons/md";
-import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
-import { CSS, darkTheme, lightTheme, styled } from "../stitches.config";
-import { YOUTUBE_SUBSCRIBE_URL } from "../util/youtube";
 import {
   DownloadIcon,
   TwitterLogoIcon,
   VideoIcon,
 } from "@radix-ui/react-icons";
-import { TextAux, TextHeadline } from "./Text";
-import { LinkProps } from "../types/link";
+import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
+import { CSS, darkTheme, lightTheme, styled } from "../stitches.config";
+import { YOUTUBE_SUBSCRIBE_URL } from "../util/youtube";
 import { buildUrl } from "../util/url";
+import { ICON_SIZE } from "../util/images";
 import { SITE, SOCIAL } from "../util/data";
 import { Box } from "./Box";
-import { ICON_SIZE } from "../util/images";
 import { Tooltip } from "./Tooltip";
+import { TextAux, TextHeadline } from "./Text";
+
+export type LinkProps = CSS &
+  Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href"> & {
+    href: string | UrlObject;
+    nextLinkProps?: Omit<NextLinkProps, "href">;
+    variant?: "primary" | "secondary";
+  };
 
 type TwitterShareProps = {
   url: string;

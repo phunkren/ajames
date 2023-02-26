@@ -10,11 +10,10 @@ import {
   VideoIcon,
 } from "@radix-ui/react-icons";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
-import { Tag } from "../types/notion";
 import { formatLongDate } from "../util/date";
 import { ICON_SIZE } from "../util/images";
 import { formatNumber } from "../util/number";
-import { formatReadingTime } from "../util/posts";
+import { formatReadingTime, Tag } from "../util/notion";
 import { Box, BoxProps } from "./Box";
 import { TextAux, TextHeadline } from "./Text";
 import { StyledTag } from "./Tags";
@@ -49,7 +48,7 @@ type YoutubeChannelProps = FrontMatterItemProps & {
   channel: string;
 };
 
-export const Frontmatter = memo(function Frontmatter(props: any) {
+export const Frontmatter = memo(function Frontmatter(props: BoxProps) {
   return (
     <Box
       as="ul"

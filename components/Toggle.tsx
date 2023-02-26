@@ -2,10 +2,10 @@ import { memo, useCallback } from "react";
 import * as Switch from "@radix-ui/react-switch";
 import { GridIcon, MoonIcon, RowsIcon, SunIcon } from "@radix-ui/react-icons";
 import { darkTheme, lightTheme, styled } from "../stitches.config";
-import { Theme } from "../types/theme";
 import { ICON_SIZE } from "../util/images";
 import { useTheme } from "../hooks/useTheme";
 import { Tooltip } from "./Tooltip";
+import { Theme } from "./Theme";
 
 const StyledSunIcon = styled(SunIcon, {
   position: "absolute",
