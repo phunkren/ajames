@@ -20,8 +20,8 @@ export type CodeProps = {
 
 SyntaxHighlighter.registerLanguage("typescript", typescript);
 SyntaxHighlighter.registerLanguage("javascript", javascript);
-// SyntaxHighlighter.registerLanguage("htmlbars", htmlbars);
-SyntaxHighlighter.registerLanguage("htmlbars", markup);
+SyntaxHighlighter.registerLanguage("htmlbars", htmlbars);
+SyntaxHighlighter.registerLanguage("text", markup);
 SyntaxHighlighter.registerLanguage("css", css);
 SyntaxHighlighter.registerLanguage("scss", scss);
 SyntaxHighlighter.registerLanguage("json", json);
