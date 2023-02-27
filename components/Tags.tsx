@@ -91,7 +91,7 @@ const StyledDrawerContent = styled(Dialog.Content, {
   minWidth: 300,
   zIndex: 99,
   transform: "translate3d(0, 0, 0)",
-  animation: `${dialogSlideUp} 200ms ease-out 50ms forwards`,
+  animation: `${dialogSlideUp} 300ms ease-out 50ms forwards`,
 });
 
 const StyledDrawerGrid = styled("ul", {
