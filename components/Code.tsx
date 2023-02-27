@@ -5,6 +5,7 @@ import atomOneLight from "react-syntax-highlighter/dist/cjs/styles/hljs/atom-one
 import typescript from "react-syntax-highlighter/dist/esm/languages/hljs/typescript";
 import javascript from "react-syntax-highlighter/dist/esm/languages/hljs/javascript";
 import htmlbars from "react-syntax-highlighter/dist/esm/languages/hljs/htmlbars";
+import markup from "react-syntax-highlighter/dist/esm/languages/prism/markup";
 import scss from "react-syntax-highlighter/dist/esm/languages/hljs/scss";
 import css from "react-syntax-highlighter/dist/esm/languages/hljs/css";
 import json from "react-syntax-highlighter/dist/esm/languages/hljs/json";
@@ -19,16 +20,12 @@ export type CodeProps = {
 
 SyntaxHighlighter.registerLanguage("typescript", typescript);
 SyntaxHighlighter.registerLanguage("javascript", javascript);
-SyntaxHighlighter.registerLanguage("htmlbars", htmlbars);
+// SyntaxHighlighter.registerLanguage("htmlbars", htmlbars);
+SyntaxHighlighter.registerLanguage("htmlbars", markup);
 SyntaxHighlighter.registerLanguage("css", css);
 SyntaxHighlighter.registerLanguage("scss", scss);
 SyntaxHighlighter.registerLanguage("json", json);
 SyntaxHighlighter.registerLanguage("markdown", markdown);
-
-const LANGUAGE_MAP = {
-  html: "htmlbars",
-  text: "htmlbars",
-};
 
 const STYLE_MAP = {
   light: atomOneLight,
@@ -41,6 +38,7 @@ export const Code = memo(function Code({
   children,
 }: CodeProps) {
   const language = className?.split("-")[1] ?? "";
+
   const { themeName } = useTheme();
 
   if (inline) {
@@ -49,7 +47,7 @@ export const Code = memo(function Code({
 
   return (
     <SyntaxHighlighter
-      language={LANGUAGE_MAP[language] ?? language}
+      language={language}
       style={STYLE_MAP[themeName]}
       wrapLongLines
     >
