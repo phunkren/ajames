@@ -11,7 +11,7 @@ import css from "react-syntax-highlighter/dist/esm/languages/hljs/css";
 import json from "react-syntax-highlighter/dist/esm/languages/hljs/json";
 import markdown from "react-syntax-highlighter/dist/esm/languages/hljs/markdown";
 import { useTheme } from "../hooks/useTheme";
-import { TextAux } from "./Text";
+import { TextBody } from "./Text";
 
 export type CodeProps = {
   inline?: boolean;
@@ -47,7 +47,7 @@ export const Code = memo(function Code({
   const { themeName } = useTheme();
 
   if (inline) {
-    return <TextAux as="code">{children}</TextAux>;
+    return <TextBody as="code">{children}</TextBody>;
   }
 
   return (
