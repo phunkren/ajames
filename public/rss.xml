@@ -4,7 +4,7 @@
         <title>ajames.dev | Blogs</title>
         <link>https://ajames.vercel.app</link>
         <description>I'm a software engineer based in Glasgow, Scotland. My passion for frontend web technology continually drives me to advance my skill set and adopt the latest industry best practices. An analytical mindset and strong communication skills allow me to excel in environments where I can learn from others and inspire my peers. Over the years I've refined a set of technical principles to strive towards, namely: complexity should only be introduced when it’s unavoidable; code should be easy to reason with and delete; avoid abstracting too early, and the top priority is always the best possible user experience.</description>
-        <lastBuildDate>Tue, 07 Feb 2023 19:39:00 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 26 Feb 2023 19:44:06 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -118,7 +118,7 @@ Finally, cable tidies are great for removing clutter from your desk. They can re
 ]]></content:encoded>
             <author>contact@ajames.dev (Andrew James)</author>
             <category>Productivity</category>
-            <enclosure length="0" type="image/jpg" url="https://i.imgur.com/padlgmg.jpg"/>
+            <enclosure length="0" type="image/jpg" url="https://i.imgur.com/3WFVrNY.jpg"/>
         </item>
         <item>
             <title><![CDATA[Building an Accessible Menubar Component Using React]]></title>
@@ -126,7 +126,7 @@ Finally, cable tidies are great for removing clutter from your desk. They can re
             <guid>https://ajames.vercel.app/blog/accessible-menubar</guid>
             <pubDate>Fri, 01 Apr 2022 00:00:00 GMT</pubDate>
             <description><![CDATA[How to create an accessible Menubar component with React, based on the WAI-ARIA design pattern for a menubar widget. ]]></description>
-            <content:encoded><![CDATA[Last week I watched Pedro Duarte's excellent *"So You Think You Can Build A Dropdown"* [talk ](https://www.youtube.com/watch?v=lY-RQjWeweo)at Next.js Conf. It inspired me to write up an accessible component of my own that I recently worked on — the menubar widget.
+            <content:encoded><![CDATA[Last week I watched [Pedro Duarte](https://www.youtube.com/watch?v=lY-RQjWeweo)'s excellent *"So You Think You Can Build A Dropdown"* talk at Next.js Conf. It inspired me to write up an accessible component of my own that I recently worked on — the menubar widget.
 
 I have a real interest in accessibility, particularly in frontend web development. Of all the patterns that I've researched to date, the menubar was the most complex. [Reach](https://reach.tech/), [Radix](https://www.radix-ui.com/), and [React Aria](https://react-spectrum.adobe.com/react-aria/index.html) all provide flexible and accessible React components.
 
@@ -1130,7 +1130,7 @@ Special thanks to [Jenna Smith](https://twitter.com/jjenzz) for her invaluable c
             <author>contact@ajames.dev (Andrew James)</author>
             <category>react</category>
             <category>a11y</category>
-            <enclosure length="0" type="image/jpg" url="https://i.imgur.com/ea3i0eM.jpg"/>
+            <enclosure length="0" type="image/jpg" url="https://i.imgur.com/8JeSXnW.jpg"/>
         </item>
         <item>
             <title><![CDATA[So you want to write a Groom’s speech?]]></title>
@@ -1247,7 +1247,7 @@ Thank you.
             <author>contact@ajames.dev (Andrew James)</author>
             <category>Family</category>
             <category>Public Speaking</category>
-            <enclosure length="0" type="image/jpg" url="https://i.imgur.com/jehqEYc.jpg"/>
+            <enclosure length="0" type="image/jpg" url="https://i.imgur.com/uGmg7vy.jpg"/>
         </item>
         <item>
             <title><![CDATA[So you want to build a PC?]]></title>
@@ -1307,11 +1307,11 @@ In terms of cabling, you have the choice of modular, semi-modular, and non-modul
 
 More important than people give it credit for. You want two things from a case: good airflow and cable management. A large 140mm intake fan on the front of the case and a smaller 120mm exhaust fan on the rear to expel hot air is a standard airflow and usually enough for most starter builds. Better cable management means better airflow (and aesthetics), so it's worth putting in the time.
 
-![My desktop PC (side-view)](https://i.imgur.com/gzDhckY.jpg)
+![My desktop PC (side-view)](https://i.imgur.com/Tn78QWZ.jpg)
 ]]></content:encoded>
             <author>contact@ajames.dev (Andrew James)</author>
             <category>Technology</category>
-            <enclosure length="0" type="image/jpg" url="https://i.imgur.com/cgCr9LR.jpg"/>
+            <enclosure length="0" type="image/jpg" url="https://i.imgur.com/gZ8Yk24.jpg"/>
         </item>
         <item>
             <title><![CDATA[Multiple Entry Points in Create React App Without Ejecting]]></title>
@@ -1393,9 +1393,9 @@ if (process.env.REACT_APP_BUILD_TARGET === 'test')
 
 We used [Netlify](https://www.netlify.com/) to create a production environment for each application. Both sites will be virtually identical. They'll both point to the same [GitHub repository](https://github.com/phunkren/multiple-entry-points) and have master set as the production branch. The only difference will be their respective `BUILD_TARGET` environment variable: `test` is assigned to the [testing site](https://multiple-entry-points-test.netlify.app/), and `app` for the [main application](https://multiple-entry-points-app.netlify.app/).
 
-![Netlify: App test environment](https://i.imgur.com/gG0sGVc.jpg)
+![Netlify: App test environment](https://i.imgur.com/MiVtOXx.jpg)
 
-![Netlify: App production environment](https://i.imgur.com/QL3KX14.jpg)
+![Netlify: App production environment](https://i.imgur.com/UObQijK.jpg)
 
 We now have two production environments with the correct build target and free from human error. All that's left is to ensure that only the code from the defined container appears in the bundled build. Due to the nature of tree-shaking, all of the imported containers in the application's current `index.js` file would appear in the production build files, regardless of our build target. To remedy this we can use CommonJS to conditionally require the desired container based on the `BUILD_TARGET` environment variable.
 
@@ -1450,7 +1450,8 @@ Special thanks to [Stephen Taylor](https://twitter.com/meandmycode) and [Robin W
 ]]></content:encoded>
             <author>contact@ajames.dev (Andrew James)</author>
             <category>react</category>
-            <enclosure length="0" type="image/jpg" url="https://i.imgur.com/la3fekz.jpg"/>
+            <category>infra</category>
+            <enclosure length="0" type="image/jpg" url="https://i.imgur.com/ZrNrNhM.jpg"/>
         </item>
         <item>
             <title><![CDATA[So you want to WFH?]]></title>
@@ -1502,7 +1503,7 @@ You’ll be spending 40+ hours per week working here, so try to make it as invit
 ]]></content:encoded>
             <author>contact@ajames.dev (Andrew James)</author>
             <category>Productivity</category>
-            <enclosure length="0" type="image/jpg" url="https://i.imgur.com/lQvNL24.jpg"/>
+            <enclosure length="0" type="image/jpg" url="https://i.imgur.com/28zoqjJ.jpg"/>
         </item>
         <item>
             <title><![CDATA[Building a Responsive Camera Component Using React Hooks]]></title>
@@ -2116,8 +2117,8 @@ For the moment the component serves to provide images as proof of authenticity, 
 ]]></content:encoded>
             <author>contact@ajames.dev (Andrew James)</author>
             <category>react</category>
-            <category>css-in-js</category>
-            <enclosure length="0" type="image/jpg" url="https://i.imgur.com/kau9Fcb.jpg"/>
+            <category>css</category>
+            <enclosure length="0" type="image/jpg" url="https://i.imgur.com/kKcCWrj.jpg"/>
         </item>
         <item>
             <title><![CDATA[Mastering Modals in React with Context and Portals]]></title>
@@ -2155,7 +2156,7 @@ With this approach, the `Modal` component can now be used anywhere within the `M
 ]]></content:encoded>
             <author>contact@ajames.dev (Andrew James)</author>
             <category>react</category>
-            <enclosure length="0" type="image/jpg" url="https://i.imgur.com/ihdlQLe.jpg"/>
+            <enclosure length="0" type="image/png" url="https://i.imgur.com/BnIYGR7.png"/>
         </item>
         <item>
             <title><![CDATA[So you want to buy a puppy? ]]></title>
@@ -2219,7 +2220,7 @@ I now fully understand this statement.
             <author>contact@ajames.dev (Andrew James)</author>
             <category>Pets</category>
             <category>Family</category>
-            <enclosure length="0" type="image/jpg" url="https://i.imgur.com/Wt4Lu7N.jpg"/>
+            <enclosure length="0" type="image/jpg" url="https://i.imgur.com/CEIs6JK.jpg"/>
         </item>
         <item>
             <title><![CDATA[Streamlining State Management in Storybook with React]]></title>
@@ -2335,8 +2336,8 @@ You can find the repository on [GitHub](https://github.com/phunkren/storybook-st
 ]]></content:encoded>
             <author>contact@ajames.dev (Andrew James)</author>
             <category>react</category>
-            <category>storybook</category>
-            <enclosure length="0" type="image/jpg" url="https://i.imgur.com/WclzTTm.jpg"/>
+            <category>infra</category>
+            <enclosure length="0" type="image/jpg" url="https://i.imgur.com/TAeaiX1.jpg"/>
         </item>
         <item>
             <title><![CDATA[Elevating Your Tech Meetup with Live Streaming]]></title>
@@ -2348,7 +2349,7 @@ You can find the repository on [GitHub](https://github.com/phunkren/storybook-st
 
 Remote work is becoming increasingly common in digital professions, including ours. As a result, we decided to extend our meet-up to employees who were unable to attend in person. Initially, we recorded the talks using a laptop placed on a coffee table facing the presenter and a television, and then uploaded the recordings to YouTube for later viewing. While this solution allowed us to share the talks with a wider audience, it also had its fair share of issues.
 
-![1.1: One of the original Egg talk recordings](https://i.imgur.com/sBGfPhi.jpg)
+![1.1: One of the original Egg talk recordings](https://i.imgur.com/6MhtDD7.jpg)
 
 The omnidirectional microphone on the laptop made it difficult to clearly capture the presenter's voice and was prone to picking up background noise. Additionally, the glare on the television and the inconsistency in refresh rate between the television and the laptop's camera made it hard to see the presenter's slides. The talks also tended to last over two hours, which meant that it took several hours to upload and process the files for remote viewers to watch. Ideally, those watching remotely should have the same level of clarity as those in the room. However, the challenge is to improve the quality of the live stream without compromising the experience for those attending in person.
 
@@ -2360,11 +2361,11 @@ To use the iPhone's microphone as an audio input, we had to hardwire it to the M
 
 In OBS, we created two types of scenes: input scenes and broadcasting scenes. An input scene contains one of the hardware inputs and any related sources, which can then be imported into a broadcasting scene. A broadcasting scene is what the end user will see on the live stream and is composed of sources and input scenes. By creating a scene for each input, we were able to group and control the sources from a single source of truth, while still being able to distribute the group across multiple scenes.
 
-![1.2: A list of scenes and sources in OBS (input scenes as sources are highlighted green)](https://i.imgur.com/3dvuPzF.jpg)
+![1.2: A list of scenes and sources in OBS (input scenes as sources are highlighted green)](https://i.imgur.com/oUCr7yw.jpg)
 
 In OBS, we created a list of scenes and designated the "Primary" scene as the one that would be broadcasted. The Primary scene included the live camera shot, the presenter's slides, and the microphone. We also added a green border and a small logo to the live camera view and used a placeholder image of the company logo to replace the background shot when the slides were not available. Additionally, we created a "Placeholder" scene to be displayed at the beginning and end of the stream, or during intermissions. This scene consisted of a simple background image of our Egg poster with no audio or visual inputs.
 
-![1.3: Broadcasting scene overlay in OBS](https://i.imgur.com/cOqezAh.jpg)
+![1.3: Broadcasting scene overlay in OBS](https://i.imgur.com/E41JTDl.jpg)
 
 The final step was to choose a platform to host the live stream. We decided to use YouTube and had to enable our account for live streaming, which was a one-time process that took about 24 hours for YouTube to approve. Once our account was enabled, we scheduled an event for the upcoming Egg talk. Events provide more control over the broadcast, such as generating an event URL that we can share with invited viewers, displaying a countdown to the start time if the URL is accessed before the event goes live, and allowing us to restrict access to the event. We chose to host our talks privately for now, which means the stream is only accessible to the host and those invited and will not appear in search results or public playlists.
 
@@ -2372,15 +2373,15 @@ We also configured default event settings and a reusable stream key, which allow
 
 ![1.4: YouTube encoder settings](https://i.imgur.com/qar9gqx.jpg)
 
-![1.5: OBS stream settings](https://i.imgur.com/9Y7fzOf.jpg)
+![1.5: OBS stream settings](https://i.imgur.com/Dc14Jt0.jpg)
 
 While we were able to achieve our desire result, there were a few compromises. For example, a thick red border appeared around the screen when a device was recording the output from the Apple TV, which was visible to those in the room but not on the live stream. There was also a notification in the top right corner of the screen indicating which device was recording the output, which was visible on both the television and the live stream. Additionally, the camera, which was connected over Wi-Fi through a third-party application, introduced about two seconds of latency between the live camera shot and the presenter's voice and slides, which reduced the overall quality of the stream.
 
 Despite these issues, the stream still provided a significant improvement in quality compared to the initial talks. The event is now immediately available to anyone with permission and access to the link, and YouTube automatically archives the broadcast for later viewing. The presenter's voice is clearer, the background noise has been reduced, the slides are the main focus and can be seen clearly, and the camera gives viewers a sense of the room. With some modest upgrades, we believe it is possible to make further refinements, although the benefits of doing so remain to be seen.
 ]]></content:encoded>
             <author>contact@ajames.dev (Andrew James)</author>
-            <category>livestream</category>
-            <enclosure length="0" type="image/jpg" url="https://i.imgur.com/4OS812V.jpg"/>
+            <category>dev rel</category>
+            <enclosure length="0" type="image/jpg" url="https://i.imgur.com/n7BzF2a.jpg"/>
         </item>
         <item>
             <title><![CDATA[Bridging the Gap: Improving Collaboration Between Engineering and Design]]></title>
@@ -2389,9 +2390,9 @@ Despite these issues, the stream still provided a significant improvement in qua
             <pubDate>Sun, 13 May 2018 00:00:00 GMT</pubDate>
             <description><![CDATA[Creating a visual grid overlay in a React project helps bridge the gap between engineering and design, improving collaboration and leading to more consistent and accurate layouts.]]></description>
             <author>contact@ajames.dev (Andrew James)</author>
-            <category>css-in-js</category>
+            <category>css</category>
             <category>react</category>
-            <enclosure length="0" type="image/jpg" url="https://i.imgur.com/sbW7IxY.jpg"/>
+            <enclosure length="0" type="image/jpg" url="https://i.imgur.com/rHd4WWa.jpg"/>
         </item>
     </channel>
 </rss>

@@ -5,7 +5,7 @@ One of my favourite parts of my job is being surrounded by creative professional
 Remote work is becoming increasingly common in digital professions, including ours. As a result, we decided to extend our meet-up to employees who were unable to attend in person. Initially, we recorded the talks using a laptop placed on a coffee table facing the presenter and a television, and then uploaded the recordings to YouTube for later viewing. While this solution allowed us to share the talks with a wider audience, it also had its fair share of issues.
 
 
-![1.1: One of the original Egg talk recordings](https://i.imgur.com/sBGfPhi.jpg)
+![1.1: One of the original Egg talk recordings](https://i.imgur.com/6MhtDD7.jpg)
 
 
 The omnidirectional microphone on the laptop made it difficult to clearly capture the presenter's voice and was prone to picking up background noise. Additionally, the glare on the television and the inconsistency in refresh rate between the television and the laptop's camera made it hard to see the presenter's slides. The talks also tended to last over two hours, which meant that it took several hours to upload and process the files for remote viewers to watch. Ideally, those watching remotely should have the same level of clarity as those in the room. However, the challenge is to improve the quality of the live stream without compromising the experience for those attending in person.
@@ -23,13 +23,13 @@ To use the iPhone's microphone as an audio input, we had to hardwire it to the M
 In OBS, we created two types of scenes: input scenes and broadcasting scenes. An input scene contains one of the hardware inputs and any related sources, which can then be imported into a broadcasting scene. A broadcasting scene is what the end user will see on the live stream and is composed of sources and input scenes. By creating a scene for each input, we were able to group and control the sources from a single source of truth, while still being able to distribute the group across multiple scenes.
 
 
-![1.2: A list of scenes and sources in OBS (input scenes as sources are highlighted green)](https://i.imgur.com/3dvuPzF.jpg)
+![1.2: A list of scenes and sources in OBS (input scenes as sources are highlighted green)](https://i.imgur.com/oUCr7yw.jpg)
 
 
 In OBS, we created a list of scenes and designated the "Primary" scene as the one that would be broadcasted. The Primary scene included the live camera shot, the presenter's slides, and the microphone. We also added a green border and a small logo to the live camera view and used a placeholder image of the company logo to replace the background shot when the slides were not available. Additionally, we created a "Placeholder" scene to be displayed at the beginning and end of the stream, or during intermissions. This scene consisted of a simple background image of our Egg poster with no audio or visual inputs.
 
 
-![1.3: Broadcasting scene overlay in OBS](https://i.imgur.com/cOqezAh.jpg)
+![1.3: Broadcasting scene overlay in OBS](https://i.imgur.com/E41JTDl.jpg)
 
 
 The final step was to choose a platform to host the live stream. We decided to use YouTube and had to enable our account for live streaming, which was a one-time process that took about 24 hours for YouTube to approve. Once our account was enabled, we scheduled an event for the upcoming Egg talk. Events provide more control over the broadcast, such as generating an event URL that we can share with invited viewers, displaying a countdown to the start time if the URL is accessed before the event goes live, and allowing us to restrict access to the event. We chose to host our talks privately for now, which means the stream is only accessible to the host and those invited and will not appear in search results or public playlists. 
@@ -41,7 +41,7 @@ We also configured default event settings and a reusable stream key, which allow
 ![1.4: YouTube encoder settings](https://i.imgur.com/qar9gqx.jpg)
 
 
-![1.5: OBS stream settings](https://i.imgur.com/9Y7fzOf.jpg)
+![1.5: OBS stream settings](https://i.imgur.com/Dc14Jt0.jpg)
 
 
 While we were able to achieve our desire result, there were a few compromises. For example, a thick red border appeared around the screen when a device was recording the output from the Apple TV, which was visible to those in the room but not on the live stream. There was also a notification in the top right corner of the screen indicating which device was recording the output, which was visible on both the television and the live stream. Additionally, the camera, which was connected over Wi-Fi through a third-party application, introduced about two seconds of latency between the live camera shot and the presenter's voice and slides, which reduced the overall quality of the stream.

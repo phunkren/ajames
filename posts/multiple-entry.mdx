@@ -89,10 +89,10 @@ if (process.env.REACT_APP_BUILD_TARGET === 'test')
 We used [Netlify](https://www.netlify.com/) to create a production environment for each application. Both sites will be virtually identical. They'll both point to the same [GitHub repository](https://github.com/phunkren/multiple-entry-points) and have master set as the production branch. The only difference will be their respective `BUILD_TARGET` environment variable: `test` is assigned to the [testing site](https://multiple-entry-points-test.netlify.app/), and `app` for the [main application](https://multiple-entry-points-app.netlify.app/).
 
 
-![Netlify: App test environment](https://i.imgur.com/gG0sGVc.jpg)
+![Netlify: App test environment](https://i.imgur.com/MiVtOXx.jpg)
 
 
-![Netlify: App production environment](https://i.imgur.com/QL3KX14.jpg)
+![Netlify: App production environment](https://i.imgur.com/UObQijK.jpg)
 
 
 We now have two production environments with the correct build target and free from human error. All that's left is to ensure that only the code from the defined container appears in the bundled build. Due to the nature of tree-shaking, all of the imported containers in the application's current `index.js` file would appear in the production build files, regardless of our build target. To remedy this we can use CommonJS to conditionally require the desired container based on the `BUILD_TARGET` environment variable.

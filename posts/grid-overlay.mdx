@@ -8,7 +8,7 @@ One of my favourite talks from ReactFest London was Siddharth Kshetrapal's [pres
 Sketch's grid is a visual overlay that enables designers to create a highly precise layout. I had assumed that constant spacing between components would result in consistent vertical rhythm, but the demonstration showed that even though the components were evenly distributed on the page, their respective content was not.
 
 
-![1.2: Vertical rhythm example](https://i.imgur.com/r6xrD6F.png)
+![1.2: Vertical rhythm example](https://i.imgur.com/AgRSnzi.png)
 
 
 To address the issue of inconsistent vertical rhythm, I created a similar treatment for the frontend by adding a styled component to the application root. The grid would sit on top of the entire application, fixed to the viewport using **`position: fixed`** with a high **`z-index`** and **`pointer-events`** disabled.
@@ -46,10 +46,10 @@ export const GridOverlay = styled.div(
 With the overlay in place, we were able to more accurately compare the vertical rhythm of our Sketch design with the production build and edge closer to pixel-perfect design (if that's your goal). To demonstrate the output, I quickly added the overlay to a personal site. Setting **`direction="horizontal"`** emulates Sketch's regular grid, while **`direction="vertical"`** resembles the layout grid.
 
 
-![1.3: Grid overlay (horizontal)](https://i.imgur.com/43Ltv5X.jpg)
+![1.3: Grid overlay (horizontal)](https://i.imgur.com/48znueL.jpg)
 
 
-![1.4: Grid overlay (vertical)](https://i.imgur.com/EQGDLbm.jpg)
+![1.4: Grid overlay (vertical)](https://i.imgur.com/oSR5vSw.jpg)
 
 
 Adding the grid overlay to the application was a rewarding experience. In addition to its practical value, it also helped us to understand each other's approaches to the project and improve the workflow as a result. It's these small progressions that lead to truly collaborative efforts and produce the best results.
