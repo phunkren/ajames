@@ -488,9 +488,7 @@ export const FilterClearButton = memo(function FilterClearButton({
   return (
     <Tooltip title="Clear Filter">
       <IconButton aria-disabled={!filter} onClick={handleClick} {...props}>
-        <VisuallyHidden.Root>
-          <TextAux>Clear filter</TextAux>
-        </VisuallyHidden.Root>
+        <VisuallyHidden.Root>Clear filter</VisuallyHidden.Root>
 
         <Cross2Icon width={ICON_SIZE.m} height={ICON_SIZE.m} />
       </IconButton>
@@ -508,17 +506,13 @@ export const FilterMenuButton = memo(
         <IconButton ref={ref} {...props}>
           {open ? (
             <>
-              <VisuallyHidden.Root>
-                <TextAux>Close menu</TextAux>
-              </VisuallyHidden.Root>
+              <VisuallyHidden.Root>Close menu</VisuallyHidden.Root>
 
               <ChevronUpIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
             </>
           ) : (
             <>
-              <VisuallyHidden.Root>
-                <TextAux>Open menu</TextAux>
-              </VisuallyHidden.Root>
+              <VisuallyHidden.Root>Open menu</VisuallyHidden.Root>
 
               <DropdownMenuIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
             </>
@@ -534,6 +528,8 @@ export const MobileNavigationButton = memo(
     return (
       <Tooltip title="Navigation">
         <StyledMobileNavigationButton ref={ref} variant="secondary" {...props}>
+          <VisuallyHidden.Root>Navigation</VisuallyHidden.Root>
+
           <HamburgerMenuIcon
             id="mobileNav-hamburger"
             width={ICON_SIZE.l}
