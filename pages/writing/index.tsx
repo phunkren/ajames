@@ -289,7 +289,11 @@ const Writing: NextPageWithLayout = ({ posts, tags }: Props) => {
                     />
                   </Box>
 
-                  <TextBody clamp={3} textAlign="justify" color="secondary">
+                  <TextBody
+                    clamp={3}
+                    textAlign={{ "@initial": "left", "@bp3": "justify" }}
+                    color="secondary"
+                  >
                     {featuredPost.properties.abstract.rich_text[0].plain_text}
                   </TextBody>
 
