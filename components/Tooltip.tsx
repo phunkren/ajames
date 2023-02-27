@@ -29,6 +29,8 @@ const slideLeftAndFade = keyframes({
 });
 
 const StyledTooltipContent = styled(RadixTooltip.Content, {
+  display: "none",
+
   "@media(hover)": {
     display: "flex",
     alignItems: "center",
