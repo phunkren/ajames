@@ -120,7 +120,7 @@ const About: NextPageWithLayout = () => {
   return (
     <Box>
       <Box direction="vertical">
-        <StyledPageHeader display={{ "@print": "none", "@initial": "flex" }}>
+        <StyledPageHeader display={{ "@print": "none", "@initial": "block" }}>
           <HeroLayout bordered>
             <Box direction="vertical" position="relative" flexGrow>
               <Box
