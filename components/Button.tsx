@@ -164,6 +164,7 @@ export const StyledIconButton = styled("button", {
   borderStyle: "solid",
   backgroundColor: "transparent",
   transition: "background 100ms ease-out, boxShadow 100ms ease-out",
+  color: "$foreground",
 
   appearance: "none",
   "-webkit-appearance": "none",
