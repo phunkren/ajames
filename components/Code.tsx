@@ -4,7 +4,7 @@ import atomOneDark from "react-syntax-highlighter/dist/cjs/styles/hljs/atom-one-
 import atomOneLight from "react-syntax-highlighter/dist/cjs/styles/hljs/atom-one-light";
 import typescript from "react-syntax-highlighter/dist/esm/languages/hljs/typescript";
 import javascript from "react-syntax-highlighter/dist/esm/languages/hljs/javascript";
-import htmlbars from "react-syntax-highlighter/dist/esm/languages/hljs/htmlbars";
+import xml from "react-syntax-highlighter/dist/esm/languages/hljs/xml";
 import scss from "react-syntax-highlighter/dist/esm/languages/hljs/scss";
 import css from "react-syntax-highlighter/dist/esm/languages/hljs/css";
 import json from "react-syntax-highlighter/dist/esm/languages/hljs/json";
@@ -20,15 +20,16 @@ export type CodeProps = {
 
 SyntaxHighlighter.registerLanguage("typescript", typescript);
 SyntaxHighlighter.registerLanguage("javascript", javascript);
-SyntaxHighlighter.registerLanguage("htmlbars", htmlbars);
+SyntaxHighlighter.registerLanguage("xml", xml);
 SyntaxHighlighter.registerLanguage("css", css);
 SyntaxHighlighter.registerLanguage("scss", scss);
 SyntaxHighlighter.registerLanguage("json", json);
 SyntaxHighlighter.registerLanguage("markdown", markdown);
 
 const LANGUAGE_MAP = {
-  html: "htmlbars",
-  text: "htmlbars",
+  html: "xml",
+  htmlbars: "xml",
+  text: "xml",
 };
 
 const STYLE_MAP = {
@@ -42,8 +43,6 @@ export const Code = memo(function Code({
   children,
 }: CodeProps) {
   const language = className?.split("-")[1] ?? "";
-
-  console.log({ language });
 
   const { themeName } = useTheme();
 
