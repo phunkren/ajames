@@ -41,10 +41,10 @@ const SwitchThumb = styled(Switch.Thumb, {
   height: 34,
   borderTopLeftRadius: "$1",
   borderBottomLeftRadius: "$1",
-  willChange: "transform, borderRadius",
   background: "$backgroundGradient",
   transform: "translate3d(0, 0, 0)",
   transition: "transform 100ms ease-out, borderRadius 200ms ease-out",
+  willChange: "transform, borderRadius",
   zIndex: 1,
 
   '&[data-state="checked"]': {
@@ -73,10 +73,10 @@ const SwitchRoot = styled(Switch.Root, {
     position: "absolute",
     borderRadius: "$1",
     inset: 0,
-    willChange: "background",
     backgroundColor: "black",
     opacity: 0.5,
     transition: "opacity 200ms ease-out",
+    willChange: "opacity",
 
     [`.${lightTheme} &`]: {
       opacity: 0.3,

@@ -44,6 +44,7 @@ const StyledLink = styled("a", {
   textUnderlineOffset: "$space$1",
   transition: "color 75ms ease-out",
   width: "fit-content",
+  willChange: "color",
 
   "&[aria-current='page']": {
     color: "$blue11",
@@ -175,6 +176,7 @@ export const StyledIconLink = styled(Link, {
   minHeight: 44,
   boxShadow: "$1",
   transition: "background 100ms ease-out, box-shadow 100ms ease-out",
+  willChange: "background, boxShadow",
 
   "@media(hover)": {
     "&:hover": {
@@ -207,6 +209,7 @@ const StyledYoutubeSubscription = styled(Link, {
   display: "flex",
   alignItems: "center",
   transition: "boxShadow 100ms ease-out",
+  willChange: "boxShadow",
 
   variants: {
     type: {
@@ -300,6 +303,7 @@ const StyledBlogSubscription = styled(Link, {
   display: "flex",
   alignItems: "center",
   transition: "boxShadow 100ms ease-out",
+  willChange: "boxShadow",
 
   variants: {
     type: {

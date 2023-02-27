@@ -158,6 +158,7 @@ export const StyledCardImage = styled(Image, {
   objectFit: "cover",
   filter: "brightness(85%)",
   transition: "filter 200ms ease-out",
+  willChange: "filter",
 
   // https://nextjs.org/docs/api-reference/next/image#known-browser-bugs
   "img[loading='lazy']": {

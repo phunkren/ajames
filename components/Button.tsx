@@ -75,6 +75,7 @@ const StyledButton = styled("button", {
   padding: 0,
   transition: "background 100ms ease-out, boxShadow 100ms ease-out",
   borderRadius: "$1",
+  willChange: "background, boxShadow",
 
   appearance: "none",
   "-webkit-appearance": "none",
@@ -165,6 +166,7 @@ export const StyledIconButton = styled("button", {
   backgroundColor: "transparent",
   transition: "background 100ms ease-out, boxShadow 100ms ease-out",
   color: "$foreground",
+  willChange: "background, boxShadow",
 
   appearance: "none",
   "-webkit-appearance": "none",
