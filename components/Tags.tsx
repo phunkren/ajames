@@ -182,7 +182,9 @@ export const TagSelectItem = memo(function TagSelectItem({
 }: Select.SelectItemProps) {
   return (
     <StyledSelectItem id={id} value={value} {...props}>
-      <TextAux textTransform="uppercase">{value}</TextAux>
+      <TextAux textTransform="uppercase" css={{ pointerEvents: "none" }}>
+        {value}
+      </TextAux>
     </StyledSelectItem>
   );
 });
