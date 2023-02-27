@@ -227,7 +227,9 @@ export const HeroLayout = memo(function HeroLayout({
         <StyledHeroContainer direction="vertical" bordered={bordered} flexGrow>
           <StyledFilter />
 
-          {src ? <StyledImage src={src} alt="" fill priority /> : null}
+          {src ? (
+            <StyledImage src={src} quality={100} alt="" fill priority />
+          ) : null}
 
           {children ? (
             <Box

@@ -224,8 +224,8 @@ export const Card = memo(function Card({
           src={image}
           alt=""
           sizes="(max-width: 768px) 100vw,
-              (max-width: 1200px) 50vw,
-              33vw"
+              (max-width: 1080px) 420px,
+              330px"
           fill
         />
       </AspectRatio.Root>

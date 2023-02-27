@@ -158,7 +158,14 @@ const About: NextPageWithLayout = () => {
                 </Box>
               </Box>
 
-              <StyledImage src={banner} alt="" sizes="25vw" priority fill />
+              <StyledImage
+                src={banner}
+                alt=""
+                sizes="25vw"
+                quality={100}
+                priority
+                fill
+              />
             </Box>
           </HeroLayout>
         </StyledPageHeader>
