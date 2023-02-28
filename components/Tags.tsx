@@ -268,7 +268,11 @@ export const TagDrawer = memo(function TagDrawer({
                           spacing={4}
                           flexGrow
                         >
-                          <TextAux color="primary" textTransform="uppercase">
+                          <TextAux
+                            color="primary"
+                            textTransform="uppercase"
+                            css={{ pointerEvents: "none" }}
+                          >
                             {tag.name}
                           </TextAux>
                         </StyledTag>

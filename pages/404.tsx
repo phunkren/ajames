@@ -14,29 +14,29 @@ const StyledImage = styled(Image, {
   position: "absolute",
   top: "10% !important",
   zIndex: -1,
-  transform: "scale(0.9)",
   pointerEvents: "none",
+  transform: "scale(-1.25, 1.25)",
   filter: "grayscale(1)",
 
   [`.${lightTheme} &`]: {
-    filter: "brightness(75%)",
+    filter: "brightness(75%) grayscale(1)",
   },
 
   [`.${darkTheme} &`]: {
-    filter: "brightness(75%)",
+    filter: "brightness(75%) grayscale(1)",
     opacity: 0.9,
   },
 
   "@bp2": {
     display: "block",
-    left: "30% !important",
+    left: "0% !important",
   },
 
   "@bp3": {
     display: "block",
-    transform: "scale(1)",
+
     top: "7% !important",
-    left: "50% !important",
+    left: "25% !important",
   },
 });
 
@@ -61,7 +61,14 @@ const NotFound: NextPageWithLayout = () => {
             </Box>
           </Box>
 
-          <StyledImage src={lost} alt="" sizes="25vw" priority fill />
+          <StyledImage
+            src={lost}
+            alt=""
+            sizes="100vw"
+            priority
+            quality={100}
+            fill
+          />
         </Box>
       </HeroLayout>
 
