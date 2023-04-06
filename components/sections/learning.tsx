@@ -93,7 +93,12 @@ export const Learning = ({
   channelInfoPreview,
 }: Props) => {
   return (
-    <Box id={LEARNING_ID} as="section" direction="vertical">
+    <Box
+      id={LEARNING_ID}
+      as="section"
+      direction="vertical"
+      display={{ print: "none", "@initial": "flex" }}
+    >
       <HeroLayout />
 
       <Box

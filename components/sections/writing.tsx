@@ -161,6 +161,7 @@ export const Writing = ({ posts, tags }: Props) => {
       as="section"
       direction="vertical"
       spacingBottom={10}
+      display={{ print: "none", "@initial": "flex" }}
       gap={10}
     >
       <HeroLayout />
