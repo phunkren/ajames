@@ -1,42 +1,30 @@
-import { ReactElement, useCallback } from "react";
-import { GetStaticProps } from "next";
+import { useCallback } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import Balancer from "react-wrap-balancer";
-import {
-  BlogCard,
-  StyledBlogContent,
-  StyledCardInner,
-} from "../../components/Card";
-import { ActionButtons, HeroLayout, Layout } from "../../components/Layout";
-import { LayoutToggle } from "../../components/Toggle";
-import { TagDrawer, TagSelect, TagSelectItem } from "../../components/Tags";
-import {
-  TextAux,
-  TextBody,
-  TextTitle2,
-  TextTitle3,
-} from "../../components/Text";
+import { BlogCard, StyledBlogContent, StyledCardInner } from "../Card";
+import { ActionButtons, HeroLayout } from "../Layout";
+import { LayoutToggle } from "../Toggle";
+import { TagDrawer, TagSelect, TagSelectItem } from "../Tags";
+import { TextAux, TextBody, TextTitle2, TextTitle3 } from "../Text";
 import { styled } from "../../stitches.config";
 import { BlogPost, Tag } from "../../util/notion";
-import { filterPosts, getTags, sortPosts } from "../../util/notion";
-import { createPosts, generateRSSFeed, getPosts } from "../../lib/notion";
-import { Divider } from "../../components/Divider";
-import { FilterClearButton } from "../../components/Button";
-import { BlogSubscriptionLink, Link } from "../../components/Link";
+import { filterPosts } from "../../util/notion";
+import { Divider } from "../Divider";
+import { FilterClearButton } from "../Button";
+import { BlogSubscriptionLink, Link } from "../Link";
 import {
   TotalCategories,
   TotalPosts,
   ActiveTag,
   Frontmatter,
   PostTags,
-} from "../../components/Frontmatter";
-import { Box } from "../../components/Box";
-import { NextPageWithLayout } from "../_app";
+} from "../Frontmatter";
+import { Box } from "../Box";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 
-type Props = {
+export type Props = {
   posts: BlogPost[];
   tags: Tag[];
 };
@@ -130,29 +118,7 @@ const StyledCardContainer = styled(Box, {
   },
 });
 
-export const getStaticProps: GetStaticProps = async () => {
-  // Grab all blogs from Notion
-  const posts = await getPosts();
-  const sortedPosts = sortPosts(posts);
-  const postTags = getTags(posts);
-
-  if (process.env.NODE_ENV === "production") {
-    // Create a .mdx file for each blog post
-    await createPosts(posts);
-
-    // Create a feed.xml file for blog subscriptions
-    generateRSSFeed(sortedPosts);
-  }
-
-  return {
-    props: {
-      posts: sortedPosts,
-      tags: postTags,
-    },
-  };
-};
-
-const Writing: NextPageWithLayout = ({ posts, tags }: Props) => {
+export const Writing = ({ posts, tags }: Props) => {
   const { pathname, push, query } = useRouter();
   const queryTag = query.tag as string;
   const filteredPosts = filterPosts(posts, queryTag);
@@ -398,9 +364,3 @@ const Writing: NextPageWithLayout = ({ posts, tags }: Props) => {
     </Box>
   );
 };
-
-Writing.getLayout = function getLayout(page: ReactElement) {
-  return <Layout>{page}</Layout>;
-};
-
-export default Writing;

@@ -1,23 +1,18 @@
-import { ReactElement } from "react";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import Balancer from "react-wrap-balancer";
 import { PlayIcon } from "@radix-ui/react-icons";
-import { VideoCard } from "../components/Card";
-import { Divider } from "../components/Divider";
+import { VideoCard } from "../Card";
+import { Divider } from "../Divider";
 import {
   Frontmatter,
   SubscriberCount,
   VideosTotalCount,
   VideosViewsCount,
-} from "../components/Frontmatter";
-import { Layout, ActionButtons, HeroLayout } from "../components/Layout";
-import {
-  Link,
-  YoutubeSubscribeLink,
-  TwitterShareLink,
-} from "../components/Link";
-import { TextAux, TextBody, TextTitle2, TextTitle3 } from "../components/Text";
-import { ONE_HOUR_IN_SECONDS } from "../util/date";
+} from "../Frontmatter";
+import { ActionButtons, HeroLayout } from "../Layout";
+import { Link, YoutubeSubscribeLink, TwitterShareLink } from "../Link";
+import { TextAux, TextBody, TextTitle2, TextTitle3 } from "../Text";
+import { ONE_HOUR_IN_SECONDS } from "../../util/date";
 import {
   formatChannelInfo,
   formatPlaylist,
@@ -26,30 +21,25 @@ import {
   sortPlaylists,
   YOUTUBE_CHANNEL_URL,
   YOUTUBE_SHARE_TEXT,
-} from "../util/youtube";
-import { buildUrl } from "../util/url";
-import { getYoutubeData } from "../lib/youtube";
-import { styled } from "../stitches.config";
+} from "../../util/youtube";
+import { buildUrl } from "../../util/url";
+import { getYoutubeData } from "../../lib/youtube";
+import { styled } from "../../stitches.config";
 import {
   ChannelInfoPreview,
   PlaylistPreview,
   PlaylistVideosPreview,
   VideoPreview,
-} from "../util/youtube";
-import {
-  CardScrollRoot,
-  CardScrollViewport,
-  Scrollbar,
-} from "../components/Scroll";
-import { SITE } from "../util/data";
-import { ShareButton } from "../components/Button";
-import { ICON_SIZE } from "../util/images";
-import { Box } from "../components/Box";
-import { NextPageWithLayout } from "./_app";
+} from "../../util/youtube";
+import { CardScrollRoot, CardScrollViewport, Scrollbar } from "../Scroll";
+import { SITE } from "../../util/data";
+import { ShareButton } from "../Button";
+import { ICON_SIZE } from "../../util/images";
+import { Box } from "../Box";
 import dynamic from "next/dynamic";
 import { GetStaticProps } from "next";
 
-type Props = {
+export type Props = {
   featuredVideo: VideoPreview;
   playlistsPreview: PlaylistPreview[];
   playlistVideosPreview: PlaylistVideosPreview;
@@ -94,32 +84,7 @@ const StyledYouTubePlayer = styled(DynamicYouTube, {
   },
 });
 
-export const getStaticProps: GetStaticProps = async () => {
-  const { latestVideo, playlists, videos, channelInfo } =
-    await getYoutubeData();
-
-  const featuredVideo = formatPlaylistVideo(latestVideo);
-
-  const playlistsPreview = formatPlaylist(playlists);
-
-  const sortedPlaylistsPreview = sortPlaylists(playlistsPreview);
-
-  const playlistVideosPreview = formatPlaylistVideos(videos);
-
-  const channelInfoPreview = formatChannelInfo(channelInfo);
-
-  return {
-    props: {
-      featuredVideo,
-      playlistsPreview: sortedPlaylistsPreview,
-      playlistVideosPreview,
-      channelInfoPreview,
-    },
-    revalidate: ONE_HOUR_IN_SECONDS,
-  };
-};
-
-const Learning: NextPageWithLayout = ({
+export const Learning = ({
   featuredVideo,
   playlistsPreview,
   playlistVideosPreview,
@@ -421,9 +386,3 @@ const Learning: NextPageWithLayout = ({
     </Box>
   );
 };
-
-Learning.getLayout = function getLayout(page: ReactElement) {
-  return <Layout>{page}</Layout>;
-};
-
-export default Learning;

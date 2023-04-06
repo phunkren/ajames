@@ -1,4 +1,3 @@
-import { ReactElement } from "react";
 import {
   EnvelopeOpenIcon,
   GitHubLogoIcon,
@@ -6,18 +5,18 @@ import {
   LinkedInLogoIcon,
 } from "@radix-ui/react-icons";
 import Image from "next/image";
-import { PrintButton } from "../components/Button";
-import { Divider } from "../components/Divider";
-import { HeroLayout, Layout } from "../components/Layout";
-import { DownloadLink, Link } from "../components/Link";
+import { PrintButton } from "../Button";
+import { Divider } from "../Divider";
+import { HeroLayout } from "../Layout";
+import { DownloadLink, Link } from "../Link";
 import {
   TextAux,
   TextBody,
   TextHeadline,
   TextTitle1,
   TextTitle3,
-} from "../components/Text";
-import { darkTheme, lightTheme, styled } from "../stitches.config";
+} from "../Text";
+import { darkTheme, lightTheme, styled } from "../../stitches.config";
 import {
   EDUCATION,
   EMPLOYMENT,
@@ -27,13 +26,12 @@ import {
   SITE,
   SOCIAL,
   TESTIMONIALS,
-} from "../util/data";
-import { formatShortDate } from "../util/date";
-import { ICON_SIZE } from "../util/images";
-import banner from "../public/images/mugshot.png";
-import { Box } from "../components/Box";
-import { NextPageWithLayout } from "./_app";
-import { Tooltip } from "../components/Tooltip";
+} from "../../util/data";
+import { formatShortDate } from "../../util/date";
+import { ICON_SIZE } from "../../util/images";
+import banner from "../../public/images/mugshot.png";
+import { Box } from "../Box";
+import { Tooltip } from "../Tooltip";
 
 const StyledPageHeader = styled(Box, {
   position: "relative",
@@ -116,7 +114,7 @@ const GridItem = styled("li", {
   },
 });
 
-const About: NextPageWithLayout = () => {
+export const About = () => {
   return (
     <Box>
       <Box direction="vertical">
@@ -640,9 +638,3 @@ const About: NextPageWithLayout = () => {
     </Box>
   );
 };
-
-About.getLayout = function getLayout(page: ReactElement) {
-  return <Layout>{page}</Layout>;
-};
-
-export default About;
