@@ -118,6 +118,8 @@ const StyledCardContainer = styled(Box, {
   },
 });
 
+export const WRITING_ID = "writing";
+
 export const Writing = ({ posts, tags }: Props) => {
   const { pathname, push, query } = useRouter();
   const queryTag = query.tag as string;
@@ -154,7 +156,13 @@ export const Writing = ({ posts, tags }: Props) => {
   );
 
   return (
-    <Box direction="vertical" spacingBottom={10} gap={10}>
+    <Box
+      id={WRITING_ID}
+      as="section"
+      direction="vertical"
+      spacingBottom={10}
+      gap={10}
+    >
       <HeroLayout />
 
       <Box

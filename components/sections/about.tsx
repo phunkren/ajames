@@ -114,9 +114,11 @@ const GridItem = styled("li", {
   },
 });
 
+export const ABOOT_ID = "about";
+
 export const About = () => {
   return (
-    <Box>
+    <Box id={ABOOT_ID} as="section">
       <Box direction="vertical">
         <StyledPageHeader display={{ "@print": "none", "@initial": "block" }}>
           <HeroLayout bordered>

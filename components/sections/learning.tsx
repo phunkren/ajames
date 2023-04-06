@@ -84,6 +84,8 @@ const StyledYouTubePlayer = styled(DynamicYouTube, {
   },
 });
 
+export const LEARNING_ID = "learning";
+
 export const Learning = ({
   featuredVideo,
   playlistsPreview,
@@ -91,7 +93,7 @@ export const Learning = ({
   channelInfoPreview,
 }: Props) => {
   return (
-    <Box direction="vertical">
+    <Box id={LEARNING_ID} as="section" direction="vertical">
       <HeroLayout />
 
       <Box

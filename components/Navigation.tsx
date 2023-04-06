@@ -17,6 +17,9 @@ import { Button, MobileNavigationButton } from "./Button";
 import { Social } from "./Social";
 import { Box } from "./Box";
 import { ThemeToggle } from "./Toggle";
+import { ABOOT_ID } from "./sections/about";
+import { WRITING_ID } from "./sections/writing";
+import { LEARNING_ID } from "./sections/learning";
 
 export type NavigationProjectLinkProps = {
   id: string;
@@ -146,6 +149,8 @@ export const NavigationProjectLink = memo(function NavigationProjectLink({
 export const Navigation = memo(function Navigation() {
   const { asPath } = useRouter();
 
+  console.log({ asPath });
+
   return (
     <NavigationMenu.Root
       aria-label="Primary navigation"
@@ -157,24 +162,24 @@ export const Navigation = memo(function Navigation() {
         css={{ alignItems: "center" }}
       >
         <NavigationMenu.Item>
-          <NavigationMenu.Link asChild active={asPath === "/about"}>
-            <Link variant="secondary" href="/about">
+          <NavigationMenu.Link asChild active={asPath === `/#${ABOOT_ID}`}>
+            <Link variant="secondary" href={`#${ABOOT_ID}`}>
               <TextHeadline>About</TextHeadline>
             </Link>
           </NavigationMenu.Link>
         </NavigationMenu.Item>
 
         <NavigationMenu.Item>
-          <NavigationMenu.Link asChild active={asPath.includes("writing")}>
-            <Link variant="secondary" href="/writing">
+          <NavigationMenu.Link asChild active={asPath === `/#${WRITING_ID}`}>
+            <Link variant="secondary" href={`/#${WRITING_ID}`}>
               <TextHeadline>Writing</TextHeadline>
             </Link>
           </NavigationMenu.Link>
         </NavigationMenu.Item>
 
         <NavigationMenu.Item>
-          <NavigationMenu.Link asChild active={asPath === "/learning"}>
-            <Link variant="secondary" href="/learning">
+          <NavigationMenu.Link asChild active={asPath === `/#${LEARNING_ID}`}>
+            <Link variant="secondary" href={`/#${LEARNING_ID}`}>
               <TextHeadline>Learning</TextHeadline>
             </Link>
           </NavigationMenu.Link>
@@ -271,25 +276,12 @@ export const NavigationMobile = memo(function NavigationMobile() {
                     spacingTop={10}
                   >
                     <NavigationMenu.Item>
-                      <NavigationMenu.Link asChild active={asPath === "/"}>
+                      <NavigationMenu.Link
+                        asChild
+                        active={asPath === `/#${ABOOT_ID}`}
+                      >
                         <Link
-                          href="/"
-                          variant="secondary"
-                          onClick={handleClose}
-                        >
-                          <TextHeadline>Home</TextHeadline>
-                        </Link>
-                      </NavigationMenu.Link>
-                    </NavigationMenu.Item>
-
-                    <Box aria-hidden>
-                      <Divider />
-                    </Box>
-
-                    <NavigationMenu.Item>
-                      <NavigationMenu.Link asChild active={asPath === "/about"}>
-                        <Link
-                          href="/about"
+                          href={`#${ABOOT_ID}`}
                           variant="secondary"
                           onClick={handleClose}
                         >
@@ -305,10 +297,10 @@ export const NavigationMobile = memo(function NavigationMobile() {
                     <NavigationMenu.Item>
                       <NavigationMenu.Link
                         asChild
-                        active={asPath.includes("writing")}
+                        active={asPath === `/#${WRITING_ID}`}
                       >
                         <Link
-                          href="/writing"
+                          href={`#${WRITING_ID}`}
                           variant="secondary"
                           onClick={handleClose}
                         >
@@ -324,10 +316,10 @@ export const NavigationMobile = memo(function NavigationMobile() {
                     <NavigationMenu.Item>
                       <NavigationMenu.Link
                         asChild
-                        active={asPath === "/learning"}
+                        active={asPath === `/#${LEARNING_ID}`}
                       >
                         <Link
-                          href="/learning"
+                          href={`/#${LEARNING_ID}`}
                           variant="secondary"
                           onClick={handleClose}
                         >
