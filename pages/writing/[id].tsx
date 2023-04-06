@@ -3,6 +3,7 @@ import Balancer from "react-wrap-balancer";
 import ReactMarkdown from "react-markdown";
 import { useRouter } from "next/router";
 import remarkMdx from "remark-mdx";
+import remarkGfm from "remark-gfm";
 import { Tag } from "../../util/notion";
 import {
   getAllPostIds,
@@ -23,9 +24,9 @@ import {
 } from "../../components/Link";
 import {
   Emoji,
-  MarkdownTitle,
+  MarkdownH2,
+  MarkdownH3,
   TextAux,
-  TextHeadline,
   TextTitle2,
   TextTitle3,
 } from "../../components/Text";
@@ -38,7 +39,7 @@ import {
 } from "../../components/Frontmatter";
 import { SITE } from "../../util/data";
 import { ShareButton } from "../../components/Button";
-import { styled } from "../../stitches.config";
+import { darkTheme, styled } from "../../stitches.config";
 import { H1_STYLES, H2_STYLES, H3_STYLES, P_STYLES } from "../../styles/text";
 import { Box } from "../../components/Box";
 import { NextPageWithLayout } from "../_app";
@@ -46,6 +47,7 @@ import { BlogSeo } from "../../components/SEO";
 import dynamic from "next/dynamic";
 import { ONE_HOUR_IN_SECONDS } from "../../util/date";
 import { GetStaticPaths, GetStaticProps } from "next";
+import { Table, TBody, Td, TFoot, Th, THead, Tr } from "../../components/Table";
 
 export type Frontmatter = {
   title: string;
@@ -81,12 +83,22 @@ const StyledContainer = styled(Box, {
   h2: H2_STYLES,
   h3: H3_STYLES,
   p: {
-    ...P_STYLES,
+    ...H3_STYLES,
     color: "$foregroundMuted",
   },
 
   "a, code": {
     color: "$foreground",
+  },
+
+  table: {
+    marginTop: "$10",
+    marginBottom: "$10",
+  },
+
+  "figure, pre:not(pre > pre)": {
+    paddingTop: "$10",
+    paddingBottom: "$10",
   },
 
   "@media(hover)": {
@@ -95,11 +107,20 @@ const StyledContainer = styled(Box, {
     },
   },
 
+  figure: {
+    width: "fit-content",
+    margin: "0 auto",
+  },
+
   img: {
     position: "relative",
     left: "-$6",
     width: "100vw",
     maxWidth: "none",
+
+    [`.${darkTheme} &`]: {
+      filter: "brightness(85%)",
+    },
 
     "@bp2": {
       left: 0,
@@ -124,8 +145,11 @@ const StyledContainer = styled(Box, {
     "@bp2": {
       left: 0,
       width: "100%",
-      boxShadow: "$1",
       borderRadius: "$1",
+
+      "& > pre": {
+        boxShadow: "$1",
+      },
     },
   },
 
@@ -230,7 +254,7 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
                     spacingTop={{ "@initial": 8, "@bp2": 10 }}
                     spacingBottom={10}
                   >
-                    <TextTitle2 css={{ flexGrow: 1 }}>
+                    <TextTitle2 as="h1" css={{ flexGrow: 1 }}>
                       <Balancer>{frontmatter.title}</Balancer>
                     </TextTitle2>
 
@@ -278,7 +302,7 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
                 direction="vertical"
                 spacingVertical={10}
                 container="m"
-                gap={10}
+                gap={8}
                 css={{
                   textAlign: "justify",
                   hyphens: "auto",
@@ -289,11 +313,18 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
                     a: MarkdownLink,
                     code: DynamicCode as any,
                     h1: TextTitle2 as any,
-                    h2: MarkdownTitle as any,
-                    h3: TextHeadline as any,
+                    h2: MarkdownH2 as any,
+                    h3: MarkdownH3 as any,
                     img: Figure as any,
+                    table: Table as any,
+                    thead: THead as any,
+                    tbody: TBody as any,
+                    tfoot: TFoot as any,
+                    tr: Tr as any,
+                    th: Th as any,
+                    td: Td as any,
                   }}
-                  remarkPlugins={[remarkMdx]}
+                  remarkPlugins={[remarkMdx, remarkGfm]}
                 >
                   {postData}
                 </ReactMarkdown>

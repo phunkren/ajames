@@ -146,8 +146,8 @@ export const Link = memo(
     const isInternal = isLinkInternal();
 
     function isLinkInternal() {
-      let link = typeof href === "object" ? href.pathname : href;
-      return link.charAt(0) === "/";
+      const link = typeof href === "object" ? href.pathname : href;
+      return link.charAt(0) === "/" || link.charAt(0) === "#";
     }
 
     return (
@@ -314,7 +314,8 @@ const StyledBlogSubscription = styled(Link, {
         padding: "$2 $4",
         borderRadius: "$1",
         color: "$blue1",
-        boxShadow: "$1",
+        boxShadow:
+          "0 0 0 2px $colors$blue10, -15px 0 30px -15px $colors$blue8, 0 0 30px -15px $colors$crimson8, 15px 0 30px -15px $colors$crimson10",
 
         [`.${lightTheme} &`]: {
           backgroundImage: `linear-gradient(185deg, $blue11 0.04%, $blue10 100.04%)`,

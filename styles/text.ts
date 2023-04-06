@@ -174,12 +174,12 @@ export const H3_STYLES = {
 export const P_STYLES = {
   fontSize: 18,
   fontWeight: 400,
-  lineHeight: 1.8,
+  lineHeight: 1.7,
   letterSpacing: 0.36,
 
   "@bp2": {
     fontSize: 20,
-    lineHeight: 1.6,
+    lineHeight: 1.5,
     letterSpacing: 0.4,
   },
 

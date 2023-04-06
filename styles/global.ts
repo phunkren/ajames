@@ -109,6 +109,10 @@ export const globalStyles = globalCss({
     content: "close-quote",
   },
 
+  strong: {
+    fontWeight: 500,
+  },
+
   // Default code block styling
   code: {
     ...P_STYLES,

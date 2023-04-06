@@ -9,9 +9,14 @@ import {
   P_STYLES,
   TEXT_VARIANTS,
 } from "../styles/text";
+import { Link } from "./Link";
 
 type EmojiProps = ComponentProps<typeof StyledEmoji> & {
   emoji: string;
+};
+
+type MarkDownProps = {
+  children: string[];
 };
 
 export const TextTitle1 = styled("h1", {
@@ -60,8 +65,44 @@ export const TextHeadline = styled("span", {
   },
 });
 
-export const MarkdownTitle = styled(TextTitle2, {
-  paddingTop: "$10",
+const StyledMarkdownLinkH2 = styled(Link, {
+  width: "fit-content",
+  marginTop: "$10",
+  marginBottom: "$5",
+  position: "relative",
+
+  "&::after": {
+    content: "🔗",
+    textDecoration: "none",
+  },
+});
+
+export const MarkdownH2 = memo(function MarkdownH2(props: MarkDownProps) {
+  const title = props.children[0];
+  const id = title.toLowerCase().split(" ").join("-");
+
+  return (
+    <StyledMarkdownLinkH2 href={`#${id}`} variant="primary">
+      <TextTitle2 id={id}>{title}</TextTitle2>
+    </StyledMarkdownLinkH2>
+  );
+});
+
+const StyledMarkdownLinkH3 = styled(Link, {
+  width: "fit-content",
+  marginTop: "$6",
+  marginBottom: "$3",
+});
+
+export const MarkdownH3 = memo(function MarkdownH3(props: MarkDownProps) {
+  const title = props.children[0];
+  const id = title.toLowerCase().split(" ").join("-");
+
+  return (
+    <StyledMarkdownLinkH3 id={id} href={`#${id}`} variant="secondary">
+      <TextTitle3>{title}</TextTitle3>
+    </StyledMarkdownLinkH3>
+  );
 });
 
 export const TextAux = styled("span", {

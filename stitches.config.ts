@@ -27,8 +27,13 @@ import {
   crimson,
   crimsonDark,
   sandDark,
+  indigo,
+  indigoDark,
+  violetDark,
+  sageDark,
 } from "@radix-ui/colors";
 import { SPACING_UTILS } from "./styles/spacing";
+import isWithinInterval from "date-fns/esm/fp/isWithinInterval";
 
 export const {
   styled,
@@ -52,6 +57,7 @@ export const {
       8: "32px",
       9: "36px",
       10: "40px",
+      11: "80px",
     },
     shadows: {
       1: `0px 2px 4px -1px ${blackA.blackA6}, 0px 1px 2px 0px ${blackA.blackA7}, 0px 1px 2px 0px ${blackA.blackA8}`, // Cards, Buttons
@@ -84,7 +90,7 @@ export const lightTheme = createTheme({
     foregroundMuted: slate.slate12,
     background: slate.slate2,
     backgroundMuted: gray.gray1,
-    backgroundGradient: `radial-gradient(circle at bottom, ${slate.slate2} 0%, ${gray.gray2} 100%)`,
+    backgroundGradient: `radial-gradient(circle at bottom, ${slate.slate1} 0%, ${gray.gray1} 100%)`,
     focus: crimson.crimson9,
     hover: blue.blue9,
     ...blackA,
@@ -107,10 +113,10 @@ export const lightTheme = createTheme({
 export const darkTheme = createTheme({
   colors: {
     foreground: slateDark.slate12,
-    foregroundMuted: grayDark.gray11,
+    foregroundMuted: whiteA.whiteA11,
     background: slateDark.slate1,
     backgroundMuted: grayDark.gray2,
-    backgroundGradient: `radial-gradient(circle at bottom, ${slateDark.slate1} 0%, ${sandDark.sand1} 100%)`,
+    backgroundGradient: `radial-gradient(circle at bottom, ${sageDark.sage1} 0%,  ${sageDark.sage1} 100%)`,
     focus: crimsonDark.crimson9,
     hover: blueDark.blue9,
     ...blackA,
@@ -127,6 +133,7 @@ export const darkTheme = createTheme({
     ...pinkDark,
     ...goldDark,
     ...brownDark,
+    ...indigoDark,
   },
 });
 
