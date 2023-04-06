@@ -138,9 +138,7 @@ export const HeaderLayout = memo(function HeaderLayout() {
   return (
     <Box
       as="header"
-      position="relative"
       display={{ "@print": "none", "@initial": "flex" }}
-      spacingHorizontal={{ "@initial": 4, "@bp2": 9 }}
       spacingVertical={10}
       gap={{ "@initial": 4, "@bp2": 7 }}
       justifyContent="space-between"

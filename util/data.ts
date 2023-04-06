@@ -280,6 +280,12 @@ export const SOCIAL: Record<string, Social> = {
     handle: "@phunkren",
     url: "https://twitter.com/phunkren",
   },
+  buyMeCoffee: {
+    id: "buyMeCoffee",
+    displayName: "Buy me a Coffee",
+    handle: "phunkren",
+    url: "https://www.buymeacoffee.com/phunkren",
+  },
 };
 
 export const TESTIMONIALS: Testimonial[] = [

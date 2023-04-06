@@ -1,10 +1,10 @@
 import { useCallback } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import { AspectRatio } from "@radix-ui/react-aspect-ratio";
+import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 import Balancer from "react-wrap-balancer";
 import { BlogCard, StyledBlogContent, StyledCardInner } from "../Card";
-import { ActionButtons, HeroLayout } from "../Layout";
+import { ActionButtons } from "../Layout";
 import { LayoutToggle } from "../Toggle";
 import { TagDrawer, TagSelect, TagSelectItem } from "../Tags";
 import { TextAux, TextBody, TextTitle2, TextTitle3 } from "../Text";
@@ -13,7 +13,7 @@ import { BlogPost, Tag } from "../../util/notion";
 import { filterPosts } from "../../util/notion";
 import { Divider } from "../Divider";
 import { FilterClearButton } from "../Button";
-import { BlogSubscriptionLink, Link } from "../Link";
+import { BlogSubscriptionLink, BuyMeCoffeeLink, Link } from "../Link";
 import {
   TotalCategories,
   TotalPosts,
@@ -23,16 +23,23 @@ import {
 } from "../Frontmatter";
 import { Box } from "../Box";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
+import book from "../../public/images/book.png";
 
 export type Props = {
   posts: BlogPost[];
   tags: Tag[];
 };
 
-const StyledImage = styled(Image, {
-  objectFit: "cover",
-  borderRadius: "$1",
-  boxShadow: "$1",
+const StyledHeroImage = styled(Image, {
+  display: "none",
+  objectFit: "contain",
+  position: "absolute",
+  zIndex: -1,
+  pointerEvents: "none",
+
+  "@bp2": {
+    display: "block",
+  },
 });
 
 const StyledCardContainer = styled(Box, {
@@ -164,211 +171,247 @@ export const Writing = ({ posts, tags }: Props) => {
       display={{ print: "none", "@initial": "flex" }}
       gap={10}
     >
-      <HeroLayout />
+      <Box spacingTop={11}>
+        <AspectRatio.Root ratio={2.5 / 1} asChild>
+          <StyledHeroImage
+            src={book}
+            alt=""
+            sizes="25vw"
+            quality={100}
+            fill
+            priority
+          />
+        </AspectRatio.Root>
+      </Box>
 
-      <Box
-        direction="vertical"
-        gap={10}
-        spacingHorizontal={{ "@initial": 4, "@bp2": 10 }}
-        spacingBottom={10}
-      >
-        <Box direction="vertical" gap={10}>
-          <Box justifyContent="space-between" alignItems="center">
-            <TextTitle2>Writing</TextTitle2>
+      <Box direction="vertical" gap={10}>
+        <Box justifyContent="space-between" alignItems="center">
+          <TextTitle2>Writing</TextTitle2>
 
-            <BlogSubscriptionLink
-              type="icon"
-              css={{ display: "flex", "@bp2": { display: "none" } }}
-            />
+          <BlogSubscriptionLink
+            type="icon"
+            css={{ display: "flex", "@bp2": { display: "none" } }}
+          />
 
-            <BlogSubscriptionLink
-              type="button"
-              css={{ display: "none", "@bp2": { display: "flex" } }}
-            />
-          </Box>
+          <BlogSubscriptionLink
+            type="button"
+            css={{ display: "none", "@bp2": { display: "flex" } }}
+          />
+        </Box>
 
-          <Box justifyContent="space-between" alignItems="flex-end" gap={4}>
-            <Frontmatter flexGrow>
-              <TotalPosts total={posts.length} icon />
-              <TotalCategories total={tags.length} icon />
-              <ActiveTag tags={tags} queryTag={queryTag} icon />
-            </Frontmatter>
+        <Box justifyContent="space-between" alignItems="flex-end" gap={4}>
+          <Frontmatter flexGrow>
+            <TotalPosts total={posts.length} icon />
+            <TotalCategories total={tags.length} icon />
+            <ActiveTag tags={tags} queryTag={queryTag} icon />
+          </Frontmatter>
 
-            <ActionButtons css={{ flexBasis: "fit-content" }}>
-              <FilterClearButton filter={queryTag} />
+          <ActionButtons css={{ flexBasis: "fit-content" }}>
+            <FilterClearButton filter={queryTag} />
 
-              <TagDrawer tags={tags} onClick={handleTagChange} />
+            <TagDrawer tags={tags} onClick={handleTagChange} />
 
-              <TagSelect value={queryTag} onValueChange={handleTagChange}>
-                {tags.map((tag) => (
-                  <TagSelectItem
-                    key={tag.id}
-                    id={tag.name}
-                    color={tag.color}
-                    value={tag.name}
+            <TagSelect value={queryTag} onValueChange={handleTagChange}>
+              {tags.map((tag) => (
+                <TagSelectItem
+                  key={tag.id}
+                  id={tag.name}
+                  color={tag.color}
+                  value={tag.name}
+                />
+              ))}
+            </TagSelect>
+          </ActionButtons>
+        </Box>
+      </Box>
+
+      <Box spacingVertical={10}>
+        <Divider />
+      </Box>
+
+      {featuredPost ? (
+        <>
+          <Box direction="vertical">
+            <Box spacingBottom={8}>
+              <TextTitle3 as="h2">Featured</TextTitle3>
+            </Box>
+
+            <Box
+              gap={{ "@initial": 0, "@bp3": 10 }}
+              direction={{ "@initial": "vertical", "@bp3": "horizontal" }}
+            >
+              <Box
+                direction="vertical"
+                spacingBottom={{ "@initial": 8, "@bp3": 0 }}
+                css={{
+                  "@bp3": { flexGrow: 0, flexShrink: 0, flexBasis: 480 },
+                }}
+              >
+                <AspectRatio.Root ratio={16 / 9}>
+                  <StyledHeroImage
+                    src={featuredPost.cover.external.url}
+                    sizes="100vw"
+                    fill
+                    alt=""
                   />
-                ))}
-              </TagSelect>
-            </ActionButtons>
-          </Box>
-        </Box>
-
-        <Box spacingVertical={10}>
-          <Divider />
-        </Box>
-
-        {featuredPost ? (
-          <>
-            <Box direction="vertical">
-              <Box spacingBottom={8}>
-                <TextTitle3 as="h2">Featured</TextTitle3>
+                </AspectRatio.Root>
               </Box>
 
-              <Box
-                gap={{ "@initial": 0, "@bp3": 10 }}
-                direction={{ "@initial": "vertical", "@bp3": "horizontal" }}
-              >
-                <Box
-                  direction="vertical"
-                  spacingBottom={{ "@initial": 8, "@bp3": 0 }}
-                  css={{
-                    "@bp3": { flexGrow: 0, flexShrink: 0, flexBasis: 480 },
-                  }}
+              <Box direction="vertical" gap={4}>
+                <Link
+                  href={`/writing/${featuredPost.properties.slug.rich_text[0].plain_text}`}
+                  variant="primary"
                 >
-                  <AspectRatio ratio={16 / 9}>
-                    <StyledImage
-                      src={featuredPost.cover.external.url}
-                      sizes="100vw"
-                      fill
-                      alt=""
-                    />
-                  </AspectRatio>
+                  <TextTitle3>
+                    <Balancer>
+                      {featuredPost.properties.page.title[0].plain_text}
+                    </Balancer>
+                  </TextTitle3>
+                </Link>
+
+                <Box>
+                  <PostTags
+                    as="div"
+                    tags={featuredPost.properties.tags.multi_select}
+                  />
                 </Box>
 
-                <Box direction="vertical" gap={4}>
+                <TextBody
+                  clamp={3}
+                  textAlign={{ "@initial": "left", "@bp3": "justify" }}
+                  color="secondary"
+                >
+                  {featuredPost.properties.abstract.rich_text[0].plain_text}
+                </TextBody>
+
+                <Box>
                   <Link
                     href={`/writing/${featuredPost.properties.slug.rich_text[0].plain_text}`}
+                    variant="tertiary"
+                  >
+                    <TextAux>Read the article</TextAux>
+                  </Link>
+                </Box>
+              </Box>
+            </Box>
+          </Box>
+
+          <Box spacingVertical={10}>
+            <Divider />
+          </Box>
+        </>
+      ) : null}
+
+      <Box direction="vertical">
+        <Box
+          gap={4}
+          justifyContent="space-between"
+          alignItems="center"
+          spacingBottom={8}
+        >
+          <Box>
+            <TextTitle3 as="h2">Articles</TextTitle3>
+          </Box>
+
+          <LayoutToggle
+            aria-label="Articles layout"
+            defaultChecked={storageLayout === "grid"}
+            value={storageLayout}
+            onCheckedChange={handleLayoutChange}
+          />
+        </Box>
+
+        <StyledCardContainer
+          display={storageLayout === "grid" ? "grid" : "none"}
+        >
+          {filteredPosts.map((post) => {
+            return (
+              <BlogCard
+                key={post.id}
+                url={`/writing/${post.properties.slug.rich_text[0].plain_text}`}
+                image={post.cover.external.url}
+                emoji={post.icon.type === "emoji" ? post.icon.emoji : "👨‍💻"}
+                title={post.properties.page.title[0].plain_text}
+                description={post.properties.abstract.rich_text[0].plain_text}
+                publishDate={post.properties.date.date.start}
+                tags={post.properties.tags.multi_select}
+              />
+            );
+          })}
+        </StyledCardContainer>
+
+        <Box
+          as="ul"
+          direction="vertical"
+          gap={10}
+          display={storageLayout === "rows" ? "flex" : "none"}
+        >
+          {filteredPosts.map((post) => {
+            return (
+              <Box as="li" key={post.id}>
+                <Box as="article" direction="vertical">
+                  <Link
+                    href={`/writing/${post.properties.slug.rich_text[0].plain_text}`}
                     variant="primary"
                   >
                     <TextTitle3>
-                      <Balancer>
-                        {featuredPost.properties.page.title[0].plain_text}
-                      </Balancer>
+                      {post.properties.page.title[0].plain_text}
                     </TextTitle3>
                   </Link>
 
-                  <Box>
-                    <PostTags
-                      as="div"
-                      tags={featuredPost.properties.tags.multi_select}
-                    />
-                  </Box>
-
                   <TextBody
-                    clamp={3}
-                    textAlign={{ "@initial": "left", "@bp3": "justify" }}
                     color="secondary"
+                    textAlign="justify"
+                    css={{
+                      maxWidth: "none",
+                      spacingBottom: "$2",
+                      "@bp3": { maxWidth: "75%" },
+                    }}
                   >
-                    {featuredPost.properties.abstract.rich_text[0].plain_text}
+                    {post.properties.abstract.rich_text[0].plain_text}
                   </TextBody>
 
-                  <Box>
-                    <Link
-                      href={`/writing/${featuredPost.properties.slug.rich_text[0].plain_text}`}
-                      variant="tertiary"
-                    >
-                      <TextAux>Read the article</TextAux>
-                    </Link>
-                  </Box>
+                  <PostTags as="div" tags={post.properties.tags.multi_select} />
                 </Box>
               </Box>
-            </Box>
-
-            <Box spacingVertical={10}>
-              <Divider />
-            </Box>
-          </>
-        ) : null}
-
-        <Box direction="vertical">
-          <Box
-            gap={4}
-            justifyContent="space-between"
-            alignItems="center"
-            spacingBottom={8}
-          >
-            <Box>
-              <TextTitle3 as="h2">Articles</TextTitle3>
-            </Box>
-
-            <LayoutToggle
-              aria-label="Articles layout"
-              defaultChecked={storageLayout === "grid"}
-              value={storageLayout}
-              onCheckedChange={handleLayoutChange}
-            />
-          </Box>
-
-          <StyledCardContainer
-            display={storageLayout === "grid" ? "grid" : "none"}
-          >
-            {filteredPosts.map((post) => {
-              return (
-                <BlogCard
-                  key={post.id}
-                  url={`/writing/${post.properties.slug.rich_text[0].plain_text}`}
-                  image={post.cover.external.url}
-                  emoji={post.icon.type === "emoji" ? post.icon.emoji : "👨‍💻"}
-                  title={post.properties.page.title[0].plain_text}
-                  description={post.properties.abstract.rich_text[0].plain_text}
-                  publishDate={post.properties.date.date.start}
-                  tags={post.properties.tags.multi_select}
-                />
-              );
-            })}
-          </StyledCardContainer>
-
-          <Box
-            as="ul"
-            direction="vertical"
-            gap={10}
-            display={storageLayout === "rows" ? "flex" : "none"}
-          >
-            {filteredPosts.map((post) => {
-              return (
-                <Box as="li" key={post.id}>
-                  <Box as="article" direction="vertical">
-                    <Link
-                      href={`/writing/${post.properties.slug.rich_text[0].plain_text}`}
-                      variant="primary"
-                    >
-                      <TextTitle3>
-                        {post.properties.page.title[0].plain_text}
-                      </TextTitle3>
-                    </Link>
-
-                    <TextBody
-                      color="secondary"
-                      textAlign="justify"
-                      css={{
-                        maxWidth: "none",
-                        spacingBottom: "$2",
-                        "@bp3": { maxWidth: "75%" },
-                      }}
-                    >
-                      {post.properties.abstract.rich_text[0].plain_text}
-                    </TextBody>
-
-                    <PostTags
-                      as="div"
-                      tags={post.properties.tags.multi_select}
-                    />
-                  </Box>
-                </Box>
-              );
-            })}
-          </Box>
+            );
+          })}
         </Box>
+      </Box>
+
+      <Box spacingVertical={10}>
+        <Divider />
+      </Box>
+
+      <Box
+        direction="vertical"
+        gap={{
+          "@initial": 6,
+          "@bp2": 10,
+        }}
+      >
+        <TextTitle3 textAlign="center" color="secondary">
+          Enjoying the content?
+        </TextTitle3>
+
+        <Box
+          direction={{
+            "@initial": "vertical",
+            "@bp2": "horizontal",
+          }}
+          spacingHorizontal={10}
+          justifyContent="space-between"
+          alignItems="center"
+          gap={10}
+        >
+          <BuyMeCoffeeLink />
+
+          <BlogSubscriptionLink />
+        </Box>
+      </Box>
+
+      <Box spacingVertical={10}>
+        <Divider />
       </Box>
     </Box>
   );

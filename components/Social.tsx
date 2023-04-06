@@ -10,11 +10,26 @@ import { SOCIAL } from "../util/data";
 import { Box } from "./Box";
 import { Link } from "./Link";
 import { Tooltip } from "./Tooltip";
+import { SpacingUnit } from "../styles/flex";
 
-export const Social = memo(function Social() {
+type Props = {
+  size?: "s" | "m" | "l" | "xl";
+  gap?: SpacingUnit;
+};
+
+const SCALE_MAP = {
+  s: 0.75,
+  m: 1,
+  l: 1.25,
+  xl: 1.5,
+};
+
+export const Social = memo(function Social({ size = "m", gap = "4" }: Props) {
+  const multiplier = SCALE_MAP[size];
+
   return (
     <Box as="nav" aria-label="Social Media">
-      <Box as="ul" role="list" gap={4} alignItems="flex-end">
+      <Box as="ul" role="list" gap={gap} alignItems="flex-end">
         <Box as="li" alignItems="flex-end">
           <Tooltip title={SOCIAL.twitter.displayName}>
             <Link href={SOCIAL.twitter.url} variant="icon">
@@ -22,8 +37,8 @@ export const Social = memo(function Social() {
                 {SOCIAL.twitter.displayName}
               </VisuallyHidden.Root>
               <TwitterLogoIcon
-                width={32}
-                height={32}
+                width={32 * multiplier}
+                height={32 * multiplier}
                 aria-hidden
                 focusable={false}
               />
@@ -42,8 +57,8 @@ export const Social = memo(function Social() {
                 {SOCIAL.linkedin.displayName}
               </VisuallyHidden.Root>
               <LinkedInLogoIcon
-                width={30}
-                height={30}
+                width={30 * multiplier}
+                height={30 * multiplier}
                 aria-hidden
                 focusable={false}
               />
@@ -55,7 +70,7 @@ export const Social = memo(function Social() {
           <Tooltip title="RSS">
             <Link href="/rss" variant="icon">
               <VisuallyHidden.Root>RSS</VisuallyHidden.Root>
-              <MdRssFeed size={36} aria-hidden />
+              <MdRssFeed size={36 * multiplier} aria-hidden />
             </Link>
           </Tooltip>
         </Box>
@@ -66,7 +81,12 @@ export const Social = memo(function Social() {
               <VisuallyHidden.Root>
                 {SOCIAL.youtube.displayName}
               </VisuallyHidden.Root>
-              <VideoIcon width={33} height={33} aria-hidden focusable={false} />
+              <VideoIcon
+                width={33 * multiplier}
+                height={33 * multiplier}
+                aria-hidden
+                focusable={false}
+              />
             </Link>
           </Tooltip>
         </Box>

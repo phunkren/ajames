@@ -59,6 +59,9 @@ export const SPACING_VARIANTS = {
     [10]: {
       spacing: "$space$10",
     },
+    [11]: {
+      spacing: "$space$11",
+    },
   },
   spacingHorizontal: {
     [0]: {
@@ -93,6 +96,9 @@ export const SPACING_VARIANTS = {
     },
     [10]: {
       spacingHorizontal: "$space$10",
+    },
+    [11]: {
+      spacingHorizontal: "$space$11",
     },
   },
   spacingVertical: {
@@ -129,6 +135,9 @@ export const SPACING_VARIANTS = {
     [10]: {
       spacingVertical: "$space$10",
     },
+    [11]: {
+      spacingVertical: "$space$11",
+    },
   },
   spacingTop: {
     [0]: {
@@ -163,6 +172,9 @@ export const SPACING_VARIANTS = {
     },
     [10]: {
       spacingTop: "$space$10",
+    },
+    [11]: {
+      spacingTop: "$space$11",
     },
   },
   spacingRight: {
@@ -199,6 +211,9 @@ export const SPACING_VARIANTS = {
     [10]: {
       spacingRight: "$space$10",
     },
+    [11]: {
+      spacingRight: "$space$11",
+    },
   },
   spacingBottom: {
     [0]: {
@@ -234,6 +249,9 @@ export const SPACING_VARIANTS = {
     [10]: {
       spacingBottom: "$space$10",
     },
+    [11]: {
+      spacingBottom: "$space$11",
+    },
   },
   spacingLeft: {
     [0]: {
@@ -268,6 +286,9 @@ export const SPACING_VARIANTS = {
     },
     [10]: {
       spacingLeft: "$space$10",
+    },
+    [11]: {
+      spacingLeft: "$space$11",
     },
   },
 };

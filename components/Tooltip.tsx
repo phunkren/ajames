@@ -39,6 +39,7 @@ const StyledTooltipContent = styled(RadixTooltip.Content, {
     backgroundColor: "$backgroundMuted",
     boxShadow: "$2",
     userSelect: "none",
+    zIndex: 100,
     animationDuration: "200ms",
     animationTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
     willChange: "transform, opacity",

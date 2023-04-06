@@ -464,9 +464,9 @@ export const PrintButton = memo(function PrintButton(props: IconButtonProps) {
   }, []);
 
   return (
-    <Tooltip title="Print">
+    <Tooltip title="Print CV">
       <IconButton onClick={handleClick} {...props}>
-        <VisuallyHidden.Root>Print</VisuallyHidden.Root>
+        <VisuallyHidden.Root>Print CV</VisuallyHidden.Root>
         <FileIcon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
       </IconButton>
     </Tooltip>

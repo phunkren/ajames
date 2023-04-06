@@ -4,6 +4,7 @@ import { UrlObject } from "url";
 import { MdRssFeed } from "react-icons/md";
 import {
   DownloadIcon,
+  HeartIcon,
   TwitterLogoIcon,
   VideoIcon,
 } from "@radix-ui/react-icons";
@@ -574,11 +575,22 @@ export const TwitterShareLink = memo(function TwitterShareLink({
 
 export const DownloadLink = memo(function DownloadLink(props: any) {
   return (
-    <Tooltip title="Download">
+    <Tooltip title="Download CV">
       <StyledIconLink download {...props}>
         <DownloadIcon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
-        <VisuallyHidden.Root>Download</VisuallyHidden.Root>
+        <VisuallyHidden.Root>Download CV</VisuallyHidden.Root>
       </StyledIconLink>
     </Tooltip>
+  );
+});
+
+export const BuyMeCoffeeLink = memo(function BuyMeCoffeeLink() {
+  return (
+    <StyledLink href={SOCIAL.buyMeCoffee.url} variant="secondary">
+      <Box alignItems="center" gap={2}>
+        <HeartIcon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
+        <TextHeadline>{SOCIAL.buyMeCoffee.displayName}</TextHeadline>
+      </Box>
+    </StyledLink>
   );
 });

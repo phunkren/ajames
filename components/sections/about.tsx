@@ -32,6 +32,7 @@ import { ICON_SIZE } from "../../util/images";
 import banner from "../../public/images/mugshot.png";
 import { Box } from "../Box";
 import { Tooltip } from "../Tooltip";
+import { Social } from "../Social";
 
 const StyledPageHeader = styled(Box, {
   position: "relative",
@@ -138,7 +139,7 @@ export const About = () => {
                   direction="vertical"
                   display={{
                     "@initial": "none",
-                    "@bp3": "flex",
+                    "@bp2": "flex",
                   }}
                 >
                   <Box gap={4} spacingTop={3}>
@@ -147,7 +148,7 @@ export const About = () => {
                   </Box>
                 </Box>
 
-                <Box direction="vertical" justifyContent="flex-end">
+                <Box direction="vertical" justifyContent="flex-end" gap={2}>
                   <TextTitle1 css={{ "@bp2": { textShadow: "$textShadow" } }}>
                     {PERSONAL.name}
                   </TextTitle1>
@@ -155,6 +156,10 @@ export const About = () => {
                   <TextHeadline css={{ "@bp2": { textShadow: "$textShadow" } }}>
                     {PERSONAL.occupation} / {PERSONAL.location}
                   </TextHeadline>
+
+                  <Box position="relative" css={{ left: -12 }} spacingTop={1}>
+                    <Social size="s" gap="1" />
+                  </Box>
                 </Box>
               </Box>
 
