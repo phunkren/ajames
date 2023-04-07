@@ -9,7 +9,8 @@ export type SpacingUnit =
   | "7"
   | "8"
   | "9"
-  | "10";
+  | "10"
+  | "11";
 
 export const FLEX_UTILS = {
   gap: (value: SpacingUnit) => ({
@@ -106,6 +107,9 @@ export const FLEX_VARIANTS = {
     },
     [10]: {
       gap: "$space$10",
+    },
+    [11]: {
+      gap: "$space$11",
     },
   },
   direction: {

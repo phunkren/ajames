@@ -72,7 +72,6 @@ const Home: NextPageWithLayout = ({ writing, learning }: Props) => {
       direction="vertical"
       justifyContent="center"
       alignItems="center"
-      container="l"
       spacingHorizontal={{ "@initial": 4, "@bp2": 10 }}
       flexGrow
     >

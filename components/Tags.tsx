@@ -10,6 +10,7 @@ import { Button, CloseButton, FilterMenuButton } from "./Button";
 import { Box } from "./Box";
 import { DrawerScrollRoot, DrawerScrollViewport, Scrollbar } from "./Scroll";
 import { Tag } from "../util/notion";
+import { red } from "@radix-ui/colors";
 
 type TagSelectProps = Pick<Select.SelectViewportProps, "children"> &
   Pick<Select.SelectProps, "value" | "onValueChange">;
@@ -143,6 +144,11 @@ export const StyledTag = styled(Box, {
 
   variants: {
     ...NOTION_TAG_VARIANTS,
+    compact: {
+      true: {
+        padding: "$1 $2",
+      },
+    },
   },
 });
 

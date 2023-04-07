@@ -31,15 +31,10 @@ export type Props = {
 };
 
 const StyledHeroImage = styled(Image, {
-  display: "none",
-  objectFit: "contain",
+  objectFit: "cover",
   position: "absolute",
   zIndex: -1,
   pointerEvents: "none",
-
-  "@bp2": {
-    display: "block",
-  },
 });
 
 const StyledCardContainer = styled(Box, {
@@ -169,7 +164,7 @@ export const Writing = ({ posts, tags }: Props) => {
       direction="vertical"
       spacingBottom={10}
       display={{ print: "none", "@initial": "flex" }}
-      gap={10}
+      gap={11}
     >
       <Box spacingTop={11}>
         <AspectRatio.Root ratio={2.5 / 1} asChild>
@@ -225,81 +220,75 @@ export const Writing = ({ posts, tags }: Props) => {
         </Box>
       </Box>
 
-      <Box spacingVertical={10}>
+      <Box spacingBottom={11}>
         <Divider />
       </Box>
 
       {featuredPost ? (
-        <>
-          <Box direction="vertical">
-            <Box spacingBottom={8}>
-              <TextTitle3 as="h2">Featured</TextTitle3>
+        <Box direction="vertical" spacingBottom={11}>
+          <Box spacingBottom={8}>
+            <TextTitle3 as="h2">Featured</TextTitle3>
+          </Box>
+
+          <Box
+            gap={{ "@initial": 0, "@bp3": 10 }}
+            direction={{ "@initial": "vertical", "@bp3": "horizontal" }}
+          >
+            <Box
+              direction="vertical"
+              spacingBottom={{ "@initial": 8, "@bp3": 0 }}
+              css={{
+                "@bp3": { flexGrow: 0, flexShrink: 0, flexBasis: "50%" },
+              }}
+            >
+              <AspectRatio.Root ratio={16 / 9}>
+                <StyledHeroImage
+                  src={featuredPost.cover.external.url}
+                  sizes="100vw"
+                  fill
+                  alt=""
+                />
+              </AspectRatio.Root>
             </Box>
 
-            <Box
-              gap={{ "@initial": 0, "@bp3": 10 }}
-              direction={{ "@initial": "vertical", "@bp3": "horizontal" }}
-            >
-              <Box
-                direction="vertical"
-                spacingBottom={{ "@initial": 8, "@bp3": 0 }}
-                css={{
-                  "@bp3": { flexGrow: 0, flexShrink: 0, flexBasis: 480 },
-                }}
+            <Box direction="vertical" gap={4}>
+              <Link
+                href={`/writing/${featuredPost.properties.slug.rich_text[0].plain_text}`}
+                variant="primary"
               >
-                <AspectRatio.Root ratio={16 / 9}>
-                  <StyledHeroImage
-                    src={featuredPost.cover.external.url}
-                    sizes="100vw"
-                    fill
-                    alt=""
-                  />
-                </AspectRatio.Root>
+                <TextTitle3>
+                  <Balancer>
+                    {featuredPost.properties.page.title[0].plain_text}
+                  </Balancer>
+                </TextTitle3>
+              </Link>
+
+              <Box>
+                <PostTags
+                  as="div"
+                  tags={featuredPost.properties.tags.multi_select}
+                />
               </Box>
 
-              <Box direction="vertical" gap={4}>
+              <TextBody
+                clamp={3}
+                textAlign={{ "@initial": "left", "@bp3": "justify" }}
+                color="secondary"
+              >
+                {featuredPost.properties.abstract.rich_text[0].plain_text}
+              </TextBody>
+
+              <Box>
                 <Link
                   href={`/writing/${featuredPost.properties.slug.rich_text[0].plain_text}`}
-                  variant="primary"
+                  variant="tertiary"
                 >
-                  <TextTitle3>
-                    <Balancer>
-                      {featuredPost.properties.page.title[0].plain_text}
-                    </Balancer>
-                  </TextTitle3>
+                  <TextAux>Read the article</TextAux>
                 </Link>
-
-                <Box>
-                  <PostTags
-                    as="div"
-                    tags={featuredPost.properties.tags.multi_select}
-                  />
-                </Box>
-
-                <TextBody
-                  clamp={3}
-                  textAlign={{ "@initial": "left", "@bp3": "justify" }}
-                  color="secondary"
-                >
-                  {featuredPost.properties.abstract.rich_text[0].plain_text}
-                </TextBody>
-
-                <Box>
-                  <Link
-                    href={`/writing/${featuredPost.properties.slug.rich_text[0].plain_text}`}
-                    variant="tertiary"
-                  >
-                    <TextAux>Read the article</TextAux>
-                  </Link>
-                </Box>
               </Box>
             </Box>
           </Box>
-
-          <Box spacingVertical={10}>
-            <Divider />
-          </Box>
-        </>
+        </Box>
       ) : null}
 
       <Box direction="vertical">
@@ -365,13 +354,17 @@ export const Writing = ({ posts, tags }: Props) => {
                     css={{
                       maxWidth: "none",
                       spacingBottom: "$2",
-                      "@bp3": { maxWidth: "75%" },
+                      "@bp3": { maxWidth: "66%" },
                     }}
                   >
                     {post.properties.abstract.rich_text[0].plain_text}
                   </TextBody>
 
-                  <PostTags as="div" tags={post.properties.tags.multi_select} />
+                  <PostTags
+                    as="div"
+                    tags={post.properties.tags.multi_select}
+                    compact
+                  />
                 </Box>
               </Box>
             );
@@ -410,9 +403,9 @@ export const Writing = ({ posts, tags }: Props) => {
         </Box>
       </Box>
 
-      <Box spacingVertical={10}>
+      {/* <Box spacingVertical={10}>
         <Divider />
-      </Box>
+      </Box> */}
     </Box>
   );
 };

@@ -80,6 +80,7 @@ export const FrontmatterItem = memo(function FrontmatterItem({
 export const PostTags = memo(function PostTags({
   tags,
   icon = false,
+  compact = false,
   ...props
 }: PostTagProps) {
   return (
@@ -94,7 +95,12 @@ export const PostTags = memo(function PostTags({
       <Box as="ul" role="list" gap={4} flexWrap="wrap">
         {tags.map((tag) => {
           return (
-            <StyledTag as="li" key={tag.id} borderColor={tag.color}>
+            <StyledTag
+              as="li"
+              key={tag.id}
+              borderColor={tag.color}
+              compact={compact}
+            >
               <TextAux>{tag.name}</TextAux>
             </StyledTag>
           );

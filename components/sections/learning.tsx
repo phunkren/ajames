@@ -101,8 +101,9 @@ export const Learning = ({
       as="section"
       direction="vertical"
       display={{ print: "none", "@initial": "flex" }}
+      gap={11}
     >
-      <Box spacingTop={11}>
+      <Box>
         <AspectRatio.Root ratio={2.5 / 1} asChild>
           <StyledHeroImage
             src={book}
@@ -115,15 +116,10 @@ export const Learning = ({
         </AspectRatio.Root>
       </Box>
 
-      <Box direction="vertical" spacingBottom={10}>
+      <Box direction="vertical">
         <Box direction="vertical">
-          <Box direction="vertical" justifyContent="space-between">
-            <Box
-              justifyContent="space-between"
-              alignItems="center"
-              spacingTop={10}
-              spacingBottom={10}
-            >
+          <Box direction="vertical" justifyContent="space-between" gap={10}>
+            <Box justifyContent="space-between" alignItems="center">
               <TextTitle2 as="h1">Learning</TextTitle2>
 
               <YoutubeSubscribeLink
@@ -176,13 +172,13 @@ export const Learning = ({
         </Box>
       </Box>
 
-      <Box spacingVertical={10}>
+      <Box spacingBottom={11}>
         <Divider />
       </Box>
 
-      <Box direction="vertical" gap={10} spacingTop={10}>
+      <Box direction="vertical" gap={11}>
         {featuredVideo ? (
-          <Box direction="vertical">
+          <Box direction="vertical" spacingBottom={11}>
             <Box
               justifyContent={{
                 "@initial": "space-between",
@@ -212,7 +208,7 @@ export const Learning = ({
                 direction="vertical"
                 spacingBottom={{ "@initial": 8, "@bp3": 0 }}
                 css={{
-                  "@bp3": { flexGrow: 0, flexShrink: 0, flexBasis: 480 },
+                  "@bp3": { flexGrow: 0, flexShrink: 0, flexBasis: "50%" },
                 }}
               >
                 <AspectRatio.Root ratio={16 / 9}>
@@ -276,16 +272,8 @@ export const Learning = ({
           });
 
           return (
-            <Box key={playlist.id} direction="vertical">
-              <Box spacingVertical={10}>
-                <Divider />
-              </Box>
-
-              <Box
-                direction="vertical"
-                spacingTop={10}
-                css={{ overflowX: "hidden" }}
-              >
+            <Box key={playlist.id} direction="vertical" spacingBottom={10}>
+              <Box direction="vertical" css={{ overflowX: "hidden" }}>
                 <Box
                   gap={10}
                   justifyContent={{
