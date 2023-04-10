@@ -141,17 +141,11 @@ export const Layout = memo(function Layout({ children }: LayoutProps) {
         direction="vertical"
         css={{ overflowX: "hidden", "@bp3": { overflowX: "visible" } }}
         className={theme}
+        gap={11}
       >
         <HeaderLayout />
 
-        <Box
-          as="main"
-          direction="vertical"
-          css={{
-            background: `linear-gradient($slate1 0.04%, $slate2 100.04%)`,
-          }}
-          flexGrow
-        >
+        <Box as="main" direction="vertical" flexGrow>
           {children}
         </Box>
 

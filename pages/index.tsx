@@ -72,7 +72,6 @@ const Home: NextPageWithLayout = ({ writing, learning }: Props) => {
       direction="vertical"
       justifyContent="center"
       alignItems="center"
-      spacingVertical={11}
       flexGrow
     >
       <HeroLayout />

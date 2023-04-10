@@ -57,7 +57,7 @@ export const ErrorFallback = memo(function ErrorFallback({
     <ThemeProvider>
       <Layout>
         <Box direction="vertical">
-          <HeroLayout bordered>
+          <HeroLayout>
             <Box direction="vertical" position="relative" flexGrow>
               <Box
                 direction="vertical"

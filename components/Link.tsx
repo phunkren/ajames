@@ -5,6 +5,7 @@ import { MdRssFeed } from "react-icons/md";
 import {
   DownloadIcon,
   HeartIcon,
+  LinkedInLogoIcon,
   TwitterLogoIcon,
   VideoIcon,
 } from "@radix-ui/react-icons";
@@ -221,7 +222,7 @@ const StyledYoutubeSubscription = styled(Link, {
       button: {
         padding: "$2 $4",
         borderRadius: "$1",
-        boxShadow: "$1",
+        boxShadow: "0 0 0 2px $colors$red8",
 
         [`.${lightTheme} &`]: {
           backgroundImage: `linear-gradient(185deg, $red11 0.04%, $red10 100.04%)`,
@@ -235,8 +236,6 @@ const StyledYoutubeSubscription = styled(Link, {
 
         "@media(hover)": {
           "&:hover": {
-            boxShadow: "$4",
-
             [`.${lightTheme} &`]: {
               backgroundImage: `linear-gradient(225deg, $red10 0.04%, $red10 100.04%)`,
               color: "$red1",
@@ -270,20 +269,16 @@ const StyledYoutubeSubscription = styled(Link, {
 
         [`.${lightTheme} &`]: {
           backgroundImage: `linear-gradient(185deg, $red11 0.04%, $red10 100.04%)`,
-          borderColor: "$red10",
           color: "$red1",
         },
 
         [`.${darkTheme} &`]: {
           backgroundImage: `linear-gradient(185deg, $red8 0.04%, $red7 100.04%)`,
-          borderColor: "$red7",
           color: "$red12",
         },
 
         "@media(hover)": {
           "&:hover": {
-            boxShadow: "$4",
-
             [`.${lightTheme} &`]: {
               backgroundImage: `linear-gradient(225deg, $red10 0.04%, $red10 100.04%)`,
               borderColor: "$red10",
@@ -304,7 +299,7 @@ const StyledYoutubeSubscription = styled(Link, {
   },
 });
 
-const StyledBlogSubscription = styled(Link, {
+const StyledLinkedInConnect = styled(Link, {
   display: "flex",
   alignItems: "center",
   transition: "boxShadow 100ms ease-out",
@@ -319,8 +314,7 @@ const StyledBlogSubscription = styled(Link, {
         padding: "$2 $4",
         borderRadius: "$1",
         color: "$blue1",
-        boxShadow:
-          "0 0 0 2px $colors$blue10, -15px 0 30px -15px $colors$blue8, 0 0 30px -15px $colors$crimson8, 15px 0 30px -15px $colors$crimson10",
+        boxShadow: "0 0 0 2px $colors$blue9",
 
         [`.${lightTheme} &`]: {
           backgroundImage: `linear-gradient(185deg, $blue11 0.04%, $blue10 100.04%)`,
@@ -334,8 +328,6 @@ const StyledBlogSubscription = styled(Link, {
 
         "@media(hover)": {
           "&:hover": {
-            boxShadow: "$4",
-
             [`.${lightTheme} &`]: {
               backgroundImage: `linear-gradient(225deg, $blue10 0.04%, $blue10 100.04%)`,
               color: "$blue1",
@@ -364,33 +356,86 @@ const StyledBlogSubscription = styled(Link, {
         boxShadow: "$1",
 
         [`.${lightTheme} &`]: {
-          backgroundImage: `linear-gradient(185deg, $blue10 0.04%, $hover 100.04%)`,
-          borderColor: "$hover",
+          backgroundImage: `linear-gradient(185deg, $blue11 0.04%, $blue10 100.04%)`,
           color: "$blue1",
         },
 
         [`.${darkTheme} &`]: {
-          backgroundImage: `linear-gradient(185deg, $hover 0.04%, $blue8 100.04%)`,
-          borderColor: "$blue8",
+          backgroundImage: `linear-gradient(185deg, $blue8 0.04%, $blue7 100.04%)`,
           color: "$blue12",
         },
 
         "@media(hover)": {
           "&:hover": {
-            boxShadow: "$4",
-
             [`.${lightTheme} &`]: {
-              backgroundImage: `linear-gradient(-90deg, $hover 0.04%, $hover 100.04%)`,
-              borderColor: "$hover",
+              backgroundImage: `linear-gradient(225deg, $blue10 0.04%, $blue10 100.04%)`,
               color: "$blue1",
             },
 
             [`.${darkTheme} &`]: {
               backgroundImage: `linear-gradient(225deg, $blue8 0.04%, $blue8 100.04%)`,
-              borderColor: "$blue8",
               color: "$blue12",
             },
           },
+        },
+
+        "&:active": {
+          boxShadow: "$5",
+        },
+      },
+    },
+  },
+});
+
+const StyledBlogSubscription = styled(Link, {
+  display: "flex",
+  alignItems: "center",
+  transition: "boxShadow 100ms ease-out",
+  willChange: "boxShadow",
+
+  variants: {
+    type: {
+      link: {
+        color: "inherit",
+      },
+      button: {
+        padding: "$2 $4",
+        borderRadius: "$1",
+
+        boxShadow: "0 0 0 2px $colors$amber8",
+
+        [`.${lightTheme} &`]: {
+          backgroundImage: `linear-gradient(185deg, $amber12 0.04%, $amber11 100.04%)`,
+          color: "$amber1",
+        },
+
+        [`.${darkTheme} &`]: {
+          backgroundImage: `linear-gradient(185deg, $amber9 0.04%, $amber11 100.04%)`,
+          color: "$amber12",
+        },
+
+        "&:active": {
+          boxShadow: "$5",
+        },
+      },
+      icon: {
+        justifyContent: "center",
+        borderRadius: "50%",
+        padding: "$2",
+        borderWidth: 2,
+        borderStyle: "solid",
+        minWidth: 44,
+        minHeight: 44,
+        boxShadow: "$1",
+
+        [`.${lightTheme} &`]: {
+          backgroundImage: `linear-gradient(185deg, $amber12 0.04%, $amber11 100.04%)`,
+          color: "$amber1",
+        },
+
+        [`.${darkTheme} &`]: {
+          backgroundImage: `linear-gradient(185deg, $amber9 0.04%, $amber11 100.04%)`,
+          color: "$amber12",
         },
 
         "&:active": {
@@ -487,6 +532,55 @@ export const YoutubeSubscribeLink = memo(function YoutubeSubscribeLink({
         {type === "link" && <TextHeadline>Subscribe</TextHeadline>}
       </Box>
     </StyledYoutubeSubscription>
+  );
+});
+
+export const LinkedInConnectLink = memo(function LinkedInConnectLink({
+  type = "link",
+  ...props
+}: SubscribeProps) {
+  if (type === "icon") {
+    return (
+      <Tooltip title="Connect">
+        <StyledLinkedInConnect
+          href={SOCIAL.linkedin.url}
+          type={type}
+          variant="invisible"
+          {...props}
+        >
+          <Box alignItems="center" gap={2}>
+            <LinkedInLogoIcon
+              width={ICON_SIZE.m}
+              height={ICON_SIZE.m}
+              aria-hidden
+            />
+            <VisuallyHidden.Root>Connect on LinkedIn</VisuallyHidden.Root>
+          </Box>
+        </StyledLinkedInConnect>
+      </Tooltip>
+    );
+  }
+
+  return (
+    <StyledLinkedInConnect
+      href={SOCIAL.linkedin.url}
+      type={type}
+      variant={type === "link" ? "secondary" : "invisible"}
+      {...props}
+    >
+      <Box alignItems="center" gap={2}>
+        <LinkedInLogoIcon
+          style={{ position: "relative", top: -1 }}
+          width={ICON_SIZE.m}
+          height={ICON_SIZE.m}
+          aria-hidden
+        />
+
+        {type === "button" && <TextAux color="primary">Connect</TextAux>}
+
+        {type === "link" && <TextHeadline>Connect</TextHeadline>}
+      </Box>
+    </StyledLinkedInConnect>
   );
 });
 

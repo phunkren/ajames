@@ -43,7 +43,7 @@ const StyledImage = styled(Image, {
 const NotFound: NextPageWithLayout = () => {
   return (
     <Box direction="vertical">
-      <HeroLayout bordered>
+      <HeroLayout>
         <Box direction="vertical" position="relative" flexGrow>
           <Box
             direction="vertical"

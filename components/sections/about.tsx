@@ -6,7 +6,7 @@ import {
 } from "@radix-ui/react-icons";
 import { PrintButton } from "../Button";
 import { Divider } from "../Divider";
-import { BlogSubscriptionLink, DownloadLink, Link } from "../Link";
+import { DownloadLink, Link, LinkedInConnectLink } from "../Link";
 import {
   TextAux,
   TextBody,
@@ -30,7 +30,6 @@ import { formatShortDate } from "../../util/date";
 import { ICON_SIZE } from "../../util/images";
 import { Box } from "../Box";
 import { Tooltip } from "../Tooltip";
-import { slateDark } from "@radix-ui/colors";
 import { Frontmatter, Location, Name, Occupation } from "../Frontmatter";
 import { ActionButtons } from "../Layout";
 
@@ -87,9 +86,9 @@ export const About = () => {
       id={ABOOT_ID}
       as="section"
       direction="vertical"
-      spacingVertical={11}
+      spacingVertical={{ "@print": 0, "@initial": 11 }}
       css={{
-        background: `linear-gradient($slate1 75.04%, $slate2 100.04%)`,
+        background: `linear-gradient($slate1 0.04%, $slate2 100.04%)`,
       }}
     >
       <Box direction="vertical" gap={11} container="l">
@@ -110,13 +109,32 @@ export const About = () => {
           </Box>
         </Box>
 
-        <Box direction="vertical" gap={10}>
+        <Box
+          direction="vertical"
+          gap={10}
+          display={{ "@print": "none", "@initial": "flex" }}
+        >
           <Box justifyContent="space-between" alignItems="center">
-            <TextTitle2>About</TextTitle2>
+            <TextTitle1 as="h2">About</TextTitle1>
 
-            <BlogSubscriptionLink
-              type="button"
-              css={{ display: "none", "@bp2": { display: "flex" } }}
+            <Box
+              position="relative"
+              css={{
+                display: "none",
+                "@bp2": { display: "flex", left: "-$1" },
+              }}
+            >
+              <LinkedInConnectLink type="button" />
+            </Box>
+
+            <LinkedInConnectLink
+              type="icon"
+              css={{
+                display: "flex",
+                "@bp2": {
+                  display: "none",
+                },
+              }}
             />
           </Box>
 
@@ -132,10 +150,10 @@ export const About = () => {
               <DownloadLink href="../Andrew%20James%20CV.pdf" download />
             </ActionButtons>
           </Box>
-        </Box>
 
-        <Box>
-          <Divider />
+          <Box>
+            <Divider />
+          </Box>
         </Box>
 
         <Box
@@ -152,18 +170,16 @@ export const About = () => {
         >
           <Box
             direction="vertical"
-            gap={10}
+            gap={11}
             css={{
               "@print": { flexGrow: 0, flexShrink: 0, flexBasis: 125 },
               "@bp3": { flexGrow: 0, flexShrink: 0, flexBasis: 250 },
             }}
           >
             <Box as="section" aria-labelledby="contact" direction="vertical">
-              <TextTitle3 as="h2" id="contact">
-                Contact
-              </TextTitle3>
+              <TextTitle2 id="contact">Contact</TextTitle2>
 
-              <Box spacingTop={2} spacingBottom={6}>
+              <Box spacingTop={2} spacingBottom={8}>
                 <Divider />
               </Box>
 
@@ -231,11 +247,9 @@ export const About = () => {
             </Box>
 
             <Box as="section" aria-labelledby="expertise" direction="vertical">
-              <TextTitle3 id="expertise" as="h2">
-                Expertise
-              </TextTitle3>
+              <TextTitle2 id="expertise">Expertise</TextTitle2>
 
-              <Box spacingTop={2} spacingBottom={6}>
+              <Box spacingTop={2} spacingBottom={8}>
                 <Divider />
               </Box>
 
@@ -257,11 +271,9 @@ export const About = () => {
             </Box>
 
             <Box as="section" aria-labelledby="interests" direction="vertical">
-              <TextTitle3 id="interests" as="h2">
-                Interests
-              </TextTitle3>
+              <TextTitle2 id="interests">Interests</TextTitle2>
 
-              <Box spacingTop={2} spacingBottom={6}>
+              <Box spacingTop={2} spacingBottom={8}>
                 <Divider />
               </Box>
 
@@ -283,11 +295,9 @@ export const About = () => {
             </Box>
 
             <Box as="section" aria-labelledby="education" direction="vertical">
-              <TextTitle3 id="education" as="h2">
-                Education
-              </TextTitle3>
+              <TextTitle2 id="education">Education</TextTitle2>
 
-              <Box spacingTop={2} spacingBottom={6}>
+              <Box spacingTop={2} spacingBottom={8}>
                 <Divider />
               </Box>
 
@@ -354,19 +364,10 @@ export const About = () => {
 
             <Box as="section" aria-labelledby="references" direction="vertical">
               <Link variant="secondary" href={SOCIAL.linkedin.url}>
-                <Box direction="horizontal" gap={2} alignItems="center">
-                  <LinkedInLogoIcon
-                    width={ICON_SIZE.m}
-                    height={ICON_SIZE.m}
-                    aria-label="linkedIn logo"
-                  />
-                  <TextTitle3 id="references" as="h2">
-                    References
-                  </TextTitle3>
-                </Box>
+                <TextTitle2 id="references">References</TextTitle2>
               </Link>
 
-              <Box spacingTop={2} spacingBottom={6}>
+              <Box spacingTop={2} spacingBottom={8}>
                 <Divider />
               </Box>
 
@@ -413,16 +414,14 @@ export const About = () => {
 
           <Box
             direction="vertical"
-            gap={{ "@print": 8, "@initial": 10 }}
+            gap={{ "@print": 8, "@initial": 11 }}
             spacingBottom={{ "@print": 0, "@initial": 10 }}
             flexGrow
           >
             <Box as="section" aria-labelledby="profile" direction="vertical">
-              <TextTitle3 id="profile" as="h2">
-                Profile
-              </TextTitle3>
+              <TextTitle2 id="profile">Profile</TextTitle2>
 
-              <Box spacingTop={2} spacingBottom={6}>
+              <Box spacingTop={2} spacingBottom={8}>
                 <Divider />
               </Box>
 
@@ -438,11 +437,9 @@ export const About = () => {
             </Box>
 
             <Box as="section" aria-labelledby="experience" direction="vertical">
-              <TextTitle3 id="experience" as="h2">
-                Experience
-              </TextTitle3>
+              <TextTitle2 id="experience">Experience</TextTitle2>
 
-              <Box spacingTop={2} spacingBottom={6}>
+              <Box spacingTop={2} spacingBottom={8}>
                 <Divider />
               </Box>
 

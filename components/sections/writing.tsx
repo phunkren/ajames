@@ -12,7 +12,7 @@ import {
 import { ActionButtons } from "../Layout";
 import { LayoutToggle } from "../Toggle";
 import { StyledTag, TagDrawer, TagSelect, TagSelectItem } from "../Tags";
-import { TextAux, TextBody, TextTitle2, TextTitle3 } from "../Text";
+import { TextAux, TextBody, TextTitle1, TextTitle2, TextTitle3 } from "../Text";
 import { styled } from "../../stitches.config";
 import { BlogPost, Tag } from "../../util/notion";
 import { filterPosts } from "../../util/notion";
@@ -30,6 +30,7 @@ import { Box } from "../Box";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import book from "../../public/images/book.png";
 import { SITE } from "../../util/data";
+import { H2_STYLES, H3_STYLES } from "../../styles/text";
 
 export type Props = {
   posts: BlogPost[];
@@ -79,6 +80,14 @@ const StyledCardContainer = styled(Box, {
       gridColumn: "span 2",
       gridRow: "span 1",
 
+      h3: {
+        ...H2_STYLES,
+      },
+
+      p: {
+        ...H3_STYLES,
+      },
+
       [`${StyledCardInner}`]: {
         top: 0,
         padding: "0 $6 $6",
@@ -108,6 +117,14 @@ const StyledCardContainer = styled(Box, {
       flexDirection: "row-reverse",
       gridColumn: "span 2",
       gridRow: "span 1",
+
+      h3: {
+        ...H2_STYLES,
+      },
+
+      p: {
+        ...H3_STYLES,
+      },
 
       [`${StyledCardInner}`]: {
         top: 0,
@@ -174,7 +191,7 @@ export const Writing = ({ posts, tags }: Props) => {
         }
       );
     },
-    [pathname, push, query]
+    [push, query]
   );
 
   const handleLayoutChange = useCallback(
@@ -191,20 +208,20 @@ export const Writing = ({ posts, tags }: Props) => {
   return (
     <Box
       id={WRITING_ID}
+      as="section"
       direction="vertical"
+      spacingVertical={11}
       css={{
-        background: `linear-gradient($slate2 75.04%, $slate1 100.04%)`,
+        background: `$slate2`,
       }}
     >
       <Box
-        as="section"
         direction="vertical"
-        spacingVertical={11}
         display={{ print: "none", "@initial": "flex" }}
         gap={11}
         container="l"
       >
-        <Box spacingTop={11}>
+        <Box>
           <AspectRatio.Root ratio={2.5 / 1} asChild>
             <StyledHeroImage src={book} alt="" fill quality={100} />
           </AspectRatio.Root>
@@ -212,17 +229,22 @@ export const Writing = ({ posts, tags }: Props) => {
 
         <Box direction="vertical" gap={10}>
           <Box justifyContent="space-between" alignItems="center">
-            <TextTitle2>Writing</TextTitle2>
+            <TextTitle1 as="h2">Writing</TextTitle1>
 
             <BlogSubscriptionLink
               type="icon"
               css={{ display: "flex", "@bp2": { display: "none" } }}
             />
 
-            <BlogSubscriptionLink
-              type="button"
-              css={{ display: "none", "@bp2": { display: "flex" } }}
-            />
+            <Box
+              position="relative"
+              css={{
+                display: "none",
+                "@bp2": { display: "flex", left: "-$1" },
+              }}
+            >
+              <BlogSubscriptionLink type="button" />
+            </Box>
           </Box>
 
           <Box justifyContent="space-between" alignItems="flex-end" gap={4}>
@@ -249,16 +271,16 @@ export const Writing = ({ posts, tags }: Props) => {
               </TagSelect>
             </ActionButtons>
           </Box>
-        </Box>
 
-        <Box>
-          <Divider />
+          <Box>
+            <Divider />
+          </Box>
         </Box>
 
         {featuredPost ? (
           <Box direction="vertical">
             <Box spacingBottom={8}>
-              <TextTitle3 as="h2">Featured</TextTitle3>
+              <TextTitle2 as="h2">Featured</TextTitle2>
             </Box>
 
             <Box
@@ -330,7 +352,7 @@ export const Writing = ({ posts, tags }: Props) => {
             spacingBottom={8}
           >
             <Box gap={4} alignItems="center">
-              <TextTitle3 as="h2">Articles</TextTitle3>
+              <TextTitle2 as="h2">Articles</TextTitle2>
               {filteredTag ? (
                 <StyledTag
                   borderColor={filteredTag.color}

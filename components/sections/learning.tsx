@@ -13,7 +13,7 @@ import {
 } from "../Frontmatter";
 import { ActionButtons } from "../Layout";
 import { Link, YoutubeSubscribeLink, TwitterShareLink } from "../Link";
-import { TextAux, TextBody, TextTitle2, TextTitle3 } from "../Text";
+import { TextAux, TextBody, TextTitle1, TextTitle2, TextTitle3 } from "../Text";
 import { YOUTUBE_CHANNEL_URL, YOUTUBE_SHARE_TEXT } from "../../util/youtube";
 import { buildUrl } from "../../util/url";
 import { styled } from "../../stitches.config";
@@ -91,18 +91,17 @@ export const Learning = ({
 }: Props) => {
   return (
     <Box
+      id={LEARNING_ID}
+      as="section"
       direction="vertical"
       spacingVertical={11}
       css={{
-        background: `linear-gradient($slate1 75.04%, $slate2 100.04%)`,
+        background: `linear-gradient($slate2 0.04%, $slate1 100.04%)`,
       }}
     >
       <Box
-        id={LEARNING_ID}
-        as="section"
         direction="vertical"
         display={{ print: "none", "@initial": "flex" }}
-        spacingTop={11}
         gap={11}
         container="l"
       >
@@ -116,18 +115,17 @@ export const Learning = ({
           <Box direction="vertical">
             <Box direction="vertical" justifyContent="space-between" gap={10}>
               <Box justifyContent="space-between" alignItems="center">
-                <TextTitle2 as="h1">Learning</TextTitle2>
+                <TextTitle1 as="h2">Learning</TextTitle1>
 
-                <YoutubeSubscribeLink
-                  type="button"
+                <Box
+                  position="relative"
                   css={{
                     display: "none",
-
-                    "@bp2": {
-                      display: "flex",
-                    },
+                    "@bp2": { display: "flex", left: "-$1" },
                   }}
-                />
+                >
+                  <YoutubeSubscribeLink type="button" />
+                </Box>
 
                 <YoutubeSubscribeLink
                   type="icon"
@@ -167,12 +165,12 @@ export const Learning = ({
                   />
                 </ActionButtons>
               </Box>
+
+              <Box>
+                <Divider />
+              </Box>
             </Box>
           </Box>
-        </Box>
-
-        <Box>
-          <Divider />
         </Box>
 
         <Box direction="vertical" gap={11}>
@@ -187,7 +185,7 @@ export const Learning = ({
                 alignItems="center"
                 spacingBottom={8}
               >
-                <TextTitle3 as="h2">Latest Video</TextTitle3>
+                <TextTitle2 as="h3">Latest Video</TextTitle2>
 
                 <Link href={featuredVideo.url} variant="tertiary">
                   <PlayIcon
@@ -274,16 +272,16 @@ export const Learning = ({
               <Box key={playlist.id} direction="vertical">
                 <Box direction="vertical" css={{ overflowX: "hidden" }}>
                   <Box
-                    gap={10}
+                    gap={11}
                     justifyContent={{
                       "@initial": "space-between",
-                      "@bp2": "flex-start",
+                      "@bp2": "space-between",
                     }}
                     alignItems="center"
-                    spacingBottom={4}
+                    spacingBottom={2}
                   >
                     <Link href={playlistUrl} variant="secondary">
-                      <TextTitle3 as="h2">{playlist.title}</TextTitle3>
+                      <TextTitle2 as="h3">{playlist.title}</TextTitle2>
                     </Link>
 
                     <Link href={watchAllUrl} variant="tertiary">
@@ -331,7 +329,7 @@ export const Learning = ({
                     </CardScrollViewport>
                     <Scrollbar
                       orientation="horizontal"
-                      variant="primary"
+                      variant="secondary"
                       forceMount
                     />
                   </CardScrollRoot>
@@ -348,7 +346,7 @@ export const Learning = ({
             direction="vertical"
             gap={{
               "@initial": 6,
-              "@bp2": 10,
+              "@bp2": 8,
             }}
           >
             <TextTitle3 as="h2" textAlign="center" css={{ color: "$focus" }}>

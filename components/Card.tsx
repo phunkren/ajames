@@ -268,13 +268,13 @@ export const BlogCard = memo(function BlogCard({
 
             <StyledLink href={url} ref={ref} variant="invisible">
               {isPreviewVisible ? (
-                <TextAux clamp={4} textAlign="justify">
+                <TextAux as="p" clamp={4} textAlign="justify">
                   {description}
                 </TextAux>
               ) : (
-                <TextTitle3 id={url} clamp={3}>
+                <TextHeadline as="h3" id={url} clamp={3}>
                   {title}
-                </TextTitle3>
+                </TextHeadline>
               )}
             </StyledLink>
           </StyledBlogContent>
@@ -284,7 +284,7 @@ export const BlogCard = memo(function BlogCard({
             alignItems="center"
             css={{ marginTop: "auto" }}
           >
-            <PostTags as="div" tags={tags} />
+            <PostTags as="div" tags={tags} compact />
 
             <PreviewToggle
               aria-label="Toggle article preview"
@@ -333,16 +333,16 @@ export const BlogSponsored = memo(function BlogSponsored() {
               }}
             />
 
-            <Box direction="vertical" gap={2}>
+            <Box direction="vertical" gap={4}>
               <StyledLink href="/rss" ref={ref} variant="invisible">
-                <TextTitle3 id="rss" clamp={3} css={{ color: "$focus" }}>
+                <TextHeadline id="rss" clamp={3} css={{ color: "$focus" }}>
                   Enjoying the blog?
-                </TextTitle3>
+                </TextHeadline>
               </StyledLink>
-              <TextBody as="p" color="secondary">
+              <TextAux as="p" color="secondary">
                 You can support the content by clicking here and subscribing to
                 the RSS feed
-              </TextBody>
+              </TextAux>
             </Box>
           </StyledBlogContent>
 
@@ -351,7 +351,7 @@ export const BlogSponsored = memo(function BlogSponsored() {
             alignItems="center"
             css={{ marginTop: "auto" }}
           >
-            <PostTags as="div" tags={[sponsoredTag]} />
+            <PostTags as="div" tags={[sponsoredTag]} compact />
           </Box>
         </>
       )}
