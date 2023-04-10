@@ -3,6 +3,29 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",
 });
 
+const PAGE_REDIRECTS = [
+  {
+    source: "/rss",
+    destination: "/rss.xml",
+    permanent: true,
+  },
+  {
+    source: "/about",
+    destination: "/#about",
+    permanent: true,
+  },
+  {
+    source: "/writing",
+    destination: "/#writing",
+    permanent: true,
+  },
+  {
+    source: "/learning",
+    destination: "/#learning",
+    permanent: true,
+  },
+];
+
 const SOCIAL_REDIRECTS = [
   {
     source: "/twitter",
@@ -42,74 +65,6 @@ const SOCIAL_REDIRECTS = [
   {
     source: "/social",
     destination: "https://wlo.link/@phunkren",
-    permanent: true,
-  },
-];
-
-const WRITING_REDIRECTS = [
-  {
-    source: "/rss",
-    destination: "/rss.xml",
-    permanent: true,
-  },
-  {
-    source: "/work-remote",
-    destination: "/writing/work-remote",
-    permanent: true,
-  },
-  {
-    source: "/build-pc",
-    destination: "/writing/build-pc",
-    permanent: true,
-  },
-  {
-    source: "/work-home",
-    destination: "/writing/work-home",
-    permanent: true,
-  },
-  {
-    source: "/buy-puppy",
-    destination: "/writing/buy-puppy",
-    permanent: true,
-  },
-  {
-    source: "/wedding-speech",
-    destination: "/writing/wedding-speech",
-    permanent: true,
-  },
-  {
-    source: "/accessible-menubar",
-    destination: "/writing/accessible-menubar",
-    permanent: true,
-  },
-  {
-    source: "/multiple-entry",
-    destination: "/writing/multiple-entry",
-    permanent: true,
-  },
-  {
-    source: "/responsive-camera",
-    destination: "/writing/responsive-camera",
-    permanent: true,
-  },
-  {
-    source: "/custom-modal",
-    destination: "/writing/custom-modal",
-    permanent: true,
-  },
-  {
-    source: "/storybook-state",
-    destination: "/writing/storybook-state",
-    permanent: true,
-  },
-  {
-    source: "/livestream-meetup",
-    destination: "/writing/livestream-meetup",
-    permanent: true,
-  },
-  {
-    source: "/grid-overlay",
-    destination: "/writing/grid-overlay",
     permanent: true,
   },
 ];
@@ -187,7 +142,7 @@ const nextConfig = {
   async redirects() {
     return [
       ...SOCIAL_REDIRECTS,
-      ...WRITING_REDIRECTS,
+      ...PAGE_REDIRECTS,
       ...LEARNING_REDIRECTS,
       ...PROJECT_REDIRECTS,
     ];
