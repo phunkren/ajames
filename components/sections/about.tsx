@@ -134,7 +134,7 @@ export const About = () => {
           </Box>
         </Box>
 
-        <Box spacingBottom={11}>
+        <Box>
           <Divider />
         </Box>
 

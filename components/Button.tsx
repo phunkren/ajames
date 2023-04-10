@@ -132,6 +132,19 @@ const StyledButton = styled("button", {
       tertiary: {
         backgroundColor: "transparent",
       },
+      link: {
+        textDecorationLine: "underline",
+        textDecorationStyle: "dotted",
+        textUnderlineOffset: "$space$1",
+
+        "@media(hover)": {
+          "&:hover": {
+            color: "inherit",
+            textDecorationStyle: "solid",
+            textDecorationColor: "$hover",
+          },
+        },
+      },
     },
   },
 
@@ -348,6 +361,7 @@ export const ShareButton = memo(function ShareButton({
   text,
   emoji = "👀",
   variant = "default",
+  ...props
 }: ShareButtonProps) {
   const [open, setOpen] = useState(false);
 
@@ -383,7 +397,7 @@ export const ShareButton = memo(function ShareButton({
 
   return (
     <Toast.Provider label="Share notification" duration={5000}>
-      <Box>
+      <Box {...props}>
         {variant === "icon" ? (
           <Tooltip title="Share">
             <IconButton onClick={handleClick}>
@@ -395,12 +409,20 @@ export const ShareButton = memo(function ShareButton({
               <VisuallyHidden.Root>Share</VisuallyHidden.Root>
             </IconButton>
           </Tooltip>
-        ) : (
+        ) : null}
+
+        {variant === "default" ? (
           <Button variant="tertiary" onClick={handleClick}>
             <Share2Icon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
             <TextHeadline spacingLeft={2}>Share</TextHeadline>
           </Button>
-        )}
+        ) : null}
+
+        {variant === "link" ? (
+          <Button variant="link" onClick={handleClick}>
+            <TextHeadline>Share</TextHeadline>
+          </Button>
+        ) : null}
 
         <StyledToastRoot open={open} onOpenChange={setOpen}>
           <Toast.Description>Copied to clipboard!</Toast.Description>

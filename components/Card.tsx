@@ -8,19 +8,20 @@ import {
   ReactNode,
   Ref,
 } from "react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 import { blackA, whiteA } from "@radix-ui/colors";
 import { darkTheme, lightTheme, styled } from "../stitches.config";
 import { PostTags, PublishDate, YoutubeChannel } from "./Frontmatter";
 import { Box } from "./Box";
-import { Emoji, TextAux, TextHeadline, TextTitle3 } from "./Text";
+import { Emoji, TextAux, TextBody, TextHeadline, TextTitle3 } from "./Text";
 import { Link } from "./Link";
 import { PreviewToggle } from "./Button";
 import { BLUR_DATA_URL } from "../util/images";
 import { YOUTUBE_LIKED_VIDEOS_PLAYLIST_ID } from "../util/youtube";
 import { CSS } from "../stitches.config";
 import { Tag } from "../util/notion";
+import banner from "../public/images/banner.png";
 
 export type CardChildProps = {
   ref: Ref<HTMLAnchorElement>;
@@ -29,7 +30,7 @@ export type CardChildProps = {
 };
 
 export type CardProps = {
-  image: string;
+  image: string | StaticImageData;
   children: (props: CardChildProps) => ReactNode;
 };
 
@@ -303,6 +304,54 @@ export const BlogCard = memo(function BlogCard({
               pressed={isPreviewVisible}
               onPressedChange={onPreviewToggle}
             />
+          </Box>
+        </>
+      )}
+    </Card>
+  );
+});
+
+export const BlogSponsored = memo(function BlogSponsored() {
+  const sponsoredTag = {
+    id: "sponsoredTag",
+    name: "Sponsored",
+    color: "default",
+  };
+
+  return (
+    <Card image={banner}>
+      {({ ref }) => (
+        <>
+          <StyledBlogContent direction="vertical" css={{ minHeight: 156 }}>
+            <Emoji
+              emoji="👋"
+              size="s"
+              spacingBottom={4}
+              css={{
+                position: "relative",
+                right: "$1",
+              }}
+            />
+
+            <Box direction="vertical" gap={2}>
+              <StyledLink href="/rss" ref={ref} variant="invisible">
+                <TextTitle3 id="rss" clamp={3} css={{ color: "$focus" }}>
+                  Enjoying the blog?
+                </TextTitle3>
+              </StyledLink>
+              <TextBody as="p" color="secondary">
+                You can support the content by clicking here and subscribing to
+                the RSS feed
+              </TextBody>
+            </Box>
+          </StyledBlogContent>
+
+          <Box
+            justifyContent="space-between"
+            alignItems="center"
+            css={{ marginTop: "auto" }}
+          >
+            <PostTags as="div" tags={[sponsoredTag]} />
           </Box>
         </>
       )}

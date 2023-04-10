@@ -3,7 +3,12 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 import Balancer from "react-wrap-balancer";
-import { BlogCard, StyledBlogContent, StyledCardInner } from "../Card";
+import {
+  BlogCard,
+  BlogSponsored,
+  StyledBlogContent,
+  StyledCardInner,
+} from "../Card";
 import { ActionButtons } from "../Layout";
 import { LayoutToggle } from "../Toggle";
 import { StyledTag, TagDrawer, TagSelect, TagSelectItem } from "../Tags";
@@ -12,7 +17,7 @@ import { styled } from "../../stitches.config";
 import { BlogPost, Tag } from "../../util/notion";
 import { filterPosts } from "../../util/notion";
 import { Divider } from "../Divider";
-import { Button, FilterClearButton } from "../Button";
+import { Button, FilterClearButton, ShareButton } from "../Button";
 import { BlogSubscriptionLink, BuyMeCoffeeLink, Link } from "../Link";
 import {
   TotalCategories,
@@ -24,6 +29,7 @@ import {
 import { Box } from "../Box";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import book from "../../public/images/book.png";
+import { SITE } from "../../util/data";
 
 export type Props = {
   posts: BlogPost[];
@@ -131,6 +137,7 @@ export const Writing = ({ posts, tags }: Props) => {
   const { pathname, push, query, asPath } = useRouter();
   const [display, setDisplay] = useState<"partial" | "all">("partial");
   const queryTag = query.tag as string;
+  const metaUrl = asPath ? `${SITE.url}/writing` : SITE.url;
 
   const filteredPosts = filterPosts(posts, queryTag);
   const filteredTag = queryTag
@@ -345,24 +352,34 @@ export const Writing = ({ posts, tags }: Props) => {
             />
           </Box>
 
-          <StyledCardContainer
-            display={storageLayout === "grid" ? "grid" : "none"}
+          <Box
+            direction="vertical"
+            display={storageLayout === "grid" ? "flex" : "none"}
           >
-            {displayedPosts.map((post) => {
-              return (
-                <BlogCard
-                  key={post.id}
-                  url={`/writing/${post.properties.slug.rich_text[0].plain_text}`}
-                  image={post.cover.external.url}
-                  emoji={post.icon.type === "emoji" ? post.icon.emoji : "👨‍💻"}
-                  title={post.properties.page.title[0].plain_text}
-                  description={post.properties.abstract.rich_text[0].plain_text}
-                  publishDate={post.properties.date.date.start}
-                  tags={post.properties.tags.multi_select}
-                />
-              );
-            })}
-          </StyledCardContainer>
+            <StyledCardContainer display="grid">
+              {displayedPosts.map((post, i) => {
+                return (
+                  <Fragment key={post.id}>
+                    <BlogCard
+                      url={`/writing/${post.properties.slug.rich_text[0].plain_text}`}
+                      image={post.cover.external.url}
+                      emoji={
+                        post.icon.type === "emoji" ? post.icon.emoji : "👨‍💻"
+                      }
+                      title={post.properties.page.title[0].plain_text}
+                      description={
+                        post.properties.abstract.rich_text[0].plain_text
+                      }
+                      publishDate={post.properties.date.date.start}
+                      tags={post.properties.tags.multi_select}
+                    />
+
+                    {i === 2 ? <BlogSponsored /> : null}
+                  </Fragment>
+                );
+              })}
+            </StyledCardContainer>
+          </Box>
 
           <Box
             as="ul"
@@ -371,9 +388,15 @@ export const Writing = ({ posts, tags }: Props) => {
             display={storageLayout === "rows" ? "flex" : "none"}
           >
             {displayedPosts.map((post, i) => {
+              const shouldBlur =
+                shouldShowMore && i === displayedPosts.length - 1;
+
               return (
                 <Fragment key={post.id}>
-                  <Box as="li">
+                  <Box
+                    as="li"
+                    css={{ filter: `blur(${shouldBlur ? "10px" : "0"})` }}
+                  >
                     <Box as="article" direction="vertical">
                       <Link
                         href={`/writing/${post.properties.slug.rich_text[0].plain_text}`}
@@ -408,7 +431,7 @@ export const Writing = ({ posts, tags }: Props) => {
                     <Box as="li" key="advert">
                       <Box as="article" direction="vertical">
                         <TextTitle3 css={{ color: "$focus" }}>
-                          Enjoying the written content?
+                          Enjoying the blog?
                         </TextTitle3>
 
                         <TextBody
@@ -420,12 +443,22 @@ export const Writing = ({ posts, tags }: Props) => {
                             "@bp3": { maxWidth: "66%" },
                           }}
                         >
-                          {" "}
-                          You can support the blog by subscribing to the&nbsp;
+                          You can support the content by subscribing to
+                          the&nbsp;
                           <Link href="/rss" variant="tertiary">
                             RSS Feed
                           </Link>
-                          , sharing the content on social media, or &nbsp;
+                          ,&nbsp;
+                          <ShareButton
+                            url={metaUrl}
+                            text="Check out the ajames.dev blog!"
+                            emoji="📝"
+                            variant="link"
+                            css={{ display: "inline-flex" }}
+                          >
+                            Share
+                          </ShareButton>
+                          &nbsp;the content on social media, or&nbsp;
                           <BuyMeCoffeeLink />.
                         </TextBody>
 
@@ -449,8 +482,12 @@ export const Writing = ({ posts, tags }: Props) => {
           </Box>
 
           {shouldShowMore ? (
-            <Box direction="vertical" spacingTop={11} css={{ maxWidth: "66%" }}>
-              <Button onClick={handleDisplayChange}>Show more</Button>
+            <Box
+              direction="vertical"
+              spacingTop={10}
+              css={{ width: storageLayout === "rows" ? "66%" : "100%" }}
+            >
+              <Button onClick={handleDisplayChange}>Show all articles</Button>
             </Box>
           ) : null}
         </Box>
