@@ -119,7 +119,7 @@ export const H1_STYLES = {
   },
 
   "@bp3": {
-    fontSize: 72,
+    fontSize: 80,
   },
 
   "@print": {

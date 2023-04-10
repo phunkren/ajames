@@ -131,20 +131,6 @@ const StyledButton = styled("button", {
       },
       tertiary: {
         backgroundColor: "transparent",
-
-        "@media(hover)": {
-          "&:hover": {
-            boxShadow: "none",
-            color: "unset",
-            backgroundImage: `linear-gradient(90deg, $blue11 0.04%, $hover 100.04%)`,
-            backgroundClip: "text",
-            ["-webkit-text-fill-color"]: "transparent",
-          },
-
-          "&:hover svg": {
-            color: "$hover",
-          },
-        },
       },
     },
   },
@@ -480,8 +466,9 @@ export const FilterClearButton = memo(function FilterClearButton({
   const { pathname, push } = useRouter();
 
   const handleClick = useCallback(() => {
-    push({ pathname }, undefined, {
+    push({ pathname, hash: "writing", query: {} }, undefined, {
       scroll: false,
+      shallow: true,
     });
   }, [pathname, push]);
 

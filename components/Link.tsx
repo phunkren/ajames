@@ -36,6 +36,10 @@ type SubscribeProps = CSS & {
   type?: "link" | "icon" | "button";
 };
 
+type CoffeeProps = {
+  icon?: boolean;
+};
+
 const StyledLink = styled("a", {
   display: "inline-flex",
   alignItems: "center",
@@ -393,7 +397,7 @@ const StyledBlogSubscription = styled(Link, {
           boxShadow: "$5",
         },
 
-        /** Optically aligns the RSS Icon */
+        /* Optically aligns the RSS Icon */
         "& div": {
           position: "relative",
           right: 2,
@@ -584,11 +588,18 @@ export const DownloadLink = memo(function DownloadLink(props: any) {
   );
 });
 
-export const BuyMeCoffeeLink = memo(function BuyMeCoffeeLink() {
+export const BuyMeCoffeeLink = memo(function BuyMeCoffeeLink({
+  icon = false,
+}: CoffeeProps) {
   return (
-    <StyledLink href={SOCIAL.buyMeCoffee.url} variant="secondary">
-      <Box alignItems="center" gap={2}>
-        <HeartIcon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
+    <StyledLink
+      href={SOCIAL.buyMeCoffee.url}
+      variant={icon ? "secondary" : "tertiary"}
+    >
+      <Box as="span" alignItems="center" gap={2}>
+        {icon ? (
+          <HeartIcon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
+        ) : null}
         <TextHeadline>{SOCIAL.buyMeCoffee.displayName}</TextHeadline>
       </Box>
     </StyledLink>

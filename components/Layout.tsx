@@ -1,170 +1,121 @@
-import { memo, ReactElement } from "react";
-import Image, { StaticImageData } from "next/image";
+import { memo, ReactElement, useEffect } from "react";
+import Image from "next/image";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
-import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 import { blueDark, redDark } from "@radix-ui/colors";
 import { useTheme } from "../hooks/useTheme";
-import { darkTheme, lightTheme, styled } from "../stitches.config";
-import { Link, StyledIconLink } from "./Link";
+import { css, styled } from "../stitches.config";
+import { Link } from "./Link";
 import { Navigation, NavigationMobile } from "./Navigation";
 import { Social } from "./Social";
 import { ThemeToggle } from "./Toggle";
 import { Box, BoxProps } from "./Box";
 import { PageSeo } from "./SEO";
 import { TextAux, TextHeadline, TextTitle1 } from "./Text";
-import { StyledIconButton } from "./Button";
 import { Logo } from "./Logo";
 import { Tooltip } from "./Tooltip";
+import banner from "../public/images/mugshot.png";
+import { useRouter } from "next/router";
+import { PERSONAL } from "../util/data";
 
 type LayoutProps = {
   children: ReactElement;
 };
 
-type HeroLayoutProps = {
-  children?: ReactElement;
-  src?: StaticImageData | string;
-  bordered?: boolean;
-};
+const shhh = css`
+  overflow: "hidden";
+`;
 
 const StyledHeroLayout = styled(Box, {
-  width: "100vw",
-  position: "relative",
-  overflow: "hidden",
-  margin: "$4 0",
-  left: "-$2",
-  borderRadius: 0,
+  position: "fixed",
+  inset: 0,
+  willChange: "opacity, filter",
 
-  [`.${lightTheme} &::before`]: {
-    content: "",
-    position: "absolute",
-    inset: 0,
-    zIndex: -1,
-    backgroundColor: "rgba(0,0,0,0.66)",
-  },
-
-  "&::after": {
-    content: "",
-    position: "absolute",
-    inset: 0,
-    zIndex: 0,
-    background: "rgba(0,0,0,0.15)",
-  },
-
-  "@bp2": {
-    left: "-$7",
-    margin: "$10 0",
-  },
-
-  "@bp3": {
-    left: 0,
-    width: "100%",
-    borderRadius: "$1",
+  variants: {
+    opaque: {
+      true: {
+        display: "none",
+      },
+      false: {
+        display: "flex",
+        opacity: 1,
+        zIndex: 100,
+        filter: "blur(0px)",
+        transition: "opacity 100ms linear, filter 50ms ease-in-out",
+      },
+    },
   },
 });
 
 const StyledHeroContainer = styled(Box, {
-  position: "relative",
-  borderRadius: 0,
-
-  [`.${lightTheme} &`]: {
-    color: lightTheme.colors.background,
-
-    [`${TextTitle1}, ${TextHeadline}`]: {
-      color: "inherit",
-    },
-
-    [`${StyledIconButton}, ${StyledIconLink}`]: {
-      color: "inherit",
-      borderColor: "inherit",
-
-      "@media(hover)": {
-        "&:hover": {
-          background: darkTheme.colors.foreground,
-          borderColor: darkTheme.colors.foreground,
-        },
-
-        "&:hover svg": {
-          color: darkTheme.colors.background,
-        },
-      },
-    },
-  },
-
-  variants: {
-    bordered: {
-      true: {
-        "&::after": {
-          content: "",
-          position: "absolute",
-          height: "$space$1",
-          width: "100%",
-          bottom: 0,
-          left: 0,
-          background: "$foregroundMuted",
-          borderRadius: 0,
-          zIndex: 1,
-        },
-      },
-    },
-  },
+  background: "black",
 });
 
 const StyledImage = styled(Image, {
-  objectFit: "cover",
-  borderRadius: 0,
-
-  "@bp3": {
-    borderRadius: "$1",
-  },
+  objectFit: "contain",
+  left: "12.5% !important",
+  pointerEvents: "none",
+  filter: "brightness(75%)",
 });
 
 const StyledFilter = styled(Box, {
-  position: "absolute",
+  position: "fixed",
   inset: 0,
-  zIndex: 0,
-  background: `conic-gradient(from -25deg, ${redDark.red2}, ${redDark.red4}, ${redDark.red6}, ${redDark.red8}, ${blueDark.blue2}, ${blueDark.blue6}, ${blueDark.blue8})`,
+  filter: "blur(50px)",
+  background: `conic-gradient(from -25deg, ${redDark.red6}, ${redDark.red7}, ${redDark.red8}, ${redDark.red9}, ${blueDark.blue4}, ${blueDark.blue6}, ${blueDark.blue8})`,
+  willChange: "opacity",
 
-  [`.${darkTheme} &`]: {
-    filter: "blur(50px)",
-    opacity: 0.5,
+  "&::after": {
+    content: "",
+    position: "fixed",
+    inset: 0,
+    background: "rgba(0,0,0,0.75)",
   },
+});
 
-  [`.${lightTheme} &`]: {
-    filter: "blur(50px)",
-  },
+const HeaderBox = styled(Box, {
+  zIndex: 500,
+  width: "100%",
+  position: "fixed",
+  top: 0,
+  right: 0,
+  left: 0,
 });
 
 export const HeaderLayout = memo(function HeaderLayout() {
   return (
-    <Box
-      as="header"
-      display={{ "@print": "none", "@initial": "flex" }}
-      spacingVertical={10}
-      gap={{ "@initial": 4, "@bp2": 7 }}
-      justifyContent="space-between"
-      alignItems="center"
-    >
-      <Box direction="horizontal" gap={10} alignItems="center">
-        <Tooltip title="Home">
-          <Link href="/" variant="icon">
-            <VisuallyHidden.Root>Home</VisuallyHidden.Root>
-            <Logo />
-          </Link>
-        </Tooltip>
+    <HeaderBox>
+      <Box
+        as="header"
+        display={{ "@print": "none", "@initial": "flex" }}
+        spacingVertical={4}
+        spacingHorizontal={{ "@initial": 4, "@bp2": 7 }}
+        gap={{ "@initial": 4, "@bp2": 7 }}
+        justifyContent="space-between"
+        alignItems="center"
+        flexGrow
+      >
+        <Box direction="horizontal" gap={10} alignItems="center">
+          <Tooltip title="Home">
+            <Link href="/" variant="icon">
+              <VisuallyHidden.Root>Home</VisuallyHidden.Root>
+              <Logo />
+            </Link>
+          </Tooltip>
+
+          <Box display={{ "@initial": "none", "@bp2": "flex" }}>
+            <Navigation />
+          </Box>
+        </Box>
 
         <Box display={{ "@initial": "none", "@bp2": "flex" }}>
-          <Navigation />
+          <ThemeToggle />
+        </Box>
+
+        <Box display={{ "@initial": "flex", "@bp2": "none" }}>
+          <NavigationMobile />
         </Box>
       </Box>
-
-      <Box display={{ "@initial": "none", "@bp2": "flex" }}>
-        <ThemeToggle />
-      </Box>
-
-      <Box display={{ "@initial": "flex", "@bp2": "none" }}>
-        <NavigationMobile />
-      </Box>
-    </Box>
+    </HeaderBox>
   );
 });
 
@@ -192,19 +143,12 @@ export const Layout = memo(function Layout({ children }: LayoutProps) {
       <Box
         id="__root"
         direction="vertical"
-        spacingHorizontal={{ "@initial": 2, "@bp2": 7 }}
         css={{ overflowX: "hidden", "@bp3": { overflowX: "visible" } }}
-        container="l"
         className={theme}
       >
         <HeaderLayout />
 
-        <Box
-          as="main"
-          direction="vertical"
-          spacingBottom={{ "@print": 4, "@bp2": 10 }}
-          flexGrow
-        >
+        <Box as="main" direction="vertical" spacingVertical={11} flexGrow>
           {children}
         </Box>
 
@@ -214,36 +158,63 @@ export const Layout = memo(function Layout({ children }: LayoutProps) {
   );
 });
 
-export const HeroLayout = memo(function HeroLayout({
-  src,
-  children,
-  bordered = false,
-}: HeroLayoutProps) {
+export const HeroLayout = memo(function HeroLayout() {
+  const { asPath } = useRouter();
+  const isVisible = asPath === "/";
+
   return (
-    <StyledHeroLayout>
-      <AspectRatio.Root ratio={2.5 / 1} asChild>
-        <StyledHeroContainer direction="vertical" bordered={bordered} flexGrow>
-          <StyledFilter />
+    <StyledHeroLayout opaque={!isVisible}>
+      <StyledHeroContainer direction="vertical" flexGrow>
+        <StyledFilter />
 
-          {src ? (
-            <StyledImage src={src} quality={100} alt="" fill priority />
-          ) : null}
+        <StyledImage
+          src={banner}
+          alt=""
+          sizes="25vw"
+          quality={100}
+          priority
+          fill
+        />
 
-          {children ? (
+        <Box
+          direction="vertical"
+          spacingHorizontal={{ "@initial": 6, "@bp2": 10 }}
+          flexGrow
+        >
+          <Box direction="vertical" position="relative" flexGrow>
             <Box
               direction="vertical"
-              spacingHorizontal={{ "@initial": 6, "@bp2": 10 }}
-              spacingVertical={{ "@initial": 10, "@bp2": 7 }}
-              css={{
-                zIndex: 1,
+              container="l"
+              spacingLeft={{ "@bp2": 6, "@bp3": 0 }}
+              justifyContent={{
+                "@initial": "center",
+                "@bp2": "flex-end",
+                "@bp3": "space-between",
               }}
               flexGrow
             >
-              {children}
+              <Box
+                direction="vertical"
+                justifyContent="center"
+                gap={2}
+                flexGrow
+              >
+                <TextTitle1 css={{ "@bp2": { textShadow: "$textShadow" } }}>
+                  {PERSONAL.name}
+                </TextTitle1>
+
+                <TextHeadline css={{ "@bp2": { textShadow: "$textShadow" } }}>
+                  {PERSONAL.occupation} / {PERSONAL.location}
+                </TextHeadline>
+
+                <Box position="relative" css={{ left: -12 }} spacingTop={1}>
+                  <Social size="s" gap="1" />
+                </Box>
+              </Box>
             </Box>
-          ) : null}
-        </StyledHeroContainer>
-      </AspectRatio.Root>
+          </Box>
+        </Box>
+      </StyledHeroContainer>
     </StyledHeroLayout>
   );
 });

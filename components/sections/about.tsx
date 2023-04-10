@@ -4,19 +4,18 @@ import {
   GlobeIcon,
   LinkedInLogoIcon,
 } from "@radix-ui/react-icons";
-import Image from "next/image";
 import { PrintButton } from "../Button";
 import { Divider } from "../Divider";
-import { HeroLayout } from "../Layout";
-import { DownloadLink, Link } from "../Link";
+import { BlogSubscriptionLink, DownloadLink, Link } from "../Link";
 import {
   TextAux,
   TextBody,
   TextHeadline,
   TextTitle1,
+  TextTitle2,
   TextTitle3,
 } from "../Text";
-import { darkTheme, lightTheme, styled } from "../../stitches.config";
+import { styled } from "../../stitches.config";
 import {
   EDUCATION,
   EMPLOYMENT,
@@ -29,46 +28,11 @@ import {
 } from "../../util/data";
 import { formatShortDate } from "../../util/date";
 import { ICON_SIZE } from "../../util/images";
-import banner from "../../public/images/mugshot.png";
 import { Box } from "../Box";
 import { Tooltip } from "../Tooltip";
-import { Social } from "../Social";
-
-const StyledPageHeader = styled(Box, {
-  position: "relative",
-  color: "$foreground",
-
-  "@bp3": {
-    left: 0,
-    width: "100%",
-  },
-});
-
-const StyledImage = styled(Image, {
-  display: "none",
-  objectFit: "contain",
-  position: "absolute",
-  top: "10% !important",
-  zIndex: -1,
-  transform: "scale(0.9)",
-  pointerEvents: "none",
-
-  [`.${lightTheme} &`]: {
-    filter: "brightness(85%)",
-  },
-
-  [`.${darkTheme} &`]: {
-    filter: "brightness(75%)",
-    opacity: 0.9,
-  },
-
-  "@bp2": {
-    display: "block",
-    transform: "scale(1)",
-    top: "8% !important",
-    left: "27% !important",
-  },
-});
+import { slateDark } from "@radix-ui/colors";
+import { Frontmatter, Location, Name, Occupation } from "../Frontmatter";
+import { ActionButtons } from "../Layout";
 
 const StyledBlockQuote = styled("blockquote", {
   fontStyle: "oblique",
@@ -119,62 +83,16 @@ export const ABOOT_ID = "about";
 
 export const About = () => {
   return (
-    <Box id={ABOOT_ID} as="section">
-      <Box direction="vertical">
-        <StyledPageHeader display={{ "@print": "none", "@initial": "block" }}>
-          <HeroLayout bordered>
-            <Box direction="vertical" position="relative" flexGrow>
-              <Box
-                direction="vertical"
-                spacingLeft={{ "@bp2": 6, "@bp3": 0 }}
-                justifyContent={{
-                  "@initial": "center",
-                  "@bp2": "flex-end",
-                  "@bp3": "space-between",
-                }}
-                flexGrow
-              >
-                <Box
-                  flexGrow
-                  direction="vertical"
-                  display={{
-                    "@initial": "none",
-                    "@bp2": "flex",
-                  }}
-                >
-                  <Box gap={4} spacingTop={3}>
-                    <PrintButton />
-                    <DownloadLink href="../Andrew%20James%20CV.pdf" download />
-                  </Box>
-                </Box>
-
-                <Box direction="vertical" justifyContent="flex-end" gap={2}>
-                  <TextTitle1 css={{ "@bp2": { textShadow: "$textShadow" } }}>
-                    {PERSONAL.name}
-                  </TextTitle1>
-
-                  <TextHeadline css={{ "@bp2": { textShadow: "$textShadow" } }}>
-                    {PERSONAL.occupation} / {PERSONAL.location}
-                  </TextHeadline>
-
-                  <Box position="relative" css={{ left: -12 }} spacingTop={1}>
-                    <Social size="s" gap="1" />
-                  </Box>
-                </Box>
-              </Box>
-
-              <StyledImage
-                src={banner}
-                alt=""
-                sizes="25vw"
-                quality={100}
-                priority
-                fill
-              />
-            </Box>
-          </HeroLayout>
-        </StyledPageHeader>
-
+    <Box
+      id={ABOOT_ID}
+      as="section"
+      direction="vertical"
+      spacingVertical={11}
+      css={{
+        background: `linear-gradient($slate1 75.04%, $slate2 100.04%)`,
+      }}
+    >
+      <Box direction="vertical" gap={11} container="l">
         <Box
           display={{ "@print": "flex", "@initial": "none" }}
           spacingBottom={{ "@print": 6, "@initial": 10 }}
@@ -192,11 +110,39 @@ export const About = () => {
           </Box>
         </Box>
 
+        <Box direction="vertical" gap={10}>
+          <Box justifyContent="space-between" alignItems="center">
+            <TextTitle2>About</TextTitle2>
+
+            <BlogSubscriptionLink
+              type="button"
+              css={{ display: "none", "@bp2": { display: "flex" } }}
+            />
+          </Box>
+
+          <Box justifyContent="space-between" alignItems="flex-end" gap={4}>
+            <Frontmatter flexGrow>
+              <Name icon />
+              <Occupation icon />
+              <Location icon />
+            </Frontmatter>
+
+            <ActionButtons css={{ flexBasis: "fit-content" }}>
+              <PrintButton />
+              <DownloadLink href="../Andrew%20James%20CV.pdf" download />
+            </ActionButtons>
+          </Box>
+        </Box>
+
+        <Box spacingBottom={11}>
+          <Divider />
+        </Box>
+
         <Box
           id="__cv"
           direction="horizontal"
           gap={{ "@print": 4, "@initial": 0, "@bp2": 10 }}
-          spacingHorizontal={{ "@print": 3, "@initial": 4, "@bp2": 10 }}
+          spacingHorizontal={{ "@print": 3, "@initial": 0 }}
           spacingVertical={{ "@print": 0, "@initial": 10 }}
           flexWrap={{
             "@print": "nowrap",

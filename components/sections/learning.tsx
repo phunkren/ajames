@@ -76,15 +76,9 @@ const StyledYouTubePlayer = styled(DynamicYouTube, {
 });
 
 const StyledHeroImage = styled(Image, {
-  display: "none",
   objectFit: "contain",
   position: "absolute",
-  zIndex: -1,
   pointerEvents: "none",
-
-  "@bp2": {
-    display: "block",
-  },
 });
 
 export const LEARNING_ID = "learning";
@@ -97,287 +91,292 @@ export const Learning = ({
 }: Props) => {
   return (
     <Box
-      id={LEARNING_ID}
-      as="section"
       direction="vertical"
-      display={{ print: "none", "@initial": "flex" }}
-      gap={11}
+      spacingVertical={11}
+      css={{
+        background: `linear-gradient($slate1 75.04%, $slate2 100.04%)`,
+      }}
     >
-      <Box>
-        <AspectRatio.Root ratio={2.5 / 1} asChild>
-          <StyledHeroImage
-            src={book}
-            alt=""
-            sizes="25vw"
-            quality={100}
-            fill
-            priority
-          />
-        </AspectRatio.Root>
-      </Box>
+      <Box
+        id={LEARNING_ID}
+        as="section"
+        direction="vertical"
+        display={{ print: "none", "@initial": "flex" }}
+        spacingTop={11}
+        gap={11}
+        container="l"
+      >
+        <Box>
+          <AspectRatio.Root ratio={2.5 / 1} asChild>
+            <StyledHeroImage src={book} alt="" fill quality={100} />
+          </AspectRatio.Root>
+        </Box>
 
-      <Box direction="vertical">
         <Box direction="vertical">
-          <Box direction="vertical" justifyContent="space-between" gap={10}>
-            <Box justifyContent="space-between" alignItems="center">
-              <TextTitle2 as="h1">Learning</TextTitle2>
+          <Box direction="vertical">
+            <Box direction="vertical" justifyContent="space-between" gap={10}>
+              <Box justifyContent="space-between" alignItems="center">
+                <TextTitle2 as="h1">Learning</TextTitle2>
 
-              <YoutubeSubscribeLink
-                type="button"
-                css={{
-                  display: "none",
-
-                  "@bp2": {
-                    display: "flex",
-                  },
-                }}
-              />
-
-              <YoutubeSubscribeLink
-                type="icon"
-                css={{
-                  display: "flex",
-                  "@bp2": {
+                <YoutubeSubscribeLink
+                  type="button"
+                  css={{
                     display: "none",
-                  },
-                }}
-              />
-            </Box>
 
-            <Box alignItems="flex-end" justifyContent="space-between">
-              <Frontmatter>
-                <VideosViewsCount total={channelInfoPreview.viewCount} icon />
-                <SubscriberCount
-                  total={channelInfoPreview.subscriberCount}
-                  icon
-                />
-                <VideosTotalCount total={channelInfoPreview.videoCount} icon />
-              </Frontmatter>
-
-              <ActionButtons css={{ width: "auto" }}>
-                <TwitterShareLink
-                  url={YOUTUBE_CHANNEL_URL}
-                  text={YOUTUBE_SHARE_TEXT}
-                  variant="icon"
+                    "@bp2": {
+                      display: "flex",
+                    },
+                  }}
                 />
 
-                <ShareButton
-                  url={YOUTUBE_CHANNEL_URL}
-                  text={YOUTUBE_SHARE_TEXT}
-                  variant="icon"
+                <YoutubeSubscribeLink
+                  type="icon"
+                  css={{
+                    display: "flex",
+                    "@bp2": {
+                      display: "none",
+                    },
+                  }}
                 />
-              </ActionButtons>
+              </Box>
+
+              <Box alignItems="flex-end" justifyContent="space-between">
+                <Frontmatter>
+                  <VideosViewsCount total={channelInfoPreview.viewCount} icon />
+                  <SubscriberCount
+                    total={channelInfoPreview.subscriberCount}
+                    icon
+                  />
+                  <VideosTotalCount
+                    total={channelInfoPreview.videoCount}
+                    icon
+                  />
+                </Frontmatter>
+
+                <ActionButtons css={{ width: "auto" }}>
+                  <TwitterShareLink
+                    url={YOUTUBE_CHANNEL_URL}
+                    text={YOUTUBE_SHARE_TEXT}
+                    variant="icon"
+                  />
+
+                  <ShareButton
+                    url={YOUTUBE_CHANNEL_URL}
+                    text={YOUTUBE_SHARE_TEXT}
+                    variant="icon"
+                  />
+                </ActionButtons>
+              </Box>
             </Box>
           </Box>
         </Box>
-      </Box>
 
-      <Box spacingBottom={11}>
-        <Divider />
-      </Box>
-
-      <Box direction="vertical" gap={11}>
-        {featuredVideo ? (
-          <Box direction="vertical" spacingBottom={11}>
-            <Box
-              justifyContent={{
-                "@initial": "space-between",
-                "@bp2": "flex-start",
-              }}
-              gap={10}
-              alignItems="center"
-              spacingBottom={8}
-            >
-              <TextTitle3 as="h2">Latest Video</TextTitle3>
-
-              <Link href={featuredVideo.url} variant="tertiary">
-                <PlayIcon
-                  width={ICON_SIZE.m}
-                  height={ICON_SIZE.m}
-                  aria-hidden
-                />
-                <TextAux>Watch video</TextAux>
-              </Link>
-            </Box>
-
-            <Box
-              gap={{ "@initial": 0, "@bp3": 10 }}
-              direction={{ "@initial": "vertical", "@bp3": "horizontal" }}
-            >
-              <Box
-                direction="vertical"
-                spacingBottom={{ "@initial": 8, "@bp3": 0 }}
-                css={{
-                  "@bp3": { flexGrow: 0, flexShrink: 0, flexBasis: "50%" },
-                }}
-              >
-                <AspectRatio.Root ratio={16 / 9}>
-                  <StyledYouTubePlayer
-                    videoId={featuredVideo.videoId}
-                    opts={{
-                      width: "100%",
-                      height: "100%",
-                      playerVars: {
-                        autoplay: 1,
-                        mute: 1,
-                        modestbranding: 1,
-                        rel: 0,
-                        widget_referrer: SITE.url,
-                        controls: 0,
-                      },
-                    }}
-                  />
-                </AspectRatio.Root>
-              </Box>
-
-              <Box direction="vertical" gap={4}>
-                <Link href={featuredVideo.url} variant="primary">
-                  <TextTitle3>
-                    <Balancer>{featuredVideo.title}</Balancer>
-                  </TextTitle3>
-                </Link>
-
-                <TextBody
-                  clamp={4}
-                  textAlign={{ "@initial": "left", "@bp3": "justify" }}
-                  color="secondary"
-                >
-                  {featuredVideo.description}
-                </TextBody>
-
-                <Box>
-                  <Link
-                    aria-label="Watch video"
-                    href={featuredVideo.url}
-                    variant="tertiary"
-                  >
-                    <TextAux>Read the full description</TextAux>
-                  </Link>
-                </Box>
-              </Box>
-            </Box>
-          </Box>
-        ) : null}
-
-        {playlistsPreview?.map((playlist) => {
-          const firstVideo = playlistVideosPreview[playlist.id][0];
-
-          const playlistUrl = buildUrl("https://youtube.com/playlist", {
-            list: playlist.id,
-          });
-
-          const watchAllUrl = buildUrl("https://youtube.com/watch", {
-            v: firstVideo.videoId,
-            list: playlist.id,
-          });
-
-          return (
-            <Box key={playlist.id} direction="vertical" spacingBottom={10}>
-              <Box direction="vertical" css={{ overflowX: "hidden" }}>
-                <Box
-                  gap={10}
-                  justifyContent={{
-                    "@initial": "space-between",
-                    "@bp2": "flex-start",
-                  }}
-                  alignItems="center"
-                  spacingBottom={4}
-                >
-                  <Link href={playlistUrl} variant="secondary">
-                    <TextTitle3 as="h2">{playlist.title}</TextTitle3>
-                  </Link>
-
-                  <Link href={watchAllUrl} variant="tertiary">
-                    <PlayIcon
-                      width={ICON_SIZE.m}
-                      height={ICON_SIZE.m}
-                      aria-hidden
-                    />
-                    <TextAux>Watch all</TextAux>
-                  </Link>
-                </Box>
-
-                <TextBody
-                  color="secondary"
-                  css={{
-                    textAlign: "justify",
-                    maxWidth: "none",
-                    "@bp3": { maxWidth: "66%" },
-                  }}
-                >
-                  {playlist.description}
-                </TextBody>
-
-                <CardScrollRoot>
-                  <CardScrollViewport>
-                    <StyledVideoCardContainer spacingVertical={8}>
-                      {playlistVideosPreview[playlist.id].map(
-                        (playlistVideo) => (
-                          <VideoCard
-                            id={playlist.id}
-                            key={playlistVideo.title}
-                            url={playlistVideo.url}
-                            image={playlistVideo.thumbnail.src}
-                            title={playlistVideo.title}
-                            publishDate={playlistVideo.publishedAt}
-                            channel={playlistVideo.videoOwnerChannelTitle}
-                            css={{
-                              scrollSnapAlign: "center",
-                              "@bp2": { scrollSnapAlign: "start" },
-                            }}
-                          />
-                        )
-                      )}
-                    </StyledVideoCardContainer>
-                  </CardScrollViewport>
-                  <Scrollbar
-                    orientation="horizontal"
-                    variant="primary"
-                    forceMount
-                  />
-                </CardScrollRoot>
-              </Box>
-            </Box>
-          );
-        })}
-
-        <Box spacingVertical={10}>
+        <Box spacingBottom={11}>
           <Divider />
         </Box>
 
-        <Box
-          direction="vertical"
-          gap={{
-            "@initial": 6,
-            "@bp2": 10,
-          }}
-        >
-          <TextTitle3 as="h2" textAlign="center" color="secondary">
-            Enjoying the video content?
-          </TextTitle3>
+        <Box direction="vertical" gap={11}>
+          {featuredVideo ? (
+            <Box direction="vertical">
+              <Box
+                justifyContent={{
+                  "@initial": "space-between",
+                  "@bp2": "flex-start",
+                }}
+                gap={10}
+                alignItems="center"
+                spacingBottom={8}
+              >
+                <TextTitle3 as="h2">Latest Video</TextTitle3>
+
+                <Link href={featuredVideo.url} variant="tertiary">
+                  <PlayIcon
+                    width={ICON_SIZE.m}
+                    height={ICON_SIZE.m}
+                    aria-hidden
+                  />
+                  <TextAux>Watch video</TextAux>
+                </Link>
+              </Box>
+
+              <Box
+                gap={{ "@initial": 0, "@bp3": 10 }}
+                direction={{ "@initial": "vertical", "@bp3": "horizontal" }}
+              >
+                <Box
+                  direction="vertical"
+                  spacingBottom={{ "@initial": 8, "@bp3": 0 }}
+                  css={{
+                    "@bp3": { flexGrow: 0, flexShrink: 0, flexBasis: "50%" },
+                  }}
+                >
+                  <AspectRatio.Root ratio={16 / 9}>
+                    <StyledYouTubePlayer
+                      videoId={featuredVideo.videoId}
+                      opts={{
+                        width: "100%",
+                        height: "100%",
+                        playerVars: {
+                          autoplay: 1,
+                          mute: 1,
+                          modestbranding: 1,
+                          rel: 0,
+                          widget_referrer: SITE.url,
+                          controls: 0,
+                        },
+                      }}
+                    />
+                  </AspectRatio.Root>
+                </Box>
+
+                <Box direction="vertical" gap={4}>
+                  <Link href={featuredVideo.url} variant="primary">
+                    <TextTitle3>
+                      <Balancer>{featuredVideo.title}</Balancer>
+                    </TextTitle3>
+                  </Link>
+
+                  <TextBody
+                    clamp={4}
+                    textAlign={{ "@initial": "left", "@bp3": "justify" }}
+                    color="secondary"
+                  >
+                    {featuredVideo.description}
+                  </TextBody>
+
+                  <Box>
+                    <Link
+                      aria-label="Watch video"
+                      href={featuredVideo.url}
+                      variant="tertiary"
+                    >
+                      <TextAux>Read the full description</TextAux>
+                    </Link>
+                  </Box>
+                </Box>
+              </Box>
+            </Box>
+          ) : null}
+
+          {playlistsPreview?.map((playlist) => {
+            const firstVideo = playlistVideosPreview[playlist.id][0];
+
+            const playlistUrl = buildUrl("https://youtube.com/playlist", {
+              list: playlist.id,
+            });
+
+            const watchAllUrl = buildUrl("https://youtube.com/watch", {
+              v: firstVideo.videoId,
+              list: playlist.id,
+            });
+
+            return (
+              <Box key={playlist.id} direction="vertical">
+                <Box direction="vertical" css={{ overflowX: "hidden" }}>
+                  <Box
+                    gap={10}
+                    justifyContent={{
+                      "@initial": "space-between",
+                      "@bp2": "flex-start",
+                    }}
+                    alignItems="center"
+                    spacingBottom={4}
+                  >
+                    <Link href={playlistUrl} variant="secondary">
+                      <TextTitle3 as="h2">{playlist.title}</TextTitle3>
+                    </Link>
+
+                    <Link href={watchAllUrl} variant="tertiary">
+                      <PlayIcon
+                        width={ICON_SIZE.m}
+                        height={ICON_SIZE.m}
+                        aria-hidden
+                      />
+                      <TextAux>Watch all</TextAux>
+                    </Link>
+                  </Box>
+
+                  <TextBody
+                    color="secondary"
+                    css={{
+                      textAlign: "justify",
+                      maxWidth: "none",
+                      "@bp3": { maxWidth: "66%" },
+                    }}
+                  >
+                    {playlist.description}
+                  </TextBody>
+
+                  <CardScrollRoot>
+                    <CardScrollViewport>
+                      <StyledVideoCardContainer spacingVertical={8}>
+                        {playlistVideosPreview[playlist.id].map(
+                          (playlistVideo) => (
+                            <VideoCard
+                              id={playlist.id}
+                              key={playlistVideo.title}
+                              url={playlistVideo.url}
+                              image={playlistVideo.thumbnail.src}
+                              title={playlistVideo.title}
+                              publishDate={playlistVideo.publishedAt}
+                              channel={playlistVideo.videoOwnerChannelTitle}
+                              css={{
+                                scrollSnapAlign: "center",
+                                "@bp2": { scrollSnapAlign: "start" },
+                              }}
+                            />
+                          )
+                        )}
+                      </StyledVideoCardContainer>
+                    </CardScrollViewport>
+                    <Scrollbar
+                      orientation="horizontal"
+                      variant="primary"
+                      forceMount
+                    />
+                  </CardScrollRoot>
+                </Box>
+              </Box>
+            );
+          })}
+
+          <Box spacingVertical={10}>
+            <Divider />
+          </Box>
 
           <Box
-            direction={{
-              "@initial": "vertical",
-              "@bp2": "horizontal",
+            direction="vertical"
+            gap={{
+              "@initial": 6,
+              "@bp2": 10,
             }}
-            justifyContent="space-around"
-            alignItems="center"
-            gap={8}
           >
-            <TwitterShareLink
-              url={YOUTUBE_CHANNEL_URL}
-              text={YOUTUBE_SHARE_TEXT}
-            />
+            <TextTitle3 as="h2" textAlign="center" color="secondary">
+              Enjoying the video content?
+            </TextTitle3>
 
-            <YoutubeSubscribeLink />
+            <Box
+              direction={{
+                "@initial": "vertical",
+                "@bp2": "horizontal",
+              }}
+              justifyContent="space-around"
+              alignItems="center"
+              gap={8}
+            >
+              <TwitterShareLink
+                url={YOUTUBE_CHANNEL_URL}
+                text={YOUTUBE_SHARE_TEXT}
+              />
 
-            <ShareButton url={YOUTUBE_CHANNEL_URL} text={YOUTUBE_SHARE_TEXT} />
+              <YoutubeSubscribeLink />
+
+              <ShareButton
+                url={YOUTUBE_CHANNEL_URL}
+                text={YOUTUBE_SHARE_TEXT}
+              />
+            </Box>
           </Box>
-        </Box>
-
-        <Box spacingVertical={10}>
-          <Divider />
         </Box>
       </Box>
     </Box>

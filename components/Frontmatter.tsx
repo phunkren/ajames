@@ -5,8 +5,11 @@ import {
   CalendarIcon,
   ClockIcon,
   EyeOpenIcon,
+  GlobeIcon,
+  LaptopIcon,
   MixIcon,
   Pencil2Icon,
+  PersonIcon,
   VideoIcon,
 } from "@radix-ui/react-icons";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
@@ -17,6 +20,7 @@ import { formatReadingTime, Tag } from "../util/notion";
 import { Box, BoxProps } from "./Box";
 import { TextAux, TextHeadline } from "./Text";
 import { StyledTag } from "./Tags";
+import { PERSONAL } from "../util/data";
 
 type FrontMatterItemProps = BoxProps & {
   compact?: boolean;
@@ -350,6 +354,65 @@ export const YoutubeChannel = memo(function TotalCategories({
         </Box>
       ) : null}
       <TextHeadline color="secondary">{channel}</TextHeadline>
+    </FrontmatterItem>
+  );
+});
+
+export const Name = memo(function Name({ icon = false, ...props }: TotalProps) {
+  const formattedName = PERSONAL.name;
+
+  return (
+    <FrontmatterItem {...props}>
+      {icon ? (
+        <Box flexShrink={false}>
+          <VisuallyHidden.Root>Location</VisuallyHidden.Root>
+          <PersonIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
+        </Box>
+      ) : null}
+      <TextHeadline textTransform="capitalize">{formattedName}</TextHeadline>
+    </FrontmatterItem>
+  );
+});
+
+export const Location = memo(function Location({
+  icon = false,
+  ...props
+}: TotalProps) {
+  const formattedLocation = PERSONAL.location;
+
+  return (
+    <FrontmatterItem {...props}>
+      {icon ? (
+        <Box flexShrink={false}>
+          <VisuallyHidden.Root>Location</VisuallyHidden.Root>
+          <GlobeIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
+        </Box>
+      ) : null}
+      <TextHeadline textTransform="capitalize">
+        {formattedLocation}
+      </TextHeadline>
+    </FrontmatterItem>
+  );
+});
+
+export const Occupation = memo(function Occupation({
+  total,
+  icon = false,
+  ...props
+}: TotalProps) {
+  const formattedOccupation = PERSONAL.occupation;
+
+  return (
+    <FrontmatterItem {...props}>
+      {icon ? (
+        <Box flexShrink={false}>
+          <VisuallyHidden.Root>Occupation</VisuallyHidden.Root>
+          <LaptopIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
+        </Box>
+      ) : null}
+      <TextHeadline textTransform="capitalize">
+        {formattedOccupation}
+      </TextHeadline>
     </FrontmatterItem>
   );
 });

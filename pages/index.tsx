@@ -1,7 +1,7 @@
 import { GetStaticProps } from "next";
 import { ReactElement } from "react";
 import { Box } from "../components/Box";
-import { Layout } from "../components/Layout";
+import { HeroLayout, Layout } from "../components/Layout";
 import { About } from "../components/sections/about";
 import {
   Learning,
@@ -72,9 +72,11 @@ const Home: NextPageWithLayout = ({ writing, learning }: Props) => {
       direction="vertical"
       justifyContent="center"
       alignItems="center"
-      spacingHorizontal={{ "@initial": 4, "@bp2": 10 }}
+      spacingVertical={11}
       flexGrow
     >
+      <HeroLayout />
+
       <About />
 
       <Writing {...writing} />

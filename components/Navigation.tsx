@@ -149,8 +149,6 @@ export const NavigationProjectLink = memo(function NavigationProjectLink({
 export const Navigation = memo(function Navigation() {
   const { asPath } = useRouter();
 
-  console.log({ asPath });
-
   return (
     <NavigationMenu.Root
       aria-label="Primary navigation"

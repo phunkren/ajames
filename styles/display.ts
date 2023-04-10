@@ -45,9 +45,33 @@ export const DISPLAY_VARIANTS = {
     },
   },
   container: {
-    s: { width: "100%", maxWidth: 720, margin: "0 auto" },
-    m: { width: "100%", maxWidth: 900, margin: "0 auto" },
-    l: { width: "100%", maxWidth: 1200, margin: "0 auto" },
-    xl: { width: "100%", maxWidth: 1800, margin: "0 auto" },
+    s: {
+      width: "100%",
+      maxWidth: 720,
+      margin: "0 auto",
+      padding: "0 $1",
+      "@bp2": { padding: "0 $1" },
+    },
+    m: {
+      width: "100%",
+      maxWidth: 900,
+      margin: "0 auto",
+      padding: "0 $2",
+      "@bp2": { padding: "0 $4" },
+    },
+    l: {
+      width: "100%",
+      maxWidth: 1200,
+      margin: "0 auto",
+      padding: "0 $4",
+      "@bp2": { padding: "0 $7" },
+    },
+    xl: {
+      width: "100%",
+      maxWidth: 1800,
+      margin: "0 auto",
+      padding: "0 $7",
+      "@bp2": { padding: "0 $10" },
+    },
   },
 };
