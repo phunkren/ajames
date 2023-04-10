@@ -21,10 +21,6 @@ type LayoutProps = {
   children: ReactElement;
 };
 
-const shhh = css`
-  overflow: "hidden";
-`;
-
 const StyledHeroLayout = styled(Box, {
   position: "fixed",
   inset: 0,
@@ -87,7 +83,7 @@ export const HeaderLayout = memo(function HeaderLayout() {
       <Box
         as="header"
         display={{ "@print": "none", "@initial": "flex" }}
-        spacingVertical={4}
+        spacingVertical={2}
         spacingHorizontal={{ "@initial": 4, "@bp2": 7 }}
         gap={{ "@initial": 4, "@bp2": 7 }}
         justifyContent="space-between"
@@ -123,7 +119,7 @@ export const FooterLayout = memo(function FooterLayout() {
   return (
     <Box
       as="footer"
-      spacingVertical={10}
+      spacingVertical={2}
       spacingHorizontal={4}
       justifyContent="center"
       css={{ "@print": { display: "none" } }}
@@ -148,7 +144,14 @@ export const Layout = memo(function Layout({ children }: LayoutProps) {
       >
         <HeaderLayout />
 
-        <Box as="main" direction="vertical" spacingVertical={11} flexGrow>
+        <Box
+          as="main"
+          direction="vertical"
+          css={{
+            background: `linear-gradient($slate1 0.04%, $slate2 100.04%)`,
+          }}
+          flexGrow
+        >
           {children}
         </Box>
 

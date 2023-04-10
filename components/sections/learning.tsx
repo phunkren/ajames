@@ -171,7 +171,7 @@ export const Learning = ({
           </Box>
         </Box>
 
-        <Box spacingBottom={11}>
+        <Box>
           <Divider />
         </Box>
 
@@ -340,7 +340,7 @@ export const Learning = ({
             );
           })}
 
-          <Box spacingVertical={10}>
+          <Box>
             <Divider />
           </Box>
 
@@ -351,7 +351,7 @@ export const Learning = ({
               "@bp2": 10,
             }}
           >
-            <TextTitle3 as="h2" textAlign="center" color="secondary">
+            <TextTitle3 as="h2" textAlign="center" css={{ color: "$focus" }}>
               Enjoying the video content?
             </TextTitle3>
 
@@ -376,6 +376,10 @@ export const Learning = ({
                 text={YOUTUBE_SHARE_TEXT}
               />
             </Box>
+          </Box>
+
+          <Box>
+            <Divider />
           </Box>
         </Box>
       </Box>

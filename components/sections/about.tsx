@@ -143,7 +143,6 @@ export const About = () => {
           direction="horizontal"
           gap={{ "@print": 4, "@initial": 0, "@bp2": 10 }}
           spacingHorizontal={{ "@print": 3, "@initial": 0 }}
-          spacingVertical={{ "@print": 0, "@initial": 10 }}
           flexWrap={{
             "@print": "nowrap",
             "@initial": "wrapReverse",

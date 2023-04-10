@@ -203,10 +203,8 @@ export const Writing = ({ posts, tags }: Props) => {
         display={{ print: "none", "@initial": "flex" }}
         gap={11}
         container="l"
-        position="relative"
-        css={{ top: -160 }}
       >
-        <Box>
+        <Box spacingTop={11}>
           <AspectRatio.Root ratio={2.5 / 1} asChild>
             <StyledHeroImage src={book} alt="" fill quality={100} />
           </AspectRatio.Root>
@@ -253,7 +251,7 @@ export const Writing = ({ posts, tags }: Props) => {
           </Box>
         </Box>
 
-        <Box spacingBottom={11}>
+        <Box>
           <Divider />
         </Box>
 
