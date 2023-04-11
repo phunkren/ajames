@@ -68,12 +68,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
 const Home: NextPageWithLayout = ({ writing, learning }: Props) => {
   return (
-    <Box
-      direction="vertical"
-      justifyContent="center"
-      alignItems="center"
-      flexGrow
-    >
+    <>
       <HeroLayout />
 
       <About />
@@ -81,7 +76,7 @@ const Home: NextPageWithLayout = ({ writing, learning }: Props) => {
       <Writing {...writing} />
 
       <Learning {...learning} />
-    </Box>
+    </> 
   );
 };
 

@@ -148,9 +148,8 @@ export const H3_STYLES = {
   lineHeight: 1.3,
   letterSpacing: 0.4,
 
-  "@bp3": {
+  "@bp2": {
     fontSize: 28,
-    fontWeight: 600,
     lineHeight: 1.2,
     letterSpacing: 0.56,
   },

@@ -111,6 +111,9 @@ export const FLEX_VARIANTS = {
     [11]: {
       gap: "$space$11",
     },
+    [12]: {
+      gap: "$space$12",
+    },
   },
   direction: {
     horizontal: {

@@ -151,7 +151,7 @@ const StyledCardContainer = styled(Box, {
 export const WRITING_ID = "writing";
 
 export const Writing = ({ posts, tags }: Props) => {
-  const { pathname, push, query, asPath } = useRouter();
+  const { push, query, asPath } = useRouter();
   const [display, setDisplay] = useState<"partial" | "all">("partial");
   const queryTag = query.tag as string;
   const metaUrl = asPath ? `${SITE.url}/writing` : SITE.url;
@@ -162,7 +162,7 @@ export const Writing = ({ posts, tags }: Props) => {
     : undefined;
 
   const displayedPosts =
-    display === "partial" ? filteredPosts.slice(0, 7) : filteredPosts;
+    display === "partial" ? filteredPosts.slice(0, 6) : filteredPosts;
 
   const shouldShowMore = displayedPosts < filteredPosts;
 
@@ -210,7 +210,7 @@ export const Writing = ({ posts, tags }: Props) => {
       id={WRITING_ID}
       as="section"
       direction="vertical"
-      spacingVertical={11}
+      spacingVertical={12}
       css={{
         background: `$slate2`,
       }}
@@ -218,7 +218,7 @@ export const Writing = ({ posts, tags }: Props) => {
       <Box
         direction="vertical"
         display={{ print: "none", "@initial": "flex" }}
-        gap={11}
+        gap={12}
         container="l"
       >
         <Box>
@@ -417,7 +417,7 @@ export const Writing = ({ posts, tags }: Props) => {
                     as="li"
                     css={{ filter: `blur(${shouldBlur ? "10px" : "0"})` }}
                   >
-                    <Box as="article" direction="vertical">
+                    <Box as="article" direction="vertical" gap={1}>
                       <Link
                         href={`/writing/${post.properties.slug.rich_text[0].plain_text}`}
                         variant="primary"
@@ -447,7 +447,7 @@ export const Writing = ({ posts, tags }: Props) => {
                     </Box>
                   </Box>
 
-                  {i === 2 ? (
+                  {i === 4 ? (
                     <Box as="li" key="advert">
                       <Box as="article" direction="vertical">
                         <TextTitle3 css={{ color: "$focus" }}>

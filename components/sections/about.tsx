@@ -447,7 +447,7 @@ export const About = () => {
                 {EMPLOYMENT.map((employer) => (
                   <Box
                     direction="vertical"
-                    gap={4}
+                    gap={6}
                     key={employer.id}
                     spacingBottom={2}
                   >

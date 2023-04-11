@@ -83,7 +83,7 @@ export const HeaderLayout = memo(function HeaderLayout() {
       <Box
         as="header"
         display={{ "@print": "none", "@initial": "flex" }}
-        spacingVertical={2}
+        spacingVertical={4}
         spacingHorizontal={{ "@initial": 4, "@bp2": 7 }}
         gap={{ "@initial": 4, "@bp2": 7 }}
         justifyContent="space-between"
@@ -119,7 +119,7 @@ export const FooterLayout = memo(function FooterLayout() {
   return (
     <Box
       as="footer"
-      spacingVertical={2}
+      spacingVertical={4}
       spacingHorizontal={4}
       justifyContent="center"
       css={{ "@print": { display: "none" } }}
@@ -141,7 +141,7 @@ export const Layout = memo(function Layout({ children }: LayoutProps) {
         direction="vertical"
         css={{ overflowX: "hidden", "@bp3": { overflowX: "visible" } }}
         className={theme}
-        gap={11}
+        gap={12}
       >
         <HeaderLayout />
 

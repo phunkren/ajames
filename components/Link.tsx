@@ -599,10 +599,8 @@ export const BlogSubscriptionLink = memo(function BlogSubscribeLink({
           variant="invisible"
           {...props}
         >
-          <Box alignItems="center" gap={2}>
-            <StyledRssIcon size={ICON_SIZE.m} />
-            <VisuallyHidden.Root>Subscribe</VisuallyHidden.Root>
-          </Box>
+          <StyledRssIcon size={ICON_SIZE.m} />
+          <VisuallyHidden.Root>Subscribe</VisuallyHidden.Root>
         </StyledBlogSubscription>
       </Tooltip>
     );

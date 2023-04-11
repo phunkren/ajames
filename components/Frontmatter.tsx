@@ -73,7 +73,7 @@ export const FrontmatterItem = memo(function FrontmatterItem({
   return (
     <Box
       as="li"
-      gap={6}
+      gap={compact ? 2 : 6}
       alignItems="center"
       css={{ minHeight: 32, ...css }}
       {...props}

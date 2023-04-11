@@ -58,6 +58,7 @@ export const {
       9: "36px",
       10: "40px",
       11: "80px",
+      12: "120px",
     },
     shadows: {
       1: `0px 2px 4px -1px ${blackA.blackA6}, 0px 1px 2px 0px ${blackA.blackA7}, 0px 1px 2px 0px ${blackA.blackA8}`, // Cards, Buttons

@@ -94,7 +94,7 @@ export const Learning = ({
       id={LEARNING_ID}
       as="section"
       direction="vertical"
-      spacingVertical={11}
+      spacingVertical={12}
       css={{
         background: `linear-gradient($slate2 0.04%, $slate1 100.04%)`,
       }}
@@ -102,7 +102,7 @@ export const Learning = ({
       <Box
         direction="vertical"
         display={{ print: "none", "@initial": "flex" }}
-        gap={11}
+        gap={12}
         container="l"
       >
         <Box>
@@ -173,7 +173,7 @@ export const Learning = ({
           </Box>
         </Box>
 
-        <Box direction="vertical" gap={11}>
+        <Box direction="vertical" gap={12}>
           {featuredVideo ? (
             <Box direction="vertical">
               <Box
@@ -182,7 +182,7 @@ export const Learning = ({
                   "@bp2": "flex-start",
                 }}
                 gap={10}
-                alignItems="center"
+                alignItems="baseline"
                 spacingBottom={8}
               >
                 <TextTitle2 as="h3">Latest Video</TextTitle2>
@@ -256,87 +256,89 @@ export const Learning = ({
             </Box>
           ) : null}
 
-          {playlistsPreview?.map((playlist) => {
-            const firstVideo = playlistVideosPreview[playlist.id][0];
+          <Box direction="vertical" gap={11}>
+            {playlistsPreview?.map((playlist) => {
+              const firstVideo = playlistVideosPreview[playlist.id][0];
 
-            const playlistUrl = buildUrl("https://youtube.com/playlist", {
-              list: playlist.id,
-            });
+              const playlistUrl = buildUrl("https://youtube.com/playlist", {
+                list: playlist.id,
+              });
 
-            const watchAllUrl = buildUrl("https://youtube.com/watch", {
-              v: firstVideo.videoId,
-              list: playlist.id,
-            });
+              const watchAllUrl = buildUrl("https://youtube.com/watch", {
+                v: firstVideo.videoId,
+                list: playlist.id,
+              });
 
-            return (
-              <Box key={playlist.id} direction="vertical">
-                <Box direction="vertical" css={{ overflowX: "hidden" }}>
-                  <Box
-                    gap={11}
-                    justifyContent={{
-                      "@initial": "space-between",
-                      "@bp2": "space-between",
-                    }}
-                    alignItems="center"
-                    spacingBottom={2}
-                  >
-                    <Link href={playlistUrl} variant="secondary">
-                      <TextTitle2 as="h3">{playlist.title}</TextTitle2>
-                    </Link>
+              return (
+                <Box key={playlist.id} direction="vertical">
+                  <Box direction="vertical" css={{ overflowX: "hidden" }}>
+                    <Box
+                      gap={10}
+                      justifyContent={{
+                        "@initial": "space-between",
+                        "@bp2": "flex-start",
+                      }}
+                      alignItems="baseline"
+                      spacingBottom={2}
+                    >
+                      <Link href={playlistUrl} variant="secondary">
+                        <TextTitle2 as="h3">{playlist.title}</TextTitle2>
+                      </Link>
 
-                    <Link href={watchAllUrl} variant="tertiary">
-                      <PlayIcon
-                        width={ICON_SIZE.m}
-                        height={ICON_SIZE.m}
-                        aria-hidden
+                      <Link href={watchAllUrl} variant="tertiary">
+                        <PlayIcon
+                          width={ICON_SIZE.m}
+                          height={ICON_SIZE.m}
+                          aria-hidden
+                        />
+                        <TextAux>Watch all</TextAux>
+                      </Link>
+                    </Box>
+
+                    <TextBody
+                      color="secondary"
+                      css={{
+                        textAlign: "justify",
+                        maxWidth: "none",
+                        "@bp3": { maxWidth: "66%" },
+                      }}
+                    >
+                      {playlist.description}
+                    </TextBody>
+
+                    <CardScrollRoot>
+                      <CardScrollViewport>
+                        <StyledVideoCardContainer spacingVertical={8}>
+                          {playlistVideosPreview[playlist.id].map(
+                            (playlistVideo) => (
+                              <VideoCard
+                                id={playlist.id}
+                                key={playlistVideo.title}
+                                url={playlistVideo.url}
+                                image={playlistVideo.thumbnail.src}
+                                title={playlistVideo.title}
+                                publishDate={playlistVideo.publishedAt}
+                                channel={playlistVideo.videoOwnerChannelTitle}
+                                css={{
+                                  scrollSnapAlign: "center",
+                                  "@bp2": { scrollSnapAlign: "start" },
+                                }}
+                              />
+                            )
+                          )}
+                        </StyledVideoCardContainer>
+                      </CardScrollViewport>
+                      <Scrollbar
+                        orientation="horizontal"
+                        variant="secondary"
+                        forceMount
                       />
-                      <TextAux>Watch all</TextAux>
-                    </Link>
+                    </CardScrollRoot>
                   </Box>
-
-                  <TextBody
-                    color="secondary"
-                    css={{
-                      textAlign: "justify",
-                      maxWidth: "none",
-                      "@bp3": { maxWidth: "66%" },
-                    }}
-                  >
-                    {playlist.description}
-                  </TextBody>
-
-                  <CardScrollRoot>
-                    <CardScrollViewport>
-                      <StyledVideoCardContainer spacingVertical={8}>
-                        {playlistVideosPreview[playlist.id].map(
-                          (playlistVideo) => (
-                            <VideoCard
-                              id={playlist.id}
-                              key={playlistVideo.title}
-                              url={playlistVideo.url}
-                              image={playlistVideo.thumbnail.src}
-                              title={playlistVideo.title}
-                              publishDate={playlistVideo.publishedAt}
-                              channel={playlistVideo.videoOwnerChannelTitle}
-                              css={{
-                                scrollSnapAlign: "center",
-                                "@bp2": { scrollSnapAlign: "start" },
-                              }}
-                            />
-                          )
-                        )}
-                      </StyledVideoCardContainer>
-                    </CardScrollViewport>
-                    <Scrollbar
-                      orientation="horizontal"
-                      variant="secondary"
-                      forceMount
-                    />
-                  </CardScrollRoot>
                 </Box>
-              </Box>
-            );
-          })}
+              );
+            })}
+          </Box>
 
           <Box>
             <Divider />
