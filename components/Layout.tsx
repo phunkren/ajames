@@ -10,11 +10,17 @@ import { Social } from "./Social";
 import { ThemeToggle } from "./Toggle";
 import { Box, BoxProps } from "./Box";
 import { PageSeo } from "./SEO";
-import { TextAux, TextHeadline, TextTitle1 } from "./Text";
+import {
+  TextAux,
+  TextHeadline,
+  TextTitle,
+  TextTitle1,
+  TextTitle2,
+  TextTitle3,
+} from "./Text";
 import { Logo } from "./Logo";
 import { Tooltip } from "./Tooltip";
 import banner from "../public/images/mugshot.png";
-import { useRouter } from "next/router";
 import { PERSONAL } from "../util/data";
 
 type LayoutProps = {
@@ -22,39 +28,43 @@ type LayoutProps = {
 };
 
 const StyledHeroLayout = styled(Box, {
-  position: "fixed",
-  inset: 0,
-  willChange: "opacity, filter",
+  display: "none !important",
+  height: "100vh",
+  width: "100vw",
+  overflow: "hidden",
+  position: "relative",
 
-  variants: {
-    opaque: {
-      true: {
-        display: "none",
-      },
-      false: {
-        display: "flex",
-        opacity: 1,
-        zIndex: 100,
-        filter: "blur(0px)",
-        transition: "opacity 100ms linear, filter 50ms ease-in-out",
-      },
-    },
+  "@bp3": {
+    display: "flex !important",
   },
 });
 
 const StyledHeroContainer = styled(Box, {
-  background: "black",
+  background: "$slate1",
 });
 
 const StyledImage = styled(Image, {
-  objectFit: "contain",
-  left: "12.5% !important",
+  position: "absolute",
+  maxHeight: "95vh",
+  bottom: 0,
+  right: 0,
   pointerEvents: "none",
   filter: "brightness(75%)",
+  objectFit: "contain",
+  objectPosition: "bottom",
+
+  "@bp3": {
+    right: "12.5%",
+    transform: "translateX(25%)",
+  },
+
+  "@bp4": {
+    right: "25%",
+  },
 });
 
 const StyledFilter = styled(Box, {
-  position: "fixed",
+  position: "absolute",
   inset: 0,
   filter: "blur(50px)",
   background: `conic-gradient(from -25deg, ${redDark.red6}, ${redDark.red7}, ${redDark.red8}, ${redDark.red9}, ${blueDark.blue4}, ${blueDark.blue6}, ${blueDark.blue8})`,
@@ -79,9 +89,8 @@ const HeaderBox = styled(Box, {
 
 export const HeaderLayout = memo(function HeaderLayout() {
   return (
-    <HeaderBox>
+    <HeaderBox as="header">
       <Box
-        as="header"
         display={{ "@print": "none", "@initial": "flex" }}
         spacingVertical={4}
         spacingHorizontal={{ "@initial": 4, "@bp2": 7 }}
@@ -156,22 +165,12 @@ export const Layout = memo(function Layout({ children }: LayoutProps) {
 });
 
 export const HeroLayout = memo(function HeroLayout() {
-  const { asPath } = useRouter();
-  const isVisible = asPath === "/";
-
   return (
-    <StyledHeroLayout opaque={!isVisible}>
+    <StyledHeroLayout>
       <StyledHeroContainer direction="vertical" flexGrow>
         <StyledFilter />
 
-        <StyledImage
-          src={banner}
-          alt=""
-          sizes="25vw"
-          quality={100}
-          priority
-          fill
-        />
+        <StyledImage src={banner} alt="" sizes="100vw" quality={100} priority />
 
         <Box
           direction="vertical"
@@ -196,11 +195,11 @@ export const HeroLayout = memo(function HeroLayout() {
                 gap={2}
                 flexGrow
               >
-                <TextTitle1 css={{ "@bp2": { textShadow: "$textShadow" } }}>
+                <TextTitle css={{ textShadow: "$textShadow" }}>
                   {PERSONAL.name}
-                </TextTitle1>
+                </TextTitle>
 
-                <TextHeadline css={{ "@bp2": { textShadow: "$textShadow" } }}>
+                <TextHeadline css={{ textShadow: "$textShadow" }}>
                   {PERSONAL.occupation} / {PERSONAL.location}
                 </TextHeadline>
 

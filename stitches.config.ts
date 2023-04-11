@@ -33,7 +33,6 @@ import {
   sageDark,
 } from "@radix-ui/colors";
 import { SPACING_UTILS } from "./styles/spacing";
-import isWithinInterval from "date-fns/esm/fp/isWithinInterval";
 
 export const {
   styled,
@@ -77,6 +76,7 @@ export const {
     bp1: "(min-width: 480px)",
     bp2: "(min-width: 720px)",
     bp3: "(min-width: 1080px)",
+    bp4: "(min-width: 1400px)",
     reducedMotion: "(prefers-reduced-motion: reduce)",
     print: "print",
   },

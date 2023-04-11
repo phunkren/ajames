@@ -280,7 +280,7 @@ export const Writing = ({ posts, tags }: Props) => {
         {featuredPost ? (
           <Box direction="vertical">
             <Box spacingBottom={8}>
-              <TextTitle2 as="h2">Featured</TextTitle2>
+              <TextTitle2>Featured</TextTitle2>
             </Box>
 
             <Box
@@ -352,7 +352,7 @@ export const Writing = ({ posts, tags }: Props) => {
             spacingBottom={8}
           >
             <Box gap={4} alignItems="center">
-              <TextTitle2 as="h2">Articles</TextTitle2>
+              <TextTitle2>Articles</TextTitle2>
               {filteredTag ? (
                 <StyledTag
                   borderColor={filteredTag.color}

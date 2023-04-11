@@ -51,7 +51,9 @@ export const globalStyles = globalCss({
     textRendering: "optimizeLegibility",
     backgroundBlendMode: "multiply",
     width: "100%",
+    maxWidth: "100vw",
     minHeight: "100dvh",
+    overflowX: "hidden",
 
     ...P_STYLES,
   },

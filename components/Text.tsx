@@ -19,6 +19,23 @@ type MarkDownProps = {
   children: string[];
 };
 
+export const TextTitle = styled("h1", {
+  fontSize: 36,
+  lineHeight: 1.4,
+  letterSpacing: 0.72,
+
+  "@bp2": {
+    fontSize: 64,
+    lineHeight: 1.3,
+    letterSpacing: 0.4,
+  },
+
+  variants: {
+    ...TEXT_VARIANTS,
+    ...SPACING_VARIANTS,
+  },
+});
+
 export const TextTitle1 = styled("h1", {
   ...H1_STYLES,
 
