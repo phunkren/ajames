@@ -37,18 +37,18 @@ const StyledRowsIcon = styled(RowsIcon, {
 
 const SwitchThumb = styled(Switch.Thumb, {
   display: "block",
-  width: 34,
-  height: 34,
+  width: 28,
+  height: 28,
   borderTopLeftRadius: "$1",
   borderBottomLeftRadius: "$1",
-  background: "$backgroundGradient",
+  background: "$background",
   transform: "translate3d(0, 0, 0)",
   transition: "transform 100ms ease-out, borderRadius 200ms ease-out",
   willChange: "transform, borderRadius",
   zIndex: 1,
 
   '&[data-state="checked"]': {
-    transform: "translate3d(36px, 0, 0)",
+    transform: "translate3d(30px, 0, 0)",
     borderTopRightRadius: "$1",
     borderBottomRightRadius: "$1",
     borderBottomLeftRadius: 0,
@@ -65,15 +65,15 @@ const SwitchRoot = styled(Switch.Root, {
   borderColor: "$foregroundMuted",
   background: `radial-gradient(circle at bottom, $hover, $focus)`,
   boxShadow: "$1",
-  width: 72,
-  height: 36,
+  width: 60,
+  height: 30,
 
   "&::before": {
     content: "",
     position: "absolute",
     borderRadius: "$1",
     inset: 0,
-    backgroundColor: "black",
+    backgroundColor: "$background",
     opacity: 0.5,
     transition: "opacity 200ms ease-out",
     willChange: "opacity",
@@ -115,9 +115,9 @@ export const ThemeToggle = memo(function ThemeToggle() {
       >
         <SwitchThumb />
 
-        <StyledSunIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
+        <StyledSunIcon width={ICON_SIZE.s} height={ICON_SIZE.s} />
 
-        <StyledMoonIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
+        <StyledMoonIcon width={ICON_SIZE.s} height={ICON_SIZE.s} />
       </SwitchRoot>
     </Tooltip>
   );
@@ -131,9 +131,9 @@ export const LayoutToggle = memo(function LayoutToggle(
       <SwitchRoot {...props}>
         <SwitchThumb />
 
-        <StyledGridIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
+        <StyledGridIcon width={ICON_SIZE.s} height={ICON_SIZE.s} />
 
-        <StyledRowsIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
+        <StyledRowsIcon width={ICON_SIZE.s} height={ICON_SIZE.s} />
       </SwitchRoot>
     </Tooltip>
   );

@@ -86,7 +86,9 @@ export const About = () => {
       id={ABOOT_ID}
       as="section"
       direction="vertical"
-      spacingVertical={{ "@print": 0, "@initial": 11 }}
+      spacingTop={{ "@print": 0, "@initial": 12 }}
+      spacingBottom={{ "@print": 0, "@initial": 11 }}
+      spacingHorizontal={7}
       css={{
         background: `linear-gradient($slate1 0.04%, $slate2 100.04%)`,
       }}
@@ -151,7 +153,7 @@ export const About = () => {
             </ActionButtons>
           </Box>
 
-          <Box>
+          <Box display={{ "@initial": "none", "@bp2": "flex" }}>
             <Divider />
           </Box>
         </Box>
@@ -159,7 +161,7 @@ export const About = () => {
         <Box
           id="__cv"
           direction="horizontal"
-          gap={{ "@print": 4, "@initial": 0, "@bp2": 10 }}
+          gap={{ "@print": 4, "@initial": 10 }}
           spacingHorizontal={{ "@print": 3, "@initial": 0 }}
           flexWrap={{
             "@print": "nowrap",
@@ -187,10 +189,10 @@ export const About = () => {
                 <Box as="li" alignItems="center">
                   <Tooltip title={SOCIAL.linkedin.displayName}>
                     <Link variant="secondary" href={SOCIAL.linkedin.url}>
-                      <Box direction="horizontal" gap={4} alignItems="center">
+                      <Box direction="horizontal" gap={6} alignItems="center">
                         <LinkedInLogoIcon
-                          width={ICON_SIZE.m}
-                          height={ICON_SIZE.m}
+                          width={ICON_SIZE.l}
+                          height={ICON_SIZE.l}
                           aria-hidden
                         />
                         <TextHeadline>Andrew James</TextHeadline>
@@ -202,10 +204,10 @@ export const About = () => {
                 <Box as="li" alignItems="center">
                   <Tooltip title="Email">
                     <Link variant="secondary" href={`mailto:${PERSONAL.email}`}>
-                      <Box direction="horizontal" gap={4} alignItems="center">
+                      <Box direction="horizontal" gap={6} alignItems="center">
                         <EnvelopeOpenIcon
-                          width={ICON_SIZE.m}
-                          height={ICON_SIZE.m}
+                          width={ICON_SIZE.l}
+                          height={ICON_SIZE.l}
                           aria-hidden
                         />
                         <TextHeadline>contact@ajames.dev</TextHeadline>
@@ -217,10 +219,10 @@ export const About = () => {
                 <Box as="li" alignItems="center">
                   <Tooltip title="Website">
                     <Link variant="secondary" href={SITE.url}>
-                      <Box direction="horizontal" gap={4} alignItems="center">
+                      <Box direction="horizontal" gap={6} alignItems="center">
                         <GlobeIcon
-                          width={ICON_SIZE.m}
-                          height={ICON_SIZE.m}
+                          width={ICON_SIZE.l}
+                          height={ICON_SIZE.l}
                           aria-hidden
                         />
                         <TextHeadline>ajames.dev</TextHeadline>
@@ -232,10 +234,10 @@ export const About = () => {
                 <Box as="li" alignItems="center">
                   <Tooltip title={SOCIAL.github.displayName}>
                     <Link variant="secondary" href={SOCIAL.github.url}>
-                      <Box direction="horizontal" gap={4} alignItems="center">
+                      <Box direction="horizontal" gap={6} alignItems="center">
                         <GitHubLogoIcon
-                          width={ICON_SIZE.m}
-                          height={ICON_SIZE.m}
+                          width={ICON_SIZE.l}
+                          height={ICON_SIZE.l}
                           aria-hidden
                         />
                         <TextHeadline>phunkren</TextHeadline>
@@ -304,16 +306,18 @@ export const About = () => {
               <GridRoot
                 css={{
                   "@print": { gridRowGap: "$5" },
+                  "@initial": { gridRowGap: "$10" },
                   "@bp2": { gridRowGap: "$10" },
                 }}
               >
-                {EDUCATION.map((education) => (
+                {EDUCATION.map((education, i) => (
                   <Box
                     as="li"
                     direction="vertical"
                     key={education.id}
                     gap={2}
                     justifyContent="flex-end"
+                    spacingBottom={i === 0 ? 10 : undefined}
                   >
                     {education.qualification ? (
                       <TextHeadline>{education.qualification}</TextHeadline>
@@ -443,7 +447,7 @@ export const About = () => {
                 <Divider />
               </Box>
 
-              <Box direction="vertical" gap={11}>
+              <Box direction="vertical" gap={10}>
                 {EMPLOYMENT.map((employer) => (
                   <Box
                     direction="vertical"
@@ -468,7 +472,6 @@ export const About = () => {
                           "@print": "space-between",
                           "@bp2": "space-between",
                         }}
-                        gap={1}
                       >
                         <Box
                           direction="horizontal"
@@ -550,7 +553,7 @@ export const About = () => {
                     </TextBody>
 
                     {employer.notableWork?.length > 0 ? (
-                      <Box direction="vertical" gap={2}>
+                      <Box direction="vertical" gap={1}>
                         <TextHeadline color="secondary">
                           Notable Contributions
                         </TextHeadline>
@@ -563,7 +566,7 @@ export const About = () => {
                           spacingHorizontal={{ "@print": 5, "@initial": 10 }}
                           gap={{
                             "@print": 10,
-                            "@initial": 0,
+                            "@initial": 1,
                           }}
                           alignItems={{ "@print": "center" }}
                         >

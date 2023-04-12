@@ -1,27 +1,27 @@
-import { memo, ReactElement, useEffect } from "react";
+import { memo, ReactElement } from "react";
 import Image from "next/image";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
-import { blueDark, redDark } from "@radix-ui/colors";
+import {
+  blueDark,
+  redDark,
+  slateA,
+  slateDark,
+  slateDarkA,
+} from "@radix-ui/colors";
 import { useTheme } from "../hooks/useTheme";
-import { css, styled } from "../stitches.config";
+import { styled } from "../stitches.config";
 import { Link } from "./Link";
 import { Navigation, NavigationMobile } from "./Navigation";
 import { Social } from "./Social";
 import { ThemeToggle } from "./Toggle";
 import { Box, BoxProps } from "./Box";
 import { PageSeo } from "./SEO";
-import {
-  TextAux,
-  TextHeadline,
-  TextTitle,
-  TextTitle1,
-  TextTitle2,
-  TextTitle3,
-} from "./Text";
+import { TextAux, TextHeadline, TextTitle } from "./Text";
 import { Logo } from "./Logo";
 import { Tooltip } from "./Tooltip";
 import banner from "../public/images/mugshot.png";
 import { PERSONAL } from "../util/data";
+import { useScroll } from "../hooks/useScroll";
 
 type LayoutProps = {
   children: ReactElement;
@@ -85,16 +85,33 @@ const HeaderBox = styled(Box, {
   top: 0,
   right: 0,
   left: 0,
+
+  background: "orange",
+  willChange: "background-color",
+  transition: "background-color 400ms ease-out",
+
+  variants: {
+    opaque: {
+      true: {
+        backgroundColor: `${slateDark.slate1}`,
+      },
+      false: {
+        backgroundColor: `${slateDarkA.slateA1}`,
+      },
+    },
+  },
 });
 
 export const HeaderLayout = memo(function HeaderLayout() {
+  const { isScrolled } = useScroll();
+
   return (
-    <HeaderBox as="header">
+    <HeaderBox as="header" opaque={isScrolled}>
       <Box
         display={{ "@print": "none", "@initial": "flex" }}
-        spacingVertical={4}
-        spacingHorizontal={{ "@initial": 4, "@bp2": 7 }}
-        gap={{ "@initial": 4, "@bp2": 7 }}
+        spacingVertical={2}
+        spacingHorizontal={5}
+        gap={7}
         justifyContent="space-between"
         alignItems="center"
         flexGrow

@@ -94,7 +94,8 @@ export const Learning = ({
       id={LEARNING_ID}
       as="section"
       direction="vertical"
-      spacingVertical={12}
+      spacingVertical={11}
+      spacingHorizontal={7}
       css={{
         background: `linear-gradient($slate2 0.04%, $slate1 100.04%)`,
       }}
@@ -279,6 +280,7 @@ export const Learning = ({
                         "@bp2": "flex-start",
                       }}
                       alignItems="baseline"
+                      spacingBottom={2}
                     >
                       <Link href={playlistUrl} variant="secondary">
                         <TextTitle2 as="h3">{playlist.title}</TextTitle2>

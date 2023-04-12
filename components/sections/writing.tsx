@@ -38,6 +38,8 @@ import { useLocalStorage } from "../../hooks/useLocalStorage";
 import book from "../../public/images/book.png";
 import { SITE } from "../../util/data";
 import { H2_STYLES, H3_STYLES } from "../../styles/text";
+import { ChevronDownIcon } from "@radix-ui/react-icons";
+import { ICON_SIZE } from "../../util/images";
 
 export type Props = {
   posts: BlogPost[];
@@ -219,7 +221,8 @@ export const Writing = ({ posts, tags }: Props) => {
       id={WRITING_ID}
       as="section"
       direction="vertical"
-      spacingVertical={12}
+      spacingVertical={11}
+      spacingHorizontal={7}
       css={{
         background: `$slate2`,
       }}
@@ -425,15 +428,9 @@ export const Writing = ({ posts, tags }: Props) => {
             display={storageLayout === "rows" ? "flex" : "none"}
           >
             {displayedPosts.map((post, i) => {
-              const shouldBlur =
-                shouldShowMore && i === displayedPosts.length - 1;
-
               return (
                 <Fragment key={post.id}>
-                  <Box
-                    as="li"
-                    css={{ filter: `blur(${shouldBlur ? "10px" : "0"})` }}
-                  >
+                  <Box as="li">
                     <Box as="article" direction="vertical" gap={1}>
                       <Link
                         href={`/writing/${post.properties.slug.rich_text[0].plain_text}`}
@@ -464,7 +461,7 @@ export const Writing = ({ posts, tags }: Props) => {
                     </Box>
                   </Box>
 
-                  {i === 4 ? (
+                  {i === 2 ? (
                     <Box as="li" key="advert">
                       <Box as="article" direction="vertical">
                         <TextTitle3 css={{ color: "$focus" }}>
@@ -516,6 +513,14 @@ export const Writing = ({ posts, tags }: Props) => {
                 </Fragment>
               );
             })}
+
+            <Button
+              variant="tertiary"
+              css={{ width: "fit-content" }}
+              onClick={handleDisplayChange}
+            >
+              <TextTitle3>Show all articles</TextTitle3>
+            </Button>
           </Box>
         </Box>
       </Box>

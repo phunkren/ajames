@@ -107,7 +107,7 @@ export const TEXT_VARIANTS = {
 };
 
 export const H1_STYLES = {
-  fontSize: 36,
+  fontSize: 32,
   fontWeight: 500,
   lineHeight: 1.4,
   letterSpacing: 0.72,
@@ -126,7 +126,7 @@ export const H1_STYLES = {
 };
 
 export const H2_STYLES = {
-  fontSize: 28,
+  fontSize: 24,
   fontWeight: 500,
   lineHeight: 1.3,
   letterSpacing: 0.56,
@@ -144,9 +144,9 @@ export const H2_STYLES = {
 };
 
 export const H3_STYLES = {
-  fontSize: 20,
+  fontSize: 18,
   fontWeight: 500,
-  lineHeight: 1.3,
+  lineHeight: 1.6,
   letterSpacing: 0.4,
 
   "@bp2": {
