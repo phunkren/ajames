@@ -85,18 +85,22 @@ export const About = () => {
     <Box
       id={ABOOT_ID}
       as="section"
-      direction="vertical"
-      spacingTop={{ "@print": 0, "@initial": 12 }}
-      spacingBottom={{ "@print": 0, "@initial": 11 }}
+      spacingTop={12}
+      spacingBottom={11}
       spacingHorizontal={7}
+      direction="vertical"
       css={{
         background: `linear-gradient($slate1 0.04%, $slate2 100.04%)`,
       }}
     >
-      <Box direction="vertical" gap={11} container="l">
+      <Box
+        direction="vertical"
+        gap={{ "@print": 0, "@initial": 11 }}
+        container="l"
+      >
         <Box
           display={{ "@print": "flex", "@initial": "none" }}
-          spacingBottom={{ "@print": 6, "@initial": 10 }}
+          spacingBottom={6}
         >
           <Box
             direction="vertical"
@@ -113,7 +117,7 @@ export const About = () => {
 
         <Box
           direction="vertical"
-          gap={10}
+          gap={{ "@print": 0, "@initial": 10 }}
           display={{ "@print": "none", "@initial": "flex" }}
         >
           <Box justifyContent="space-between" alignItems="center">
@@ -153,7 +157,7 @@ export const About = () => {
             </ActionButtons>
           </Box>
 
-          <Box display={{ "@initial": "none", "@bp2": "flex" }}>
+          <Box display={{ "@initial": "none", "@bp3": "flex" }}>
             <Divider />
           </Box>
         </Box>
@@ -172,7 +176,7 @@ export const About = () => {
         >
           <Box
             direction="vertical"
-            gap={11}
+            gap={{ "@print": 10, "@initial": 11 }}
             css={{
               "@print": { flexGrow: 0, flexShrink: 0, flexBasis: 125 },
               "@bp3": { flexGrow: 0, flexShrink: 0, flexBasis: 250 },
@@ -317,7 +321,9 @@ export const About = () => {
                     key={education.id}
                     gap={2}
                     justifyContent="flex-end"
-                    spacingBottom={i === 0 ? 10 : undefined}
+                    css={{
+                      "@bp2": { paddingBottom: i === 0 ? 10 : undefined },
+                    }}
                   >
                     {education.qualification ? (
                       <TextHeadline>{education.qualification}</TextHeadline>

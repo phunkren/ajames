@@ -299,7 +299,12 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
             <Divider />
           </Box>
 
-          <StyledContainer direction="vertical" container="m" gap={8}>
+          <StyledContainer
+            direction="vertical"
+            container="m"
+            gap={8}
+            spacingHorizontal={7}
+          >
             <ReactMarkdown
               components={{
                 a: MarkdownLink,

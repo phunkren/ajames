@@ -75,7 +75,7 @@ export const {
   media: {
     bp1: "(min-width: 480px)",
     bp2: "(min-width: 720px)",
-    bp3: "(min-width: 1080px)",
+    bp3: "(min-width: 1024px)",
     bp4: "(min-width: 1400px)",
     reducedMotion: "(prefers-reduced-motion: reduce)",
     print: "print",

@@ -3,6 +3,7 @@ import Image from "next/image";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import {
   blueDark,
+  crimsonDark,
   redDark,
   slateA,
   slateDark,
@@ -28,14 +29,14 @@ type LayoutProps = {
 };
 
 const StyledHeroLayout = styled(Box, {
-  display: "none !important",
   height: "100vh",
   width: "100vw",
   overflow: "hidden",
   position: "relative",
+  color: "$foreground",
 
-  "@bp3": {
-    display: "flex !important",
+  "@print": {
+    display: "none !important",
   },
 });
 
@@ -45,30 +46,33 @@ const StyledHeroContainer = styled(Box, {
 
 const StyledImage = styled(Image, {
   position: "absolute",
-  maxHeight: "95vh",
+  height: "95vh",
   bottom: 0,
   right: 0,
   pointerEvents: "none",
-  filter: "brightness(75%)",
-  objectFit: "contain",
+  filter: "brightness(65%)",
+  objectFit: "cover",
   objectPosition: "bottom",
 
   "@bp3": {
-    right: "12.5%",
+    objectFit: "contain",
+    right: "7.5%",
     transform: "translateX(25%)",
+    height: "90vh",
   },
 
   "@bp4": {
-    right: "25%",
+    right: "22.5%",
   },
 });
 
-const StyledFilter = styled(Box, {
+const StyledBox = styled(Box, {
+  width: "75vw",
   position: "absolute",
-  inset: 0,
-  filter: "blur(50px)",
-  background: `conic-gradient(from -25deg, ${redDark.red8}, ${redDark.red9}, ${redDark.red10}, ${redDark.red11}, ${blueDark.blue7}, ${blueDark.blue8}, ${blueDark.blue9})`,
-  willChange: "opacity",
+  top: "-50vw",
+  bottom: "-50vw",
+  height: "200vw",
+  filter: "blur(1000px)",
 
   "&::after": {
     content: "",
@@ -76,19 +80,55 @@ const StyledFilter = styled(Box, {
     inset: 0,
     background: "rgba(0,0,0,0.4)",
   },
+
+  variants: {
+    variant: {
+      one: {
+        left: "20vw",
+        transformOrigin: "top left",
+        transform: "rotate(25deg)",
+        background: `linear-gradient(270deg, ${blueDark.blue3} 0%, ${blueDark.blue4} 25%, ${blueDark.blue5} 50%, ${blueDark.blue6} 75%, ${blueDark.blue7} 100%)`,
+      },
+      two: {
+        background: `linear-gradient(150deg, ${blueDark.blue9} 0%, ${blueDark.blue8} 25%, ${blueDark.blue7} 50%, ${blueDark.blue6} 75%, ${blueDark.blue5} 100%)`,
+        left: "-20vw",
+        transformOrigin: "top left",
+        transform: "rotate(-35deg)",
+      },
+      three: {
+        background: `linear-gradient(1200deg, ${redDark.red9} 0%, ${redDark.red8} 25%, ${redDark.red7} 50%, ${redDark.red6} 75%, ${redDark.red5} 100%)`,
+        left: "140vw",
+        top: "64vh",
+        bottom: "-150vh",
+
+        transformOrigin: "bottom left",
+        transform: "rotate(-45deg)",
+      },
+      four: {
+        background: `linear-gradient(60deg, ${redDark.red8} 0%, ${redDark.red7} 25%, ${redDark.red6} 50%, ${redDark.red5} 75%, ${redDark.red4} 100%)`,
+        left: "0vw",
+        transformOrigin: "bottom left",
+
+        transform: "rotate(30deg)",
+      },
+    },
+  },
 });
 
 const HeaderBox = styled(Box, {
-  zIndex: 500,
+  zIndex: 50,
   width: "100%",
   position: "fixed",
   top: 0,
   right: 0,
   left: 0,
 
-  background: "orange",
   willChange: "background-color",
   transition: "background-color 400ms ease-out",
+
+  "@print": {
+    display: "none !important",
+  },
 
   variants: {
     opaque: {
@@ -109,7 +149,7 @@ export const HeaderLayout = memo(function HeaderLayout() {
     <HeaderBox as="header" opaque={isScrolled}>
       <Box
         display={{ "@print": "none", "@initial": "flex" }}
-        spacingVertical={2}
+        spacingVertical={3}
         spacingHorizontal={5}
         gap={7}
         justifyContent="space-between"
@@ -185,7 +225,10 @@ export const HeroLayout = memo(function HeroLayout() {
   return (
     <StyledHeroLayout>
       <StyledHeroContainer direction="vertical" flexGrow>
-        <StyledFilter />
+        <StyledBox variant="one" />
+        <StyledBox variant="two" />
+        <StyledBox variant="four" />
+        <StyledBox variant="three" />
 
         <StyledImage src={banner} alt="" sizes="100vw" quality={100} priority />
 
@@ -195,17 +238,16 @@ export const HeroLayout = memo(function HeroLayout() {
           flexGrow
         >
           <Box direction="vertical" position="relative" flexGrow>
-            <Box
-              direction="vertical"
-              container="l"
-              justifyContent={{
-                "@initial": "center",
-                "@bp2": "flex-end",
-                "@bp3": "space-between",
-              }}
-              flexGrow
-            >
-              <Box direction="vertical" justifyContent="center" flexGrow>
+            <Box direction="vertical" container="l" flexGrow>
+              <Box
+                direction="vertical"
+                spacingTop={12}
+                spacingBottom={10}
+                justifyContent={{ "@initial": "flex-end", "@bp3": "center" }}
+                alignItems={{ "@initial": "center", "@bp3": "flex-start" }}
+                gap={2}
+                flexGrow
+              >
                 <TextTitle css={{ textShadow: "$textShadow" }}>
                   {PERSONAL.name}
                 </TextTitle>
@@ -214,8 +256,8 @@ export const HeroLayout = memo(function HeroLayout() {
                   {PERSONAL.occupation} / {PERSONAL.location}
                 </TextHeadline>
 
-                <Box position="relative" css={{ left: -12 }} spacingTop={4}>
-                  <Social size="s" gap="1" />
+                <Box position="relative" spacingTop={4}>
+                  <Social size="m" gap="3" />
                 </Box>
               </Box>
             </Box>

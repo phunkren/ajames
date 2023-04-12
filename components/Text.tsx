@@ -30,6 +30,10 @@ export const TextTitle = styled("h1", {
     letterSpacing: 0.4,
   },
 
+  "@bp3": {
+    fontSize: 72,
+  },
+
   variants: {
     ...TEXT_VARIANTS,
     ...SPACING_VARIANTS,
