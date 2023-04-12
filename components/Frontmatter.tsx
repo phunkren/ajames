@@ -58,7 +58,7 @@ export const Frontmatter = memo(function Frontmatter(props: BoxProps) {
       as="ul"
       role="list"
       direction="vertical"
-      gap={2}
+      gap={4}
       css={{ color: "$foregroundMuted" }}
       {...props}
     />

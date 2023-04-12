@@ -86,12 +86,6 @@ const StyledMarkdownLinkH2 = styled(Link, {
   width: "fit-content",
   marginTop: "$10",
   marginBottom: "$5",
-  position: "relative",
-
-  "&::after": {
-    content: "🔗",
-    textDecoration: "none",
-  },
 });
 
 export const MarkdownH2 = memo(function MarkdownH2(props: MarkDownProps) {

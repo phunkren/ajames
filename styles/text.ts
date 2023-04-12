@@ -181,6 +181,25 @@ export const P_STYLES = {
   },
 };
 
+export const P_BLOG_STYLES = {
+  fontSize: 18,
+  fontWeight: 400,
+  lineHeight: 1.6,
+  letterSpacing: 0.36,
+
+  "@bp2": {
+    fontSize: 24,
+    lineHeight: 1.5,
+    letterSpacing: 0.4,
+  },
+
+  "@print": {
+    fontSize: 14,
+    lineHeight: 1.25,
+    letterSpacing: 0.28,
+  },
+};
+
 export const AUX_STYLES = {
   fontSize: 14,
   fontWeight: 500,

@@ -307,7 +307,7 @@ export const Learning = ({
 
                     <CardScrollRoot>
                       <CardScrollViewport>
-                        <StyledVideoCardContainer spacingVertical={8}>
+                        <StyledVideoCardContainer spacingVertical={10}>
                           {playlistVideosPreview[playlist.id].map(
                             (playlistVideo) => (
                               <VideoCard
