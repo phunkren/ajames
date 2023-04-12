@@ -279,7 +279,6 @@ export const Learning = ({
                         "@bp2": "flex-start",
                       }}
                       alignItems="baseline"
-                      spacingBottom={2}
                     >
                       <Link href={playlistUrl} variant="secondary">
                         <TextTitle2 as="h3">{playlist.title}</TextTitle2>
@@ -351,7 +350,7 @@ export const Learning = ({
               "@bp2": 8,
             }}
           >
-            <TextTitle3 as="h2" textAlign="center" css={{ color: "$focus" }}>
+            <TextTitle3 as="h2" textAlign="center" color="secondary">
               Enjoying the video content?
             </TextTitle3>
 

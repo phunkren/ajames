@@ -12,7 +12,14 @@ import {
 import { ActionButtons } from "../Layout";
 import { LayoutToggle } from "../Toggle";
 import { StyledTag, TagDrawer, TagSelect, TagSelectItem } from "../Tags";
-import { TextAux, TextBody, TextTitle1, TextTitle2, TextTitle3 } from "../Text";
+import {
+  TextAux,
+  TextBody,
+  TextHeadline,
+  TextTitle1,
+  TextTitle2,
+  TextTitle3,
+} from "../Text";
 import { styled } from "../../stitches.config";
 import { BlogPost, Tag } from "../../util/notion";
 import { filterPosts } from "../../util/notion";
@@ -81,6 +88,7 @@ const StyledCardContainer = styled(Box, {
       gridRow: "span 1",
 
       h3: {
+        "-webkit-line-clamp": 5,
         ...H2_STYLES,
       },
 
@@ -119,6 +127,7 @@ const StyledCardContainer = styled(Box, {
       gridRow: "span 1",
 
       h3: {
+        "-webkit-line-clamp": 5,
         ...H2_STYLES,
       },
 
@@ -398,6 +407,14 @@ export const Writing = ({ posts, tags }: Props) => {
                   </Fragment>
                 );
               })}
+
+              {shouldShowMore ? (
+                <Box direction="vertical">
+                  <Button css={{ flexGrow: 1 }} onClick={handleDisplayChange}>
+                    <TextHeadline>Show all articles</TextHeadline>
+                  </Button>
+                </Box>
+              ) : null}
             </StyledCardContainer>
           </Box>
 
@@ -500,16 +517,6 @@ export const Writing = ({ posts, tags }: Props) => {
               );
             })}
           </Box>
-
-          {shouldShowMore ? (
-            <Box
-              direction="vertical"
-              spacingTop={10}
-              css={{ width: storageLayout === "rows" ? "66%" : "100%" }}
-            >
-              <Button onClick={handleDisplayChange}>Show all articles</Button>
-            </Box>
-          ) : null}
         </Box>
       </Box>
     </Box>

@@ -56,6 +56,9 @@ export const FLEX_VARIANTS = {
     center: {
       alignItems: "center",
     },
+    baseline: {
+      alignItems: "baseline",
+    },
   },
   justifyContent: {
     center: {

@@ -67,14 +67,14 @@ const StyledFilter = styled(Box, {
   position: "absolute",
   inset: 0,
   filter: "blur(50px)",
-  background: `conic-gradient(from -25deg, ${redDark.red6}, ${redDark.red7}, ${redDark.red8}, ${redDark.red9}, ${blueDark.blue4}, ${blueDark.blue6}, ${blueDark.blue8})`,
+  background: `conic-gradient(from -25deg, ${redDark.red8}, ${redDark.red9}, ${redDark.red10}, ${redDark.red11}, ${blueDark.blue7}, ${blueDark.blue8}, ${blueDark.blue9})`,
   willChange: "opacity",
 
   "&::after": {
     content: "",
     position: "fixed",
     inset: 0,
-    background: "rgba(0,0,0,0.75)",
+    background: "rgba(0,0,0,0.4)",
   },
 });
 
@@ -181,7 +181,6 @@ export const HeroLayout = memo(function HeroLayout() {
             <Box
               direction="vertical"
               container="l"
-              spacingLeft={{ "@bp2": 6, "@bp3": 0 }}
               justifyContent={{
                 "@initial": "center",
                 "@bp2": "flex-end",
@@ -189,12 +188,7 @@ export const HeroLayout = memo(function HeroLayout() {
               }}
               flexGrow
             >
-              <Box
-                direction="vertical"
-                justifyContent="center"
-                gap={2}
-                flexGrow
-              >
+              <Box direction="vertical" justifyContent="center" flexGrow>
                 <TextTitle css={{ textShadow: "$textShadow" }}>
                   {PERSONAL.name}
                 </TextTitle>
@@ -203,7 +197,7 @@ export const HeroLayout = memo(function HeroLayout() {
                   {PERSONAL.occupation} / {PERSONAL.location}
                 </TextHeadline>
 
-                <Box position="relative" css={{ left: -12 }} spacingTop={1}>
+                <Box position="relative" css={{ left: -12 }} spacingTop={4}>
                   <Social size="s" gap="1" />
                 </Box>
               </Box>

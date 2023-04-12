@@ -76,6 +76,7 @@ const StyledCardOuter = styled(Box, {
   borderWidth: 2,
   borderStyle: "solid",
   overflow: "hidden",
+  willChange: "background, boxShadow, transform",
   transition:
     "background 200ms ease-out, boxShadow 200ms ease-out, transform 200ms ease-out",
 

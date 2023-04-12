@@ -108,6 +108,7 @@ export const TEXT_VARIANTS = {
 
 export const H1_STYLES = {
   fontSize: 36,
+  fontWeight: 500,
   lineHeight: 1.4,
   letterSpacing: 0.72,
 
@@ -126,13 +127,13 @@ export const H1_STYLES = {
 
 export const H2_STYLES = {
   fontSize: 28,
-  fontWeight: 600,
+  fontWeight: 500,
   lineHeight: 1.3,
   letterSpacing: 0.56,
 
   "@bp2": {
     fontSize: 36,
-    lineHeight: 1.2,
+    lineHeight: 1.4,
     letterSpacing: 0.72,
   },
 

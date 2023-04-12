@@ -24,13 +24,20 @@ import {
   InfoCircledIcon,
   Share2Icon,
 } from "@radix-ui/react-icons";
-import { CSS, keyframes, styled } from "../stitches.config";
+import {
+  CSS,
+  darkTheme,
+  keyframes,
+  lightTheme,
+  styled,
+} from "../stitches.config";
 import { PERSONAL } from "../util/data";
 import { ICON_SIZE } from "../util/images";
 import { TextAux, TextHeadline } from "./Text";
 import { Tooltip } from "./Tooltip";
 import { Box } from "./Box";
 import { DISPLAY_VARIANTS } from "../styles/display";
+import { blackA, whiteA } from "@radix-ui/colors";
 
 type ButtonProps = any; // ComponentProps<typeof StyledButton>;
 
@@ -73,13 +80,18 @@ const StyledButton = styled("button", {
   font: "inherit",
   overflow: "visible",
   padding: 0,
-  transition: "background 100ms ease-out, boxShadow 100ms ease-out",
   borderRadius: "$1",
-  willChange: "background, boxShadow",
+  willChange: "background, boxShadow, transform",
+  transition:
+    "background 200ms ease-out, boxShadow 200ms ease-out, transform 200ms ease-out",
 
   appearance: "none",
   "-webkit-appearance": "none",
   "-moz-appearance": "none",
+
+  "&:active": {
+    transform: "scale(0.99)",
+  },
 
   "&[aria-disabled='true']": {
     pointerEvents: "none",
@@ -116,16 +128,40 @@ const StyledButton = styled("button", {
         boxShadow: "$1",
         padding: "$2",
 
+        [`.${darkTheme} &`]: {
+          backgroundColor: whiteA.whiteA2,
+          borderColor: whiteA.whiteA5,
+        },
+
+        [`.${darkTheme} &:focus`]: {
+          backgroundColor: whiteA.whiteA3,
+          borderColor: "$focus",
+          outline: "none",
+        },
+
+        [`.${lightTheme} &`]: {
+          backgroundColor: blackA.blackA1,
+          borderColor: whiteA.whiteA4,
+        },
+
+        [`.${lightTheme} &:focus`]: {
+          backgroundColor: whiteA.whiteA3,
+          borderColor: "$focus",
+          outline: "none",
+        },
+
         "@media(hover)": {
           "&:hover": {
             boxShadow: "$4",
-            borderColor: "$foreground",
-            backgroundColor: "$foreground",
-            color: "$background",
+            borderColor: "$hover",
+          },
 
-            svg: {
-              color: "$background",
-            },
+          [`.${darkTheme} &:hover`]: {
+            backgroundColor: whiteA.whiteA3,
+          },
+
+          [`.${lightTheme} &:hover`]: {
+            backgroundColor: blackA.blackA2,
           },
         },
       },

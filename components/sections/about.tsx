@@ -443,11 +443,11 @@ export const About = () => {
                 <Divider />
               </Box>
 
-              <Box direction="vertical" gap={10}>
+              <Box direction="vertical" gap={11}>
                 {EMPLOYMENT.map((employer) => (
                   <Box
                     direction="vertical"
-                    gap={6}
+                    gap={4}
                     key={employer.id}
                     spacingBottom={2}
                   >
