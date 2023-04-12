@@ -322,7 +322,9 @@ export const About = () => {
                     gap={2}
                     justifyContent="flex-end"
                     css={{
-                      "@bp2": { paddingBottom: i === 0 ? 10 : undefined },
+                      paddingBottom: i === 0 ? "$10" : 0,
+                      "@bp2": { paddingBottom: 0 },
+                      "@bp3": { paddingBottom: 10 },
                     }}
                   >
                     {education.qualification ? (

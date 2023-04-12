@@ -25,13 +25,13 @@ export const TextTitle = styled("h1", {
   letterSpacing: 0.72,
 
   "@bp2": {
-    fontSize: 64,
+    fontSize: 56,
     lineHeight: 1.3,
     letterSpacing: 0.4,
   },
 
   "@bp3": {
-    fontSize: 72,
+    fontSize: 64,
   },
 
   variants: {

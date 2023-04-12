@@ -245,7 +245,6 @@ export const HeroLayout = memo(function HeroLayout() {
                 spacingBottom={10}
                 justifyContent={{ "@initial": "flex-end", "@bp3": "center" }}
                 alignItems={{ "@initial": "center", "@bp3": "flex-start" }}
-                gap={2}
                 flexGrow
               >
                 <TextTitle css={{ textShadow: "$textShadow" }}>
@@ -256,7 +255,11 @@ export const HeroLayout = memo(function HeroLayout() {
                   {PERSONAL.occupation} / {PERSONAL.location}
                 </TextHeadline>
 
-                <Box position="relative" spacingTop={4}>
+                <Box
+                  position="relative"
+                  spacingTop={{ "@initial": 2, "@bp3": 4 }}
+                  css={{ "@bp2": { left: "-$2" } }}
+                >
                   <Social size="m" gap="3" />
                 </Box>
               </Box>
