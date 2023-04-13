@@ -76,7 +76,7 @@ const StyledCardOuter = styled(Box, {
   borderWidth: 2,
   borderStyle: "solid",
   overflow: "hidden",
-  willChange: "background, boxShadow, transform",
+  willChange: "transform",
   transition:
     "background 200ms ease-out, boxShadow 200ms ease-out, transform 200ms ease-out",
 
@@ -160,7 +160,6 @@ export const StyledCardImage = styled(Image, {
   objectFit: "cover",
   filter: "brightness(85%)",
   transition: "filter 200ms ease-out",
-  willChange: "filter",
 
   // https://nextjs.org/docs/api-reference/next/image#known-browser-bugs
   "img[loading='lazy']": {

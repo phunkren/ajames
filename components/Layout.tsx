@@ -117,8 +117,6 @@ const HeaderBox = styled(Box, {
   top: 0,
   right: 0,
   left: 0,
-
-  willChange: "background-color",
   transition: "background-color 400ms ease-out",
 
   "@print": {
