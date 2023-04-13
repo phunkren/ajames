@@ -62,9 +62,6 @@ export const TEXT_VARIANTS = {
     },
   },
   fontWeight: {
-    [300]: {
-      fontWeight: 300,
-    },
     [400]: {
       fontWeight: 400,
     },

@@ -24,16 +24,6 @@ const euclid = localFont({
       weight: "500",
       style: "normal",
     },
-    {
-      path: "../public/fonts/euclid-semi-bold.ttf",
-      weight: "600",
-      style: "normal",
-    },
-    {
-      path: "../public/fonts/euclid-bold.ttf",
-      weight: "700",
-      style: "normal",
-    },
   ],
 });
 
@@ -48,16 +38,6 @@ const monoLisa = localFont({
       path: "../public/fonts/mono-lisa-regular-italic.ttf",
       weight: "400",
       style: "italic",
-    },
-    {
-      path: "../public/fonts/mono-lisa-bold.ttf",
-      weight: "700",
-      style: "normal",
-    },
-    {
-      path: "../public/fonts/mono-lisa-bold-italic.ttf",
-      weight: "700",
-      style: "normal",
     },
   ],
 });
