@@ -307,7 +307,7 @@ export const Writing = ({ posts, tags }: Props) => {
                 <AspectRatio.Root ratio={16 / 9}>
                   <StyledImage
                     src={featuredPost.cover.external.url}
-                    sizes="100vw"
+                    sizes="(max-width: 1020px) 100vw, 50vw"
                     fill
                     alt=""
                   />

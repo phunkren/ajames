@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { useState, useEffect, useCallback } from "react";
 
 type Scroll = {
@@ -7,6 +8,7 @@ type Scroll = {
 export function useScroll(): Scroll {
   const [scrollPosition, setScrollPosition] = useState<number>(0);
   const isHeaderActive = scrollPosition > 70;
+  const { asPath } = useRouter();
 
   const handleScroll = useCallback(() => {
     let scheduledAnimationFrame = false;
@@ -28,6 +30,12 @@ export function useScroll(): Scroll {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [scrollPosition]);
+
+  useEffect(() => {
+    const hash = asPath.split("#")[1];
+    const element = document.getElementById(hash);
+    element?.scrollIntoView();
+  }, [asPath]);
 
   return {
     isHeaderActive,

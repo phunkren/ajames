@@ -24,7 +24,8 @@ export const globalStyles = globalCss({
 
   /* Set core root defaults */
   "html:focus-within": {
-    scrollBehavior: "smooth",
+    ["--scroll-behavior"]: "smooth !important",
+    scrollBehavior: "smooth !important",
   },
 
   html: {
@@ -139,7 +140,7 @@ export const globalStyles = globalCss({
   /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
   "@reducedMotion": {
     "html:focus-within": {
-      scrollBehavior: "auto",
+      scrollBehavior: "auto !important",
     },
 
     "*, *::before, *::after": {

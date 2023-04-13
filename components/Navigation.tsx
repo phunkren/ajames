@@ -161,7 +161,7 @@ export const Navigation = memo(function Navigation() {
       >
         <NavigationMenu.Item>
           <NavigationMenu.Link asChild active={asPath === `/#${ABOOT_ID}`}>
-            <Link variant="secondary" href={`#${ABOOT_ID}`}>
+            <Link variant="secondary" href={`/#${ABOOT_ID}`}>
               <TextHeadline>About</TextHeadline>
             </Link>
           </NavigationMenu.Link>
@@ -279,7 +279,7 @@ export const NavigationMobile = memo(function NavigationMobile() {
                         active={asPath === `/#${ABOOT_ID}`}
                       >
                         <Link
-                          href={`#${ABOOT_ID}`}
+                          href={`/#${ABOOT_ID}`}
                           variant="secondary"
                           onClick={handleClose}
                         >
@@ -298,7 +298,7 @@ export const NavigationMobile = memo(function NavigationMobile() {
                         active={asPath === `/#${WRITING_ID}`}
                       >
                         <Link
-                          href={`#${WRITING_ID}`}
+                          href={`/#${WRITING_ID}`}
                           variant="secondary"
                           onClick={handleClose}
                         >

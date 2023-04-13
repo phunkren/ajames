@@ -261,7 +261,7 @@ export const HeroLayout = memo(function HeroLayout() {
 
                 <Box
                   position="relative"
-                  spacingTop={{ "@initial": 2, "@bp3": 4 }}
+                  spacingTop={4}
                   css={{ "@bp2": { left: "-$2" } }}
                 >
                   <Social size="m" gap="3" />
