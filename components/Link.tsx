@@ -310,7 +310,7 @@ const StyledLinkedInConnect = styled(Link, {
         padding: "$2 $4",
         borderRadius: "$1",
         color: "$blue1",
-        boxShadow: "0 0 0 2px $colors$blue9",
+        boxShadow: "0 0 0 2px $colors$blue10",
 
         [`.${lightTheme} &`]: {
           backgroundImage: `linear-gradient(185deg, $blue11 0.04%, $blue10 100.04%)`,
@@ -397,7 +397,7 @@ const StyledBlogSubscription = styled(Link, {
         padding: "$2 $4",
         borderRadius: "$1",
 
-        boxShadow: "0 0 0 2px $colors$amber8",
+        boxShadow: "0 0 0 2px $colors$amber9",
 
         [`.${lightTheme} &`]: {
           backgroundImage: `linear-gradient(185deg, $amber12 0.04%, $amber11 100.04%)`,
@@ -407,6 +407,20 @@ const StyledBlogSubscription = styled(Link, {
         [`.${darkTheme} &`]: {
           backgroundImage: `linear-gradient(185deg, $amber9 0.04%, $amber11 100.04%)`,
           color: "$amber12",
+        },
+
+        "@media(hover)": {
+          "&:hover": {
+            [`.${lightTheme} &`]: {
+              backgroundImage: `linear-gradient(185deg, $amber12 0.04%, $amber11 100.04%)`,
+              color: "$amber1",
+            },
+
+            [`.${darkTheme} &`]: {
+              backgroundImage: `linear-gradient(185deg, $amber10 0.04%, $amber11 100.04%)`,
+              color: "$amber12",
+            },
+          },
         },
 
         "&:active": {
