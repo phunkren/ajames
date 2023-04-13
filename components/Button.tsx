@@ -216,12 +216,11 @@ export const StyledIconButton = styled("button", {
     variant: {
       primary: {
         boxShadow: "$1",
-        borderColor: "$foregroundMuted",
+        borderColor: "$foreground",
 
         "@media(hover)": {
           "&:hover": {
             boxShadow: "$4",
-            borderColor: "$foreground",
             backgroundColor: "$foreground",
             color: "$background",
 
@@ -233,7 +232,6 @@ export const StyledIconButton = styled("button", {
 
         "&:active": {
           boxShadow: "$4",
-          borderColor: "$foreground",
           backgroundColor: "$foreground",
           color: "$background",
 

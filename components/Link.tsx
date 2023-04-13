@@ -176,7 +176,7 @@ export const StyledIconLink = styled(Link, {
   padding: "$2",
   borderWidth: 2,
   borderStyle: "solid",
-  borderColor: "$foregroundMuted",
+  borderColor: "$foreground",
   minWidth: 44,
   minHeight: 44,
   boxShadow: "$1",
@@ -219,27 +219,30 @@ const StyledYoutubeSubscription = styled(Link, {
       button: {
         padding: "$2 $4",
         borderRadius: "$1",
-        boxShadow: "0 0 0 2px $colors$red8",
+        borderStyle: "solid",
+        borderWidth: 2,
+        borderColor: "$colors$red12",
+        boxShadow: "$1",
 
         [`.${lightTheme} &`]: {
-          backgroundImage: `linear-gradient(185deg, $red11 0.04%, $red10 100.04%)`,
+          backgroundImage: `linear-gradient(175deg, $red9 0.04%, $red10 100.04%)`,
           color: "$red1",
         },
 
         [`.${darkTheme} &`]: {
-          backgroundImage: `linear-gradient(185deg, $red8 0.04%, $red7 100.04%)`,
+          backgroundImage: `linear-gradient(175deg, $red8 0.04%, $red7 100.04%)`,
           color: "$red12",
         },
 
         "@media(hover)": {
           "&:hover": {
             [`.${lightTheme} &`]: {
-              backgroundImage: `linear-gradient(225deg, $red10 0.04%, $red10 100.04%)`,
+              backgroundImage: `linear-gradient(175deg, $red10 0.04%, $red9 100.04%)`,
               color: "$red1",
             },
 
             [`.${darkTheme} &`]: {
-              backgroundImage: `linear-gradient(225deg, $red7 0.04%, $red7 100.04%)`,
+              backgroundImage: `linear-gradient(175deg, $red7 0.04%, $red8 100.04%)`,
               color: "$red12",
             },
           },
@@ -254,38 +257,23 @@ const StyledYoutubeSubscription = styled(Link, {
       },
       icon: {
         justifyContent: "center",
-        borderRadius: "50%",
-        padding: "$2",
-        borderWidth: 2,
-        borderStyle: "solid",
-        borderColor: "$foreground",
-        color: "white",
         minWidth: 44,
         minHeight: 44,
+        padding: "$2",
+        borderRadius: "50%",
+        borderStyle: "solid",
+        borderWidth: 2,
+        borderColor: "$colors$red12",
         boxShadow: "$1",
 
         [`.${lightTheme} &`]: {
-          backgroundImage: `linear-gradient(185deg, $red11 0.04%, $red10 100.04%)`,
+          backgroundImage: `linear-gradient(175deg, $red9 0.04%, $red10 100.04%)`,
           color: "$red1",
         },
 
         [`.${darkTheme} &`]: {
-          backgroundImage: `linear-gradient(185deg, $red8 0.04%, $red7 100.04%)`,
+          backgroundImage: `linear-gradient(175deg, $red8 0.04%, $red7 100.04%)`,
           color: "$red12",
-        },
-
-        "@media(hover)": {
-          "&:hover": {
-            [`.${lightTheme} &`]: {
-              backgroundImage: `linear-gradient(225deg, $red10 0.04%, $red10 100.04%)`,
-              borderColor: "$red10",
-            },
-
-            [`.${darkTheme} &`]: {
-              backgroundImage: `linear-gradient(225deg, $red7 0.04%, $red7 100.04%)`,
-              borderColor: "$red7",
-            },
-          },
         },
 
         "&:active": {
@@ -309,29 +297,29 @@ const StyledLinkedInConnect = styled(Link, {
       button: {
         padding: "$2 $4",
         borderRadius: "$1",
-        color: "$blue1",
-        boxShadow: "0 0 0 2px $colors$blue10",
+        borderStyle: "solid",
+        borderWidth: 2,
+        borderColor: "$colors$blue12",
+        boxShadow: "$1",
 
         [`.${lightTheme} &`]: {
-          backgroundImage: `linear-gradient(185deg, $blue11 0.04%, $blue10 100.04%)`,
+          backgroundImage: `linear-gradient(175deg, $blue9 0.04%, $blue10 100.04%)`,
           color: "$blue1",
         },
 
         [`.${darkTheme} &`]: {
-          backgroundImage: `linear-gradient(185deg, $blue8 0.04%, $blue7 100.04%)`,
+          backgroundImage: `linear-gradient(175deg, $blue8 0.04%, $blue7 100.04%)`,
           color: "$blue12",
         },
 
         "@media(hover)": {
           "&:hover": {
             [`.${lightTheme} &`]: {
-              backgroundImage: `linear-gradient(225deg, $blue10 0.04%, $blue10 100.04%)`,
-              color: "$blue1",
+              backgroundImage: `linear-gradient(175deg, $blue10 0.04%, $blue9 100.04%)`,
             },
 
             [`.${darkTheme} &`]: {
-              backgroundImage: `linear-gradient(225deg, $blue8 0.04%, $blue8 100.04%)`,
-              color: "$blue12",
+              backgroundImage: `linear-gradient(175deg, $blue7 0.04%, $blue8 100.04%)`,
             },
           },
         },
@@ -342,37 +330,23 @@ const StyledLinkedInConnect = styled(Link, {
       },
       icon: {
         justifyContent: "center",
-        borderRadius: "50%",
-        padding: "$2",
-        borderWidth: 2,
-        borderStyle: "solid",
-
         minWidth: 44,
         minHeight: 44,
+        padding: "$2",
+        borderRadius: "50%",
+        borderStyle: "solid",
+        borderWidth: 2,
+        borderColor: "$colors$blue12",
         boxShadow: "$1",
 
         [`.${lightTheme} &`]: {
-          backgroundImage: `linear-gradient(185deg, $blue11 0.04%, $blue10 100.04%)`,
+          backgroundImage: `linear-gradient(175deg, $blue9 0.04%, $blue10 100.04%)`,
           color: "$blue1",
         },
 
         [`.${darkTheme} &`]: {
-          backgroundImage: `linear-gradient(185deg, $blue8 0.04%, $blue7 100.04%)`,
+          backgroundImage: `linear-gradient(175deg, $blue8 0.04%, $blue7 100.04%)`,
           color: "$blue12",
-        },
-
-        "@media(hover)": {
-          "&:hover": {
-            [`.${lightTheme} &`]: {
-              backgroundImage: `linear-gradient(225deg, $blue10 0.04%, $blue10 100.04%)`,
-              color: "$blue1",
-            },
-
-            [`.${darkTheme} &`]: {
-              backgroundImage: `linear-gradient(225deg, $blue8 0.04%, $blue8 100.04%)`,
-              color: "$blue12",
-            },
-          },
         },
 
         "&:active": {
@@ -396,29 +370,29 @@ const StyledBlogSubscription = styled(Link, {
       button: {
         padding: "$2 $4",
         borderRadius: "$1",
-
-        boxShadow: "0 0 0 2px $colors$amber9",
+        borderStyle: "solid",
+        borderWidth: 2,
+        borderColor: "$colors$violet12",
+        boxShadow: "$1",
 
         [`.${lightTheme} &`]: {
-          backgroundImage: `linear-gradient(185deg, $amber12 0.04%, $amber11 100.04%)`,
-          color: "$amber1",
+          backgroundImage: `linear-gradient(175deg, $violet9 0.04%, $violet10 100.04%)`,
+          color: "$violet1",
         },
 
         [`.${darkTheme} &`]: {
-          backgroundImage: `linear-gradient(185deg, $amber9 0.04%, $amber11 100.04%)`,
-          color: "$amber12",
+          backgroundImage: `linear-gradient(175deg, $violet8 0.04%, $violet7 100.04%)`,
+          color: "$violet12",
         },
 
         "@media(hover)": {
           "&:hover": {
             [`.${lightTheme} &`]: {
-              backgroundImage: `linear-gradient(185deg, $amber12 0.04%, $amber11 100.04%)`,
-              color: "$amber1",
+              backgroundImage: `linear-gradient(175deg, $violet10 0.04%, $violet9 100.04%)`,
             },
 
             [`.${darkTheme} &`]: {
-              backgroundImage: `linear-gradient(185deg, $amber10 0.04%, $amber11 100.04%)`,
-              color: "$amber12",
+              backgroundImage: `linear-gradient(175deg, $violet7 0.04%, $violet8 100.04%)`,
             },
           },
         },
@@ -429,22 +403,23 @@ const StyledBlogSubscription = styled(Link, {
       },
       icon: {
         justifyContent: "center",
-        borderRadius: "50%",
         padding: "$2",
-        borderWidth: 2,
-        borderStyle: "solid",
-        minWidth: 44,
         minHeight: 44,
+        minWidth: 44,
+        borderRadius: "50%",
+        borderStyle: "solid",
+        borderWidth: 2,
+        borderColor: "$colors$violet12",
         boxShadow: "$1",
 
         [`.${lightTheme} &`]: {
-          backgroundImage: `linear-gradient(185deg, $amber12 0.04%, $amber11 100.04%)`,
-          color: "$amber1",
+          backgroundImage: `linear-gradient(175deg, $violet9 0.04%, $violet10 100.04%)`,
+          color: "$violet1",
         },
 
         [`.${darkTheme} &`]: {
-          backgroundImage: `linear-gradient(185deg, $amber9 0.04%, $amber11 100.04%)`,
-          color: "$amber12",
+          backgroundImage: `linear-gradient(175deg, $violet8 0.04%, $violet7 100.04%)`,
+          color: "$violet12",
         },
 
         "&:active": {
@@ -452,9 +427,9 @@ const StyledBlogSubscription = styled(Link, {
         },
 
         /* Optically aligns the RSS Icon */
-        "& div": {
+        "& svg": {
           position: "relative",
-          right: 2,
+          left: 1,
         },
       },
     },
@@ -601,7 +576,7 @@ export const BlogSubscriptionLink = memo(function BlogSubscribeLink({
 
   if (type === "icon") {
     return (
-      <Tooltip title="Subscribe">
+      <Tooltip title="Follow">
         <StyledBlogSubscription
           href={rssFeedUrl}
           type={type}
@@ -609,7 +584,7 @@ export const BlogSubscriptionLink = memo(function BlogSubscribeLink({
           {...props}
         >
           <StyledRssIcon size={ICON_SIZE.m} />
-          <VisuallyHidden.Root>Subscribe</VisuallyHidden.Root>
+          <VisuallyHidden.Root>Follow</VisuallyHidden.Root>
         </StyledBlogSubscription>
       </Tooltip>
     );
@@ -625,9 +600,9 @@ export const BlogSubscriptionLink = memo(function BlogSubscribeLink({
       <Box alignItems="center" gap={2}>
         <StyledRssIcon size={ICON_SIZE.m} />
 
-        {type === "button" && <TextAux color="inherit">Subscribe</TextAux>}
+        {type === "button" && <TextAux color="inherit">Follow</TextAux>}
 
-        {type === "link" && <TextHeadline>Subscribe</TextHeadline>}
+        {type === "link" && <TextHeadline>Follow</TextHeadline>}
       </Box>
     </StyledBlogSubscription>
   );

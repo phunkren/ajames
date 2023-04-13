@@ -9,14 +9,9 @@ import {
   P_STYLES,
   TEXT_VARIANTS,
 } from "../styles/text";
-import { Link } from "./Link";
 
 type EmojiProps = ComponentProps<typeof StyledEmoji> & {
   emoji: string;
-};
-
-type MarkDownProps = {
-  children: string[];
 };
 
 export const TextTitle = styled("h1", {
@@ -31,7 +26,7 @@ export const TextTitle = styled("h1", {
   },
 
   "@bp3": {
-    fontSize: 64,
+    fontSize: 72,
   },
 
   variants: {

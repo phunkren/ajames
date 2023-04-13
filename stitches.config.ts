@@ -31,6 +31,7 @@ import {
   indigoDark,
   violetDark,
   sageDark,
+  violet,
 } from "@radix-ui/colors";
 import { SPACING_UTILS } from "./styles/spacing";
 
@@ -108,6 +109,8 @@ export const lightTheme = createTheme({
     ...pink,
     ...gold,
     ...brown,
+    ...violet,
+    ...indigo,
   },
 });
 
@@ -135,6 +138,7 @@ export const darkTheme = createTheme({
     ...goldDark,
     ...brownDark,
     ...indigoDark,
+    ...violetDark,
   },
 });
 

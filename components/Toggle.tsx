@@ -6,51 +6,52 @@ import { ICON_SIZE } from "../util/images";
 import { useTheme } from "../hooks/useTheme";
 import { Tooltip } from "./Tooltip";
 import { Theme } from "./Theme";
+import { slateDark } from "@radix-ui/colors";
 
 const StyledSunIcon = styled(SunIcon, {
   position: "absolute",
-  top: 7,
-  left: 9,
-  color: "$background",
+  top: 6,
+  left: 8,
+  color: slateDark.slate12,
 });
 
 const StyledMoonIcon = styled(MoonIcon, {
   position: "absolute",
-  top: 7,
-  right: 9,
+  top: 6,
+  right: 8,
   color: "white",
 });
 
 const StyledGridIcon = styled(GridIcon, {
   position: "absolute",
-  top: 7,
-  left: 9,
+  top: 6,
+  left: 8,
   color: "white",
 });
 
 const StyledRowsIcon = styled(RowsIcon, {
   position: "absolute",
-  top: 7,
-  right: 9,
+  top: 6,
+  right: 8,
   color: "white",
 });
 
 const SwitchThumb = styled(Switch.Thumb, {
   display: "block",
-  width: 28,
-  height: 28,
-  borderTopLeftRadius: "$1",
-  borderBottomLeftRadius: "$1",
+  width: 26,
+  height: 26,
+  borderTopLeftRadius: 2,
+  borderBottomLeftRadius: 2,
   background: "$background",
   transform: "translate3d(0, 0, 0)",
-  transition: "transform 100ms ease-out, borderRadius 200ms ease-out",
-  willChange: "transform, borderRadius",
+  transition: "transform 100ms ease-out",
+  willChange: "transform",
   zIndex: 1,
 
   '&[data-state="checked"]': {
     transform: "translate3d(30px, 0, 0)",
-    borderTopRightRadius: "$1",
-    borderBottomRightRadius: "$1",
+    borderTopRightRadius: 2,
+    borderBottomRightRadius: 2,
     borderBottomLeftRadius: 0,
     borderTopLeftRadius: 0,
   },
@@ -60,9 +61,9 @@ const SwitchRoot = styled(Switch.Root, {
   display: "inline-flex",
   position: "relative",
   borderRadius: "$1",
-  borderWidth: 1,
+  borderWidth: 2,
   borderStyle: "solid",
-  borderColor: "$foregroundMuted",
+  borderColor: "$slate12",
   background: `radial-gradient(circle at bottom, $hover, $focus)`,
   boxShadow: "$1",
   width: 60,
@@ -79,7 +80,7 @@ const SwitchRoot = styled(Switch.Root, {
     willChange: "opacity",
 
     [`.${lightTheme} &`]: {
-      opacity: 0.3,
+      opacity: 0.1,
       color: "$background",
     },
 

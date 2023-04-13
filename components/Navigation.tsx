@@ -2,7 +2,14 @@ import { memo, useCallback, useState } from "react";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 import { useRouter } from "next/router";
 import Image, { StaticImageData } from "next/image";
-import { blackA, grassDark, whiteA } from "@radix-ui/colors";
+import {
+  blackA,
+  grassDark,
+  gray,
+  grayDark,
+  slateDark,
+  whiteA,
+} from "@radix-ui/colors";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import * as Dialog from "@radix-ui/react-dialog";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
@@ -70,6 +77,7 @@ const StyledNavigationMenuContent = styled(NavigationMenu.Content, {
 const StyledNavigationMenuList = styled(NavigationMenu.List, {
   display: "flex",
   gap: "$8",
+  color: slateDark.slate12,
 });
 
 const StyledNavigationSubmenu = styled(Box, {
@@ -165,7 +173,7 @@ export const Navigation = memo(function Navigation() {
             active={isReady && asPath === `/#${ABOOT_ID}`}
           >
             <Link variant="secondary" href={`/#${ABOOT_ID}`}>
-              <TextHeadline>About</TextHeadline>
+              <TextHeadline color="currentColor">About</TextHeadline>
             </Link>
           </NavigationMenu.Link>
         </NavigationMenu.Item>

@@ -3,7 +3,7 @@ import Image from "next/image";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { blueDark, redDark, slateDark, slateDarkA } from "@radix-ui/colors";
 import { useTheme } from "../hooks/useTheme";
-import { styled } from "../stitches.config";
+import { darkTheme, lightTheme, styled } from "../stitches.config";
 import { Link } from "./Link";
 import { Navigation, NavigationMobile } from "./Navigation";
 import { Social } from "./Social";
@@ -34,7 +34,8 @@ const StyledHeroLayout = styled(Box, {
 });
 
 const StyledHeroContainer = styled(Box, {
-  background: "$slate1",
+  background: slateDark.slate1,
+  color: slateDark.slate12,
 });
 
 const StyledImage = styled(Image, {
@@ -43,16 +44,24 @@ const StyledImage = styled(Image, {
   bottom: 0,
   right: 0,
   pointerEvents: "none",
-  filter: "brightness(65%)",
+
   objectFit: "cover",
   objectPosition: "bottom",
+
+  [`.${darkTheme} &`]: {
+    filter: "brightness(65%)",
+  },
+
+  [`.${lightTheme} &`]: {
+    filter: "brightness(80%)",
+  },
 
   "@bp2": {
     objectFit: "contain",
   },
 
   "@bp3": {
-    right: "7.5%",
+    right: "5%",
     transform: "translateX(25%)",
   },
 
@@ -251,11 +260,17 @@ export const HeroLayout = memo(function HeroLayout() {
                 alignItems={{ "@initial": "center", "@bp3": "flex-start" }}
                 flexGrow
               >
-                <TextTitle css={{ textShadow: "$textShadow" }}>
+                <TextTitle
+                  color="currentColor"
+                  css={{ textShadow: "$textShadow" }}
+                >
                   {PERSONAL.name}
                 </TextTitle>
 
-                <TextHeadline css={{ textShadow: "$textShadow" }}>
+                <TextHeadline
+                  color="currentColor"
+                  css={{ textShadow: "$textShadow" }}
+                >
                   {PERSONAL.occupation} / {PERSONAL.location}
                 </TextHeadline>
 

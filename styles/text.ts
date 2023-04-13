@@ -9,6 +9,9 @@ export const TEXT_VARIANTS = {
     inherit: {
       color: "inherit",
     },
+    currentColor: {
+      color: "currentcolor",
+    },
   },
   textAlign: {
     left: {
@@ -149,7 +152,6 @@ export const H3_STYLES = {
   "@bp2": {
     fontSize: 28,
     lineHeight: 1.2,
-    letterSpacing: 0.56,
   },
 
   "@print": {
@@ -167,8 +169,6 @@ export const P_STYLES = {
 
   "@bp2": {
     fontSize: 20,
-    lineHeight: 1.5,
-    letterSpacing: 0.4,
   },
 
   "@print": {

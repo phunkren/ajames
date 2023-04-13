@@ -50,6 +50,7 @@ import { ONE_HOUR_IN_SECONDS } from "../../util/date";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { Table, TBody, Td, TFoot, Th, THead, Tr } from "../../components/Table";
 import Image from "next/image";
+import { BLUR_DATA_URL } from "../../util/images";
 
 export type Frontmatter = {
   title: string;
@@ -275,9 +276,11 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
             <StyledHero
               src={frontmatter.cover}
               alt=""
+              placeholder="blur"
+              blurDataURL={BLUR_DATA_URL}
+              quality={100}
               priority
               fill
-              quality={100}
             />
           </AspectRatio.Root>
         </Box>
