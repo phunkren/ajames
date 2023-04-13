@@ -27,21 +27,6 @@ const euclid = localFont({
   ],
 });
 
-const monoLisa = localFont({
-  src: [
-    {
-      path: "../public/fonts/mono-lisa-regular.ttf",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../public/fonts/mono-lisa-regular-italic.ttf",
-      weight: "400",
-      style: "italic",
-    },
-  ],
-});
-
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
 };
@@ -59,12 +44,6 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
       <style jsx global>{`
         body {
           font-family: ${euclid.style.fontFamily};
-        }
-      `}</style>
-
-      <style jsx global>{`
-        code {
-          font-family: ${monoLisa.style.fontFamily};
         }
       `}</style>
 

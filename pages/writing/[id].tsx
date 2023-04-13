@@ -2,6 +2,7 @@ import { memo, ReactElement } from "react";
 import Balancer from "react-wrap-balancer";
 import ReactMarkdown from "react-markdown";
 import { useRouter } from "next/router";
+import localFont from "@next/font/local";
 import remarkMdx from "remark-mdx";
 import remarkGfm from "remark-gfm";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
@@ -12,12 +13,7 @@ import {
   getPostData,
   getPostTime,
 } from "../../lib/notion";
-import {
-  ActionButtons,
-  HeroLayout,
-  Layout,
-  LoadingLayout,
-} from "../../components/Layout";
+import { ActionButtons, Layout, LoadingLayout } from "../../components/Layout";
 import {
   BlogSubscriptionLink,
   MarkdownLink,
@@ -75,6 +71,21 @@ type FigureProps = {
   src: string;
   alt: string;
 };
+
+const monoLisa = localFont({
+  src: [
+    {
+      path: "../../public/fonts/mono-lisa-regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/mono-lisa-regular-italic.ttf",
+      weight: "400",
+      style: "italic",
+    },
+  ],
+});
 
 const DynamicCode = dynamic(
   () => import("../../components/Code").then((mod) => mod.Code),
@@ -249,8 +260,14 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
 
   return (
     <>
-      <BlogSeo frontmatter={frontmatter} />
+      <style jsx global>{`
+        code {
+          font-family: ${monoLisa.style.fontFamily};
+          font-feature-settings: "liga";
+        }
+      `}</style>
 
+      <BlogSeo frontmatter={frontmatter} />
       <Box as="article" direction="vertical" spacingVertical={12}>
         <Box direction="vertical" gap={10} container="l">
           <AspectRatio.Root ratio={2 / 1}>
@@ -317,6 +334,7 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
             direction="vertical"
             container="m"
             gap={8}
+            spacingVertical={11}
             spacingHorizontal={7}
           >
             <ReactMarkdown

@@ -125,6 +125,7 @@ export const globalStyles = globalCss({
   pre: {
     code: {
       ...AUX_STYLES,
+      fontWeight: 400,
       display: "block",
       minWidth: "100px",
       maxWidth: "100%",

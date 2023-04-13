@@ -10,15 +10,9 @@ export function useScroll(): Scroll {
   const isHeaderActive = scrollPosition > 70;
   const { asPath } = useRouter();
 
-  const handleScroll = useCallback(() => {
-    const currentPosition = window.pageYOffset;
-    let scheduledAnimationFrame = false;
-
-    // Prevent multiple rAF callbacks.
-    if (scheduledAnimationFrame) return;
-    scheduledAnimationFrame = true;
-
+  const handleScrollPosition = useCallback(() => {
     requestAnimationFrame(() => {
+      const currentPosition = window.pageYOffset;
       setScrollPosition(currentPosition);
     });
   }, []);
@@ -30,12 +24,12 @@ export function useScroll(): Scroll {
   }, []);
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("scroll", handleScrollPosition, { passive: true });
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", handleScrollPosition);
     };
-  }, [scrollPosition, handleScroll]);
+  }, [scrollPosition, handleScrollPosition]);
 
   useEffect(() => {
     const requestId = requestAnimationFrame(() => {
