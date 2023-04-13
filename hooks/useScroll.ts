@@ -32,9 +32,17 @@ export function useScroll(): Scroll {
   }, [scrollPosition]);
 
   useEffect(() => {
-    const hash = asPath.split("#")[1];
-    const element = document.getElementById(hash);
-    element?.scrollIntoView();
+    let scheduledAnimationFrame = false;
+
+    // Prevent multiple rAF callbacks.
+    if (scheduledAnimationFrame) return;
+    scheduledAnimationFrame = true;
+
+    requestAnimationFrame(() => {
+      const hash = asPath.split("#")[1];
+      const element = document.getElementById(hash);
+      element?.scrollIntoView();
+    });
   }, [asPath]);
 
   return {
