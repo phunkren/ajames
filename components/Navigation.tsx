@@ -147,7 +147,7 @@ export const NavigationProjectLink = memo(function NavigationProjectLink({
 });
 
 export const Navigation = memo(function Navigation() {
-  const { asPath } = useRouter();
+  const { asPath, isReady } = useRouter();
 
   return (
     <NavigationMenu.Root
@@ -160,7 +160,10 @@ export const Navigation = memo(function Navigation() {
         css={{ alignItems: "center" }}
       >
         <NavigationMenu.Item>
-          <NavigationMenu.Link asChild active={asPath === `/#${ABOOT_ID}`}>
+          <NavigationMenu.Link
+            asChild
+            active={isReady && asPath === `/#${ABOOT_ID}`}
+          >
             <Link variant="secondary" href={`/#${ABOOT_ID}`}>
               <TextHeadline>About</TextHeadline>
             </Link>
@@ -168,7 +171,10 @@ export const Navigation = memo(function Navigation() {
         </NavigationMenu.Item>
 
         <NavigationMenu.Item>
-          <NavigationMenu.Link asChild active={asPath === `/#${WRITING_ID}`}>
+          <NavigationMenu.Link
+            asChild
+            active={isReady && asPath === `/#${WRITING_ID}`}
+          >
             <Link variant="secondary" href={`/#${WRITING_ID}`}>
               <TextHeadline>Writing</TextHeadline>
             </Link>
@@ -176,7 +182,10 @@ export const Navigation = memo(function Navigation() {
         </NavigationMenu.Item>
 
         <NavigationMenu.Item>
-          <NavigationMenu.Link asChild active={asPath === `/#${LEARNING_ID}`}>
+          <NavigationMenu.Link
+            asChild
+            active={isReady && asPath === `/#${LEARNING_ID}`}
+          >
             <Link variant="secondary" href={`/#${LEARNING_ID}`}>
               <TextHeadline>Learning</TextHeadline>
             </Link>
@@ -211,7 +220,7 @@ export const Navigation = memo(function Navigation() {
 export const NavigationMobile = memo(function NavigationMobile() {
   const [open, setOpen] = useState(false);
   const { theme } = useTheme();
-  const { asPath } = useRouter();
+  const { asPath, isReady } = useRouter();
 
   const handleOpen = useCallback(() => {
     setOpen(true);
@@ -276,7 +285,7 @@ export const NavigationMobile = memo(function NavigationMobile() {
                     <NavigationMenu.Item>
                       <NavigationMenu.Link
                         asChild
-                        active={asPath === `/#${ABOOT_ID}`}
+                        active={isReady && asPath === `/#${ABOOT_ID}`}
                       >
                         <Link
                           href={`/#${ABOOT_ID}`}
@@ -295,7 +304,7 @@ export const NavigationMobile = memo(function NavigationMobile() {
                     <NavigationMenu.Item>
                       <NavigationMenu.Link
                         asChild
-                        active={asPath === `/#${WRITING_ID}`}
+                        active={isReady && asPath === `/#${WRITING_ID}`}
                       >
                         <Link
                           href={`/#${WRITING_ID}`}
@@ -314,7 +323,7 @@ export const NavigationMobile = memo(function NavigationMobile() {
                     <NavigationMenu.Item>
                       <NavigationMenu.Link
                         asChild
-                        active={asPath === `/#${LEARNING_ID}`}
+                        active={isReady && asPath === `/#${LEARNING_ID}`}
                       >
                         <Link
                           href={`/#${LEARNING_ID}`}

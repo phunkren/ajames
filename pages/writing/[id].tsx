@@ -255,8 +255,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
-  const { asPath } = useRouter();
-  const metaUrl = asPath ? `${SITE.url}${asPath}` : SITE.url;
+  const { asPath, isReady } = useRouter();
+  const metaUrl = isReady && asPath ? `${SITE.url}${asPath}` : SITE.url;
 
   return (
     <>
@@ -268,6 +268,7 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
       `}</style>
 
       <BlogSeo frontmatter={frontmatter} />
+
       <Box as="article" direction="vertical" spacingVertical={12}>
         <Box direction="vertical" gap={10} container="l">
           <AspectRatio.Root ratio={2 / 1}>

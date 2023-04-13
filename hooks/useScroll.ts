@@ -8,7 +8,7 @@ type Scroll = {
 export function useScroll(): Scroll {
   const [scrollPosition, setScrollPosition] = useState<number>(0);
   const isHeaderActive = scrollPosition > 70;
-  const { asPath } = useRouter();
+  const { asPath, isReady } = useRouter();
 
   const handleScrollPosition = useCallback(() => {
     requestAnimationFrame(() => {
@@ -33,13 +33,13 @@ export function useScroll(): Scroll {
 
   useEffect(() => {
     const requestId = requestAnimationFrame(() => {
-      handleSmoothScroll(asPath);
+      isReady && handleSmoothScroll(asPath);
     });
 
     return () => {
       cancelAnimationFrame(requestId);
     };
-  }, [asPath, handleSmoothScroll]);
+  }, [isReady, asPath, handleSmoothScroll]);
 
   return {
     isHeaderActive,

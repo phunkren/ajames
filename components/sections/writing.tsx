@@ -160,10 +160,9 @@ const StyledCardContainer = styled(Box, {
 export const WRITING_ID = "writing";
 
 export const Writing = ({ posts, tags }: Props) => {
-  const { push, query, asPath } = useRouter();
+  const { push, query } = useRouter();
   const [display, setDisplay] = useState<"partial" | "all">("partial");
   const queryTag = query.tag as string;
-  const metaUrl = asPath ? `${SITE.url}/writing` : SITE.url;
 
   const filteredPosts = filterPosts(posts, queryTag);
   const filteredTag = queryTag

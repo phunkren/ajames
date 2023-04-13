@@ -33,7 +33,7 @@ import {
 } from "../stitches.config";
 import { PERSONAL } from "../util/data";
 import { ICON_SIZE } from "../util/images";
-import { TextAux, TextHeadline } from "./Text";
+import { TextHeadline } from "./Text";
 import { Tooltip } from "./Tooltip";
 import { Box } from "./Box";
 import { DISPLAY_VARIANTS } from "../styles/display";

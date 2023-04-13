@@ -62,9 +62,9 @@ export const DocumentSeo = memo(function DocumentSeo() {
 });
 
 export const PageSeo = memo(function PageSeo() {
-  const { asPath } = useRouter();
+  const { asPath, isReady } = useRouter();
   const { themeName, themeColor } = useTheme();
-  const metaUrl = asPath ? `${SITE.url}${asPath}` : SITE.url;
+  const metaUrl = isReady && asPath ? `${SITE.url}${asPath}` : SITE.url;
   const metaTitle = `${PERSONAL.name} | ${
     getPageTitle(asPath) ?? PERSONAL.occupation
   }`;
