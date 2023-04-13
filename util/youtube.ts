@@ -47,6 +47,8 @@ export const YOUTUBE_URL = "https://www.youtube.com";
 
 export const YOUTUBE_CHANNEL_URL = `${YOUTUBE_URL}/@ajamesdev`;
 
+export const YOUTUBE_THUMBNAIL_URL = "https://i.imgur.com/9UxwUv5.png";
+
 export const YOUTUBE_CHANNEL_TITLE = "AJAMES.DEV";
 
 export const YOUTUBE_SHARE_TEXT = "Check out AJAMES.DEV on YouTube!";

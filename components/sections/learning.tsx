@@ -14,7 +14,11 @@ import {
 import { ActionButtons } from "../Layout";
 import { Link, YoutubeSubscribeLink, TwitterShareLink } from "../Link";
 import { TextAux, TextBody, TextTitle1, TextTitle2, TextTitle3 } from "../Text";
-import { YOUTUBE_CHANNEL_URL, YOUTUBE_SHARE_TEXT } from "../../util/youtube";
+import {
+  YOUTUBE_CHANNEL_URL,
+  YOUTUBE_SHARE_TEXT,
+  YOUTUBE_THUMBNAIL_URL,
+} from "../../util/youtube";
 import { buildUrl } from "../../util/url";
 import { styled } from "../../stitches.config";
 import {
@@ -51,28 +55,8 @@ const StyledVideoCardContainer = styled(Box, {
   },
 });
 
-const DynamicYouTube = dynamic(() => import("react-youtube"), {
+const LiteYouTubeEmbed = dynamic(() => import("react-lite-youtube-embed"), {
   ssr: false,
-});
-
-const StyledYouTubePlayer = styled(DynamicYouTube, {
-  position: "absolute",
-  inset: 0,
-
-  "& iframe": {
-    borderRadius: "$1",
-    boxShadow: "$1",
-  },
-
-  "@media(hover)": {
-    "&:hover": {
-      boxShadow: "$4",
-    },
-  },
-
-  "&:active": {
-    boxShadow: "$5",
-  },
 });
 
 const StyledHeroImage = styled(Image, {
@@ -210,20 +194,17 @@ export const Learning = ({
                   }}
                 >
                   <AspectRatio.Root ratio={16 / 9}>
-                    <StyledYouTubePlayer
-                      videoId={featuredVideo.videoId}
-                      opts={{
-                        width: "100%",
-                        height: "100%",
-                        playerVars: {
-                          autoplay: 1,
-                          mute: 1,
-                          modestbranding: 1,
-                          rel: 0,
-                          widget_referrer: SITE.url,
-                          controls: 0,
-                        },
-                      }}
+                    <LiteYouTubeEmbed
+                      id={featuredVideo.videoId} // Default none, id of the video or playlist
+                      thumbnail={YOUTUBE_THUMBNAIL_URL} // The ids for playlists did not bring the cover in a pattern to render so you'll need pick up a video from the playlist (or in fact, whatever id) and use to render the cover. There's a programmatic way to get the cover from YouTube API v3 but the aim of this component is do not make any another call and reduce requests and bandwidth usage as much as possibe
+                      title={featuredVideo.title} // a11y, always provide a title for iFrames: https://dequeuniversity.com/tips/provide-iframe-titles Help the web be accessible ;)
+                      params={`autoplay=1&modestbranding=1&widget_referrer: ${SITE.url}&controls=0`} // any params you want to pass to the URL, assume we already had '&' and pass your parameters string
+                      poster="hqdefault" // Defines the image size to call on first render as poster image. Possible values are "default","mqdefault",  "hqdefault", "sddefault" and "maxresdefault". Default value for this prop is "hqdefault". Please be aware that "sddefault" and "maxresdefault", high resolution images are not always avaialble for every video. See: https://stackoverflow.com/questions/2068344/how-do-i-get-a-youtube-video-thumbnail-from-the-youtube-api
+                      rel="0"
+                      playlist={false} // Use true when your ID be from a playlist
+                      adNetwork={false} // Default true, to preconnect or not to doubleclick addresses called by YouTube iframe (the adnetwork from Google)
+                      noCookie //Default false, connect to YouTube via the Privacy-Enhanced Mode using https://www.youtube-nocookie.com
+                      muted
                     />
                   </AspectRatio.Root>
                 </Box>
@@ -341,45 +322,43 @@ export const Learning = ({
             })}
           </Box>
 
-          <Box>
+          <Box direction="vertical" gap={11}>
             <Divider />
-          </Box>
-
-          <Box
-            direction="vertical"
-            gap={{
-              "@initial": 6,
-              "@bp2": 8,
-            }}
-          >
-            <TextTitle3 as="h2" textAlign="center" color="secondary">
-              Enjoying the video content?
-            </TextTitle3>
 
             <Box
-              direction={{
-                "@initial": "vertical",
-                "@bp2": "horizontal",
+              direction="vertical"
+              gap={{
+                "@initial": 6,
+                "@bp2": 10,
               }}
-              justifyContent="space-around"
-              alignItems="center"
-              gap={8}
             >
-              <TwitterShareLink
-                url={YOUTUBE_CHANNEL_URL}
-                text={YOUTUBE_SHARE_TEXT}
-              />
+              <TextTitle3 textAlign="center" color="secondary">
+                Enjoy the videos?
+              </TextTitle3>
 
-              <YoutubeSubscribeLink />
+              <Box
+                direction={{
+                  "@initial": "vertical",
+                  "@bp2": "horizontal",
+                }}
+                justifyContent="space-around"
+                alignItems="center"
+                gap={8}
+              >
+                <TwitterShareLink
+                  url={YOUTUBE_CHANNEL_URL}
+                  text={YOUTUBE_SHARE_TEXT}
+                />
 
-              <ShareButton
-                url={YOUTUBE_CHANNEL_URL}
-                text={YOUTUBE_SHARE_TEXT}
-              />
+                <YoutubeSubscribeLink />
+
+                <ShareButton
+                  url={YOUTUBE_CHANNEL_URL}
+                  text={YOUTUBE_SHARE_TEXT}
+                />
+              </Box>
             </Box>
-          </Box>
 
-          <Box>
             <Divider />
           </Box>
         </Box>

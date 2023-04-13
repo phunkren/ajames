@@ -373,25 +373,6 @@ const StyledMobileNavigationButton = styled(IconButton, {
   },
 });
 
-export const ScrollToTopButton = memo(function ScrollToTopButton(
-  props: ButtonProps
-) {
-  const handleScrollToTop = useCallback(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, []);
-
-  return (
-    <StyledScrollToTop
-      variant="tertiary"
-      onClick={handleScrollToTop}
-      {...props}
-    >
-      <DoubleArrowUpIcon width={ICON_SIZE.s} height={ICON_SIZE.s} aria-hidden />
-      <TextHeadline>Scroll to Top</TextHeadline>
-    </StyledScrollToTop>
-  );
-});
-
 export const ShareButton = memo(function ShareButton({
   url,
   text,

@@ -1,24 +1,16 @@
 import { useState, useEffect } from "react";
 
 type Scroll = {
-  isScrolled: boolean;
-  direction: "up" | "down" | null;
+  isHeaderActive: boolean;
 };
 
 export function useScroll(): Scroll {
   const [scrollPosition, setScrollPosition] = useState<number>(0);
-  const [direction, setDirection] = useState<"up" | "down" | null>(null);
+  const isHeaderActive = scrollPosition > 70;
 
   useEffect(() => {
     const handleScroll = () => {
       const currentPosition = window.pageYOffset;
-
-      if (currentPosition > scrollPosition) {
-        setDirection("down");
-      } else {
-        setDirection("up");
-      }
-
       setScrollPosition(currentPosition);
     };
 
@@ -30,7 +22,6 @@ export function useScroll(): Scroll {
   }, [scrollPosition]);
 
   return {
-    isScrolled: scrollPosition > 0,
-    direction,
+    isHeaderActive,
   };
 }

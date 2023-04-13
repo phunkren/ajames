@@ -38,8 +38,6 @@ import { useLocalStorage } from "../../hooks/useLocalStorage";
 import book from "../../public/images/book.png";
 import { SITE } from "../../util/data";
 import { H2_STYLES, H3_STYLES } from "../../styles/text";
-import { ChevronDownIcon } from "@radix-ui/react-icons";
-import { ICON_SIZE } from "../../util/images";
 
 export type Props = {
   posts: BlogPost[];
@@ -482,17 +480,7 @@ export const Writing = ({ posts, tags }: Props) => {
                           <Link href="/rss" variant="tertiary">
                             RSS Feed
                           </Link>
-                          ,&nbsp;
-                          <ShareButton
-                            url={metaUrl}
-                            text="Check out the ajames.dev blog!"
-                            emoji="📝"
-                            variant="link"
-                            css={{ display: "inline-flex" }}
-                          >
-                            Share
-                          </ShareButton>
-                          &nbsp;the content on social media, or&nbsp;
+                          , or&nbsp;
                           <BuyMeCoffeeLink />.
                         </TextBody>
 
@@ -514,13 +502,15 @@ export const Writing = ({ posts, tags }: Props) => {
               );
             })}
 
-            <Button
-              variant="tertiary"
-              css={{ width: "fit-content" }}
-              onClick={handleDisplayChange}
-            >
-              <TextTitle3>Show all articles</TextTitle3>
-            </Button>
+            {shouldShowMore ? (
+              <Button
+                variant="tertiary"
+                css={{ width: "fit-content" }}
+                onClick={handleDisplayChange}
+              >
+                <TextTitle3>Show all articles</TextTitle3>
+              </Button>
+            ) : null}
           </Box>
         </Box>
       </Box>

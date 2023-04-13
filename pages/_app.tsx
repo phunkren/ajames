@@ -1,8 +1,9 @@
-import { ReactElement, ReactNode, useEffect } from "react";
+import { ReactElement, ReactNode } from "react";
 import { NextPage } from "next";
 import { AppProps } from "next/app";
 import localFont from "@next/font/local";
 import { ErrorBoundary } from "react-error-boundary";
+import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 import { ErrorFallback } from "../components/ErrorFallback";
 import { ThemeProvider } from "../components/Theme";
 

@@ -1,14 +1,7 @@
 import { memo, ReactElement } from "react";
 import Image from "next/image";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
-import {
-  blueDark,
-  crimsonDark,
-  redDark,
-  slateA,
-  slateDark,
-  slateDarkA,
-} from "@radix-ui/colors";
+import { blueDark, redDark, slateDark, slateDarkA } from "@radix-ui/colors";
 import { useTheme } from "../hooks/useTheme";
 import { styled } from "../stitches.config";
 import { Link } from "./Link";
@@ -46,7 +39,7 @@ const StyledHeroContainer = styled(Box, {
 
 const StyledImage = styled(Image, {
   position: "absolute",
-  height: "95vh",
+  height: "90vh",
   bottom: 0,
   right: 0,
   pointerEvents: "none",
@@ -54,11 +47,13 @@ const StyledImage = styled(Image, {
   objectFit: "cover",
   objectPosition: "bottom",
 
-  "@bp3": {
+  "@bp2": {
     objectFit: "contain",
+  },
+
+  "@bp3": {
     right: "7.5%",
     transform: "translateX(25%)",
-    height: "90vh",
   },
 
   "@bp4": {
@@ -72,7 +67,7 @@ const StyledBox = styled(Box, {
   top: "-50vw",
   bottom: "-50vw",
   height: "200vw",
-  filter: "blur(1000px)",
+  filter: "blur(500px)",
 
   "&::after": {
     content: "",
@@ -143,14 +138,15 @@ const HeaderBox = styled(Box, {
 });
 
 export const HeaderLayout = memo(function HeaderLayout() {
-  const { isScrolled } = useScroll();
+  const { isHeaderActive } = useScroll();
 
   return (
-    <HeaderBox as="header" opaque={isScrolled}>
+    <HeaderBox as="header" opaque={isHeaderActive}>
       <Box
         display={{ "@print": "none", "@initial": "flex" }}
         spacingVertical={3}
-        spacingHorizontal={5}
+        spacingLeft={6}
+        spacingRight={5}
         gap={7}
         justifyContent="space-between"
         alignItems="center"
@@ -185,7 +181,7 @@ export const FooterLayout = memo(function FooterLayout() {
   return (
     <Box
       as="footer"
-      spacingVertical={4}
+      spacingBottom={10}
       spacingHorizontal={4}
       justifyContent="center"
       css={{ "@print": { display: "none" } }}
