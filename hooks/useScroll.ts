@@ -11,6 +11,7 @@ export function useScroll(): Scroll {
   const { asPath } = useRouter();
 
   const handleScroll = useCallback(() => {
+    const currentPosition = window.pageYOffset;
     let scheduledAnimationFrame = false;
 
     // Prevent multiple rAF callbacks.
@@ -18,12 +19,13 @@ export function useScroll(): Scroll {
     scheduledAnimationFrame = true;
 
     requestAnimationFrame(() => {
-      const currentPosition = window.pageYOffset;
       setScrollPosition(currentPosition);
     });
   }, []);
 
   const handleSmoothScroll = useCallback((url: string) => {
+    const hash = url.split("#")[1];
+    const element = document.getElementById(hash);
     let scheduledSmoothFrame = false;
 
     // Prevent multiple rAF callbacks.
@@ -31,8 +33,6 @@ export function useScroll(): Scroll {
     scheduledSmoothFrame = true;
 
     requestAnimationFrame(() => {
-      const hash = url.split("#")[1];
-      const element = document.getElementById(hash);
       element?.scrollIntoView();
     });
   }, []);
