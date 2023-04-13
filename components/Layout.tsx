@@ -1,4 +1,4 @@
-import { memo, ReactElement } from "react";
+import { memo, ReactElement, useState } from "react";
 import Image from "next/image";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { blueDark, redDark, slateDark, slateDarkA } from "@radix-ui/colors";
@@ -13,7 +13,7 @@ import { PageSeo } from "./SEO";
 import { TextAux, TextHeadline, TextTitle } from "./Text";
 import { Logo } from "./Logo";
 import { Tooltip } from "./Tooltip";
-import mugshot from "../public/images/mugshot.png";
+import headshot from "../public/images/headshot.png";
 import { PERSONAL } from "../util/data";
 import { useScroll } from "../hooks/useScroll";
 
@@ -216,6 +216,8 @@ export const Layout = memo(function Layout({ children }: LayoutProps) {
 });
 
 export const HeroLayout = memo(function HeroLayout() {
+  const [isLoaded, setIsLoaded] = useState(false);
+
   return (
     <StyledHeroLayout>
       <StyledHeroContainer direction="vertical" flexGrow>
@@ -225,12 +227,13 @@ export const HeroLayout = memo(function HeroLayout() {
         <StyledBox variant="three" />
 
         <StyledImage
-          src={mugshot}
+          src={headshot}
           alt=""
-          placeholder="blur"
+          placeholder={!isLoaded ? "blur" : "empty"}
           sizes="(max-width: 1020px) 100vw, 1276px"
           quality={100}
           priority
+          onLoad={() => setIsLoaded(true)}
         />
 
         <Box
