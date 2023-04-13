@@ -23,27 +23,31 @@ export function useScroll(): Scroll {
     });
   }, []);
 
+  const handleSmoothScroll = useCallback((url: string) => {
+    let scheduledSmoothFrame = false;
+
+    // Prevent multiple rAF callbacks.
+    if (scheduledSmoothFrame) return;
+    scheduledSmoothFrame = true;
+
+    requestAnimationFrame(() => {
+      const hash = url.split("#")[1];
+      const element = document.getElementById(hash);
+      element?.scrollIntoView();
+    });
+  }, []);
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [scrollPosition]);
+  }, [scrollPosition, handleScroll]);
 
   useEffect(() => {
-    let scheduledAnimationFrame = false;
-
-    // Prevent multiple rAF callbacks.
-    if (scheduledAnimationFrame) return;
-    scheduledAnimationFrame = true;
-
-    requestAnimationFrame(() => {
-      const hash = asPath.split("#")[1];
-      const element = document.getElementById(hash);
-      element?.scrollIntoView();
-    });
-  }, [asPath]);
+    handleSmoothScroll(asPath);
+  }, [asPath, handleSmoothScroll]);
 
   return {
     isHeaderActive,
