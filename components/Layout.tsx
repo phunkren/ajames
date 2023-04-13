@@ -13,7 +13,7 @@ import { PageSeo } from "./SEO";
 import { TextAux, TextHeadline, TextTitle } from "./Text";
 import { Logo } from "./Logo";
 import { Tooltip } from "./Tooltip";
-import headshot from "../public/images/headshot.png";
+import mugshot from "../public/images/mugshot.png";
 import { PERSONAL } from "../util/data";
 import { useScroll } from "../hooks/useScroll";
 
@@ -225,7 +225,7 @@ export const HeroLayout = memo(function HeroLayout() {
         <StyledBox variant="three" />
 
         <StyledImage
-          src={headshot}
+          src={mugshot}
           alt=""
           placeholder="blur"
           sizes="(max-width: 1020px) 100vw, 1276px"
