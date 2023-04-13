@@ -25,9 +25,8 @@ import {
 } from "../../components/Link";
 import {
   Emoji,
-  MarkdownH2,
-  MarkdownH3,
   TextAux,
+  TextTitle1,
   TextTitle2,
   TextTitle3,
 } from "../../components/Text";
@@ -103,9 +102,24 @@ const StyledContainer = styled(Box, {
 
   "@bp2": { padding: "0 $7" },
 
-  h1: H1_STYLES,
-  h2: H2_STYLES,
-  h3: H3_STYLES,
+  h1: {
+    ...H1_STYLES,
+    marginTop: "$10",
+    marginBottom: "$5",
+  },
+
+  h2: {
+    ...H2_STYLES,
+    marginTop: "$8",
+    marginBottom: "$4",
+  },
+
+  h3: {
+    ...H3_STYLES,
+    marginTop: "$4",
+    marginBottom: "$2",
+  },
+
   p: {
     ...P_BLOG_STYLES,
     color: "$foregroundMuted",
@@ -309,9 +323,9 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
               components={{
                 a: MarkdownLink,
                 code: DynamicCode as any,
-                h1: TextTitle2 as any,
-                h2: MarkdownH2 as any,
-                h3: MarkdownH3 as any,
+                h1: TextTitle1 as any,
+                h2: TextTitle2 as any,
+                h3: TextTitle3 as any,
                 img: Figure as any,
                 table: Table as any,
                 thead: THead as any,
