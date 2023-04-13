@@ -92,7 +92,13 @@ export const Learning = ({
       >
         <Box>
           <AspectRatio.Root ratio={2.5 / 1} asChild>
-            <StyledHeroImage src={book} alt="" fill quality={100} />
+            <StyledHeroImage
+              src={book}
+              alt=""
+              sizes="(max-width: 1280px) 50vw, 33vw"
+              fill
+              quality={100}
+            />
           </AspectRatio.Root>
         </Box>
 

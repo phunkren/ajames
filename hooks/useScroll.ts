@@ -26,15 +26,7 @@ export function useScroll(): Scroll {
   const handleSmoothScroll = useCallback((url: string) => {
     const hash = url.split("#")[1];
     const element = document.getElementById(hash);
-    let scheduledSmoothFrame = false;
-
-    // Prevent multiple rAF callbacks.
-    if (scheduledSmoothFrame) return;
-    scheduledSmoothFrame = true;
-
-    requestAnimationFrame(() => {
-      element?.scrollIntoView();
-    });
+    element?.scrollIntoView();
   }, []);
 
   useEffect(() => {
@@ -46,7 +38,13 @@ export function useScroll(): Scroll {
   }, [scrollPosition, handleScroll]);
 
   useEffect(() => {
-    handleSmoothScroll(asPath);
+    const requestId = requestAnimationFrame(() => {
+      handleSmoothScroll(asPath);
+    });
+
+    return () => {
+      cancelAnimationFrame(requestId);
+    };
   }, [asPath, handleSmoothScroll]);
 
   return {
