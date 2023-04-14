@@ -71,14 +71,7 @@ export const ErrorFallback = memo(function ErrorFallback({
                 </Box>
               </Box>
 
-              <StyledImage
-                src={uhoh}
-                alt=""
-                sizes="100vw"
-                quality={100}
-                priority
-                fill
-              />
+              <StyledImage src={uhoh} alt="" sizes="100vw" priority fill />
             </Box>
           </HeroLayout>
 

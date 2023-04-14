@@ -61,14 +61,7 @@ const NotFound: NextPageWithLayout = () => {
             </Box>
           </Box>
 
-          <StyledImage
-            src={lost}
-            alt=""
-            sizes="100vw"
-            priority
-            quality={100}
-            fill
-          />
+          <StyledImage src={lost} alt="" sizes="100vw" priority fill />
         </Box>
       </HeroLayout>
 

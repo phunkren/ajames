@@ -249,7 +249,6 @@ export const HeroLayout = memo(function HeroLayout() {
           alt=""
           placeholder={!isLoaded ? "blur" : "empty"}
           sizes="(max-width: 1020px) 100vw, 1276px"
-          quality={100}
           priority
           onLoad={() => setIsLoaded(true)}
         />

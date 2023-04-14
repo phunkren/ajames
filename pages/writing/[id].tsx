@@ -279,7 +279,6 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
               alt=""
               placeholder="blur"
               blurDataURL={BLUR_DATA_URL}
-              quality={100}
               priority
               fill
             />
