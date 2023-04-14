@@ -298,6 +298,8 @@ export const NavigationMobile = memo(function NavigationMobile() {
                         <Link
                           href={`/#${ABOOT_ID}`}
                           variant="secondary"
+                          scroll={false}
+                          shallow={true}
                           onClick={handleClose}
                         >
                           <TextHeadline>About</TextHeadline>
@@ -317,6 +319,8 @@ export const NavigationMobile = memo(function NavigationMobile() {
                         <Link
                           href={`/#${WRITING_ID}`}
                           variant="secondary"
+                          scroll={false}
+                          shallow={true}
                           onClick={handleClose}
                         >
                           <TextHeadline>Writing</TextHeadline>
@@ -336,6 +340,8 @@ export const NavigationMobile = memo(function NavigationMobile() {
                         <Link
                           href={`/#${LEARNING_ID}`}
                           variant="secondary"
+                          scroll={false}
+                          shallow={true}
                           onClick={handleClose}
                         >
                           <TextHeadline>Learning</TextHeadline>
