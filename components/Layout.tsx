@@ -10,7 +10,7 @@ import { Social } from "./Social";
 import { ThemeToggle } from "./Toggle";
 import { Box, BoxProps } from "./Box";
 import { PageSeo } from "./SEO";
-import { TextAux, TextHeadline, TextTitle } from "./Text";
+import { TextAux, TextHeadline, TextSubtitle, TextTitle } from "./Text";
 import { Logo } from "./Logo";
 import { Tooltip } from "./Tooltip";
 import headshot from "../public/images/headshot.png";
@@ -22,11 +22,15 @@ type LayoutProps = {
 };
 
 const StyledHeroLayout = styled(Box, {
-  height: "100vh",
+  height: "100dvh",
   width: "100vw",
   overflow: "hidden",
   position: "relative",
   color: "$foreground",
+
+  "@supports not (height: 100dvh)": {
+    height: "100vh",
+  },
 
   "@print": {
     display: "none !important",
@@ -40,33 +44,38 @@ const StyledHeroContainer = styled(Box, {
 
 const StyledImage = styled(Image, {
   position: "absolute",
-  height: "90vh",
+  height: "87.5dvh",
   bottom: 0,
   right: 0,
-  pointerEvents: "none",
 
-  objectFit: "cover",
+  pointerEvents: "none",
   objectPosition: "bottom",
 
+  "@supports not (height: 100dvh)": {
+    height: "87.5vh",
+  },
+
+  "@landscape": {
+    objectFit: "contain",
+    right: "5%",
+    transform: "translateX(25%)",
+
+    "@bp4": {
+      right: "22.5%",
+    },
+  },
+
+  "@portrait": {
+    objectFit: "cover",
+    width: "100%",
+  },
+
   [`.${darkTheme} &`]: {
-    filter: "brightness(65%)",
+    filter: "brightness(66%)",
   },
 
   [`.${lightTheme} &`]: {
-    filter: "brightness(80%)",
-  },
-
-  "@bp2": {
-    objectFit: "contain",
-  },
-
-  "@bp3": {
-    right: "5%",
-    transform: "translateX(25%)",
-  },
-
-  "@bp4": {
-    right: "22.5%",
+    filter: "brightness(75%)",
   },
 });
 
@@ -254,10 +263,15 @@ export const HeroLayout = memo(function HeroLayout() {
             <Box direction="vertical" container="l" flexGrow>
               <Box
                 direction="vertical"
-                spacingTop={12}
-                spacingBottom={10}
-                justifyContent={{ "@initial": "flex-end", "@bp3": "center" }}
-                alignItems={{ "@initial": "center", "@bp3": "flex-start" }}
+                spacingBottom={4}
+                justifyContent={{
+                  "@portrait": "flex-end",
+                  "@landscape": "center",
+                }}
+                alignItems={{
+                  "@portrait": "center",
+                  "@landscape": "flex-start",
+                }}
                 flexGrow
               >
                 <TextTitle
@@ -267,19 +281,22 @@ export const HeroLayout = memo(function HeroLayout() {
                   {PERSONAL.name}
                 </TextTitle>
 
-                <TextHeadline
+                <TextSubtitle
                   color="currentColor"
                   css={{ textShadow: "$textShadow" }}
                 >
                   {PERSONAL.occupation} / {PERSONAL.location}
-                </TextHeadline>
+                </TextSubtitle>
 
-                <Box
-                  position="relative"
-                  spacingTop={4}
-                  css={{ "@bp2": { left: "-$2" } }}
-                >
-                  <Social size="m" gap="3" />
+                <Box position="relative" spacingTop={4} css={{ left: "-$1" }}>
+                  <Social
+                    size={{
+                      "@initial": "m",
+                      "@bp2": "l",
+                      "@bp3": "m",
+                    }}
+                    gap="3"
+                  />
                 </Box>
               </Box>
             </Box>

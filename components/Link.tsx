@@ -219,9 +219,6 @@ const StyledYoutubeSubscription = styled(Link, {
       button: {
         padding: "$2 $4",
         borderRadius: "$1",
-        borderStyle: "solid",
-        borderWidth: 2,
-        borderColor: "$colors$red12",
         boxShadow: "$1",
 
         [`.${lightTheme} &`]: {
@@ -297,9 +294,6 @@ const StyledLinkedInConnect = styled(Link, {
       button: {
         padding: "$2 $4",
         borderRadius: "$1",
-        borderStyle: "solid",
-        borderWidth: 2,
-        borderColor: "$colors$blue12",
         boxShadow: "$1",
 
         [`.${lightTheme} &`]: {
@@ -370,9 +364,6 @@ const StyledBlogSubscription = styled(Link, {
       button: {
         padding: "$2 $4",
         borderRadius: "$1",
-        borderStyle: "solid",
-        borderWidth: 2,
-        borderColor: "$colors$violet12",
         boxShadow: "$1",
 
         [`.${lightTheme} &`]: {

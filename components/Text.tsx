@@ -14,27 +14,6 @@ type EmojiProps = ComponentProps<typeof StyledEmoji> & {
   emoji: string;
 };
 
-export const TextTitle = styled("h1", {
-  fontSize: 36,
-  lineHeight: 1.4,
-  letterSpacing: 0.72,
-
-  "@bp2": {
-    fontSize: 56,
-    lineHeight: 1.3,
-    letterSpacing: 0.4,
-  },
-
-  "@bp3": {
-    fontSize: 72,
-  },
-
-  variants: {
-    ...TEXT_VARIANTS,
-    ...SPACING_VARIANTS,
-  },
-});
-
 export const TextTitle1 = styled("h1", {
   ...H1_STYLES,
 
@@ -83,6 +62,49 @@ export const TextHeadline = styled("span", {
 
 export const TextAux = styled("span", {
   ...AUX_STYLES,
+
+  variants: {
+    ...TEXT_VARIANTS,
+    ...SPACING_VARIANTS,
+  },
+});
+
+export const TextTitle = styled("h1", {
+  lineHeight: 1.4,
+  letterSpacing: 0.72,
+
+  "@landscape": {
+    "@bp2": {
+      fontSize: 48,
+      lineHeight: 1.3,
+      letterSpacing: 0.4,
+    },
+
+    "@bp3": {
+      fontSize: 64,
+    },
+
+    "@bp4": {
+      fontSize: 72,
+    },
+  },
+
+  "@portrait": {
+    fontSize: `calc(7.25vw + 16px)`,
+    textAlign: "center",
+  },
+
+  variants: {
+    ...TEXT_VARIANTS,
+    ...SPACING_VARIANTS,
+  },
+});
+
+export const TextSubtitle = styled(TextHeadline, {
+  "@portrait": {
+    fontSize: `calc(2.5vw + 14px)`,
+    textAlign: "center",
+  },
 
   variants: {
     ...TEXT_VARIANTS,

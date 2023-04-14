@@ -301,6 +301,7 @@ export const Writing = ({ posts, tags }: Props) => {
             <Box
               gap={{ "@initial": 0, "@bp3": 10 }}
               direction={{ "@initial": "vertical", "@bp3": "horizontal" }}
+              alignItems="center"
             >
               <Box
                 direction="vertical"
@@ -417,7 +418,9 @@ export const Writing = ({ posts, tags }: Props) => {
               {shouldShowMore ? (
                 <Box direction="vertical">
                   <Button css={{ flexGrow: 1 }} onClick={handleDisplayChange}>
-                    <TextHeadline>Show all articles</TextHeadline>
+                    <TextHeadline color="secondary">
+                      Show all articles
+                    </TextHeadline>
                   </Button>
                 </Box>
               ) : null}

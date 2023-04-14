@@ -12,7 +12,13 @@ import {
   VideosViewsCount,
 } from "../Frontmatter";
 import { ActionButtons } from "../Layout";
-import { Link, YoutubeSubscribeLink, TwitterShareLink } from "../Link";
+import {
+  Link,
+  YoutubeSubscribeLink,
+  TwitterShareLink,
+  BlogSubscriptionLink,
+  LinkedInConnectLink,
+} from "../Link";
 import { TextAux, TextBody, TextTitle1, TextTitle2, TextTitle3 } from "../Text";
 import {
   YOUTUBE_CHANNEL_URL,
@@ -191,6 +197,7 @@ export const Learning = ({
               <Box
                 gap={{ "@initial": 0, "@bp3": 10 }}
                 direction={{ "@initial": "vertical", "@bp3": "horizontal" }}
+                alignItems="center"
               >
                 <Box
                   direction="vertical"
@@ -337,7 +344,7 @@ export const Learning = ({
               }}
             >
               <TextTitle3 textAlign="center" color="secondary">
-                Enjoy the videos?
+                Enjoy the content?
               </TextTitle3>
 
               <Box
@@ -349,17 +356,11 @@ export const Learning = ({
                 alignItems="center"
                 gap={8}
               >
-                <TwitterShareLink
-                  url={YOUTUBE_CHANNEL_URL}
-                  text={YOUTUBE_SHARE_TEXT}
-                />
+                <LinkedInConnectLink />
+
+                <BlogSubscriptionLink />
 
                 <YoutubeSubscribeLink />
-
-                <ShareButton
-                  url={YOUTUBE_CHANNEL_URL}
-                  text={YOUTUBE_SHARE_TEXT}
-                />
               </Box>
             </Box>
 

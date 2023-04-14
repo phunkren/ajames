@@ -324,7 +324,7 @@ export const BlogSponsored = memo(function BlogSponsored() {
         <>
           <StyledBlogContent direction="vertical" css={{ minHeight: 156 }}>
             <Emoji
-              emoji="👋"
+              emoji="👋🏻"
               size="s"
               spacingBottom={4}
               css={{
