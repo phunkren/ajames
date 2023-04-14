@@ -182,7 +182,7 @@ export const HeaderLayout = memo(function HeaderLayout() {
         </Box>
 
         <Box display={{ "@initial": "none", "@bp2": "flex" }}>
-          <ThemeToggle />
+          <ThemeToggle compact />
         </Box>
 
         <Box display={{ "@initial": "flex", "@bp2": "none" }}>
