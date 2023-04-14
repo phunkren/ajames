@@ -16,6 +16,7 @@ import {
 import { ActionButtons, Layout, LoadingLayout } from "../../components/Layout";
 import {
   BlogSubscriptionLink,
+  BuyMeCoffeeLink,
   MarkdownLink,
   TwitterShareLink,
 } from "../../components/Link";
@@ -394,11 +395,7 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
                   <BlogSubscriptionLink />
 
                   <Box>
-                    <ShareButton
-                      url={metaUrl}
-                      emoji={frontmatter.emoji}
-                      text={frontmatter.title}
-                    />
+                    <BuyMeCoffeeLink />
                   </Box>
                 </Box>
               </Box>
