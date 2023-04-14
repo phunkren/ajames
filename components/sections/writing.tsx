@@ -482,12 +482,12 @@ export const Writing = ({ posts, tags }: Props) => {
                             "@bp3": { maxWidth: "66%" },
                           }}
                         >
-                          You can support the content by subscribing to
+                          You can support my work and stay updated by following
                           the&nbsp;
                           <Link href="/rss" variant="tertiary">
                             RSS Feed
                           </Link>
-                          , or&nbsp;
+                          . Alternatively, you can &nbsp;
                           <BuyMeCoffeeLink />.
                         </TextBody>
 

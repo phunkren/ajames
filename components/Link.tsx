@@ -1,10 +1,17 @@
-import { forwardRef, memo, Ref, AnchorHTMLAttributes } from "react";
+import {
+  forwardRef,
+  memo,
+  Ref,
+  AnchorHTMLAttributes,
+  useCallback,
+  MouseEvent,
+} from "react";
 import NextLink, { LinkProps as NextLinkProps } from "next/link";
 import { UrlObject } from "url";
 import { MdRssFeed } from "react-icons/md";
+import { SiBuymeacoffee } from "react-icons/si";
 import {
   DownloadIcon,
-  HeartIcon,
   LinkedInLogoIcon,
   TwitterLogoIcon,
   VideoIcon,
@@ -18,6 +25,7 @@ import { SITE, SOCIAL } from "../util/data";
 import { Box } from "./Box";
 import { Tooltip } from "./Tooltip";
 import { TextAux, TextHeadline } from "./Text";
+import { Button, StyledCoffeeButton } from "./Button";
 
 export type LinkProps = CSS &
   Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href"> & {
@@ -37,7 +45,8 @@ type SubscribeProps = CSS & {
   type?: "link" | "icon" | "button";
 };
 
-type CoffeeProps = {
+type CoffeeProps = CSS & {
+  variant?: "button";
   icon?: boolean;
 };
 
@@ -204,6 +213,22 @@ export const StyledIconLink = styled(Link, {
       true: {
         pointerEvents: "none",
         opacity: 0.4,
+      },
+    },
+    compact: {
+      true: {
+        borderWidth: 0,
+        boxShadow: "none",
+        "@media(hover)": {
+          "&:hover": {
+            boxShadow: "none",
+            color: "$background",
+
+            "& svg": {
+              color: "$background",
+            },
+          },
+        },
       },
     },
   },
@@ -433,6 +458,10 @@ const StyledRssIcon = styled(MdRssFeed, {
   left: 3,
 });
 
+const StyledCoffeeIcon = styled(SiBuymeacoffee, {
+  position: "relative",
+});
+
 export const StyledClearFilterLink = styled(Link, {
   position: "relative",
   padding: "$2",
@@ -656,19 +685,45 @@ export const DownloadLink = memo(function DownloadLink(props: any) {
 });
 
 export const BuyMeCoffeeLink = memo(function BuyMeCoffeeLink({
+  variant,
   icon = false,
 }: CoffeeProps) {
+  const handleClick = useCallback((e: MouseEvent<HTMLAnchorElement>) => {
+    e.stopPropagation();
+
+    if (typeof window !== "undefined") {
+      window.open(SOCIAL.buyMeCoffee.url, "_blank");
+    }
+  }, []);
+
+  if (variant === "button") {
+    return (
+      <Tooltip title={SOCIAL.buyMeCoffee.displayName}>
+        <StyledCoffeeButton variant="tertiary" onClick={handleClick}>
+          <StyledCoffeeIcon size={ICON_SIZE.l} aria-hidden />
+          <VisuallyHidden.Root>
+            {SOCIAL.buyMeCoffee.displayName}
+          </VisuallyHidden.Root>
+        </StyledCoffeeButton>
+      </Tooltip>
+    );
+  }
+
   return (
-    <StyledLink
+    <Link
       href={SOCIAL.buyMeCoffee.url}
       variant={icon ? "secondary" : "tertiary"}
     >
       <Box as="span" alignItems="center" gap={2}>
         {icon ? (
-          <HeartIcon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
+          <StyledCoffeeIcon
+            width={ICON_SIZE.m}
+            height={ICON_SIZE.m}
+            aria-hidden
+          />
         ) : null}
         <TextHeadline>{SOCIAL.buyMeCoffee.displayName}</TextHeadline>
       </Box>
-    </StyledLink>
+    </Link>
   );
 });

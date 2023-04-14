@@ -282,7 +282,7 @@ export const SOCIAL: Record<string, Social> = {
   },
   buyMeCoffee: {
     id: "buyMeCoffee",
-    displayName: "Buy me a Coffee",
+    displayName: "Buy Me a Coffee",
     handle: "phunkren",
     url: "https://www.buymeacoffee.com/phunkren",
   },

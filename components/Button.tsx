@@ -330,11 +330,6 @@ const StyledToastRoot = styled(Toast.Root, {
   },
 });
 
-const StyledScrollToTop = styled(StyledButton, {
-  gap: "$2",
-  padding: "$2 $4",
-});
-
 const StyledPreviewToggle = styled(Toggle.Root, {
   all: "unset",
   display: "inline-flex",
@@ -367,6 +362,22 @@ const StyledMobileNavigationButton = styled(IconButton, {
     "svg#mobileNav-cross": {
       display: "none",
     },
+  },
+});
+
+export const StyledCoffeeButton = styled(Button, {
+  position: "relative",
+
+  "&::before": {
+    content: "",
+    width: 44,
+    height: 44,
+    background: "transparent",
+    position: "absolute",
+    zIndex: 0,
+    left: "50%",
+    top: "50%",
+    transform: "translate(-50%, -50%)",
   },
 });
 
@@ -467,12 +478,12 @@ export const PreviewToggle = memo(function PreviewToggle({
         {pressed ? (
           <>
             <VisuallyHidden.Root>Hide Description</VisuallyHidden.Root>
-            <Cross1Icon width={ICON_SIZE.m} height={ICON_SIZE.m} />
+            <Cross1Icon width={ICON_SIZE.l} height={ICON_SIZE.l} />
           </>
         ) : (
           <>
             <VisuallyHidden.Root>Show Description</VisuallyHidden.Root>
-            <InfoCircledIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
+            <InfoCircledIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
           </>
         )}
       </StyledPreviewToggle>

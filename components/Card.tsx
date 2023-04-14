@@ -15,7 +15,7 @@ import { darkTheme, lightTheme, styled } from "../stitches.config";
 import { PostTags, PublishDate, YoutubeChannel } from "./Frontmatter";
 import { Box } from "./Box";
 import { Emoji, TextAux, TextBody, TextHeadline, TextTitle3 } from "./Text";
-import { Link } from "./Link";
+import { BuyMeCoffeeLink, Link } from "./Link";
 import { PreviewToggle } from "./Button";
 import { BLUR_DATA_URL } from "../util/images";
 import { YOUTUBE_LIKED_VIDEOS_PLAYLIST_ID } from "../util/youtube";
@@ -340,8 +340,9 @@ export const BlogSponsored = memo(function BlogSponsored() {
                 </TextHeadline>
               </StyledLink>
               <TextAux as="p" color="secondary">
-                You can support the content by clicking here and subscribing to
-                the RSS feed
+                You can support my work by clicking here and following the RSS
+                feed. Alternatively, click the cup icon below to buy me a
+                coffee.
               </TextAux>
             </Box>
           </StyledBlogContent>
@@ -352,6 +353,8 @@ export const BlogSponsored = memo(function BlogSponsored() {
             css={{ marginTop: "auto" }}
           >
             <PostTags as="div" tags={[sponsoredTag]} compact />
+
+            <BuyMeCoffeeLink variant="button" />
           </Box>
         </>
       )}
