@@ -15,36 +15,44 @@ type Props = Switch.SwitchProps & {
 const LEFT_ICON_PROPS = {
   position: "absolute",
   color: slateDark.slate12,
+  top: 4,
+  left: 6,
 
   variants: {
     compact: {
-      true: {
-        top: 6,
-        left: 8,
-      },
       false: {
-        top: 7,
-        left: 9,
+        "@bp2": {
+          top: 7,
+          left: 9,
+        },
       },
     },
+  },
+
+  defaultVariants: {
+    compact: false,
   },
 };
 
 const RIGHT_ICON_PROPS = {
   position: "absolute",
   color: slateDark.slate12,
+  top: 4,
+  right: 6,
 
   variants: {
     compact: {
-      true: {
-        top: 6,
-        right: 8,
-      },
       false: {
-        top: 7,
-        right: 9,
+        "@bp2": {
+          top: 7,
+          right: 9,
+        },
       },
     },
+  },
+
+  defaultVariants: {
+    compact: false,
   },
 };
 
@@ -73,33 +81,34 @@ const SwitchThumb = styled(Switch.Thumb, {
   transition: "transform 100ms ease-out",
   willChange: "transform",
   zIndex: 1,
+  width: 26,
+  height: 26,
 
   '&[data-state="checked"]': {
     borderTopRightRadius: 2,
     borderBottomRightRadius: 2,
     borderBottomLeftRadius: 0,
     borderTopLeftRadius: 0,
+    transform: "translate3d(30px, 0, 0)",
   },
 
   variants: {
     compact: {
-      true: {
-        width: 26,
-        height: 26,
-
-        '&[data-state="checked"]': {
-          transform: "translate3d(30px, 0, 0)",
-        },
-      },
       false: {
-        width: 32,
-        height: 32,
+        "@bp2": {
+          width: 32,
+          height: 32,
 
-        '&[data-state="checked"]': {
-          transform: "translate3d(36px, 0, 0)",
+          '&[data-state="checked"]': {
+            transform: "translate3d(36px, 0, 0)",
+          },
         },
       },
     },
+  },
+
+  defaultVariants: {
+    compact: false,
   },
 });
 
@@ -112,6 +121,8 @@ const SwitchRoot = styled(Switch.Root, {
   borderColor: "$slate12",
   background: `radial-gradient(circle at bottom, $hover, $focus)`,
   boxShadow: "$1",
+  width: 60,
+  height: 30,
 
   "&::before": {
     content: "",
@@ -133,13 +144,11 @@ const SwitchRoot = styled(Switch.Root, {
 
   variants: {
     compact: {
-      true: {
-        width: 60,
-        height: 30,
-      },
       false: {
-        width: 72,
-        height: 36,
+        "@bp2": {
+          width: 72,
+          height: 36,
+        },
       },
     },
   },
@@ -148,6 +157,10 @@ const SwitchRoot = styled(Switch.Root, {
     "&:hover:not(:focus)": {
       outline: "2px solid $hover",
     },
+  },
+
+  defaultVariants: {
+    compact: false,
   },
 });
 
@@ -175,14 +188,14 @@ export const ThemeToggle = memo(function ThemeToggle({
         <SwitchThumb compact={compact} />
 
         <StyledSunIcon
-          width={compact ? ICON_SIZE.s : ICON_SIZE.m}
-          height={compact ? ICON_SIZE.s : ICON_SIZE.m}
+          width={ICON_SIZE.m}
+          height={ICON_SIZE.m}
           compact={compact}
         />
 
         <StyledMoonIcon
-          width={compact ? ICON_SIZE.s : ICON_SIZE.m}
-          height={compact ? ICON_SIZE.s : ICON_SIZE.m}
+          width={ICON_SIZE.m}
+          height={ICON_SIZE.m}
           compact={compact}
         />
       </SwitchRoot>
@@ -200,14 +213,14 @@ export const LayoutToggle = memo(function LayoutToggle({
         <SwitchThumb compact={compact} />
 
         <StyledGridIcon
-          width={compact ? ICON_SIZE.s : ICON_SIZE.m}
-          height={compact ? ICON_SIZE.s : ICON_SIZE.m}
+          width={ICON_SIZE.m}
+          height={ICON_SIZE.m}
           compact={compact}
         />
 
         <StyledRowsIcon
-          width={compact ? ICON_SIZE.s : ICON_SIZE.m}
-          height={compact ? ICON_SIZE.s : ICON_SIZE.m}
+          width={ICON_SIZE.m}
+          height={ICON_SIZE.m}
           compact={compact}
         />
       </SwitchRoot>
