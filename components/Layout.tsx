@@ -208,13 +208,13 @@ export const FooterLayout = memo(function FooterLayout() {
       }}
       spacingVertical={10}
       spacingHorizontal={7}
-      gap={3}
+      gap={6}
       justifyContent="center"
       alignItems="center"
       css={{ "@print": { display: "none" } }}
     >
-      <Social />
-      <SocialExtended />
+      <Social gap="6" />
+      <SocialExtended gap="6" />
     </Box>
   );
 });
