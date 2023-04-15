@@ -13,11 +13,11 @@ import * as Toggle from "@radix-ui/react-toggle";
 import * as Toast from "@radix-ui/react-toast";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { ToggleProps } from "@radix-ui/react-toggle-group";
+import { SlPrinter } from "react-icons/sl";
 import {
   ChevronUpIcon,
   Cross1Icon,
   Cross2Icon,
-  DoubleArrowUpIcon,
   DropdownMenuIcon,
   FileIcon,
   HamburgerMenuIcon,
@@ -500,7 +500,7 @@ export const PrintButton = memo(function PrintButton(props: IconButtonProps) {
     <Tooltip title="Print CV">
       <IconButton onClick={handleClick} {...props}>
         <VisuallyHidden.Root>Print CV</VisuallyHidden.Root>
-        <FileIcon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
+        <SlPrinter size={ICON_SIZE.m} aria-hidden />
       </IconButton>
     </Tooltip>
   );

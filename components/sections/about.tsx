@@ -176,7 +176,7 @@ export const About = () => {
         >
           <Box
             direction="vertical"
-            gap={10}
+            gap={11}
             css={{
               "@print": { flexGrow: 0, flexShrink: 0, flexBasis: 125 },
               "@bp3": { flexGrow: 0, flexShrink: 0, flexBasis: 250 },
@@ -425,7 +425,7 @@ export const About = () => {
 
           <Box
             direction="vertical"
-            gap={{ "@print": 8, "@initial": 10 }}
+            gap={{ "@print": 8, "@initial": 11 }}
             spacingBottom={{ "@print": 0, "@initial": 10 }}
             flexGrow
           >
