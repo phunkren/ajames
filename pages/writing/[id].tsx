@@ -138,8 +138,6 @@ const StyledContainer = styled(Box, {
     color: "$foregroundMuted",
   },
 
-  "a, code": {},
-
   a: {
     display: "inline",
     color: "$foreground",
