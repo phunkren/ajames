@@ -202,10 +202,15 @@ export const FooterLayout = memo(function FooterLayout() {
   return (
     <Box
       as="footer"
-      spacingBottom={10}
+      direction={{
+        "@portrait": "vertical",
+        "@landscape": "horizontal",
+      }}
+      spacingVertical={10}
       spacingHorizontal={7}
-      gap={4}
+      gap={3}
       justifyContent="center"
+      alignItems="center"
       css={{ "@print": { display: "none" } }}
     >
       <Social />
@@ -226,7 +231,6 @@ export const Layout = memo(function Layout({ children }: LayoutProps) {
         direction="vertical"
         css={{ overflowX: "hidden", "@bp3": { overflowX: "visible" } }}
         className={theme}
-        gap={12}
       >
         <HeaderLayout />
 
