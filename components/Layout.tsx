@@ -23,13 +23,13 @@ type LayoutProps = {
 };
 
 const StyledHeroLayout = styled(Box, {
-  height: "100dvh",
+  height: "100svh",
   width: "100vw",
   overflow: "hidden",
   position: "relative",
   color: "$foreground",
 
-  "@supports not (height: 100dvh)": {
+  "@supports not (height: 100svh)": {
     height: "100vh",
   },
 
@@ -45,14 +45,14 @@ const StyledHeroContainer = styled(Box, {
 
 const StyledImage = styled(Image, {
   position: "absolute",
-  height: "87.5dvh",
+  height: "87.5svh",
   bottom: 0,
   right: 0,
 
   pointerEvents: "none",
   objectPosition: "bottom",
 
-  "@supports not (height: 100dvh)": {
+  "@supports not (height: 100svh)": {
     height: "87.5vh",
   },
 
