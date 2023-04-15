@@ -206,15 +206,15 @@ export const About = () => {
                 </Box>
 
                 <Box as="li" alignItems="center">
-                  <Tooltip title="Email">
-                    <Link variant="secondary" href={`mailto:${PERSONAL.email}`}>
+                  <Tooltip title={SOCIAL.email.displayName}>
+                    <Link variant="secondary" href={SOCIAL.email.url}>
                       <Box direction="horizontal" gap={6} alignItems="center">
                         <EnvelopeOpenIcon
                           width={ICON_SIZE.l}
                           height={ICON_SIZE.l}
                           aria-hidden
                         />
-                        <TextHeadline>contact@ajames.dev</TextHeadline>
+                        <TextHeadline>{SOCIAL.email.handle}</TextHeadline>
                       </Box>
                     </Link>
                   </Tooltip>

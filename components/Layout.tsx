@@ -6,7 +6,7 @@ import { useTheme } from "../hooks/useTheme";
 import { darkTheme, lightTheme, styled } from "../stitches.config";
 import { Link } from "./Link";
 import { Navigation, NavigationMobile } from "./Navigation";
-import { Social } from "./Social";
+import { Social, SocialExtended } from "./Social";
 import { ThemeToggle } from "./Toggle";
 import { Box, BoxProps } from "./Box";
 import { PageSeo } from "./SEO";
@@ -203,11 +203,13 @@ export const FooterLayout = memo(function FooterLayout() {
     <Box
       as="footer"
       spacingBottom={10}
-      spacingHorizontal={4}
+      spacingHorizontal={7}
+      gap={4}
       justifyContent="center"
       css={{ "@print": { display: "none" } }}
     >
       <Social />
+      <SocialExtended />
     </Box>
   );
 });

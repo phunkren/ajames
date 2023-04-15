@@ -286,6 +286,18 @@ export const SOCIAL: Record<string, Social> = {
     handle: "phunkren",
     url: "https://www.buymeacoffee.com/phunkren",
   },
+  email: {
+    id: "email",
+    displayName: "Email",
+    handle: PERSONAL.email,
+    url: `mailto:${PERSONAL.email}`,
+  },
+  codeSandbox: {
+    id: "codeSandbox",
+    displayName: "Code Sandbox",
+    handle: "phunkren",
+    url: `https://codesandbox.io/u/phunkren`,
+  },
 };
 
 export const TESTIMONIALS: Testimonial[] = [

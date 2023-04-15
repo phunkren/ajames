@@ -528,8 +528,8 @@ export const YoutubeSubscribeLink = memo(function YoutubeSubscribeLink({
       variant={type === "link" ? "secondary" : "invisible"}
       {...props}
     >
-      <Box alignItems="center" gap={2}>
-        <VideoIcon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
+      <Box alignItems="center" gap={type === "button" ? 2 : 4}>
+        <VideoIcon width={ICON_SIZE.l} height={ICON_SIZE.l} aria-hidden />
 
         {type === "button" && <TextAux color="primary">Subscribe</TextAux>}
 
@@ -572,11 +572,11 @@ export const LinkedInConnectLink = memo(function LinkedInConnectLink({
       variant={type === "link" ? "secondary" : "invisible"}
       {...props}
     >
-      <Box alignItems="center" gap={2}>
+      <Box alignItems="center" gap={type === "button" ? 2 : 4}>
         <LinkedInLogoIcon
           style={{ position: "relative", top: -1 }}
-          width={ICON_SIZE.m}
-          height={ICON_SIZE.m}
+          width={ICON_SIZE.l}
+          height={ICON_SIZE.l}
           aria-hidden
         />
 
@@ -603,29 +603,44 @@ export const BlogSubscriptionLink = memo(function BlogSubscribeLink({
           variant="invisible"
           {...props}
         >
-          <StyledRssIcon size={ICON_SIZE.l} />
+          <StyledRssIcon size={ICON_SIZE.m} />
           <VisuallyHidden.Root>Follow</VisuallyHidden.Root>
         </StyledBlogSubscription>
       </Tooltip>
     );
   }
 
-  return (
-    <StyledBlogSubscription
-      href={rssFeedUrl}
-      type={type}
-      variant={type === "link" ? "secondary" : "invisible"}
-      {...props}
-    >
-      <Box alignItems="center" gap={2}>
-        <StyledRssIcon size={ICON_SIZE.l} />
+  if (type === "button") {
+    return (
+      <StyledBlogSubscription
+        href={rssFeedUrl}
+        type={type}
+        variant="invisible"
+        {...props}
+      >
+        <Box alignItems="center" gap={2}>
+          <StyledRssIcon size={ICON_SIZE.m} />
+          <TextAux color="inherit">Follow</TextAux>
+        </Box>
+      </StyledBlogSubscription>
+    );
+  }
 
-        {type === "button" && <TextAux color="inherit">Follow</TextAux>}
-
-        {type === "link" && <TextHeadline>Follow</TextHeadline>}
-      </Box>
-    </StyledBlogSubscription>
-  );
+  if (type === "link") {
+    return (
+      <StyledBlogSubscription
+        href={rssFeedUrl}
+        type={type}
+        variant={type === "link" ? "secondary" : "invisible"}
+        {...props}
+      >
+        <Box alignItems="center" gap={4}>
+          <StyledRssIcon size={ICON_SIZE.l} />
+          <TextHeadline>Follow</TextHeadline>
+        </Box>
+      </StyledBlogSubscription>
+    );
+  }
 });
 
 export const TwitterShareLink = memo(function TwitterShareLink({
@@ -665,8 +680,8 @@ export const TwitterShareLink = memo(function TwitterShareLink({
 
   return (
     <StyledLink href={href} variant="secondary">
-      <Box alignItems="center" gap={2}>
-        <TwitterLogoIcon width={ICON_SIZE.m} height={ICON_SIZE.m} aria-hidden />
+      <Box alignItems="center" gap={4}>
+        <TwitterLogoIcon width={ICON_SIZE.l} height={ICON_SIZE.l} aria-hidden />
         <TextHeadline>Tweet</TextHeadline>
       </Box>
     </StyledLink>
@@ -714,11 +729,11 @@ export const BuyMeCoffeeLink = memo(function BuyMeCoffeeLink({
       href={SOCIAL.buyMeCoffee.url}
       variant={icon ? "secondary" : "tertiary"}
     >
-      <Box as="span" alignItems="center" gap={2}>
+      <Box as="span" alignItems="center" gap={4}>
         {icon ? (
           <StyledCoffeeIcon
-            width={ICON_SIZE.m}
-            height={ICON_SIZE.m}
+            width={ICON_SIZE.l}
+            height={ICON_SIZE.l}
             aria-hidden
           />
         ) : null}

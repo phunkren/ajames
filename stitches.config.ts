@@ -123,7 +123,7 @@ export const darkTheme = createTheme({
     background: slateDark.slate1,
     backgroundMuted: grayDark.gray2,
     backgroundGradient: `radial-gradient(circle at bottom, ${sageDark.sage1} 0%,  ${sageDark.sage1} 100%)`,
-    focus: crimsonDark.crimson10,
+    focus: crimsonDark.crimson11,
     hover: blueDark.blue9,
     ...blackA,
     ...whiteA,
