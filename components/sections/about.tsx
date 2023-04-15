@@ -176,7 +176,7 @@ export const About = () => {
         >
           <Box
             direction="vertical"
-            gap={{ "@print": 10, "@initial": 11 }}
+            gap={10}
             css={{
               "@print": { flexGrow: 0, flexShrink: 0, flexBasis: 125 },
               "@bp3": { flexGrow: 0, flexShrink: 0, flexBasis: 250 },
@@ -322,9 +322,8 @@ export const About = () => {
                     gap={2}
                     justifyContent="flex-end"
                     css={{
-                      paddingBottom: i === 0 ? "$10" : 0,
+                      paddingBottom: i === 0 ? "$2" : 0,
                       "@bp2": { paddingBottom: 0 },
-                      "@bp3": { paddingBottom: 10 },
                     }}
                   >
                     {education.qualification ? (
@@ -426,7 +425,7 @@ export const About = () => {
 
           <Box
             direction="vertical"
-            gap={{ "@print": 8, "@initial": 11 }}
+            gap={{ "@print": 8, "@initial": 10 }}
             spacingBottom={{ "@print": 0, "@initial": 10 }}
             flexGrow
           >
@@ -455,7 +454,7 @@ export const About = () => {
                 <Divider />
               </Box>
 
-              <Box direction="vertical" gap={10}>
+              <Box direction="vertical" gap={11}>
                 {EMPLOYMENT.map((employer) => (
                   <Box
                     direction="vertical"

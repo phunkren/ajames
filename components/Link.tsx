@@ -603,7 +603,7 @@ export const BlogSubscriptionLink = memo(function BlogSubscribeLink({
           variant="invisible"
           {...props}
         >
-          <StyledRssIcon size={ICON_SIZE.m} />
+          <StyledRssIcon size={ICON_SIZE.l} />
           <VisuallyHidden.Root>Follow</VisuallyHidden.Root>
         </StyledBlogSubscription>
       </Tooltip>
@@ -618,7 +618,7 @@ export const BlogSubscriptionLink = memo(function BlogSubscribeLink({
       {...props}
     >
       <Box alignItems="center" gap={2}>
-        <StyledRssIcon size={ICON_SIZE.m} />
+        <StyledRssIcon size={ICON_SIZE.l} />
 
         {type === "button" && <TextAux color="inherit">Follow</TextAux>}
 

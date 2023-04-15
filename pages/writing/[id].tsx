@@ -138,8 +138,18 @@ const StyledContainer = styled(Box, {
     color: "$foregroundMuted",
   },
 
-  "a, code": {
+  "a, code": {},
+
+  a: {
+    display: "inline",
     color: "$foreground",
+    wordBreak: "break-word",
+    hyphens: "auto",
+    overflowWrap: "break-word",
+  },
+
+  "code:not(pre > code)": {
+    wordBreak: "break-all",
   },
 
   table: {
@@ -159,13 +169,17 @@ const StyledContainer = styled(Box, {
   },
 
   figure: {
-    width: "fit-content",
+    width: "auto",
     margin: "0 auto",
+
+    "@bp2": {
+      width: "fit-content",
+    },
   },
 
   img: {
     position: "relative",
-    left: "-$6",
+    left: "-$7",
     width: "100vw",
     maxWidth: "none",
 
@@ -185,7 +199,7 @@ const StyledContainer = styled(Box, {
 
   pre: {
     position: "relative",
-    left: "-$6",
+    left: "-$7",
     width: "100vw",
 
     "& > pre": {
@@ -372,7 +386,7 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
                   "@bp2": 10,
                 }}
               >
-                <TextTitle3 textAlign="center" color="secondary">
+                <TextTitle3 textAlign="center" css={{ color: "$focus" }}>
                   Enjoy the article?
                 </TextTitle3>
 
@@ -391,11 +405,9 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
                     text={frontmatter.title}
                   />
 
-                  <BlogSubscriptionLink />
+                  <BuyMeCoffeeLink icon />
 
-                  <Box>
-                    <BuyMeCoffeeLink />
-                  </Box>
+                  <BlogSubscriptionLink />
                 </Box>
               </Box>
 

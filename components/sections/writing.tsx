@@ -300,7 +300,6 @@ export const Writing = ({ posts, tags }: Props) => {
             <Box
               gap={{ "@initial": 0, "@bp3": 10 }}
               direction={{ "@initial": "vertical", "@bp3": "horizontal" }}
-              alignItems="center"
             >
               <Box
                 direction="vertical"

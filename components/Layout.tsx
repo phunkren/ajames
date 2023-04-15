@@ -10,12 +10,13 @@ import { Social } from "./Social";
 import { ThemeToggle } from "./Toggle";
 import { Box, BoxProps } from "./Box";
 import { PageSeo } from "./SEO";
-import { TextAux, TextHeadline, TextSubtitle, TextTitle } from "./Text";
+import { TextAux, TextSubtitle, TextTitle } from "./Text";
 import { Logo } from "./Logo";
 import { Tooltip } from "./Tooltip";
 import headshot from "../public/images/headshot.png";
 import { PERSONAL } from "../util/data";
 import { useScroll } from "../hooks/useScroll";
+import { useRouter } from "next/router";
 
 type LayoutProps = {
   children: ReactElement;
@@ -144,20 +145,24 @@ const HeaderBox = styled(Box, {
   variants: {
     opaque: {
       true: {
-        backgroundColor: `${slateDark.slate1}`,
+        backgroundColor: "$background",
+        color: "$foreground",
       },
       false: {
         backgroundColor: `${slateDarkA.slateA1}`,
+        color: `${slateDarkA.slateA12}`,
       },
     },
   },
 });
 
 export const HeaderLayout = memo(function HeaderLayout() {
+  const { asPath } = useRouter();
   const { isHeaderActive } = useScroll();
+  const isBlogPost = asPath.includes("/writing/");
 
   return (
-    <HeaderBox as="header" opaque={isHeaderActive}>
+    <HeaderBox as="header" opaque={isBlogPost || isHeaderActive}>
       <Box
         display={{ "@print": "none", "@initial": "flex" }}
         spacingVertical={3}

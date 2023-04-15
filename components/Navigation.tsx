@@ -77,7 +77,6 @@ const StyledNavigationMenuContent = styled(NavigationMenu.Content, {
 const StyledNavigationMenuList = styled(NavigationMenu.List, {
   display: "flex",
   gap: "$8",
-  color: slateDark.slate12,
 });
 
 const StyledNavigationSubmenu = styled(Box, {
