@@ -117,7 +117,7 @@ const StyledBox = styled(Box, {
   top: "-50vw",
   bottom: "-50vw",
   height: "200vw",
-  filter: "blur(500px)",
+  // filter: "blur(500px)",
 
   "&::after": {
     content: "",
