@@ -65,7 +65,7 @@ const StyledDialogContent = styled(Dialog.Content, {
   width: 300,
   zIndex: 99,
   transform: "translate3d(0,0,0)",
-  animation: `${dialogSlideIn} $transitions$durationDefault $transitions$functionDefault 50ms forwards`,
+  animation: `${dialogSlideIn} $transitions$durationDefault $transitions$functionDefault forwards`,
   willChange: "transform",
 });
 
@@ -256,10 +256,9 @@ export const NavigationMobile = memo(function NavigationMobile() {
         <StyledDialogContent
           id="mobileNav"
           className={theme}
-          forceMount
-          aria-hidden={!open}
           onEscapeKeyDown={handleClose}
           onInteractOutside={handleClose}
+          onPointerDownOutside={handleClose}
         >
           <VisuallyHidden.Root asChild>
             <Dialog.Title>Navigation</Dialog.Title>

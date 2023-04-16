@@ -79,6 +79,8 @@ const StyledCardOuter = styled(Box, {
   willChange: "transform",
   transition:
     "background $durationQuick $functionDefault, box-shadow $durationQuick $functionDefault, border-color $durationQuick $functionDefault, transform $durationQuick $functionDefault",
+  ["-webkit-transition"]:
+    "background $durationQuick $functionDefault, box-shadow $durationQuick $functionDefault, border-color $durationQuick $functionDefault, transform $durationQuick $functionDefault",
 
   "& div[data-radix-aspect-ratio-wrapper]": {
     overflow: "hidden",
@@ -86,6 +88,7 @@ const StyledCardOuter = styled(Box, {
 
   "& img": {
     filter: "brightness(100%)",
+    ["-webkit-transition"]: "filter $durationQuick $functionDefault",
     transition: "filter $durationQuick $functionDefault",
   },
 
@@ -93,6 +96,7 @@ const StyledCardOuter = styled(Box, {
     outline: "2px solid transparent",
     outlineOffset: 2,
     transition: "outline $durationQuick $functionDefault",
+    ["-webkit-transition"]: "outline $durationQuick $functionDefault",
   },
 
   "@media(hover)": {
@@ -101,20 +105,25 @@ const StyledCardOuter = styled(Box, {
       borderColor: "$hover",
       transition:
         "box-shadow $durationDefault $functionDefault, border-color $durationDefault $functionDefault",
+      ["-webkit-transition"]:
+        "box-shadow $durationDefault $functionDefault, border-color $durationDefault $functionDefault",
 
       "& img": {
         filter: "brightness(95%)",
         transition: "filter $durationDefault $functionDefault",
+        ["-webkit-transition"]: "filter $durationDefault $functionDefault",
       },
 
       [`.${darkTheme} &`]: {
         background: whiteA.whiteA3,
         transition: "background $durationDefault $functionDefault",
+        ["-webkit-transition"]: "background $durationDefault $functionDefault",
       },
 
       [`.${lightTheme} &`]: {
         background: blackA.blackA2,
         transition: "background $durationDefault $functionDefault",
+        ["-webkit-transition"]: "background $durationDefault $functionDefault",
       },
     },
   },
@@ -126,6 +135,7 @@ const StyledCardOuter = styled(Box, {
   "& button:focus": {
     outline: "2px solid $focus",
     transition: "outline $durationDefault $functionDefault",
+    ["-webkit-transition"]: "outline $durationDefault $functionDefault",
   },
 
   "&:active:not(:has(button:active))": {
@@ -134,12 +144,16 @@ const StyledCardOuter = styled(Box, {
     borderColor: "$focus",
     transition:
       "box-shadow $durationDefault $functionDefault, transform $durationDefault $functionDefault, border-color $durationDefault $functionDefault",
+    ["-webkit-transition"]:
+      "box-shadow $durationDefault $functionDefault, transform $durationDefault $functionDefault, border-color $durationDefault $functionDefault",
   },
 
   [`.${darkTheme} &`]: {
     background: whiteA.whiteA2,
     borderColor: whiteA.whiteA5,
     transition:
+      "background $durationQuick $functionDefault, border-color $durationQuick $functionDefault",
+    ["-webkit-transition"]:
       "background $durationQuick $functionDefault, border-color $durationQuick $functionDefault",
   },
 
@@ -148,17 +162,22 @@ const StyledCardOuter = styled(Box, {
     borderColor: "$focus",
     transition:
       "background $durationDefault $functionDefault, border-color $durationDefault $functionDefault",
+    ["-webkit-transition"]:
+      "background $durationDefault $functionDefault, border-color $durationDefault $functionDefault",
   },
 
   [`.${darkTheme} &:active:not(:has(button:active))`]: {
     background: whiteA.whiteA4,
     transition: "background $durationDefault $functionDefault",
+    ["-webkit-transition"]: "background $durationDefault $functionDefault",
   },
 
   [`.${lightTheme} &`]: {
     background: blackA.blackA1,
     borderColor: whiteA.whiteA4,
     transition:
+      "background $durationDefault $functionDefault, border-color $durationDefault $functionDefault",
+    ["-webkit-transition"]:
       "background $durationDefault $functionDefault, border-color $durationDefault $functionDefault",
   },
 
@@ -167,11 +186,15 @@ const StyledCardOuter = styled(Box, {
     borderColor: "$focus",
     transition:
       "background $durationDefault $functionDefault, border-color $durationDefault $functionDefault",
+    ["-webkit-transition"]:
+      "background $durationDefault $functionDefault, border-color $durationDefault $functionDefault",
   },
 
   [`.${lightTheme} &:active:not(:has(button:active))`]: {
     background: blackA.blackA3,
     transition: "background $durationDefault $functionDefault",
+    ["-webkit-transition"]:
+      "background $durationDefault $functionDefault, border-color $durationDefault $functionDefault",
   },
 });
 

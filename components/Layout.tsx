@@ -48,7 +48,8 @@ const StyledImage = styled(Image, {
   height: "90svh",
   bottom: 0,
   right: 0,
-
+  willChange: "filter",
+  transition: "filter $durationDefault $functionDefault",
   pointerEvents: "none",
   objectPosition: "bottom",
 
@@ -137,6 +138,7 @@ const HeaderBox = styled(Box, {
   right: 0,
   left: 0,
   transition: "background-color $durationDefault $functionDefault",
+  ["-webkit-transition"]: "background-color $durationDefault $functionDefault",
 
   "@print": {
     display: "none !important",

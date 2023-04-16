@@ -84,6 +84,8 @@ const StyledButton = styled("button", {
   willChange: "transform",
   transition:
     "background 200ms ease-out, boxShadow 200ms ease-out, transform 200ms ease-out",
+  ["-webkit-transition"]:
+    "background 200ms ease-out, boxShadow 200ms ease-out, transform 200ms ease-out",
 
   appearance: "none",
   "-webkit-appearance": "none",
@@ -204,6 +206,7 @@ export const StyledIconButton = styled("button", {
   color: "currentcolor",
   borderColor: "$foreground",
   transition: `box-shadow $durationQuick $functionDefault, background $durationQuick $functionDefault, color $durationQuick $functionDefault, transform $durationQuick $functionDefault`,
+  ["-webkit-transition"]: `box-shadow $durationQuick $functionDefault, background $durationQuick $functionDefault, color $durationQuick $functionDefault, transform $durationQuick $functionDefault`,
   transform: "scale(1)",
   willChange: "transform",
 
@@ -221,6 +224,7 @@ export const StyledIconButton = styled("button", {
       background: "$foreground",
       color: "$background",
       transition: `box-shadow $durationDefault $functionDefault, background $durationDefault $functionDefault, color $durationDefault $functionDefault`,
+      ["-webkit-transition"]: `box-shadow $durationDefault $functionDefault, background $durationDefault $functionDefault, color $durationDefault $functionDefault`,
     },
   },
 
@@ -228,6 +232,7 @@ export const StyledIconButton = styled("button", {
     boxShadow: "$5",
     transform: "scale($transitions$transformScale)",
     transition: `transform $durationDefault $functionDefault`,
+    ["-webkit-transition"]: `transform $durationDefault $functionDefault`,
   },
 
   variants: {

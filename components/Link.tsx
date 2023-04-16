@@ -60,12 +60,14 @@ const LINK_BUTTON_PROPS = {
   boxShadow: "$1",
   transform: "scale(1)",
   transition: `box-shadow $durationQuick $functionDefault, transform $durationQuick $functionDefault`,
+  ["-webkit-transition"]: `box-shadow $durationQuick $functionDefault, transform $durationQuick $functionDefault`,
   willChange: "transform",
 
   "@media(hover)": {
     "&:hover": {
       boxShadow: "$4",
       transition: `box-shadow $durationDefault $functionDefault`,
+      ["-webkit-transition"]: `box-shadow $durationDefault $functionDefault`,
     },
   },
 
@@ -73,6 +75,7 @@ const LINK_BUTTON_PROPS = {
     boxShadow: "$5",
     transform: "scale($transitions$transformScale)",
     transition: `transform $durationDefault $functionDefault`,
+    ["-webkit-transition"]: `transform $durationDefault $functionDefault`,
   },
 };
 
@@ -111,14 +114,17 @@ const StyledLink = styled("a", {
         color: "unset",
         backgroundImage: `linear-gradient(90deg, $blue11 0.04%, $hover 100.04%)`,
         backgroundClip: "text",
-        ["-webkit-text-fill-color"]: "transparent",
         transition: `text-decoration-color $durationQuick $functionDefault`,
+        ["-webkit-transition"]: `text-decoration-color $durationQuick $functionDefault`,
+        ["-webkit-text-fill-color"]: "transparent",
+
         textDecorationLine: "underline",
 
         "@media(hover)": {
           "&:hover": {
             textDecorationColor: "$hover",
             transition: `text-decoration-color $durationDefault $functionDefault`,
+            ["-webkit-transition"]: `text-decoration-color $durationDefault $functionDefault`,
 
             /** React Balancer */
             "& span": {
@@ -149,6 +155,7 @@ const StyledLink = styled("a", {
           "&:hover svg": {
             color: "$hover",
             transition: `color $durationQuick $functionDefault`,
+            ["-webkit-transition"]: `color $durationQuick $functionDefault`,
           },
         },
       },
@@ -201,18 +208,21 @@ const StyledLink = styled("a", {
         justifyContent: "center",
         transform: "scale(1)",
         transition: `transform $durationQuick $functionDefault, color $durationQuick $functionDefault`,
+        ["-webkit-transition"]: `transform $durationQuick $functionDefault, color $durationQuick $functionDefault`,
         willChange: "transform",
 
         "@media(hover)": {
           "&:hover": {
             color: "$hover",
             transition: `color $durationDefault $functionDefault`,
+            ["-webkit-transition"]: `color $durationDefault $functionDefault`,
           },
         },
 
         "&:active": {
           transform: "scale($transitions$transformScale)",
           transition: `transform $durationDefault $functionDefault`,
+          ["-webkit-transition"]: `transform $durationDefault $functionDefault`,
         },
       },
     },

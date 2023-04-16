@@ -180,6 +180,8 @@ const StyledContainer = styled(Box, {
     left: "-$7",
     width: "100vw",
     maxWidth: "none",
+    filter: "brightness(100%)",
+    willChange: 'filter',
 
     [`.${darkTheme} &`]: {
       filter: "brightness(85%)",
