@@ -78,7 +78,7 @@ const SwitchThumb = styled(Switch.Thumb, {
   borderBottomLeftRadius: 2,
   background: "$background",
   transform: "translate3d(0, 0, 0)",
-  transition: "transform 100ms ease-out",
+  transition: "transform $durationDefault $functionDefault",
   willChange: "transform",
   zIndex: 1,
   width: 26,

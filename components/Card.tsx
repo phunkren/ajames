@@ -78,27 +78,44 @@ const StyledCardOuter = styled(Box, {
   overflow: "hidden",
   willChange: "transform",
   transition:
-    "background 200ms ease-out, boxShadow 200ms ease-out, transform 200ms ease-out",
+    "background $durationQuick $functionDefault, box-shadow $durationQuick $functionDefault, border-color $durationQuick $functionDefault, transform $durationQuick $functionDefault",
 
   "& div[data-radix-aspect-ratio-wrapper]": {
     overflow: "hidden",
+  },
+
+  "& img": {
+    filter: "brightness(100%)",
+    transition: "filter $durationQuick $functionDefault",
+  },
+
+  "& button": {
+    outline: "2px solid transparent",
+    outlineOffset: 2,
+    transition: "outline $durationQuick $functionDefault",
   },
 
   "@media(hover)": {
     "&:hover:not(:has(button:hover))": {
       boxShadow: "$4",
       borderColor: "$hover",
+      transition:
+        "box-shadow $durationDefault $functionDefault, border-color $durationDefault $functionDefault",
 
       "& img": {
         filter: "brightness(95%)",
+        transition: "filter $durationDefault $functionDefault",
       },
-    },
-    [`.${darkTheme} &:hover`]: {
-      backgroundColor: whiteA.whiteA3,
-    },
 
-    [`.${lightTheme} &:hover`]: {
-      backgroundColor: blackA.blackA2,
+      [`.${darkTheme} &`]: {
+        background: whiteA.whiteA3,
+        transition: "background $durationDefault $functionDefault",
+      },
+
+      [`.${lightTheme} &`]: {
+        background: blackA.blackA2,
+        transition: "background $durationDefault $functionDefault",
+      },
     },
   },
 
@@ -108,47 +125,53 @@ const StyledCardOuter = styled(Box, {
 
   "& button:focus": {
     outline: "2px solid $focus",
-    outlineOffset: 2,
+    transition: "outline $durationDefault $functionDefault",
   },
 
   "&:active:not(:has(button:active))": {
     boxShadow: "$5",
-    transform: "scale(0.99)",
+    transform: "scale($transitions$transformScale)",
     borderColor: "$focus",
-
-    "& img": {
-      filter: "brightness(100%)",
-    },
+    transition:
+      "box-shadow $durationDefault $functionDefault, transform $durationDefault $functionDefault, border-color $durationDefault $functionDefault",
   },
 
   [`.${darkTheme} &`]: {
-    backgroundColor: whiteA.whiteA2,
+    background: whiteA.whiteA2,
     borderColor: whiteA.whiteA5,
+    transition:
+      "background $durationQuick $functionDefault, border-color $durationQuick $functionDefault",
   },
 
   [`.${darkTheme} &:has(a:focus)`]: {
-    backgroundColor: whiteA.whiteA3,
+    background: whiteA.whiteA3,
     borderColor: "$focus",
-    outline: "none",
+    transition:
+      "background $durationDefault $functionDefault, border-color $durationDefault $functionDefault",
   },
 
   [`.${darkTheme} &:active:not(:has(button:active))`]: {
-    backgroundColor: whiteA.whiteA4,
+    background: whiteA.whiteA4,
+    transition: "background $durationDefault $functionDefault",
   },
 
   [`.${lightTheme} &`]: {
-    backgroundColor: blackA.blackA1,
+    background: blackA.blackA1,
     borderColor: whiteA.whiteA4,
+    transition:
+      "background $durationDefault $functionDefault, border-color $durationDefault $functionDefault",
   },
 
   [`.${lightTheme} &:has(a:focus)`]: {
-    backgroundColor: whiteA.whiteA3,
+    background: whiteA.whiteA3,
     borderColor: "$focus",
-    outline: "none",
+    transition:
+      "background $durationDefault $functionDefault, border-color $durationDefault $functionDefault",
   },
 
   [`.${lightTheme} &:active:not(:has(button:active))`]: {
-    backgroundColor: blackA.blackA3,
+    background: blackA.blackA3,
+    transition: "background $durationDefault $functionDefault",
   },
 });
 
@@ -159,7 +182,6 @@ export const StyledCardInner = styled(Box, {
 export const StyledCardImage = styled(Image, {
   objectFit: "cover",
   filter: "brightness(85%)",
-  transition: "filter 200ms ease-out",
 
   // https://nextjs.org/docs/api-reference/next/image#known-browser-bugs
   "img[loading='lazy']": {

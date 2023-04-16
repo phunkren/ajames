@@ -26,7 +26,6 @@ import {
   whiteA,
   crimson,
   crimsonDark,
-  sandDark,
   indigo,
   indigoDark,
   violetDark,
@@ -71,6 +70,14 @@ export const {
     radii: {
       1: "4px",
       2: "8px",
+    },
+    transitions: {
+      durationDefault: "250ms",
+      durationQuick: "200ms",
+      durationNone: "0s",
+      functionDefault: "ease",
+      functionFancy: "cubic-bezier(0.4, 0, 1, 1)",
+      transformScale: "0.975",
     },
   },
   media: {

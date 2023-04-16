@@ -36,7 +36,6 @@ import {
 import { Box } from "../Box";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import book from "../../public/images/book.png";
-import { SITE } from "../../util/data";
 import { H2_STYLES, H3_STYLES } from "../../styles/text";
 
 export type Props = {
@@ -87,15 +86,6 @@ const StyledCardContainer = styled(Box, {
       gridColumn: "span 2",
       gridRow: "span 1",
 
-      h3: {
-        "-webkit-line-clamp": 5,
-        ...H2_STYLES,
-      },
-
-      p: {
-        ...H3_STYLES,
-      },
-
       [`${StyledCardInner}`]: {
         top: 0,
         padding: "0 $6 $6",
@@ -105,14 +95,14 @@ const StyledCardContainer = styled(Box, {
         top: 32,
       },
 
-      [`${TextTitle3}`]: {
-        fontSize: "1.6em",
-        ["-webkit-line-clamp"]: "4",
+      h3: {
+        ...H2_STYLES,
+        ["-webkit-line-clamp"]: "5",
       },
 
       [`& a ${TextAux}`]: {
-        fontSize: "1.1em",
-        ["-webkit-line-clamp"]: "6",
+        ...H3_STYLES,
+        ["-webkit-line-clamp"]: "7",
       },
     },
 
@@ -126,15 +116,6 @@ const StyledCardContainer = styled(Box, {
       gridColumn: "span 2",
       gridRow: "span 1",
 
-      h3: {
-        "-webkit-line-clamp": 5,
-        ...H2_STYLES,
-      },
-
-      p: {
-        ...H3_STYLES,
-      },
-
       [`${StyledCardInner}`]: {
         top: 0,
         padding: "0 $6 $6",
@@ -144,13 +125,14 @@ const StyledCardContainer = styled(Box, {
         top: 32,
       },
 
-      [`${TextTitle3}`]: {
-        fontSize: "1.6em",
-        ["-webkit-line-clamp"]: "4",
+      h3: {
+        ...H2_STYLES,
+        ["-webkit-line-clamp"]: "5",
       },
 
       [`& a ${TextAux}`]: {
-        fontSize: "1.1em",
+        ...H3_STYLES,
+        fontWeight: 400,
         ["-webkit-line-clamp"]: "6",
       },
     },

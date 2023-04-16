@@ -65,13 +65,19 @@ const StyledDialogContent = styled(Dialog.Content, {
   width: 300,
   zIndex: 99,
   transform: "translate3d(0,0,0)",
-  animation: `${dialogSlideIn} 300ms ease-out 50ms forwards`,
+  animation: `${dialogSlideIn} $transitions$durationDefault $transitions$functionDefault 50ms forwards`,
+  willChange: "transform",
 });
 
 const StyledNavigationMenuContent = styled(NavigationMenu.Content, {
-  '&[data-state="open"]': { animation: `${scaleIn} 200ms ease-out` },
+  willChange: "transform, opacity",
 
-  '&[data-state="closed"]': { animation: `${scaleOut} 200ms ease-out` },
+  '&[data-state="open"]': {
+    animation: `${scaleIn} $transitions$durationDefault $transitions$functionDefault`,
+  },
+  '&[data-state="closed"]': {
+    animation: `${scaleOut} $transitions$durationQuick $transitions$functionDefault`,
+  },
 });
 
 const StyledNavigationMenuList = styled(NavigationMenu.List, {
@@ -101,16 +107,6 @@ const StyledNavigationSubmenuLink = styled(Link, {
   alignItems: "center",
   padding: "$2",
   borderRadius: "$1",
-
-  "@media(hover)": {
-    [`.${darkTheme} &:hover`]: {
-      backgroundColor: whiteA.whiteA3,
-    },
-
-    [`.${lightTheme} &:hover`]: {
-      backgroundColor: blackA.blackA3,
-    },
-  },
 });
 
 export const NavigationProjectLink = memo(function NavigationProjectLink({
@@ -121,7 +117,7 @@ export const NavigationProjectLink = memo(function NavigationProjectLink({
 }: NavigationProjectLinkProps) {
   return (
     <NavigationMenu.Link asChild>
-      <StyledNavigationSubmenuLink variant="invisible" href={url}>
+      <StyledNavigationSubmenuLink variant="secondary" href={url}>
         <VisuallyHidden.Root>
           <TextAux>
             {name} - {description}
@@ -139,8 +135,9 @@ export const NavigationProjectLink = memo(function NavigationProjectLink({
           >
             <Image src={src} alt="" width={44} height={44} />
           </Box>
+
           <Box direction="vertical" flexGrow>
-            <TextHeadline as="span" css={{ lineHeight: 1 }}>
+            <TextHeadline as="span" color="secondary" css={{ lineHeight: 1 }}>
               {name}
             </TextHeadline>
             <TextAux color="secondary" clamp={1}>

@@ -45,7 +45,7 @@ const StyledHeroContainer = styled(Box, {
 
 const StyledImage = styled(Image, {
   position: "absolute",
-  height: "87.5svh",
+  height: "90svh",
   bottom: 0,
   right: 0,
 
@@ -53,7 +53,7 @@ const StyledImage = styled(Image, {
   objectPosition: "bottom",
 
   "@supports not (height: 100svh)": {
-    height: "87.5vh",
+    height: "90vh",
   },
 
   "@landscape": {
@@ -136,7 +136,7 @@ const HeaderBox = styled(Box, {
   top: 0,
   right: 0,
   left: 0,
-  transition: "background-color 400ms ease-out",
+  transition: "background-color $durationDefault $functionDefault",
 
   "@print": {
     display: "none !important",
@@ -203,15 +203,15 @@ export const FooterLayout = memo(function FooterLayout() {
     <Box
       as="footer"
       direction={{
-        "@portrait": "vertical",
-        "@landscape": "horizontal",
+        "@initial": "vertical",
+        "@bp2": "horizontal",
       }}
       spacingVertical={10}
       spacingHorizontal={7}
       gap={6}
       justifyContent="center"
       alignItems="center"
-      css={{ "@print": { display: "none" } }}
+      css={{ background: "$slate2", "@print": { display: "none" } }}
     >
       <Social gap="6" />
       <SocialExtended gap="6" />

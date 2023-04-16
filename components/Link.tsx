@@ -17,7 +17,13 @@ import {
   VideoIcon,
 } from "@radix-ui/react-icons";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
-import { CSS, darkTheme, lightTheme, styled } from "../stitches.config";
+import {
+  CSS,
+  darkTheme,
+  keyframes,
+  lightTheme,
+  styled,
+} from "../stitches.config";
 import { YOUTUBE_SUBSCRIBE_URL } from "../util/youtube";
 import { buildUrl } from "../util/url";
 import { ICON_SIZE } from "../util/images";
@@ -25,7 +31,7 @@ import { SITE, SOCIAL } from "../util/data";
 import { Box } from "./Box";
 import { Tooltip } from "./Tooltip";
 import { TextAux, TextHeadline } from "./Text";
-import { Button, StyledCoffeeButton } from "./Button";
+import { StyledCoffeeButton } from "./Button";
 
 export type LinkProps = CSS &
   Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href"> & {
@@ -50,14 +56,44 @@ type CoffeeProps = CSS & {
   icon?: boolean;
 };
 
+const LINK_BUTTON_PROPS = {
+  boxShadow: "$1",
+  transform: "scale(1)",
+  transition: `box-shadow $durationQuick $functionDefault, transform $durationQuick $functionDefault`,
+  willChange: "transform",
+
+  "@media(hover)": {
+    "&:hover": {
+      boxShadow: "$4",
+      transition: `box-shadow $durationDefault $functionDefault`,
+    },
+  },
+
+  "&:active": {
+    boxShadow: "$5",
+    transform: "scale($transitions$transformScale)",
+    transition: `transform $durationDefault $functionDefault`,
+  },
+};
+
+const secondaryFade = keyframes({
+  "0%": { color: "currentcolor" },
+  "50%": { color: "$hover" },
+  "100%": {
+    color: "unset",
+    backgroundImage: `linear-gradient(90deg, $blue11 0.04%, $hover 100.04%)`,
+    backgroundClip: "text",
+    ["-webkit-text-fill-color"]: "transparent",
+  },
+});
+
 const StyledLink = styled("a", {
   display: "inline-flex",
   alignItems: "center",
   gap: "$2",
-  color: "inherit",
+  color: "currentcolor",
   textDecorationLine: "none",
   textUnderlineOffset: "$space$1",
-  transition: "color 75ms ease-out",
   width: "fit-content",
 
   "&[aria-current='page']": {
@@ -76,11 +112,13 @@ const StyledLink = styled("a", {
         backgroundImage: `linear-gradient(90deg, $blue11 0.04%, $hover 100.04%)`,
         backgroundClip: "text",
         ["-webkit-text-fill-color"]: "transparent",
+        transition: `text-decoration-color $durationQuick $functionDefault`,
+        textDecorationLine: "underline",
 
         "@media(hover)": {
           "&:hover": {
-            textDecorationLine: "underline",
             textDecorationColor: "$hover",
+            transition: `text-decoration-color $durationDefault $functionDefault`,
 
             /** React Balancer */
             "& span": {
@@ -90,49 +128,70 @@ const StyledLink = styled("a", {
         },
 
         "@print": {
-          color: "black ",
+          color: "black",
           backgroundImage: "none",
           backgroundClip: "border-box",
           ["-webkit-text-fill-color"]: "currentcolor",
         },
       },
       secondary: {
+        color: "currentcolor",
+
+        "& svg": {
+          color: "currentcolor",
+        },
+
         "@media(hover)": {
-          "&:hover": {
-            color: "unset",
-            backgroundImage: `linear-gradient(90deg, $blue11 0.04%, $hover 100.04%)`,
-            backgroundClip: "text",
-            ["-webkit-text-fill-color"]: "transparent",
+          "&:not([aria-current='page']):hover": {
+            animation: `${secondaryFade} $transitions$durationDefault $transitions$functionDefault forwards`,
           },
 
           "&:hover svg": {
             color: "$hover",
+            transition: `color $durationQuick $functionDefault`,
           },
         },
       },
       tertiary: {
         textDecorationLine: "underline",
         textDecorationStyle: "dotted",
+        textDecorationColor: "currentcolor",
+        transition: `text-decoration-color $durationQuick $functionDefault`,
+
+        "& svg": {
+          color: "currentcolor",
+          transition: `color $durationQuick $functionDefault`,
+        },
 
         "@media(hover)": {
           "&:hover": {
             color: "inherit",
             textDecorationStyle: "solid",
             textDecorationColor: "$hover",
+            transition: `text-decoration-color $durationDefault $functionDefault`,
+          },
+
+          "&:hover svg": {
+            color: "$hover",
+            transition: `color $durationQuick $functionDefault`,
           },
         },
       },
       invisible: {
-        color: "inherit",
+        color: "currentcolor",
 
         "@media(hover)": {
           "&:hover": {
-            color: "inherit",
+            color: "currentcolor",
+          },
+
+          "&:hover svg": {
+            color: "currentcolor",
           },
         },
 
         "&:active": {
-          color: "inherit",
+          color: "currentcolor",
         },
       },
       icon: {
@@ -140,12 +199,20 @@ const StyledLink = styled("a", {
         minHeight: 44,
         alignItems: "center",
         justifyContent: "center",
-        color: "inherit",
+        transform: "scale(1)",
+        transition: `transform $durationQuick $functionDefault, color $durationQuick $functionDefault`,
+        willChange: "transform",
 
         "@media(hover)": {
           "&:hover": {
             color: "$hover",
+            transition: `color $durationDefault $functionDefault`,
           },
+        },
+
+        "&:active": {
+          transform: "scale($transitions$transformScale)",
+          transition: `transform $durationDefault $functionDefault`,
         },
       },
     },
@@ -181,15 +248,19 @@ export const StyledIconLink = styled(Link, {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  borderRadius: "50%",
-  padding: "$2",
-  borderWidth: 2,
-  borderStyle: "solid",
-  borderColor: "$foreground",
   minWidth: 44,
   minHeight: 44,
+  padding: "$2",
+  borderRadius: "50%",
+  borderWidth: 2,
+  borderStyle: "solid",
   boxShadow: "$1",
-  transition: "background 100ms ease-out, box-shadow 100ms ease-out",
+  borderColor: "$foreground",
+  backgroundColor: "transparent",
+  color: "currentcolor",
+  transform: "scale(1)",
+  transition: `box-shadow $durationQuick $functionDefault, border-color $durationQuick $functionDefault, transform $durationQuick $functionDefault, background-color $durationQuick $functionDefault`,
+  willChange: "transform",
 
   "@media(hover)": {
     "&:hover": {
@@ -197,54 +268,28 @@ export const StyledIconLink = styled(Link, {
       borderColor: "$foreground",
       backgroundColor: "$foreground",
       color: "$background",
-
-      "& svg": {
-        color: "$background",
-      },
+      transition: `box-shadow $durationDefault $functionDefault, border-color $durationDefault $functionDefault, color $durationDefault $functionDefault`,
     },
   },
 
   "&:active": {
     boxShadow: "$5",
-  },
-
-  variants: {
-    disabled: {
-      true: {
-        pointerEvents: "none",
-        opacity: 0.4,
-      },
-    },
-    compact: {
-      true: {
-        borderWidth: 0,
-        boxShadow: "none",
-        "@media(hover)": {
-          "&:hover": {
-            boxShadow: "none",
-            color: "$background",
-
-            "& svg": {
-              color: "$background",
-            },
-          },
-        },
-      },
-    },
+    transform: "scale($transitions$transformScale)",
+    transition: `transform $durationDefault $functionDefault, transform $durationDefault $functionDefault`,
   },
 });
 
 const StyledYoutubeSubscription = styled(Link, {
   display: "flex",
   alignItems: "center",
-  transition: "boxShadow 100ms ease-out",
 
   variants: {
     type: {
+      link: {},
       button: {
         padding: "$2 $4",
         borderRadius: "$1",
-        boxShadow: "$1",
+        ...LINK_BUTTON_PROPS,
 
         [`.${lightTheme} &`]: {
           backgroundImage: `linear-gradient(175deg, $red9 0.04%, $red10 100.04%)`,
@@ -257,25 +302,18 @@ const StyledYoutubeSubscription = styled(Link, {
         },
 
         "@media(hover)": {
+          color: "currentcolor",
+
           "&:hover": {
             [`.${lightTheme} &`]: {
               backgroundImage: `linear-gradient(175deg, $red10 0.04%, $red9 100.04%)`,
-              color: "$red1",
             },
 
             [`.${darkTheme} &`]: {
               backgroundImage: `linear-gradient(175deg, $red7 0.04%, $red8 100.04%)`,
-              color: "$red12",
             },
           },
         },
-
-        "&:active": {
-          boxShadow: "$5",
-        },
-      },
-      link: {
-        color: "inherit",
       },
       icon: {
         justifyContent: "center",
@@ -286,7 +324,7 @@ const StyledYoutubeSubscription = styled(Link, {
         borderStyle: "solid",
         borderWidth: 2,
         borderColor: "$colors$red12",
-        boxShadow: "$1",
+        ...LINK_BUTTON_PROPS,
 
         [`.${lightTheme} &`]: {
           backgroundImage: `linear-gradient(175deg, $red9 0.04%, $red10 100.04%)`,
@@ -297,10 +335,6 @@ const StyledYoutubeSubscription = styled(Link, {
           backgroundImage: `linear-gradient(175deg, $red8 0.04%, $red7 100.04%)`,
           color: "$red12",
         },
-
-        "&:active": {
-          boxShadow: "$5",
-        },
       },
     },
   },
@@ -309,17 +343,14 @@ const StyledYoutubeSubscription = styled(Link, {
 const StyledLinkedInConnect = styled(Link, {
   display: "flex",
   alignItems: "center",
-  transition: "boxShadow 100ms ease-out",
 
   variants: {
     type: {
-      link: {
-        color: "inherit",
-      },
+      link: {},
       button: {
         padding: "$2 $4",
         borderRadius: "$1",
-        boxShadow: "$1",
+        ...LINK_BUTTON_PROPS,
 
         [`.${lightTheme} &`]: {
           backgroundImage: `linear-gradient(175deg, $blue9 0.04%, $blue10 100.04%)`,
@@ -332,6 +363,8 @@ const StyledLinkedInConnect = styled(Link, {
         },
 
         "@media(hover)": {
+          color: "currentcolor",
+
           "&:hover": {
             [`.${lightTheme} &`]: {
               backgroundImage: `linear-gradient(175deg, $blue10 0.04%, $blue9 100.04%)`,
@@ -341,10 +374,6 @@ const StyledLinkedInConnect = styled(Link, {
               backgroundImage: `linear-gradient(175deg, $blue7 0.04%, $blue8 100.04%)`,
             },
           },
-        },
-
-        "&:active": {
-          boxShadow: "$5",
         },
       },
       icon: {
@@ -356,7 +385,7 @@ const StyledLinkedInConnect = styled(Link, {
         borderStyle: "solid",
         borderWidth: 2,
         borderColor: "$colors$blue12",
-        boxShadow: "$1",
+        ...LINK_BUTTON_PROPS,
 
         [`.${lightTheme} &`]: {
           backgroundImage: `linear-gradient(175deg, $blue9 0.04%, $blue10 100.04%)`,
@@ -367,10 +396,6 @@ const StyledLinkedInConnect = styled(Link, {
           backgroundImage: `linear-gradient(175deg, $blue8 0.04%, $blue7 100.04%)`,
           color: "$blue12",
         },
-
-        "&:active": {
-          boxShadow: "$5",
-        },
       },
     },
   },
@@ -379,17 +404,14 @@ const StyledLinkedInConnect = styled(Link, {
 const StyledBlogSubscription = styled(Link, {
   display: "flex",
   alignItems: "center",
-  transition: "boxShadow 100ms ease-out",
 
   variants: {
     type: {
-      link: {
-        color: "inherit",
-      },
+      link: {},
       button: {
         padding: "$2 $4",
         borderRadius: "$1",
-        boxShadow: "$1",
+        ...LINK_BUTTON_PROPS,
 
         [`.${lightTheme} &`]: {
           backgroundImage: `linear-gradient(175deg, $violet9 0.04%, $violet10 100.04%)`,
@@ -402,6 +424,8 @@ const StyledBlogSubscription = styled(Link, {
         },
 
         "@media(hover)": {
+          color: "currentcolor",
+
           "&:hover": {
             [`.${lightTheme} &`]: {
               backgroundImage: `linear-gradient(175deg, $violet10 0.04%, $violet9 100.04%)`,
@@ -411,10 +435,6 @@ const StyledBlogSubscription = styled(Link, {
               backgroundImage: `linear-gradient(175deg, $violet7 0.04%, $violet8 100.04%)`,
             },
           },
-        },
-
-        "&:active": {
-          boxShadow: "$5",
         },
       },
       icon: {
@@ -426,7 +446,7 @@ const StyledBlogSubscription = styled(Link, {
         borderStyle: "solid",
         borderWidth: 2,
         borderColor: "$colors$violet12",
-        boxShadow: "$1",
+        ...LINK_BUTTON_PROPS,
 
         [`.${lightTheme} &`]: {
           backgroundImage: `linear-gradient(175deg, $violet9 0.04%, $violet10 100.04%)`,
@@ -436,10 +456,6 @@ const StyledBlogSubscription = styled(Link, {
         [`.${darkTheme} &`]: {
           backgroundImage: `linear-gradient(175deg, $violet8 0.04%, $violet7 100.04%)`,
           color: "$violet12",
-        },
-
-        "&:active": {
-          boxShadow: "$5",
         },
 
         /* Optically aligns the RSS Icon */
@@ -456,32 +472,6 @@ const StyledRssIcon = styled(MdRssFeed, {
   position: "relative",
   top: -1,
   left: 3,
-});
-
-const StyledCoffeeIcon = styled(SiBuymeacoffee, {
-  position: "relative",
-});
-
-export const StyledClearFilterLink = styled(Link, {
-  position: "relative",
-  padding: "$2",
-  borderWidth: 2,
-  borderStyle: "solid",
-  borderColor: "$foregroundMuted",
-  borderRadius: "50%",
-  boxShadow: "$1",
-
-  "@media(hover)": {
-    "&:hover": {
-      boxShadow: "$4",
-      background: "$foreground",
-      color: "$background",
-    },
-
-    "&:active": {
-      boxShadow: "$5",
-    },
-  },
 });
 
 // 'Notion to Markdown' converts embeds to links
@@ -666,7 +656,7 @@ export const TwitterShareLink = memo(function TwitterShareLink({
   if (variant === "icon") {
     return (
       <Tooltip title="Share on Twitter">
-        <StyledIconLink href={href} variant="icon">
+        <StyledIconLink href={href}>
           <TwitterLogoIcon
             width={ICON_SIZE.m}
             height={ICON_SIZE.m}
@@ -715,7 +705,7 @@ export const BuyMeCoffeeLink = memo(function BuyMeCoffeeLink({
     return (
       <Tooltip title={SOCIAL.buyMeCoffee.displayName}>
         <StyledCoffeeButton variant="tertiary" onClick={handleClick}>
-          <StyledCoffeeIcon size={ICON_SIZE.l} aria-hidden />
+          <SiBuymeacoffee size={ICON_SIZE.l} aria-hidden />
           <VisuallyHidden.Root>
             {SOCIAL.buyMeCoffee.displayName}
           </VisuallyHidden.Root>
@@ -731,7 +721,7 @@ export const BuyMeCoffeeLink = memo(function BuyMeCoffeeLink({
     >
       <Box as="span" alignItems="center" gap={4}>
         {icon ? (
-          <StyledCoffeeIcon
+          <SiBuymeacoffee
             width={ICON_SIZE.l}
             height={ICON_SIZE.l}
             aria-hidden

@@ -198,11 +198,15 @@ export const StyledIconButton = styled("button", {
   borderRadius: "50%",
   borderWidth: 2,
   borderStyle: "solid",
-  backgroundColor: "transparent",
-  transition: "background 100ms ease-out, boxShadow 100ms ease-out",
-  color: "$foreground",
-
   appearance: "none",
+  boxShadow: "$1",
+  background: "transparent",
+  color: "currentcolor",
+  borderColor: "$foreground",
+  transition: `box-shadow $durationQuick $functionDefault, background $durationQuick $functionDefault, color $durationQuick $functionDefault, transform $durationQuick $functionDefault`,
+  transform: "scale(1)",
+  willChange: "transform",
+
   "-webkit-appearance": "none",
   "-moz-appearance": "none",
 
@@ -211,69 +215,27 @@ export const StyledIconButton = styled("button", {
     opacity: 0.4,
   },
 
+  "@media(hover)": {
+    "&:hover": {
+      boxShadow: "$4",
+      background: "$foreground",
+      color: "$background",
+      transition: `box-shadow $durationDefault $functionDefault, background $durationDefault $functionDefault, color $durationDefault $functionDefault`,
+    },
+  },
+
+  "&:active": {
+    boxShadow: "$5",
+    transform: "scale($transitions$transformScale)",
+    transition: `transform $durationDefault $functionDefault`,
+  },
+
   variants: {
     ...DISPLAY_VARIANTS,
-    variant: {
-      primary: {
-        boxShadow: "$1",
-        borderColor: "$foreground",
-
-        "@media(hover)": {
-          "&:hover": {
-            boxShadow: "$4",
-            backgroundColor: "$foreground",
-            color: "$background",
-
-            svg: {
-              color: "$background",
-            },
-          },
-        },
-
-        "&:active": {
-          boxShadow: "$4",
-          backgroundColor: "$foreground",
-          color: "$background",
-
-          svg: {
-            color: "$background",
-          },
-        },
-      },
-      secondary: {
-        borderColor: "transparent",
-        boxShadow: "none",
-
-        "@media(hover)": {
-          "&:hover": {
-            boxShadow: "none",
-            borderColor: "transparent",
-            backgroundColor: "transparent",
-            color: "currentcolor",
-
-            svg: {
-              color: "currentcolor",
-            },
-          },
-        },
-
-        "&:active": {
-          boxShadow: "none",
-          borderColor: "transparent",
-          backgroundColor: "transparent",
-          color: "currentcolor",
-
-          svg: {
-            color: "currentcolor",
-          },
-        },
-      },
-    },
   },
 
   defaultVariants: {
     display: "flex",
-    variant: "primary",
   },
 });
 
@@ -316,8 +278,12 @@ const StyledToastRoot = styled(Toast.Root, {
   alignItems: "center",
   boxShadow: "$2",
 
-  '&[data-state="open"]': { animation: `${scaleIn} 200ms ease-out` },
-  '&[data-state="closed"]': { animation: `${scaleOut} 200ms ease-out` },
+  '&[data-state="open"]': {
+    animation: `${scaleIn} $durationDefault $functionDefault`,
+  },
+  '&[data-state="closed"]': {
+    animation: `${scaleOut} $durationQuick $functionDefault`,
+  },
 
   "@media(hover)": {
     "&:hover": {

@@ -59,7 +59,7 @@ const StyledTooltipArrow = styled(RadixTooltip.Arrow, {
 export const Tooltip = memo(function Tooltip({ children, title }: Props) {
   return (
     <RadixTooltip.Provider>
-      <RadixTooltip.Root delayDuration={400}>
+      <RadixTooltip.Root delayDuration={50}>
         <RadixTooltip.Trigger asChild>{children}</RadixTooltip.Trigger>
         <RadixTooltip.Portal>
           <StyledTooltipContent sideOffset={5}>
