@@ -20,7 +20,7 @@ import {
   TextTitle2,
   TextTitle3,
 } from "../Text";
-import { styled } from "../../stitches.config";
+import { css, styled } from "../../stitches.config";
 import { BlogPost, Tag } from "../../util/notion";
 import { filterPosts } from "../../util/notion";
 import { Divider } from "../Divider";
@@ -42,6 +42,10 @@ export type Props = {
   posts: BlogPost[];
   tags: Tag[];
 };
+
+const bg = css({
+  background: "$slate2",
+});
 
 const StyledHeroImage = styled(Image, {
   objectFit: "contain",
@@ -202,9 +206,7 @@ export const Writing = ({ posts, tags }: Props) => {
       direction="vertical"
       spacingVertical={11}
       spacingHorizontal={7}
-      css={{
-        background: `$slate2`,
-      }}
+      className={bg}
     >
       <Box
         direction="vertical"

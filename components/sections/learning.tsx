@@ -26,7 +26,7 @@ import {
   YOUTUBE_THUMBNAIL_URL,
 } from "../../util/youtube";
 import { buildUrl } from "../../util/url";
-import { styled } from "../../stitches.config";
+import { css, styled } from "../../stitches.config";
 import {
   ChannelInfoPreview,
   PlaylistPreview,
@@ -47,6 +47,10 @@ export type Props = {
   channelInfoPreview: ChannelInfoPreview;
   timestamp: number;
 };
+
+const bg = css({
+  background: `linear-gradient($slate2 0.04%, $slate1 100.04%)`,
+});
 
 const StyledVideoCardContainer = styled(Box, {
   display: "grid",
@@ -86,9 +90,7 @@ export const Learning = ({
       direction="vertical"
       spacingVertical={11}
       spacingHorizontal={7}
-      css={{
-        background: `linear-gradient($slate2 0.04%, $slate1 100.04%)`,
-      }}
+      className={bg}
     >
       <Box
         direction="vertical"

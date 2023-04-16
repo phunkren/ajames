@@ -3,7 +3,7 @@ import Image from "next/image";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { blueDark, redDark, slateDark, slateDarkA } from "@radix-ui/colors";
 import { useTheme } from "../hooks/useTheme";
-import { darkTheme, lightTheme, styled } from "../stitches.config";
+import { css, darkTheme, lightTheme, styled } from "../stitches.config";
 import { Link } from "./Link";
 import { Navigation, NavigationMobile } from "./Navigation";
 import { Social, SocialExtended } from "./Social";
@@ -81,6 +81,36 @@ const StyledImage = styled(Image, {
   },
 });
 
+const heroOne = css({
+  left: "20vw",
+  transformOrigin: "top left",
+  transform: "rotate(25deg)",
+  background: `linear-gradient(270deg, ${blueDark.blue3} 0%, ${blueDark.blue4} 25%, ${blueDark.blue5} 50%, ${blueDark.blue6} 75%, ${blueDark.blue7} 100%)`,
+});
+
+const heroTwo = css({
+  background: `linear-gradient(150deg, ${blueDark.blue9} 0%, ${blueDark.blue8} 25%, ${blueDark.blue7} 50%, ${blueDark.blue6} 75%, ${blueDark.blue5} 100%)`,
+  left: "-20vw",
+  transformOrigin: "top left",
+  transform: "rotate(-35deg)",
+});
+
+const heroThree = css({
+  background: `linear-gradient(1200deg, ${redDark.red9} 0%, ${redDark.red8} 25%, ${redDark.red7} 50%, ${redDark.red6} 75%, ${redDark.red5} 100%)`,
+  left: "140vw",
+  top: "64vh",
+  bottom: "-150vh",
+  transformOrigin: "bottom left",
+  transform: "rotate(-45deg)",
+});
+
+const heroFour = css({
+  background: `linear-gradient(60deg, ${redDark.red8} 0%, ${redDark.red7} 25%, ${redDark.red6} 50%, ${redDark.red5} 75%, ${redDark.red4} 100%)`,
+  left: "0vw",
+  transformOrigin: "bottom left",
+  transform: "rotate(30deg)",
+});
+
 const StyledBox = styled(Box, {
   width: "75vw",
   position: "absolute",
@@ -94,39 +124,6 @@ const StyledBox = styled(Box, {
     position: "fixed",
     inset: 0,
     background: "rgba(0,0,0,0.4)",
-  },
-
-  variants: {
-    variant: {
-      one: {
-        left: "20vw",
-        transformOrigin: "top left",
-        transform: "rotate(25deg)",
-        background: `linear-gradient(270deg, ${blueDark.blue3} 0%, ${blueDark.blue4} 25%, ${blueDark.blue5} 50%, ${blueDark.blue6} 75%, ${blueDark.blue7} 100%)`,
-      },
-      two: {
-        background: `linear-gradient(150deg, ${blueDark.blue9} 0%, ${blueDark.blue8} 25%, ${blueDark.blue7} 50%, ${blueDark.blue6} 75%, ${blueDark.blue5} 100%)`,
-        left: "-20vw",
-        transformOrigin: "top left",
-        transform: "rotate(-35deg)",
-      },
-      three: {
-        background: `linear-gradient(1200deg, ${redDark.red9} 0%, ${redDark.red8} 25%, ${redDark.red7} 50%, ${redDark.red6} 75%, ${redDark.red5} 100%)`,
-        left: "140vw",
-        top: "64vh",
-        bottom: "-150vh",
-
-        transformOrigin: "bottom left",
-        transform: "rotate(-45deg)",
-      },
-      four: {
-        background: `linear-gradient(60deg, ${redDark.red8} 0%, ${redDark.red7} 25%, ${redDark.red6} 50%, ${redDark.red5} 75%, ${redDark.red4} 100%)`,
-        left: "0vw",
-        transformOrigin: "bottom left",
-
-        transform: "rotate(30deg)",
-      },
-    },
   },
 });
 
@@ -252,10 +249,10 @@ export const HeroLayout = memo(function HeroLayout() {
   return (
     <StyledHeroLayout>
       <StyledHeroContainer direction="vertical" flexGrow>
-        <StyledBox variant="one" />
-        <StyledBox variant="two" />
-        <StyledBox variant="four" />
-        <StyledBox variant="three" />
+        <StyledBox className={heroOne} />
+        <StyledBox className={heroTwo} />
+        <StyledBox className={heroThree} />
+        <StyledBox className={heroFour} />
 
         <StyledImage
           src={headshot}

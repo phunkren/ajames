@@ -8,28 +8,14 @@ type Props = Separator.SeparatorProps & {
 
 const StyledSeparator = styled(Separator.Root, {
   boxShadow: "$1",
+  backgroundColor: "$foregroundMuted",
+  opacity: 0.25,
 
   "&[data-orientation=horizontal]": { height: 2, width: "100%" },
   "&[data-orientation=vertical]": { height: "100%", width: 2 },
 
   "@print": {
     border: "1px solid black",
-  },
-
-  variants: {
-    variant: {
-      primary: {
-        background: `linear-gradient(-45deg, $red4, $red6, $blue4, $blue6)`,
-      },
-      secondary: {
-        backgroundColor: "$foregroundMuted",
-        opacity: 0.25,
-      },
-    },
-  },
-
-  defaultVariants: {
-    variant: "secondary",
   },
 });
 

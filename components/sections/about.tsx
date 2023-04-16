@@ -15,7 +15,7 @@ import {
   TextTitle2,
   TextTitle3,
 } from "../Text";
-import { styled } from "../../stitches.config";
+import { css, styled } from "../../stitches.config";
 import {
   EDUCATION,
   EMPLOYMENT,
@@ -32,6 +32,10 @@ import { Box } from "../Box";
 import { Tooltip } from "../Tooltip";
 import { Frontmatter, Location, Name, Occupation } from "../Frontmatter";
 import { ActionButtons } from "../Layout";
+
+const bg = css({
+  background: `linear-gradient($slate1 0.04%, $slate2 100.04%)`,
+});
 
 const StyledBlockQuote = styled("blockquote", {
   fontStyle: "oblique",
@@ -84,14 +88,12 @@ export const About = () => {
   return (
     <Box
       id={ABOOT_ID}
+      className={bg}
       as="section"
       spacingTop={12}
       spacingBottom={11}
       spacingHorizontal={7}
       direction="vertical"
-      css={{
-        background: `linear-gradient($slate1 0.04%, $slate2 100.04%)`,
-      }}
     >
       <Box
         direction="vertical"
