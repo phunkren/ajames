@@ -288,7 +288,12 @@ export const BlogCard = memo(function BlogCard({
               }}
             />
 
-            <StyledLink href={url} ref={ref} variant="invisible">
+            <StyledLink
+              href={url}
+              ref={ref}
+              variant="invisible"
+              nextLinkProps={{ shallow: true }}
+            >
               {isPreviewVisible ? (
                 <TextAux as="p" clamp={4} textAlign="justify">
                   {description}

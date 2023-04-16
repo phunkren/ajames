@@ -168,7 +168,11 @@ export const Navigation = memo(function Navigation() {
             asChild
             active={isReady && asPath === `/#${ABOOT_ID}`}
           >
-            <Link variant="secondary" href={`/#${ABOOT_ID}`}>
+            <Link
+              variant="secondary"
+              href={`/#${ABOOT_ID}`}
+              nextLinkProps={{ scroll: false, shallow: true }}
+            >
               <TextHeadline color="currentColor">About</TextHeadline>
             </Link>
           </NavigationMenu.Link>
@@ -179,7 +183,11 @@ export const Navigation = memo(function Navigation() {
             asChild
             active={isReady && asPath === `/#${WRITING_ID}`}
           >
-            <Link variant="secondary" href={`/#${WRITING_ID}`}>
+            <Link
+              variant="secondary"
+              href={`/#${WRITING_ID}`}
+              nextLinkProps={{ scroll: false, shallow: true }}
+            >
               <TextHeadline>Writing</TextHeadline>
             </Link>
           </NavigationMenu.Link>
@@ -190,7 +198,11 @@ export const Navigation = memo(function Navigation() {
             asChild
             active={isReady && asPath === `/#${LEARNING_ID}`}
           >
-            <Link variant="secondary" href={`/#${LEARNING_ID}`}>
+            <Link
+              variant="secondary"
+              href={`/#${LEARNING_ID}`}
+              nextLinkProps={{ scroll: false, shallow: true }}
+            >
               <TextHeadline>Learning</TextHeadline>
             </Link>
           </NavigationMenu.Link>
@@ -244,6 +256,8 @@ export const NavigationMobile = memo(function NavigationMobile() {
         <StyledDialogContent
           id="mobileNav"
           className={theme}
+          forceMount
+          aria-hidden={!open}
           onEscapeKeyDown={handleClose}
           onInteractOutside={handleClose}
         >
@@ -294,8 +308,7 @@ export const NavigationMobile = memo(function NavigationMobile() {
                         <Link
                           href={`/#${ABOOT_ID}`}
                           variant="secondary"
-                          scroll={false}
-                          shallow={true}
+                          nextLinkProps={{ scroll: false, shallow: true }}
                           onClick={handleClose}
                         >
                           <TextHeadline>About</TextHeadline>
@@ -315,8 +328,7 @@ export const NavigationMobile = memo(function NavigationMobile() {
                         <Link
                           href={`/#${WRITING_ID}`}
                           variant="secondary"
-                          scroll={false}
-                          shallow={true}
+                          nextLinkProps={{ scroll: false, shallow: true }}
                           onClick={handleClose}
                         >
                           <TextHeadline>Writing</TextHeadline>
@@ -336,8 +348,7 @@ export const NavigationMobile = memo(function NavigationMobile() {
                         <Link
                           href={`/#${LEARNING_ID}`}
                           variant="secondary"
-                          scroll={false}
-                          shallow={true}
+                          nextLinkProps={{ scroll: false, shallow: true }}
                           onClick={handleClose}
                         >
                           <TextHeadline>Learning</TextHeadline>

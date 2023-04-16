@@ -175,7 +175,7 @@ export const HeaderLayout = memo(function HeaderLayout() {
       >
         <Box direction="horizontal" gap={10} alignItems="center">
           <Tooltip title="Home">
-            <Link href="/" variant="icon">
+            <Link href="/" variant="icon" nextLinkProps={{ shallow: true }}>
               <VisuallyHidden.Root>Home</VisuallyHidden.Root>
               <Logo />
             </Link>
