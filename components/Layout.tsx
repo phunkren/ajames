@@ -96,7 +96,7 @@ const heroTwo = css({
 });
 
 const heroThree = css({
-  background: `linear-gradient(1200deg, ${redDark.red9} 0%, ${redDark.red8} 25%, ${redDark.red7} 50%, ${redDark.red6} 75%, ${redDark.red5} 100%)`,
+  background: `linear-gradient(120deg, ${redDark.red9} 0%, ${redDark.red8} 25%, ${redDark.red7} 50%, ${redDark.red6} 75%, ${redDark.red5} 100%)`,
   left: "140vw",
   top: "64vh",
   bottom: "-150vh",
