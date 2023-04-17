@@ -181,7 +181,7 @@ const StyledContainer = styled(Box, {
     width: "100vw",
     maxWidth: "none",
     filter: "brightness(100%)",
-    willChange: 'filter',
+    willChange: "filter",
 
     [`.${darkTheme} &`]: {
       filter: "brightness(85%)",
@@ -270,7 +270,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   };
 };
 
-const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
+const BlogPost: NextPageWithLayout = memo(function BlogPost({
+  frontmatter,
+  postData,
+}: Props) {
   const { asPath, isReady } = useRouter();
   const metaUrl = isReady && asPath ? `${SITE.url}${asPath}` : SITE.url;
 
@@ -418,7 +421,7 @@ const BlogPost: NextPageWithLayout = ({ frontmatter, postData }: Props) => {
       </Box>
     </>
   );
-};
+});
 
 BlogPost.getLayout = function getLayout(page: ReactElement) {
   return <Layout>{page}</Layout>;

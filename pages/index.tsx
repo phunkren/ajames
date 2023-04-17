@@ -1,5 +1,5 @@
 import { GetStaticProps } from "next";
-import { ReactElement } from "react";
+import { memo, ReactElement } from "react";
 import { Box } from "../components/Box";
 import { HeroLayout, Layout } from "../components/Layout";
 import { About } from "../components/sections/about";
@@ -66,7 +66,10 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-const Home: NextPageWithLayout = ({ writing, learning }: Props) => {
+const Home: NextPageWithLayout = memo(function Home({
+  writing,
+  learning,
+}: Props) {
   return (
     <Box direction="vertical">
       <HeroLayout />
@@ -78,7 +81,7 @@ const Home: NextPageWithLayout = ({ writing, learning }: Props) => {
       <Learning {...learning} />
     </Box>
   );
-};
+});
 
 Home.getLayout = function getLayout(page: ReactElement) {
   return <Layout>{page}</Layout>;
