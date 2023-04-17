@@ -150,9 +150,9 @@ const StyledLink = styled("a", {
           },
 
           "&:hover svg": {
-            color: "$hover",
-            transition: `color $durationQuick $functionDefault`,
-            ["-webkit-transition"]: `color $durationQuick $functionDefault`,
+            fill: "$hover",
+            transition: `fill $durationQuick $functionDefault`,
+            ["-webkit-transition"]: `fill $durationQuick $functionDefault`,
           },
         },
       },
@@ -163,8 +163,8 @@ const StyledLink = styled("a", {
         transition: `text-decoration-color $durationQuick $functionDefault`,
 
         "& svg": {
-          color: "currentcolor",
-          transition: `color $durationQuick $functionDefault`,
+          fill: "currentcolor",
+          transition: `fill $durationQuick $functionDefault`,
         },
 
         "@media(hover)": {
@@ -176,8 +176,8 @@ const StyledLink = styled("a", {
           },
 
           "&:hover svg": {
-            color: "$hover",
-            transition: `color $durationQuick $functionDefault`,
+            fill: "$hover",
+            transition: `fill $durationQuick $functionDefault`,
           },
         },
       },
@@ -190,7 +190,7 @@ const StyledLink = styled("a", {
           },
 
           "&:hover svg": {
-            color: "currentcolor",
+            fill: "currentcolor",
           },
         },
 
