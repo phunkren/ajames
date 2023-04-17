@@ -17,12 +17,14 @@ import { ActionButtons, Layout, LoadingLayout } from "../../components/Layout";
 import {
   BlogSubscriptionLink,
   BuyMeCoffeeLink,
+  Link,
   MarkdownLink,
   TwitterShareLink,
 } from "../../components/Link";
 import {
   Emoji,
   TextAux,
+  TextHeadline,
   TextTitle1,
   TextTitle2,
   TextTitle3,
@@ -51,7 +53,8 @@ import { ONE_HOUR_IN_SECONDS } from "../../util/date";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { Table, TBody, Td, TFoot, Th, THead, Tr } from "../../components/Table";
 import Image from "next/image";
-import { BLUR_DATA_URL } from "../../util/images";
+import { BLUR_DATA_URL, ICON_SIZE } from "../../util/images";
+import { ArrowLeftIcon } from "@radix-ui/react-icons";
 
 export type Frontmatter = {
   title: string;
@@ -220,6 +223,11 @@ const StyledContainer = styled(Box, {
 
   ul: {
     paddingLeft: "$10",
+    paddingBottom: 0,
+
+    "h3 + &": {
+      marginTop: "-$5",
+    },
   },
 });
 
@@ -289,6 +297,12 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
       <BlogSeo frontmatter={frontmatter} />
 
       <Box as="article" direction="vertical" spacingVertical={12}>
+        <Box gap={10} container="l" spacingBottom={4} spacingHorizontal={7}>
+          <Link href="/#writing" variant="secondary">
+            <ArrowLeftIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
+            <TextHeadline>Back to articles</TextHeadline>
+          </Link>
+        </Box>
         <Box direction="vertical" gap={10} container="l">
           <AspectRatio.Root ratio={2 / 1}>
             <StyledHero

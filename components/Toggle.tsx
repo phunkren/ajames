@@ -78,8 +78,10 @@ const SwitchThumb = styled(Switch.Thumb, {
   borderBottomLeftRadius: 2,
   background: "$background",
   transform: "translate3d(0, 0, 0)",
-  transition: "transform $durationDefault $functionDefault",
-  ["-webkit-transition"]: "transform $durationDefault $functionDefault",
+  transition:
+    "transform $transitions$durationDefault $transitions$functionDefault",
+  ["-webkit-transition"]:
+    "transform $transitions$durationDefault $transitions$functionDefault",
   willChange: "transform",
   zIndex: 1,
   width: 26,
@@ -133,7 +135,6 @@ const SwitchRoot = styled(Switch.Root, {
     backgroundColor: slateDark.slate1,
     transition: "opacity 200ms ease-out",
     ["-webkit-transition"]: "opacity 200ms ease-out",
-    willChange: "opacity",
 
     [`.${lightTheme} &`]: {
       opacity: 0.2,

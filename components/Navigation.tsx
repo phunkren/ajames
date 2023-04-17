@@ -65,7 +65,7 @@ const StyledDialogContent = styled(Dialog.Content, {
   width: 300,
   zIndex: 99,
   transform: "translate3d(0,0,0)",
-  animation: `${dialogSlideIn} $transitions$durationDefault $transitions$functionDefault forwards`,
+  animation: `${dialogSlideIn} $transitions$transitions$durationDefault $transitions$transitions$functionDefault forwards`,
   willChange: "transform",
 });
 
@@ -73,10 +73,10 @@ const StyledNavigationMenuContent = styled(NavigationMenu.Content, {
   willChange: "transform, opacity",
 
   '&[data-state="open"]': {
-    animation: `${scaleIn} $transitions$durationDefault $transitions$functionDefault`,
+    animation: `${scaleIn} $transitions$transitions$durationDefault $transitions$transitions$functionDefault`,
   },
   '&[data-state="closed"]': {
-    animation: `${scaleOut} $transitions$durationQuick $transitions$functionDefault`,
+    animation: `${scaleOut} $transitions$transitions$durationQuick $transitions$transitions$functionDefault`,
   },
 });
 

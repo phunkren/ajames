@@ -77,9 +77,9 @@ const StyledCardOuter = styled(Box, {
   borderStyle: "solid",
   overflow: "hidden",
   transition:
-    "background $durationQuick $functionDefault, box-shadow $durationQuick $functionDefault, border-color $durationQuick $functionDefault",
+    "background $transitions$durationQuick $transitions$functionDefault, box-shadow $transitions$durationQuick $transitions$functionDefault, border-color $transitions$durationQuick $transitions$functionDefault",
   ["-webkit-transition"]:
-    "background $durationQuick $functionDefault, box-shadow $durationQuick $functionDefault, border-color $durationQuick $functionDefault",
+    "background $transitions$durationQuick $transitions$functionDefault, box-shadow $transitions$durationQuick $transitions$functionDefault, border-color $transitions$durationQuick $transitions$functionDefault",
 
   "& div[data-radix-aspect-ratio-wrapper]": {
     overflow: "hidden",
@@ -87,15 +87,19 @@ const StyledCardOuter = styled(Box, {
 
   "& img": {
     filter: "brightness(100%)",
-    ["-webkit-transition"]: "filter $durationQuick $functionDefault",
-    transition: "filter $durationQuick $functionDefault",
+    ["-webkit-transition"]:
+      "filter $transitions$durationQuick $transitions$functionDefault",
+    transition:
+      "filter $transitions$durationQuick $transitions$functionDefault",
   },
 
   "& button": {
     outline: "2px solid transparent",
     outlineOffset: 2,
-    transition: "outline $durationQuick $functionDefault",
-    ["-webkit-transition"]: "outline $durationQuick $functionDefault",
+    transition:
+      "outline $transitions$durationQuick $transitions$functionDefault",
+    ["-webkit-transition"]:
+      "outline $transitions$durationQuick $transitions$functionDefault",
   },
 
   "@media(hover)": {
@@ -103,26 +107,32 @@ const StyledCardOuter = styled(Box, {
       boxShadow: "$4",
       borderColor: "$hover",
       transition:
-        "box-shadow $durationDefault $functionDefault, border-color $durationDefault $functionDefault",
+        "box-shadow $transitions$durationDefault $transitions$functionDefault, border-color $transitions$durationDefault $transitions$functionDefault",
       ["-webkit-transition"]:
-        "box-shadow $durationDefault $functionDefault, border-color $durationDefault $functionDefault",
+        "box-shadow $transitions$durationDefault $transitions$functionDefault, border-color $transitions$durationDefault $transitions$functionDefault",
 
       "& img": {
         filter: "brightness(95%)",
-        transition: "filter $durationDefault $functionDefault",
-        ["-webkit-transition"]: "filter $durationDefault $functionDefault",
+        transition:
+          "filter $transitions$durationDefault $transitions$functionDefault",
+        ["-webkit-transition"]:
+          "filter $transitions$durationDefault $transitions$functionDefault",
       },
 
       [`.${darkTheme} &`]: {
         background: whiteA.whiteA3,
-        transition: "background $durationDefault $functionDefault",
-        ["-webkit-transition"]: "background $durationDefault $functionDefault",
+        transition:
+          "background $transitions$durationDefault $transitions$functionDefault",
+        ["-webkit-transition"]:
+          "background $transitions$durationDefault $transitions$functionDefault",
       },
 
       [`.${lightTheme} &`]: {
         background: blackA.blackA2,
-        transition: "background $durationDefault $functionDefault",
-        ["-webkit-transition"]: "background $durationDefault $functionDefault",
+        transition:
+          "background $transitions$durationDefault $transitions$functionDefault",
+        ["-webkit-transition"]:
+          "background $transitions$durationDefault $transitions$functionDefault",
       },
     },
   },
@@ -133,66 +143,71 @@ const StyledCardOuter = styled(Box, {
 
   "& button:focus": {
     outline: "2px solid $focus",
-    transition: "outline $durationDefault $functionDefault",
-    ["-webkit-transition"]: "outline $durationDefault $functionDefault",
+    transition:
+      "outline $transitions$durationDefault $transitions$functionDefault",
+    ["-webkit-transition"]:
+      "outline $transitions$durationDefault $transitions$functionDefault",
   },
 
   "&:active:not(:has(button:active))": {
     boxShadow: "$5",
     borderColor: "$focus",
     transition:
-      "box-shadow $durationDefault $functionDefault, transform $durationDefault $functionDefault, border-color $durationDefault $functionDefault",
+      "box-shadow $transitions$durationDefault $transitions$functionDefault, transform $transitions$durationDefault $transitions$functionDefault, border-color $transitions$durationDefault $transitions$functionDefault",
     ["-webkit-transition"]:
-      "box-shadow $durationDefault $functionDefault, transform $durationDefault $functionDefault, border-color $durationDefault $functionDefault",
+      "box-shadow $transitions$durationDefault $transitions$functionDefault, transform $transitions$durationDefault $transitions$functionDefault, border-color $transitions$durationDefault $transitions$functionDefault",
   },
 
   [`.${darkTheme} &`]: {
     background: whiteA.whiteA2,
     borderColor: whiteA.whiteA5,
     transition:
-      "background $durationQuick $functionDefault, border-color $durationQuick $functionDefault",
+      "background $transitions$durationQuick $transitions$functionDefault, border-color $transitions$durationQuick $transitions$functionDefault",
     ["-webkit-transition"]:
-      "background $durationQuick $functionDefault, border-color $durationQuick $functionDefault",
+      "background $transitions$durationQuick $transitions$functionDefault, border-color $transitions$durationQuick $transitions$functionDefault",
   },
 
   [`.${darkTheme} &:has(a:focus)`]: {
     background: whiteA.whiteA3,
     borderColor: "$focus",
     transition:
-      "background $durationDefault $functionDefault, border-color $durationDefault $functionDefault",
+      "background $transitions$durationDefault $transitions$functionDefault, border-color $transitions$durationDefault $transitions$functionDefault",
     ["-webkit-transition"]:
-      "background $durationDefault $functionDefault, border-color $durationDefault $functionDefault",
+      "background $transitions$durationDefault $transitions$functionDefault, border-color $transitions$durationDefault $transitions$functionDefault",
   },
 
   [`.${darkTheme} &:active:not(:has(button:active))`]: {
     background: whiteA.whiteA4,
-    transition: "background $durationDefault $functionDefault",
-    ["-webkit-transition"]: "background $durationDefault $functionDefault",
+    transition:
+      "background $transitions$durationDefault $transitions$functionDefault",
+    ["-webkit-transition"]:
+      "background $transitions$durationDefault $transitions$functionDefault",
   },
 
   [`.${lightTheme} &`]: {
     background: blackA.blackA1,
     borderColor: whiteA.whiteA4,
     transition:
-      "background $durationDefault $functionDefault, border-color $durationDefault $functionDefault",
+      "background $transitions$durationDefault $transitions$functionDefault, border-color $transitions$durationDefault $transitions$functionDefault",
     ["-webkit-transition"]:
-      "background $durationDefault $functionDefault, border-color $durationDefault $functionDefault",
+      "background $transitions$durationDefault $transitions$functionDefault, border-color $transitions$durationDefault $transitions$functionDefault",
   },
 
   [`.${lightTheme} &:has(a:focus)`]: {
     background: whiteA.whiteA3,
     borderColor: "$focus",
     transition:
-      "background $durationDefault $functionDefault, border-color $durationDefault $functionDefault",
+      "background $transitions$durationDefault $transitions$functionDefault, border-color $transitions$durationDefault $transitions$functionDefault",
     ["-webkit-transition"]:
-      "background $durationDefault $functionDefault, border-color $durationDefault $functionDefault",
+      "background $transitions$durationDefault $transitions$functionDefault, border-color $transitions$durationDefault $transitions$functionDefault",
   },
 
   [`.${lightTheme} &:active:not(:has(button:active))`]: {
     background: blackA.blackA3,
-    transition: "background $durationDefault $functionDefault",
+    transition:
+      "background $transitions$durationDefault $transitions$functionDefault",
     ["-webkit-transition"]:
-      "background $durationDefault $functionDefault, border-color $durationDefault $functionDefault",
+      "background $transitions$durationDefault $transitions$functionDefault, border-color $transitions$durationDefault $transitions$functionDefault",
   },
 });
 

@@ -205,8 +205,8 @@ export const StyledIconButton = styled("button", {
   background: "transparent",
   color: "currentcolor",
   borderColor: "$foreground",
-  transition: `box-shadow $durationQuick $functionDefault, background $durationQuick $functionDefault, color $durationQuick $functionDefault, transform $durationQuick $functionDefault`,
-  ["-webkit-transition"]: `box-shadow $durationQuick $functionDefault, background $durationQuick $functionDefault, color $durationQuick $functionDefault, transform $durationQuick $functionDefault`,
+  transition: `box-shadow $transitions$durationQuick $transitions$functionDefault, background $transitions$durationQuick $transitions$functionDefault, color $transitions$durationQuick $transitions$functionDefault, transform $transitions$durationQuick $transitions$functionDefault`,
+  ["-webkit-transition"]: `box-shadow $transitions$durationQuick $transitions$functionDefault, background $transitions$durationQuick $transitions$functionDefault, color $transitions$durationQuick $transitions$functionDefault, transform $transitions$durationQuick $transitions$functionDefault`,
   transform: "scale(1)",
   willChange: "transform",
 
@@ -223,16 +223,16 @@ export const StyledIconButton = styled("button", {
       boxShadow: "$4",
       background: "$foreground",
       color: "$background",
-      transition: `box-shadow $durationDefault $functionDefault, background $durationDefault $functionDefault, color $durationDefault $functionDefault`,
-      ["-webkit-transition"]: `box-shadow $durationDefault $functionDefault, background $durationDefault $functionDefault, color $durationDefault $functionDefault`,
+      transition: `box-shadow $transitions$durationDefault $transitions$functionDefault, background $transitions$durationDefault $transitions$functionDefault, color $transitions$durationDefault $transitions$functionDefault`,
+      ["-webkit-transition"]: `box-shadow $transitions$durationDefault $transitions$functionDefault, background $transitions$durationDefault $transitions$functionDefault, color $transitions$durationDefault $transitions$functionDefault`,
     },
   },
 
   "&:active": {
     boxShadow: "$5",
     transform: "scale($transitions$transformScale)",
-    transition: `transform $durationDefault $functionDefault`,
-    ["-webkit-transition"]: `transform $durationDefault $functionDefault`,
+    transition: `transform $transitions$durationDefault $transitions$functionDefault`,
+    ["-webkit-transition"]: `transform $transitions$durationDefault $transitions$functionDefault`,
   },
 
   variants: {
@@ -284,10 +284,10 @@ const StyledToastRoot = styled(Toast.Root, {
   boxShadow: "$2",
 
   '&[data-state="open"]': {
-    animation: `${scaleIn} $durationDefault $functionDefault`,
+    animation: `${scaleIn} $transitions$durationDefault $transitions$functionDefault`,
   },
   '&[data-state="closed"]': {
-    animation: `${scaleOut} $durationQuick $functionDefault`,
+    animation: `${scaleOut} $transitions$durationQuick $transitions$functionDefault`,
   },
 
   "@media(hover)": {

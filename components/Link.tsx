@@ -58,21 +58,21 @@ type CoffeeProps = CSS & {
 
 const LINK_BUTTON_PROPS = {
   boxShadow: "$1",
-  transition: `box-shadow $durationQuick $functionDefault, transform $durationQuick $functionDefault`,
-  ["-webkit-transition"]: `box-shadow $durationQuick $functionDefault, transform $durationQuick $functionDefault`,
+  transition: `box-shadow $transitions$durationQuick $transitions$functionDefault, transform $transitions$durationQuick $transitions$functionDefault`,
+  ["-webkit-transition"]: `box-shadow $transitions$durationQuick $transitions$functionDefault, transform $transitions$durationQuick $transitions$functionDefault`,
 
   "@media(hover)": {
     "&:hover": {
       boxShadow: "$4",
-      transition: `box-shadow $durationDefault $functionDefault`,
-      ["-webkit-transition"]: `box-shadow $durationDefault $functionDefault`,
+      transition: `box-shadow $transitions$durationDefault $transitions$functionDefault`,
+      ["-webkit-transition"]: `box-shadow $transitions$durationDefault $transitions$functionDefault`,
     },
   },
 
   "&:active": {
     boxShadow: "$5",
-    transition: `transform $durationDefault $functionDefault`,
-    ["-webkit-transition"]: `transform $durationDefault $functionDefault`,
+    transition: `transform $transitions$durationDefault $transitions$functionDefault`,
+    ["-webkit-transition"]: `transform $transitions$durationDefault $transitions$functionDefault`,
   },
 };
 
@@ -96,6 +96,10 @@ const StyledLink = styled("a", {
   textUnderlineOffset: "$space$1",
   width: "fit-content",
 
+  "& svg": {
+    color: "currentcolor",
+  },
+
   "&[aria-current='page']": {
     color: "$blue11",
     textDecorationLine: "underline",
@@ -111,8 +115,8 @@ const StyledLink = styled("a", {
         color: "unset",
         backgroundImage: `linear-gradient(90deg, $blue11 0.04%, $hover 100.04%)`,
         backgroundClip: "text",
-        transition: `text-decoration-color $durationQuick $functionDefault`,
-        ["-webkit-transition"]: `text-decoration-color $durationQuick $functionDefault`,
+        transition: `text-decoration-color $transitions$durationQuick $transitions$functionDefault`,
+        ["-webkit-transition"]: `text-decoration-color $transitions$durationQuick $transitions$functionDefault`,
         ["-webkit-text-fill-color"]: "transparent",
 
         textDecorationLine: "underline",
@@ -120,8 +124,8 @@ const StyledLink = styled("a", {
         "@media(hover)": {
           "&:hover": {
             textDecorationColor: "$hover",
-            transition: `text-decoration-color $durationDefault $functionDefault`,
-            ["-webkit-transition"]: `text-decoration-color $durationDefault $functionDefault`,
+            transition: `text-decoration-color $transitions$durationDefault $transitions$functionDefault`,
+            ["-webkit-transition"]: `text-decoration-color $transitions$durationDefault $transitions$functionDefault`,
 
             /** React Balancer */
             "& span": {
@@ -138,21 +142,16 @@ const StyledLink = styled("a", {
         },
       },
       secondary: {
-        color: "currentcolor",
-
-        "& svg": {
-          color: "currentcolor",
-        },
-
         "@media(hover)": {
           "&:not([aria-current='page']):hover": {
             animation: `${secondaryFade} $transitions$durationDefault $transitions$functionDefault forwards`,
           },
 
           "&:hover svg": {
+            color: "$hover",
             fill: "$hover",
-            transition: `fill $durationQuick $functionDefault`,
-            ["-webkit-transition"]: `fill $durationQuick $functionDefault`,
+            transition:
+              "color $transitions$durationDefault $transitions$functionDefault",
           },
         },
       },
@@ -160,11 +159,11 @@ const StyledLink = styled("a", {
         textDecorationLine: "underline",
         textDecorationStyle: "dotted",
         textDecorationColor: "currentcolor",
-        transition: `text-decoration-color $durationQuick $functionDefault`,
+        transition: `text-decoration-color $transitions$durationQuick $transitions$functionDefault`,
 
         "& svg": {
           fill: "currentcolor",
-          transition: `fill $durationQuick $functionDefault`,
+          transition: `fill $transitions$durationQuick $transitions$functionDefault`,
         },
 
         "@media(hover)": {
@@ -172,12 +171,7 @@ const StyledLink = styled("a", {
             color: "inherit",
             textDecorationStyle: "solid",
             textDecorationColor: "$hover",
-            transition: `text-decoration-color $durationDefault $functionDefault`,
-          },
-
-          "&:hover svg": {
-            fill: "$hover",
-            transition: `fill $durationQuick $functionDefault`,
+            transition: `text-decoration-color $transitions$durationDefault $transitions$functionDefault`,
           },
         },
       },
@@ -187,10 +181,6 @@ const StyledLink = styled("a", {
         "@media(hover)": {
           "&:hover": {
             color: "currentcolor",
-          },
-
-          "&:hover svg": {
-            fill: "currentcolor",
           },
         },
 
@@ -204,22 +194,22 @@ const StyledLink = styled("a", {
         alignItems: "center",
         justifyContent: "center",
         transform: "scale(1)",
-        transition: `color $durationQuick $functionDefault`,
-        ["-webkit-transition"]: `color $durationQuick $functionDefault`,
+        transition: `color $transitions$durationQuick $transitions$functionDefault`,
+        ["-webkit-transition"]: `color $transitions$durationQuick $transitions$functionDefault`,
         willChange: "transform",
 
         "@media(hover)": {
           "&:hover": {
             color: "$hover",
-            transition: `color $durationDefault $functionDefault`,
-            ["-webkit-transition"]: `color $durationDefault $functionDefault`,
+            transition: `color $transitions$durationDefault $transitions$functionDefault`,
+            ["-webkit-transition"]: `color $transitions$durationDefault $transitions$functionDefault`,
           },
         },
 
         "&:active": {
           transform: "scale($transitions$transformScale)",
-          transition: `transform $durationDefault $functionDefault`,
-          ["-webkit-transition"]: `transform $durationDefault $functionDefault`,
+          transition: `transform $transitions$durationDefault $transitions$functionDefault`,
+          ["-webkit-transition"]: `transform $transitions$durationDefault $transitions$functionDefault`,
         },
       },
     },
@@ -265,8 +255,7 @@ export const StyledIconLink = styled(Link, {
   borderColor: "$foreground",
   backgroundColor: "transparent",
   color: "currentcolor",
-  transform: "scale(1)",
-  transition: `box-shadow $durationQuick $functionDefault, border-color $durationQuick $functionDefault, background-color $durationQuick $functionDefault`,
+  transition: `box-shadow $transitions$durationQuick $transitions$functionDefault, border-color $transitions$durationQuick $transitions$functionDefault, background-color $transitions$durationQuick $transitions$functionDefault`,
 
   "@media(hover)": {
     "&:hover": {
@@ -274,13 +263,12 @@ export const StyledIconLink = styled(Link, {
       borderColor: "$foreground",
       backgroundColor: "$foreground",
       color: "$background",
-      transition: `box-shadow $durationDefault $functionDefault, border-color $durationDefault $functionDefault, color $durationDefault $functionDefault`,
+      transition: `box-shadow $transitions$durationDefault $transitions$functionDefault, border-color $transitions$durationDefault $transitions$functionDefault`,
     },
   },
 
   "&:active": {
     boxShadow: "$5",
-    transition: `transform $durationDefault $functionDefault`,
   },
 });
 

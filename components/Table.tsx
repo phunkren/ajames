@@ -2,12 +2,9 @@ import { styled } from "../stitches.config";
 
 export const Table = styled("table", {
   borderCollapse: "collapse",
-  borderTopWidth: 0,
-  borderRightWidth: 0,
-  borderBottomWidth: 0,
-  borderLeftWidth: 0,
+  borderWidth: 2,
   borderStyle: "solid",
-  borderColor: "$foregroundMuted",
+  borderColor: "$foreground",
   boxShadow: "$1",
 });
 
@@ -24,18 +21,17 @@ export const Tr = styled("tr", {});
 
 export const Th = styled("th", {
   padding: "$2 $3",
-  color: "unset",
-  backgroundImage: `radial-gradient(circle at bottom, $hover, $focus)`,
-  backgroundClip: "text",
-  ["-webkit-text-fill-color"]: "transparent",
+  backgroundColor: "$backgroundMuted",
+  borderRightWidth: 1,
+  borderBottomWidth: 2,
+  borderLeftWidth: 1,
+  borderStyle: "solid",
+  borderColor: "$foregroundMuted",
 });
 
 export const Td = styled("td", {
   padding: "$2 $3",
-  borderTopWidth: 0,
-  borderRightWidth: 0,
-  borderBottomWidth: 0,
-  borderLeftWidth: 0,
+  borderWidth: 1,
   borderStyle: "solid",
   borderColor: "$foregroundMuted",
 });
