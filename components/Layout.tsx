@@ -91,9 +91,9 @@ const heroOne = css({
   top: "-10vh",
   transformOrigin: "top left",
   transform: "rotate(33deg) translateZ(0)",
-  background: `linear-gradient(33deg, ${hslToHex(
-    blueDark.blue2
-  )} 0%, ${hslToHex(blueDark.blue4)} 50%, ${hslToHex(blueDark.blue6)} 100%)`,
+  background: `linear-gradient(-45deg, ${hslToHex(
+    blueDark.blue3
+  )} 0%, ${hslToHex(blueDark.blue4)} 50%, ${hslToHex(blueDark.blue5)} 100%)`,
   zIndex: 1,
 });
 
@@ -103,10 +103,10 @@ const heroTwo = css({
   left: "20vw",
   top: "5vh",
   background: `linear-gradient(240deg, ${hslToHex(
-    blueDark.blue7
-  )} 0%, ${hslToHex(blueDark.blue6)} 50%, ${hslToHex(blueDark.blue4)} 100%)`,
+    blueDark.blue9
+  )} 0%, ${hslToHex(blueDark.blue7)} 50%, ${hslToHex(blueDark.blue5)} 100%)`,
   transformOrigin: "top left",
-  transform: "rotate(-33deg) translateZ(0)",
+  transform: "rotate(-45deg) translateZ(0)",
   zIndex: 2,
 });
 
@@ -115,30 +115,30 @@ const heroThree = css({
   left: "36vw",
   width: "28vw",
   height: "34vh",
-  background: `linear-gradient(140deg, ${hslToHex(redDark.red9)} 0%, ${hslToHex(
-    redDark.red6
-  )} 50%,  ${hslToHex(redDark.red4)} 100%)`,
+  background: `linear-gradient(140deg, ${hslToHex(
+    redDark.red11
+  )} 0%, ${hslToHex(redDark.red9)} 50%,  ${hslToHex(redDark.red7)} 100%)`,
   transformOrigin: "bottom left",
-  transform: "rotate(-33deg) translateZ(0)",
+  transform: "rotate(-45deg) translateZ(0)",
   zIndex: 3,
 });
 
 const heroFour = css({
   top: "-25vh",
-  left: "50vw",
+  left: "45vw",
   width: "33vw",
   height: "124vh",
-  background: `linear-gradient(33deg, ${hslToHex(redDark.red2)} 0%, ${hslToHex(
+  background: `linear-gradient(33deg, ${hslToHex(redDark.red3)} 0%, ${hslToHex(
     redDark.red4
-  )} 50%, ${hslToHex(redDark.red6)} 100%)`,
+  )} 50%, ${hslToHex(redDark.red5)} 100%)`,
   transformOrigin: "bottom left",
-  transform: "rotate(33deg) translateZ(0)",
+  transform: "rotate(45deg) translateZ(0)",
   zIndex: 4,
 });
 
 const StyledBox = styled(Box, {
   position: "absolute",
-  filter: "blur(375px)",
+  filter: "blur(400px)",
 });
 
 const HeaderBox = styled(Box, {
