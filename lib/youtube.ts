@@ -51,7 +51,7 @@ export async function getYoutubeData() {
     youtube.playlistItems.list({
       part: ["snippet", "contentDetails"],
       playlistId: item.id,
-      maxResults: 12,
+      maxResults: 10,
     })
   );
 
