@@ -17,6 +17,7 @@ import headshot from "../public/images/headshot.png";
 import { PERSONAL } from "../util/data";
 import { useScroll } from "../hooks/useScroll";
 import { useRouter } from "next/router";
+import { hslToHex } from "../util/images";
 
 type LayoutProps = {
   children: ReactElement;
@@ -84,57 +85,68 @@ const StyledImage = styled(Image, {
 });
 
 const heroOne = css({
-  left: "20vw",
+  width: "33vw",
+  height: "110vh",
+  left: "17vw",
+  top: "-10vh",
   transformOrigin: "top left",
-  transform: "rotate(25deg)",
-  background: `linear-gradient(270deg, ${blueDark.blue3} 0%, ${blueDark.blue4} 25%, ${blueDark.blue5} 50%, ${blueDark.blue6} 75%, ${blueDark.blue7} 100%)`,
+  transform: "rotate(33deg) translateZ(0)",
+  background: `linear-gradient(270deg, ${hslToHex(
+    blueDark.blue2
+  )} 0%, ${hslToHex(blueDark.blue3)} 25%, ${hslToHex(
+    blueDark.blue4
+  )} 50%, ${hslToHex(blueDark.blue5)} 75%, ${hslToHex(blueDark.blue6)} 100%)`,
   zIndex: 1,
 });
 
 const heroTwo = css({
-  background: `linear-gradient(150deg, ${blueDark.blue9} 0%, ${blueDark.blue8} 25%, ${blueDark.blue7} 50%, ${blueDark.blue6} 75%, ${blueDark.blue5} 100%)`,
-  left: "-20vw",
+  width: "33vw",
+  height: "117vh",
+  left: "25vw",
+  top: "5vh",
+  background: `linear-gradient(150deg, ${hslToHex(
+    blueDark.blue9
+  )} 0%, ${hslToHex(blueDark.blue8)} 25%, ${hslToHex(
+    blueDark.blue7
+  )} 50%, ${hslToHex(blueDark.blue6)} 75%, ${hslToHex(blueDark.blue5)} 100%)`,
   transformOrigin: "top left",
-  transform: "rotate(-35deg)",
+  transform: "rotate(-33deg) translateZ(0)",
   zIndex: 2,
 });
 
 const heroThree = css({
-  background: `linear-gradient(120deg, ${redDark.red9} 0%, ${redDark.red8} 25%, ${redDark.red7} 50%, ${redDark.red6} 75%, ${redDark.red5} 100%)`,
-  left: "140vw",
-  top: "64vh",
-  bottom: "-150vh",
+  top: "96vh",
+  left: "36vw",
+  width: "28vw",
+  height: "34vh",
+  background: `linear-gradient(120deg, ${hslToHex(redDark.red9)} 0%, ${hslToHex(
+    redDark.red8
+  )} 25%, ${hslToHex(redDark.red7)} 50%, ${hslToHex(
+    redDark.red6
+  )} 75%, ${hslToHex(redDark.red5)} 100%)`,
   transformOrigin: "bottom left",
-  transform: "rotate(-45deg)",
+  transform: "rotate(-33deg) translateZ(0)",
   zIndex: 3,
 });
 
 const heroFour = css({
-  background: `linear-gradient(60deg, ${redDark.red8} 0%, ${redDark.red7} 25%, ${redDark.red6} 50%, ${redDark.red5} 75%, ${redDark.red4} 100%)`,
-  left: "0vw",
+  top: "-25vh",
+  left: "60vw",
+  width: "33vw",
+  height: "124vh",
+  background: `linear-gradient(60deg, ${hslToHex(redDark.red8)} 0%, ${hslToHex(
+    redDark.red7
+  )} 25%, ${hslToHex(redDark.red6)} 50%, ${hslToHex(
+    redDark.red5
+  )} 75%, ${hslToHex(redDark.red4)} 100%)`,
   transformOrigin: "bottom left",
-  transform: "rotate(30deg)",
+  transform: "rotate(33deg) translateZ(0)",
   zIndex: 4,
 });
 
-const HeroBlur = styled(Box, {
-  content: "",
-  position: "absolute",
-  background: "rgba(0,0,0,0.4)",
-  inset: 0,
-  width: "100vw",
-  height: "100vh",
-  zIndex: 5,
-});
-
 const StyledBox = styled(Box, {
-  width: "75vw",
   position: "absolute",
-  top: "-50vw",
-  bottom: "-50vw",
-  height: "200vw",
-  filter: "blur(250px)",
-  willChange: "filter, transform",
+  filter: "blur(500px)",
 });
 
 const HeaderBox = styled(Box, {
@@ -263,7 +275,6 @@ export const HeroLayout = memo(function HeroLayout() {
         <StyledBox className={heroTwo} />
         <StyledBox className={heroThree} />
         <StyledBox className={heroFour} />
-        <HeroBlur />
 
         <StyledImage
           src={headshot}
