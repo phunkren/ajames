@@ -41,6 +41,7 @@ const StyledHeroLayout = styled(Box, {
 const StyledHeroContainer = styled(Box, {
   background: slateDark.slate1,
   color: slateDark.slate12,
+  overflow: "hidden",
 });
 
 const StyledImage = styled(Image, {
@@ -52,6 +53,7 @@ const StyledImage = styled(Image, {
   transition: "filter $durationDefault $functionDefault",
   pointerEvents: "none",
   objectPosition: "bottom",
+  zIndex: 52,
 
   "@supports not (height: 100svh)": {
     height: "90vh",
@@ -111,20 +113,24 @@ const heroFour = css({
   transform: "rotate(30deg)",
 });
 
+const HeroBlur = styled(Box, {
+  content: "",
+  position: "absolute",
+  background: "rgba(0,0,0,0.4)",
+  inset: 0,
+  width: "100vw",
+  height: "100vh",
+  zIndex: 2,
+});
+
 const StyledBox = styled(Box, {
   width: "75vw",
   position: "absolute",
   top: "-50vw",
   bottom: "-50vw",
   height: "200vw",
-  // filter: "blur(500px)",
-
-  "&::after": {
-    content: "",
-    position: "fixed",
-    inset: 0,
-    background: "rgba(0,0,0,0.4)",
-  },
+  filter: "blur(250px)",
+  zIndex: 1,
 });
 
 const HeaderBox = styled(Box, {
@@ -253,6 +259,7 @@ export const HeroLayout = memo(function HeroLayout() {
         <StyledBox className={heroTwo} />
         <StyledBox className={heroThree} />
         <StyledBox className={heroFour} />
+        <HeroBlur />
 
         <StyledImage
           src={headshot}
@@ -281,6 +288,7 @@ export const HeroLayout = memo(function HeroLayout() {
                   "@portrait": "center",
                   "@landscape": "flex-start",
                 }}
+                css={{ zIndex: 3 }}
                 flexGrow
               >
                 <TextTitle
