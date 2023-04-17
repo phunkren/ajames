@@ -134,6 +134,7 @@ const StyledBox = styled(Box, {
   bottom: "-50vw",
   height: "200vw",
   filter: "blur(250px)",
+  willChange: "filter, transform",
 });
 
 const HeaderBox = styled(Box, {
