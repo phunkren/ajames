@@ -90,7 +90,7 @@ const heroOne = css({
   left: "17vw",
   top: "-10vh",
   transformOrigin: "top left",
-  transform: "rotate(33deg) translateZ(0)",
+  transform: "rotate(33deg) translate3d(0,0,0)",
   background: `linear-gradient(-45deg, ${hslToHex(
     blueDark.blue3
   )} 0%, ${hslToHex(blueDark.blue4)} 50%, ${hslToHex(blueDark.blue5)} 100%)`,
@@ -106,7 +106,7 @@ const heroTwo = css({
     blueDark.blue9
   )} 0%, ${hslToHex(blueDark.blue7)} 50%, ${hslToHex(blueDark.blue5)} 100%)`,
   transformOrigin: "top left",
-  transform: "rotate(-45deg) translateZ(0)",
+  transform: "rotate(-45deg) translate3d(0,0,0)",
   zIndex: 2,
 });
 
@@ -119,7 +119,7 @@ const heroThree = css({
     redDark.red11
   )} 0%, ${hslToHex(redDark.red9)} 50%,  ${hslToHex(redDark.red7)} 100%)`,
   transformOrigin: "bottom left",
-  transform: "rotate(-45deg) translateZ(0)",
+  transform: "rotate(-45deg) translate3d(0,0,0)",
   zIndex: 3,
 });
 
@@ -132,13 +132,14 @@ const heroFour = css({
     redDark.red4
   )} 50%, ${hslToHex(redDark.red5)} 100%)`,
   transformOrigin: "bottom left",
-  transform: "rotate(45deg) translateZ(0)",
+  transform: "rotate(45deg) translate3d(0,0,0)",
   zIndex: 4,
 });
 
 const StyledBox = styled(Box, {
   position: "absolute",
   filter: "blur(400px)",
+  willChange: "transform, filter",
 });
 
 const HeaderBox = styled(Box, {
