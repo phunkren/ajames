@@ -91,24 +91,20 @@ const heroOne = css({
   top: "-10vh",
   transformOrigin: "top left",
   transform: "rotate(33deg) translateZ(0)",
-  background: `linear-gradient(270deg, ${hslToHex(
+  background: `linear-gradient(33deg, ${hslToHex(
     blueDark.blue2
-  )} 0%, ${hslToHex(blueDark.blue3)} 25%, ${hslToHex(
-    blueDark.blue4
-  )} 50%, ${hslToHex(blueDark.blue5)} 75%, ${hslToHex(blueDark.blue6)} 100%)`,
+  )} 0%, ${hslToHex(blueDark.blue4)} 50%, ${hslToHex(blueDark.blue6)} 100%)`,
   zIndex: 1,
 });
 
 const heroTwo = css({
   width: "33vw",
   height: "117vh",
-  left: "25vw",
+  left: "20vw",
   top: "5vh",
-  background: `linear-gradient(150deg, ${hslToHex(
-    blueDark.blue9
-  )} 0%, ${hslToHex(blueDark.blue8)} 25%, ${hslToHex(
+  background: `linear-gradient(240deg, ${hslToHex(
     blueDark.blue7
-  )} 50%, ${hslToHex(blueDark.blue6)} 75%, ${hslToHex(blueDark.blue5)} 100%)`,
+  )} 0%, ${hslToHex(blueDark.blue6)} 50%, ${hslToHex(blueDark.blue4)} 100%)`,
   transformOrigin: "top left",
   transform: "rotate(-33deg) translateZ(0)",
   zIndex: 2,
@@ -119,11 +115,9 @@ const heroThree = css({
   left: "36vw",
   width: "28vw",
   height: "34vh",
-  background: `linear-gradient(120deg, ${hslToHex(redDark.red9)} 0%, ${hslToHex(
-    redDark.red8
-  )} 25%, ${hslToHex(redDark.red7)} 50%, ${hslToHex(
+  background: `linear-gradient(140deg, ${hslToHex(redDark.red9)} 0%, ${hslToHex(
     redDark.red6
-  )} 75%, ${hslToHex(redDark.red5)} 100%)`,
+  )} 50%,  ${hslToHex(redDark.red4)} 100%)`,
   transformOrigin: "bottom left",
   transform: "rotate(-33deg) translateZ(0)",
   zIndex: 3,
@@ -131,14 +125,12 @@ const heroThree = css({
 
 const heroFour = css({
   top: "-25vh",
-  left: "60vw",
+  left: "50vw",
   width: "33vw",
   height: "124vh",
-  background: `linear-gradient(60deg, ${hslToHex(redDark.red8)} 0%, ${hslToHex(
-    redDark.red7
-  )} 25%, ${hslToHex(redDark.red6)} 50%, ${hslToHex(
-    redDark.red5
-  )} 75%, ${hslToHex(redDark.red4)} 100%)`,
+  background: `linear-gradient(33deg, ${hslToHex(redDark.red2)} 0%, ${hslToHex(
+    redDark.red4
+  )} 50%, ${hslToHex(redDark.red6)} 100%)`,
   transformOrigin: "bottom left",
   transform: "rotate(33deg) translateZ(0)",
   zIndex: 4,
@@ -146,7 +138,7 @@ const heroFour = css({
 
 const StyledBox = styled(Box, {
   position: "absolute",
-  filter: "blur(500px)",
+  filter: "blur(375px)",
 });
 
 const HeaderBox = styled(Box, {
