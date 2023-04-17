@@ -18,6 +18,6 @@ const StyledBox = styled("div", {
   },
 });
 
-export const Box = memo((props: BoxProps) => {
+export const Box = memo(function Box(props: BoxProps) {
   return <StyledBox {...props} />;
 });
