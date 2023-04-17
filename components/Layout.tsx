@@ -96,6 +96,9 @@ const HeroOne = styled(Box, {
   background: `linear-gradient(-45deg, ${hslToHex(
     blueDark.blue3
   )} 0%, ${hslToHex(blueDark.blue4)} 50%, ${hslToHex(blueDark.blue5)} 100%)`,
+  backgroundImage: `-webkit-linear-gradient(-45deg, ${hslToHex(
+    blueDark.blue3
+  )} 0%, ${hslToHex(blueDark.blue4)} 50%, ${hslToHex(blueDark.blue5)} 100%)`,
   zIndex: 1,
 });
 
@@ -108,6 +111,9 @@ const HeroTwo = styled(Box, {
   left: "20vw",
   top: "5vh",
   background: `linear-gradient(240deg, ${hslToHex(
+    blueDark.blue9
+  )} 0%, ${hslToHex(blueDark.blue7)} 50%, ${hslToHex(blueDark.blue5)} 100%)`,
+  backgroundImage: `-webkit-linear-gradient(240deg, ${hslToHex(
     blueDark.blue9
   )} 0%, ${hslToHex(blueDark.blue7)} 50%, ${hslToHex(blueDark.blue5)} 100%)`,
   transformOrigin: "top left",
@@ -126,6 +132,9 @@ const HeroThree = styled(Box, {
   background: `linear-gradient(140deg, ${hslToHex(
     redDark.red11
   )} 0%, ${hslToHex(redDark.red9)} 50%,  ${hslToHex(redDark.red7)} 100%)`,
+  backgroundImage: `-webkit-linear-gradient(140deg, ${hslToHex(
+    redDark.red11
+  )} 0%, ${hslToHex(redDark.red9)} 50%,  ${hslToHex(redDark.red7)} 100%)`,
   transformOrigin: "bottom left",
   transform: "rotate(-45deg)",
   zIndex: 3,
@@ -142,6 +151,9 @@ const HeroFour = styled(Box, {
   background: `linear-gradient(33deg, ${hslToHex(redDark.red3)} 0%, ${hslToHex(
     redDark.red4
   )} 50%, ${hslToHex(redDark.red5)} 100%)`,
+  backgroundImage: `-webkit-linear-gradient(33deg, ${hslToHex(
+    redDark.red3
+  )} 0%, ${hslToHex(redDark.red4)} 50%, ${hslToHex(redDark.red5)} 100%)`,
   transformOrigin: "bottom left",
   transform: "rotate(45deg)",
   zIndex: 4,
