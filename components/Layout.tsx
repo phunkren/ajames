@@ -53,7 +53,7 @@ const StyledImage = styled(Image, {
   transition: "filter $durationDefault $functionDefault",
   pointerEvents: "none",
   objectPosition: "bottom",
-  zIndex: 52,
+  zIndex: 6,
 
   "@supports not (height: 100svh)": {
     height: "90vh",
@@ -88,6 +88,7 @@ const heroOne = css({
   transformOrigin: "top left",
   transform: "rotate(25deg)",
   background: `linear-gradient(270deg, ${blueDark.blue3} 0%, ${blueDark.blue4} 25%, ${blueDark.blue5} 50%, ${blueDark.blue6} 75%, ${blueDark.blue7} 100%)`,
+  zIndex: 1,
 });
 
 const heroTwo = css({
@@ -95,6 +96,7 @@ const heroTwo = css({
   left: "-20vw",
   transformOrigin: "top left",
   transform: "rotate(-35deg)",
+  zIndex: 2,
 });
 
 const heroThree = css({
@@ -104,6 +106,7 @@ const heroThree = css({
   bottom: "-150vh",
   transformOrigin: "bottom left",
   transform: "rotate(-45deg)",
+  zIndex: 3,
 });
 
 const heroFour = css({
@@ -111,6 +114,7 @@ const heroFour = css({
   left: "0vw",
   transformOrigin: "bottom left",
   transform: "rotate(30deg)",
+  zIndex: 4,
 });
 
 const HeroBlur = styled(Box, {
@@ -120,7 +124,7 @@ const HeroBlur = styled(Box, {
   inset: 0,
   width: "100vw",
   height: "100vh",
-  zIndex: 2,
+  zIndex: 5,
 });
 
 const StyledBox = styled(Box, {
@@ -130,7 +134,6 @@ const StyledBox = styled(Box, {
   bottom: "-50vw",
   height: "200vw",
   filter: "blur(250px)",
-  zIndex: 1,
 });
 
 const HeaderBox = styled(Box, {
@@ -288,7 +291,7 @@ export const HeroLayout = memo(function HeroLayout() {
                   "@portrait": "center",
                   "@landscape": "flex-start",
                 }}
-                css={{ zIndex: 3 }}
+                css={{ zIndex: 6 }}
                 flexGrow
               >
                 <TextTitle
