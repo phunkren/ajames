@@ -140,6 +140,8 @@ export const CardScrollViewport = styled(ScrollArea.Viewport, {
   scrollPadding: "0 $1",
   width: "100%",
   height: "100%",
+  transform: "translateZ(0)",
+  ["-webkit-transform"]: "translateZ(0)",
 });
 
 export const DrawerScrollRoot = styled(ScrollArea.Root, {

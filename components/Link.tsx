@@ -58,10 +58,8 @@ type CoffeeProps = CSS & {
 
 const LINK_BUTTON_PROPS = {
   boxShadow: "$1",
-  transform: "scale(1)",
   transition: `box-shadow $durationQuick $functionDefault, transform $durationQuick $functionDefault`,
   ["-webkit-transition"]: `box-shadow $durationQuick $functionDefault, transform $durationQuick $functionDefault`,
-  willChange: "transform",
 
   "@media(hover)": {
     "&:hover": {
@@ -73,7 +71,6 @@ const LINK_BUTTON_PROPS = {
 
   "&:active": {
     boxShadow: "$5",
-    transform: "scale($transitions$transformScale)",
     transition: `transform $durationDefault $functionDefault`,
     ["-webkit-transition"]: `transform $durationDefault $functionDefault`,
   },
@@ -207,8 +204,8 @@ const StyledLink = styled("a", {
         alignItems: "center",
         justifyContent: "center",
         transform: "scale(1)",
-        transition: `transform $durationQuick $functionDefault, color $durationQuick $functionDefault`,
-        ["-webkit-transition"]: `transform $durationQuick $functionDefault, color $durationQuick $functionDefault`,
+        transition: `color $durationQuick $functionDefault`,
+        ["-webkit-transition"]: `color $durationQuick $functionDefault`,
         willChange: "transform",
 
         "@media(hover)": {
@@ -269,8 +266,7 @@ export const StyledIconLink = styled(Link, {
   backgroundColor: "transparent",
   color: "currentcolor",
   transform: "scale(1)",
-  transition: `box-shadow $durationQuick $functionDefault, border-color $durationQuick $functionDefault, transform $durationQuick $functionDefault, background-color $durationQuick $functionDefault`,
-  willChange: "transform",
+  transition: `box-shadow $durationQuick $functionDefault, border-color $durationQuick $functionDefault, background-color $durationQuick $functionDefault`,
 
   "@media(hover)": {
     "&:hover": {
@@ -284,8 +280,7 @@ export const StyledIconLink = styled(Link, {
 
   "&:active": {
     boxShadow: "$5",
-    transform: "scale($transitions$transformScale)",
-    transition: `transform $durationDefault $functionDefault, transform $durationDefault $functionDefault`,
+    transition: `transform $durationDefault $functionDefault`,
   },
 });
 

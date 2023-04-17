@@ -20,11 +20,7 @@ import {
   LinkedInConnectLink,
 } from "../Link";
 import { TextAux, TextBody, TextTitle1, TextTitle2, TextTitle3 } from "../Text";
-import {
-  YOUTUBE_CHANNEL_URL,
-  YOUTUBE_SHARE_TEXT,
-  YOUTUBE_THUMBNAIL_URL,
-} from "../../util/youtube";
+import { YOUTUBE_CHANNEL_URL, YOUTUBE_SHARE_TEXT } from "../../util/youtube";
 import { buildUrl } from "../../util/url";
 import { css, styled } from "../../stitches.config";
 import {
@@ -33,7 +29,6 @@ import {
   PlaylistVideosPreview,
   VideoPreview,
 } from "../../util/youtube";
-import { CardScrollRoot, CardScrollViewport, Scrollbar } from "../Scroll";
 import { SITE } from "../../util/data";
 import { ShareButton } from "../Button";
 import { ICON_SIZE } from "../../util/images";
@@ -298,34 +293,39 @@ export const Learning = ({
                       {playlist.description}
                     </TextBody>
 
-                    <CardScrollRoot>
-                      <CardScrollViewport>
-                        <StyledVideoCardContainer spacingVertical={10}>
-                          {playlistVideosPreview[playlist.id].map(
-                            (playlistVideo) => (
-                              <VideoCard
-                                id={playlist.id}
-                                key={playlistVideo.title}
-                                url={playlistVideo.url}
-                                image={playlistVideo.thumbnail.src}
-                                title={playlistVideo.title}
-                                publishDate={playlistVideo.publishedAt}
-                                channel={playlistVideo.videoOwnerChannelTitle}
-                                css={{
-                                  scrollSnapAlign: "center",
-                                  "@bp2": { scrollSnapAlign: "start" },
-                                }}
-                              />
-                            )
-                          )}
-                        </StyledVideoCardContainer>
-                      </CardScrollViewport>
-                      <Scrollbar
-                        orientation="horizontal"
-                        variant="secondary"
-                        forceMount
-                      />
-                    </CardScrollRoot>
+                    <StyledVideoCardContainer
+                      spacingVertical={10}
+                      css={{
+                        overflowY: "hidden",
+                        scrollSnapType: "x mandatory",
+
+                        scrollPadding: "0 $1",
+                        width: "100%",
+                        height: "100%",
+
+                        perspective: 100,
+                        transform: "translate3d(0,0,0)",
+                        ["-webkit-transform"]: "translateZ(0,0,0)",
+                      }}
+                    >
+                      {playlistVideosPreview[playlist.id].map(
+                        (playlistVideo) => (
+                          <VideoCard
+                            id={playlist.id}
+                            key={playlistVideo.title}
+                            url={playlistVideo.url}
+                            image={playlistVideo.thumbnail.src}
+                            title={playlistVideo.title}
+                            publishDate={playlistVideo.publishedAt}
+                            channel={playlistVideo.videoOwnerChannelTitle}
+                            css={{
+                              scrollSnapAlign: "center",
+                              "@bp2": { scrollSnapAlign: "start" },
+                            }}
+                          />
+                        )
+                      )}
+                    </StyledVideoCardContainer>
                   </Box>
                 </Box>
               );
