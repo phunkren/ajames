@@ -31,69 +31,53 @@ export const BLUR_DATA_URL = `data:image/svg+xml;base64,${toBase64(
   shimmer(700, 475)
 )}`;
 
-export const hslToHex = (hsl: string): string => {
-  // Extract the hue, saturation, and lightness values from the HSL string
-  const [_, hStr, sStr, lStr] =
-    hsl.match(/^hsl\((\d+),\s*([\d.]+)%,\s*([\d.]+)%\)$/i) ?? [];
-  const h = parseInt(hStr);
-  const s = parseFloat(sStr);
-  const l = parseFloat(lStr);
+export const hslToRgba = (hsl: string, alpha: number = 0.99): string => {
+  const hslMatch = hsl.match(/^hsl\((\d+),\s*([\d.]+)%,\s*([\d.]+)%\)$/);
+  if (!hslMatch) {
+    throw new Error(`Invalid HSL color value: ${hsl}`);
+  }
 
-  // Convert HSL values to HEX
-  const hex = (h: number, s: number, l: number): string => {
-    // Convert hue to a value between 0 and 1
-    h = (h % 360) / 360;
+  const hue = parseInt(hslMatch[1], 10);
+  const saturation = parseFloat(hslMatch[2]) / 100;
+  const lightness = parseFloat(hslMatch[3]) / 100;
 
-    // Convert saturation and lightness to values between 0 and 1
-    s = s / 100;
-    l = l / 100;
+  const c = (1 - Math.abs(2 * lightness - 1)) * saturation;
+  const x = c * (1 - Math.abs(((hue / 60) % 2) - 1));
+  const m = lightness - c / 2;
 
-    // Calculate the chroma and intermediate values
-    const chroma = (1 - Math.abs(2 * l - 1)) * s;
-    const x = chroma * (1 - Math.abs(((h * 6) % 2) - 1));
-    const m = l - chroma / 2;
+  let r = 0,
+    g = 0,
+    b = 0;
 
-    // Convert the intermediate values to RGB
-    let r: number, g: number, b: number;
-    if (h < 1 / 6) {
-      r = chroma;
-      g = x;
-      b = 0;
-    } else if (h < 2 / 6) {
-      r = x;
-      g = chroma;
-      b = 0;
-    } else if (h < 3 / 6) {
-      r = 0;
-      g = chroma;
-      b = x;
-    } else if (h < 4 / 6) {
-      r = 0;
-      g = x;
-      b = chroma;
-    } else if (h < 5 / 6) {
-      r = x;
-      g = 0;
-      b = chroma;
-    } else {
-      r = chroma;
-      g = 0;
-      b = x;
-    }
+  if (hue >= 0 && hue < 60) {
+    r = c;
+    g = x;
+    b = 0;
+  } else if (hue >= 60 && hue < 120) {
+    r = x;
+    g = c;
+    b = 0;
+  } else if (hue >= 120 && hue < 180) {
+    r = 0;
+    g = c;
+    b = x;
+  } else if (hue >= 180 && hue < 240) {
+    r = 0;
+    g = x;
+    b = c;
+  } else if (hue >= 240 && hue < 300) {
+    r = x;
+    g = 0;
+    b = c;
+  } else if (hue >= 300 && hue < 360) {
+    r = c;
+    g = 0;
+    b = x;
+  }
 
-    // Convert RGB to HEX
-    const redHex = Math.round((r + m) * 255)
-      .toString(16)
-      .padStart(2, "0");
-    const greenHex = Math.round((g + m) * 255)
-      .toString(16)
-      .padStart(2, "0");
-    const blueHex = Math.round((b + m) * 255)
-      .toString(16)
-      .padStart(2, "0");
+  const red = Math.round((r + m) * 255);
+  const green = Math.round((g + m) * 255);
+  const blue = Math.round((b + m) * 255);
 
-    return `#${redHex}${greenHex}${blueHex}`;
-  };
-
-  return hex(h, s, l);
+  return `rgba(${red}, ${green}, ${blue}, ${alpha})`;
 };

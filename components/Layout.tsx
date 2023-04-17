@@ -17,7 +17,7 @@ import headshot from "../public/images/headshot.png";
 import { PERSONAL } from "../util/data";
 import { useScroll } from "../hooks/useScroll";
 import { useRouter } from "next/router";
-import { hslToHex } from "../util/images";
+import { hslToRgba } from "../util/images";
 
 type LayoutProps = {
   children: ReactElement;
@@ -93,12 +93,12 @@ const HeroOne = styled(Box, {
   top: "-10vh",
   transformOrigin: "top left",
   transform: "rotate(33deg)",
-  background: `linear-gradient(-45deg, ${hslToHex(
+  background: `linear-gradient(-45deg, ${hslToRgba(
     blueDark.blue3
-  )} 0%, ${hslToHex(blueDark.blue4)} 50%, ${hslToHex(blueDark.blue5)} 100%)`,
-  backgroundImage: `-webkit-linear-gradient(-45deg, ${hslToHex(
+  )} 0%, ${hslToRgba(blueDark.blue4)} 50%, ${hslToRgba(blueDark.blue5)} 100%)`,
+  backgroundImage: `-webkit-linear-gradient(-45deg, ${hslToRgba(
     blueDark.blue3
-  )} 0%, ${hslToHex(blueDark.blue4)} 50%, ${hslToHex(blueDark.blue5)} 100%)`,
+  )} 0%, ${hslToRgba(blueDark.blue4)} 50%, ${hslToRgba(blueDark.blue5)} 100%)`,
   zIndex: 1,
 });
 
@@ -110,12 +110,12 @@ const HeroTwo = styled(Box, {
   height: "117vh",
   left: "20vw",
   top: "5vh",
-  background: `linear-gradient(240deg, ${hslToHex(
+  background: `linear-gradient(240deg, ${hslToRgba(
     blueDark.blue9
-  )} 0%, ${hslToHex(blueDark.blue7)} 50%, ${hslToHex(blueDark.blue5)} 100%)`,
-  backgroundImage: `-webkit-linear-gradient(240deg, ${hslToHex(
+  )} 0%, ${hslToRgba(blueDark.blue7)} 50%, ${hslToRgba(blueDark.blue5)} 100%)`,
+  backgroundImage: `-webkit-linear-gradient(240deg, ${hslToRgba(
     blueDark.blue9
-  )} 0%, ${hslToHex(blueDark.blue7)} 50%, ${hslToHex(blueDark.blue5)} 100%)`,
+  )} 0%, ${hslToRgba(blueDark.blue7)} 50%, ${hslToRgba(blueDark.blue5)} 100%)`,
   transformOrigin: "top left",
   transform: "rotate(-45deg)",
   zIndex: 2,
@@ -125,16 +125,16 @@ const HeroThree = styled(Box, {
   position: "absolute",
   filter: "blur(400px)",
 
-  top: "75vh",
+  top: "95vh",
   left: "36vw",
   width: "28vw",
   height: "34vh",
-  background: `linear-gradient(140deg, ${hslToHex(
+  background: `linear-gradient(140deg, ${hslToRgba(
     redDark.red11
-  )} 0%, ${hslToHex(redDark.red9)} 50%,  ${hslToHex(redDark.red7)} 100%)`,
-  backgroundImage: `-webkit-linear-gradient(140deg, ${hslToHex(
+  )} 0%, ${hslToRgba(redDark.red9)} 50%,  ${hslToRgba(redDark.red7)} 100%)`,
+  backgroundImage: `-webkit-linear-gradient(140deg, ${hslToRgba(
     redDark.red11
-  )} 0%, ${hslToHex(redDark.red9)} 50%,  ${hslToHex(redDark.red7)} 100%)`,
+  )} 0%, ${hslToRgba(redDark.red9)} 50%,  ${hslToRgba(redDark.red7)} 100%)`,
   transformOrigin: "bottom left",
   transform: "rotate(-45deg)",
   zIndex: 3,
@@ -148,12 +148,12 @@ const HeroFour = styled(Box, {
   left: "45vw",
   width: "33vw",
   height: "124vh",
-  background: `linear-gradient(33deg, ${hslToHex(redDark.red3)} 0%, ${hslToHex(
-    redDark.red4
-  )} 50%, ${hslToHex(redDark.red5)} 100%)`,
-  backgroundImage: `-webkit-linear-gradient(33deg, ${hslToHex(
+  background: `linear-gradient(33deg, ${hslToRgba(
     redDark.red3
-  )} 0%, ${hslToHex(redDark.red4)} 50%, ${hslToHex(redDark.red5)} 100%)`,
+  )} 0%, ${hslToRgba(redDark.red4)} 50%, ${hslToRgba(redDark.red5)} 100%)`,
+  backgroundImage: `-webkit-linear-gradient(33deg, ${hslToRgba(
+    redDark.red3
+  )} 0%, ${hslToRgba(redDark.red4)} 50%, ${hslToRgba(redDark.red5)} 100%)`,
   transformOrigin: "bottom left",
   transform: "rotate(45deg)",
   zIndex: 4,
