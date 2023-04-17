@@ -3,7 +3,7 @@ import Image from "next/image";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { blueDark, redDark, slateDark, slateDarkA } from "@radix-ui/colors";
 import { useTheme } from "../hooks/useTheme";
-import { css, darkTheme, lightTheme, styled } from "../stitches.config";
+import { darkTheme, lightTheme, styled } from "../stitches.config";
 import { Link } from "./Link";
 import { Navigation, NavigationMobile } from "./Navigation";
 import { Social, SocialExtended } from "./Social";
@@ -50,7 +50,6 @@ const StyledImage = styled(Image, {
   height: "90svh",
   bottom: 0,
   right: 0,
-  willChange: "filter",
   transition: "filter $durationDefault $functionDefault",
   pointerEvents: "none",
   objectPosition: "bottom",
@@ -84,20 +83,26 @@ const StyledImage = styled(Image, {
   },
 });
 
-const heroOne = css({
+const HeroOne = styled(Box, {
+  position: "absolute",
+  filter: "blur(400px)",
+
   width: "33vw",
   height: "110vh",
   left: "17vw",
   top: "-10vh",
   transformOrigin: "top left",
-  transform: "rotate(33deg) translate3d(0,0,0)",
+  transform: "rotate(33deg)",
   background: `linear-gradient(-45deg, ${hslToHex(
     blueDark.blue3
   )} 0%, ${hslToHex(blueDark.blue4)} 50%, ${hslToHex(blueDark.blue5)} 100%)`,
   zIndex: 1,
 });
 
-const heroTwo = css({
+const HeroTwo = styled(Box, {
+  position: "absolute",
+  filter: "blur(400px)",
+
   width: "33vw",
   height: "117vh",
   left: "20vw",
@@ -106,12 +111,15 @@ const heroTwo = css({
     blueDark.blue9
   )} 0%, ${hslToHex(blueDark.blue7)} 50%, ${hslToHex(blueDark.blue5)} 100%)`,
   transformOrigin: "top left",
-  transform: "rotate(-45deg) translate3d(0,0,0)",
+  transform: "rotate(-45deg)",
   zIndex: 2,
 });
 
-const heroThree = css({
-  top: "96vh",
+const HeroThree = styled(Box, {
+  position: "absolute",
+  filter: "blur(400px)",
+
+  top: "75vh",
   left: "36vw",
   width: "28vw",
   height: "34vh",
@@ -119,12 +127,15 @@ const heroThree = css({
     redDark.red11
   )} 0%, ${hslToHex(redDark.red9)} 50%,  ${hslToHex(redDark.red7)} 100%)`,
   transformOrigin: "bottom left",
-  transform: "rotate(-45deg) translate3d(0,0,0)",
+  transform: "rotate(-45deg)",
   zIndex: 3,
 });
 
-const heroFour = css({
-  top: "-25vh",
+const HeroFour = styled(Box, {
+  position: "absolute",
+  filter: "blur(400px)",
+
+  top: "-50vh",
   left: "45vw",
   width: "33vw",
   height: "124vh",
@@ -132,14 +143,8 @@ const heroFour = css({
     redDark.red4
   )} 50%, ${hslToHex(redDark.red5)} 100%)`,
   transformOrigin: "bottom left",
-  transform: "rotate(45deg) translate3d(0,0,0)",
+  transform: "rotate(45deg)",
   zIndex: 4,
-});
-
-const StyledBox = styled(Box, {
-  position: "absolute",
-  filter: "blur(400px)",
-  willChange: "transform, filter",
 });
 
 const HeaderBox = styled(Box, {
@@ -264,10 +269,10 @@ export const HeroLayout = memo(function HeroLayout() {
   return (
     <StyledHeroLayout>
       <StyledHeroContainer direction="vertical" flexGrow>
-        <StyledBox className={heroOne} />
-        <StyledBox className={heroTwo} />
-        <StyledBox className={heroThree} />
-        <StyledBox className={heroFour} />
+        <HeroOne />
+        <HeroTwo />
+        <HeroThree />
+        <HeroFour />
 
         <StyledImage
           src={headshot}
@@ -277,7 +282,6 @@ export const HeroLayout = memo(function HeroLayout() {
           priority
           onLoad={() => setIsLoaded(true)}
         />
-
         <Box
           direction="vertical"
           spacingHorizontal={{ "@initial": 6, "@bp2": 10 }}

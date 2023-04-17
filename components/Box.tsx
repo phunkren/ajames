@@ -18,8 +18,6 @@ const StyledBox = styled("div", {
   },
 });
 
-export const Box = memo(
-  forwardRef((props: BoxProps, ref: Ref<HTMLDivElement>) => {
-    return <StyledBox ref={ref} {...props} />;
-  })
-);
+export const Box = memo((props: BoxProps) => {
+  return <StyledBox {...props} />;
+});

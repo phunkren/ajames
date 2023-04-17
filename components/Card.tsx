@@ -14,7 +14,7 @@ import { blackA, whiteA } from "@radix-ui/colors";
 import { darkTheme, lightTheme, styled } from "../stitches.config";
 import { PostTags, PublishDate, YoutubeChannel } from "./Frontmatter";
 import { Box } from "./Box";
-import { Emoji, TextAux, TextBody, TextHeadline, TextTitle3 } from "./Text";
+import { Emoji, TextAux, TextHeadline } from "./Text";
 import { BuyMeCoffeeLink, Link } from "./Link";
 import { PreviewToggle } from "./Button";
 import { BLUR_DATA_URL } from "../util/images";
@@ -76,11 +76,10 @@ const StyledCardOuter = styled(Box, {
   borderWidth: 2,
   borderStyle: "solid",
   overflow: "hidden",
-  willChange: "transform",
   transition:
-    "background $durationQuick $functionDefault, box-shadow $durationQuick $functionDefault, border-color $durationQuick $functionDefault, transform $durationQuick $functionDefault",
+    "background $durationQuick $functionDefault, box-shadow $durationQuick $functionDefault, border-color $durationQuick $functionDefault",
   ["-webkit-transition"]:
-    "background $durationQuick $functionDefault, box-shadow $durationQuick $functionDefault, border-color $durationQuick $functionDefault, transform $durationQuick $functionDefault",
+    "background $durationQuick $functionDefault, box-shadow $durationQuick $functionDefault, border-color $durationQuick $functionDefault",
 
   "& div[data-radix-aspect-ratio-wrapper]": {
     overflow: "hidden",
@@ -140,7 +139,6 @@ const StyledCardOuter = styled(Box, {
 
   "&:active:not(:has(button:active))": {
     boxShadow: "$5",
-    transform: "scale($transitions$transformScale)",
     borderColor: "$focus",
     transition:
       "box-shadow $durationDefault $functionDefault, transform $durationDefault $functionDefault, border-color $durationDefault $functionDefault",
