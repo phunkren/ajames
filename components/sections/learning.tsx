@@ -100,17 +100,13 @@ export const Learning = ({
     <Box
       id={LEARNING_ID}
       as="section"
+      display={{ print: "none", "@initial": "flex" }}
       direction="vertical"
       spacingVertical={11}
       spacingHorizontal={7}
       className={bg}
     >
-      <Box
-        direction="vertical"
-        display={{ print: "none", "@initial": "flex" }}
-        gap={12}
-        container="l"
-      >
+      <Box direction="vertical" gap={12} container="l">
         <Box>
           <AspectRatio.Root ratio={2.5 / 1} asChild>
             <StyledHeroImage

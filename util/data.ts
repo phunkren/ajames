@@ -150,9 +150,9 @@ export const EMPLOYMENT: Employer[] = [
       "Contributed to exciting data visualization and trading platform projects for fintech clients and major banks, including a React Native prototype. Also involved in the redesign of the company's website, and participated in various internal events such as hackathons, live streams, and technical presentations.",
     notableWork: [
       {
-        id: "access-fintech",
-        displayName: "Access Fintech",
-        url: "https://www.accessfintech.com/",
+        id: "commerzbank",
+        displayName: "Commerzbank",
+        url: "https://www.commerzbank.com/",
       },
       {
         id: "anaplan",
@@ -160,9 +160,9 @@ export const EMPLOYMENT: Employer[] = [
         url: "https://help.anaplan.com/0f66645c-06a5-49f8-8660-8993653f8974",
       },
       {
-        id: "fathom",
-        displayName: "Fathom",
-        url: "https://fath.om/",
+        id: "access-fintech",
+        displayName: "Access Fintech",
+        url: "https://www.accessfintech.com/",
       },
     ],
   },

@@ -168,7 +168,7 @@ export const P_STYLES = {
 
   "@print": {
     fontSize: 14,
-    lineHeight: 1.25,
+    lineHeight: 1.4,
     letterSpacing: 0.28,
   },
 };

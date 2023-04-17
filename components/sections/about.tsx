@@ -76,6 +76,7 @@ const GridItem = styled("li", {
 
   "@print": {
     padding: 0,
+    marginLeft: "$4",
     border: "none",
     textAlign: "left",
     lineHeight: 1,
@@ -90,9 +91,8 @@ export const About = () => {
       id={ABOOT_ID}
       className={bg}
       as="section"
-      spacingTop={12}
-      spacingBottom={11}
-      spacingHorizontal={7}
+      spacingVertical={{ "@print": 0, "@initial": 12 }}
+      spacingHorizontal={{ "@print": 0, "@initial": 7 }}
       direction="vertical"
     >
       <Box
@@ -102,7 +102,7 @@ export const About = () => {
       >
         <Box
           display={{ "@print": "flex", "@initial": "none" }}
-          spacingBottom={6}
+          spacingBottom={10}
         >
           <Box
             direction="vertical"
@@ -178,7 +178,7 @@ export const About = () => {
         >
           <Box
             direction="vertical"
-            gap={11}
+            gap={{ "@print": 8, "@initial": 11 }}
             css={{
               "@print": { flexGrow: 0, flexShrink: 0, flexBasis: 125 },
               "@bp3": { flexGrow: 0, flexShrink: 0, flexBasis: 250 },
@@ -187,7 +187,10 @@ export const About = () => {
             <Box as="section" aria-labelledby="contact" direction="vertical">
               <TextTitle2 id="contact">Contact</TextTitle2>
 
-              <Box spacingTop={2} spacingBottom={8}>
+              <Box
+                spacingTop={2}
+                spacingBottom={{ "@print": 4, "@initial": 8 }}
+              >
                 <Divider />
               </Box>
 
@@ -195,7 +198,11 @@ export const About = () => {
                 <Box as="li" alignItems="center">
                   <Tooltip title={SOCIAL.linkedin.displayName}>
                     <Link variant="secondary" href={SOCIAL.linkedin.url}>
-                      <Box direction="horizontal" gap={6} alignItems="center">
+                      <Box
+                        direction="horizontal"
+                        gap={{ "@print": 4, "@initial": 6 }}
+                        alignItems="center"
+                      >
                         <LinkedInLogoIcon
                           width={ICON_SIZE.l}
                           height={ICON_SIZE.l}
@@ -210,7 +217,11 @@ export const About = () => {
                 <Box as="li" alignItems="center">
                   <Tooltip title={SOCIAL.email.displayName}>
                     <Link variant="secondary" href={SOCIAL.email.url}>
-                      <Box direction="horizontal" gap={6} alignItems="center">
+                      <Box
+                        direction="horizontal"
+                        gap={{ "@print": 4, "@initial": 6 }}
+                        alignItems="center"
+                      >
                         <EnvelopeOpenIcon
                           width={ICON_SIZE.l}
                           height={ICON_SIZE.l}
@@ -225,7 +236,11 @@ export const About = () => {
                 <Box as="li" alignItems="center">
                   <Tooltip title="Website">
                     <Link variant="secondary" href={SITE.url}>
-                      <Box direction="horizontal" gap={6} alignItems="center">
+                      <Box
+                        direction="horizontal"
+                        gap={{ "@print": 4, "@initial": 6 }}
+                        alignItems="center"
+                      >
                         <GlobeIcon
                           width={ICON_SIZE.l}
                           height={ICON_SIZE.l}
@@ -240,7 +255,11 @@ export const About = () => {
                 <Box as="li" alignItems="center">
                   <Tooltip title={SOCIAL.github.displayName}>
                     <Link variant="secondary" href={SOCIAL.github.url}>
-                      <Box direction="horizontal" gap={6} alignItems="center">
+                      <Box
+                        direction="horizontal"
+                        gap={{ "@print": 4, "@initial": 6 }}
+                        alignItems="center"
+                      >
                         <GitHubLogoIcon
                           width={ICON_SIZE.l}
                           height={ICON_SIZE.l}
@@ -257,7 +276,10 @@ export const About = () => {
             <Box as="section" aria-labelledby="expertise" direction="vertical">
               <TextTitle2 id="expertise">Expertise</TextTitle2>
 
-              <Box spacingTop={2} spacingBottom={8}>
+              <Box
+                spacingTop={2}
+                spacingBottom={{ "@print": 4, "@initial": 8 }}
+              >
                 <Divider />
               </Box>
 
@@ -281,7 +303,10 @@ export const About = () => {
             <Box as="section" aria-labelledby="interests" direction="vertical">
               <TextTitle2 id="interests">Interests</TextTitle2>
 
-              <Box spacingTop={2} spacingBottom={8}>
+              <Box
+                spacingTop={2}
+                spacingBottom={{ "@print": 4, "@initial": 8 }}
+              >
                 <Divider />
               </Box>
 
@@ -305,7 +330,10 @@ export const About = () => {
             <Box as="section" aria-labelledby="education" direction="vertical">
               <TextTitle2 id="education">Education</TextTitle2>
 
-              <Box spacingTop={2} spacingBottom={8}>
+              <Box
+                spacingTop={2}
+                spacingBottom={{ "@print": 4, "@initial": 8 }}
+              >
                 <Divider />
               </Box>
 
@@ -380,7 +408,10 @@ export const About = () => {
                 <TextTitle2 id="references">References</TextTitle2>
               </Link>
 
-              <Box spacingTop={2} spacingBottom={8}>
+              <Box
+                spacingTop={2}
+                spacingBottom={{ "@print": 4, "@initial": 8 }}
+              >
                 <Divider />
               </Box>
 
@@ -427,14 +458,17 @@ export const About = () => {
 
           <Box
             direction="vertical"
-            gap={{ "@print": 8, "@initial": 11 }}
-            spacingBottom={{ "@print": 0, "@initial": 10 }}
+            gap={{ "@print": 8, "@initial": 10 }}
+            spacingBottom={{ "@print": 3, "@initial": 0 }}
             flexGrow
           >
             <Box as="section" aria-labelledby="profile" direction="vertical">
               <TextTitle2 id="profile">Profile</TextTitle2>
 
-              <Box spacingTop={2} spacingBottom={8}>
+              <Box
+                spacingTop={2}
+                spacingBottom={{ "@print": 4, "@initial": 8 }}
+              >
                 <Divider />
               </Box>
 
@@ -452,11 +486,14 @@ export const About = () => {
             <Box as="section" aria-labelledby="experience" direction="vertical">
               <TextTitle2 id="experience">Experience</TextTitle2>
 
-              <Box spacingTop={2} spacingBottom={8}>
+              <Box
+                spacingTop={2}
+                spacingBottom={{ "@print": 4, "@initial": 8 }}
+              >
                 <Divider />
               </Box>
 
-              <Box direction="vertical" gap={11}>
+              <Box direction="vertical" gap={{ "@print": 6, "@initial": 11 }}>
                 {EMPLOYMENT.map((employer) => (
                   <Box
                     direction="vertical"

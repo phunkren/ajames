@@ -43,6 +43,10 @@ const StyledHeroContainer = styled(Box, {
   background: slateDark.slate1,
   color: slateDark.slate12,
   overflow: "hidden",
+
+  "@print": {
+    display: "none !important",
+  },
 });
 
 const StyledImage = styled(Image, {
@@ -172,10 +176,6 @@ const HeaderBox = styled(Box, {
   ["-webkit-transition"]:
     "background-color $transitions$durationDefault $transitions$functionDefault",
 
-  "@print": {
-    display: "none !important",
-  },
-
   variants: {
     opaque: {
       true: {
@@ -196,7 +196,11 @@ export const HeaderLayout = memo(function HeaderLayout() {
   const isBlogPost = asPath.includes("/writing/");
 
   return (
-    <HeaderBox as="header" opaque={isBlogPost || isHeaderActive}>
+    <HeaderBox
+      as="header"
+      opaque={isBlogPost || isHeaderActive}
+      css={{ "@print": { display: "none !important" } }}
+    >
       <Box
         display={{ "@print": "none", "@initial": "flex" }}
         spacingVertical={3}
@@ -245,7 +249,7 @@ export const FooterLayout = memo(function FooterLayout() {
       gap={6}
       justifyContent="center"
       alignItems="center"
-      css={{ background: "$slate2", "@print": { display: "none" } }}
+      css={{ background: "$slate2", "@print": { display: "none !important" } }}
     >
       <Social gap="6" />
       <SocialExtended gap="6" />
@@ -263,7 +267,11 @@ export const Layout = memo(function Layout({ children }: LayoutProps) {
       <Box
         id="__root"
         direction="vertical"
-        css={{ overflowX: "hidden", "@bp3": { overflowX: "visible" } }}
+        css={{
+          "@print": { overflow: "visible" },
+          "@initial": { overflowX: "hidden" },
+          "@bp3": { overflowX: "visible" },
+        }}
         className={theme}
       >
         <HeaderLayout />

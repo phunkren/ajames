@@ -28,16 +28,6 @@ export const globalStyles = globalCss({
     scrollBehavior: "smooth !important",
   },
 
-  html: {
-    scrollbarGutter: "stable",
-    overflowY: "auto",
-
-    "@print": {
-      scrollbarGutter: "auto",
-      overflowY: "visible",
-    },
-  },
-
   "div#__next, div#__root": {
     flexGrow: 1,
     display: "flex",
@@ -157,6 +147,10 @@ export const globalStyles = globalCss({
       background: "white !important",
       borderColor: "black !important",
       color: "black !important",
+    },
+
+    li: {
+      listStyleType: "initial",
     },
   },
 });
