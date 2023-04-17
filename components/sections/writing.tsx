@@ -493,13 +493,15 @@ export const Writing = ({ posts, tags }: Props) => {
             })}
 
             {shouldShowMore ? (
-              <Button
-                variant="tertiary"
-                css={{ width: "fit-content" }}
-                onClick={handleDisplayChange}
-              >
-                <TextTitle3>Show all articles</TextTitle3>
-              </Button>
+              <Box as="li">
+                <Button
+                  variant="tertiary"
+                  css={{ width: "fit-content" }}
+                  onClick={handleDisplayChange}
+                >
+                  <TextTitle3>Show all articles</TextTitle3>
+                </Button>
+              </Box>
             ) : null}
           </Box>
         </Box>

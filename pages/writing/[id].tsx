@@ -298,11 +298,16 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
 
       <Box as="article" direction="vertical" spacingVertical={12}>
         <Box gap={10} container="l" spacingBottom={4} spacingHorizontal={7}>
-          <Link href="/#writing" variant="secondary">
+          <Link
+            href="/#writing"
+            variant="secondary"
+            nextLinkProps={{ shallow: true, scroll: false }}
+          >
             <ArrowLeftIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
             <TextHeadline>Back to articles</TextHeadline>
           </Link>
         </Box>
+
         <Box direction="vertical" gap={10} container="l">
           <AspectRatio.Root ratio={2 / 1}>
             <StyledHero

@@ -29,11 +29,13 @@ import {
   PlaylistVideosPreview,
   VideoPreview,
 } from "../../util/youtube";
-import { SITE } from "../../util/data";
 import { ShareButton } from "../Button";
 import { ICON_SIZE } from "../../util/images";
 import { Box } from "../Box";
 import book from "../../public/images/book.png";
+import LiteYouTubeEmbed from "react-lite-youtube-embed";
+import { useEffect } from "react";
+import { SITE } from "../../util/data";
 
 export type Props = {
   featuredVideo: VideoPreview;
@@ -60,10 +62,6 @@ const StyledVideoCardContainer = styled(Box, {
   },
 });
 
-const LiteYouTubeEmbed = dynamic(() => import("react-lite-youtube-embed"), {
-  ssr: false,
-});
-
 const StyledHeroImage = styled(Image, {
   objectFit: "contain",
   position: "absolute",
@@ -78,6 +76,26 @@ export const Learning = ({
   playlistVideosPreview,
   channelInfoPreview,
 }: Props) => {
+  // https://github.com/ibrahimcesar/react-lite-youtube-embed/issues/50
+  useEffect(() => {
+    const button = document.querySelector(".lty-playbtn") as HTMLButtonElement;
+
+    if (!button) return;
+
+    function createObserver() {
+      let observer;
+
+      let options = {
+        rootMargin: "-50%",
+        threshold: 1,
+      };
+
+      observer = new IntersectionObserver(() => button.click(), options);
+      observer.observe(button);
+    }
+    return createObserver();
+  }, []);
+
   return (
     <Box
       id={LEARNING_ID}
@@ -201,17 +219,15 @@ export const Learning = ({
                     "@bp3": { flexGrow: 0, flexShrink: 0, flexBasis: "50%" },
                   }}
                 >
-                  <AspectRatio.Root ratio={16 / 9}>
-                    <LiteYouTubeEmbed
-                      id={featuredVideo.videoId} // Default none, id of the video or playlist
-                      title={featuredVideo.title} // a11y, always provide a title for iFrames: https://dequeuniversity.com/tips/provide-iframe-titles Help the web be accessible ;)
-                      params={`autoplay=1&mute=1&modestbranding=1&rel=0&widget_referrer=${SITE.url}&controls=0`} // any params you want to pass to the URL, assume we already had '&' and pass your parameters string
-                      poster="hqdefault" // Defines the image size to call on first render as poster image. Possible values are "default","mqdefault",  "hqdefault", "sddefault" and "maxresdefault". Default value for this prop is "hqdefault". Please be aware that "sddefault" and "maxresdefault", high resolution images are not always avaialble for every video. See: https://stackoverflow.com/questions/2068344/how-do-i-get-a-youtube-video-thumbnail-from-the-youtube-api
-                      playlist={false} // Use true when your ID be from a playlist
-                      adNetwork={false} // Default true, to preconnect or not to doubleclick addresses called by YouTube iframe (the adnetwork from Google)
-                      noCookie={true} //Default false, connect to YouTube via the Privacy-Enhanced Mode using https://www.youtube-nocookie.com
-                    />
-                  </AspectRatio.Root>
+                  <LiteYouTubeEmbed
+                    id={featuredVideo.videoId} // Default none, id of the video or playlist
+                    title={featuredVideo.title} // a11y, always provide a title for iFrames: https://dequeuniversity.com/tips/provide-iframe-titles Help the web be accessible ;)
+                    params={`mute=1&modestbranding=1&rel=0&widget_referrer=${SITE.url}&controls=0`} // any params you want to pass to the URL, assume we already had '&' and pass your parameters string
+                    poster="hqdefault" // Defines the image size to call on first render as poster image. Possible values are "default","mqdefault",  "hqdefault", "sddefault" and "maxresdefault". Default value for this prop is "hqdefault". Please be aware that "sddefault" and "maxresdefault", high resolution images are not always avaialble for every video. See: https://stackoverflow.com/questions/2068344/how-do-i-get-a-youtube-video-thumbnail-from-the-youtube-api
+                    playlist={false} // Use true when your ID be from a playlist
+                    adNetwork={false} // Default true, to preconnect or not to doubleclick addresses called by YouTube iframe (the adnetwork from Google)
+                    noCookie={true} //Default false, connect to YouTube via the Privacy-Enhanced Mode using https://www.youtube-nocookie.com
+                  />
                 </Box>
 
                 <Box direction="vertical" gap={4}>
