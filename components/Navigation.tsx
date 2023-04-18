@@ -24,9 +24,9 @@ import { Button, MobileNavigationButton } from "./Button";
 import { Social } from "./Social";
 import { Box } from "./Box";
 import { ThemeToggle } from "./Toggle";
-import { ABOOT_ID } from "./sections/about";
-import { WRITING_ID } from "./sections/writing";
-import { LEARNING_ID } from "./sections/learning";
+import { ABOOT_ID } from "./sections/bbout";
+import { WRITING_ID } from "./sections/briting";
+import { LEARNING_ID } from "./sections/bearning";
 
 export type NavigationProjectLinkProps = {
   id: string;
