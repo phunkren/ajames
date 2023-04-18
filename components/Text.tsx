@@ -90,7 +90,7 @@ export const TextTitle = styled("h1", {
   },
 
   "@portrait": {
-    fontSize: `calc(8.33vw)`,
+    fontSize: `calc(9.33vw)`,
     textAlign: "center",
   },
 

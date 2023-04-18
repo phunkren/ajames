@@ -43,10 +43,6 @@ export type Props = {
   tags: Tag[];
 };
 
-const bg = css({
-  background: "$slate2",
-});
-
 const StyledHeroImage = styled(Image, {
   objectFit: "contain",
   position: "absolute",
@@ -143,6 +139,37 @@ const StyledCardContainer = styled(Box, {
   },
 });
 
+const bg = css({
+  position: "relative",
+  background: "$slate1",
+
+  "&::before": {
+    content: "",
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "200%",
+    height: "50%",
+    backgroundColor: "$slate1",
+    transform: "skewY(-2deg)",
+    transformOrigin: "left top",
+    zIndex: 0,
+  },
+
+  "&::after": {
+    content: "",
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    width: "200%",
+    height: "50%",
+    backgroundColor: "$slate1",
+    transform: "skewY(2deg)",
+    transformOrigin: "left top",
+    zIndex: 0,
+  },
+});
+
 export const WRITING_ID = "writing";
 
 export const Writing = ({ posts, tags }: Props) => {
@@ -205,11 +232,17 @@ export const Writing = ({ posts, tags }: Props) => {
       as="section"
       display={{ print: "none", "@initial": "flex" }}
       direction="vertical"
-      spacingVertical={11}
+      spacingVertical={{ "@print": 0, "@initial": 12 }}
       spacingHorizontal={7}
       className={bg}
     >
-      <Box direction="vertical" gap={12} container="l">
+      <Box
+        direction="vertical"
+        gap={12}
+        container="l"
+        spacingVertical={{ "@print": 0, "@initial": 12 }}
+        css={{ zIndex: 2 }}
+      >
         <Box>
           <AspectRatio.Root ratio={2.5 / 1} asChild>
             <StyledHeroImage

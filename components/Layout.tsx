@@ -132,7 +132,12 @@ export const Layout = memo(function Layout({ children }: LayoutProps) {
       >
         <HeaderLayout />
 
-        <Box as="main" direction="vertical" flexGrow>
+        <Box
+          as="main"
+          direction="vertical"
+          flexGrow
+          css={{ overflowX: "hidden" }}
+        >
           {children}
         </Box>
 

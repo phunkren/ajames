@@ -1,6 +1,5 @@
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 import Balancer from "react-wrap-balancer";
-import dynamic from "next/dynamic";
 import Image from "next/image";
 import { PlayIcon } from "@radix-ui/react-icons";
 import { VideoCard } from "../Card";
@@ -46,7 +45,7 @@ export type Props = {
 };
 
 const bg = css({
-  background: `linear-gradient($slate2 0.04%, $slate1 100.04%)`,
+  background: `linear-gradient($slate1 0.04%, $slate2 100.04%)`,
 });
 
 const StyledVideoCardContainer = styled(Box, {
@@ -102,11 +101,11 @@ export const Learning = ({
       as="section"
       display={{ print: "none", "@initial": "flex" }}
       direction="vertical"
-      spacingVertical={11}
+      spacingVertical={12}
       spacingHorizontal={7}
       className={bg}
     >
-      <Box direction="vertical" gap={12} container="l">
+      <Box direction="vertical" gap={12} container="l" spacingTop={12}>
         <Box>
           <AspectRatio.Root ratio={2.5 / 1} asChild>
             <StyledHeroImage

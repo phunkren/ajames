@@ -33,10 +33,6 @@ import { Tooltip } from "../Tooltip";
 import { Frontmatter, Location, Name, Occupation } from "../Frontmatter";
 import { ActionButtons } from "../Layout";
 
-const bg = css({
-  background: `linear-gradient($slate1 0.04%, $slate2 100.04%)`,
-});
-
 const StyledBlockQuote = styled("blockquote", {
   fontStyle: "oblique",
   textAlign: "justify",
@@ -83,21 +79,26 @@ const GridItem = styled("li", {
   },
 });
 
+const bg = css({
+  background: `linear-gradient($slate2 0.04%, $slate1 100.04%)`,
+});
+
 export const ABOOT_ID = "about";
 
 export const About = () => {
   return (
     <Box
       id={ABOOT_ID}
-      className={bg}
       as="section"
-      spacingVertical={{ "@print": 0, "@initial": 12 }}
+      className={bg}
+      spacingBottom={{ "@print": 0, "@initial": 12 }}
       spacingHorizontal={{ "@print": 0, "@initial": 7 }}
       direction="vertical"
     >
       <Box
         direction="vertical"
         gap={{ "@print": 0, "@initial": 11 }}
+        spacingVertical={{ "@print": 0, "@initial": 12 }}
         container="l"
       >
         <Box

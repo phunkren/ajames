@@ -131,17 +131,17 @@ const HeroFour = styled(Base, {
 
 const ANIMATION_A = {
   x: -75,
-  y: -25,
-  duration: 5,
+  y: -50,
+  duration: 10,
   repeat: -1,
   yoyo: true,
-  ease: "power1.in",
+  ease: "slow.in",
 };
 
 const ANIMATION_B = {
-  x: 150,
-  y: 75,
-  duration: 8,
+  x: 75,
+  y: -50,
+  duration: 20,
   repeat: -1,
   yoyo: true,
   ease: "slow.out",
@@ -158,8 +158,8 @@ export const Hero = memo(function HeroLayout() {
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
       gsap.fromTo(oneRef.current, ANIMATION_A, ANIMATION_B);
-      gsap.fromTo(twoRef.current, ANIMATION_A, ANIMATION_B);
-      gsap.fromTo(threeRef.current, ANIMATION_A, ANIMATION_B);
+      gsap.fromTo(twoRef.current, ANIMATION_B, ANIMATION_A);
+      gsap.fromTo(threeRef.current, ANIMATION_B, ANIMATION_A);
       gsap.fromTo(fourRef.current, ANIMATION_A, ANIMATION_B);
     }, comp);
 
