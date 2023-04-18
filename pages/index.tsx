@@ -2,13 +2,13 @@ import { GetStaticProps } from "next";
 import { memo, ReactElement } from "react";
 import { Box } from "../components/Box";
 import { Layout } from "../components/Layout";
-import { About } from "../components/sections/bbout";
+import { About } from "../components/sections/About";
 import { Hero } from "../components/sections/Hero";
 import {
   Learning,
   Props as LearningProps,
-} from "../components/sections/bearning";
-import { Writing, Props as WritingProps } from "../components/sections/briting";
+} from "../components/sections/Learning";
+import { Writing, Props as WritingProps } from "../components/sections/Writing";
 import { createPosts, generateRSSFeed, getPosts } from "../lib/notion";
 import { getYoutubeData } from "../lib/youtube";
 import { ONE_HOUR_IN_SECONDS } from "../util/date";

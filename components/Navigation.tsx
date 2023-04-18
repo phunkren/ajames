@@ -2,18 +2,11 @@ import { memo, useCallback, useState } from "react";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 import { useRouter } from "next/router";
 import Image, { StaticImageData } from "next/image";
-import {
-  blackA,
-  grassDark,
-  gray,
-  grayDark,
-  slateDark,
-  whiteA,
-} from "@radix-ui/colors";
+import { grassDark } from "@radix-ui/colors";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import * as Dialog from "@radix-ui/react-dialog";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
-import { darkTheme, keyframes, lightTheme, styled } from "../stitches.config";
+import { keyframes, styled } from "../stitches.config";
 import { ICON_SIZE } from "../util/images";
 import { useTheme } from "../hooks/useTheme";
 import { Divider } from "./Divider";
@@ -24,9 +17,9 @@ import { Button, MobileNavigationButton } from "./Button";
 import { Social } from "./Social";
 import { Box } from "./Box";
 import { ThemeToggle } from "./Toggle";
-import { ABOOT_ID } from "./sections/bbout";
-import { WRITING_ID } from "./sections/briting";
-import { LEARNING_ID } from "./sections/bearning";
+import { ABOOT_ID } from "./sections/About";
+import { WRITING_ID } from "./sections/Writing";
+import { LEARNING_ID } from "./sections/Learning";
 
 export type NavigationProjectLinkProps = {
   id: string;
