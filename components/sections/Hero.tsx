@@ -1,7 +1,7 @@
 import { blueDark, redDark, slateDark } from "@radix-ui/colors";
 import Image from "next/image";
 import { gsap } from "gsap";
-import { memo, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { memo, useLayoutEffect, useRef, useState } from "react";
 import { darkTheme, lightTheme, styled } from "../../stitches.config";
 import headshot from "../../public/images/headshot.png";
 import { Box } from "../Box";
@@ -78,7 +78,7 @@ const Base = styled("div", {
   content: "",
   position: "absolute",
   willChange: "transform",
-  filter: "blur(374px)",
+  filter: "blur(400px)",
 });
 
 const HeroOne = styled(Base, {
@@ -129,6 +129,24 @@ const HeroFour = styled(Base, {
   zIndex: 4,
 });
 
+const ANIMATION_A = {
+  x: -75
+  y: -25,
+  duration: 5,
+  repeat: -1,
+  yoyo: true,
+  ease: "power1.in",
+};
+
+const ANIMATION_B = {
+  x: 150,
+  y: 75,
+  duration: 8,
+  repeat: -1,
+  yoyo: true,
+  ease: "slow.out",
+};
+
 export const Hero = memo(function HeroLayout() {
   const [isLoaded, setIsLoaded] = useState(false);
   const comp = useRef();
@@ -139,89 +157,10 @@ export const Hero = memo(function HeroLayout() {
 
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
-      function generateRandomNumber(): number {
-        return Math.floor(Math.random() * 301) - 150;
-      }
-
-      gsap.fromTo(
-        oneRef.current,
-        {
-          x: generateRandomNumber(),
-          y: generateRandomNumber(),
-          duration: 10,
-          repeat: -1,
-          yoyo: true,
-          ease: "powerIn.inOut",
-        },
-        {
-          x: generateRandomNumber(),
-          y: generateRandomNumber(),
-          duration: 10,
-          repeat: -1,
-          yoyo: true,
-          ease: "powerIn.inOut",
-        }
-      );
-
-      gsap.fromTo(
-        twoRef.current,
-        {
-          x: generateRandomNumber(),
-          y: generateRandomNumber(),
-          duration: 10,
-          repeat: -1,
-          yoyo: true,
-          ease: "powerIn.inOut",
-        },
-        {
-          x: generateRandomNumber(),
-          y: generateRandomNumber(),
-          duration: 10,
-          repeat: -1,
-          yoyo: true,
-          ease: "powerIn.inOut",
-        }
-      );
-
-      gsap.fromTo(
-        threeRef.current,
-        {
-          x: generateRandomNumber(),
-          y: generateRandomNumber(),
-          duration: 10,
-          repeat: -1,
-          yoyo: true,
-          ease: "powerIn.inOut",
-        },
-        {
-          x: generateRandomNumber(),
-          y: generateRandomNumber(),
-          duration: 10,
-          repeat: -1,
-          yoyo: true,
-          ease: "powerIn.inOut",
-        }
-      );
-
-      gsap.fromTo(
-        fourRef.current,
-        {
-          x: generateRandomNumber(),
-          y: generateRandomNumber(),
-          duration: 10,
-          repeat: -1,
-          yoyo: true,
-          ease: "powerIn.inOut",
-        },
-        {
-          x: generateRandomNumber(),
-          y: generateRandomNumber(),
-          duration: 10,
-          repeat: -1,
-          yoyo: true,
-          ease: "powerIn.inOut",
-        }
-      );
+      gsap.fromTo(oneRef.current, ANIMATION_A, ANIMATION_B);
+      gsap.fromTo(twoRef.current, ANIMATION_A, ANIMATION_B);
+      gsap.fromTo(threeRef.current, ANIMATION_A, ANIMATION_B);
+      gsap.fromTo(fourRef.current, ANIMATION_A, ANIMATION_B);
     }, comp);
 
     return () => ctx.revert();

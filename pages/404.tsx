@@ -1,11 +1,9 @@
-import Image from "next/image";
 import { ReactElement } from "react";
 import { Box } from "../components/Box";
 import { Layout } from "../components/Layout";
 import { Link } from "../components/Link";
 import { Hero } from "../components/sections/Hero";
 import { TextHeadline } from "../components/Text";
-import { darkTheme, lightTheme, styled } from "../stitches.config";
 import { NextPageWithLayout } from "./_app";
 
 const NotFound: NextPageWithLayout = () => {
