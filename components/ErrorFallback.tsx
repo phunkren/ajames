@@ -2,12 +2,12 @@ import { memo, ReactNode, useCallback } from "react";
 import Router from "next/router";
 import Image from "next/image";
 import { Button } from "./Button";
-import { TextAux, TextHeadline, TextTitle1 } from "./Text";
+import { TextHeadline } from "./Text";
 import { Box } from "./Box";
-import { HeroLayout, Layout } from "./Layout";
+import { Layout } from "./Layout";
 import { ThemeProvider } from "./Theme";
 import { darkTheme, lightTheme, styled } from "../stitches.config";
-import uhoh from "../public/images/500.png";
+import { Hero } from "./sections/Hero";
 
 export type ErrorBoundaryProps = {
   error?: Error;
@@ -57,23 +57,7 @@ export const ErrorFallback = memo(function ErrorFallback({
     <ThemeProvider>
       <Layout>
         <Box direction="vertical">
-          <HeroLayout>
-            <Box direction="vertical" position="relative" flexGrow>
-              <Box
-                direction="vertical"
-                spacingLeft={{ "@bp2": 6, "@bp3": 0 }}
-                justifyContent="flex-end"
-                flexGrow
-              >
-                <Box direction="vertical">
-                  <TextTitle1>Uh-oh!</TextTitle1>
-                  <TextHeadline>Something went wrong</TextHeadline>
-                </Box>
-              </Box>
-
-              <StyledImage src={uhoh} alt="" sizes="100vw" priority fill />
-            </Box>
-          </HeroLayout>
+          <Hero />
 
           <Box
             role="alert"
