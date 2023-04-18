@@ -130,7 +130,7 @@ const HeroFour = styled(Base, {
 });
 
 const ANIMATION_A = {
-  x: -75
+  x: -75,
   y: -25,
   duration: 5,
   repeat: -1,
