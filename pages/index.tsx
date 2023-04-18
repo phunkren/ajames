@@ -1,8 +1,9 @@
 import { GetStaticProps } from "next";
 import { memo, ReactElement } from "react";
 import { Box } from "../components/Box";
-import { HeroLayout, Layout } from "../components/Layout";
+import { Layout } from "../components/Layout";
 import { About } from "../components/sections/about";
+import { Hero } from "../components/sections/Hero";
 import {
   Learning,
   Props as LearningProps,
@@ -72,7 +73,7 @@ const Home: NextPageWithLayout = memo(function Home({
 }: Props) {
   return (
     <Box direction="vertical">
-      <HeroLayout />
+      <Hero />
 
       <About />
 
