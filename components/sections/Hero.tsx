@@ -78,7 +78,7 @@ const Base = styled("div", {
   content: "",
   position: "absolute",
   willChange: "transform",
-  filter: "blur(375px)",
+  filter: "blur(374px)",
 });
 
 const HeroOne = styled(Base, {
