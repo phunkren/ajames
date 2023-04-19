@@ -85,6 +85,7 @@ const About = () => {
   return (
     <Box
       as="section"
+      spacingTop={10}
       spacingBottom={{ "@print": 0, "@initial": 12 }}
       spacingHorizontal={{ "@print": 0, "@initial": 7 }}
       direction="vertical"
