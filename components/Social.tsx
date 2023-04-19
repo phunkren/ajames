@@ -214,13 +214,7 @@ export const SocialSponsored = memo(function SocialSponsored() {
         background: `linear-gradient($slate2 0.04%, $slate1 100.04%)`,
       }}
     >
-      <Box
-        direction="vertical"
-        gap={12}
-        container="l"
-        spacingBottom={{ "@print": 0, "@initial": 11, "@bp2": 12 }}
-        css={{ zIndex: "$1" }}
-      >
+      <Box direction="vertical" gap={12} container="l" css={{ zIndex: "$1" }}>
         <Divider />
 
         <Box

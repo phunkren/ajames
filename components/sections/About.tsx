@@ -96,7 +96,7 @@ const About = () => {
         id={ABOOT_ID}
         direction="vertical"
         gap={{ "@print": 0, "@initial": 11 }}
-        spacingVertical={{ "@print": 0, "@initial": 11, "@bp2": 12 }}
+        spacingVertical={{ "@print": 0, "@initial": 10, "@bp2": 12 }}
         container="l"
       >
         <Box

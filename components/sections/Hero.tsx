@@ -183,7 +183,7 @@ export const Hero = memo(function HeroLayout() {
             <Box direction="vertical" container="l" flexGrow>
               <Box
                 direction="vertical"
-                spacingBottom={4}
+                spacingBottom={7}
                 justifyContent={{
                   "@portrait": "flex-end",
                   "@landscape": "center",

@@ -240,7 +240,7 @@ const Writing = ({ posts, tags }: Props) => {
         direction="vertical"
         gap={12}
         container="l"
-        spacingVertical={{ "@print": 0, "@initial": 11, "@bp2": 12 }}
+        spacingVertical={{ "@print": 0, "@initial": 10, "@bp2": 12 }}
         css={{ zIndex: "$1" }}
       >
         <Box>
