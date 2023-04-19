@@ -81,7 +81,7 @@ const GridItem = styled("li", {
 
 export const ABOOT_ID = "about";
 
-export const About = () => {
+const About = () => {
   return (
     <Box
       as="section"
@@ -635,3 +635,5 @@ export const About = () => {
     </Box>
   );
 };
+
+export default About;

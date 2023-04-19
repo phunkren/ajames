@@ -11,13 +11,7 @@ import {
   VideosViewsCount,
 } from "../Frontmatter";
 import { ActionButtons } from "../Layout";
-import {
-  Link,
-  YoutubeSubscribeLink,
-  TwitterShareLink,
-  BlogSubscriptionLink,
-  LinkedInConnectLink,
-} from "../Link";
+import { Link, YoutubeSubscribeLink, TwitterShareLink } from "../Link";
 import { TextAux, TextBody, TextTitle1, TextTitle2, TextTitle3 } from "../Text";
 import { YOUTUBE_CHANNEL_URL, YOUTUBE_SHARE_TEXT } from "../../util/youtube";
 import { buildUrl } from "../../util/url";
@@ -69,7 +63,7 @@ const StyledHeroImage = styled(Image, {
 
 export const LEARNING_ID = "learning";
 
-export const Learning = ({
+const Learning = ({
   featuredVideo,
   playlistsPreview,
   playlistVideosPreview,
@@ -352,3 +346,5 @@ export const Learning = ({
     </Box>
   );
 };
+
+export default Learning;
