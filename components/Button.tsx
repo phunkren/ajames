@@ -22,6 +22,8 @@ import {
   FileIcon,
   HamburgerMenuIcon,
   InfoCircledIcon,
+  MinusIcon,
+  PlusIcon,
   Share2Icon,
 } from "@radix-ui/react-icons";
 import {
@@ -349,6 +351,34 @@ const StyledMobileNavigationButton = styled(IconButton, {
   },
 });
 
+const StyledCollapsibleButton = styled(IconButton, {
+  display: "flex",
+
+  "&[data-state=open]": {
+    "svg#collapsible-plus": {
+      display: "none",
+    },
+
+    "svg#collapsible-minus": {
+      display: "flex",
+    },
+  },
+
+  "&[data-state=closed]": {
+    "svg#collapsible-plus": {
+      display: "flex",
+    },
+
+    "svg#collapsible-minus": {
+      display: "none",
+    },
+  },
+
+  "@bp3": {
+    display: "none",
+  },
+});
+
 export const StyledCoffeeButton = styled(Button, {
   position: "relative",
 
@@ -562,6 +592,37 @@ export const MobileNavigationButton = memo(
             aria-hidden
           />
         </StyledMobileNavigationButton>
+      </Tooltip>
+    );
+  })
+);
+
+export const CollapsibleButton = memo(
+  forwardRef(function CollapsibleButton(
+    props: IconButtonProps,
+    ref: Ref<HTMLButtonElement>
+  ) {
+    const tooltip = props["data-state"] === "closed" ? "Expand" : "Collapse";
+
+    return (
+      <Tooltip title={tooltip}>
+        <StyledCollapsibleButton ref={ref} variant="secondary" {...props}>
+          <VisuallyHidden.Root>Collapsible</VisuallyHidden.Root>
+
+          <PlusIcon
+            id="collapsible-plus"
+            width={ICON_SIZE.l}
+            height={ICON_SIZE.l}
+            aria-hidden
+          />
+
+          <MinusIcon
+            id="collapsible-minus"
+            width={ICON_SIZE.l}
+            height={ICON_SIZE.l}
+            aria-hidden
+          />
+        </StyledCollapsibleButton>
       </Tooltip>
     );
   })

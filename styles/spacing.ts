@@ -150,7 +150,7 @@ export const SPACING_VARIANTS = {
   },
   spacingTop: {
     [0]: {
-      spacingBottom: "0",
+      spacingTop: "0",
     },
     [1]: {
       spacingTop: "$space$1",

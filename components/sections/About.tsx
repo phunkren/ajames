@@ -4,7 +4,7 @@ import {
   GlobeIcon,
   LinkedInLogoIcon,
 } from "@radix-ui/react-icons";
-import { PrintButton } from "../Button";
+import { CollapsibleButton, IconButton, PrintButton } from "../Button";
 import { Divider } from "../Divider";
 import { DownloadLink, Link, LinkedInConnectLink } from "../Link";
 import {
@@ -15,7 +15,7 @@ import {
   TextTitle2,
   TextTitle3,
 } from "../Text";
-import { styled } from "../../stitches.config";
+import { css, styled } from "../../stitches.config";
 import {
   EDUCATION,
   EMPLOYMENT,
@@ -32,6 +32,18 @@ import { Box } from "../Box";
 import { Tooltip } from "../Tooltip";
 import { Frontmatter, Location, Name, Occupation } from "../Frontmatter";
 import { ActionButtons } from "../Layout";
+import {
+  CollapsibleContent,
+  CollapsibleRoot,
+  CollapsibleTrigger,
+} from "../Collapsible";
+import { memo, ReactNode } from "react";
+
+type CollapsibleSectionProps = {
+  id: string;
+  title: string;
+  children: ReactNode;
+};
 
 const StyledBlockQuote = styled("blockquote", {
   fontStyle: "oblique",
@@ -77,6 +89,68 @@ const GridItem = styled("li", {
     textAlign: "left",
     lineHeight: 1,
   },
+});
+
+const mobileSection = css({
+  display: "flex !important",
+  "@bp3": { display: "none !important" },
+});
+
+const desktopSection = css({
+  display: "none !important",
+  "@bp3": { display: "flex !important" },
+});
+
+export const CollapsibleSection = memo(function CollapsibleSection({
+  id,
+  title,
+  children,
+}: CollapsibleSectionProps) {
+  return (
+    <>
+      <CollapsibleRoot className={mobileSection()}>
+        <Box as="section" aria-labelledby={id} direction="vertical">
+          <Box justifyContent="space-between" alignItems="center" gap={2}>
+            <TextTitle2 id={id}>{title}</TextTitle2>
+
+            <CollapsibleTrigger asChild>
+              <CollapsibleButton />
+            </CollapsibleTrigger>
+          </Box>
+
+          <Box spacingTop={2} spacingBottom={{ "@print": 4, "@initial": 8 }}>
+            <Divider />
+          </Box>
+
+          <CollapsibleContent asChild>
+            <Box
+              direction="vertical"
+              spacingBottom={{ "@print": 8, "@initial": 11 }}
+            >
+              {children}
+            </Box>
+          </CollapsibleContent>
+        </Box>
+      </CollapsibleRoot>
+
+      <Box
+        className={desktopSection()}
+        as="section"
+        aria-labelledby={id}
+        direction="vertical"
+      >
+        <Box justifyContent="space-between" alignItems="center" gap={2}>
+          <TextTitle2 id={id}>{title}</TextTitle2>
+        </Box>
+
+        <Box spacingTop={2} spacingBottom={{ "@print": 4, "@initial": 8 }}>
+          <Divider />
+        </Box>
+
+        <Box direction="vertical">{children}</Box>
+      </Box>
+    </>
+  );
 });
 
 export const ABOOT_ID = "about";
@@ -167,7 +241,7 @@ const About = () => {
         <Box
           id="__cv"
           direction="horizontal"
-          gap={{ "@print": 4, "@initial": 10 }}
+          gap={{ "@print": 4, "@initial": 0, "@bp2": 10 }}
           spacingHorizontal={{ "@print": 3, "@initial": 0 }}
           flexWrap={{
             "@print": "nowrap",
@@ -178,22 +252,13 @@ const About = () => {
         >
           <Box
             direction="vertical"
-            gap={{ "@print": 8, "@initial": 11 }}
+            gap={{ "@print": 8, "@initial": 0, "@bp2": 10, "@bp3": 11 }}
             css={{
               "@print": { flexGrow: 0, flexShrink: 0, flexBasis: 125 },
               "@bp3": { flexGrow: 0, flexShrink: 0, flexBasis: 250 },
             }}
           >
-            <Box as="section" aria-labelledby="contact" direction="vertical">
-              <TextTitle2 id="contact">Contact</TextTitle2>
-
-              <Box
-                spacingTop={2}
-                spacingBottom={{ "@print": 4, "@initial": 8 }}
-              >
-                <Divider />
-              </Box>
-
+            <CollapsibleSection id="contact" title="Contact">
               <GridRoot>
                 <Box as="li" alignItems="center">
                   <Tooltip title={SOCIAL.linkedin.displayName}>
@@ -271,18 +336,9 @@ const About = () => {
                   </Tooltip>
                 </Box>
               </GridRoot>
-            </Box>
+            </CollapsibleSection>
 
-            <Box as="section" aria-labelledby="expertise" direction="vertical">
-              <TextTitle2 id="expertise">Expertise</TextTitle2>
-
-              <Box
-                spacingTop={2}
-                spacingBottom={{ "@print": 4, "@initial": 8 }}
-              >
-                <Divider />
-              </Box>
-
+            <CollapsibleSection id="expertise" title="Expertise">
               <GridRoot>
                 {EXPERTISE.map((topic) => (
                   <GridItem key={topic}>
@@ -298,18 +354,9 @@ const About = () => {
                   </GridItem>
                 ))}
               </GridRoot>
-            </Box>
+            </CollapsibleSection>
 
-            <Box as="section" aria-labelledby="interests" direction="vertical">
-              <TextTitle2 id="interests">Interests</TextTitle2>
-
-              <Box
-                spacingTop={2}
-                spacingBottom={{ "@print": 4, "@initial": 8 }}
-              >
-                <Divider />
-              </Box>
-
+            <CollapsibleSection id="interests" title="Interests">
               <GridRoot>
                 {INTERESTS.map((interest) => (
                   <GridItem key={interest}>
@@ -325,18 +372,9 @@ const About = () => {
                   </GridItem>
                 ))}
               </GridRoot>
-            </Box>
+            </CollapsibleSection>
 
-            <Box as="section" aria-labelledby="education" direction="vertical">
-              <TextTitle2 id="education">Education</TextTitle2>
-
-              <Box
-                spacingTop={2}
-                spacingBottom={{ "@print": 4, "@initial": 8 }}
-              >
-                <Divider />
-              </Box>
-
+            <CollapsibleSection id="education" title="Education">
               <GridRoot
                 css={{
                   "@print": { gridRowGap: "$5" },
@@ -401,21 +439,10 @@ const About = () => {
                   </Box>
                 ))}
               </GridRoot>
-            </Box>
+            </CollapsibleSection>
 
-            <Box as="section" aria-labelledby="references" direction="vertical">
-              <Link variant="secondary" href={SOCIAL.linkedin.url}>
-                <TextTitle2 id="references">References</TextTitle2>
-              </Link>
-
-              <Box
-                spacingTop={2}
-                spacingBottom={{ "@print": 4, "@initial": 8 }}
-              >
-                <Divider />
-              </Box>
-
-              <Box direction="vertical" spacingBottom={10}>
+            <CollapsibleSection id="references" title="References">
+              <Box direction="vertical">
                 <Box as="ul" direction="vertical" gap={10}>
                   {TESTIMONIALS.map((testimonial) => (
                     <Box key={testimonial.id} as="li" direction="vertical">
@@ -442,7 +469,7 @@ const About = () => {
                   ))}
                 </Box>
               </Box>
-            </Box>
+            </CollapsibleSection>
           </Box>
 
           <Box
@@ -459,7 +486,7 @@ const About = () => {
           <Box
             direction="vertical"
             gap={{ "@print": 8, "@initial": 10 }}
-            spacingBottom={{ "@print": 3, "@initial": 0 }}
+            spacingBottom={{ "@print": 3, "@initial": 0, "@bp3": 10 }}
             flexGrow
           >
             <Box as="section" aria-labelledby="profile" direction="vertical">
@@ -483,16 +510,7 @@ const About = () => {
               </Box>
             </Box>
 
-            <Box as="section" aria-labelledby="experience" direction="vertical">
-              <TextTitle2 id="experience">Experience</TextTitle2>
-
-              <Box
-                spacingTop={2}
-                spacingBottom={{ "@print": 4, "@initial": 8 }}
-              >
-                <Divider />
-              </Box>
-
+            <CollapsibleSection id="experience" title="Experience">
               <Box direction="vertical" gap={{ "@print": 6, "@initial": 11 }}>
                 {EMPLOYMENT.map((employer) => (
                   <Box
@@ -609,7 +627,10 @@ const About = () => {
                             "@print": "horizontal",
                             "@initial": "vertical",
                           }}
-                          spacingHorizontal={{ "@print": 5, "@initial": 10 }}
+                          spacingHorizontal={{
+                            "@print": 5,
+                            "@initial": 10,
+                          }}
                           gap={{
                             "@print": 10,
                             "@initial": 1,
@@ -629,7 +650,7 @@ const About = () => {
                   </Box>
                 ))}
               </Box>
-            </Box>
+            </CollapsibleSection>
           </Box>
         </Box>
       </Box>
