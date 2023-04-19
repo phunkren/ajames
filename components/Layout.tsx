@@ -21,7 +21,7 @@ type LayoutProps = {
 };
 
 const HeaderBox = styled(Box, {
-  zIndex: 50,
+  zIndex: "$2",
   width: "100%",
   position: "fixed",
   top: 0,
@@ -61,7 +61,7 @@ export const HeaderLayout = memo(function HeaderLayout() {
         display={{ "@print": "none", "@initial": "flex" }}
         spacingVertical={3}
         spacingLeft={6}
-        spacingRight={5}
+        spacingRight={7}
         gap={7}
         justifyContent="space-between"
         alignItems="center"

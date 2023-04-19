@@ -14,36 +14,6 @@ export type ErrorBoundaryProps = {
   resetErrorBoundary?: (...args: Array<unknown>) => void;
 };
 
-const StyledImage = styled(Image, {
-  display: "none",
-  objectFit: "contain",
-  position: "absolute",
-  top: "10% !important",
-  zIndex: -1,
-  transform: "scale(-1.5, 1.5)",
-  filter: "grayscale(1)",
-
-  [`.${lightTheme} &`]: {
-    filter: "brightness(75%) grayscale(1)",
-  },
-
-  [`.${darkTheme} &`]: {
-    filter: "brightness(75%) grayscale(1)",
-    opacity: 0.9,
-  },
-
-  "@bp2": {
-    display: "block",
-    left: "30% !important",
-  },
-
-  "@bp3": {
-    display: "block",
-    top: "7% !important",
-    left: "25% !important",
-  },
-});
-
 export const ErrorFallback = memo(function ErrorFallback({
   error,
   resetErrorBoundary,

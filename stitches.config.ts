@@ -79,6 +79,14 @@ export const {
       functionFancy: "cubic-bezier(0.4, 0, 1, 1)",
       transformScale: "0.975",
     },
+    zIndices: {
+      0: "0", //
+      1: "50", // Raised Content
+      2: "100", // Header
+      3: "150", // Dropdown Menu / Tooltip
+      4: "200", // Drawer / Dialog
+      5: "250", // Toast
+    },
   },
   media: {
     bp1: "(min-width: 480px)",

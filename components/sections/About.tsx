@@ -15,7 +15,7 @@ import {
   TextTitle2,
   TextTitle3,
 } from "../Text";
-import { css, styled } from "../../stitches.config";
+import { styled } from "../../stitches.config";
 import {
   EDUCATION,
   EMPLOYMENT,
@@ -79,26 +79,24 @@ const GridItem = styled("li", {
   },
 });
 
-const bg = css({
-  background: `linear-gradient($slate2 0.04%, $slate1 100.04%)`,
-});
-
 export const ABOOT_ID = "about";
 
 export const About = () => {
   return (
     <Box
-      id={ABOOT_ID}
       as="section"
-      className={bg}
       spacingBottom={{ "@print": 0, "@initial": 12 }}
       spacingHorizontal={{ "@print": 0, "@initial": 7 }}
       direction="vertical"
+      css={{
+        background: `linear-gradient(-2deg, $slate1 0.04%, $slate2 100.04%)`,
+      }}
     >
       <Box
+        id={ABOOT_ID}
         direction="vertical"
         gap={{ "@print": 0, "@initial": 11 }}
-        spacingVertical={{ "@print": 0, "@initial": 12 }}
+        spacingVertical={{ "@print": 0, "@initial": 11, "@bp2": 12 }}
         container="l"
       >
         <Box

@@ -361,7 +361,7 @@ export const BlogCard = memo(function BlogCard({
                   height: 44,
                   background: "transparent",
                   position: "absolute",
-                  zIndex: 0,
+                  zIndex: "$0",
                 },
               }}
               pressed={isPreviewVisible}
@@ -403,9 +403,9 @@ export const BlogSponsored = memo(function BlogSponsored() {
                 </TextHeadline>
               </StyledLink>
               <TextAux as="p" color="secondary">
-                You can support my work by clicking here and following the RSS
-                feed. Alternatively, click the cup icon below to buy me a
-                coffee.
+                You can support my work and stay updated by clicking here and
+                following the RSS feed. You can also click the cup below to buy
+                me a coffee.
               </TextAux>
             </Box>
           </StyledBlogContent>
@@ -478,7 +478,7 @@ export const VideoCard = memo(function VideoCard({
                     height: 44,
                     background: "transparent",
                     position: "absolute",
-                    zIndex: 0,
+                    zIndex: "$0",
                   },
                 }}
                 title="View description"

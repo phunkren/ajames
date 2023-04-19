@@ -45,7 +45,7 @@ export type Props = {
 };
 
 const bg = css({
-  background: `linear-gradient($slate1 0.04%, $slate2 100.04%)`,
+  background: `linear-gradient(2deg, $slate2 0.04%, $slate1 100.04%)`,
 });
 
 const StyledVideoCardContainer = styled(Box, {
@@ -97,15 +97,20 @@ export const Learning = ({
 
   return (
     <Box
-      id={LEARNING_ID}
       as="section"
       display={{ print: "none", "@initial": "flex" }}
       direction="vertical"
-      spacingVertical={12}
+      spacingTop={12}
       spacingHorizontal={7}
       className={bg}
     >
-      <Box direction="vertical" gap={12} container="l" spacingTop={12}>
+      <Box
+        id={LEARNING_ID}
+        direction="vertical"
+        gap={12}
+        container="l"
+        spacingVertical={{ "@print": 0, "@initial": 11, "@bp2": 12 }}
+      >
         <Box>
           <AspectRatio.Root ratio={2.5 / 1} asChild>
             <StyledHeroImage
@@ -341,40 +346,6 @@ export const Learning = ({
                 </Box>
               );
             })}
-          </Box>
-
-          <Box direction="vertical" gap={11}>
-            <Divider />
-
-            <Box
-              direction="vertical"
-              gap={{
-                "@initial": 6,
-                "@bp2": 10,
-              }}
-            >
-              <TextTitle3 textAlign="center" css={{ color: "$focus" }}>
-                Enjoy the content?
-              </TextTitle3>
-
-              <Box
-                direction={{
-                  "@initial": "vertical",
-                  "@bp2": "horizontal",
-                }}
-                justifyContent="space-around"
-                alignItems="center"
-                gap={8}
-              >
-                <LinkedInConnectLink />
-
-                <BlogSubscriptionLink />
-
-                <YoutubeSubscribeLink />
-              </Box>
-            </Box>
-
-            <Divider />
           </Box>
         </Box>
       </Box>

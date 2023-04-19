@@ -29,10 +29,6 @@ const StyledHeroContainer = styled(Box, {
   background: slateDark.slate1,
   color: slateDark.slate12,
   overflow: "hidden",
-
-  "@print": {
-    display: "none !important",
-  },
 });
 
 const StyledImage = styled(Image, {
@@ -44,7 +40,7 @@ const StyledImage = styled(Image, {
     "filter $transitions$durationDefault $transitions$functionDefault",
   pointerEvents: "none",
   objectPosition: "bottom",
-  zIndex: 6,
+  zIndex: "$1",
 
   "@supports not (height: 100svh)": {
     height: "90vh",
@@ -90,7 +86,6 @@ const HeroOne = styled(Base, {
   transform: "rotate(33deg)",
   background: `linear-gradient(-45deg, ${blueDark.blue3} 0%, ${blueDark.blue4} 50%, ${blueDark.blue5} 100%)`,
   backgroundImage: `-webkit-linear-gradient(-45deg, ${blueDark.blue3} 0%, ${blueDark.blue4} 50%, ${blueDark.blue5} 100%)`,
-  zIndex: 1,
 });
 
 const HeroTwo = styled(Base, {
@@ -102,7 +97,6 @@ const HeroTwo = styled(Base, {
   backgroundImage: `-webkit-linear-gradient(240deg, ${blueDark.blue9} 0%, ${blueDark.blue7} 50%, ${blueDark.blue5} 100%)`,
   transformOrigin: "top left",
   transform: "rotate(-45deg)",
-  zIndex: 2,
 });
 
 const HeroThree = styled(Base, {
@@ -114,7 +108,6 @@ const HeroThree = styled(Base, {
   backgroundImage: `-webkit-linear-gradient(140deg, ${redDark.red11} 0%, ${redDark.red9} 50%, ${redDark.red7} 100%)`,
   transformOrigin: "bottom left",
   transform: "rotate(-45deg)",
-  zIndex: 3,
 });
 
 const HeroFour = styled(Base, {
@@ -126,7 +119,6 @@ const HeroFour = styled(Base, {
   backgroundImage: `-webkit-linear-gradient(33deg, ${redDark.red3} 0%, ${redDark.red4} 50%, ${redDark.red5} 100%)`,
   transformOrigin: "bottom left",
   transform: "rotate(45deg)",
-  zIndex: 4,
 });
 
 const ANIMATION_A = {
@@ -141,7 +133,7 @@ const ANIMATION_A = {
 const ANIMATION_B = {
   x: 75,
   y: -50,
-  duration: 20,
+  duration: 15,
   repeat: -1,
   yoyo: true,
   ease: "slow.out",
@@ -200,7 +192,7 @@ export const Hero = memo(function HeroLayout() {
                   "@portrait": "center",
                   "@landscape": "flex-start",
                 }}
-                css={{ zIndex: 6 }}
+                css={{ zIndex: "$1" }}
                 flexGrow
               >
                 <TextTitle

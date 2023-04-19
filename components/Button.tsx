@@ -169,6 +169,7 @@ const StyledButton = styled("button", {
       },
       tertiary: {
         backgroundColor: "transparent",
+        boxShadow: "none",
       },
       link: {
         textDecorationLine: "underline",
@@ -201,7 +202,7 @@ export const StyledIconButton = styled("button", {
   borderWidth: 2,
   borderStyle: "solid",
   appearance: "none",
-  boxShadow: "$1",
+
   background: "transparent",
   color: "currentcolor",
   borderColor: "$foreground",
@@ -218,29 +219,41 @@ export const StyledIconButton = styled("button", {
     opacity: 0.4,
   },
 
-  "@media(hover)": {
-    "&:hover": {
-      boxShadow: "$4",
-      background: "$foreground",
-      color: "$background",
-      transition: `box-shadow $transitions$durationDefault $transitions$functionDefault, background $transitions$durationDefault $transitions$functionDefault, color $transitions$durationDefault $transitions$functionDefault`,
-      ["-webkit-transition"]: `box-shadow $transitions$durationDefault $transitions$functionDefault, background $transitions$durationDefault $transitions$functionDefault, color $transitions$durationDefault $transitions$functionDefault`,
-    },
-  },
-
-  "&:active": {
-    boxShadow: "$5",
-    transform: "scale($transitions$transformScale)",
-    transition: `transform $transitions$durationDefault $transitions$functionDefault`,
-    ["-webkit-transition"]: `transform $transitions$durationDefault $transitions$functionDefault`,
-  },
-
   variants: {
     ...DISPLAY_VARIANTS,
+    variant: {
+      primary: {
+        borderColor: "$foreground",
+        boxShadow: "$1",
+
+        "@media(hover)": {
+          "&:hover": {
+            boxShadow: "$4",
+            background: "$foreground",
+            color: "$background",
+            transition: `box-shadow $transitions$durationDefault $transitions$functionDefault, background $transitions$durationDefault $transitions$functionDefault, color $transitions$durationDefault $transitions$functionDefault`,
+            ["-webkit-transition"]: `box-shadow $transitions$durationDefault $transitions$functionDefault, background $transitions$durationDefault $transitions$functionDefault, color $transitions$durationDefault $transitions$functionDefault`,
+          },
+        },
+
+        "&:active": {
+          boxShadow: "$5",
+          transform: "scale($transitions$transformScale)",
+          transition: `transform $transitions$durationDefault $transitions$functionDefault`,
+          ["-webkit-transition"]: `transform $transitions$durationDefault $transitions$functionDefault`,
+        },
+      },
+      secondary: {
+        borderColor: "transparent",
+        boxShadow: "none",
+        backgroundColor: "transparent",
+      },
+    },
   },
 
   defaultVariants: {
     display: "flex",
+    variant: "primary",
   },
 });
 
@@ -268,7 +281,7 @@ const StyledToastViewport = styled(Toast.Viewport, {
   maxWidth: "100vw",
   margin: 0,
   listStyle: "none",
-  zIndex: 2147483647,
+  zIndex: "$5",
   outline: "none",
   transform: "translateX(50%)",
 });
@@ -345,7 +358,7 @@ export const StyledCoffeeButton = styled(Button, {
     height: 44,
     background: "transparent",
     position: "absolute",
-    zIndex: 0,
+    zIndex: "$0",
     left: "50%",
     top: "50%",
     transform: "translate(-50%, -50%)",

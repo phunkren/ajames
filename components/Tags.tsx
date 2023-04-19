@@ -27,7 +27,7 @@ const StyledSelectContent = styled(Select.Content, {
   borderRadius: "$1",
   padding: "$2",
   boxShadow: "$2",
-  zIndex: 10,
+  zIndex: "$3",
 
   "@media(hover)": {
     "&:hover": {
@@ -90,7 +90,7 @@ const StyledDrawerContent = styled(Dialog.Content, {
   width: "100dvw",
   borderRadius: 8,
   minWidth: 300,
-  zIndex: 99,
+  zIndex: "$4",
   transform: "translate3d(0, 0, 0)",
   animation: `${dialogSlideUp} 300ms ease-out 50ms forwards`,
 });
@@ -122,7 +122,7 @@ export const StyledTag = styled(Box, {
   color: "$foregroundMuted",
 
   "& > *": {
-    zIndex: 1,
+    zIndex: "$1",
   },
 
   "&::after": {
@@ -264,7 +264,6 @@ export const TagDrawer = memo(function TagDrawer({
                       key={tag.id}
                       as="li"
                       direction="vertical"
-                      spacing={1}
                       css={{ scrollSnapAlign: "center" }}
                     >
                       <Button variant="tertiary" onClick={handleClick}>

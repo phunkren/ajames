@@ -83,7 +83,7 @@ const SwitchThumb = styled(Switch.Thumb, {
   ["-webkit-transition"]:
     "transform $transitions$durationDefault $transitions$functionDefault",
   willChange: "transform",
-  zIndex: 1,
+  zIndex: "$1",
   width: 26,
   height: 26,
 

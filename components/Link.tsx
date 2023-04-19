@@ -407,13 +407,13 @@ const StyledBlogSubscription = styled(Link, {
         ...LINK_BUTTON_PROPS,
 
         [`.${lightTheme} &`]: {
-          backgroundImage: `linear-gradient(175deg, $violet9 0.04%, $violet10 100.04%)`,
-          color: "$violet1",
+          backgroundImage: `linear-gradient(175deg, $amber9 0.04%, $amber10 100.04%)`,
+          color: "$amber1",
         },
 
         [`.${darkTheme} &`]: {
-          backgroundImage: `linear-gradient(175deg, $violet8 0.04%, $violet7 100.04%)`,
-          color: "$violet12",
+          backgroundImage: `linear-gradient(175deg, $amber11 0.04%, $amber8 100.04%)`,
+          color: "$amber12",
         },
 
         "@media(hover)": {
@@ -421,11 +421,11 @@ const StyledBlogSubscription = styled(Link, {
 
           "&:hover": {
             [`.${lightTheme} &`]: {
-              backgroundImage: `linear-gradient(175deg, $violet10 0.04%, $violet9 100.04%)`,
+              backgroundImage: `linear-gradient(175deg, $amber10 0.04%, $amber9 100.04%)`,
             },
 
             [`.${darkTheme} &`]: {
-              backgroundImage: `linear-gradient(175deg, $violet7 0.04%, $violet8 100.04%)`,
+              backgroundImage: `linear-gradient(175deg, $amber8 0.04%, $amber11 100.04%)`,
             },
           },
         },
@@ -438,17 +438,17 @@ const StyledBlogSubscription = styled(Link, {
         borderRadius: "50%",
         borderStyle: "solid",
         borderWidth: 2,
-        borderColor: "$colors$violet12",
+        borderColor: "$colors$amber12",
         ...LINK_BUTTON_PROPS,
 
         [`.${lightTheme} &`]: {
-          backgroundImage: `linear-gradient(175deg, $violet9 0.04%, $violet10 100.04%)`,
-          color: "$violet1",
+          backgroundImage: `linear-gradient(175deg, $amber9 0.04%, $amber10 100.04%)`,
+          color: "$amber1",
         },
 
         [`.${darkTheme} &`]: {
-          backgroundImage: `linear-gradient(175deg, $violet8 0.04%, $violet7 100.04%)`,
-          color: "$violet12",
+          backgroundImage: `linear-gradient(175deg, $amber8 0.04%, $amber11 100.04%)`,
+          color: "$amber12",
         },
 
         /* Optically aligns the RSS Icon */

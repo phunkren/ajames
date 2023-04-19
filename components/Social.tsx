@@ -11,12 +11,19 @@ import {
 import { MdRssFeed } from "react-icons/md";
 import { SOCIAL } from "../util/data";
 import { Box } from "./Box";
-import { Link } from "./Link";
+import {
+  BlogSubscriptionLink,
+  Link,
+  LinkedInConnectLink,
+  YoutubeSubscribeLink,
+} from "./Link";
 import { Tooltip } from "./Tooltip";
 import { SpacingUnit } from "../styles/flex";
 import { styled } from "../stitches.config";
 import { ICON_SIZE } from "../util/images";
 import { SiBuymeacoffee } from "react-icons/si";
+import { Divider } from "./Divider";
+import { TextTitle3 } from "./Text";
 
 type SocialBaseProps = any; // ComponentProps<typeof StyledBox>;
 
@@ -193,5 +200,59 @@ export const SocialExtended = memo(function SocialExtended({
         </Box>
       </Box>
     </StyledBox>
+  );
+});
+
+export const SocialSponsored = memo(function SocialSponsored() {
+  return (
+    <Box
+      display={{ print: "none", "@initial": "flex" }}
+      direction="vertical"
+      spacingVertical={{ "@print": 0, "@initial": 12 }}
+      spacingHorizontal={7}
+      css={{
+        background: `linear-gradient($slate2 0.04%, $slate1 100.04%)`,
+      }}
+    >
+      <Box
+        direction="vertical"
+        gap={12}
+        container="l"
+        spacingBottom={{ "@print": 0, "@initial": 11, "@bp2": 12 }}
+        css={{ zIndex: "$1" }}
+      >
+        <Divider />
+
+        <Box
+          direction="vertical"
+          gap={{
+            "@initial": 6,
+            "@bp2": 10,
+          }}
+        >
+          <TextTitle3 textAlign="center" css={{ color: "$focus" }}>
+            Enjoy the content?
+          </TextTitle3>
+
+          <Box
+            direction={{
+              "@initial": "vertical",
+              "@bp2": "horizontal",
+            }}
+            justifyContent="space-around"
+            alignItems="center"
+            gap={8}
+          >
+            <LinkedInConnectLink />
+
+            <BlogSubscriptionLink />
+
+            <YoutubeSubscribeLink />
+          </Box>
+        </Box>
+
+        <Divider />
+      </Box>
+    </Box>
   );
 });

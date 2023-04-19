@@ -141,7 +141,7 @@ const StyledCardContainer = styled(Box, {
 
 const bg = css({
   position: "relative",
-  background: "$slate1",
+  background: "$slate2",
 
   "&::before": {
     content: "",
@@ -150,10 +150,10 @@ const bg = css({
     left: 0,
     width: "200%",
     height: "50%",
-    backgroundColor: "$slate1",
+    backgroundColor: "$slate2",
     transform: "skewY(-2deg)",
     transformOrigin: "left top",
-    zIndex: 0,
+    zIndex: "$0",
   },
 
   "&::after": {
@@ -163,10 +163,10 @@ const bg = css({
     left: 0,
     width: "200%",
     height: "50%",
-    backgroundColor: "$slate1",
+    backgroundColor: "$slate2",
     transform: "skewY(2deg)",
     transformOrigin: "left top",
-    zIndex: 0,
+    zIndex: "$0",
   },
 });
 
@@ -228,7 +228,6 @@ export const Writing = ({ posts, tags }: Props) => {
 
   return (
     <Box
-      id={WRITING_ID}
       as="section"
       display={{ print: "none", "@initial": "flex" }}
       direction="vertical"
@@ -237,11 +236,12 @@ export const Writing = ({ posts, tags }: Props) => {
       className={bg}
     >
       <Box
+        id={WRITING_ID}
         direction="vertical"
         gap={12}
         container="l"
-        spacingVertical={{ "@print": 0, "@initial": 12 }}
-        css={{ zIndex: 2 }}
+        spacingVertical={{ "@print": 0, "@initial": 11, "@bp2": 12 }}
+        css={{ zIndex: "$1" }}
       >
         <Box>
           <AspectRatio.Root ratio={2.5 / 1} asChild>
@@ -499,7 +499,7 @@ export const Writing = ({ posts, tags }: Props) => {
                           <Link href="/rss" variant="tertiary">
                             RSS Feed
                           </Link>
-                          . Alternatively, you can &nbsp;
+                          . You can also&nbsp;
                           <BuyMeCoffeeLink />.
                         </TextBody>
 
