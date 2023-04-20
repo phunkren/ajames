@@ -1,4 +1,5 @@
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
+import debounce from "lodash.debounce";
 import Balancer from "react-wrap-balancer";
 import Image from "next/image";
 import { PlayIcon } from "@radix-ui/react-icons";
@@ -27,7 +28,7 @@ import { ICON_SIZE } from "../../util/images";
 import { Box } from "../Box";
 import book from "../../public/images/book.png";
 import LiteYouTubeEmbed from "react-lite-youtube-embed";
-import { useEffect } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { SITE } from "../../util/data";
 
 export type Props = {
@@ -63,35 +64,41 @@ const StyledHeroImage = styled(Image, {
 
 export const LEARNING_ID = "learning";
 
-const Learning = ({
+export const Learning = ({
   featuredVideo,
   playlistsPreview,
   playlistVideosPreview,
   channelInfoPreview,
 }: Props) => {
-  // https://github.com/ibrahimcesar/react-lite-youtube-embed/issues/50
+  const parentRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    const button = document.querySelector(".lty-playbtn") as HTMLButtonElement;
+    const callback = debounce(
+      (entries) => {
+        const button = document.querySelector(
+          ".lty-playbtn"
+        ) as HTMLButtonElement;
 
-    if (!button) return;
+        if (button && entries[0].isIntersecting) {
+          button.click();
+        }
+      },
+      100,
+      { leading: true, trailing: true }
+    );
 
-    function createObserver() {
-      let observer;
+    const observer = new IntersectionObserver(callback);
+    observer.observe(parentRef.current);
 
-      let options = {
-        rootMargin: "-50%",
-        threshold: 1,
-      };
-
-      observer = new IntersectionObserver(() => button.click(), options);
-      observer.observe(button);
-    }
-    return createObserver();
+    return () => {
+      observer.disconnect();
+    };
   }, []);
 
   return (
     <Box
       id={LEARNING_ID}
+      ref={parentRef}
       as="section"
       display={{ print: "none", "@initial": "flex" }}
       direction="vertical"
@@ -346,5 +353,3 @@ const Learning = ({
     </Box>
   );
 };
-
-export default Learning;

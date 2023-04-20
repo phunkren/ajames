@@ -1,11 +1,15 @@
 import { GetStaticProps } from "next";
-import dynamic from "next/dynamic";
+
 import { memo, ReactElement } from "react";
 import { Box } from "../components/Box";
 import { Layout } from "../components/Layout";
 import { Hero } from "../components/sections/Hero";
-import { Props as LearningProps } from "../components/sections/Learning";
-import { Props as WritingProps } from "../components/sections/Writing";
+import { About } from "../components/sections/About";
+import {
+  Learning,
+  Props as LearningProps,
+} from "../components/sections/Learning";
+import { Writing, Props as WritingProps } from "../components/sections/Writing";
 import { SocialSponsored } from "../components/Social";
 import { createPosts, generateRSSFeed, getPosts } from "../lib/notion";
 import { getYoutubeData } from "../lib/youtube";
@@ -24,18 +28,6 @@ type Props = {
   writing: WritingProps;
   learning: LearningProps;
 };
-
-const About = dynamic(() => import("../components/sections/About"), {
-  ssr: false,
-});
-
-const Writing = dynamic(() => import("../components/sections/Writing"), {
-  ssr: false,
-});
-
-const Learning = dynamic(() => import("../components/sections/Learning"), {
-  ssr: false,
-});
 
 export const getStaticProps: GetStaticProps = async () => {
   // Writing

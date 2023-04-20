@@ -148,7 +148,7 @@ export const CollapsibleSection = memo(function CollapsibleSection({
 
 export const ABOOT_ID = "about";
 
-const About = () => {
+export const About = () => {
   return (
     <Box
       id={ABOOT_ID}
@@ -650,5 +650,3 @@ const About = () => {
     </Box>
   );
 };
-
-export default About;

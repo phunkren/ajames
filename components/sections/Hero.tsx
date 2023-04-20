@@ -34,6 +34,7 @@ const StyledHeroContainer = styled(Box, {
 const StyledImage = styled(Image, {
   position: "absolute",
   height: "90svh",
+  width: "auto",
   bottom: 0,
   right: 0,
   transition:

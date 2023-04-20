@@ -172,7 +172,7 @@ const bg = css({
 
 export const WRITING_ID = "writing";
 
-const Writing = ({ posts, tags }: Props) => {
+export const Writing = ({ posts, tags }: Props) => {
   const { push, query } = useRouter();
   const [display, setDisplay] = useState<"partial" | "all">("partial");
   const queryTag = query.tag as string;
@@ -538,5 +538,3 @@ const Writing = ({ posts, tags }: Props) => {
     </Box>
   );
 };
-
-export default Writing;
