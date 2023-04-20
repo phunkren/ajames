@@ -2,7 +2,7 @@ import { memo, ReactElement } from "react";
 import Balancer from "react-wrap-balancer";
 import ReactMarkdown from "react-markdown";
 import { useRouter } from "next/router";
-import localFont from "@next/font/local";
+import localFont from "next/font/local";
 import remarkMdx from "remark-mdx";
 import remarkGfm from "remark-gfm";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";

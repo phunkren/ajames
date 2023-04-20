@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "@next/bundle-analyzer": "^13.1.6",
-    "@next/font": "^13.1.2",
     "@notionhq/client": "^2.2.2",
     "@radix-ui/colors": "^0.1.8",
     "@radix-ui/react-aspect-ratio": "^1.0.1",
