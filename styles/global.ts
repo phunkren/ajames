@@ -61,12 +61,12 @@ export const globalStyles = globalCss({
   },
 
   [`body.${lightTheme}`]: {
-    background: lightTheme.colors.backgroundGradient,
+    background: lightTheme.colors.background,
     color: lightTheme.colors.foreground,
   },
 
   [`body.${darkTheme}`]: {
-    background: darkTheme.colors.backgroundGradient,
+    background: darkTheme.colors.background,
     color: darkTheme.colors.foreground,
   },
 

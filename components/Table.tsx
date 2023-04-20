@@ -1,6 +1,13 @@
+import { memo } from "react";
 import { styled } from "../stitches.config";
+import { Box } from "./Box";
 
-export const Table = styled("table", {
+export const StyledTableContainer = styled(Box, {
+  maxWidth: "100%",
+  overflowX: "auto",
+});
+
+export const StyledTable = styled("table", {
   borderCollapse: "collapse",
   borderWidth: 2,
   borderStyle: "solid",
@@ -34,4 +41,12 @@ export const Td = styled("td", {
   borderWidth: 1,
   borderStyle: "solid",
   borderColor: "$foregroundMuted",
+});
+
+export const Table = memo(function Table(props) {
+  return (
+    <StyledTableContainer>
+      <StyledTable {...props} />
+    </StyledTableContainer>
+  );
 });

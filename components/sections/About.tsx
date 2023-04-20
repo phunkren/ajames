@@ -92,11 +92,13 @@ const GridItem = styled("li", {
 
 const mobileSection = css({
   display: "flex !important",
+  "@print": { display: "none !important" },
   "@bp3": { display: "none !important" },
 });
 
 const desktopSection = css({
   display: "none !important",
+  "@print": { display: "flex !important" },
   "@bp3": { display: "flex !important" },
 });
 
@@ -153,12 +155,13 @@ export const About = () => {
     <Box
       id={ABOOT_ID}
       as="section"
-      spacingTop={10}
+      spacingTop={{ "@print": 0, "@initial": 10 }}
       spacingBottom={{ "@print": 0, "@initial": 12 }}
       spacingHorizontal={{ "@print": 0, "@initial": 7 }}
       direction="vertical"
       css={{
         background: `linear-gradient(-2deg, $slate1 0.04%, $slate2 100.04%)`,
+        "@print": { overflowY: "hidden" },
       }}
     >
       <Box
@@ -168,13 +171,14 @@ export const About = () => {
         container="l"
       >
         <Box
+          direction="vertical"
+          spacingBottom={8}
           display={{ "@print": "flex", "@initial": "none" }}
-          spacingBottom={10}
         >
           <Box
             direction="vertical"
             spacingHorizontal={3}
-            spacingBottom={3}
+            spacingBottom={6}
             css={{ borderBottom: "2px solid black" }}
           >
             <TextTitle1>{PERSONAL.name}</TextTitle1>
@@ -186,7 +190,7 @@ export const About = () => {
 
         <Box
           direction="vertical"
-          gap={{ "@print": 0, "@initial": 10 }}
+          gap={10}
           display={{ "@print": "none", "@initial": "flex" }}
         >
           <Box justifyContent="space-between" alignItems="center">
@@ -235,6 +239,7 @@ export const About = () => {
           id="__cv"
           direction="horizontal"
           gap={{ "@print": 4, "@initial": 0, "@bp2": 10 }}
+          spacingTop={{ "@print": 3, "@initial": 0 }}
           spacingHorizontal={{ "@print": 3, "@initial": 0 }}
           flexWrap={{
             "@print": "nowrap",
