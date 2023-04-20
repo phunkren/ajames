@@ -228,6 +228,7 @@ const Writing = ({ posts, tags }: Props) => {
 
   return (
     <Box
+      id={WRITING_ID}
       as="section"
       display={{ print: "none", "@initial": "flex" }}
       direction="vertical"
@@ -236,7 +237,6 @@ const Writing = ({ posts, tags }: Props) => {
       className={bg}
     >
       <Box
-        id={WRITING_ID}
         direction="vertical"
         gap={12}
         container="l"

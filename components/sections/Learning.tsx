@@ -91,6 +91,7 @@ const Learning = ({
 
   return (
     <Box
+      id={LEARNING_ID}
       as="section"
       display={{ print: "none", "@initial": "flex" }}
       direction="vertical"
@@ -99,7 +100,6 @@ const Learning = ({
       className={bg}
     >
       <Box
-        id={LEARNING_ID}
         direction="vertical"
         gap={12}
         container="l"

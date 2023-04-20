@@ -206,7 +206,7 @@ export const SocialExtended = memo(function SocialExtended({
 export const SocialSponsored = memo(function SocialSponsored() {
   return (
     <Box
-      display={{ print: "none", "@initial": "flex" }}
+      display={{ "@print": "none", "@initial": "flex" }}
       direction="vertical"
       spacingVertical={{ "@print": 0, "@initial": 12 }}
       spacingHorizontal={7}
@@ -214,7 +214,16 @@ export const SocialSponsored = memo(function SocialSponsored() {
         background: `linear-gradient($slate2 0.04%, $slate1 100.04%)`,
       }}
     >
-      <Box direction="vertical" gap={12} container="l" css={{ zIndex: "$1" }}>
+      <Box
+        direction="vertical"
+        gap={12}
+        container="l"
+        spacingBottom={{
+          "@initial": 10,
+          "@bp2": 12,
+        }}
+        css={{ zIndex: "$1" }}
+      >
         <Divider />
 
         <Box

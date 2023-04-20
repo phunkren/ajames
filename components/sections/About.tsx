@@ -158,6 +158,7 @@ export const ABOOT_ID = "about";
 const About = () => {
   return (
     <Box
+      id={ABOOT_ID}
       as="section"
       spacingTop={10}
       spacingBottom={{ "@print": 0, "@initial": 12 }}
@@ -168,7 +169,6 @@ const About = () => {
       }}
     >
       <Box
-        id={ABOOT_ID}
         direction="vertical"
         gap={{ "@print": 0, "@initial": 11 }}
         spacingVertical={{ "@print": 0, "@initial": 10, "@bp2": 12 }}

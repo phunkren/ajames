@@ -343,9 +343,14 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
 
             <Box alignItems="flex-end" justifyContent="space-between">
               <Frontmatter>
-                <PostTags tags={frontmatter.tags} icon />
                 <PublishDate date={frontmatter.date} icon />
                 <ReadingTime time={frontmatter.time} icon />
+                <PostTags
+                  tags={frontmatter.tags}
+                  alignItems={{ "@initial": "flex-start", "@bp2": "center" }}
+                  spacingVertical={{ "@initial": 1, "@bp2": 0 }}
+                  icon
+                />
               </Frontmatter>
 
               <ActionButtons css={{ width: "auto" }}>
