@@ -520,7 +520,11 @@ export const YoutubeSubscribeLink = memo(function YoutubeSubscribeLink({
       {...props}
     >
       <Box alignItems="center" gap={type === "button" ? 2 : 4}>
-        <VideoIcon width={ICON_SIZE.xl} height={ICON_SIZE.xl} aria-hidden />
+        <VideoIcon
+          width={type === "link" ? ICON_SIZE.xl : ICON_SIZE.m}
+          height={type === "link" ? ICON_SIZE.xl : ICON_SIZE.m}
+          aria-hidden
+        />
 
         {type === "button" && <TextAux color="primary">Subscribe</TextAux>}
 
@@ -566,8 +570,8 @@ export const LinkedInConnectLink = memo(function LinkedInConnectLink({
       <Box alignItems="center" gap={type === "button" ? 2 : 4}>
         <LinkedInLogoIcon
           style={{ position: "relative", top: -1 }}
-          width={ICON_SIZE.xl}
-          height={ICON_SIZE.xl}
+          width={type === "link" ? ICON_SIZE.xl : ICON_SIZE.m}
+          height={type === "link" ? ICON_SIZE.xl : ICON_SIZE.m}
           aria-hidden
         />
 
@@ -622,11 +626,11 @@ export const BlogSubscriptionLink = memo(function BlogSubscribeLink({
       <StyledBlogSubscription
         href={rssFeedUrl}
         type={type}
-        variant={type === "link" ? "secondary" : "invisible"}
+        variant="secondary"
         {...props}
       >
         <Box alignItems="center" gap={4}>
-          <StyledRssIcon size={34} />
+          <StyledRssIcon size={ICON_SIZE.xl} />
           <StyledHeadline>Follow</StyledHeadline>
         </Box>
       </StyledBlogSubscription>
