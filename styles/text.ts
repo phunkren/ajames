@@ -168,7 +168,7 @@ export const P_STYLES = {
 
   "@print": {
     fontSize: 14,
-    lineHeight: 1.4,
+    lineHeight: 1.55,
     letterSpacing: 0.28,
   },
 };
@@ -183,12 +183,6 @@ export const P_BLOG_STYLES = {
     fontSize: 24,
     lineHeight: 1.5,
     letterSpacing: 0.4,
-  },
-
-  "@print": {
-    fontSize: 14,
-    lineHeight: 1.25,
-    letterSpacing: 0.28,
   },
 };
 

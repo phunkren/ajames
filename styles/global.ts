@@ -1,4 +1,5 @@
 import { globalCss, lightTheme, darkTheme } from "../stitches.config";
+import { SPACING_VARIANTS } from "./spacing";
 import { AUX_STYLES, P_STYLES } from "./text";
 
 /* https://piccalil.li/blog/a-modern-css-reset/ */
@@ -143,10 +144,21 @@ export const globalStyles = globalCss({
   },
 
   "@print": {
+    /* Set the width of the page to 100% */
+    "@page": {
+      size: "auto",
+      margin: "32px 16px",
+    },
+
     "*, *::before, *::after": {
       background: "white !important",
       borderColor: "black !important",
       color: "black !important",
+    },
+
+    /* Set the width of the content to 100% */
+    body: {
+      width: "100%",
     },
 
     li: {

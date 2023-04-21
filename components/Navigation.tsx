@@ -10,7 +10,7 @@ import { keyframes, styled } from "../stitches.config";
 import { ICON_SIZE } from "../util/images";
 import { useTheme } from "../hooks/useTheme";
 import { Divider } from "./Divider";
-import { PROJECTS } from "../util/data";
+import { PERSONAL, PROJECTS } from "../util/data";
 import { Link } from "./Link";
 import { TextAux, TextHeadline } from "./Text";
 import { Button, MobileNavigationButton } from "./Button";
@@ -197,6 +197,18 @@ export const Navigation = memo(function Navigation() {
               nextLinkProps={{ scroll: false, shallow: true }}
             >
               <TextHeadline>Learning</TextHeadline>
+            </Link>
+          </NavigationMenu.Link>
+        </NavigationMenu.Item>
+
+        <NavigationMenu.Item>
+          <NavigationMenu.Link asChild>
+            <Link
+              variant="secondary"
+              href={`mailto:${PERSONAL.email}`}
+              nextLinkProps={{ scroll: false, shallow: true }}
+            >
+              <TextHeadline>Contact</TextHeadline>
             </Link>
           </NavigationMenu.Link>
         </NavigationMenu.Item>
