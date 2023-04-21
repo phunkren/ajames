@@ -23,7 +23,7 @@ import { styled } from "../stitches.config";
 import { ICON_SIZE } from "../util/images";
 import { SiBuymeacoffee } from "react-icons/si";
 import { Divider } from "./Divider";
-import { TextTitle3 } from "./Text";
+import { TextAux, TextTitle2, TextTitle3 } from "./Text";
 
 type SocialBaseProps = any; // ComponentProps<typeof StyledBox>;
 
@@ -216,7 +216,10 @@ export const SocialSponsored = memo(function SocialSponsored() {
     >
       <Box
         direction="vertical"
-        gap={12}
+        gap={{
+          "@initial": 11,
+          "@bp2": 12,
+        }}
         container="l"
         spacingBottom={{
           "@initial": 10,
@@ -229,23 +232,24 @@ export const SocialSponsored = memo(function SocialSponsored() {
         <Box
           direction="vertical"
           gap={{
-            "@initial": 6,
+            "@initial": 7,
             "@bp2": 10,
           }}
         >
-          <TextTitle3 textAlign="center" css={{ color: "$focus" }}>
-            Enjoy the content?
-          </TextTitle3>
+          <Box direction="vertical" gap={2} alignItems="center">
+            <TextTitle2 css={{ color: "$focus" }}>
+              Enjoy the content?
+            </TextTitle2>
 
-          <Box
-            direction={{
-              "@initial": "vertical",
-              "@bp2": "horizontal",
-            }}
-            justifyContent="space-around"
-            alignItems="center"
-            gap={8}
-          >
+            <TextAux
+              color="secondary"
+              css={{ display: "flex", "@bp2": { display: "none" } }}
+            >
+              Like & Subscribe
+            </TextAux>
+          </Box>
+
+          <Box justifyContent="space-around" alignItems="center" gap={8}>
             <LinkedInConnectLink />
 
             <BlogSubscriptionLink />

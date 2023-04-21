@@ -467,6 +467,14 @@ const StyledRssIcon = styled(MdRssFeed, {
   left: 3,
 });
 
+const StyledHeadline = styled(TextHeadline, {
+  display: "none",
+
+  "@bp2": {
+    display: "flex",
+  },
+});
+
 // 'Notion to Markdown' converts embeds to links
 // Render embeds as iframes, and links with the custom Link component
 export const MarkdownLink = memo(function MarkdownLink({
@@ -512,11 +520,11 @@ export const YoutubeSubscribeLink = memo(function YoutubeSubscribeLink({
       {...props}
     >
       <Box alignItems="center" gap={type === "button" ? 2 : 4}>
-        <VideoIcon width={ICON_SIZE.l} height={ICON_SIZE.l} aria-hidden />
+        <VideoIcon width={ICON_SIZE.xl} height={ICON_SIZE.xl} aria-hidden />
 
         {type === "button" && <TextAux color="primary">Subscribe</TextAux>}
 
-        {type === "link" && <TextHeadline>Subscribe</TextHeadline>}
+        {type === "link" && <StyledHeadline>Subscribe</StyledHeadline>}
       </Box>
     </StyledYoutubeSubscription>
   );
@@ -558,14 +566,14 @@ export const LinkedInConnectLink = memo(function LinkedInConnectLink({
       <Box alignItems="center" gap={type === "button" ? 2 : 4}>
         <LinkedInLogoIcon
           style={{ position: "relative", top: -1 }}
-          width={ICON_SIZE.l}
-          height={ICON_SIZE.l}
+          width={ICON_SIZE.xl}
+          height={ICON_SIZE.xl}
           aria-hidden
         />
 
         {type === "button" && <TextAux color="primary">Connect</TextAux>}
 
-        {type === "link" && <TextHeadline>Connect</TextHeadline>}
+        {type === "link" && <StyledHeadline>Connect</StyledHeadline>}
       </Box>
     </StyledLinkedInConnect>
   );
@@ -618,8 +626,8 @@ export const BlogSubscriptionLink = memo(function BlogSubscribeLink({
         {...props}
       >
         <Box alignItems="center" gap={4}>
-          <StyledRssIcon size={ICON_SIZE.l} />
-          <TextHeadline>Follow</TextHeadline>
+          <StyledRssIcon size={34} />
+          <StyledHeadline>Follow</StyledHeadline>
         </Box>
       </StyledBlogSubscription>
     );
@@ -664,8 +672,12 @@ export const TwitterShareLink = memo(function TwitterShareLink({
   return (
     <StyledLink href={href} variant="secondary">
       <Box alignItems="center" gap={4}>
-        <TwitterLogoIcon width={ICON_SIZE.l} height={ICON_SIZE.l} aria-hidden />
-        <TextHeadline>Tweet</TextHeadline>
+        <TwitterLogoIcon
+          width={ICON_SIZE.xl}
+          height={ICON_SIZE.xl}
+          aria-hidden
+        />
+        <StyledHeadline>Tweet</StyledHeadline>
       </Box>
     </StyledLink>
   );
@@ -713,14 +725,8 @@ export const BuyMeCoffeeLink = memo(function BuyMeCoffeeLink({
       variant={icon ? "secondary" : "tertiary"}
     >
       <Box as="span" alignItems="center" gap={4}>
-        {icon ? (
-          <SiBuymeacoffee
-            width={ICON_SIZE.l}
-            height={ICON_SIZE.l}
-            aria-hidden
-          />
-        ) : null}
-        <TextHeadline>{SOCIAL.buyMeCoffee.displayName}</TextHeadline>
+        {icon ? <SiBuymeacoffee size={30} aria-hidden /> : null}
+        <StyledHeadline>{SOCIAL.buyMeCoffee.displayName}</StyledHeadline>
       </Box>
     </Link>
   );

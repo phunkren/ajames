@@ -359,6 +359,22 @@ export const NavigationMobile = memo(function NavigationMobile() {
                         </Link>
                       </NavigationMenu.Link>
                     </NavigationMenu.Item>
+
+                    <Box aria-hidden>
+                      <Divider />
+                    </Box>
+
+                    <NavigationMenu.Item>
+                      <NavigationMenu.Link asChild>
+                        <Link
+                          variant="secondary"
+                          href={`mailto:${PERSONAL.email}`}
+                          nextLinkProps={{ scroll: false, shallow: true }}
+                        >
+                          <TextHeadline>Contact</TextHeadline>
+                        </Link>
+                      </NavigationMenu.Link>
+                    </NavigationMenu.Item>
                   </Box>
                 </NavigationMenu.List>
               </NavigationMenu.Root>

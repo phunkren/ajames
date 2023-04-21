@@ -402,45 +402,58 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
             >
               {postData}
             </ReactMarkdown>
+          </StyledContainer>
 
-            <Box direction="vertical" gap={10} spacingVertical={12}>
-              <Divider />
+          <Box
+            container="l"
+            direction="vertical"
+            gap={{
+              "@initial": 11,
+              "@bp2": 12,
+            }}
+            spacingHorizontal={7}
+            spacingBottom={{
+              "@initial": 10,
+              "@bp2": 12,
+            }}
+          >
+            <Divider />
 
-              <Box
-                direction="vertical"
-                gap={{
-                  "@initial": 6,
-                  "@bp2": 10,
-                }}
-              >
-                <TextTitle3 textAlign="center" css={{ color: "$focus" }}>
+            <Box
+              direction="vertical"
+              gap={{
+                "@initial": 7,
+                "@bp2": 10,
+              }}
+            >
+              <Box direction="vertical" gap={2} alignItems="center">
+                <TextTitle2 css={{ color: "$focus" }}>
                   Enjoy the article?
-                </TextTitle3>
+                </TextTitle2>
 
-                <Box
-                  direction={{
-                    "@initial": "vertical",
-                    "@bp2": "horizontal",
-                  }}
-                  justifyContent="space-around"
-                  alignItems="center"
-                  gap={8}
+                <TextAux
+                  color="secondary"
+                  css={{ display: "flex", "@bp2": { display: "none" } }}
                 >
-                  <TwitterShareLink
-                    url={metaUrl}
-                    emoji={frontmatter.emoji}
-                    text={frontmatter.title}
-                  />
-
-                  <BuyMeCoffeeLink icon />
-
-                  <BlogSubscriptionLink />
-                </Box>
+                  Support the content
+                </TextAux>
               </Box>
 
-              <Divider />
+              <Box justifyContent="space-around" alignItems="center" gap={8}>
+                <TwitterShareLink
+                  url={metaUrl}
+                  emoji={frontmatter.emoji}
+                  text={frontmatter.title}
+                />
+
+                <BuyMeCoffeeLink icon />
+
+                <BlogSubscriptionLink />
+              </Box>
             </Box>
-          </StyledContainer>
+
+            <Divider />
+          </Box>
         </Box>
       </Box>
     </>
