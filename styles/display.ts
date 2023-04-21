@@ -51,7 +51,7 @@ export const DISPLAY_VARIANTS = {
       margin: "0 auto",
 
       "@print": {
-        maxWidth: "100%",
+        maxWidth: "none",
       },
     },
     m: {
@@ -60,7 +60,7 @@ export const DISPLAY_VARIANTS = {
       margin: "0 auto",
 
       "@print": {
-        maxWidth: "100%",
+        maxWidth: "none",
       },
     },
     l: {
@@ -69,7 +69,7 @@ export const DISPLAY_VARIANTS = {
       margin: "0 auto",
 
       "@print": {
-        maxWidth: "100%",
+        maxWidth: "none",
       },
     },
     xl: {
@@ -78,7 +78,7 @@ export const DISPLAY_VARIANTS = {
       margin: "0 auto",
 
       "@print": {
-        maxWidth: "100%",
+        maxWidth: "none",
       },
     },
   },
