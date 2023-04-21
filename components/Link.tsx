@@ -569,7 +569,6 @@ export const LinkedInConnectLink = memo(function LinkedInConnectLink({
     >
       <Box alignItems="center" gap={type === "button" ? 2 : 4}>
         <LinkedInLogoIcon
-          style={{ position: "relative", top: -1 }}
           width={type === "link" ? ICON_SIZE.xl : ICON_SIZE.m}
           height={type === "link" ? ICON_SIZE.xl : ICON_SIZE.m}
           aria-hidden
