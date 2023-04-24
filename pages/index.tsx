@@ -74,12 +74,13 @@ const Home: NextPageWithLayout = memo(function Home({
   writing,
   learning,
 }: Props) {
+  console.log(writing.posts);
   const { push } = useRouter();
-  useEffect(() => {
-    setTimeout(() => {
-      push("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
-    }, 5000);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     push("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+  //   }, 5000);
+  // }, []);
 
   return (
     <Box direction="vertical">

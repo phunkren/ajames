@@ -116,6 +116,7 @@ export type BlogPost = PageObjectResponse & {
     slug: Slug;
     tags: Tags;
   };
+  related?: string[];
 };
 
 export function getTags(posts: BlogPost[]): Tag[] {
@@ -188,4 +189,26 @@ export function formatCount(count: number) {
   }
 
   return `${count} videos`;
+}
+
+export function addRelatedPosts(posts: BlogPost[]) {
+  const tagMap = new Map<string, BlogPost[]>();
+  for (const post of posts) {
+    for (const tag of post.properties.tags.multi_select) {
+      const taggedPosts = tagMap.get(tag.id) || [];
+      taggedPosts.push(post);
+      tagMap.set(tag.id, taggedPosts);
+    }
+  }
+
+  return posts.map((post) => ({
+    ...post,
+    related:
+      tagMap
+        .get(post.properties.tags.multi_select[0].id)
+        ?.filter((relatedPost) => relatedPost.id !== post.id)
+        .map(
+          (relatedPost) => relatedPost.properties.slug.rich_text[0].plain_text
+        ) || [],
+  }));
 }

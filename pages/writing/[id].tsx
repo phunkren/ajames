@@ -255,9 +255,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const pageData = await getPageData(params.id as string);
-  const { postData, sectionOne, sectionTwo } = await getPostData(
-    params.id as string
-  );
+  const { sectionOne, sectionTwo } = await getPostData(params.id as string);
   const postTime = await getPostTime(sectionOne, sectionTwo);
 
   const slug = pageData.properties.slug.rich_text[0].plain_text;
@@ -277,7 +275,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return {
     props: {
       frontmatter,
-      postData,
       sectionOne,
       sectionTwo,
       pageData,
@@ -390,6 +387,7 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
             direction="vertical"
             container="m"
             gap={8}
+            spacingTop={12}
             spacingHorizontal={7}
           >
             <ReactMarkdown
@@ -469,6 +467,7 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
             direction="vertical"
             container="m"
             gap={8}
+            spacingBottom={12}
             spacingHorizontal={7}
           >
             <ReactMarkdown

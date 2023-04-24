@@ -3,10 +3,11 @@ import path from "path";
 import { remark } from "remark";
 import { rehype } from "rehype";
 import mdx from "remark-mdx";
+import keyBy from "lodash.keyby";
 import rehypeInferReadingTimeMeta from "rehype-infer-reading-time-meta";
 import { Client } from "@notionhq/client";
 import { NotionToMarkdown } from "notion-to-md";
-import { BlogPost } from "../util/notion";
+import { addRelatedPosts, BlogPost, getTags } from "../util/notion";
 import { PERSONAL, SITE, SOCIAL } from "../util/data";
 import { Feed } from "feed";
 
@@ -35,7 +36,9 @@ export const getPosts = async () => {
     (post) => post.properties.published.checkbox
   );
 
-  return publishedPosts;
+  const relatedPosts = addRelatedPosts(publishedPosts);
+
+  return relatedPosts;
 };
 
 // Create markdown file from each Notion blog post
@@ -71,6 +74,8 @@ export const getPageData = async (slug: string) => {
 
   return page;
 };
+
+export const getPageLink = async (id: string) => {};
 
 export function getAllPostIds() {
   const fileNames = fs.readdirSync(POSTS_DIR);
@@ -112,12 +117,6 @@ export async function getPostData(id: string) {
     }
   });
 
-  console.log({ sl: split.length, middleElement, nextValidIndex });
-
-  console.log({
-    a: split.slice(0, nextValidIndex),
-    b: split.slice(nextValidIndex),
-  });
   const sectionOneMdx = await remark()
     .use(mdx)
     .process(split.slice(0, nextValidIndex).join("\n\n"));
