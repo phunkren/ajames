@@ -6,7 +6,7 @@ import localFont from "next/font/local";
 import remarkMdx from "remark-mdx";
 import remarkGfm from "remark-gfm";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
-import { Tag } from "../../util/notion";
+import { BlogPost, Tag } from "../../util/notion";
 import {
   getAllPostIds,
   getPageData,
@@ -55,6 +55,7 @@ import { Table, TBody, Td, TFoot, Th, THead, Tr } from "../../components/Table";
 import Image from "next/image";
 import { BLUR_DATA_URL, ICON_SIZE } from "../../util/images";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
+import { BlogCard } from "../../components/Card";
 
 export type Frontmatter = {
   title: string;
@@ -65,6 +66,7 @@ export type Frontmatter = {
   time: number;
   tags: Tag[];
   canonical?: string;
+  related?: BlogPost[];
 };
 
 type Props = {
@@ -244,6 +246,29 @@ const Figure = memo(function Figure({ src, alt, ...props }: FigureProps) {
   );
 });
 
+const StyledCardContainer = styled(Box, {
+  display: "grid",
+  gridTemplateColumns: "1fr",
+  gridTemplateRows: "1fr",
+  gridColumnGap: "$2",
+  gridRowGap: "$10",
+  borderRadius: "$1",
+  width: "100%",
+
+  "@bp2": {
+    gridTemplateColumns: "repeat(2, 1fr)",
+
+    gridColumnGap: "$6",
+    gridRowGap: "$6",
+  },
+
+  "@bp3": {
+    gridTemplateColumns: "repeat(3, 1fr)",
+    gridColumnGap: "$8",
+    gridRowGap: "$8",
+  },
+});
+
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = getAllPostIds();
 
@@ -270,6 +295,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     date: pageData.properties.date.date.start,
     time: postTime,
     tags: pageData.properties.tags.multi_select,
+    related: pageData.related,
   };
 
   return {
@@ -290,8 +316,9 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
 }: Props) {
   const { asPath, isReady } = useRouter();
   const metaUrl = isReady && asPath ? `${SITE.url}${asPath}` : SITE.url;
-
-  console.log({ sectionOne, sectionTwo });
+  const relatedArticles = frontmatter.related.length
+    ? frontmatter.related.slice(0, 3)
+    : null;
 
   return (
     <>
@@ -467,7 +494,6 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
             direction="vertical"
             container="m"
             gap={8}
-            spacingBottom={12}
             spacingHorizontal={7}
           >
             <ReactMarkdown
@@ -491,6 +517,51 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
               {sectionTwo}
             </ReactMarkdown>
           </StyledContainer>
+
+          {relatedArticles ? (
+            <Box
+              container="l"
+              direction="vertical"
+              gap={{
+                "@initial": 11,
+                "@bp2": 12,
+              }}
+              spacingHorizontal={7}
+              spacingVertical={{
+                "@initial": 10,
+                "@bp2": 12,
+              }}
+            >
+              <Divider />
+
+              <Box direction="vertical" gap={8}>
+                <TextTitle2>Related Articles</TextTitle2>
+
+                <StyledCardContainer display="grid">
+                  {relatedArticles.map((post, i) => {
+                    return (
+                      <BlogCard
+                        key={post.id}
+                        url={`/writing/${post.properties.slug.rich_text[0].plain_text}`}
+                        image={post.cover.external.url}
+                        emoji={
+                          post.icon.type === "emoji" ? post.icon.emoji : "👨‍💻"
+                        }
+                        title={post.properties.page.title[0].plain_text}
+                        description={
+                          post.properties.abstract.rich_text[0].plain_text
+                        }
+                        publishDate={post.properties.date.date.start}
+                        tags={post.properties.tags.multi_select}
+                      />
+                    );
+                  })}
+                </StyledCardContainer>
+              </Box>
+
+              <Divider />
+            </Box>
+          ) : null}
         </Box>
       </Box>
     </>

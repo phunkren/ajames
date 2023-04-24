@@ -3,7 +3,6 @@ import path from "path";
 import { remark } from "remark";
 import { rehype } from "rehype";
 import mdx from "remark-mdx";
-import keyBy from "lodash.keyby";
 import rehypeInferReadingTimeMeta from "rehype-infer-reading-time-meta";
 import { Client } from "@notionhq/client";
 import { NotionToMarkdown } from "notion-to-md";

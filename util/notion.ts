@@ -116,7 +116,7 @@ export type BlogPost = PageObjectResponse & {
     slug: Slug;
     tags: Tags;
   };
-  related?: string[];
+  related?: BlogPost[];
 };
 
 export function getTags(posts: BlogPost[]): Tag[] {
@@ -206,9 +206,10 @@ export function addRelatedPosts(posts: BlogPost[]) {
     related:
       tagMap
         .get(post.properties.tags.multi_select[0].id)
-        ?.filter((relatedPost) => relatedPost.id !== post.id)
-        .map(
-          (relatedPost) => relatedPost.properties.slug.rich_text[0].plain_text
+        ?.filter(
+          (relatedPost) =>
+            relatedPost.properties.page.title[0].plain_text !==
+            post.properties.page.title[0].plain_text
         ) || [],
   }));
 }

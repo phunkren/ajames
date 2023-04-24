@@ -73,6 +73,7 @@ const Home: NextPageWithLayout = memo(function Home({
   writing,
   learning,
 }: Props) {
+  console.log(writing.posts);
   return (
     <Box direction="vertical">
       <Hero />
