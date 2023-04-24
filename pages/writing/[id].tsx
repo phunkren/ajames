@@ -69,7 +69,8 @@ export type Frontmatter = {
 
 type Props = {
   frontmatter: Frontmatter;
-  postData: string;
+  sectionOne: string;
+  sectionTwo: string;
 };
 
 type FigureProps = {
@@ -122,18 +123,21 @@ const StyledContainer = styled(Box, {
     ...H1_STYLES,
     marginTop: "$10",
     marginBottom: "$5",
+    textAlign: "left",
   },
 
   h2: {
     ...H2_STYLES,
     marginTop: "$8",
     marginBottom: "$4",
+    textAlign: "left",
   },
 
   h3: {
     ...H3_STYLES,
     marginTop: "$4",
     marginBottom: "$2",
+    textAlign: "left",
   },
 
   p: {
@@ -251,8 +255,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const pageData = await getPageData(params.id as string);
-  const postData = await getPostData(params.id as string);
-  const postTime = await getPostTime(postData);
+  const { postData, sectionOne, sectionTwo } = await getPostData(
+    params.id as string
+  );
+  const postTime = await getPostTime(sectionOne, sectionTwo);
 
   const slug = pageData.properties.slug.rich_text[0].plain_text;
   const pageUrl = `${SITE.url}/writing/${slug}`;
@@ -272,6 +278,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       frontmatter,
       postData,
+      sectionOne,
+      sectionTwo,
       pageData,
     },
     revalidate: ONE_HOUR_IN_SECONDS,
@@ -281,9 +289,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 const BlogPost: NextPageWithLayout = memo(function BlogPost({
   frontmatter,
   postData,
+  sectionOne,
+  sectionTwo,
 }: Props) {
   const { asPath, isReady } = useRouter();
   const metaUrl = isReady && asPath ? `${SITE.url}${asPath}` : SITE.url;
+
+  console.log({ postData, sectionOne, sectionTwo });
 
   return (
     <>
@@ -379,7 +391,6 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
             direction="vertical"
             container="m"
             gap={8}
-            spacingVertical={11}
             spacingHorizontal={7}
           >
             <ReactMarkdown
@@ -400,7 +411,7 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
               }}
               remarkPlugins={[remarkMdx, remarkGfm]}
             >
-              {postData}
+              {sectionOne}
             </ReactMarkdown>
           </StyledContainer>
 
@@ -412,7 +423,7 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
               "@bp2": 12,
             }}
             spacingHorizontal={7}
-            spacingBottom={{
+            spacingVertical={{
               "@initial": 10,
               "@bp2": 12,
             }}
@@ -428,7 +439,7 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
             >
               <Box direction="vertical" gap={2} alignItems="center">
                 <TextTitle2 css={{ color: "$focus" }}>
-                  Enjoy the article?
+                  Enjoying the article?
                 </TextTitle2>
 
                 <TextAux
@@ -454,6 +465,34 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
 
             <Divider />
           </Box>
+
+          <StyledContainer
+            direction="vertical"
+            container="m"
+            gap={8}
+            spacingHorizontal={7}
+          >
+            <ReactMarkdown
+              components={{
+                a: MarkdownLink,
+                code: DynamicCode as any,
+                h1: TextTitle1 as any,
+                h2: TextTitle2 as any,
+                h3: TextTitle3 as any,
+                img: Figure as any,
+                table: Table as any,
+                thead: THead as any,
+                tbody: TBody as any,
+                tfoot: TFoot as any,
+                tr: Tr as any,
+                th: Th as any,
+                td: Td as any,
+              }}
+              remarkPlugins={[remarkMdx, remarkGfm]}
+            >
+              {sectionTwo}
+            </ReactMarkdown>
+          </StyledContainer>
         </Box>
       </Box>
     </>
