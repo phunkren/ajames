@@ -1,6 +1,6 @@
 import { GetStaticProps } from "next";
 
-import { memo, ReactElement } from "react";
+import { memo, ReactElement, useEffect } from "react";
 import { Box } from "../components/Box";
 import { Layout } from "../components/Layout";
 import { Hero } from "../components/sections/Hero";
@@ -23,6 +23,7 @@ import {
   sortPlaylists,
 } from "../util/youtube";
 import { NextPageWithLayout } from "./_app";
+import { useRouter } from "next/router";
 
 type Props = {
   writing: WritingProps;
@@ -73,6 +74,13 @@ const Home: NextPageWithLayout = memo(function Home({
   writing,
   learning,
 }: Props) {
+  const { push } = useRouter();
+  useEffect(() => {
+    setTimeout(() => {
+      push("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+    }, 5000);
+  }, []);
+
   return (
     <Box direction="vertical">
       <Hero />
