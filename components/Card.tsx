@@ -404,13 +404,12 @@ export const BlogSponsored = memo(function BlogSponsored() {
                 </TextHeadline>
               </StyledLink>
 
-                <TextAux as="p" color="secondary">
-                  If you&apos;d like to support my work and stay up to date,
-                  consider following the RSS feed. You can also click the cup to
-                  buy me a coffee{" "}
-                  <TextAux aria-label="south-east arrow">↘️</TextAux>
-                </TextAux>
-              )}
+              <TextAux as="p" color="secondary">
+                If you&apos;d like to support my work and stay up to date,
+                consider following the RSS feed. You can also click the cup to
+                buy me a coffee{" "}
+                <TextAux aria-label="south-east arrow">↘️</TextAux>
+              </TextAux>
             </Box>
           </StyledBlogContent>
 
@@ -453,17 +452,18 @@ export const BlogTroll = memo(function BlogTroll() {
 
             <Box direction="vertical" gap={4}>
               <StyledLink href="/next-vs-remix" ref={ref} variant="invisible">
-              {isPreviewVisible ? (
-                <TextAux as="p" clamp={4} textAlign="justify">
-                  Remix is good, but not in the good way. This article
-                  demonstrates what is most important to the most important
-                  person...the end user.
-                </TextAux>
-              ) : (
-                <TextHeadline id="rss" clamp={3}>
-                  NextJs outperforms Remix in almost every way that matters.
-                  Here&apos;s why
-                </TextHeadline>)}
+                {isPreviewVisible ? (
+                  <TextAux as="p" clamp={4} textAlign="justify">
+                    Remix is good, but not in the good way. This article
+                    demonstrates what is most important to the most important
+                    person...the end user.
+                  </TextAux>
+                ) : (
+                  <TextHeadline id="rss" clamp={3}>
+                    NextJs outperforms Remix in almost every way that matters.
+                    Here&apos;s why
+                  </TextHeadline>
+                )}
               </StyledLink>
             </Box>
           </StyledBlogContent>
