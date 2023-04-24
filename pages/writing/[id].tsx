@@ -288,14 +288,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 const BlogPost: NextPageWithLayout = memo(function BlogPost({
   frontmatter,
-  postData,
   sectionOne,
   sectionTwo,
 }: Props) {
   const { asPath, isReady } = useRouter();
   const metaUrl = isReady && asPath ? `${SITE.url}${asPath}` : SITE.url;
 
-  console.log({ postData, sectionOne, sectionTwo });
+  console.log({ sectionOne, sectionTwo });
 
   return (
     <>
