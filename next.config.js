@@ -28,6 +28,11 @@ const PAGE_REDIRECTS = [
 
 const SOCIAL_REDIRECTS = [
   {
+    source: "/next-vs-remix",
+    destination: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    permanent: true,
+  },
+  {
     source: "/twitter",
     destination: "https://twitter.com/phunkren",
     permanent: true,

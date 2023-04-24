@@ -22,6 +22,7 @@ import { YOUTUBE_LIKED_VIDEOS_PLAYLIST_ID } from "../util/youtube";
 import { CSS } from "../stitches.config";
 import { Tag } from "../util/notion";
 import banner from "../public/images/banner.png";
+import troll from "../public/images/troll.png";
 
 export type CardChildProps = {
   ref: Ref<HTMLAnchorElement>;
@@ -419,6 +420,51 @@ export const BlogSponsored = memo(function BlogSponsored() {
             <PostTags as="div" tags={[sponsoredTag]} compact />
 
             <BuyMeCoffeeLink variant="button" />
+          </Box>
+        </>
+      )}
+    </Card>
+  );
+});
+
+export const BlogTroll = memo(function BlogTroll() {
+  const frameworkTag = {
+    id: "framework",
+    name: "Framework",
+    color: "default",
+  };
+
+  return (
+    <Card image={troll}>
+      {({ ref }) => (
+        <>
+          <StyledBlogContent direction="vertical" css={{ minHeight: 156 }}>
+            <Emoji
+              emoji="🌶️"
+              size="s"
+              spacingBottom={4}
+              css={{
+                position: "relative",
+                right: "$1",
+              }}
+            />
+
+            <Box direction="vertical" gap={4}>
+              <StyledLink href="/next-vs-remix" ref={ref} variant="invisible">
+                <TextHeadline id="rss" clamp={3}>
+                  NextJs outperforms Remix in almost every way that matters.
+                  Here's why
+                </TextHeadline>
+              </StyledLink>
+            </Box>
+          </StyledBlogContent>
+
+          <Box
+            justifyContent="space-between"
+            alignItems="center"
+            css={{ marginTop: "auto" }}
+          >
+            <PostTags as="div" tags={[frameworkTag]} compact />
           </Box>
         </>
       )}
