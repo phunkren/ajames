@@ -453,7 +453,7 @@ export const BlogTroll = memo(function BlogTroll() {
               <StyledLink href="/next-vs-remix" ref={ref} variant="invisible">
                 <TextHeadline id="rss" clamp={3}>
                   NextJs outperforms Remix in almost every way that matters.
-                  Here's why
+                  Here&apos;s why
                 </TextHeadline>
               </StyledLink>
             </Box>
