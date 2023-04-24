@@ -6,6 +6,11 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 const PAGE_REDIRECTS = [
   {
     source: "/rss",
+    destination: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    permanent: false,
+  },
+  {
+    source: "/rss",
     destination: "/rss.xml",
     permanent: true,
   },
