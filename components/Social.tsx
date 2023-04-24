@@ -130,7 +130,7 @@ export const SocialExtended = memo(function SocialExtended({
   ...props
 }: Props) {
   return (
-    <StyledBox as="nav" aria-label="Social Media" {...props}>
+    <StyledBox as="nav" aria-label="Extended Social Media" {...props}>
       <Box as="ul" role="list" gap={gap} alignItems="flex-end">
         <Box as="li" alignItems="flex-end">
           <Tooltip title={SOCIAL.github.displayName}>
@@ -229,13 +229,7 @@ export const SocialSponsored = memo(function SocialSponsored() {
       >
         <Divider />
 
-        <Box
-          direction="vertical"
-          gap={{
-            "@initial": 7,
-            "@bp2": 10,
-          }}
-        >
+        <Box direction="vertical" gap={11}>
           <Box direction="vertical" gap={2} alignItems="center">
             <TextTitle2 css={{ color: "$focus" }}>
               Enjoy the content?

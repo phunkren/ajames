@@ -499,7 +499,14 @@ export const Writing = ({ posts, tags }: Props) => {
                           <Link href="/rss" variant="tertiary">
                             RSS Feed
                           </Link>
-                          . You can also&nbsp;
+                          .{" "}
+                          <Box
+                            as="br"
+                            // spacingTop={{ "@initial": 0, "@bp2": 2 }}
+                            display={{ "@initial": "none", "@bp2": "flex" }}
+                            css={{ content: "" }}
+                          />
+                          You can also&nbsp;
                           <BuyMeCoffeeLink />.
                         </TextBody>
 

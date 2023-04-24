@@ -275,7 +275,7 @@ export const Learning = ({
 
               return (
                 <Box key={playlist.id} direction="vertical">
-                  <Box direction="vertical" css={{ overflowX: "hidden" }}>
+                  <Box direction="vertical">
                     <Box
                       gap={10}
                       justifyContent={{
@@ -283,7 +283,7 @@ export const Learning = ({
                         "@bp2": "flex-start",
                       }}
                       alignItems="baseline"
-                      spacingBottom={2}
+                      spacingVertical={2}
                     >
                       <Link href={playlistUrl} variant="secondary">
                         <TextTitle2 as="h3">{playlist.title}</TextTitle2>

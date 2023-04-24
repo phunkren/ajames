@@ -88,19 +88,66 @@ export async function getPostData(id: string) {
   const fullPath = path.join(POSTS_DIR, `${id}.mdx`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const processedContent = await remark().use(mdx).process(fileContents);
-  const contentHtml = processedContent.toString();
+  const postData = processedContent.toString();
 
-  return contentHtml;
+  // Split the markdown string into an array of blocks
+  const split = fileContents.split("\n\n\n");
+
+  // Determine the middle index
+  const middleElement = Math.round(split.length / 2);
+
+  // Find the next header, image, or clode block
+  const nextValidIndex = split.findIndex((line, index) => {
+    if (index <= middleElement) {
+      return false;
+    }
+
+    if (
+      line.includes("##") ||
+      line.includes("###") ||
+      line.includes("![") ||
+      line.includes("```")
+    ) {
+      return true;
+    }
+  });
+
+  console.log({ sl: split.length, middleElement, nextValidIndex });
+
+  console.log({
+    a: split.slice(0, nextValidIndex),
+    b: split.slice(nextValidIndex),
+  });
+  const sectionOneMdx = await remark()
+    .use(mdx)
+    .process(split.slice(0, nextValidIndex).join("\n\n"));
+
+  const sectionTwoMdx = await remark()
+    .use(mdx)
+    .process(split.slice(nextValidIndex).join("\n\n"));
+
+  const sectionOne = sectionOneMdx.toString();
+  const sectionTwo = sectionTwoMdx.toString();
+
+  return { postData, sectionOne, sectionTwo };
 }
 
-export async function getPostTime(content: string) {
-  const { data } = await rehype()
+export async function getPostTime(
+  sectionOneContent: string,
+  sectionTwoContent: string
+) {
+  const { data: sectionOneData } = await rehype()
     .use(rehypeInferReadingTimeMeta)
-    .process(content);
+    .process(sectionOneContent);
 
-  const [readingTime] = data.meta.readingTime as [number, number];
+  const { data: sectionTwoData } = await rehype()
+    .use(rehypeInferReadingTimeMeta)
+    .process(sectionTwoContent);
 
-  return readingTime;
+  const [sectionOneTime] = sectionOneData.meta.readingTime as [number, number];
+  const [sectionTwoTime] = sectionTwoData.meta.readingTime as [number, number];
+
+  return sectionOneTime + sectionTwoTime;
 }
 
 export async function generateRSSFeed(posts: BlogPost[]) {
@@ -135,7 +182,7 @@ export async function generateRSSFeed(posts: BlogPost[]) {
     const date = post.properties.date.date.start;
     const slug = post.properties.slug.rich_text[0].plain_text;
     const url = `${baseUrl}/blog/${slug}`;
-    const content = await getPostData(slug);
+    const { postData } = await getPostData(slug);
     const image = { url: post.cover.external.url };
     const category = post.properties.tags.multi_select.map(({ name }) => ({
       name,
@@ -146,7 +193,7 @@ export async function generateRSSFeed(posts: BlogPost[]) {
       id: url,
       link: url,
       description,
-      content,
+      content: postData,
       image,
       category,
       author: [author],
