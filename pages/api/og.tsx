@@ -7,7 +7,7 @@ export const config = {
 };
 
 const headshot = fetch(
-  new URL("../../public/images/headshot.png", import.meta.url)
+  new URL("../../public/images/mugshot.png", import.meta.url)
 ).then((res) => res.arrayBuffer());
 
 const logo = fetch(
