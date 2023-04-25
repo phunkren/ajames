@@ -376,7 +376,7 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
               </TextTitle2>
             </Box>
 
-            <Box alignItems="flex-end" justifyContent="space-between">
+            <Box alignItems="flex-end" justifyContent="space-between" gap={4}>
               <Frontmatter>
                 <PublishDate date={frontmatter.date} icon />
                 <ReadingTime time={frontmatter.time} icon />

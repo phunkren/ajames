@@ -421,7 +421,7 @@ export const ShareButton = memo(function ShareButton({
       navigator.share({
         title: formattedText,
         text: formattedAuthor,
-        url: formattedUrl,
+        url: url,
       });
     } else {
       navigator.clipboard.writeText(copy).then(() => {
