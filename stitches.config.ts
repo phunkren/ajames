@@ -26,6 +26,8 @@ import {
   whiteA,
   crimson,
   crimsonDark,
+  orange,
+  orangeDark,
   indigo,
   indigoDark,
   violetDark,
@@ -127,6 +129,7 @@ export const lightTheme = createTheme({
     ...brown,
     ...violet,
     ...indigo,
+    ...orange,
   },
 });
 
@@ -154,6 +157,7 @@ export const darkTheme = createTheme({
     ...brownDark,
     ...indigoDark,
     ...violetDark,
+    ...orangeDark,
   },
 });
 

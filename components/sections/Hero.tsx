@@ -59,7 +59,7 @@ const StyledImage = styled(Image, {
 
   "@portrait": {
     objectFit: "cover",
-    width: "100%",
+    width: "auto",
   },
 
   [`.${darkTheme} &`]: {

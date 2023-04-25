@@ -407,13 +407,13 @@ const StyledBlogSubscription = styled(Link, {
         ...LINK_BUTTON_PROPS,
 
         [`.${lightTheme} &`]: {
-          backgroundImage: `linear-gradient(175deg, $amber9 0.04%, $amber10 100.04%)`,
-          color: "$amber1",
+          backgroundImage: `linear-gradient(175deg, $orange9 0.04%, $orange10 100.04%)`,
+          color: "$orange1",
         },
 
         [`.${darkTheme} &`]: {
-          backgroundImage: `linear-gradient(175deg, $amber11 0.04%, $amber8 100.04%)`,
-          color: "$amber12",
+          backgroundImage: `linear-gradient(175deg, $orange9 0.04%, $orange7 100.04%)`,
+          color: "$orange12",
         },
 
         "@media(hover)": {
@@ -421,11 +421,11 @@ const StyledBlogSubscription = styled(Link, {
 
           "&:hover": {
             [`.${lightTheme} &`]: {
-              backgroundImage: `linear-gradient(175deg, $amber10 0.04%, $amber9 100.04%)`,
+              backgroundImage: `linear-gradient(175deg, $orange10 0.04%, $orange9 100.04%)`,
             },
 
             [`.${darkTheme} &`]: {
-              backgroundImage: `linear-gradient(175deg, $amber8 0.04%, $amber11 100.04%)`,
+              backgroundImage: `linear-gradient(175deg, $orange7 0.04%, $orange9 100.04%)`,
             },
           },
         },
@@ -438,17 +438,17 @@ const StyledBlogSubscription = styled(Link, {
         borderRadius: "50%",
         borderStyle: "solid",
         borderWidth: 2,
-        borderColor: "$colors$amber12",
+        borderColor: "$colors$orange12",
         ...LINK_BUTTON_PROPS,
 
         [`.${lightTheme} &`]: {
-          backgroundImage: `linear-gradient(175deg, $amber9 0.04%, $amber10 100.04%)`,
-          color: "$amber1",
+          backgroundImage: `linear-gradient(175deg, $orange9 0.04%, $orange10 100.04%)`,
+          color: "$orange1",
         },
 
         [`.${darkTheme} &`]: {
-          backgroundImage: `linear-gradient(175deg, $amber8 0.04%, $amber11 100.04%)`,
-          color: "$amber12",
+          backgroundImage: `linear-gradient(175deg, $orange9 0.04%, $orange7 100.04%)`,
+          color: "$orange12",
         },
 
         /* Optically aligns the RSS Icon */

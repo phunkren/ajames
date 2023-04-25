@@ -159,7 +159,7 @@ export const Navigation = memo(function Navigation() {
         <NavigationMenu.Item>
           <NavigationMenu.Link
             asChild
-            active={isReady && asPath === `/#${ABOOT_ID}`}
+            active={isReady && asPath.includes(ABOOT_ID)}
           >
             <Link
               variant="secondary"
@@ -174,7 +174,7 @@ export const Navigation = memo(function Navigation() {
         <NavigationMenu.Item>
           <NavigationMenu.Link
             asChild
-            active={isReady && asPath === `/#${WRITING_ID}`}
+            active={isReady && asPath.includes(WRITING_ID)}
           >
             <Link
               variant="secondary"
@@ -189,7 +189,7 @@ export const Navigation = memo(function Navigation() {
         <NavigationMenu.Item>
           <NavigationMenu.Link
             asChild
-            active={isReady && asPath === `/#${LEARNING_ID}`}
+            active={isReady && asPath.includes(LEARNING_ID)}
           >
             <Link
               variant="secondary"
@@ -307,7 +307,7 @@ export const NavigationMobile = memo(function NavigationMobile() {
                     <NavigationMenu.Item>
                       <NavigationMenu.Link
                         asChild
-                        active={isReady && asPath === `/#${ABOOT_ID}`}
+                        active={isReady && asPath.includes(ABOOT_ID)}
                       >
                         <Link
                           href={`/#${ABOOT_ID}`}
@@ -327,7 +327,7 @@ export const NavigationMobile = memo(function NavigationMobile() {
                     <NavigationMenu.Item>
                       <NavigationMenu.Link
                         asChild
-                        active={isReady && asPath === `/#${WRITING_ID}`}
+                        active={isReady && asPath.includes(WRITING_ID)}
                       >
                         <Link
                           href={`/#${WRITING_ID}`}
@@ -347,7 +347,7 @@ export const NavigationMobile = memo(function NavigationMobile() {
                     <NavigationMenu.Item>
                       <NavigationMenu.Link
                         asChild
-                        active={isReady && asPath === `/#${LEARNING_ID}`}
+                        active={isReady && asPath.includes(LEARNING_ID)}
                       >
                         <Link
                           href={`/#${LEARNING_ID}`}

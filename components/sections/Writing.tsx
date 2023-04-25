@@ -174,7 +174,7 @@ const bg = css({
 export const WRITING_ID = "writing";
 
 export const Writing = ({ posts, tags }: Props) => {
-  const { push, query } = useRouter();
+  const { replace, query } = useRouter();
   const [display, setDisplay] = useState<"partial" | "all">("partial");
   const queryTag = query.tag as string;
 
@@ -205,15 +205,16 @@ export const Writing = ({ posts, tags }: Props) => {
 
       const tag = isTagActive ? undefined : tagName;
 
-      push(
+      replace(
         { pathname: "/", hash: "writing", query: { ...query, tag } },
         undefined,
         {
           shallow: true,
+          scroll: false,
         }
       );
     },
-    [push, query]
+    [replace, query]
   );
 
   const handleLayoutChange = useCallback(
@@ -424,13 +425,19 @@ export const Writing = ({ posts, tags }: Props) => {
                       tags={post.properties.tags.multi_select}
                     />
 
-                    {i === 2 ? <BlogSponsored /> : null}
+                    {i === 1 ? <BlogSponsored /> : null}
                   </Fragment>
                 );
               })}
 
               {shouldShowMore ? (
-                <Box direction="vertical">
+                <Box
+                  direction="vertical"
+                  css={{
+                    gridColumnStart: "1 !important",
+                    gridColumnEnd: "-1 !important",
+                  }}
+                >
                   <Button css={{ flexGrow: 1 }} onClick={handleDisplayChange}>
                     <TextHeadline color="secondary">
                       Show all articles
@@ -535,7 +542,16 @@ export const Writing = ({ posts, tags }: Props) => {
               <Box as="li">
                 <Button
                   variant="tertiary"
-                  css={{ width: "fit-content" }}
+                  css={{
+                    width: "fit-content",
+                    transition:
+                      "color $transitions$durationDefault $transitions$functionDefault",
+                    "&:hover": {
+                      color: "$hover",
+                      transition:
+                        "color $transitions$durationQuick $transitions$functionDefault",
+                    },
+                  }}
                   onClick={handleDisplayChange}
                 >
                   <TextTitle3>Show all articles</TextTitle3>

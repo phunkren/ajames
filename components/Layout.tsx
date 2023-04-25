@@ -107,11 +107,10 @@ export const FooterLayout = memo(function FooterLayout() {
       alignItems="center"
       css={{ background: "$slate2", "@print": { display: "none !important" } }}
     >
+      <Social gap="6" />
       <Box display={{ "@initial": "none", "@bp2": "flex" }}>
-        <Social gap="6" />
+        <SocialExtended gap="6" />
       </Box>
-
-      <SocialExtended gap="6" />
     </Box>
   );
 });

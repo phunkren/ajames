@@ -116,13 +116,17 @@ export async function getPostData(id: string) {
     }
   });
 
+  console.log({ middleElement, nextValidIndex });
+
+  const sliceIndex = nextValidIndex >= 0 ? nextValidIndex : middleElement;
+
   const sectionOneMdx = await remark()
     .use(mdx)
-    .process(split.slice(0, nextValidIndex).join("\n\n"));
+    .process(split.slice(0, sliceIndex).join("\n\n"));
 
   const sectionTwoMdx = await remark()
     .use(mdx)
-    .process(split.slice(nextValidIndex).join("\n\n"));
+    .process(split.slice(sliceIndex).join("\n\n"));
 
   const sectionOne = sectionOneMdx.toString();
   const sectionTwo = sectionTwoMdx.toString();

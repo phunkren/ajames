@@ -158,7 +158,7 @@ export const globalStyles = globalCss({
 
     /* Set the width of the content to 100% */
     body: {
-      width: "100%",
+      width: "100vw !important",
     },
 
     li: {

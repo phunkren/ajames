@@ -184,6 +184,11 @@ const StyledContainer = styled(Box, {
     },
   },
 
+  hr: {
+    marginTop: "$12",
+    marginBottom: "$12",
+  },
+
   img: {
     position: "relative",
     left: "-$7",
@@ -261,12 +266,6 @@ const StyledCardContainer = styled(Box, {
     gridColumnGap: "$6",
     gridRowGap: "$6",
   },
-
-  "@bp3": {
-    gridTemplateColumns: "repeat(3, 1fr)",
-    gridColumnGap: "$8",
-    gridRowGap: "$8",
-  },
 });
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -317,7 +316,7 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
   const { asPath, isReady } = useRouter();
   const metaUrl = isReady && asPath ? `${SITE.url}${asPath}` : SITE.url;
   const relatedArticles = frontmatter.related.length
-    ? getRandomPosts(frontmatter.related, 3)
+    ? getRandomPosts(frontmatter.related, 2)
     : null;
 
   return (
@@ -332,7 +331,7 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
       <BlogSeo frontmatter={frontmatter} />
 
       <Box as="article" direction="vertical" spacingVertical={12}>
-        <Box gap={10} container="l" spacingBottom={4} spacingHorizontal={7}>
+        <Box gap={10} container="l" spacingBottom={10} spacingHorizontal={7}>
           <Link
             href="/#writing"
             variant="secondary"
@@ -414,7 +413,7 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
             direction="vertical"
             container="m"
             gap={8}
-            spacingTop={12}
+            spacingTop={11}
             spacingHorizontal={7}
           >
             <ReactMarkdown
@@ -452,16 +451,17 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
               "@bp2": 12,
             }}
           >
-            <Divider />
+            <Divider variant="secondary" />
 
             <Box
               direction="vertical"
+              container="m"
               gap={{
                 "@initial": 7,
                 "@bp2": 10,
               }}
             >
-              <Box direction="vertical" gap={2} alignItems="center">
+              <Box direction="vertical" alignItems="center">
                 <TextTitle2 css={{ color: "$focus" }}>
                   Enjoying the article?
                 </TextTitle2>
@@ -487,7 +487,7 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
               </Box>
             </Box>
 
-            <Divider />
+            <Divider variant="secondary" />
           </Box>
 
           <StyledContainer
@@ -534,11 +534,11 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
             >
               <Divider />
 
-              <Box direction="vertical" gap={8}>
+              <Box direction="vertical" gap={8} container="m">
                 <TextTitle2>Related Articles</TextTitle2>
 
                 <StyledCardContainer display="grid">
-                  {relatedArticles.map((post, i) => {
+                  {relatedArticles.map((post) => {
                     return (
                       <BlogCard
                         key={post.id}

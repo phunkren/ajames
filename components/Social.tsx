@@ -237,10 +237,16 @@ export const SocialSponsored = memo(function SocialSponsored() {
         }}
         css={{ zIndex: "$1" }}
       >
-        <Divider />
+        <Divider variant="secondary" />
 
-        <Box direction="vertical" gap={11}>
-          <Box direction="vertical" gap={2} alignItems="center">
+        <Box
+          direction="vertical"
+          gap={{
+            "@initial": 7,
+            "@bp2": 10,
+          }}
+        >
+          <Box direction="vertical" alignItems="center">
             <TextTitle2 css={{ color: "$focus" }}>
               Enjoy the content?
             </TextTitle2>
@@ -262,7 +268,7 @@ export const SocialSponsored = memo(function SocialSponsored() {
           </Box>
         </Box>
 
-        <Divider />
+        <Divider variant="secondary" />
       </Box>
     </Box>
   );
