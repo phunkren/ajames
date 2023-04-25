@@ -37,7 +37,7 @@ import {
   CollapsibleRoot,
   CollapsibleTrigger,
 } from "../Collapsible";
-import { memo, ReactNode } from "react";
+import { memo, ReactNode, useCallback, useRef } from "react";
 
 type CollapsibleSectionProps = {
   title: string;
@@ -106,15 +106,27 @@ export const CollapsibleSection = memo(function CollapsibleSection({
   title,
   children,
 }: CollapsibleSectionProps) {
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
+  const handleClick = useCallback(() => {
+    buttonRef.current.click();
+  }, []);
+
   return (
     <>
       <CollapsibleRoot className={mobileSection()}>
         <Box as="section" direction="vertical">
-          <Box justifyContent="space-between" alignItems="center" gap={2}>
+          <Box
+            justifyContent="space-between"
+            alignItems="center"
+            gap={2}
+            tabIndex={-1}
+            onClick={handleClick}
+          >
             <TextTitle2>{title}</TextTitle2>
 
             <CollapsibleTrigger asChild>
-              <CollapsibleButton />
+              <CollapsibleButton ref={buttonRef} />
             </CollapsibleTrigger>
           </Box>
 
