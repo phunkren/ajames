@@ -299,6 +299,12 @@ export const SOCIAL: Record<string, Social> = {
     handle: "phunkren",
     url: `https://codesandbox.io/u/phunkren`,
   },
+  blueSky: {
+    id: "blueSky",
+    displayName: "Bluesky",
+    handle: "ajames",
+    url: `https://bsky.app/profile/ajames.bsky.social`,
+  },
 };
 
 export const TESTIMONIALS: Testimonial[] = [

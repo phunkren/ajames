@@ -4,6 +4,7 @@ import {
   CodeSandboxLogoIcon,
   EnvelopeOpenIcon,
   GitHubLogoIcon,
+  ImageIcon,
   LinkedInLogoIcon,
   TwitterLogoIcon,
   VideoIcon,
@@ -53,7 +54,7 @@ const StyledBox = styled(Box, {
 export const Social = memo(function Social({ gap = "4", ...props }: Props) {
   return (
     <StyledBox as="nav" aria-label="Social Media" {...props}>
-      <Box as="ul" role="list" gap={gap} alignItems="flex-end">
+      <Box as="ul" role="list" gap={gap} alignItems="baseline">
         <Box as="li" alignItems="flex-end">
           <Tooltip title={SOCIAL.twitter.displayName}>
             <Link
@@ -65,8 +66,8 @@ export const Social = memo(function Social({ gap = "4", ...props }: Props) {
                 {SOCIAL.twitter.displayName}
               </VisuallyHidden.Root>
               <TwitterLogoIcon
-                width={32}
-                height={32}
+                width={ICON_SIZE.xl}
+                height={ICON_SIZE.xl}
                 aria-hidden
                 focusable={false}
               />
@@ -84,8 +85,8 @@ export const Social = memo(function Social({ gap = "4", ...props }: Props) {
                 {SOCIAL.linkedin.displayName}
               </VisuallyHidden.Root>
               <LinkedInLogoIcon
-                width={30}
-                height={30}
+                width={ICON_SIZE.xl}
+                height={ICON_SIZE.xl}
                 aria-hidden
                 focusable={false}
               />
@@ -101,7 +102,7 @@ export const Social = memo(function Social({ gap = "4", ...props }: Props) {
               css={{ position: "relative", top: -1 }}
             >
               <VisuallyHidden.Root>RSS</VisuallyHidden.Root>
-              <MdRssFeed size={36} aria-hidden />
+              <MdRssFeed size={ICON_SIZE.xl} aria-hidden />
             </Link>
           </Tooltip>
         </Box>
@@ -116,7 +117,12 @@ export const Social = memo(function Social({ gap = "4", ...props }: Props) {
               <VisuallyHidden.Root>
                 {SOCIAL.youtube.displayName}
               </VisuallyHidden.Root>
-              <VideoIcon width={34} height={34} aria-hidden focusable={false} />
+              <VideoIcon
+                width={ICON_SIZE.xl}
+                height={ICON_SIZE.xl}
+                aria-hidden
+                focusable={false}
+              />
             </Link>
           </Tooltip>
         </Box>
@@ -131,7 +137,7 @@ export const SocialExtended = memo(function SocialExtended({
 }: Props) {
   return (
     <StyledBox as="nav" aria-label="Extended Social Media" {...props}>
-      <Box as="ul" role="list" gap={gap} alignItems="flex-end">
+      <Box as="ul" role="list" gap={gap} alignItems="baseline">
         <Box as="li" alignItems="flex-end">
           <Tooltip title={SOCIAL.github.displayName}>
             <Link
@@ -143,8 +149,8 @@ export const SocialExtended = memo(function SocialExtended({
                 {SOCIAL.github.displayName}
               </VisuallyHidden.Root>
               <GitHubLogoIcon
-                width={30}
-                height={30}
+                width={ICON_SIZE.xl}
+                height={ICON_SIZE.xl}
                 aria-hidden
                 focusable={false}
               />
@@ -153,18 +159,18 @@ export const SocialExtended = memo(function SocialExtended({
         </Box>
 
         <Box as="li" alignItems="flex-end">
-          <Tooltip title={SOCIAL.email.displayName}>
+          <Tooltip title={SOCIAL.blueSky.displayName}>
             <Link
-              href={SOCIAL.email.url}
+              href={SOCIAL.blueSky.url}
               variant="icon"
               css={{ position: "relative", top: 1, left: 1 }}
             >
               <VisuallyHidden.Root>
-                {SOCIAL.email.displayName}
+                {SOCIAL.blueSky.displayName}
               </VisuallyHidden.Root>
-              <EnvelopeOpenIcon
-                width={30}
-                height={30}
+              <ImageIcon
+                width={ICON_SIZE.xl}
+                height={ICON_SIZE.xl}
                 focusable={false}
                 aria-hidden
               />
@@ -179,8 +185,8 @@ export const SocialExtended = memo(function SocialExtended({
                 {SOCIAL.codeSandbox.displayName}
               </VisuallyHidden.Root>
               <CodeSandboxLogoIcon
-                width={32}
-                height={32}
+                width={ICON_SIZE.xl}
+                height={ICON_SIZE.xl}
                 aria-hidden
                 focusable={false}
               />
@@ -194,7 +200,11 @@ export const SocialExtended = memo(function SocialExtended({
               <VisuallyHidden.Root>
                 {SOCIAL.buyMeCoffee.displayName}
               </VisuallyHidden.Root>
-              <SiBuymeacoffee size={28} aria-hidden focusable={false} />
+              <SiBuymeacoffee
+                size={ICON_SIZE.xl}
+                aria-hidden
+                focusable={false}
+              />
             </Link>
           </Tooltip>
         </Box>
