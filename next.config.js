@@ -33,6 +33,11 @@ const SOCIAL_REDIRECTS = [
     permanent: true,
   },
   {
+    source: "/bluesky",
+    destination: "https://bsky.app/profile/ajames.bsky.social",
+    permanent: true,
+  },
+  {
     source: "/twitter",
     destination: "https://twitter.com/phunkren",
     permanent: true,
