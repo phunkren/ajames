@@ -22,7 +22,6 @@ import { YOUTUBE_LIKED_VIDEOS_PLAYLIST_ID } from "../util/youtube";
 import { CSS } from "../stitches.config";
 import { Tag } from "../util/notion";
 import banner from "../public/images/banner.png";
-import troll from "../public/images/troll.png";
 
 export type CardChildProps = {
   ref: Ref<HTMLAnchorElement>;
@@ -416,78 +415,6 @@ export const BlogSponsored = memo(function BlogSponsored() {
             <PostTags as="div" tags={[sponsoredTag]} compact />
 
             <BuyMeCoffeeLink variant="button" />
-          </Box>
-        </>
-      )}
-    </Card>
-  );
-});
-
-export const BlogTroll = memo(function BlogTroll() {
-  const frameworkTag = {
-    id: "framework",
-    name: "Framework",
-    color: "default",
-  };
-
-  return (
-    <Card image={troll}>
-      {({ ref, isPreviewVisible, onPreviewToggle }) => (
-        <>
-          <StyledBlogContent direction="vertical" css={{ minHeight: 156 }}>
-            <Emoji
-              emoji="🌶️"
-              size="s"
-              spacingBottom={4}
-              css={{
-                position: "relative",
-                right: "$1",
-              }}
-            />
-
-            <Box direction="vertical" gap={4}>
-              <StyledLink href="/next-vs-remix" ref={ref} variant="invisible">
-                {isPreviewVisible ? (
-                  <TextAux as="p" clamp={4} textAlign="justify">
-                    Remix is good, but not in the good way. This article
-                    demonstrates what is most important to the most important
-                    person...the end user.
-                  </TextAux>
-                ) : (
-                  <TextHeadline id="rss" clamp={3}>
-                    NextJs outperforms Remix in almost every way that matters.
-                    Here&apos;s why
-                  </TextHeadline>
-                )}
-              </StyledLink>
-            </Box>
-          </StyledBlogContent>
-
-          <Box
-            justifyContent="space-between"
-            alignItems="center"
-            css={{ marginTop: "auto" }}
-          >
-            <PostTags as="div" tags={[frameworkTag]} compact />
-
-            <PreviewToggle
-              aria-label="Toggle article preview"
-              css={{
-                "&:hover": {
-                  cursor: "help",
-                },
-                "&::before": {
-                  content: "",
-                  width: 44,
-                  height: 44,
-                  background: "transparent",
-                  position: "absolute",
-                  zIndex: "$0",
-                },
-              }}
-              pressed={isPreviewVisible}
-              onPressedChange={onPreviewToggle}
-            />
           </Box>
         </>
       )}

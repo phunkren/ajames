@@ -184,7 +184,7 @@ export const Writing = ({ posts, tags }: Props) => {
     : undefined;
 
   const displayedPosts =
-    display === "partial" ? filteredPosts.slice(0, 6) : filteredPosts;
+    display === "partial" ? filteredPosts.slice(0, 7) : filteredPosts;
 
   const shouldShowMore = displayedPosts < filteredPosts;
 
@@ -409,8 +409,6 @@ export const Writing = ({ posts, tags }: Props) => {
               {displayedPosts.map((post, i) => {
                 return (
                   <Fragment key={post.id}>
-                    {i === 0 ? <BlogTroll /> : null}
-
                     <BlogCard
                       url={`/writing/${post.properties.slug.rich_text[0].plain_text}`}
                       image={post.cover.external.url}
@@ -425,7 +423,7 @@ export const Writing = ({ posts, tags }: Props) => {
                       tags={post.properties.tags.multi_select}
                     />
 
-                    {i === 1 ? <BlogSponsored /> : null}
+                    {i === 2 ? <BlogSponsored /> : null}
                   </Fragment>
                 );
               })}

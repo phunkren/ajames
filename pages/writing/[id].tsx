@@ -337,7 +337,7 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
             variant="secondary"
             nextLinkProps={{ shallow: true, scroll: false }}
           >
-            <ArrowLeftIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
+            <ArrowLeftIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
             <TextHeadline>Back to articles</TextHeadline>
           </Link>
         </Box>
