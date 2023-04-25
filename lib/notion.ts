@@ -116,8 +116,6 @@ export async function getPostData(id: string) {
     }
   });
 
-  console.log({ middleElement, nextValidIndex });
-
   const sliceIndex = nextValidIndex >= 0 ? nextValidIndex : middleElement;
 
   const sectionOneMdx = await remark()
