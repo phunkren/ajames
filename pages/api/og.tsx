@@ -115,7 +115,6 @@ export default async function handler(request: NextRequest) {
             background:
               "linear-gradient(-35deg, rgb(130, 32, 37) 0%, rgb(16, 42, 76) 50%, rgb(15, 48, 88) 100%)",
             position: "relative",
-            zIndex: -1,
           }}
         >
           <div
@@ -123,9 +122,10 @@ export default async function handler(request: NextRequest) {
               content: "",
               position: "absolute",
               inset: 0,
-              width: "100%",
+              left: "120px",
+              width: "90%",
               height: "100%",
-              background: "rgba(0,0,0,0.4)",
+              background: "rgba(0,0,0,0.5)",
               filter: "blur(50px)",
             }}
           />
@@ -138,7 +138,7 @@ export default async function handler(request: NextRequest) {
               objectFit: "cover",
               position: "absolute",
               inset: 0,
-              filter: "brightness(80%)",
+              filter: "brightness(75%)",
             }}
           />
 
