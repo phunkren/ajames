@@ -12,7 +12,7 @@ type BlogSeoProps = {
 export const PageSeo = memo(function PageSeo() {
   const { themeName, themeColor } = useTheme();
   const metaImage = `${SITE.url}/images/banner.png`;
-  const metaDescription = `${PERSONAL.profile1}\n${PERSONAL.profile2}`;
+  const metaDescription = `${PERSONAL.description}`;
   const metaKeywords = PERSONAL.keywords.join(",");
   const metaTitle = `${PERSONAL.name} | ${PERSONAL.occupation}`;
 

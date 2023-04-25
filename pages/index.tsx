@@ -75,26 +75,27 @@ const Home: NextPageWithLayout = memo(function Home({
   learning,
 }: Props) {
   return (
-    <>
-      <PageSeo />
+    <Box direction="vertical">
+      <Hero />
 
-      <Box direction="vertical">
-        <Hero />
+      <About />
 
-        <About />
+      <Writing {...writing} />
 
-        <Writing {...writing} />
+      <Learning {...learning} />
 
-        <Learning {...learning} />
-
-        <SocialSponsored />
-      </Box>
-    </>
+      <SocialSponsored />
+    </Box>
   );
 });
 
 Home.getLayout = function getLayout(page: ReactElement) {
-  return <Layout>{page}</Layout>;
+  return (
+    <>
+      <PageSeo />
+      <Layout>{page}</Layout>
+    </>
+  );
 };
 
 export default Home;

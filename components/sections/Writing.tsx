@@ -6,7 +6,6 @@ import Balancer from "react-wrap-balancer";
 import {
   BlogCard,
   BlogSponsored,
-  BlogTroll,
   StyledBlogContent,
   StyledCardInner,
 } from "../Card";
@@ -25,7 +24,7 @@ import { css, styled } from "../../stitches.config";
 import { BlogPost, Tag } from "../../util/notion";
 import { filterPosts } from "../../util/notion";
 import { Divider } from "../Divider";
-import { Button, FilterClearButton, ShareButton } from "../Button";
+import { Button, FilterClearButton } from "../Button";
 import { BlogSubscriptionLink, BuyMeCoffeeLink, Link } from "../Link";
 import {
   TotalCategories,

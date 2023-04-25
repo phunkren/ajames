@@ -245,6 +245,8 @@ export const PERSONAL = {
     "JavaScript",
     "React",
   ],
+  description:
+    "Andrew James is a web engineer and content creator, with a love for all things front-end.",
   profile1:
     "I'm a web engineer based in Glasgow, Scotland. My passion for frontend technologies continually drives me to advance my skill set and adopt the latest industry best practices. An analytical mindset and strong communication skills allow me to excel in environments where I can learn from others and inspire my peers.",
   profile2:
