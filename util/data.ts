@@ -254,7 +254,7 @@ export const PERSONAL = {
 };
 
 export const SITE = {
-  url: "https://ajames.dev",
+  url: "https://ajames.vercel.app", // "https://ajames.dev",
   displayName: "ajames.dev",
 };
 
