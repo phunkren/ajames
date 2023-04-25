@@ -37,6 +37,7 @@ const HeaderBox = styled(Box, {
       true: {
         backgroundColor: "$background",
         color: "$foreground",
+        boxShadow: "$1",
       },
       false: {
         backgroundColor: `${slateDarkA.slateA1}`,
