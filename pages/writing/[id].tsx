@@ -6,7 +6,7 @@ import localFont from "next/font/local";
 import remarkMdx from "remark-mdx";
 import remarkGfm from "remark-gfm";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
-import { BlogPost, Tag } from "../../util/notion";
+import { BlogPost, getRandomPosts, Tag } from "../../util/notion";
 import {
   getAllPostIds,
   getPageData,
@@ -317,7 +317,7 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
   const { asPath, isReady } = useRouter();
   const metaUrl = isReady && asPath ? `${SITE.url}${asPath}` : SITE.url;
   const relatedArticles = frontmatter.related.length
-    ? frontmatter.related.slice(0, 3)
+    ? getRandomPosts(frontmatter.related, 3)
     : null;
 
   return (

@@ -213,3 +213,27 @@ export function addRelatedPosts(posts: BlogPost[]) {
         ) || [],
   }));
 }
+
+export function getRandomPosts(arr: BlogPost[], numElements: number): any[] {
+  const result = [];
+  const length = arr.length;
+
+  if (numElements >= length) {
+    // If numElements is greater than or equal to the length of the array, return the original array
+    return arr;
+  }
+
+  // Generate numElements random indices
+  const randomIndices = new Set<number>();
+  while (randomIndices.size < numElements) {
+    const randomIndex = Math.floor(Math.random() * length);
+    randomIndices.add(randomIndex);
+  }
+
+  // Retrieve the elements at the random indices
+  randomIndices.forEach((index) => {
+    result.push(arr[index]);
+  });
+
+  return result;
+}

@@ -235,23 +235,24 @@ export const PERSONAL = {
   email: "contact@ajames.dev",
   initials: "AJ",
   location: "Glasgow, UK",
-  occupation: "Frontend Engineer",
+  occupation: "Web Engineer",
   keywords: [
     "Frontend",
     "Software",
+    "Web",
     "Developer",
+    "Engineer",
+    "JavaScript",
     "React",
-    "Blog",
-    "Livestream",
   ],
   profile1:
-    "I'm a software engineer based in Glasgow, Scotland. My passion for frontend web technology continually drives me to advance my skill set and adopt the latest industry best practices. An analytical mindset and strong communication skills allow me to excel in environments where I can learn from others and inspire my peers.",
+    "I'm a web engineer based in Glasgow, Scotland. My passion for frontend technologies continually drives me to advance my skill set and adopt the latest industry best practices. An analytical mindset and strong communication skills allow me to excel in environments where I can learn from others and inspire my peers.",
   profile2:
-    " Over the years I've refined a set of technical principles to strive towards, namely: complexity should only be introduced when it’s unavoidable; code should be easy to reason with and delete; avoid abstracting too early, and the top priority is always the best possible user experience.",
+    "Over the years I've refined a set of technical principles to strive towards, namely: complexity should only be introduced when it’s unavoidable; code should be easy to reason with and delete; avoid abstracting too early, and the top priority is always the best possible user experience.",
 };
 
 export const SITE = {
-  url: "https://ajames.vercel.app",
+  url: "https://ajames.dev",
   displayName: "ajames.dev",
 };
 
@@ -321,7 +322,7 @@ export const TESTIMONIALS: Testimonial[] = [
     id: "ib",
     name: "Ian Brennan",
     url: "https://www.linkedin.com/in/ian-brennan-474245138/",
-    position: "Engineering Manager",
+    position: "CTO",
     quote:
       "Andrew always showed a strong desire and passion for his work and the technologies behind it. He picks up techniques, approaches, libraries, and languages with ease, delivering on project requirements whilst also taking the time to truly understand how something works.",
   },

@@ -23,6 +23,7 @@ import {
   sortPlaylists,
 } from "../util/youtube";
 import { NextPageWithLayout } from "./_app";
+import { PageSeo } from "../components/SEO";
 
 type Props = {
   writing: WritingProps;
@@ -73,19 +74,22 @@ const Home: NextPageWithLayout = memo(function Home({
   writing,
   learning,
 }: Props) {
-  console.log(writing.posts);
   return (
-    <Box direction="vertical">
-      <Hero />
+    <>
+      <PageSeo />
 
-      <About />
+      <Box direction="vertical">
+        <Hero />
 
-      <Writing {...writing} />
+        <About />
 
-      <Learning {...learning} />
+        <Writing {...writing} />
 
-      <SocialSponsored />
-    </Box>
+        <Learning {...learning} />
+
+        <SocialSponsored />
+      </Box>
+    </>
   );
 });
 

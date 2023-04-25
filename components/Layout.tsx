@@ -120,33 +120,29 @@ export const Layout = memo(function Layout({ children }: LayoutProps) {
   const { theme } = useTheme();
 
   return (
-    <>
-      <PageSeo />
+    <Box
+      id="__root"
+      direction="vertical"
+      css={{
+        "@print": { overflow: "visible" },
+        "@initial": { overflowX: "hidden" },
+        "@bp3": { overflowX: "visible" },
+      }}
+      className={theme}
+    >
+      <HeaderLayout />
 
       <Box
-        id="__root"
+        as="main"
         direction="vertical"
-        css={{
-          "@print": { overflow: "visible" },
-          "@initial": { overflowX: "hidden" },
-          "@bp3": { overflowX: "visible" },
-        }}
-        className={theme}
+        flexGrow
+        css={{ overflowX: "hidden" }}
       >
-        <HeaderLayout />
-
-        <Box
-          as="main"
-          direction="vertical"
-          flexGrow
-          css={{ overflowX: "hidden" }}
-        >
-          {children}
-        </Box>
-
-        <FooterLayout />
+        {children}
       </Box>
-    </>
+
+      <FooterLayout />
+    </Box>
   );
 });
 
