@@ -23,7 +23,6 @@ import {
   sortPlaylists,
 } from "../util/youtube";
 import { NextPageWithLayout } from "./_app";
-import { PageSeo } from "../components/SEO";
 import { useTheme } from "../hooks/useTheme";
 import { PERSONAL, SITE, SOCIAL } from "../util/data";
 import Head from "next/head";
@@ -77,22 +76,6 @@ const Home: NextPageWithLayout = memo(function Home({
   writing,
   learning,
 }: Props) {
-  return (
-    <Box direction="vertical">
-      <HomepageHero />
-
-      <About />
-
-      <Writing {...writing} />
-
-      <Learning {...learning} />
-
-      <SocialSponsored />
-    </Box>
-  );
-});
-
-Home.getLayout = function getLayout(page: ReactElement) {
   const { themeName, themeColor } = useTheme();
   const metaDescription = `${PERSONAL.description}`;
   const metaKeywords = PERSONAL.keywords.join(",");
@@ -146,6 +129,25 @@ Home.getLayout = function getLayout(page: ReactElement) {
         <meta key="theme-color" name="theme-color" content={themeColor} />
         <meta key="color-scheme" name="color-scheme" content={themeName} />
       </Head>
+
+      <Box direction="vertical">
+        <HomepageHero />
+
+        <About />
+
+        <Writing {...writing} />
+
+        <Learning {...learning} />
+
+        <SocialSponsored />
+      </Box>
+    </>
+  );
+});
+
+Home.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <>
       <Layout>{page}</Layout>
     </>
   );
