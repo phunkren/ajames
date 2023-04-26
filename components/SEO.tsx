@@ -60,6 +60,7 @@ export const PageSeo = memo(function PageSeo() {
       <meta key="robots" name="robots" content="index,follow" />
       <meta key="generator" name="generator" content="Next.js" />
       <meta key="charset" charSet="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta key="theme-color" name="theme-color" content={themeColor} />
       <meta key="color-scheme" name="color-scheme" content={themeName} />
     </Head>
