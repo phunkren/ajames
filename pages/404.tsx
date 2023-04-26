@@ -3,7 +3,7 @@ import { Box } from "../components/Box";
 import { Layout } from "../components/Layout";
 import { Link } from "../components/Link";
 import { HeroContainer } from "../components/sections/Hero";
-import { TextSubtitle, TextTitle } from "../components/Text";
+import { TextHeadline, TextSubtitle, TextTitle } from "../components/Text";
 import { NextPageWithLayout } from "./_app";
 import notFound from "../public/images/404.png";
 
@@ -28,7 +28,23 @@ const NotFound: NextPageWithLayout = () => {
         <Box direction="vertical">
           <TextTitle>404</TextTitle>
 
-          <TextSubtitle>Page not found.</TextSubtitle>
+          <TextSubtitle>Page not found</TextSubtitle>
+
+          <Box
+            gap={{
+              "@portrait": 4,
+              "@landscape": 10,
+            }}
+            spacingTop={7}
+            direction={{
+              "@portrait": "vertical",
+              "@landscape": "horizontal",
+            }}
+          >
+            <Link href="/" variant="primary">
+              <TextHeadline>Return to homepage</TextHeadline>
+            </Link>
+          </Box>
         </Box>
       </Box>
     </HeroContainer>
