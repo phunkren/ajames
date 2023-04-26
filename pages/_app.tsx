@@ -42,16 +42,17 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 
   return (
     <>
+      <style jsx global>{`
+        body {
+          font-family: ${euclid.style.fontFamily};
+        }
+      `}</style>
+
       <Head>
-        <meta key="robots" name="robots" content="index,follow" />
-        <meta key="generator" name="generator" content="Next.js" />
-        <meta key="charset" charSet="utf-8" />
+        <meta name="robots" content="index,follow" />
+        <meta name="generator" content="Next.js" />
+        <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <style jsx global>{`
-          body {
-            font-family: ${euclid.style.fontFamily};
-          }
-        `}</style>
       </Head>
 
       <ErrorBoundary FallbackComponent={ErrorFallback}>
