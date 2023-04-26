@@ -8,7 +8,6 @@ import { Navigation, NavigationMobile } from "./Navigation";
 import { Social, SocialExtended } from "./Social";
 import { ThemeToggle } from "./Toggle";
 import { Box, BoxProps } from "./Box";
-import { PageSeo } from "./SEO";
 import { TextAux } from "./Text";
 import { Logo } from "./Logo";
 import { Tooltip } from "./Tooltip";
