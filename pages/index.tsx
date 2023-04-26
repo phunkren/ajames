@@ -1,9 +1,9 @@
 import { GetStaticProps } from "next";
 
-import { memo, ReactElement, useEffect } from "react";
+import { memo, ReactElement } from "react";
 import { Box } from "../components/Box";
 import { Layout } from "../components/Layout";
-import { Hero, HomepageHero } from "../components/sections/Hero";
+import { HomepageHero } from "../components/sections/Hero";
 import { About } from "../components/sections/About";
 import {
   Learning,
