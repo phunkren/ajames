@@ -132,9 +132,13 @@ export const Layout = memo(function Layout({ children }: LayoutProps) {
         <meta key="author" name="author" content={PERSONAL.name} />
         <meta key="keywords" name="keywords" content={metaKeywords} />
         <meta key="image" name="image" content={metaContent} />
+        <meta name="theme-color" content={themeColor} />
+        <meta name="color-scheme" content={themeName} />
 
         {/* Twitter */}
-        <meta key="twitter:card" name="twitter:card" content="summary" />
+        <meta name="twitter:site" content={SOCIAL.twitter.handle} />
+        <meta name="twitter:creator" content={SOCIAL.twitter.handle} />
+        <meta name="twitter:card" content="summary" />
         <meta key="twitter:image" name="twitter:image" content={metaContent} />
         <meta key="twitter:title" name="twitter:title" content={metaTitle} />
         <meta
@@ -142,31 +146,16 @@ export const Layout = memo(function Layout({ children }: LayoutProps) {
           name="twitter:description"
           content={metaDescription}
         />
-        <meta
-          key="twitter:site"
-          name="twitter:site"
-          content={SOCIAL.twitter.handle}
-        />
-        <meta
-          key="twitter:creator"
-          name="twitter:creator"
-          content={SOCIAL.twitter.handle}
-        />
 
         {/* OG */}
-        <meta key="og:image" name="og:image" content={metaContent} />
-        <meta key="og:locale" name="og:locale" content="en_GB" />
         <meta key="og:type" name="og:type" content="website" />
-        <meta key="og:url" name="og:url" content={SITE.url} />
+        <meta key="og:image" name="og:image" content={metaContent} />
         <meta key="og:title" name="og:title" content={metaTitle} />
         <meta
           key="og:description"
           name="og:description"
           content={metaDescription}
         />
-
-        <meta key="theme-color" name="theme-color" content={themeColor} />
-        <meta key="color-scheme" name="color-scheme" content={themeName} />
       </Head>
 
       <Box

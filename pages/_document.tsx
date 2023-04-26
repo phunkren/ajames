@@ -1,7 +1,6 @@
 import { Html, Head, Main, NextScript } from "next/document";
 import { getCssText } from "../stitches.config";
 import { globalStyles } from "../styles/global";
-import { PERSONAL, SITE } from "../util/data";
 
 export default function Document() {
   globalStyles();

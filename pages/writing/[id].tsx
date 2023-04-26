@@ -47,7 +47,6 @@ import {
 } from "../../styles/text";
 import { Box } from "../../components/Box";
 import { NextPageWithLayout } from "../_app";
-import { BlogSeo } from "../../components/SEO";
 import dynamic from "next/dynamic";
 import { ONE_HOUR_IN_SECONDS } from "../../util/date";
 import { GetStaticPaths, GetStaticProps } from "next";
@@ -56,6 +55,7 @@ import Image from "next/image";
 import { BLUR_DATA_URL, ICON_SIZE } from "../../util/images";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import { BlogCard } from "../../components/Card";
+import Head from "next/head";
 
 export type Frontmatter = {
   title: string;
@@ -242,15 +242,6 @@ const StyledContainer = styled(Box, {
   },
 });
 
-const Figure = memo(function Figure({ src, alt, ...props }: FigureProps) {
-  return (
-    <Box as="figure" direction="vertical" gap={2} css={{ width: "auto" }}>
-      <img src={src} alt={alt} {...props} />
-      <TextAux as="figcaption">{alt}</TextAux>
-    </Box>
-  );
-});
-
 const StyledCardContainer = styled(Box, {
   display: "grid",
   gridTemplateColumns: "1fr",
@@ -268,6 +259,15 @@ const StyledCardContainer = styled(Box, {
   },
 });
 
+const Figure = memo(function Figure({ src, alt, ...props }: FigureProps) {
+  return (
+    <Box as="figure" direction="vertical" gap={2} css={{ width: "auto" }}>
+      <img src={src} alt={alt} {...props} />
+      <TextAux as="figcaption">{alt}</TextAux>
+    </Box>
+  );
+});
+
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = getAllPostIds();
 
@@ -281,7 +281,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const pageData = await getPageData(params.id as string);
   const { sectionOne, sectionTwo } = await getPostData(params.id as string);
   const postTime = await getPostTime(sectionOne, sectionTwo);
-
   const slug = pageData.properties.slug.rich_text[0].plain_text;
   const pageUrl = `${SITE.url}/writing/${slug}`;
 
@@ -315,6 +314,10 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
 }: Props) {
   const { asPath, isReady } = useRouter();
   const metaUrl = isReady && asPath ? `${SITE.url}${asPath}` : SITE.url;
+  const metaTitle = `${frontmatter.emoji} ${frontmatter.title} | ${SITE.displayName}`;
+  const metaContent = `${SITE.url}/api/og?title=${frontmatter.title}&description=${frontmatter.description}&image=${frontmatter.cover}`;
+  const keywords = frontmatter.tags.map((tag) => tag.name).join(",");
+
   const relatedArticles = frontmatter.related.length
     ? getRandomPosts(frontmatter.related, 2)
     : null;
@@ -328,7 +331,38 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
         }
       `}</style>
 
-      <BlogSeo frontmatter={frontmatter} />
+      <Head>
+        <title key="title">{metaTitle}</title>
+
+        <link key="canonical" rel="canonical" href={frontmatter.canonical} />
+        <meta key="keywords" name="keywords" content={keywords} />
+        <meta key="image" name="image" content={metaContent} />
+        <meta
+          key="description"
+          name="description"
+          content={frontmatter.description}
+        />
+
+        {/* Twitter */}
+        <meta key="twitter:title" name="twitter:title" content={metaTitle} />
+        <meta key="twitter:image" name="twitter:image" content={metaContent} />
+        <meta
+          key="twitter:description"
+          name="twitter:description"
+          content={frontmatter.description}
+        />
+
+        {/* OG */}
+        <meta key="og:type" name="og:type" content="article" />
+        <meta key="og:url" name="og:url" content={metaUrl} />
+        <meta key="og:title" name="og:title" content={metaTitle} />
+        <meta key="og:image" name="og:image" content={metaContent} />
+        <meta
+          key="og:description"
+          name="og:description"
+          content={frontmatter.description}
+        />
+      </Head>
 
       <Box as="article" direction="vertical" spacingVertical={12}>
         <Box gap={10} container="l" spacingBottom={10} spacingHorizontal={7}>
