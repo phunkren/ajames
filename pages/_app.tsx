@@ -6,6 +6,7 @@ import { ErrorBoundary } from "react-error-boundary";
 import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 import { ErrorFallback } from "../components/ErrorFallback";
 import { ThemeProvider } from "../components/Theme";
+import Head from "next/head";
 
 const euclid = localFont({
   src: [
@@ -41,11 +42,18 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 
   return (
     <>
-      <style jsx global>{`
-        body {
-          font-family: ${euclid.style.fontFamily};
-        }
-      `}</style>
+      <Head>
+        <meta key="robots" name="robots" content="index,follow" />
+        <meta key="generator" name="generator" content="Next.js" />
+        <meta key="charset" charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <style jsx global>{`
+          body {
+            font-family: ${euclid.style.fontFamily};
+          }
+        `}</style>
+      </Head>
 
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <ThemeProvider>{getLayout(<Component {...pageProps} />)}</ThemeProvider>
