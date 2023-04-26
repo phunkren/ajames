@@ -42,7 +42,6 @@ export const ErrorFallback = memo(function ErrorFallback({
             flexGrow
           >
             <Box
-              container="s"
               direction="vertical"
               spacingVertical={{
                 "@portrait": 7,

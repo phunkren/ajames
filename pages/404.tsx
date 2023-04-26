@@ -3,13 +3,7 @@ import { Box } from "../components/Box";
 import { Layout } from "../components/Layout";
 import { Link } from "../components/Link";
 import { HeroContainer } from "../components/sections/Hero";
-import {
-  TextHeadline,
-  TextSubtitle,
-  TextTitle,
-  TextTitle1,
-  TextTitle2,
-} from "../components/Text";
+import { TextSubtitle, TextTitle } from "../components/Text";
 import { NextPageWithLayout } from "./_app";
 import notFound from "../public/images/404.png";
 
@@ -31,7 +25,7 @@ const NotFound: NextPageWithLayout = () => {
         css={{ zIndex: "$1" }}
         flexGrow
       >
-        <Box container="s" direction="vertical">
+        <Box direction="vertical">
           <TextTitle>404</TextTitle>
 
           <TextSubtitle>Page not found.</TextSubtitle>

@@ -3,7 +3,7 @@ import { GetStaticProps } from "next";
 import { memo, ReactElement, useEffect } from "react";
 import { Box } from "../components/Box";
 import { Layout } from "../components/Layout";
-import { HomepageHero } from "../components/sections/Hero";
+import { Hero, HomepageHero } from "../components/sections/Hero";
 import { About } from "../components/sections/About";
 import {
   Learning,
