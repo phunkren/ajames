@@ -78,11 +78,6 @@ const Home: NextPageWithLayout = memo(function Home({
 }: Props) {
   return (
     <>
-      <Head>
-        <title key="title">{`${PERSONAL.name} | ${PERSONAL.occupation}`}</title>
-        <meta key="og:image" name="og:image" content={`${SITE.url}/api/og`} />
-      </Head>
-
       <Box direction="vertical">
         <HomepageHero />
 
