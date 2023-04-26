@@ -1,13 +1,18 @@
 import { blueDark, redDark, slateDark } from "@radix-ui/colors";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { gsap } from "gsap";
-import { memo, useLayoutEffect, useRef, useState } from "react";
+import { memo, ReactElement, useLayoutEffect, useRef, useState } from "react";
 import { darkTheme, lightTheme, styled } from "../../stitches.config";
 import headshot from "../../public/images/headshot.png";
 import { Box } from "../Box";
 import { PERSONAL } from "../../util/data";
 import { TextSubtitle, TextTitle } from "../Text";
 import { Social } from "../Social";
+
+type Props = {
+  src: StaticImageData;
+  children: ReactElement;
+};
 
 const StyledHeroLayout = styled(Box, {
   height: "100svh",
@@ -63,11 +68,11 @@ const StyledImage = styled(Image, {
   },
 
   [`.${darkTheme} &`]: {
-    filter: "brightness(66%)",
+    filter: "brightness(66%) grayscale(1)",
   },
 
   [`.${lightTheme} &`]: {
-    filter: "brightness(75%)",
+    filter: "brightness(75%) grayscale(1)",
   },
 });
 
@@ -140,8 +145,10 @@ const ANIMATION_B = {
   ease: "slow.out",
 };
 
-export const Hero = memo(function HeroLayout() {
-  const [isLoaded, setIsLoaded] = useState(false);
+export const HeroContainer = memo(function HeroContainer({
+  src,
+  children,
+}: Props) {
   const comp = useRef();
   const oneRef = useRef(null);
   const twoRef = useRef(null);
@@ -168,13 +175,13 @@ export const Hero = memo(function HeroLayout() {
         <HeroFour ref={fourRef} />
 
         <StyledImage
-          src={headshot}
+          src={src}
           alt=""
-          placeholder={!isLoaded ? "blur" : "empty"}
           sizes="(max-width: 1020px) 100vw, 1276px"
+          quality={100}
           priority
-          onLoad={() => setIsLoaded(true)}
         />
+
         <Box
           direction="vertical"
           spacingHorizontal={{ "@initial": 6, "@bp2": 10 }}
@@ -182,49 +189,51 @@ export const Hero = memo(function HeroLayout() {
         >
           <Box direction="vertical" position="relative" flexGrow>
             <Box direction="vertical" container="l" flexGrow>
-              <Box
-                direction="vertical"
-                spacingBottom={7}
-                justifyContent={{
-                  "@portrait": "flex-end",
-                  "@landscape": "center",
-                }}
-                alignItems={{
-                  "@portrait": "center",
-                  "@landscape": "flex-start",
-                }}
-                css={{ zIndex: "$1" }}
-                flexGrow
-              >
-                <TextTitle
-                  color="currentColor"
-                  css={{ textShadow: "$textShadow" }}
-                >
-                  {PERSONAL.name}
-                </TextTitle>
-
-                <TextSubtitle
-                  color="currentColor"
-                  css={{ textShadow: "$textShadow" }}
-                >
-                  {PERSONAL.occupation} / {PERSONAL.location}
-                </TextSubtitle>
-
-                <Box position="relative" spacingTop={4} css={{ left: "-$1" }}>
-                  <Social
-                    size={{
-                      "@initial": "m",
-                      "@bp2": "l",
-                      "@bp3": "m",
-                    }}
-                    gap="3"
-                  />
-                </Box>
-              </Box>
+              {children}
             </Box>
           </Box>
         </Box>
       </StyledHeroContainer>
     </StyledHeroLayout>
+  );
+});
+
+export const HomepageHero = memo(function HomepageHero() {
+  return (
+    <HeroContainer src={headshot}>
+      <Box
+        direction="vertical"
+        spacingBottom={7}
+        justifyContent={{
+          "@portrait": "flex-end",
+          "@landscape": "center",
+        }}
+        alignItems={{
+          "@portrait": "center",
+          "@landscape": "flex-start",
+        }}
+        css={{ zIndex: "$1" }}
+        flexGrow
+      >
+        <TextTitle color="currentColor" css={{ textShadow: "$textShadow" }}>
+          {PERSONAL.name}
+        </TextTitle>
+
+        <TextSubtitle color="currentColor" css={{ textShadow: "$textShadow" }}>
+          {PERSONAL.occupation} / {PERSONAL.location}
+        </TextSubtitle>
+
+        <Box position="relative" spacingTop={4} css={{ left: "-$1" }}>
+          <Social
+            size={{
+              "@initial": "m",
+              "@bp2": "l",
+              "@bp3": "m",
+            }}
+            gap="3"
+          />
+        </Box>
+      </Box>
+    </HeroContainer>
   );
 });

@@ -1,13 +1,12 @@
 import { memo, ReactNode, useCallback } from "react";
 import Router from "next/router";
-import Image from "next/image";
 import { Button } from "./Button";
-import { TextHeadline } from "./Text";
+import { TextHeadline, TextSubtitle, TextTitle } from "./Text";
 import { Box } from "./Box";
-import { Layout } from "./Layout";
 import { ThemeProvider } from "./Theme";
-import { darkTheme, lightTheme, styled } from "../stitches.config";
-import { Hero } from "./sections/Hero";
+import { HeroContainer } from "./sections/Hero";
+import uhoh from "../public/images/500.png";
+import { Layout } from "./Layout";
 
 export type ErrorBoundaryProps = {
   error?: Error;
@@ -26,43 +25,88 @@ export const ErrorFallback = memo(function ErrorFallback({
   return (
     <ThemeProvider>
       <Layout>
-        <Box direction="vertical">
-          <Hero />
-
+        <HeroContainer src={uhoh}>
           <Box
             role="alert"
             direction="vertical"
-            alignItems="center"
-            container="s"
-            spacingTop={10}
-            gap={10}
+            spacingBottom={7}
+            justifyContent={{
+              "@portrait": "flex-end",
+              "@landscape": "center",
+            }}
+            alignItems={{
+              "@portrait": "center",
+              "@landscape": "flex-start",
+            }}
+            css={{ zIndex: "$1" }}
             flexGrow
           >
-            {error?.message ? (
-              <Box as="pre" css={{ whiteSpace: "normal" }}>
-                {error.message}
-              </Box>
-            ) : null}
+            <Box
+              container="s"
+              direction="vertical"
+              spacingVertical={{
+                "@portrait": 7,
+                "@landscape": 12,
+              }}
+            >
+              <TextTitle css={{ textAlign: "left" }}>Uh oh!</TextTitle>
 
-            {error?.cause ? (
-              <Box as="pre" css={{ whiteSpace: "normal" }}>
-                {error.cause as ReactNode}
-              </Box>
-            ) : null}
+              {error?.message ? (
+                <TextSubtitle
+                  as="pre"
+                  css={{
+                    whiteSpace: "normal",
+                    textAlign: "left",
 
-            <Box gap={10} justifyContent="center">
-              {resetErrorBoundary ? (
-                <Button variant="secondary" onClick={resetErrorBoundary}>
-                  <TextHeadline>Try again</TextHeadline>
-                </Button>
+                    "@landscape": {
+                      maxWidth: "500px",
+                    },
+                  }}
+                >
+                  {error.message}
+                </TextSubtitle>
               ) : null}
 
-              <Button variant="secondary" onClick={handleReload}>
-                <TextHeadline>Return to homepage</TextHeadline>
-              </Button>
+              {error?.cause ? (
+                <TextSubtitle
+                  as="pre"
+                  css={{
+                    whiteSpace: "normal",
+                    textAlign: "left",
+
+                    "@landscape": {
+                      maxWidth: "500px",
+                    },
+                  }}
+                >
+                  {error.cause as ReactNode}
+                </TextSubtitle>
+              ) : null}
+
+              <Box
+                gap={{
+                  "@portrait": 4,
+                  "@landscape": 10,
+                }}
+                spacingTop={7}
+                direction={{
+                  "@portrait": "vertical",
+                  "@landscape": "horizontal",
+                }}
+              >
+                <Button variant="primary" onClick={handleReload}>
+                  <TextHeadline>Return to homepage</TextHeadline>
+                </Button>
+
+                {resetErrorBoundary ? (
+                  <Button variant="secondary" onClick={resetErrorBoundary}>
+                    <TextHeadline>Try again</TextHeadline>
+                  </Button>
+                ) : null}
+              </Box>
             </Box>
           </Box>
-        </Box>
+        </HeroContainer>
       </Layout>
     </ThemeProvider>
   );
