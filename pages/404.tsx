@@ -9,7 +9,10 @@ import notFound from "../public/images/404.png";
 
 const NotFound: NextPageWithLayout = () => {
   return (
-    <HeroContainer src={notFound}>
+    <HeroContainer
+      src={notFound}
+      alt="A picture of Andrew James, looking confused and scratching his head"
+    >
       <Box
         role="alert"
         direction="vertical"

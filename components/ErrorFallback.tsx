@@ -25,7 +25,10 @@ export const ErrorFallback = memo(function ErrorFallback({
   return (
     <ThemeProvider>
       <Layout>
-        <HeroContainer src={uhoh}>
+        <HeroContainer
+          src={uhoh}
+          alt="A picture of Andrew James, facepalming in frustration"
+        >
           <Box
             role="alert"
             direction="vertical"

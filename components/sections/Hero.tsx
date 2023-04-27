@@ -11,6 +11,7 @@ import { Social } from "../Social";
 
 type Props = {
   src: StaticImageData;
+  alt?: string;
   children: ReactElement;
 };
 
@@ -147,6 +148,7 @@ const ANIMATION_B = {
 
 export const HeroContainer = memo(function HeroContainer({
   src,
+  alt,
   children,
 }: Props) {
   const comp = useRef();
@@ -154,8 +156,6 @@ export const HeroContainer = memo(function HeroContainer({
   const twoRef = useRef(null);
   const threeRef = useRef(null);
   const fourRef = useRef(null);
-
-  const [isLoaded, setIsLoaded] = useState(false);
 
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
@@ -178,10 +178,10 @@ export const HeroContainer = memo(function HeroContainer({
 
         <StyledImage
           src={src}
-          alt=""
+          alt={alt ?? ""}
           sizes="(max-width: 1020px) 100vw, 1276px"
-          priority
           placeholder="blur"
+          priority
         />
 
         <Box
@@ -202,7 +202,7 @@ export const HeroContainer = memo(function HeroContainer({
 
 export const HomepageHero = memo(function HomepageHero() {
   return (
-    <HeroContainer src={headshot}>
+    <HeroContainer src={headshot} alt="A headshot of Andrew James">
       <Box
         direction="vertical"
         spacingBottom={7}
