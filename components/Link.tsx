@@ -729,7 +729,7 @@ export const BuyMeCoffeeLink = memo(function BuyMeCoffeeLink({
     >
       <Box as="span" alignItems="center" gap={4}>
         {icon ? <SiBuymeacoffee size={30} aria-hidden /> : null}
-        <StyledHeadline>{SOCIAL.buyMeCoffee.displayName}</StyledHeadline>
+        <TextHeadline>{SOCIAL.buyMeCoffee.displayName}</TextHeadline>
       </Box>
     </Link>
   );

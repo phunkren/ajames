@@ -233,6 +233,7 @@ export const Writing = ({ posts, tags }: Props) => {
       as="section"
       display={{ "@print": "none", "@initial": "flex" }}
       direction="vertical"
+      spacingTop={{ "@initial": 11, "@bp2": 10, "@bp3": 12 }}
       spacingBottom={{ "@print": 0, "@initial": 12 }}
       spacingHorizontal={7}
       className={bg}
