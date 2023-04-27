@@ -29,7 +29,3 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 .vercel
-
-# Content
-posts/
-public/rss.xml
