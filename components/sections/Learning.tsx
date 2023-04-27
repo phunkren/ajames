@@ -102,7 +102,7 @@ export const Learning = ({
       as="section"
       display={{ print: "none", "@initial": "flex" }}
       direction="vertical"
-      spacingTop={10}
+      spacingTop={11}
       spacingHorizontal={7}
       className={bg}
     >
