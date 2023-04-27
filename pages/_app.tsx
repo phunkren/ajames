@@ -48,7 +48,7 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 
       navigator.serviceWorker.getRegistrations().then(function (registrations) {
         for (let registration of registrations) {
-          if (registration.scope.startsWith("https://ajames.dev")) {
+          if (registration.scope.startsWith("https://ajames.dev/")) {
             registration.unregister();
             shouldReload = true;
           }

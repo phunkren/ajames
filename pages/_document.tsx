@@ -8,18 +8,6 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-                if ('serviceWorker' in navigator) {
-                  window.addEventListener('load', function() {
-                    navigator.serviceWorker.register('/sw.js');
-                  });
-                }
-              `,
-          }}
-        />
-
         <style
           id="stitches"
           dangerouslySetInnerHTML={{ __html: getCssText() }}
