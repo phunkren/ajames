@@ -77,7 +77,11 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
       </Head>
 
       <ErrorBoundary FallbackComponent={ErrorFallback}>
-        {getLayout(<Component {...pageProps} />)}
+        {getLayout(
+          <ThemeProvider>
+            <Component {...pageProps} />
+          </ThemeProvider>
+        )}
         {isStale ? <NewWebsiteAlert /> : null}
       </ErrorBoundary>
     </>

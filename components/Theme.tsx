@@ -59,11 +59,6 @@ export const ThemeProvider = memo(function ThemeProvider({
     }
   }, [theme, storageTheme, setStorageTheme, handleThemeChange]);
 
-  // [TODO] - There's gotta be a better way!?
-  if (!theme) {
-    return null;
-  }
-
   // Return the context provider with the current theme value
   return (
     <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
