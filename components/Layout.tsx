@@ -138,8 +138,18 @@ export const Layout = memo(function Layout({ children }: LayoutProps) {
         {/* Twitter */}
         <meta name="twitter:site" content={SOCIAL.twitter.handle} />
         <meta name="twitter:creator" content={SOCIAL.twitter.handle} />
-        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta key="twitter:image" name="twitter:image" content={metaContent} />
+        <meta
+          key="twitter:image:width"
+          name="twitter:image:width"
+          content="1200"
+        />
+        <meta
+          key="twitter:image:height"
+          name="twitter:image:height"
+          content="630"
+        />
         <meta key="twitter:title" name="twitter:title" content={metaTitle} />
         <meta
           key="twitter:description"
@@ -148,9 +158,11 @@ export const Layout = memo(function Layout({ children }: LayoutProps) {
         />
 
         {/* OG */}
+        <meta key="og:title" name="og:title" content={metaTitle} />
         <meta key="og:type" name="og:type" content="website" />
         <meta key="og:image" name="og:image" content={metaContent} />
-        <meta key="og:title" name="og:title" content={metaTitle} />
+        <meta key="og:image:width" name="og:image:width" content="1200" />
+        <meta key="og:image:height" name="og:image:height" content="630" />
         <meta
           key="og:description"
           name="og:description"

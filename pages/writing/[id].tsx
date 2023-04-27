@@ -347,6 +347,16 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
         <meta key="twitter:title" name="twitter:title" content={metaTitle} />
         <meta key="twitter:image" name="twitter:image" content={metaContent} />
         <meta
+          key="twitter:image:width"
+          name="twitter:image:width"
+          content="1200"
+        />
+        <meta
+          key="twitter:image:height"
+          name="twitter:image:height"
+          content="630"
+        />
+        <meta
           key="twitter:description"
           name="twitter:description"
           content={frontmatter.description}
@@ -357,6 +367,8 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
         <meta key="og:url" name="og:url" content={metaUrl} />
         <meta key="og:title" name="og:title" content={metaTitle} />
         <meta key="og:image" name="og:image" content={metaContent} />
+        <meta key="og:image:width" name="og:image:width" content="1200" />
+        <meta key="og:image:height" name="og:image:height" content="630" />
         <meta
           key="og:description"
           name="og:description"
