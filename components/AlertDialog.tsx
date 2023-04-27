@@ -65,7 +65,7 @@ export const NewWebsiteAlert = memo(function NewWebsiteAlert() {
 
           <AlertDialogDescription asChild>
             <TextBody>
-              I've updated my website. Click the button below to see it!
+              I&apos;ve updated my website. Click the button below to see it!
             </TextBody>
           </AlertDialogDescription>
 
