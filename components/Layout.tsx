@@ -121,7 +121,7 @@ export const Layout = memo(function Layout({ children }: LayoutProps) {
   const { theme, themeName, themeColor } = useTheme();
   const metaDescription = `${PERSONAL.description}`;
   const metaKeywords = PERSONAL.keywords.join(",");
-  const metaTitle = `${PERSONAL.name} | ${PERSONAL.occupation}`;
+  const metaTitle = `${PERSONAL.name} | ${SITE.displayName}`;
   const metaContent = `${SITE.url}/api/og`;
 
   return (

@@ -85,6 +85,7 @@ export const PostTags = memo(function PostTags({
   tags,
   icon = false,
   compact = false,
+  mono = false,
   ...props
 }: PostTagProps) {
   return (
@@ -102,7 +103,7 @@ export const PostTags = memo(function PostTags({
             <StyledTag
               as="li"
               key={tag.id}
-              borderColor={tag.color}
+              borderColor={!mono ? tag.color : undefined}
               compact={compact}
             >
               <TextAux>{tag.name}</TextAux>

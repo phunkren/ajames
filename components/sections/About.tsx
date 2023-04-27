@@ -165,21 +165,19 @@ export const ABOOT_ID = "about";
 export const About = () => {
   return (
     <Box
-      id={ABOOT_ID}
       as="section"
-      spacingTop={{ "@print": 0, "@initial": 10 }}
       spacingBottom={{ "@print": 0, "@initial": 12 }}
       spacingHorizontal={{ "@print": 0, "@initial": 7 }}
       direction="vertical"
       css={{
-        background: `linear-gradient(-2deg, $slate1 0.04%, $slate2 100.04%)`,
+        background: `linear-gradient(-2deg, $slate1 0.04%, $slate1 100.04%)`,
         "@print": { overflowY: "hidden" },
       }}
     >
       <Box
         direction="vertical"
         gap={{ "@print": 0, "@initial": 11 }}
-        spacingVertical={{ "@print": 0, "@initial": 10, "@bp2": 12 }}
+        spacingBottom={{ "@print": 0, "@initial": 10, "@bp2": 12 }}
         container="l"
       >
         <Box
@@ -201,11 +199,16 @@ export const About = () => {
         </Box>
 
         <Box
+          id={ABOOT_ID}
           direction="vertical"
           gap={10}
           display={{ "@print": "none", "@initial": "flex" }}
         >
-          <Box justifyContent="space-between" alignItems="center">
+          <Box
+            justifyContent="space-between"
+            alignItems="center"
+            spacingTop={12}
+          >
             <TextTitle1 as="h2">About</TextTitle1>
 
             <Box
@@ -495,7 +498,7 @@ export const About = () => {
 
           <Box
             direction="vertical"
-            gap={{ "@print": 8, "@initial": 10 }}
+            gap={{ "@print": 8, "@initial": 10, "@bp2": 11 }}
             spacingBottom={{ "@print": 3, "@initial": 0, "@bp3": 10 }}
             flexGrow
           >

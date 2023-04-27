@@ -119,7 +119,7 @@ export const Learning = ({
                   css={{
                     width: "100%",
                     margin: "0 auto",
-                    "@bp2": { width: "66%" },
+                    "@bp2": { width: "50%" },
                   }}
                 >
                   <AspectRatio.Root ratio={1200 / 1150} asChild>
@@ -274,7 +274,7 @@ export const Learning = ({
             </Box>
           ) : null}
 
-          <Box direction="vertical" gap={11}>
+          <Box direction="vertical" gap={12}>
             {playlistsPreview?.map((playlist) => {
               const firstVideo = playlistVideosPreview[playlist.id][0];
 

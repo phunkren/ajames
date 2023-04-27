@@ -237,7 +237,7 @@ export const SocialSponsored = memo(function SocialSponsored() {
         }}
         css={{ zIndex: "$1" }}
       >
-        <Divider variant="secondary" />
+        <Divider />
 
         <Box
           direction="vertical"
@@ -268,7 +268,7 @@ export const SocialSponsored = memo(function SocialSponsored() {
           </Box>
         </Box>
 
-        <Divider variant="secondary" />
+        <Divider />
       </Box>
     </Box>
   );

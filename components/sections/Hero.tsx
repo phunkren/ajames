@@ -107,7 +107,7 @@ const HeroTwo = styled(Base, {
 });
 
 const HeroThree = styled(Base, {
-  top: "95vh",
+  top: "75vh",
   left: "36vw",
   width: "28vw",
   height: "34vh",
@@ -115,17 +115,29 @@ const HeroThree = styled(Base, {
   backgroundImage: `-webkit-linear-gradient(140deg, ${redDark.red11} 0%, ${redDark.red9} 50%, ${redDark.red7} 100%)`,
   transformOrigin: "bottom left",
   transform: "rotate(-45deg)",
+
+  "@bp3": {
+    top: "95vh",
+    left: "36vw",
+    transform: "rotate(-45deg)",
+  },
 });
 
 const HeroFour = styled(Base, {
-  top: "-50vh",
-  left: "45vw",
+  top: "-75vh",
+  left: "25vw",
   width: "33vw",
   height: "124vh",
   background: `linear-gradient(33deg, ${redDark.red3} 0%, ${redDark.red4} 50%, ${redDark.red5} 100%)`,
   backgroundImage: `-webkit-linear-gradient(33deg, ${redDark.red3} 0%, ${redDark.red4} 50%, ${redDark.red5} 100%)`,
   transformOrigin: "bottom left",
-  transform: "rotate(45deg)",
+  transform: "rotate(90deg)",
+
+  "@bp3": {
+    top: "-50vh",
+    left: "45vw",
+    transform: "rotate(45deg)",
+  },
 });
 
 const ANIMATION_A = {

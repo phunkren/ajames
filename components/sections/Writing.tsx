@@ -250,7 +250,7 @@ export const Writing = ({ posts, tags }: Props) => {
               css={{
                 width: "100%",
                 margin: "0 auto",
-                "@bp2": { width: "66%" },
+                "@bp2": { width: "50%" },
               }}
             >
               <AspectRatio.Root ratio={1200 / 1100} asChild>
@@ -321,7 +321,7 @@ export const Writing = ({ posts, tags }: Props) => {
 
         {featuredPost ? (
           <Box direction="vertical">
-            <Box spacingBottom={8}>
+            <Box spacingBottom={10}>
               <TextTitle2>Featured</TextTitle2>
             </Box>
 
@@ -331,7 +331,7 @@ export const Writing = ({ posts, tags }: Props) => {
             >
               <Box
                 direction="vertical"
-                spacingBottom={{ "@initial": 8, "@bp3": 0 }}
+                spacingBottom={{ "@initial": 10, "@bp3": 0 }}
                 css={{
                   "@bp3": { flexGrow: 0, flexShrink: 0, flexBasis: "50%" },
                 }}
@@ -366,8 +366,12 @@ export const Writing = ({ posts, tags }: Props) => {
                 </Box>
 
                 <TextBody
-                  clamp={3}
-                  textAlign={{ "@initial": "left", "@bp3": "justify" }}
+                  clamp={{ "@initial": 5, "@bp3": 3 }}
+                  css={{
+                    maxWidth: "none",
+                    "@bp2": { maxWidth: "75%" },
+                    "@bp3": { maxWidth: "66%" },
+                  }}
                   color="secondary"
                 >
                   {featuredPost.properties.abstract.rich_text[0].plain_text}
@@ -391,19 +395,10 @@ export const Writing = ({ posts, tags }: Props) => {
             gap={4}
             justifyContent="space-between"
             alignItems="center"
-            spacingBottom={8}
+            spacingBottom={10}
           >
-            <Box gap={4} alignItems="center">
+            <Box gap={4} alignItems="baseline">
               <TextTitle2>Articles</TextTitle2>
-              {filteredTag ? (
-                <StyledTag
-                  borderColor={filteredTag.color}
-                  compact
-                  alignItems="center"
-                >
-                  <TextAux>{filteredTag.name}</TextAux>
-                </StyledTag>
-              ) : null}
             </Box>
 
             <LayoutToggle
@@ -462,7 +457,7 @@ export const Writing = ({ posts, tags }: Props) => {
           <Box
             as="ul"
             direction="vertical"
-            gap={10}
+            gap={11}
             display={storageLayout === "rows" ? "flex" : "none"}
           >
             {displayedPosts.map((post, i) => {
@@ -470,21 +465,23 @@ export const Writing = ({ posts, tags }: Props) => {
                 <Fragment key={post.id}>
                   <Box as="li">
                     <Box as="article" direction="vertical" gap={1}>
-                      <Link
-                        href={`/writing/${post.properties.slug.rich_text[0].plain_text}`}
-                        variant="primary"
-                      >
-                        <TextTitle3>
-                          {post.properties.page.title[0].plain_text}
-                        </TextTitle3>
-                      </Link>
+                      <Balancer>
+                        <Link
+                          href={`/writing/${post.properties.slug.rich_text[0].plain_text}`}
+                          variant="primary"
+                        >
+                          <TextTitle3>
+                            {post.properties.page.title[0].plain_text}
+                          </TextTitle3>
+                        </Link>
+                      </Balancer>
 
                       <TextBody
                         color="secondary"
-                        textAlign="justify"
                         css={{
                           maxWidth: "none",
                           spacingBottom: "$2",
+                          "@bp2": { maxWidth: "75%" },
                           "@bp3": { maxWidth: "66%" },
                         }}
                       >
@@ -495,6 +492,7 @@ export const Writing = ({ posts, tags }: Props) => {
                         as="div"
                         tags={post.properties.tags.multi_select}
                         compact
+                        mono
                       />
                     </Box>
                   </Box>
@@ -508,7 +506,6 @@ export const Writing = ({ posts, tags }: Props) => {
 
                         <TextBody
                           color="secondary"
-                          textAlign="justify"
                           css={{
                             maxWidth: "none",
                             spacingBottom: "$2",
@@ -523,7 +520,6 @@ export const Writing = ({ posts, tags }: Props) => {
                           .{" "}
                           <Box
                             as="br"
-                            // spacingTop={{ "@initial": 0, "@bp2": 2 }}
                             display={{ "@initial": "none", "@bp2": "flex" }}
                             css={{ content: "" }}
                           />
@@ -541,6 +537,7 @@ export const Writing = ({ posts, tags }: Props) => {
                             },
                           ]}
                           compact
+                          mono
                         />
                       </Box>
                     </Box>

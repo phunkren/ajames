@@ -69,6 +69,10 @@ export const globalStyles = globalCss({
   [`body.${darkTheme}`]: {
     background: darkTheme.colors.background,
     color: darkTheme.colors.foreground,
+
+    img: {
+      filter: "brightness(85%)",
+    },
   },
 
   "a, button": {

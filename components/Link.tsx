@@ -412,7 +412,7 @@ const StyledBlogSubscription = styled(Link, {
         },
 
         [`.${darkTheme} &`]: {
-          backgroundImage: `linear-gradient(175deg, $orange11 0.04%, $orange10 100.04%)`,
+          backgroundImage: `linear-gradient(175deg, $orange11 0.04%, $orange9 100.04%)`,
           color: "$orange12",
         },
 
@@ -425,7 +425,7 @@ const StyledBlogSubscription = styled(Link, {
             },
 
             [`.${darkTheme} &`]: {
-              backgroundImage: `linear-gradient(175deg, $orange10 0.04%, $orange11 100.04%)`,
+              backgroundImage: `linear-gradient(175deg, $orange9 0.04%, $orange11 100.04%)`,
             },
           },
         },

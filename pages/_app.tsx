@@ -66,6 +66,7 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
       <style jsx global>{`
         body {
           font-family: ${euclid.style.fontFamily};
+          font-display: block;
         }
       `}</style>
 
