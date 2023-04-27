@@ -3,6 +3,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "next lint",
     "analyze": "ANALYZE=true next build"
@@ -38,6 +39,7 @@
     "lodash.keyby": "^4.6.0",
     "lodash.uniqwith": "^4.5.0",
     "next": "^13.3.0",
+    "next-sitemap": "^4.0.7",
     "notion-to-md": "^2.5.5",
     "numeral": "^2.0.6",
     "react": "^18.2.0",

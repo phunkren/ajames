@@ -77,6 +77,10 @@ export const getPageData = async (slug: string) => {
 export const getPageLink = async (id: string) => {};
 
 export function getAllPostIds() {
+  if (!fs.existsSync(POSTS_DIR)) {
+    fs.mkdirSync(POSTS_DIR);
+  }
+
   const fileNames = fs.readdirSync(POSTS_DIR);
 
   return fileNames.map((fileName) => {
