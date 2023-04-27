@@ -155,6 +155,8 @@ export const HeroContainer = memo(function HeroContainer({
   const threeRef = useRef(null);
   const fourRef = useRef(null);
 
+  const [isLoaded, setIsLoaded] = useState(false);
+
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
       gsap.fromTo(oneRef.current, ANIMATION_A, ANIMATION_B);
@@ -178,8 +180,8 @@ export const HeroContainer = memo(function HeroContainer({
           src={src}
           alt=""
           sizes="(max-width: 1020px) 100vw, 1276px"
-          quality={100}
           priority
+          placeholder="blur"
         />
 
         <Box
