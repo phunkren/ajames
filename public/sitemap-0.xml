@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>undefined</loc><lastmod>2023-04-27T10:16:27.559Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ajames.dev</loc><lastmod>2023-04-27T10:17:55.747Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ajames.dev/writing/accessible-menubar</loc><lastmod>2023-04-27T10:17:55.747Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ajames.dev/writing/build-pc</loc><lastmod>2023-04-27T10:17:55.747Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ajames.dev/writing/buy-puppy</loc><lastmod>2023-04-27T10:17:55.747Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ajames.dev/writing/custom-modal</loc><lastmod>2023-04-27T10:17:55.747Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ajames.dev/writing/grid-overlay</loc><lastmod>2023-04-27T10:17:55.747Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ajames.dev/writing/livestream-meetup</loc><lastmod>2023-04-27T10:17:55.747Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ajames.dev/writing/multiple-entry</loc><lastmod>2023-04-27T10:17:55.747Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ajames.dev/writing/responsive-camera</loc><lastmod>2023-04-27T10:17:55.747Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ajames.dev/writing/storybook-state</loc><lastmod>2023-04-27T10:17:55.747Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ajames.dev/writing/wedding-speech</loc><lastmod>2023-04-27T10:17:55.747Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ajames.dev/writing/work-home</loc><lastmod>2023-04-27T10:17:55.747Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ajames.dev/writing/work-remote</loc><lastmod>2023-04-27T10:17:55.747Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 </urlset>
