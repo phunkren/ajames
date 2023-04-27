@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode } from "react";
+import { ReactElement, ReactNode, useEffect, useState } from "react";
 import { NextPage } from "next";
 import { AppProps } from "next/app";
 import localFont from "next/font/local";
@@ -7,6 +7,7 @@ import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 import { ErrorFallback } from "../components/ErrorFallback";
 import { ThemeProvider } from "../components/Theme";
 import Head from "next/head";
+import { NewWebsiteAlert } from "../components/AlertDialog";
 
 const euclid = localFont({
   src: [
@@ -39,6 +40,26 @@ type AppPropsWithLayout = AppProps & {
 export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   // Use the layout defined at the page level, if available
   const getLayout = Component.getLayout ?? ((page) => page);
+  const [isStale, setIsStale] = useState(false);
+
+  useEffect(() => {
+    if ("serviceWorker" in navigator) {
+      let shouldReload = false;
+
+      navigator.serviceWorker.getRegistrations().then(function (registrations) {
+        for (let registration of registrations) {
+          if (registration.scope.startsWith("httpa://ajames.dev/")) {
+            registration.unregister();
+            shouldReload = true;
+          }
+        }
+
+        if (shouldReload) {
+          setIsStale(true);
+        }
+      });
+    }
+  }, []);
 
   return (
     <>
@@ -57,6 +78,7 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <ThemeProvider>{getLayout(<Component {...pageProps} />)}</ThemeProvider>
+        {isStale ? <NewWebsiteAlert /> : null}
       </ErrorBoundary>
     </>
   );
