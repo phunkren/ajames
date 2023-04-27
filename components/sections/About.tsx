@@ -1,20 +1,4 @@
-import {
-  EnvelopeOpenIcon,
-  GitHubLogoIcon,
-  GlobeIcon,
-  LinkedInLogoIcon,
-} from "@radix-ui/react-icons";
-import { CollapsibleButton, IconButton, PrintButton } from "../Button";
-import { Divider } from "../Divider";
-import { DownloadLink, Link, LinkedInConnectLink } from "../Link";
-import {
-  TextAux,
-  TextBody,
-  TextHeadline,
-  TextTitle1,
-  TextTitle2,
-  TextTitle3,
-} from "../Text";
+import { memo, ReactNode, useCallback, useRef } from "react";
 import { css, styled } from "../../stitches.config";
 import {
   EDUCATION,
@@ -28,6 +12,23 @@ import {
 } from "../../util/data";
 import { formatShortDate } from "../../util/date";
 import { ICON_SIZE } from "../../util/images";
+import {
+  EnvelopeOpenIcon,
+  GitHubLogoIcon,
+  GlobeIcon,
+  LinkedInLogoIcon,
+} from "@radix-ui/react-icons";
+import { CollapsibleButton, PrintButton } from "../Button";
+import { Divider } from "../Divider";
+import { DownloadLink, Link, LinkedInConnectLink } from "../Link";
+import {
+  TextAux,
+  TextBody,
+  TextHeadline,
+  TextTitle1,
+  TextTitle2,
+  TextTitle3,
+} from "../Text";
 import { Box } from "../Box";
 import { Tooltip } from "../Tooltip";
 import { Frontmatter, Location, Name, Occupation } from "../Frontmatter";
@@ -37,7 +38,6 @@ import {
   CollapsibleRoot,
   CollapsibleTrigger,
 } from "../Collapsible";
-import { memo, ReactNode, useCallback, useRef } from "react";
 
 type CollapsibleSectionProps = {
   title: string;

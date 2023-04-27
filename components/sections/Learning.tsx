@@ -1,10 +1,22 @@
+import { useEffect, useRef } from "react";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 import debounce from "lodash.debounce";
 import Balancer from "react-wrap-balancer";
+import LiteYouTubeEmbed from "react-lite-youtube-embed";
 import Image from "next/image";
 import { PlayIcon } from "@radix-ui/react-icons";
-import { VideoCard } from "../Card";
-import { Divider } from "../Divider";
+import laptop from "../../public/images/laptop.png";
+import { YOUTUBE_CHANNEL_URL, YOUTUBE_SHARE_TEXT } from "../../util/youtube";
+import { css, styled } from "../../stitches.config";
+import { buildUrl } from "../../util/url";
+import { ICON_SIZE } from "../../util/images";
+import { SITE } from "../../util/data";
+import {
+  ChannelInfoPreview,
+  PlaylistPreview,
+  PlaylistVideosPreview,
+  VideoPreview,
+} from "../../util/youtube";
 import {
   Frontmatter,
   SubscriberCount,
@@ -14,22 +26,10 @@ import {
 import { ActionButtons } from "../Layout";
 import { Link, YoutubeSubscribeLink, TwitterShareLink } from "../Link";
 import { TextAux, TextBody, TextTitle1, TextTitle2, TextTitle3 } from "../Text";
-import { YOUTUBE_CHANNEL_URL, YOUTUBE_SHARE_TEXT } from "../../util/youtube";
-import { buildUrl } from "../../util/url";
-import { css, styled } from "../../stitches.config";
-import {
-  ChannelInfoPreview,
-  PlaylistPreview,
-  PlaylistVideosPreview,
-  VideoPreview,
-} from "../../util/youtube";
 import { ShareButton } from "../Button";
-import { ICON_SIZE } from "../../util/images";
 import { Box } from "../Box";
-import book from "../../public/images/book.png";
-import LiteYouTubeEmbed from "react-lite-youtube-embed";
-import { useCallback, useEffect, useRef } from "react";
-import { SITE } from "../../util/data";
+import { VideoCard } from "../Card";
+import { Divider } from "../Divider";
 
 export type Props = {
   featuredVideo: VideoPreview;
@@ -102,7 +102,7 @@ export const Learning = ({
       as="section"
       display={{ print: "none", "@initial": "flex" }}
       direction="vertical"
-      spacingTop={12}
+      spacingTop={10}
       spacingHorizontal={7}
       className={bg}
     >
@@ -112,12 +112,20 @@ export const Learning = ({
         container="l"
         spacingVertical={{ "@print": 0, "@initial": 10, "@bp2": 12 }}
       >
-        <Box>
-          <AspectRatio.Root ratio={2.5 / 1} asChild>
+        <Box
+          css={{
+            width: "100%",
+            maxWidth: "1200px",
+            margin: "0 auto",
+            "@bp2": { width: "66vw" },
+            "@bp3": { width: "33vw" },
+          }}
+        >
+          <AspectRatio.Root ratio={1200 / 1150} asChild>
             <StyledHeroImage
-              src={book}
-              alt=""
-              sizes="(max-width: 1280px) 50vw, 33vw"
+              src={laptop}
+              alt="A laptop with a multi-coloured cloud bursting out of the screen"
+              sizes="(max-width: 720px) 100vw, (max-width: 1024px) 66vw, 33vw"
               fill
             />
           </AspectRatio.Root>
