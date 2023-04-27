@@ -229,7 +229,6 @@ export const Writing = ({ posts, tags }: Props) => {
 
   return (
     <Box
-      id={WRITING_ID}
       as="section"
       display={{ "@print": "none", "@initial": "flex" }}
       direction="vertical"
@@ -245,44 +244,48 @@ export const Writing = ({ posts, tags }: Props) => {
         spacingVertical={{ "@print": 0, "@initial": 10, "@bp2": 12 }}
         css={{ zIndex: "$1" }}
       >
-        <Box
-          css={{
-            width: "100%",
-            maxWidth: "1200px",
-            margin: "0 auto",
-            "@bp2": { width: "66vw" },
-            "@bp3": { width: "33vw" },
-          }}
-        >
-          <AspectRatio.Root ratio={1200 / 1100} asChild>
-            <StyledHeroImage
-              src={book}
-              alt="A book with a multi-coloured cloud bursting from the pages"
-              sizes="(max-width: 720px) 100vw, (max-width: 1024px) 66vw, 33vw"
-              placeholder="blur"
-              priority
-              fill
-            />
-          </AspectRatio.Root>
-        </Box>
-
         <Box direction="vertical" gap={10}>
-          <Box justifyContent="space-between" alignItems="center">
-            <TextTitle1 as="h2">Writing</TextTitle1>
-
-            <BlogSubscriptionLink
-              type="icon"
-              css={{ display: "flex", "@bp2": { display: "none" } }}
-            />
-
+          <Box direction="vertical">
             <Box
-              position="relative"
               css={{
-                display: "none",
-                "@bp2": { display: "flex", left: "-$1" },
+                width: "100%",
+                margin: "0 auto",
+                "@bp2": { width: "66%" },
               }}
             >
-              <BlogSubscriptionLink type="button" />
+              <AspectRatio.Root ratio={1200 / 1100} asChild>
+                <StyledHeroImage
+                  src={book}
+                  alt="A book with a multi-coloured cloud bursting from the pages"
+                  sizes="(max-width: 720px) 100vw, (max-width: 1024px) 66vw, 33vw"
+                  placeholder="blur"
+                  priority
+                  fill
+                />
+              </AspectRatio.Root>
+            </Box>
+            <Box
+              id={WRITING_ID}
+              justifyContent="space-between"
+              alignItems="center"
+              spacingTop={12}
+            >
+              <TextTitle1 as="h2">Writing</TextTitle1>
+
+              <BlogSubscriptionLink
+                type="icon"
+                css={{ display: "flex", "@bp2": { display: "none" } }}
+              />
+
+              <Box
+                position="relative"
+                css={{
+                  display: "none",
+                  "@bp2": { display: "flex", left: "-$1" },
+                }}
+              >
+                <BlogSubscriptionLink type="button" />
+              </Box>
             </Box>
           </Box>
 

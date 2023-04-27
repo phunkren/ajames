@@ -97,7 +97,6 @@ export const Learning = ({
 
   return (
     <Box
-      id={LEARNING_ID}
       ref={parentRef}
       as="section"
       display={{ print: "none", "@initial": "flex" }}
@@ -112,52 +111,57 @@ export const Learning = ({
         container="l"
         spacingVertical={{ "@print": 0, "@initial": 10, "@bp2": 12 }}
       >
-        <Box
-          css={{
-            width: "100%",
-            maxWidth: "1200px",
-            margin: "0 auto",
-            "@bp2": { width: "66vw" },
-            "@bp3": { width: "33vw" },
-          }}
-        >
-          <AspectRatio.Root ratio={1200 / 1150} asChild>
-            <StyledHeroImage
-              src={laptop}
-              alt="A laptop with a multi-coloured cloud bursting out of the screen"
-              sizes="(max-width: 720px) 100vw, (max-width: 1024px) 66vw, 33vw"
-              placeholder="blur"
-              priority
-              fill
-            />
-          </AspectRatio.Root>
-        </Box>
-
         <Box direction="vertical">
           <Box direction="vertical">
             <Box direction="vertical" justifyContent="space-between" gap={10}>
-              <Box justifyContent="space-between" alignItems="center">
-                <TextTitle1 as="h2">Learning</TextTitle1>
-
+              <Box direction="vertical">
                 <Box
-                  position="relative"
                   css={{
-                    display: "none",
-                    "@bp2": { display: "flex", left: "-$1" },
+                    width: "100%",
+                    margin: "0 auto",
+                    "@bp2": { width: "66%" },
                   }}
                 >
-                  <YoutubeSubscribeLink type="button" />
+                  <AspectRatio.Root ratio={1200 / 1150} asChild>
+                    <StyledHeroImage
+                      src={laptop}
+                      alt="A laptop with a multi-coloured cloud bursting out of the screen"
+                      sizes="(max-width: 720px) 100vw, (max-width: 1024px) 66vw, 33vw"
+                      placeholder="blur"
+                      priority
+                      fill
+                    />
+                  </AspectRatio.Root>
                 </Box>
 
-                <YoutubeSubscribeLink
-                  type="icon"
-                  css={{
-                    display: "flex",
-                    "@bp2": {
+                <Box
+                  id={LEARNING_ID}
+                  justifyContent="space-between"
+                  alignItems="center"
+                  spacingTop={12}
+                >
+                  <TextTitle1 as="h2">Learning</TextTitle1>
+
+                  <Box
+                    position="relative"
+                    css={{
                       display: "none",
-                    },
-                  }}
-                />
+                      "@bp2": { display: "flex", left: "-$1" },
+                    }}
+                  >
+                    <YoutubeSubscribeLink type="button" />
+                  </Box>
+
+                  <YoutubeSubscribeLink
+                    type="icon"
+                    css={{
+                      display: "flex",
+                      "@bp2": {
+                        display: "none",
+                      },
+                    }}
+                  />
+                </Box>
               </Box>
 
               <Box alignItems="flex-end" justifyContent="space-between">
