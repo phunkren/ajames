@@ -123,6 +123,7 @@ export const Layout = memo(function Layout({ children }: LayoutProps) {
   const metaKeywords = PERSONAL.keywords.join(",");
   const metaTitle = `${PERSONAL.name} | ${SITE.displayName}`;
   const metaContent = `${SITE.url}/api/og`;
+  const metaImgAlt = "A picture of Andrew James welcoming you to ajames.dev";
 
   return (
     <>
@@ -135,27 +136,30 @@ export const Layout = memo(function Layout({ children }: LayoutProps) {
         <meta name="theme-color" content={themeColor} />
         <meta name="color-scheme" content={themeName} />
 
+        {/* OG */}
+        <meta key="og:title" name="og:title" content={metaTitle} />
+        <meta
+          key="og:description"
+          name="og:description"
+          content={metaDescription}
+        />
+        <meta key="og:type" name="og:type" content="website" />
+        <meta key="og:image" name="og:image" content={metaContent} />
+        <meta key="og:image:alt" name="og:image:alt" content={metaImgAlt} />
+        <meta key="og:image:height" name="og:image:height" content="675" />
+        <meta key="og:image:width" name="og:image:width" content="1280" />
+
         {/* Twitter */}
-        <meta name="twitter:site" content={SOCIAL.twitter.handle} />
-        <meta name="twitter:creator" content={SOCIAL.twitter.handle} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta key="twitter:image" name="twitter:image" content={metaContent} />
+        <meta name="twitter:creator" content={SOCIAL.twitter.handle} />
+        <meta name="twitter:site" content={SOCIAL.twitter.handle} />
         <meta key="twitter:title" name="twitter:title" content={metaTitle} />
         <meta
           key="twitter:description"
           name="twitter:description"
           content={metaDescription}
         />
-
-        {/* OG */}
-        <meta key="og:title" name="og:title" content={metaTitle} />
-        <meta key="og:type" name="og:type" content="website" />
-        <meta key="og:image" name="og:image" content={metaContent} />
-        <meta
-          key="og:description"
-          name="og:description"
-          content={metaDescription}
-        />
+        <meta key="twitter:image" name="twitter:image" content={metaContent} />
       </Head>
 
       <Box
