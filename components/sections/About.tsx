@@ -175,7 +175,7 @@ export const About = () => {
       spacingHorizontal={{ "@print": 0, "@initial": 7 }}
       direction="vertical"
       css={{
-        background: `linear-gradient(-2deg, red 0.04%, $slate1 100.04%)`,
+        background: `linear-gradient(-2deg, $slate1 0.04%, $slate2 100.04%)`,
         "@print": { overflowY: "hidden" },
       }}
     >
