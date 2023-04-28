@@ -148,7 +148,7 @@ export const Layout = memo(function Layout({ children }: LayoutProps) {
         <meta
           key="twitter:image:height"
           name="twitter:image:height"
-          content="630"
+          content="1200"
         />
         <meta key="twitter:title" name="twitter:title" content={metaTitle} />
         <meta
