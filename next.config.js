@@ -160,16 +160,24 @@ const nextConfig = {
       ...PROJECT_REDIRECTS,
     ];
   },
-  webpack(config) {
+  webpack(config, { isServer }) {
+    if (!isServer) {
+      // Disable React minification
+      const terserIndex = config.optimization.minimizer.findIndex(
+        (plugin) => plugin.constructor.name === "TerserPlugin"
+      );
+      if (terserIndex > -1) {
+        config.optimization.minimizer[
+          terserIndex
+        ].options.terserOptions.compress.toplevel = false;
+      }
+    }
+
     config.module.rules.push({
       test: /\.svg$/i,
       issuer: /\.[jt]sx?$/,
       use: ["@svgr/webpack"],
     });
-
-    config.optimization.minify = false;
-    config.optimization.minimizer = [];
-
     return config;
   },
 };
