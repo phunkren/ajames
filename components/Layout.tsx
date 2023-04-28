@@ -11,7 +11,7 @@ import { Box, BoxProps } from "./Box";
 import { TextAux } from "./Text";
 import { Logo } from "./Logo";
 import { Tooltip } from "./Tooltip";
-import og from "../public/images/og.png";
+
 import { useScroll } from "../hooks/useScroll";
 import { useRouter } from "next/router";
 import Head from "next/head";
@@ -132,11 +132,7 @@ export const Layout = memo(function Layout({ children }: LayoutProps) {
         <meta key="description" name="description" content={metaDescription} />
         <meta key="author" name="author" content={PERSONAL.name} />
         <meta key="keywords" name="keywords" content={metaKeywords} />
-        <meta
-          key="image"
-          name="image"
-          content="https://i.imgur.com/9UGRdg8.png"
-        />
+        <meta key="image" name="image" content={metaContent} />
         <meta name="theme-color" content={themeColor} />
         <meta name="color-scheme" content={themeName} />
 
@@ -148,13 +144,9 @@ export const Layout = memo(function Layout({ children }: LayoutProps) {
           content={metaDescription}
         />
         <meta key="og:type" name="og:type" content="website" />
-        <meta
-          key="og:image"
-          name="og:image"
-          content="https://i.imgur.com/9UGRdg8.png"
-        />
+        <meta key="og:image" name="og:image" content={metaContent} />
         <meta key="og:image:alt" name="og:image:alt" content={metaImgAlt} />
-        <meta key="og:image:height" name="og:image:height" content="675" />
+        <meta key="og:image:height" name="og:image:height" content="640" />
         <meta key="og:image:width" name="og:image:width" content="1280" />
 
         {/* Twitter */}
@@ -167,11 +159,7 @@ export const Layout = memo(function Layout({ children }: LayoutProps) {
           name="twitter:description"
           content={metaDescription}
         />
-        <meta
-          key="twitter:image"
-          name="twitter:image"
-          content="https://i.imgur.com/9UGRdg8.png"
-        />
+        <meta key="twitter:image" name="twitter:image" content={metaContent} />
       </Head>
 
       <Box
