@@ -129,9 +129,6 @@ const PROJECT_REDIRECTS = [
  * @type {import('next').NextConfig}
  **/
 const nextConfig = {
-  compress: false,
-  minify: false,
-  productionBrowserSourceMaps: true,
   images: {
     minimumCacheTTL: 60,
     remotePatterns: [
@@ -160,24 +157,13 @@ const nextConfig = {
       ...PROJECT_REDIRECTS,
     ];
   },
-  webpack(config, { isServer }) {
-    if (!isServer) {
-      // Disable React minification
-      const terserIndex = config.optimization.minimizer.findIndex(
-        (plugin) => plugin.constructor.name === "TerserPlugin"
-      );
-      if (terserIndex > -1) {
-        config.optimization.minimizer[
-          terserIndex
-        ].options.terserOptions.compress.toplevel = false;
-      }
-    }
-
+  webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,
       issuer: /\.[jt]sx?$/,
       use: ["@svgr/webpack"],
     });
+
     return config;
   },
 };
