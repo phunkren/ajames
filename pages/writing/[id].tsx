@@ -313,10 +313,14 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
   sectionTwo,
 }: Props) {
   const { asPath, isReady } = useRouter();
+  const keywords = frontmatter.tags.map((tag) => tag.name).join(",");
   const metaUrl = isReady && asPath ? `${SITE.url}${asPath}` : SITE.url;
   const metaTitle = `${frontmatter.emoji} ${frontmatter.title} | ${SITE.displayName}`;
-  const metaContent = `${SITE.url}/api/og?title=${frontmatter.title}&description=${frontmatter.description}&image=${frontmatter.cover}`;
-  const keywords = frontmatter.tags.map((tag) => tag.name).join(",");
+  const metaContent = `${SITE.url}/api/og?title=${encodeURIComponent(
+    frontmatter.title
+  )}&description=${encodeURIComponent(
+    frontmatter.description
+  )}&image=${encodeURIComponent(frontmatter.cover)}`;
 
   const relatedArticles = frontmatter.related.length
     ? getRandomPosts(frontmatter.related, 2)
@@ -357,8 +361,6 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
         <meta key="og:url" name="og:url" content={metaUrl} />
         <meta key="og:title" name="og:title" content={metaTitle} />
         <meta key="og:image" name="og:image" content={metaContent} />
-        <meta key="og:image:width" name="og:image:width" content="1200" />
-        <meta key="og:image:height" name="og:image:height" content="630" />
         <meta
           key="og:description"
           name="og:description"

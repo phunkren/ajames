@@ -151,8 +151,6 @@ export const Layout = memo(function Layout({ children }: LayoutProps) {
         <meta key="og:title" name="og:title" content={metaTitle} />
         <meta key="og:type" name="og:type" content="website" />
         <meta key="og:image" name="og:image" content={metaContent} />
-        <meta key="og:image:width" name="og:image:width" content="1200" />
-        <meta key="og:image:height" name="og:image:height" content="630" />
         <meta
           key="og:description"
           name="og:description"
