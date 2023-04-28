@@ -129,6 +129,7 @@ const PROJECT_REDIRECTS = [
  * @type {import('next').NextConfig}
  **/
 const nextConfig = {
+  productionBrowserSourceMaps: true,
   images: {
     minimumCacheTTL: 60,
     remotePatterns: [
