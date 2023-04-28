@@ -167,6 +167,9 @@ const nextConfig = {
       use: ["@svgr/webpack"],
     });
 
+    config.optimization.minify = false;
+    config.optimization.minimizer = [];
+
     return config;
   },
 };
