@@ -129,6 +129,7 @@ const PROJECT_REDIRECTS = [
  * @type {import('next').NextConfig}
  **/
 const nextConfig = {
+  compress: false,
   minify: false,
   productionBrowserSourceMaps: true,
   images: {
