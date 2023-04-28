@@ -1,4 +1,4 @@
-import { memo, ReactElement, useEffect } from "react";
+import { memo, ReactElement, useEffect, useRef, useState } from "react";
 import { blueDark, redDark, slateDark } from "@radix-ui/colors";
 import Image, { StaticImageData } from "next/image";
 import { gsap } from "gsap";

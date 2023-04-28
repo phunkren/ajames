@@ -38,6 +38,7 @@ import {
   CollapsibleRoot,
   CollapsibleTrigger,
 } from "../Collapsible";
+import { formatISO } from "date-fns";
 
 type CollapsibleSectionProps = {
   title: string;
@@ -163,6 +164,10 @@ export const CollapsibleSection = memo(function CollapsibleSection({
 export const ABOOT_ID = "about";
 
 export const About = () => {
+  // Remove ms, s, and min in today's date to prevent ssr hydrastion errors
+  const currentDate = formatISO(new Date(), { representation: "date" });
+  const presentDate = new Date(currentDate).toISOString();
+
   return (
     <Box
       as="section"
@@ -615,7 +620,7 @@ export const About = () => {
                                 "@print": "capitalize",
                                 "@initial": "uppercase",
                               }}
-                              dateTime={new Date().toISOString()}
+                              dateTime={presentDate}
                               css={{ lineHeight: "inherit" }}
                             >
                               Present
