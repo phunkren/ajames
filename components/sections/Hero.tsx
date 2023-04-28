@@ -169,7 +169,7 @@ export const HeroContainer = memo(function HeroContainer({
   const threeRef = useRef(null);
   const fourRef = useRef(null);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     let ctx = gsap.context(() => {
       gsap.fromTo(oneRef.current, ANIMATION_A, ANIMATION_B);
       gsap.fromTo(twoRef.current, ANIMATION_B, ANIMATION_A);
