@@ -259,7 +259,6 @@ export const Writing = ({ posts, tags }: Props) => {
                   alt="A book with a multi-coloured cloud bursting from the pages"
                   sizes="(max-width: 720px) 100vw, (max-width: 1024px) 66vw, 33vw"
                   placeholder="blur"
-                  priority
                   fill
                 />
               </AspectRatio.Root>

@@ -128,7 +128,6 @@ export const Learning = ({
                       alt="A laptop with a multi-coloured cloud bursting out of the screen"
                       sizes="(max-width: 720px) 100vw, (max-width: 1024px) 66vw, 33vw"
                       placeholder="blur"
-                      priority
                       fill
                     />
                   </AspectRatio.Root>
