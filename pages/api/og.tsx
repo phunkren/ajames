@@ -40,7 +40,7 @@ export default async function handler(request: NextRequest) {
           fontWeight: 400,
           lineHeight: 1.6,
           letterSpacing: 0.36,
-          color: "rgb(236,237,238)",
+          color: "rgb(235,237,238)",
           background: "rgb(21,23,24)",
           width: "100%",
           height: "100%",
@@ -173,8 +173,8 @@ export default async function handler(request: NextRequest) {
       </div>
     ),
     {
-      width: 1686,
-      height: 948,
+      width: 1600,
+      height: 800,
       fonts: [
         {
           name: "Euclid",
