@@ -1,7 +1,7 @@
+import { memo, ReactElement, useEffect } from "react";
 import { blueDark, redDark, slateDark } from "@radix-ui/colors";
 import Image, { StaticImageData } from "next/image";
 import { gsap } from "gsap";
-import { memo, ReactElement, useLayoutEffect, useRef, useState } from "react";
 import { darkTheme, lightTheme, styled } from "../../stitches.config";
 import headshot from "../../public/images/headshot.png";
 import { Box } from "../Box";
