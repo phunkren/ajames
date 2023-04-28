@@ -87,7 +87,7 @@ export const Learning = ({
       { leading: true, trailing: true }
     );
 
-    const observer = new IntersectionObserver(callback, { passive: true });
+    const observer = new IntersectionObserver(callback, {});
     observer.observe(parentRef.current);
 
     return () => {
