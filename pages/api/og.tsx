@@ -173,8 +173,8 @@ export default async function handler(request: NextRequest) {
       </div>
     ),
     {
-      width: 1200,
-      height: 675,
+      width: 1686,
+      height: 948,
       fonts: [
         {
           name: "Euclid",

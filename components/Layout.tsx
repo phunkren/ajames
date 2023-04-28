@@ -140,16 +140,6 @@ export const Layout = memo(function Layout({ children }: LayoutProps) {
         <meta name="twitter:creator" content={SOCIAL.twitter.handle} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta key="twitter:image" name="twitter:image" content={metaContent} />
-        <meta
-          key="twitter:image:width"
-          name="twitter:image:width"
-          content="1200"
-        />
-        <meta
-          key="twitter:image:height"
-          name="twitter:image:height"
-          content="675"
-        />
         <meta key="twitter:title" name="twitter:title" content={metaTitle} />
         <meta
           key="twitter:description"

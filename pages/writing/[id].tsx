@@ -347,16 +347,6 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
         <meta key="twitter:title" name="twitter:title" content={metaTitle} />
         <meta key="twitter:image" name="twitter:image" content={metaContent} />
         <meta
-          key="twitter:image:width"
-          name="twitter:image:width"
-          content="1200"
-        />
-        <meta
-          key="twitter:image:height"
-          name="twitter:image:height"
-          content="675"
-        />
-        <meta
           key="twitter:description"
           name="twitter:description"
           content={frontmatter.description}
