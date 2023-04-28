@@ -354,7 +354,7 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
         <meta
           key="twitter:image:height"
           name="twitter:image:height"
-          content="630"
+          content="675"
         />
         <meta
           key="twitter:description"
