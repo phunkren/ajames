@@ -146,6 +146,7 @@ const nextConfig = {
       },
     ],
   },
+  productionBrowserSourceMaps: true,
   publicRuntimeConfig: {
     PRODUCTION: process.env.NODE_ENV === "production",
   },
