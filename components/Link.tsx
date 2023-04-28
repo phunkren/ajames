@@ -517,6 +517,7 @@ export const YoutubeSubscribeLink = memo(function YoutubeSubscribeLink({
       href={YOUTUBE_SUBSCRIBE_URL}
       type={type}
       variant={type === "link" ? "secondary" : "invisible"}
+      aria-label="Subscribe to my YouTube channel"
       {...props}
     >
       <Box alignItems="center" gap={type === "button" ? 2 : 4}>
@@ -545,6 +546,7 @@ export const LinkedInConnectLink = memo(function LinkedInConnectLink({
           href={SOCIAL.linkedin.url}
           type={type}
           variant="invisible"
+          aria-label="Connect with me on LinkedIn"
           {...props}
         >
           <Box alignItems="center" gap={2}>
@@ -626,6 +628,7 @@ export const BlogSubscriptionLink = memo(function BlogSubscribeLink({
         href={rssFeedUrl}
         type={type}
         variant="secondary"
+        aria-label="Subscribe to my RSS feed"
         {...props}
       >
         <Box alignItems="center" gap={4}>
