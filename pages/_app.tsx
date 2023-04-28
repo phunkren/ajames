@@ -7,6 +7,7 @@ import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 import { ErrorFallback } from "../components/ErrorFallback";
 import { ThemeProvider } from "../components/Theme";
 import Head from "next/head";
+import { Analytics } from "@vercel/analytics/react";
 import { NewWebsiteAlert } from "../components/AlertDialog";
 
 const euclid = localFont({
@@ -81,6 +82,8 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
         <ThemeProvider>{getLayout(<Component {...pageProps} />)}</ThemeProvider>
         {isStale ? <NewWebsiteAlert /> : null}
       </ErrorBoundary>
+
+      <Analytics />
     </>
   );
 }

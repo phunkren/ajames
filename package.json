@@ -30,6 +30,7 @@
     "@stitches/react": "^1.2.8",
     "@svgr/webpack": "^6.5.1",
     "@types/node": "^18.11.17",
+    "@vercel/analytics": "^1.0.0",
     "@vercel/og": "^0.5.3",
     "date-fns": "^2.29.3",
     "feed": "^4.2.2",

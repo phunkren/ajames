@@ -36,7 +36,7 @@ export default async function handler(request: NextRequest) {
         style={{
           display: "flex",
           fontFamily: '"Euclid"',
-          fontSize: 24,
+          fontSize: 26,
           fontWeight: 400,
           lineHeight: 1.6,
           letterSpacing: 0.36,
@@ -53,7 +53,7 @@ export default async function handler(request: NextRequest) {
             justifyContent: "space-between",
             padding: "32px",
             paddingRight: "48px",
-            width: "700px",
+            width: "740px",
           }}
         >
           <div
@@ -63,7 +63,7 @@ export default async function handler(request: NextRequest) {
               gap: "16px",
             }}
           >
-            <img width="32" height="30" src={logoData as any} />
+            <img width="44" height="40" src={logoData as any} />
 
             <span
               style={{
@@ -110,7 +110,7 @@ export default async function handler(request: NextRequest) {
         <div
           style={{
             display: "flex",
-            width: "500px",
+            width: "540px",
             height: "100%",
             background:
               "linear-gradient(-35deg, rgb(130, 32, 37) 0%, rgb(16, 42, 76) 50%, rgb(15, 48, 88) 100%)",
