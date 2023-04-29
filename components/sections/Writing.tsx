@@ -442,7 +442,12 @@ export const Writing = ({ posts, tags }: Props) => {
                     gridColumnEnd: "-1 !important",
                   }}
                 >
-                  <Button css={{ flexGrow: 1 }} onClick={handleDisplayChange}>
+                  <Button
+                    css={{
+                      flexGrow: 1,
+                    }}
+                    onClick={handleDisplayChange}
+                  >
                     <TextHeadline color="secondary">
                       Show all articles
                     </TextHeadline>

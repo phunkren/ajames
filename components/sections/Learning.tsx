@@ -126,7 +126,7 @@ export const Learning = ({
                     <StyledHeroImage
                       src={laptop}
                       alt="A laptop with a multi-coloured cloud bursting out of the screen"
-                      sizes="(max-width: 720px) 100vw, (max-width: 1024px) 66vw, 33vw"
+                      sizes="(max-width: 720px) 100vw, (max-width: 1024px) 50vw, 600px"
                       placeholder="blur"
                       fill
                     />

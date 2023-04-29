@@ -73,6 +73,7 @@ const StyledCardOuter = styled(Box, {
   minWidth: 275,
   boxShadow: "$1",
   borderRadius: "$1",
+  borderColor: "transparent",
   borderWidth: 2,
   borderStyle: "solid",
   overflow: "hidden",
@@ -86,6 +87,9 @@ const StyledCardOuter = styled(Box, {
   },
 
   "& img": {
+    position: "relative",
+    left: "10px",
+    width: "calc(100% + 2px)",
     filter: "brightness(100%)",
     ["-webkit-transition"]:
       "filter $transitions$durationQuick $transitions$functionDefault",
@@ -120,7 +124,7 @@ const StyledCardOuter = styled(Box, {
       },
 
       [`.${darkTheme} &`]: {
-        background: whiteA.whiteA3,
+        background: whiteA.whiteA4,
         transition:
           "background $transitions$durationDefault $transitions$functionDefault",
         ["-webkit-transition"]:
@@ -128,7 +132,7 @@ const StyledCardOuter = styled(Box, {
       },
 
       [`.${lightTheme} &`]: {
-        background: blackA.blackA2,
+        background: blackA.blackA3,
         transition:
           "background $transitions$durationDefault $transitions$functionDefault",
         ["-webkit-transition"]:
@@ -159,7 +163,7 @@ const StyledCardOuter = styled(Box, {
   },
 
   [`.${darkTheme} &`]: {
-    background: whiteA.whiteA2,
+    background: whiteA.whiteA3,
     borderColor: whiteA.whiteA5,
     transition:
       "background $transitions$durationQuick $transitions$functionDefault, border-color $transitions$durationQuick $transitions$functionDefault",
@@ -185,8 +189,7 @@ const StyledCardOuter = styled(Box, {
   },
 
   [`.${lightTheme} &`]: {
-    background: blackA.blackA1,
-    borderColor: whiteA.whiteA4,
+    background: whiteA.whiteA12,
     transition:
       "background $transitions$durationDefault $transitions$functionDefault, border-color $transitions$durationDefault $transitions$functionDefault",
     ["-webkit-transition"]:
@@ -194,7 +197,7 @@ const StyledCardOuter = styled(Box, {
   },
 
   [`.${lightTheme} &:has(a:focus)`]: {
-    background: whiteA.whiteA3,
+    background: whiteA.whiteA1,
     borderColor: "$focus",
     transition:
       "background $transitions$durationDefault $transitions$functionDefault, border-color $transitions$durationDefault $transitions$functionDefault",
@@ -203,7 +206,7 @@ const StyledCardOuter = styled(Box, {
   },
 
   [`.${lightTheme} &:active:not(:has(button:active))`]: {
-    background: blackA.blackA3,
+    background: whiteA.whiteA1,
     transition:
       "background $transitions$durationDefault $transitions$functionDefault",
     ["-webkit-transition"]:

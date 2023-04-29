@@ -145,7 +145,7 @@ const StyledButton = styled("button", {
 
         [`.${lightTheme} &`]: {
           backgroundColor: blackA.blackA1,
-          borderColor: whiteA.whiteA4,
+          borderColor: blackA.blackA12,
         },
 
         [`.${lightTheme} &:focus`]: {
