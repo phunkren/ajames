@@ -369,7 +369,6 @@ export const Writing = ({ posts, tags }: Props) => {
                   css={{
                     maxWidth: "none",
                     "@bp2": { maxWidth: "75%" },
-                    "@bp3": { maxWidth: "66%" },
                   }}
                   color="secondary"
                 >

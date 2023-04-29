@@ -173,7 +173,7 @@ export default async function handler(request: NextRequest) {
     ),
     {
       width: 1200,
-      height: 640,
+      height: 600,
       fonts: [
         {
           name: "Euclid",

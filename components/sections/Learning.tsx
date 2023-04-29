@@ -253,8 +253,11 @@ export const Learning = ({
 
                   <TextBody
                     clamp={4}
-                    textAlign={{ "@initial": "left", "@bp3": "justify" }}
                     color="secondary"
+                    css={{
+                      maxWidth: "none",
+                      "@bp2": { maxWidth: "75%" },
+                    }}
                   >
                     {featuredVideo.description}
                   </TextBody>
