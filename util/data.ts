@@ -305,7 +305,7 @@ export const SOCIAL: Record<string, Social> = {
     id: "blueSky",
     displayName: "Bluesky",
     handle: "ajames",
-    url: `https://bsky.app/profile/ajames.bsky.social`,
+    url: `https://bsky.app/profile/ajames.dev`,
   },
 };
 

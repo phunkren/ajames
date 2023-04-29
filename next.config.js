@@ -3,37 +3,6 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",
 });
 
-// const ContentSecurityPolicy = `
-//   default-src 'self' youtube.com;
-//   script-src 'self';
-//   style-src 'self';
-//   img-src 'self' imgur.com i.ytimg.com;
-//   font-src 'self';
-// `;
-
-// const securityHeaders = [
-//   {
-//     key: "X-DNS-Prefetch-Control",
-//     value: "on",
-//   },
-//   {
-//     key: "Strict-Transport-Security",
-//     value: "max-age=63072000; includeSubDomains; preload",
-//   },
-//   {
-//     key: "X-XSS-Protection",
-//     value: "1; mode=block",
-//   },
-//   {
-//     key: "Referrer-Policy",
-//     value: "origin-when-cross-origin",
-//   },
-//   {
-//     key: "Content-Security-Policy",
-//     value: ContentSecurityPolicy.replace(/\s{2,}/g, " ").trim(),
-//   },
-// ];
-
 const PAGE_REDIRECTS = [
   {
     source: "/rss",
@@ -59,13 +28,8 @@ const PAGE_REDIRECTS = [
 
 const SOCIAL_REDIRECTS = [
   {
-    source: "/next-vs-remix",
-    destination: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    permanent: true,
-  },
-  {
     source: "/bluesky",
-    destination: "https://bsky.app/profile/ajames.bsky.social",
+    destination: "https://bsky.app/profile/ajames.dev",
     permanent: true,
   },
   {
@@ -104,8 +68,8 @@ const SOCIAL_REDIRECTS = [
     permanent: true,
   },
   {
-    source: "/social",
-    destination: "https://wlo.link/@phunkren",
+    source: "/coffee",
+    destination: "https://www.buymeacoffee.com/phunkren",
     permanent: true,
   },
 ];
@@ -189,15 +153,6 @@ const nextConfig = {
       ...PROJECT_REDIRECTS,
     ];
   },
-  // async headers() {
-  //   return [
-  //     {
-  //       // Apply these headers to all routes in your application.
-  //       source: "/:path*",
-  //       headers: securityHeaders,
-  //     },
-  //   ];
-  // },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,
