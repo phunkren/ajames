@@ -51,7 +51,7 @@ export default async function handler(request: NextRequest) {
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
-            padding: "32px 64px",
+            padding: "48px 72px",
             width: "740px",
           }}
         >
