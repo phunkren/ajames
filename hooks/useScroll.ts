@@ -25,6 +25,7 @@ export function useScroll(): Scroll {
 
   useEffect(() => {
     window.addEventListener("scroll", handleScrollPosition, { passive: true });
+    setScrollPosition(window.scrollY);
 
     return () => {
       window.removeEventListener("scroll", handleScrollPosition);

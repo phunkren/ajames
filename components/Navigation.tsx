@@ -145,6 +145,7 @@ export const NavigationProjectLink = memo(function NavigationProjectLink({
 
 export const Navigation = memo(function Navigation() {
   const { asPath, isReady } = useRouter();
+  const isRoot = isReady && (asPath === "/" || asPath.includes("/#"));
 
   return (
     <NavigationMenu.Root

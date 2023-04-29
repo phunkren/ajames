@@ -1,4 +1,4 @@
-import { memo, ReactElement } from "react";
+import { memo, ReactElement, useEffect } from "react";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { slateDarkA } from "@radix-ui/colors";
 import { useTheme } from "../hooks/useTheme";
