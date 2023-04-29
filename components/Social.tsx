@@ -221,7 +221,7 @@ export const SocialSponsored = memo(function SocialSponsored() {
       spacingVertical={{ "@print": 0, "@initial": 12 }}
       spacingHorizontal={7}
       css={{
-        background: `linear-gradient($slate2 0.04%, $slate1 100.04%)`,
+        background: `$slate1`,
       }}
     >
       <Box

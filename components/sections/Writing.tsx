@@ -17,7 +17,7 @@ import {
 } from "../Card";
 import { ActionButtons } from "../Layout";
 import { LayoutToggle } from "../Toggle";
-import { StyledTag, TagDrawer, TagSelect, TagSelectItem } from "../Tags";
+import { TagDrawer, TagSelect, TagSelectItem } from "../Tags";
 import {
   TextAux,
   TextBody,
@@ -141,7 +141,7 @@ const StyledCardContainer = styled(Box, {
 
 const bg = css({
   position: "relative",
-  background: "$slate2",
+  background: `$slate1`,
 
   "&::before": {
     content: "",
@@ -150,7 +150,7 @@ const bg = css({
     left: 0,
     width: "200%",
     height: "50%",
-    backgroundColor: "$slate2",
+    backgroundColor: `$slate1`,
     transform: "skewY(-2deg)",
     transformOrigin: "left top",
     zIndex: "$0",
@@ -163,7 +163,7 @@ const bg = css({
     left: 0,
     width: "200%",
     height: "50%",
-    backgroundColor: "$slate2",
+    backgroundColor: `$slate1`,
     transform: "skewY(2deg)",
     transformOrigin: "left top",
     zIndex: "$0",

@@ -40,7 +40,7 @@ export type Props = {
 };
 
 const bg = css({
-  background: `linear-gradient(2deg, $slate2 0.04%, $slate1 100.04%)`,
+  background: `linear-gradient(-2deg, $slate1 0.04%, $slate2 100.04%)`,
 });
 
 const StyledVideoCardContainer = styled(Box, {

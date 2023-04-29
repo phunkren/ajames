@@ -1,6 +1,15 @@
-import { globalCss, lightTheme, darkTheme } from "../stitches.config";
-import { SPACING_VARIANTS } from "./spacing";
+import {
+  globalCss,
+  lightTheme,
+  darkTheme,
+  keyframes,
+} from "../stitches.config";
 import { AUX_STYLES, P_STYLES } from "./text";
+
+const fadeIn = keyframes({
+  "0%": { opacity: 0 },
+  "100%": { opacity: 1 },
+});
 
 /* https://piccalil.li/blog/a-modern-css-reset/ */
 export const globalStyles = globalCss({
@@ -46,6 +55,7 @@ export const globalStyles = globalCss({
     maxWidth: "100vw",
     minHeight: "100dvh",
     overflowX: "hidden",
+    opacity: 0,
 
     ...P_STYLES,
   },
@@ -64,11 +74,13 @@ export const globalStyles = globalCss({
   [`body.${lightTheme}`]: {
     background: lightTheme.colors.background,
     color: lightTheme.colors.foreground,
+    animation: `${fadeIn} $transitions$durationDefault $transitions$functionDefault forwards`,
   },
 
   [`body.${darkTheme}`]: {
     background: darkTheme.colors.background,
     color: darkTheme.colors.foreground,
+    animation: `${fadeIn} $transitions$durationDefault $transitions$functionDefault forwards`,
 
     img: {
       filter: "brightness(85%)",
