@@ -172,7 +172,7 @@ export default async function handler(request: NextRequest) {
       </div>
     ),
     {
-      width: 1280,
+      width: 1200,
       height: 640,
       fonts: [
         {
