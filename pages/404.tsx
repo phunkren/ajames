@@ -31,7 +31,7 @@ const NotFound: NextPageWithLayout = () => {
         <Box direction="vertical">
           <TextTitle>404</TextTitle>
 
-          <TextSubtitle>Page not found</TextSubtitle>
+          <TextSubtitle>Page not found. Sorry about that.</TextSubtitle>
 
           <Box
             gap={{
@@ -43,8 +43,12 @@ const NotFound: NextPageWithLayout = () => {
               "@portrait": "vertical",
               "@landscape": "horizontal",
             }}
+            alignItems={{
+              "@portrait": "center",
+              "@landscape": "flex-start",
+            }}
           >
-            <Link href="/" variant="primary">
+            <Link href="/" variant="tertiary">
               <TextHeadline>Return to homepage</TextHeadline>
             </Link>
           </Box>

@@ -52,7 +52,7 @@ type SubscribeProps = CSS & {
 };
 
 type CoffeeProps = CSS & {
-  variant?: "button";
+  variant?: "button" | "text";
   icon?: boolean;
 };
 
@@ -725,14 +725,22 @@ export const BuyMeCoffeeLink = memo(function BuyMeCoffeeLink({
     );
   }
 
+  if (variant === "text") {
+    return (
+      <Link href={SOCIAL.buyMeCoffee.url} variant="tertiary">
+        <TextHeadline>{SOCIAL.buyMeCoffee.displayName}</TextHeadline>
+      </Link>
+    );
+  }
+
   return (
     <Link
       href={SOCIAL.buyMeCoffee.url}
       variant={icon ? "secondary" : "tertiary"}
     >
       <Box as="span" alignItems="center" gap={4}>
-        {icon ? <SiBuymeacoffee size={30} aria-hidden /> : null}
-        <TextHeadline>{SOCIAL.buyMeCoffee.displayName}</TextHeadline>
+        {icon ? <SiBuymeacoffee size={ICON_SIZE.l} aria-hidden /> : null}
+        <StyledHeadline>{SOCIAL.buyMeCoffee.displayName}</StyledHeadline>
       </Box>
     </Link>
   );

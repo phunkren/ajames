@@ -527,7 +527,7 @@ export const Writing = ({ posts, tags }: Props) => {
                             css={{ content: "" }}
                           />
                           You can also&nbsp;
-                          <BuyMeCoffeeLink />.
+                          <BuyMeCoffeeLink variant="text" />.
                         </TextBody>
 
                         <PostTags

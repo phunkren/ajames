@@ -149,7 +149,7 @@ export default async function handler(request: NextRequest) {
               position: "absolute",
               inset: 0,
               background: "rgb(21,23,24)",
-              transform: "skewX(10deg) translateX(-2px)",
+              transform: "skewX(10deg) translateX(-4px)",
               transformOrigin: "left bottom",
             }}
           />
