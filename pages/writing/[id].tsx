@@ -6,11 +6,20 @@ import localFont from "next/font/local";
 import remarkMdx from "remark-mdx";
 import remarkGfm from "remark-gfm";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
-import { BlogPost, getRandomPosts, Tag } from "../../util/notion";
 import {
+  BlogPost,
+  getPublishedPosts,
+  getRandomPosts,
+  sortPosts,
+  Tag,
+} from "../../util/notion";
+import {
+  createPosts,
+  generateRSSFeed,
   getAllPostIds,
   getPageData,
   getPostData,
+  getPosts,
   getPostTime,
 } from "../../lib/notion";
 import { ActionButtons, Layout, LoadingLayout } from "../../components/Layout";
@@ -48,7 +57,7 @@ import {
 import { Box } from "../../components/Box";
 import { NextPageWithLayout } from "../_app";
 import dynamic from "next/dynamic";
-import { ONE_HOUR_IN_SECONDS } from "../../util/date";
+import { ONE_MINUTE_IN_SECONDS } from "../../util/date";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { Table, TBody, Td, TFoot, Th, THead, Tr } from "../../components/Table";
 import Image from "next/image";
@@ -269,6 +278,13 @@ const Figure = memo(function Figure({ src, alt, ...props }: FigureProps) {
 });
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const posts = await getPosts();
+  const publishedPosts = getPublishedPosts(posts);
+  const sortedPosts = sortPosts(publishedPosts);
+
+  await createPosts(publishedPosts);
+  await generateRSSFeed(sortedPosts);
+
   const paths = getAllPostIds();
 
   return {
@@ -303,7 +319,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       sectionTwo,
       pageData,
     },
-    revalidate: ONE_HOUR_IN_SECONDS,
+    revalidate: ONE_MINUTE_IN_SECONDS,
   };
 };
 

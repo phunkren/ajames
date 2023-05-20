@@ -140,6 +140,14 @@ export function getTags(posts: BlogPost[]): Tag[] {
   return formattedTags;
 }
 
+export function getPublishedPosts(posts: BlogPost[]) {
+  const publishedPosts = posts.filter(
+    (post) => post.properties.published.checkbox
+  );
+
+  return publishedPosts;
+}
+
 export function filterPosts(posts: BlogPost[], queryTag: string) {
   if (!queryTag) {
     return posts;

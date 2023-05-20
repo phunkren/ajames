@@ -1,5 +1,7 @@
 import format from "date-fns/format";
 
+export const ONE_MINUTE_IN_SECONDS = 60;
+
 export const ONE_HOUR_IN_SECONDS = 3600;
 
 export function formatLongDate(date: Date) {

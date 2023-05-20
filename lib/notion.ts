@@ -42,6 +42,10 @@ export const getPosts = async () => {
 
 // Create markdown file from each Notion blog post
 export async function createPosts(posts: BlogPost[]) {
+  if (!fs.existsSync(POSTS_DIR)) {
+    fs.mkdirSync(POSTS_DIR);
+  }
+
   for (const post of posts) {
     const uuid = post.id;
     const slug = post.properties.slug.rich_text[0].plain_text;
@@ -73,8 +77,6 @@ export const getPageData = async (slug: string) => {
 
   return page;
 };
-
-export const getPageLink = async (id: string) => {};
 
 export function getAllPostIds() {
   if (!fs.existsSync(POSTS_DIR)) {

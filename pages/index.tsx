@@ -11,9 +11,9 @@ import {
 } from "../components/sections/Learning";
 import { Writing, Props as WritingProps } from "../components/sections/Writing";
 import { SocialSponsored } from "../components/Social";
-import { createPosts, generateRSSFeed, getPosts } from "../lib/notion";
+import { getPosts } from "../lib/notion";
 import { getYoutubeData } from "../lib/youtube";
-import { ONE_HOUR_IN_SECONDS } from "../util/date";
+import { ONE_MINUTE_IN_SECONDS } from "../util/date";
 import { getTags, sortPosts } from "../util/notion";
 import {
   formatChannelInfo,
@@ -23,9 +23,6 @@ import {
   sortPlaylists,
 } from "../util/youtube";
 import { NextPageWithLayout } from "./_app";
-import { useTheme } from "../hooks/useTheme";
-import { PERSONAL, SITE, SOCIAL } from "../util/data";
-import Head from "next/head";
 
 type Props = {
   writing: WritingProps;
@@ -47,14 +44,6 @@ export const getStaticProps: GetStaticProps = async () => {
   const playlistVideosPreview = formatPlaylistVideos(videos);
   const channelInfoPreview = formatChannelInfo(channelInfo);
 
-  if (process.env.NODE_ENV === "production") {
-    // Create a .mdx file for each blog post
-    await createPosts(posts);
-
-    // Create a feed.xml file for blog subscriptions
-    generateRSSFeed(sortedPosts);
-  }
-
   return {
     props: {
       writing: {
@@ -68,7 +57,7 @@ export const getStaticProps: GetStaticProps = async () => {
         channelInfoPreview,
       },
     },
-    revalidate: ONE_HOUR_IN_SECONDS,
+    revalidate: ONE_MINUTE_IN_SECONDS,
   };
 };
 
