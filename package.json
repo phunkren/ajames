@@ -56,7 +56,8 @@
     "rehype-infer-reading-time-meta": "^1.1.0",
     "remark": "^14.0.2",
     "remark-gfm": "^3.0.1",
-    "remark-mdx": "^2.2.1"
+    "remark-mdx": "^2.2.1",
+    "sharp": "^0.32.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.26",

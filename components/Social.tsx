@@ -159,26 +159,6 @@ export const SocialExtended = memo(function SocialExtended({
         </Box>
 
         <Box as="li" alignItems="flex-end">
-          <Tooltip title={SOCIAL.blueSky.displayName}>
-            <Link
-              href={SOCIAL.blueSky.url}
-              variant="icon"
-              css={{ position: "relative", top: 1, left: 1 }}
-            >
-              <VisuallyHidden.Root>
-                {SOCIAL.blueSky.displayName}
-              </VisuallyHidden.Root>
-              <ImageIcon
-                width={ICON_SIZE.xl}
-                height={ICON_SIZE.xl}
-                focusable={false}
-                aria-hidden
-              />
-            </Link>
-          </Tooltip>
-        </Box>
-
-        <Box as="li" alignItems="flex-end">
           <Tooltip title={SOCIAL.codeSandbox.displayName}>
             <Link href={SOCIAL.codeSandbox.url} variant="icon">
               <VisuallyHidden.Root>

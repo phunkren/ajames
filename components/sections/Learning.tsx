@@ -101,7 +101,7 @@ export const Learning = ({
       as="section"
       display={{ print: "none", "@initial": "flex" }}
       direction="vertical"
-      spacingTop={{ "@initial": 11, "@bp2": 10, "@bp3": 12 }}
+      spacingTop={{ "@initial": 11, "@bp2": 10, "@bp3": 11 }}
       spacingHorizontal={7}
       className={bg}
     >
@@ -109,13 +109,14 @@ export const Learning = ({
         direction="vertical"
         gap={12}
         container="l"
-        spacingVertical={{ "@print": 0, "@initial": 10, "@bp2": 12 }}
+        spacingVertical={{ "@print": 0, "@initial": 10, "@bp2": 11 }}
+        css={{ zIndex: "$1" }}
       >
         <Box direction="vertical">
           <Box direction="vertical">
             <Box direction="vertical" justifyContent="space-between" gap={10}>
               <Box direction="vertical">
-                <Box
+                {/* <Box
                   css={{
                     width: "100%",
                     margin: "0 auto",
@@ -131,7 +132,7 @@ export const Learning = ({
                       fill
                     />
                   </AspectRatio.Root>
-                </Box>
+                </Box> */}
 
                 <Box
                   id={LEARNING_ID}

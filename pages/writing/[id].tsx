@@ -384,7 +384,12 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
         />
       </Head>
 
-      <Box as="article" direction="vertical" spacingVertical={12}>
+      <Box
+        as="article"
+        direction="vertical"
+        spacingVertical={12}
+        css={{ zIndex: "$1" }}
+      >
         <Box gap={10} container="l" spacingBottom={10} spacingHorizontal={7}>
           <Link
             href="/#writing"

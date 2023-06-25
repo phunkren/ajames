@@ -16,6 +16,7 @@ import { useScroll } from "../hooks/useScroll";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import { PERSONAL, SITE, SOCIAL } from "../util/data";
+import { Noise } from "./Noise";
 
 type LayoutProps = {
   children: ReactElement;
@@ -98,20 +99,24 @@ export const FooterLayout = memo(function FooterLayout() {
   return (
     <Box
       as="footer"
-      direction={{
-        "@initial": "vertical",
-        "@bp2": "horizontal",
+      css={{
+        background: "$slate2",
+        "@print": { display: "none !important" },
       }}
-      spacingVertical={10}
-      spacingHorizontal={7}
-      gap={6}
-      justifyContent="center"
-      alignItems="center"
-      css={{ background: "$slate2", "@print": { display: "none !important" } }}
     >
-      <Social gap="6" />
-      <Box display={{ "@initial": "none", "@bp2": "flex" }}>
-        <SocialExtended gap="6" />
+      <Box
+        direction={{
+          "@initial": "vertical",
+          "@bp2": "horizontal",
+        }}
+        spacingVertical={10}
+        spacingHorizontal={7}
+        gap={6}
+        justifyContent="center"
+        alignItems="center"
+        css={{ zIndex: "$1" }}
+      >
+        <Social gap="6" />
       </Box>
     </Box>
   );
@@ -184,6 +189,8 @@ export const Layout = memo(function Layout({ children }: LayoutProps) {
         </Box>
 
         <FooterLayout />
+
+        <Noise />
       </Box>
     </>
   );

@@ -184,6 +184,7 @@ export const About = () => {
         gap={{ "@print": 0, "@initial": 11 }}
         spacingBottom={{ "@print": 0, "@initial": 10, "@bp2": 12 }}
         container="l"
+        css={{ zIndex: "$1" }}
       >
         <Box
           direction="vertical"

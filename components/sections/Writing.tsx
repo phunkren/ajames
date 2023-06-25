@@ -178,9 +178,6 @@ export const Writing = ({ posts, tags }: Props) => {
   const queryTag = query.tag as string;
 
   const filteredPosts = filterPosts(posts, queryTag);
-  const filteredTag = queryTag
-    ? tags.find((tag) => tag.name === queryTag)
-    : undefined;
 
   const displayedPosts =
     display === "partial" ? filteredPosts.slice(0, 7) : filteredPosts;
@@ -189,7 +186,7 @@ export const Writing = ({ posts, tags }: Props) => {
 
   const featuredPost = posts.find(
     (post) =>
-      post.properties.slug.rich_text[0].plain_text === "accessible-menubar"
+      post.properties.slug.rich_text[0].plain_text === "synchronize-content"
   );
 
   const [storageLayout, setStorageLayout] = useLocalStorage<string>(
@@ -232,7 +229,7 @@ export const Writing = ({ posts, tags }: Props) => {
       as="section"
       display={{ "@print": "none", "@initial": "flex" }}
       direction="vertical"
-      spacingTop={{ "@initial": 11, "@bp2": 10, "@bp3": 12 }}
+      spacingTop={{ "@initial": 11, "@bp2": 10, "@bp3": 11 }}
       spacingBottom={{ "@print": 0, "@initial": 12 }}
       spacingHorizontal={7}
       className={bg}
@@ -241,12 +238,12 @@ export const Writing = ({ posts, tags }: Props) => {
         direction="vertical"
         gap={12}
         container="l"
-        spacingVertical={{ "@print": 0, "@initial": 10, "@bp2": 12 }}
+        spacingVertical={{ "@print": 0, "@initial": 10, "@bp2": 11 }}
         css={{ zIndex: "$1" }}
       >
         <Box direction="vertical" gap={10}>
           <Box direction="vertical">
-            <Box
+            {/* <Box
               css={{
                 width: "100%",
                 margin: "0 auto",
@@ -262,7 +259,8 @@ export const Writing = ({ posts, tags }: Props) => {
                   fill
                 />
               </AspectRatio.Root>
-            </Box>
+            </Box> */}
+
             <Box
               id={WRITING_ID}
               justifyContent="space-between"
@@ -540,7 +538,6 @@ export const Writing = ({ posts, tags }: Props) => {
                             },
                           ]}
                           compact
-                          mono
                         />
                       </Box>
                     </Box>

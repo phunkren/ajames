@@ -280,6 +280,8 @@ const StyledYoutubeSubscription = styled(Link, {
     type: {
       link: {},
       button: {
+        minWidth: 125,
+        justifyContent: "center",
         padding: "$2 $4",
         borderRadius: "$1",
         ...LINK_BUTTON_PROPS,
@@ -341,6 +343,8 @@ const StyledLinkedInConnect = styled(Link, {
     type: {
       link: {},
       button: {
+        minWidth: 125,
+        justifyContent: "center",
         padding: "$2 $4",
         borderRadius: "$1",
         ...LINK_BUTTON_PROPS,
@@ -402,6 +406,8 @@ const StyledBlogSubscription = styled(Link, {
     type: {
       link: {},
       button: {
+        minWidth: 125,
+        justifyContent: "center",
         padding: "$2 $4",
         borderRadius: "$1",
         ...LINK_BUTTON_PROPS,
