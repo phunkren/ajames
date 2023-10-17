@@ -48,6 +48,11 @@ const SOCIAL_REDIRECTS = [
     permanent: true,
   },
   {
+    source: "/YouTubeEpic",
+    destination: "https://www.youtube.com/@ajamesdev?sub_confirmation=1",
+    permanent: false,
+  },
+  {
     source: "/linkedin",
     destination: "https://linkedin.com/in/ajamesdev/",
     permanent: true,
