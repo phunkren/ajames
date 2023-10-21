@@ -330,7 +330,7 @@ export const Writing = ({ posts, tags }: Props) => {
                 direction="vertical"
                 spacingBottom={{ "@initial": 10, "@bp3": 0 }}
                 css={{
-                  "@bp3": { flexGrow: 0, flexShrink: 0, flexBasis: "50%" },
+                  "@bp3": { flexGrow: 0, flexShrink: 0, flexBasis: "45%" },
                 }}
               >
                 <AspectRatio.Root ratio={16 / 9}>

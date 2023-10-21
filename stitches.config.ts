@@ -72,6 +72,7 @@ export const {
     radii: {
       1: "4px",
       2: "8px",
+      3: "50%",
     },
     transitions: {
       durationDefault: "250ms",

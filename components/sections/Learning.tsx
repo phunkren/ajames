@@ -231,7 +231,7 @@ export const Learning = ({
                   direction="vertical"
                   spacingBottom={{ "@initial": 8, "@bp3": 0 }}
                   css={{
-                    "@bp3": { flexGrow: 0, flexShrink: 0, flexBasis: "50%" },
+                    "@bp3": { flexGrow: 0, flexShrink: 0, flexBasis: "45%" },
                   }}
                 >
                   <LiteYouTubeEmbed
@@ -279,16 +279,28 @@ export const Learning = ({
 
           <Box direction="vertical" gap={12}>
             {playlistsPreview?.map((playlist) => {
-              const firstVideo = playlistVideosPreview[playlist.id][0];
+              const playlistVideoPreviews = playlistVideosPreview[playlist.id];
+
+              const isPlaylistPopulated = Boolean(
+                playlistVideoPreviews?.length
+              );
+
+              const firstVideo = isPlaylistPopulated
+                ? playlistVideoPreviews[0]
+                : undefined;
 
               const playlistUrl = buildUrl("https://youtube.com/playlist", {
                 list: playlist.id,
               });
 
-              const watchAllUrl = buildUrl("https://youtube.com/watch", {
-                v: firstVideo.videoId,
-                list: playlist.id,
-              });
+              const watchAllUrl = isPlaylistPopulated
+                ? buildUrl("https://youtube.com/watch", {
+                    v: firstVideo.videoId,
+                    list: playlist.id,
+                  })
+                : playlistUrl;
+
+              if (!isPlaylistPopulated) return null;
 
               return (
                 <Box key={playlist.id} direction="vertical">
@@ -342,23 +354,21 @@ export const Learning = ({
                         ["-webkit-transform"]: "translateZ(0,0,0)",
                       }}
                     >
-                      {playlistVideosPreview[playlist.id].map(
-                        (playlistVideo) => (
-                          <VideoCard
-                            id={playlist.id}
-                            key={playlistVideo.title}
-                            url={playlistVideo.url}
-                            image={playlistVideo.thumbnail.src}
-                            title={playlistVideo.title}
-                            publishDate={playlistVideo.publishedAt}
-                            channel={playlistVideo.videoOwnerChannelTitle}
-                            css={{
-                              scrollSnapAlign: "center",
-                              "@bp2": { scrollSnapAlign: "start" },
-                            }}
-                          />
-                        )
-                      )}
+                      {playlistVideoPreviews.map((playlistVideo) => (
+                        <VideoCard
+                          id={playlist.id}
+                          key={playlistVideo.title}
+                          url={playlistVideo.url}
+                          image={playlistVideo.thumbnail.src}
+                          title={playlistVideo.title}
+                          publishDate={playlistVideo.publishedAt}
+                          channel={playlistVideo.videoOwnerChannelTitle}
+                          css={{
+                            scrollSnapAlign: "center",
+                            "@bp2": { scrollSnapAlign: "start" },
+                          }}
+                        />
+                      ))}
                     </StyledVideoCardContainer>
                   </Box>
                 </Box>

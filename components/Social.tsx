@@ -228,7 +228,7 @@ export const SocialSponsored = memo(function SocialSponsored() {
         >
           <Box direction="vertical" alignItems="center">
             <TextTitle2 css={{ color: "$focus" }}>
-              Enjoy the content?
+              Enjoying the content?
             </TextTitle2>
 
             <TextAux

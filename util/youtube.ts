@@ -139,16 +139,22 @@ export const formatPlaylistVideos = (
   // Outer array - Collection
   // Inner array(s) - Playlist
   // Inner Array Objects - Playlist videos
-  const playlistCollection = response.map((playlist) => {
-    return playlist.map((playlistVideo) => formatPlaylistVideo(playlistVideo));
-  });
+  const playlistCollection = response
+    .map((playlist) => {
+      if (!playlist.length) return;
+
+      return playlist.map((playlistVideo) =>
+        formatPlaylistVideo(playlistVideo)
+      );
+    })
+    .filter(Boolean);
 
   // Formats the collection to assign the playist id as a key for the playlist videos.
   // Outer object - Collection
   // [playlistId]: VideoPreview[]
   const formattedPlaylistVideos: Record<string, VideoPreview[]> = keyBy(
     playlistCollection,
-    (collection: VideoPreview[]) => collection[0].playlistId
+    (collection: VideoPreview[]) => collection[0]?.playlistId
   );
 
   return formattedPlaylistVideos;
