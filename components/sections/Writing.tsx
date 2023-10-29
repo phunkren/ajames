@@ -7,7 +7,6 @@ import { css, styled } from "../../stitches.config";
 import { BlogPost, Tag } from "../../util/notion";
 import { filterPosts } from "../../util/notion";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
-import book from "../../public/images/book.png";
 import { H2_STYLES, H3_STYLES } from "../../styles/text";
 import {
   BlogCard,
@@ -42,12 +41,6 @@ export type Props = {
   posts: BlogPost[];
   tags: Tag[];
 };
-
-const StyledHeroImage = styled(Image, {
-  objectFit: "contain",
-  position: "absolute",
-  pointerEvents: "none",
-});
 
 const StyledImage = styled(Image, {
   objectFit: "cover",
@@ -238,29 +231,11 @@ export const Writing = ({ posts, tags }: Props) => {
         direction="vertical"
         gap={12}
         container="l"
-        spacingVertical={{ "@print": 0, "@initial": 10, "@bp2": 11 }}
+        spacingBottom={{ "@print": 0, "@initial": 10, "@bp2": 11 }}
         css={{ zIndex: "$1" }}
       >
         <Box direction="vertical" gap={10}>
           <Box direction="vertical">
-            {/* <Box
-              css={{
-                width: "100%",
-                margin: "0 auto",
-                "@bp2": { width: "50%" },
-              }}
-            >
-              <AspectRatio.Root ratio={1200 / 1100} asChild>
-                <StyledHeroImage
-                  src={book}
-                  alt="A book with a multi-coloured cloud bursting from the pages"
-                  sizes="(max-width: 720px) 100vw, (max-width: 1024px) 66vw, 33vw"
-                  placeholder="blur"
-                  fill
-                />
-              </AspectRatio.Root>
-            </Box> */}
-
             <Box
               id={WRITING_ID}
               justifyContent="space-between"
@@ -399,9 +374,9 @@ export const Writing = ({ posts, tags }: Props) => {
 
             <LayoutToggle
               aria-label="Articles layout"
-              defaultChecked={storageLayout === "grid"}
+              defaultPressed={storageLayout === "grid"}
               value={storageLayout}
-              onCheckedChange={handleLayoutChange}
+              onPressedChange={handleLayoutChange}
             />
           </Box>
 
@@ -493,7 +468,6 @@ export const Writing = ({ posts, tags }: Props) => {
                         as="div"
                         tags={post.properties.tags.multi_select}
                         compact
-                        mono
                       />
                     </Box>
                   </Box>

@@ -109,7 +109,7 @@ export const Learning = ({
         direction="vertical"
         gap={12}
         container="l"
-        spacingVertical={{ "@print": 0, "@initial": 10, "@bp2": 11 }}
+        spacingBottom={{ "@print": 0, "@initial": 10, "@bp2": 11 }}
         css={{ zIndex: "$1" }}
       >
         <Box direction="vertical">

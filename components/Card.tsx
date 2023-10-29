@@ -402,10 +402,9 @@ export const BlogSponsored = memo(function BlogSponsored() {
               </StyledLink>
 
               <TextAux as="p" color="secondary">
-                If you&apos;d like to support my work and stay up to date,
-                consider following the RSS feed. You can also click the cup to
-                buy me a coffee{" "}
-                <TextAux aria-label="south-east arrow">↘️</TextAux>
+                If you&apos;d like to support my work and stay up to date, click
+                here to follow the RSS feed. You can also click the cup to buy
+                me a coffee <TextAux aria-label="south-east arrow">↘️</TextAux>
               </TextAux>
             </Box>
           </StyledBlogContent>

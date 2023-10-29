@@ -2,13 +2,11 @@ import { memo } from "react";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import {
   CodeSandboxLogoIcon,
-  EnvelopeOpenIcon,
   GitHubLogoIcon,
-  ImageIcon,
   LinkedInLogoIcon,
-  TwitterLogoIcon,
   VideoIcon,
 } from "@radix-ui/react-icons";
+import { RiTwitterXLine as TwitterLogoIcon } from "react-icons/ri";
 import { MdRssFeed } from "react-icons/md";
 import { SOCIAL } from "../util/data";
 import { Box } from "./Box";
@@ -24,7 +22,7 @@ import { styled } from "../stitches.config";
 import { ICON_SIZE } from "../util/images";
 import { SiBuymeacoffee } from "react-icons/si";
 import { Divider } from "./Divider";
-import { TextAux, TextTitle2, TextTitle3 } from "./Text";
+import { TextAux, TextTitle2 } from "./Text";
 
 type SocialBaseProps = any; // ComponentProps<typeof StyledBox>;
 
@@ -51,7 +49,11 @@ const StyledBox = styled(Box, {
   },
 });
 
-export const Social = memo(function Social({ gap = "4", ...props }: Props) {
+export const Social = memo(function Social({
+  gap = "4",
+  compact,
+  ...props
+}: Props) {
   return (
     <StyledBox as="nav" aria-label="Social Media" {...props}>
       <Box as="ul" role="list" gap={gap} alignItems="baseline">
@@ -66,10 +68,8 @@ export const Social = memo(function Social({ gap = "4", ...props }: Props) {
                 {SOCIAL.twitter.displayName}
               </VisuallyHidden.Root>
               <TwitterLogoIcon
-                width={ICON_SIZE.xl}
-                height={ICON_SIZE.xl}
+                size={compact ? ICON_SIZE.l : ICON_SIZE.xl}
                 aria-hidden
-                focusable={false}
               />
             </Link>
           </Tooltip>
@@ -85,8 +85,8 @@ export const Social = memo(function Social({ gap = "4", ...props }: Props) {
                 {SOCIAL.linkedin.displayName}
               </VisuallyHidden.Root>
               <LinkedInLogoIcon
-                width={ICON_SIZE.xl}
-                height={ICON_SIZE.xl}
+                width={compact ? ICON_SIZE.l : ICON_SIZE.xl}
+                height={compact ? ICON_SIZE.l : ICON_SIZE.xl}
                 aria-hidden
                 focusable={false}
               />
@@ -102,7 +102,10 @@ export const Social = memo(function Social({ gap = "4", ...props }: Props) {
               css={{ position: "relative", top: -1 }}
             >
               <VisuallyHidden.Root>RSS</VisuallyHidden.Root>
-              <MdRssFeed size={ICON_SIZE.xl} aria-hidden />
+              <MdRssFeed
+                size={compact ? ICON_SIZE.l : ICON_SIZE.xl}
+                aria-hidden
+              />
             </Link>
           </Tooltip>
         </Box>
@@ -118,8 +121,8 @@ export const Social = memo(function Social({ gap = "4", ...props }: Props) {
                 {SOCIAL.youtube.displayName}
               </VisuallyHidden.Root>
               <VideoIcon
-                width={ICON_SIZE.xl}
-                height={ICON_SIZE.xl}
+                width={compact ? ICON_SIZE.l : ICON_SIZE.xl}
+                height={compact ? ICON_SIZE.l : ICON_SIZE.xl}
                 aria-hidden
                 focusable={false}
               />
@@ -133,6 +136,7 @@ export const Social = memo(function Social({ gap = "4", ...props }: Props) {
 
 export const SocialExtended = memo(function SocialExtended({
   gap = "4",
+  compact,
   ...props
 }: Props) {
   return (
@@ -149,8 +153,8 @@ export const SocialExtended = memo(function SocialExtended({
                 {SOCIAL.github.displayName}
               </VisuallyHidden.Root>
               <GitHubLogoIcon
-                width={ICON_SIZE.xl}
-                height={ICON_SIZE.xl}
+                width={compact ? ICON_SIZE.l : ICON_SIZE.xl}
+                height={compact ? ICON_SIZE.l : ICON_SIZE.xl}
                 aria-hidden
                 focusable={false}
               />
@@ -165,8 +169,8 @@ export const SocialExtended = memo(function SocialExtended({
                 {SOCIAL.codeSandbox.displayName}
               </VisuallyHidden.Root>
               <CodeSandboxLogoIcon
-                width={ICON_SIZE.xl}
-                height={ICON_SIZE.xl}
+                width={compact ? ICON_SIZE.l : ICON_SIZE.xl}
+                height={compact ? ICON_SIZE.l : ICON_SIZE.xl}
                 aria-hidden
                 focusable={false}
               />
@@ -181,7 +185,7 @@ export const SocialExtended = memo(function SocialExtended({
                 {SOCIAL.buyMeCoffee.displayName}
               </VisuallyHidden.Root>
               <SiBuymeacoffee
-                size={ICON_SIZE.xl}
+                size={compact ? ICON_SIZE.l : ICON_SIZE.xl}
                 aria-hidden
                 focusable={false}
               />

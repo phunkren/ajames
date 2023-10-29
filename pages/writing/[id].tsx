@@ -33,7 +33,6 @@ import {
 import {
   Emoji,
   TextAux,
-  TextHeadline,
   TextTitle1,
   TextTitle2,
   TextTitle3,
@@ -62,7 +61,6 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { Table, TBody, Td, TFoot, Th, THead, Tr } from "../../components/Table";
 import Image from "next/image";
 import { BLUR_DATA_URL, ICON_SIZE } from "../../util/images";
-import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import { BlogCard } from "../../components/Card";
 import Head from "next/head";
 
@@ -390,17 +388,6 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
         spacingVertical={12}
         css={{ zIndex: "$1" }}
       >
-        <Box gap={10} container="l" spacingBottom={10} spacingHorizontal={7}>
-          <Link
-            href="/#writing"
-            variant="secondary"
-            nextLinkProps={{ shallow: true, scroll: false }}
-          >
-            <ArrowLeftIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
-            <TextHeadline>Back to articles</TextHeadline>
-          </Link>
-        </Box>
-
         <Box direction="vertical" gap={10} container="l">
           <AspectRatio.Root ratio={2 / 1}>
             <StyledHero

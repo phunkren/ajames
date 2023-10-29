@@ -1,11 +1,11 @@
-import { memo, ReactElement, useEffect } from "react";
+import { memo, ReactElement } from "react";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { slateDarkA } from "@radix-ui/colors";
 import { useTheme } from "../hooks/useTheme";
 import { styled } from "../stitches.config";
 import { Link } from "./Link";
 import { Navigation, NavigationMobile } from "./Navigation";
-import { Social, SocialExtended } from "./Social";
+import { Social } from "./Social";
 import { ThemeToggle } from "./Toggle";
 import { Box, BoxProps } from "./Box";
 import { TextAux } from "./Text";
@@ -53,18 +53,18 @@ export const HeaderLayout = memo(function HeaderLayout() {
   const { asPath } = useRouter();
   const { isHeaderActive } = useScroll();
   const isBlogPost = asPath.includes("/writing/");
+  const isOpaque = isBlogPost || isHeaderActive;
 
   return (
     <HeaderBox
       as="header"
-      opaque={isBlogPost || isHeaderActive}
+      opaque={isOpaque}
       css={{ "@print": { display: "none !important" } }}
     >
       <Box
         display={{ "@print": "none", "@initial": "flex" }}
         spacingVertical={3}
-        spacingLeft={6}
-        spacingRight={7}
+        spacingHorizontal={7}
         gap={7}
         justifyContent="space-between"
         alignItems="center"
@@ -84,7 +84,7 @@ export const HeaderLayout = memo(function HeaderLayout() {
         </Box>
 
         <Box display={{ "@initial": "none", "@bp2": "flex" }}>
-          <ThemeToggle compact />
+          <ThemeToggle opaque={isOpaque} />
         </Box>
 
         <Box display={{ "@initial": "flex", "@bp2": "none" }}>

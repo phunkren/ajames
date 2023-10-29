@@ -13,10 +13,10 @@ import { SiBuymeacoffee } from "react-icons/si";
 import {
   DownloadIcon,
   LinkedInLogoIcon,
-  TwitterLogoIcon,
   VideoIcon,
 } from "@radix-ui/react-icons";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
+import { RiTwitterXLine as TwitterLogoIcon } from "react-icons/ri";
 import {
   CSS,
   darkTheme,
@@ -30,7 +30,7 @@ import { ICON_SIZE } from "../util/images";
 import { SITE, SOCIAL } from "../util/data";
 import { Box } from "./Box";
 import { Tooltip } from "./Tooltip";
-import { TextAux, TextHeadline } from "./Text";
+import { TextBody, TextHeadline } from "./Text";
 import { StyledCoffeeButton } from "./Button";
 
 export type LinkProps = CSS &
@@ -282,7 +282,7 @@ const StyledYoutubeSubscription = styled(Link, {
       button: {
         minWidth: 125,
         justifyContent: "center",
-        padding: "$2 $4",
+        padding: "$2 $6",
         borderRadius: "$1",
         ...LINK_BUTTON_PROPS,
 
@@ -322,11 +322,13 @@ const StyledYoutubeSubscription = styled(Link, {
         ...LINK_BUTTON_PROPS,
 
         [`.${lightTheme} &`]: {
+          borderColor: "$red10",
           backgroundImage: `linear-gradient(175deg, $red9 0.04%, $red10 100.04%)`,
           color: "$red1",
         },
 
         [`.${darkTheme} &`]: {
+          borderColor: "$red7",
           backgroundImage: `linear-gradient(175deg, $red8 0.04%, $red7 100.04%)`,
           color: "$red12",
         },
@@ -345,7 +347,7 @@ const StyledLinkedInConnect = styled(Link, {
       button: {
         minWidth: 125,
         justifyContent: "center",
-        padding: "$2 $4",
+        padding: "$2 $6",
         borderRadius: "$1",
         ...LINK_BUTTON_PROPS,
 
@@ -381,15 +383,16 @@ const StyledLinkedInConnect = styled(Link, {
         borderRadius: "50%",
         borderStyle: "solid",
         borderWidth: 2,
-        borderColor: "$colors$blue12",
         ...LINK_BUTTON_PROPS,
 
         [`.${lightTheme} &`]: {
+          borderColor: "$blue10",
           backgroundImage: `linear-gradient(175deg, $blue9 0.04%, $blue10 100.04%)`,
           color: "$blue1",
         },
 
         [`.${darkTheme} &`]: {
+          borderColor: "$blue7",
           backgroundImage: `linear-gradient(175deg, $blue8 0.04%, $blue7 100.04%)`,
           color: "$blue12",
         },
@@ -408,7 +411,7 @@ const StyledBlogSubscription = styled(Link, {
       button: {
         minWidth: 125,
         justifyContent: "center",
-        padding: "$2 $4",
+        padding: "$2 $6",
         borderRadius: "$1",
         ...LINK_BUTTON_PROPS,
 
@@ -444,15 +447,16 @@ const StyledBlogSubscription = styled(Link, {
         borderRadius: "50%",
         borderStyle: "solid",
         borderWidth: 2,
-        borderColor: "$colors$orange12",
         ...LINK_BUTTON_PROPS,
 
         [`.${lightTheme} &`]: {
+          borderColor: "$orange10",
           backgroundImage: `linear-gradient(175deg, $orange9 0.04%, $orange10 100.04%)`,
           color: "$orange1",
         },
 
         [`.${darkTheme} &`]: {
+          borderColor: "$orange10",
           backgroundImage: `linear-gradient(175deg, $orange11 0.04%, $orange10 100.04%)`,
           color: "$orange12",
         },
@@ -526,14 +530,14 @@ export const YoutubeSubscribeLink = memo(function YoutubeSubscribeLink({
       aria-label="Subscribe to my YouTube channel"
       {...props}
     >
-      <Box alignItems="center" gap={type === "button" ? 2 : 4}>
+      <Box alignItems="center" gap={type === "button" ? 3 : 4}>
         <VideoIcon
-          width={type === "link" ? ICON_SIZE.xl : ICON_SIZE.m}
-          height={type === "link" ? ICON_SIZE.xl : ICON_SIZE.m}
+          width={type === "link" ? ICON_SIZE.xl : ICON_SIZE.l}
+          height={type === "link" ? ICON_SIZE.xl : ICON_SIZE.l}
           aria-hidden
         />
 
-        {type === "button" && <TextAux color="primary">Subscribe</TextAux>}
+        {type === "button" && <TextBody color="primary">Subscribe</TextBody>}
 
         {type === "link" && <StyledHeadline>Subscribe</StyledHeadline>}
       </Box>
@@ -575,14 +579,14 @@ export const LinkedInConnectLink = memo(function LinkedInConnectLink({
       variant={type === "link" ? "secondary" : "invisible"}
       {...props}
     >
-      <Box alignItems="center" gap={type === "button" ? 2 : 4}>
+      <Box alignItems="center" gap={type === "button" ? 3 : 4}>
         <LinkedInLogoIcon
-          width={type === "link" ? ICON_SIZE.xl : ICON_SIZE.m}
-          height={type === "link" ? ICON_SIZE.xl : ICON_SIZE.m}
+          width={type === "link" ? ICON_SIZE.xl : ICON_SIZE.l}
+          height={type === "link" ? ICON_SIZE.xl : ICON_SIZE.l}
           aria-hidden
         />
 
-        {type === "button" && <TextAux color="primary">Connect</TextAux>}
+        {type === "button" && <TextBody color="primary">Connect</TextBody>}
 
         {type === "link" && <StyledHeadline>Connect</StyledHeadline>}
       </Box>
@@ -621,8 +625,8 @@ export const BlogSubscriptionLink = memo(function BlogSubscribeLink({
         {...props}
       >
         <Box alignItems="center" gap={2}>
-          <StyledRssIcon size={ICON_SIZE.m} />
-          <TextAux color="inherit">Follow</TextAux>
+          <StyledRssIcon size={ICON_SIZE.l} />
+          <TextBody color="inherit">Follow</TextBody>
         </Box>
       </StyledBlogSubscription>
     );
@@ -670,11 +674,7 @@ export const TwitterShareLink = memo(function TwitterShareLink({
     return (
       <Tooltip title="Share on Twitter">
         <StyledIconLink href={href}>
-          <TwitterLogoIcon
-            width={ICON_SIZE.m}
-            height={ICON_SIZE.m}
-            aria-hidden
-          />
+          <TwitterLogoIcon size={ICON_SIZE.m} aria-hidden />
           <VisuallyHidden.Root>Tweet</VisuallyHidden.Root>
         </StyledIconLink>
       </Tooltip>
@@ -684,11 +684,7 @@ export const TwitterShareLink = memo(function TwitterShareLink({
   return (
     <StyledLink href={href} variant="secondary">
       <Box alignItems="center" gap={4}>
-        <TwitterLogoIcon
-          width={ICON_SIZE.xl}
-          height={ICON_SIZE.xl}
-          aria-hidden
-        />
+        <TwitterLogoIcon size={ICON_SIZE.xl} aria-hidden />
         <StyledHeadline>Tweet</StyledHeadline>
       </Box>
     </StyledLink>

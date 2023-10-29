@@ -279,13 +279,13 @@ export const NavigationMobile = memo(function NavigationMobile() {
 
           <Box
             direction="vertical"
-            spacingVertical={7}
-            spacingHorizontal={6}
+            spacingVertical={3}
+            spacingHorizontal={7}
             gap={5}
             flexGrow
           >
             <Box justifyContent="flex-end">
-              <ThemeToggle />
+              <ThemeToggle opaque />
             </Box>
 
             <Box
@@ -382,7 +382,7 @@ export const NavigationMobile = memo(function NavigationMobile() {
             </Box>
 
             <Box justifyContent="center" css={{ marginTop: "auto" }}>
-              <Social />
+              <Social compact />
             </Box>
           </Box>
         </StyledDialogContent>
