@@ -30,7 +30,7 @@ import { ICON_SIZE } from "../util/images";
 import { SITE, SOCIAL } from "../util/data";
 import { Box } from "./Box";
 import { Tooltip } from "./Tooltip";
-import { TextBody, TextHeadline } from "./Text";
+import { TextAux, TextHeadline } from "./Text";
 import { StyledCoffeeButton } from "./Button";
 
 export type LinkProps = CSS &
@@ -282,7 +282,8 @@ const StyledYoutubeSubscription = styled(Link, {
       button: {
         minWidth: 125,
         justifyContent: "center",
-        padding: "$2 $6",
+        alignItems: "center",
+        padding: "$2 $4",
         borderRadius: "$1",
         ...LINK_BUTTON_PROPS,
 
@@ -347,7 +348,8 @@ const StyledLinkedInConnect = styled(Link, {
       button: {
         minWidth: 125,
         justifyContent: "center",
-        padding: "$2 $6",
+        alignItems: "center",
+        padding: "$2 $4",
         borderRadius: "$1",
         ...LINK_BUTTON_PROPS,
 
@@ -411,7 +413,8 @@ const StyledBlogSubscription = styled(Link, {
       button: {
         minWidth: 125,
         justifyContent: "center",
-        padding: "$2 $6",
+        alignItems: "center",
+        padding: "$2 $4",
         borderRadius: "$1",
         ...LINK_BUTTON_PROPS,
 
@@ -532,12 +535,12 @@ export const YoutubeSubscribeLink = memo(function YoutubeSubscribeLink({
     >
       <Box alignItems="center" gap={type === "button" ? 3 : 4}>
         <VideoIcon
-          width={type === "link" ? ICON_SIZE.xl : ICON_SIZE.l}
-          height={type === "link" ? ICON_SIZE.xl : ICON_SIZE.l}
+          width={type === "link" ? ICON_SIZE.xl : ICON_SIZE.m}
+          height={type === "link" ? ICON_SIZE.xl : ICON_SIZE.m}
           aria-hidden
         />
 
-        {type === "button" && <TextBody color="primary">Subscribe</TextBody>}
+        {type === "button" && <TextAux color="primary">Subscribe</TextAux>}
 
         {type === "link" && <StyledHeadline>Subscribe</StyledHeadline>}
       </Box>
@@ -581,12 +584,12 @@ export const LinkedInConnectLink = memo(function LinkedInConnectLink({
     >
       <Box alignItems="center" gap={type === "button" ? 3 : 4}>
         <LinkedInLogoIcon
-          width={type === "link" ? ICON_SIZE.xl : ICON_SIZE.l}
-          height={type === "link" ? ICON_SIZE.xl : ICON_SIZE.l}
+          width={type === "link" ? ICON_SIZE.xl : ICON_SIZE.m}
+          height={type === "link" ? ICON_SIZE.xl : ICON_SIZE.m}
           aria-hidden
         />
 
-        {type === "button" && <TextBody color="primary">Connect</TextBody>}
+        {type === "button" && <TextAux color="primary">Connect</TextAux>}
 
         {type === "link" && <StyledHeadline>Connect</StyledHeadline>}
       </Box>
@@ -626,7 +629,7 @@ export const BlogSubscriptionLink = memo(function BlogSubscribeLink({
       >
         <Box alignItems="center" gap={2}>
           <StyledRssIcon size={ICON_SIZE.l} />
-          <TextBody color="inherit">Follow</TextBody>
+          <TextAux color="inherit">Follow</TextAux>
         </Box>
       </StyledBlogSubscription>
     );
