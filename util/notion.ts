@@ -201,6 +201,7 @@ export function formatCount(count: number) {
 
 export function addRelatedPosts(posts: BlogPost[]) {
   const tagMap = new Map<string, BlogPost[]>();
+
   for (const post of posts) {
     for (const tag of post.properties.tags.multi_select) {
       const taggedPosts = tagMap.get(tag.id) || [];
@@ -209,17 +210,20 @@ export function addRelatedPosts(posts: BlogPost[]) {
     }
   }
 
-  return posts.map((post) => ({
-    ...post,
-    related:
-      tagMap
-        .get(post.properties.tags.multi_select[0].id)
-        ?.filter(
-          (relatedPost) =>
-            relatedPost.properties.page.title[0].plain_text !==
-            post.properties.page.title[0].plain_text
-        ) || [],
-  }));
+  return posts.map((post) => {
+    const related = post.properties.tags.multi_select
+      .flatMap((tag) => tagMap.get(tag.id) || [])
+      .filter(
+        (relatedPost) =>
+          relatedPost.properties.page.title[0].plain_text !==
+          post.properties.page.title[0].plain_text
+      );
+
+    return {
+      ...post,
+      related,
+    };
+  });
 }
 
 export function getRandomPosts(arr: BlogPost[], numElements: number): any[] {
