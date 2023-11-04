@@ -99,11 +99,11 @@ export const Social = memo(function Social({
             <Link
               href="/rss"
               variant="icon"
-              css={{ position: "relative", top: -1 }}
+              css={{ position: "relative", top: 1 }}
             >
               <VisuallyHidden.Root>RSS</VisuallyHidden.Root>
               <MdRssFeed
-                size={compact ? ICON_SIZE.l : ICON_SIZE.xl}
+                size={compact ? ICON_SIZE.l : ICON_SIZE.xxl}
                 aria-hidden
               />
             </Link>
@@ -115,14 +115,14 @@ export const Social = memo(function Social({
             <Link
               href={SOCIAL.youtube.url}
               variant="icon"
-              css={{ position: "relative", top: -1 }}
+              css={{ position: "relative", top: 1 }}
             >
               <VisuallyHidden.Root>
                 {SOCIAL.youtube.displayName}
               </VisuallyHidden.Root>
               <VideoIcon
-                width={compact ? ICON_SIZE.l : ICON_SIZE.xl}
-                height={compact ? ICON_SIZE.l : ICON_SIZE.xl}
+                width={compact ? ICON_SIZE.l : ICON_SIZE.xxl}
+                height={compact ? ICON_SIZE.l : ICON_SIZE.xxl}
                 aria-hidden
                 focusable={false}
               />
