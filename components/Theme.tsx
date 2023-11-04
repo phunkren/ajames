@@ -19,7 +19,7 @@ export type ThemeProviderProps = {
 };
 
 export const ThemeContext = createContext({
-  theme: Theme.LIGHT,
+  theme: undefined,
   onThemeChange: (newTheme: Theme) => {},
 });
 
@@ -47,15 +47,18 @@ export const ThemeProvider = memo(function ThemeProvider({
   );
 
   useEffect(() => {
-    // Set initial theme on local storage
+    // Detect user's system theme preference
+    const prefersDarkMode = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+
+    // Set initial theme based on user's system preference
     if (!theme && storageTheme) {
       setTheme(storageTheme);
-    }
-
-    // Set theme to dark otherwise
-    // https://twitter.com/phunkren/status/1621046678399881217
-    if (!storageTheme) {
-      handleThemeChange(Theme.DARK);
+    } else if (!theme && prefersDarkMode) {
+      setTheme(Theme.DARK);
+    } else if (!theme && !storageTheme && !prefersDarkMode) {
+      setTheme(Theme.LIGHT);
     }
   }, [theme, storageTheme, setStorageTheme, handleThemeChange]);
 
