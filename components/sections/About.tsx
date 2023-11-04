@@ -60,17 +60,17 @@ const GridRoot = styled("ul", {
   gridRowGap: "$4",
   listStyleType: "none",
 
-  "@print": {
-    gridTemplateColumns: "1fr",
-    gridColumnGap: "$1",
-  },
-
   "@bp2": {
     gridTemplateColumns: "repeat(2, 1fr)",
   },
 
   "@bp3": {
     gridTemplateColumns: "1fr",
+  },
+
+  "@print": {
+    gridTemplateColumns: "1fr",
+    gridColumnGap: "$1",
   },
 });
 
@@ -93,14 +93,14 @@ const GridItem = styled("li", {
 
 const mobileSection = css({
   display: "flex !important",
-  "@print": { display: "none !important" },
   "@bp3": { display: "none !important" },
+  "@print": { display: "none !important" },
 });
 
 const desktopSection = css({
   display: "none !important",
-  "@print": { display: "flex !important" },
   "@bp3": { display: "flex !important" },
+  "@print": { display: "flex !important" },
 });
 
 export const CollapsibleSection = memo(function CollapsibleSection({
@@ -131,14 +131,14 @@ export const CollapsibleSection = memo(function CollapsibleSection({
             </CollapsibleTrigger>
           </Box>
 
-          <Box spacingTop={2} spacingBottom={{ "@print": 4, "@initial": 8 }}>
+          <Box spacingTop={2} spacingBottom={{ "@initial": 8, "@print": 4 }}>
             <Divider />
           </Box>
 
           <CollapsibleContent asChild>
             <Box
               direction="vertical"
-              spacingBottom={{ "@print": 8, "@initial": 11 }}
+              spacingBottom={{ "@initial": 11, "@print": 8 }}
             >
               {children}
             </Box>
@@ -151,7 +151,7 @@ export const CollapsibleSection = memo(function CollapsibleSection({
           <TextTitle2>{title}</TextTitle2>
         </Box>
 
-        <Box spacingTop={2} spacingBottom={{ "@print": 4, "@initial": 8 }}>
+        <Box spacingTop={2} spacingBottom={{ "@initial": 8, "@print": 4 }}>
           <Divider />
         </Box>
 
@@ -171,8 +171,8 @@ export const About = () => {
   return (
     <Box
       as="section"
-      spacingBottom={{ "@print": 0, "@initial": 12 }}
-      spacingHorizontal={{ "@print": 0, "@initial": 7 }}
+      spacingBottom={{ "@initial": 12, "@print": 0 }}
+      spacingHorizontal={{ "@initial": 7, "@print": 0 }}
       direction="vertical"
       css={{
         background: `linear-gradient(-2deg, $slate2 0.04%, $slate1 100.04%)`,
@@ -181,15 +181,15 @@ export const About = () => {
     >
       <Box
         direction="vertical"
-        gap={{ "@print": 0, "@initial": 11 }}
-        spacingBottom={{ "@print": 0, "@initial": 10, "@bp2": 12 }}
+        gap={{ "@initial": 11, "@print": 0 }}
+        spacingBottom={{ "@initial": 10, "@bp2": 12, "@print": 0 }}
         container="l"
         css={{ zIndex: "$1" }}
       >
         <Box
           direction="vertical"
           spacingBottom={8}
-          display={{ "@print": "flex", "@initial": "none" }}
+          display={{ "@initial": "none", "@print": "flex" }}
         >
           <Box
             direction="vertical"
@@ -208,7 +208,7 @@ export const About = () => {
           id={ABOOT_ID}
           direction="vertical"
           gap={10}
-          display={{ "@print": "none", "@initial": "flex" }}
+          display={{ "@initial": "flex", "@print": "none" }}
         >
           <Box
             justifyContent="space-between"
@@ -259,22 +259,22 @@ export const About = () => {
         <Box
           id="__cv"
           direction="horizontal"
-          gap={{ "@print": 4, "@initial": 0, "@bp2": 10 }}
-          spacingTop={{ "@print": 3, "@initial": 0 }}
-          spacingHorizontal={{ "@print": 3, "@initial": 0 }}
+          gap={{ "@initial": 0, "@bp2": 10, "@print": 4 }}
+          spacingTop={{ "@initial": 0, "@print": 3 }}
+          spacingHorizontal={{ "@initial": 0, "@print": 3 }}
           flexWrap={{
-            "@print": "nowrap",
             "@initial": "wrapReverse",
             "@bp3": "nowrap",
+            "@print": "nowrap",
           }}
           flexGrow
         >
           <Box
             direction="vertical"
-            gap={{ "@print": 8, "@initial": 0, "@bp2": 10, "@bp3": 11 }}
+            gap={{ "@initial": 0, "@bp2": 10, "@bp3": 11, "@print": 8 }}
             css={{
-              "@print": { flexGrow: 0, flexShrink: 0, flexBasis: 125 },
               "@bp3": { flexGrow: 0, flexShrink: 0, flexBasis: 250 },
+              "@print": { flexGrow: 0, flexShrink: 0, flexBasis: 125 },
             }}
           >
             <CollapsibleSection title="Contact">
@@ -284,7 +284,7 @@ export const About = () => {
                     <Link variant="secondary" href={SOCIAL.linkedin.url}>
                       <Box
                         direction="horizontal"
-                        gap={{ "@print": 4, "@initial": 6 }}
+                        gap={{ "@initial": 6, "@print": 4 }}
                         alignItems="center"
                       >
                         <LinkedInLogoIcon
@@ -303,7 +303,7 @@ export const About = () => {
                     <Link variant="secondary" href={SOCIAL.email.url}>
                       <Box
                         direction="horizontal"
-                        gap={{ "@print": 4, "@initial": 6 }}
+                        gap={{ "@initial": 6, "@print": 4 }}
                         alignItems="center"
                       >
                         <EnvelopeOpenIcon
@@ -322,7 +322,7 @@ export const About = () => {
                     <Link variant="secondary" href={SITE.url}>
                       <Box
                         direction="horizontal"
-                        gap={{ "@print": 4, "@initial": 6 }}
+                        gap={{ "@initial": 6, "@print": 4 }}
                         alignItems="center"
                       >
                         <GlobeIcon
@@ -341,7 +341,7 @@ export const About = () => {
                     <Link variant="secondary" href={SOCIAL.github.url}>
                       <Box
                         direction="horizontal"
-                        gap={{ "@print": 4, "@initial": 6 }}
+                        gap={{ "@initial": 6, "@print": 4 }}
                         alignItems="center"
                       >
                         <GitHubLogoIcon
@@ -364,8 +364,8 @@ export const About = () => {
                     <TextAux
                       color="primary"
                       textTransform={{
-                        "@print": "capitalize",
                         "@initial": "uppercase",
+                        "@print": "capitalize",
                       }}
                     >
                       {topic}
@@ -382,8 +382,8 @@ export const About = () => {
                     <TextAux
                       color="primary"
                       textTransform={{
-                        "@print": "capitalize",
                         "@initial": "uppercase",
+                        "@print": "capitalize",
                       }}
                     >
                       {interest}
@@ -396,9 +396,9 @@ export const About = () => {
             <CollapsibleSection title="Education">
               <GridRoot
                 css={{
-                  "@print": { gridRowGap: "$5" },
                   "@initial": { gridRowGap: "$10" },
                   "@bp2": { gridRowGap: "$10" },
+                  "@print": { gridRowGap: "$5" },
                 }}
               >
                 {EDUCATION.map((education, i) => (
@@ -493,19 +493,19 @@ export const About = () => {
 
           <Box
             position={{
-              "@print": "static",
               "@initial": "absolute",
               "@bp3": "static",
+              "@print": "static",
             }}
-            display={{ "@print": "flex", "@initial": "none", "@bp3": "flex" }}
+            display={{ "@initial": "none", "@bp3": "flex", "@print": "flex" }}
           >
             <Divider orientation="vertical" />
           </Box>
 
           <Box
             direction="vertical"
-            gap={{ "@print": 8, "@initial": 10, "@bp2": 11 }}
-            spacingBottom={{ "@print": 3, "@initial": 0, "@bp3": 10 }}
+            gap={{ "@initial": 10, "@bp2": 11, "@print": 8 }}
+            spacingBottom={{ "@initial": 0, "@bp3": 10, "@print": 3 }}
             flexGrow
           >
             <Box as="section" direction="vertical">
@@ -513,7 +513,7 @@ export const About = () => {
 
               <Box
                 spacingTop={2}
-                spacingBottom={{ "@print": 4, "@initial": 8 }}
+                spacingBottom={{ "@initial": 8, "@print": 4 }}
               >
                 <Divider />
               </Box>
@@ -530,7 +530,7 @@ export const About = () => {
             </Box>
 
             <CollapsibleSection title="Experience">
-              <Box direction="vertical" gap={{ "@print": 6, "@initial": 11 }}>
+              <Box direction="vertical" gap={{ "@initial": 11, "@print": 6 }}>
                 {EMPLOYMENT.map((employer) => (
                   <Box
                     direction="vertical"
@@ -543,17 +543,17 @@ export const About = () => {
 
                       <Box
                         direction={{
-                          "@print": "horizontal",
                           "@initial": "vertical",
                           "@bp2": "horizontal",
+                          "@print": "horizontal",
                         }}
                         alignItems={{
-                          "@print": "flex-end",
                           "@bp2": "flex-end",
+                          "@print": "flex-end",
                         }}
                         justifyContent={{
-                          "@print": "space-between",
                           "@bp2": "space-between",
+                          "@print": "space-between",
                         }}
                       >
                         <Box
@@ -579,8 +579,8 @@ export const About = () => {
                                 as="time"
                                 color="secondary"
                                 textTransform={{
-                                  "@print": "capitalize",
                                   "@initial": "uppercase",
+                                  "@print": "capitalize",
                                 }}
                                 dateTime={new Date(
                                   employer.startDate
@@ -603,8 +603,8 @@ export const About = () => {
                               as="time"
                               color="secondary"
                               textTransform={{
-                                "@print": "capitalize",
                                 "@initial": "uppercase",
+                                "@print": "capitalize",
                               }}
                               dateTime={new Date(
                                 employer.endDate
@@ -618,8 +618,8 @@ export const About = () => {
                               as="time"
                               color="secondary"
                               textTransform={{
-                                "@print": "capitalize",
                                 "@initial": "uppercase",
+                                "@print": "capitalize",
                               }}
                               dateTime={presentDate}
                               css={{ lineHeight: "inherit" }}
@@ -643,16 +643,16 @@ export const About = () => {
                         <Box
                           as="ul"
                           direction={{
-                            "@print": "horizontal",
                             "@initial": "vertical",
+                            "@print": "horizontal",
                           }}
                           spacingHorizontal={{
-                            "@print": 5,
                             "@initial": 10,
+                            "@print": 5,
                           }}
                           gap={{
-                            "@print": 10,
                             "@initial": 1,
+                            "@print": 10,
                           }}
                           alignItems={{ "@print": "center" }}
                         >
