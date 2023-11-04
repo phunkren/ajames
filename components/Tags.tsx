@@ -117,7 +117,7 @@ export const StyledTag = styled(Box, {
   borderRadius: "$1",
   borderColor: "$foregroundMuted",
   borderStyle: "solid",
-  borderWidth: 1,
+  borderWidth: 2,
   textTransform: "uppercase",
   color: "$foregroundMuted",
 
@@ -276,7 +276,7 @@ export const TagDrawer = memo(function TagDrawer({
                           <TextAux
                             color="primary"
                             textTransform="uppercase"
-                            css={{ pointerEvents: "none" }}
+                            css={{ pointerEvents: "none", fontWeight: 500 }}
                           >
                             {tag.name}
                           </TextAux>
