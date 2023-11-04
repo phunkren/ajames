@@ -580,7 +580,7 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
             >
               <Divider />
 
-              <Box direction="vertical" gap={8} container="m">
+              <Box direction="vertical" gap={8} container="l">
                 <TextTitle2>Related Articles</TextTitle2>
 
                 <StyledCardContainer display="grid">
