@@ -77,6 +77,11 @@ const SOCIAL_REDIRECTS = [
     destination: "https://www.buymeacoffee.com/phunkren",
     permanent: true,
   },
+  {
+    source: "/instagram",
+    destination: "https://www.instagram.com/phunkren/",
+    permanent: true,
+  },
 ];
 
 const LEARNING_REDIRECTS = [
