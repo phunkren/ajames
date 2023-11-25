@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 import debounce from "lodash.debounce";
 import Balancer from "react-wrap-balancer";
-import LiteYouTubeEmbed from "react-lite-youtube-embed";
+import { YouTubeEmbed } from "@next/third-parties/google";
 import Image from "next/image";
 import { PlayIcon } from "@radix-ui/react-icons";
 import laptop from "../../public/images/laptop.png";
@@ -41,6 +41,17 @@ export type Props = {
 
 const bg = css({
   background: `linear-gradient(-2deg, $slate1 0.04%, $slate2 100.04%)`,
+
+  ".lty-playbtn": {
+    position: "absolute",
+    width: 1,
+    height: 1,
+    margin: -1,
+    padding: 0,
+    overflow: "hidden",
+    clip: "rect(0, 0, 0, 0)",
+    border: 0,
+  },
 });
 
 const StyledVideoCardContainer = styled(Box, {
@@ -234,14 +245,10 @@ export const Learning = ({
                     "@bp3": { flexGrow: 0, flexShrink: 0, flexBasis: "45%" },
                   }}
                 >
-                  <LiteYouTubeEmbed
-                    id={featuredVideo.videoId} // Default none, id of the video or playlist
-                    title={featuredVideo.title} // a11y, always provide a title for iFrames: https://dequeuniversity.com/tips/provide-iframe-titles Help the web be accessible ;)
-                    params={`mute=1&modestbranding=1&rel=0&widget_referrer=${SITE.url}&controls=0`} // any params you want to pass to the URL, assume we already had '&' and pass your parameters string
-                    poster="hqdefault" // Defines the image size to call on first render as poster image. Possible values are "default","mqdefault",  "hqdefault", "sddefault" and "maxresdefault". Default value for this prop is "hqdefault". Please be aware that "sddefault" and "maxresdefault", high resolution images are not always avaialble for every video. See: https://stackoverflow.com/questions/2068344/how-do-i-get-a-youtube-video-thumbnail-from-the-youtube-api
-                    playlist={false} // Use true when your ID be from a playlist
-                    adNetwork={false} // Default true, to preconnect or not to doubleclick addresses called by YouTube iframe (the adnetwork from Google)
-                    noCookie={true} //Default false, connect to YouTube via the Privacy-Enhanced Mode using https://www.youtube-nocookie.com
+                  <YouTubeEmbed
+                    videoId={featuredVideo.videoId}
+                    playlabel={`Play: ${featuredVideo.title}`}
+                    params={`mute=1&modestbranding=1&rel=0&widget_referrer=${SITE.url}&controls=0`}
                   />
                 </Box>
 
