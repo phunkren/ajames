@@ -143,13 +143,13 @@ export const H2_STYLES = {
 };
 
 export const H3_STYLES = {
-  fontSize: 22,
+  fontSize: 24,
   fontWeight: 500,
   lineHeight: 1.5,
   letterSpacing: 0.4,
 
   "@bp2": {
-    fontSize: 28,
+    fontSize: 26,
   },
 
   "@print": {
