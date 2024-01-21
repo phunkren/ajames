@@ -12,6 +12,9 @@ export const TEXT_VARIANTS = {
     currentColor: {
       color: "currentcolor",
     },
+    focus: {
+      color: "$focus",
+    },
   },
   textAlign: {
     left: {
@@ -140,7 +143,7 @@ export const H2_STYLES = {
 };
 
 export const H3_STYLES = {
-  fontSize: 18,
+  fontSize: 22,
   fontWeight: 500,
   lineHeight: 1.5,
   letterSpacing: 0.4,

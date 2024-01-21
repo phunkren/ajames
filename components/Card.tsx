@@ -14,7 +14,7 @@ import { blackA, whiteA } from "@radix-ui/colors";
 import { darkTheme, lightTheme, styled } from "../stitches.config";
 import { PostTags, PublishDate, YoutubeChannel } from "./Frontmatter";
 import { Box } from "./Box";
-import { Emoji, TextAux, TextHeadline } from "./Text";
+import { Emoji, TextAux, TextBody, TextHeadline, TextTitle3 } from "./Text";
 import { BuyMeCoffeeLink, Link } from "./Link";
 import { PreviewToggle } from "./Button";
 import { BLUR_DATA_URL } from "../util/images";
@@ -316,7 +316,7 @@ export const BlogCard = memo(function BlogCard({
     <Card image={image}>
       {({ ref, isPreviewVisible, onPreviewToggle }) => (
         <>
-          <StyledBlogContent direction="vertical" css={{ minHeight: 156 }}>
+          <StyledBlogContent direction="vertical" css={{ minHeight: 180 }}>
             <Emoji
               emoji={emoji}
               size="s"
@@ -329,13 +329,13 @@ export const BlogCard = memo(function BlogCard({
 
             <StyledLink href={url} ref={ref} variant="invisible">
               {isPreviewVisible ? (
-                <TextAux as="p" clamp={4} textAlign="justify">
+                <TextBody as="p" clamp={4} textAlign="justify">
                   {description}
-                </TextAux>
+                </TextBody>
               ) : (
-                <TextHeadline as="h3" id={url} clamp={3}>
+                <TextTitle3 as="h3" id={url} clamp={3}>
                   {title}
-                </TextHeadline>
+                </TextTitle3>
               )}
             </StyledLink>
           </StyledBlogContent>
@@ -396,7 +396,7 @@ export const BlogSponsored = memo(function BlogSponsored() {
 
             <Box direction="vertical" gap={4}>
               <StyledLink href="/rss" ref={ref} variant="invisible">
-                <TextHeadline id="rss" clamp={3} css={{ color: "$focus" }}>
+                <TextHeadline id="rss" clamp={3} color="focus">
                   Enjoying the blog?
                 </TextHeadline>
               </StyledLink>

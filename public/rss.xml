@@ -4,19 +4,507 @@
         <title>ajames.dev | Blogs</title>
         <link>https://ajames.dev</link>
         <description>I'm a web engineer based in Glasgow, Scotland. My passion for frontend technologies continually drives me to advance my skill set and adopt the latest industry best practices. An analytical mindset and strong communication skills allow me to excel in environments where I can learn from others and inspire my peers.Over the years I've refined a set of technical principles to strive towards, namely: complexity should only be introduced when it’s unavoidable; code should be easy to reason with and delete; avoid abstracting too early, and the top priority is always the best possible user experience.</description>
-        <lastBuildDate>Thu, 27 Apr 2023 10:49:00 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 21 Jan 2024 19:17:56 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
-        <copyright>All rights reserved 2023, Andrew James</copyright>
+        <copyright>All rights reserved 2024, Andrew James</copyright>
         <atom:link href="https://ajames.dev/rss.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[Using Notion and Next.js ISR to sync content across platforms]]></title>
+            <link>https://ajames.dev/blog/synchronize-content</link>
+            <guid>https://ajames.dev/blog/synchronize-content</guid>
+            <pubDate>Mon, 22 May 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[A guide to creating an optimised workflow that synchronises content across multiple online platforms]]></description>
+            <content:encoded><![CDATA[Publishing content across multiple platforms offers a number of advantages for content creators. Third-party platforms provide authors a wider reach and access to a dedicated user base. Publishing content on a personal website gives the author complete creative control over their content and its presentation.
+
+Ensuring synchronicity across platforms can be laborious, time-consuming, and prone to human error. It requires careful attention to detail, an efficient workflow, and a commitment to maintaining consistency and accuracy across all published platforms.
+
+This article will demonstrate an optimized workflow for creating and publishing synchronized blog content across the web. For additional context, the final solution is available on [GitHub](https://github.com/phunkren/isr-notion-blog) and deployed on [Vercel](https://isr-notion-blog.vercel.app/).
+
+The approach primarily uses Notion and the Notion API to create a single source of truth for the content. It also integrates the Incremental Static Regeneration feature into a Next.js website to ensure effortless synchronization of each article across the platforms.
+
+## Creating a blog database with Notion
+
+Notion is a powerful productivity tool that caters to both individual users and large enterprise teams. This article uses Notion to create a small database of technical blog posts, along with a custom integration that will allow our Next.js website to retrieve the content from a personal workspace.
+
+### Setting up the database
+
+To get started, create a new page in your Notion workspace and select the Table template. With the table created, selecting the “+ New Database” option from the Data Source menu creates a blank table on the page. Each row on the table will contain the following information:
+
+| Column        | Description                                                                   |
+| ------------- | ----------------------------------------------------------------------------- |
+| **Published** | Control whether or not the page displays on the personal website              |
+| **Page**      | A link to a subpage in Notion containing the article’s content                |
+| **Canonical** | The preferred URL of a web page for search engine rankings                    |
+| **Date**      | The date the article was published                                            |
+| **Tags**      | An array of tags that can be used to filter the articles on the personal site |
+| **Abstract**  | A short description of the article. Useful for previews and SEO               |
+| **Slug**      | A unique identifier for each post. Used for the URL routing on the website    |
+
+The “Published” column allows the Next.js website to filter any unfinished articles. This also allows a grace period for the article to be published on a third-party platform before it goes live on the personal website.
+
+The “Page” column links to a subpage in Notion with the respective article’s content. We’ll use this subpage later to retrieve the content blocks for each article in the Next.js website.
+
+The “Canonical” column helps specify the preferred URL of the content when multiple versions exist across various platforms. Where the Notion article can be considered the source of truth for the content, the canonical URL is considered the source of truth for search engine rankings.
+
+| Published | Page                                    | Canonical                                                                                                 |
+| --------- | --------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| \[    ]    | <u>Using Notion and ISR to synchro…</u> |                                                                                                           |
+| \[ x ]     | <u>Building an Accessible Menubar…</u>  | [https://blog.logrocket.com/...](https://blog.logrocket.com/building-accessible-menubar-component-react/) |
+
+The remaining columns contain frontmatter for each article:
+
+*   Date — Allows the articles to be sorted into chronological order
+*   Tags — Can be used to filter the articles by a specific category
+*   Abstract — Provides a short description of the article to pique the user’s interest
+*   Slug — A unique identifier for retrieving the post’s content
+
+| Date       | Tags           | Abstract                                  | Slug                |
+| ---------- | -------------- | ----------------------------------------- | ------------------- |
+| 04/01/2021 | react, a11y    | How to create an accessible menubar…      | accessible-menubar  |
+| 09/27/2021 | react, dev rel | Synchronize content across multiple plat… | synchronize-content |
+
+### Setting up the custom integration
+
+Let’s now create the integration that will allow the Next.js website to make authenticated requests to the database in the workspace.
+
+In Notion, open the My Integrations page and select “Create New Integration.” Since this integration will be private, choose “Internal Integration.”
+
+Give the integration a name and associate it with your workspace. Then, select “Read Content” from the Content Capabilities and check the “No User Information” radio button in User Capabilities.
+
+You can leave all Comment Capabilities unchecked. This will permit the website to retrieve the content without assigning any unnecessary permissions.
+
+You should end up with something like the following:
+
+![The settings screen for a custom Notion integration](https://i.imgur.com/Y5LQLkn.png)
+
+## Integrating Next.js with Notion
+
+Previously, publishing articles on my personal website was a manual, error-prone task that involved copying, pasting, and refining content into separate markdown files. This process was tedious and made it difficult to maintain consistency across the platforms.
+
+Fortunately, with the help of [the Notion API](https://blog.logrocket.com/getting-started-with-the-notion-api/), this task can now be automated!
+
+Let’s configure a Next.js project that retrieves all of the content from the database we created earlier. To accomplish this, we’ll create a custom client to fetch the posts and use our custom integration from Notion to authenticate the requests.
+
+### Configuring environment variables
+
+There are two environment variables required to authenticate and retrieve the database content.
+
+The first is the Internal Integration Token, which can be found in the “Secrets” menu after creating the integration:
+
+![An example Internal Integration Token for a custom Notion integration](https://i.imgur.com/OpGKkmc.png)
+
+The second is the Database ID. You can find this in the Notion URL between the workspace and the View ID, shown in bold below:
+
+```text
+https://www.notion.so/<WORKSPACE>/**<DATABASE_ID>**?<VIEW_ID>
+https://www.notion.so/phunkren/**9d7344da8c66c9a7487577735b83141c**?129sj7...
+```
+
+Let’s add these variables to the Next.js application’s local environment and the project dashboard. Paste the following code into the `.env.local` file, using your own variables in place of the dummy values:
+
+```shell
+NOTION_INTERNAL_INTEGRATION_TOKEN=secret_hIGy3ihYFsp...
+NOTION_DATABASE_ID=9d7344da8c66c9a7487577735b83141c
+```
+
+The Environment Variables section in the Settings menu on the Vercel project dashboard should look something like the image below:
+
+![The Environment Variables section in the Settings menu on the Vercel project dashboard ](https://i.imgur.com/7ltynow.png)
+
+Note that the token and database ID values presented here are invalid and for demonstration purposes only. You should never share these values outside of your Vercel project dashboard and environment files.
+
+### Fetching data from Notion
+
+With the Notion integration successfully configured, the next step is to create a client that fetches the posts from the Notion database and stores the result in Markdown files.
+
+To achieve this, we’ll start by creating a new `Client` instance using the [`notionhq/client`](https://www.npmjs.com/package/@notionhq/client) library. We’ll also use the `NOTION_INTERNAL_INTEGRATION_TOKEN` environment variable to authenticate the requests. Add the following code to the `lib/notion.ts` file:
+
+```typescript
+import { Client } from "@notionhq/client";
+
+const notionClient = new Client({
+  auth: process.env.NOTION_INTERNAL_INTEGRATION_TOKEN,
+});
+```
+
+With the authenticated client, we can now make requests to retrieve the content from the Notion database using the `NOTION_DATABASE_ID` environment variable in the same file:
+
+```typescript
+import { BlogPost } from "../types/notion";
+
+async function getPosts(databaseId: string): BlogPost[] {
+  const response = await notionClient.databases.query({
+    database_id: databaseId,
+  });
+
+  return response.results;
+};
+```
+
+In the code above, we declared an asynchronous function `getPosts` with a single argument of `databaseId`. We used the `await` keyword to pause the function’s execution until the  `notionClient.databases.query` promise resolves and returns the collection of blog posts from the requested database.
+
+### Creating Markdown files
+
+If we inspect the `response.results`, each chunk of content in Notion is parsed as a block, which is an object containing the raw content and metadata for each chunk. See the following example content block from Notion:
+
+```javascript
+{
+    "object": "block",
+    "id": "c02fc1d3-db8b-45c5-a222-27595b15aea7",
+    "parent": {
+        "type": "page_id",
+        "page_id": "59833787-2cf9-4fdf-8782-e53db20768a5"
+    },
+    "created_time": "2022-03-01T19:05:00.000Z",
+    "last_edited_time": "2022-07-06T19:41:00.000Z",
+    "created_by": {
+        "object": "user",
+        "id": "ee5f0f84-409a-440f-983a-a5315961c6e4"
+    },
+    "last_edited_by": {
+        "object": "user",
+        "id": "ee5f0f84-409a-440f-983a-a5315961c6e4"
+    },
+    "has_children": false,
+    "archived": false,
+    "type": "heading_2",
+    "heading_2": {
+        "rich_text": [ ... ],
+        "color": "default",
+    "is_toggleable": false
+    }
+}
+```
+
+Although it’s possible to serialize each block manually, we’ll use a third-party wrapper — [`notion-to-md`](https://www.npmjs.com/package/notion-to-md) — for brevity. The package is somewhat literal, in that it will take a collection of Notion blocks and convert them into a single Markdown file.
+
+To convert the Notion content blocks to a Markdown file, we’ll create an `n2m` client by passing the `notionClient` we created earlier to the `NotionToMarkdown` function from the `notion-to-md` package.
+
+Add the following code to the `lib/notion.ts` file:
+
+```typescript
+import { NotionToMarkdown } from "notion-to-md";
+
+const n2m = new NotionToMarkdown({ notionClient });
+```
+
+We can then define a `createPosts` function that takes the results of the `getPosts` function and generates a Markdown file for each result.
+
+Initially, the `n2m` client will convert the Notion content blocks into Markdown blocks. We’ll then reuse the client to format those blocks into a Markdown string.
+
+Finally, we can create a Markdown file for each post using the “Slug” column property as the filename and populating it with the newly-created Markdown string:
+
+```typescript
+const POSTS_DIR = path.join(process.cwd(), "posts");
+
+export async function createPosts(posts) {
+  if (!fs.existsSync(POSTS_DIR)) {
+      fs.mkdirSync(POSTS_DIR);
+  }
+	
+	for (const post of posts) {
+    const uuid = post.id;
+    const slug = post.properties.slug.rich_text[0].plain_text;
+    const mdblocks = await n2m.pageToMarkdown(uuid);
+    const mdString = n2m.toMarkdownString(mdblocks);
+    const filename = `${POSTS_DIR}/${slug}.mdx`;
+
+    fs.writeFile(filename, mdString, (err) => {
+      err !== null && console.log(err);
+    });
+  }
+}
+```
+
+### Filtering unpublished articles
+
+To prevent any unpublished articles from appearing on the site, and to mitigate any potentially unnecessary computational cycles when we generate the markdown files, we’ll also create a `filterPosts` utility function that uses the “Published” column property from earlier to remove any unwanted results.
+
+We can consider an article published if its published checkbox is checked, which we can determine if the post’s `properties.published.checkbox` property is `true`:
+
+```javascript
+export function filterPosts(posts: BlogPost[]) {
+  const publishedPosts = posts.filter(
+    (post) => post.properties.published.checkbox
+  );
+
+  return publishedPosts;
+}
+```
+
+### Creating dynamic routes
+
+With the published blog posts retrieved from Notion, formatted into Markdown, and serialized in their respective files, let’s create a dynamic route for each blog post to be pre-rendered at build time.
+
+We’ll start by exporting a `getPostIds` function from `lib/notion.ts`. This function will return a collection of unique identifiers for each post, derived from the filenames in the `posts` directory.
+
+```typescript
+import * as fs from "fs";
+import path from "path";
+
+const POSTS_DIR = path.join(process.cwd(), "posts");
+
+export function getPostIds() {
+  if (!fs.existsSync(POSTS_DIR)) {
+    fs.mkdirSync(POSTS_DIR);
+  }
+
+  const fileNames = fs.readdirSync(POSTS_DIR);
+
+  return fileNames.map((fileName) => {
+    return {
+      params: {
+        id: fileName.replace(/\.mdx$/, ""),
+      },
+    };
+  });
+}
+```
+
+Finally, we’ll use the [`getStaticPaths`](https://nextjs.org/docs/basic-features/data-fetching/get-static-paths) function in the `pages/[id].tsx` file to execute our `getPosts`, `filterPosts`, `createPosts`, and `getPostIds` functions to generate the Markdown files and return a collection of paths that will enable Next.js to statically pre-render the respective routes.
+
+It’s important that we call these methods inside the `getStaticPaths` function. `getStaticPaths` will run once during the production build, whereas `getStaticProps` will run once for each dynamic route:
+
+```typescript
+import { GetStaticProps } from "next";
+import { getPosts } from "../lib/notion";
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const posts = await getPosts(process.env.NOTION_DATABASE_ID);
+  const publishedPosts = filterPosts(posts);
+
+  await createPosts(publishedPosts);
+
+  const paths = getPostsIds();
+
+  return {
+    paths: paths,
+    fallback: false,
+  };
+};
+```
+
+### Rendering Markdown content
+
+To parse the Markdown content from each file into HTML, we’ll create a `getPostData` function in the `util/notion.ts` file that uses the IDs generated from the `getPostsIds` function and the [`remark`](https://www.npmjs.com/package/remark) npm package to convert the respective Markdown content to a string:
+
+```typescript
+import * as fs from "fs";
+import { remark } from "remark";
+import mdx from "remark-mdx";
+
+const POSTS_DIR = path.join(process.cwd(), "posts");
+
+export async function getPostData(id: string) {
+  const filePath = path.join(POSTS_DIR, `${id}.mdx`);
+  const fileContents = fs.readFileSync(filePath, "utf8");
+  const processedContent = await remark().use(mdx).process(fileContents);
+  const contentHtml = processedContent.toString();
+
+  return contentHtml;
+}
+```
+
+Finally, in the `pages/[id].tsx` file, we’ll use the `ReactMarkdown` component from the [`react-markdown`](https://blog.logrocket.com/how-to-safely-render-markdown-using-react-markdown/) library and the [`remarkMdx`](https://www.npmjs.com/package/remark-mdx) plugin to render the Markdown string as HTML on the `BlogPost` page 💥:
+
+```typescript
+import { GetStaticProps } from "next";
+import ReactMarkdown from "react-markdown";
+import remarkMdx from "remark-mdx";
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const postId = params.id as string;
+  const postData = await getPostData(postId);
+
+  return {
+    props: {
+      postData,
+    },
+  };
+};
+
+export default function BlogPost({ postData }: Props) {
+  return (
+    <article>
+      <ReactMarkdown remarkPlugins={[remarkMdx]}>
+        {postData}
+      </ReactMarkdown>
+    </article>
+  );
+}
+```
+
+### Creating a blog page index
+
+Now that each article has its own individual page in the Next.js project, we’ll present a list of them on the homepage. Each list item will display the article’s title, frontmatter, and a link to the corresponding page on the website.
+
+We’ll start by creating a `sortPosts` utility function that sorts the posts chronologically:
+
+```typescript
+import { BlogPost } from "../types/notion";
+
+// Sort posts in chronological order (newest first)
+export function sortPosts(posts: BlogPost[]) {
+  return posts.sort((a, b) => {
+    let dateA = new Date(a.properties.date.date.start).getTime();
+    let dateB = new Date(b.properties.date.date.start).getTime();
+
+    return dateB - dateA;
+  });
+}
+```
+
+We then use the `getStaticProps` function in the `index.tsx` file to fetch the data with `getPosts`, filter any unpublished articles with `filterPosts`, sort the published posts chronologically with `sortPosts`, and then return the result as the `posts` prop for the `Home` component.
+
+Add the following to your `pages/index.tsx` file:
+
+```typescript
+
+import { GetStaticProps } from "next";
+
+export const getStaticProps: GetStaticProps = async () => {
+  const posts = await getPosts(process.env.NOTION_DATABASE_ID);
+  const publishedPosts = filterPosts(posts);
+  const sortedPosts = sortPosts(publishedPosts);
+
+  return {
+    props: {
+      posts: sortedPosts,
+    },
+  };
+};
+```
+
+In the same file, using a `map` function, we render the collection of `posts` on the homepage. For each post, we display the title, the abstract as a description, the publish date, relevant tags, and a link to the dynamic routes that we created earlier:
+
+```typescript
+type Props = {
+  posts: BlogPost[];
+};
+
+export default function Home({ posts }: Props) {
+  return (
+    <main>
+      <h1>ISR Notion Example</h1>
+
+      <section>
+        <h2>Blog posts</h2>
+
+        {posts.map((post) => {
+          const title = post.properties.page.title[0].plain_text;
+          const description = post.properties.abstract.rich_text[0].plain_text;
+          const publishDate = post.properties.date.date.start;
+          const url = `/${post.properties.slug.rich_text[0].plain_text}`;
+          const tags = post.properties.tags.multi_select
+            .map(({ name }) => name)
+            .join(", ");
+
+          return (
+            <article key={post.id}>
+              <a href={url}>
+                <h3>{title}</h3>
+              </a>
+
+              <p>{description}</p>
+
+              <ul>
+                <li>Published: {publishDate}</li>
+                <li>Tags: {tags}</li>
+              </ul>
+            </article>
+          );
+        })}
+      </section>
+    </main>
+  );
+}
+```
+
+## Enabling ISR to synchronize content over time
+
+Currently, the Next.js project is statically generated at build time, allowing the resulting content to be cached. This approach, known as [static site generation (SSG)](https://blog.logrocket.com/ssg-vs-ssr-in-next-js/), is known for having great performance and SEO.
+
+However, updating the fetched content requires a new build and site deployment. This can be problematic for syncing our content with Notion, as the site will continue to serve cached versions of the articles until a new build is deployed, regardless of whether or not the content has been updated.
+
+[Server-side rendering (SSR)](https://blog.logrocket.com/implementing-ssr-next-js-dynamic-routing-prefetching/) potentially solves this problem, but it can impact performance as each page is now rendered on every request. This leads to an increase in server load and longer page load times, diminishing the overall user experience.
+
+A relatively newer method in Next.js called [Incremental Static Regeneration (ISR)](https://blog.logrocket.com/incremental-static-regeneration-next-js/) is a perfect compromise between the two, as it allows static content to be updated over time without requiring a complete rebuild of the website.
+
+When users access the page within the revalidation window, they are served a cached version, regardless of whether or not the content has since been updated. The first user to access the page after the revalidation window has expired will also be served the cached version.
+
+At this point Next.js will re-fetch and cache the latest data on the fly without rebuilding the entire site! If the build is successful, the next user will be served the updated content.
+
+We’ll start by exporting a `ONE_MINUTE_IN_SECONDS` constant in the `util/constants.ts` file to represent a time interval of one minute:
+
+```typescript
+export const ONE_MINUTE_IN_SECONDS = 60;
+```
+
+To enable ISR for the homepage and the dynamic routes, we need to return the desired revalidation period as the `revalidate` key on the object returned from `getStaticProps`.
+
+Add the following code to the `pages/index.tsx` file:
+
+```typescript
+import { ONE_MINUTE_IN_SECONDS } from "../constants";
+
+export const getStaticProps: GetStaticProps = async () => {
+  const posts = await getPosts(process.env.NOTION_DATABASE_ID);
+  const publishedPosts = filterPosts(posts);
+  const sortedPosts = sortPosts(publishedPosts);
+
+  return {
+    props: {
+      posts: sortedPosts,
+    },
+    revalidate: ONE_MINUTE_IN_SECONDS,
+  };
+};
+```
+
+And finally, add the following to the `pages/[id].tsx` file:
+
+```typescript
+import { ONE_MINUTE_IN_SECONDS } from "../constants";
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const postId = params.id as string;
+  const postData = await getPostData(postId);
+
+  return {
+    props: {
+      postData,
+    },
+    revalidate: ONE_MINUTE_IN_SECONDS,
+  };
+};
+```
+
+With that, we’re done. The application will now periodically check to see if any content in Notion has been updated, and update any pages with changes without having to rebuild the entire site!
+
+## Conclusion
+
+By using Incremental Static Regeneration with the Notion API, content creators can now confidently define a single source of truth that synchronizes content across multiple online platforms.
+
+Whenever new articles are created or existing articles are updated, the latest version is immediately available to third-party platforms. The author’s personal website will also periodically update the content on a per-page basis after a given period of time.
+
+This approach will continue to benefit the author as their collection of articles scales without significantly compromising the overall build times for their personal website.
+
+Ultimately, this solution provides an optimized workflow for synchronizing content while also supporting long-term content creation goals.
+]]></content:encoded>
+            <author>contact@ajames.dev (Andrew James)</author>
+            <category>react</category>
+            <category>dev rel</category>
+            <enclosure length="0" type="image/png" url="https://i.imgur.com/JL25801.png"/>
+        </item>
         <item>
             <title><![CDATA[So you want to work remotely?]]></title>
             <link>https://ajames.dev/blog/work-remote</link>
             <guid>https://ajames.dev/blog/work-remote</guid>
             <pubDate>Sat, 01 Oct 2022 00:00:00 GMT</pubDate>
             <description><![CDATA[Tips and product suggestions for setting up an effective remote workstation. Various options for different budgets and personal preferences are provided.]]></description>
-            <content:encoded><![CDATA[Back in 2020, I put together a list of basic principles for [working from home](https://ajames.dev/work-home). Where that focused on the ethos of working remotely, this time I’d like to discuss equipment that will allow you to be effective working in a remote environment.
+            <content:encoded><![CDATA[Back in 2020, I put together a list of basic principles for [working from home](https://ajames.dev/writing/work-home). Where that focused on the ethos of working remotely, this time I’d like to discuss equipment that will allow you to be effective working in a remote environment.
 
 Unfortunately, it’s impossible to recommend a setup that covers every use case. Everyone’s budget, available space, and personal circumstances are infinitely variable. This post will therefore assume you are working from a laptop, in a dedicated space, and are willing to spend a reasonable sum of money on upgrading your workstation.
 
@@ -33,7 +521,7 @@ Try to position the desk close to any natural light. Facing the window is usuall
 ### **Recommendation**
 
 *   [IKEA Karlby worktop](https://www.ikea.com/gb/en/p/karlby-worktop-walnut-veneer-00335201/)
-*   [Flexispot standing desk legs](https://www.amazon.co.uk/FLEXISPOT-Adjustable-Electric-Two-Stage-Automatic/dp/B07HFZP1Q3/ref=sr_1_6?crid=35K9YAEDWXO0Y\&keywords=standing+desk+legs\&qid=1665875715\&qu=eyJxc2MiOiI0LjY3IiwicXNhIjoiNC4yNiIsInFzcCI6IjMuMzAifQ%3D%3D\&sprefix=standing+desk+legs%2Caps%2C147\&sr=8-6)
+*   [Flexispot standing desk legs](https://www.amazon.co.uk/FLEXISPOT-Adjustable-Electric-Two-Stage-Automatic/dp/B07HFZP1Q3/ref=sr_1_6?crid=35K9YAEDWXO0Y\&keywords=standing%20desk%20legs\&qid=1665875715\&qu=eyJxc2MiOiI0LjY3IiwicXNhIjoiNC4yNiIsInFzcCI6IjMuMzAifQ%3D%3D\&sprefix=standing%20desk%20legs%2Caps%2C147\&sr=8-6)
 
 ## Chair
 
@@ -43,7 +531,7 @@ When sat at your desk, you ideally want to be looking directly ahead or slightly
 
 ### **Recommendation**
 
-*   [Herman Miller Mirra](https://www.amazon.com/Mirra-Chair-Highly-Adjustable-Herman-Miller/dp/B0035BCRRU/ref=sr_1_15?keywords=Herman+Miller\&qid=1665876180\&qu=eyJxc2MiOiI1LjY4IiwicXNhIjoiNi4wNyIsInFzcCI6IjUuNzMifQ%3D%3D\&sr=8-15)
+*   [Herman Miller Mirra](https://www.amazon.com/Mirra-Chair-Highly-Adjustable-Herman-Miller/dp/B0035BCRRU/ref=sr_1_15?keywords=Herman%20Miller\&qid=1665876180\&qu=eyJxc2MiOiI1LjY4IiwicXNhIjoiNi4wNyIsInFzcCI6IjUuNzMifQ%3D%3D\&sr=8-15)
 
 ## Communication
 
@@ -55,7 +543,7 @@ I also recommend using a dedicated webcam over the laptop’s integrated equival
 
 ### **Recommendation**
 
-*   [Logitech C925-E webcam](https://www.amazon.co.uk/Logitech-Auto-Focus-Webcam-Omni-Directional-Microphones/dp/B01GRE7W9O/ref=sxts_rp_s_1_0?content-id=amzn1.sym.78489f60-7584-4e4f-a0a9-1b053691012c%3Aamzn1.sym.78489f60-7584-4e4f-a0a9-1b053691012c\&crid=3430EUF4UQGOK\&cv_ct_cx=logitech+webcam\&keywords=logitech+webcam\&pd_rd_i=B01GRE7W9O\&pd_rd_r=284061e3-e364-428d-932e-007832fe4d88\&pd_rd_w=g5wHl\&pd_rd_wg=JAvno\&pf_rd_p=78489f60-7584-4e4f-a0a9-1b053691012c\&pf_rd_r=1NFFPMSZDA2VZ25SHVJ1\&psc=1\&qid=1665876942\&qu=eyJxc2MiOiI0LjE5IiwicXNhIjoiMy43MyIsInFzcCI6IjMuNjEifQ%3D%3D\&sprefix=logitech+webca%2Caps%2C117\&sr=1-1-1890b328-3a40-4864-baa0-a8eddba1bf6a)
+*   [Logitech C925-E webcam](https://www.amazon.co.uk/Logitech-Auto-Focus-Webcam-Omni-Directional-Microphones/dp/B01GRE7W9O/ref=sxts_rp_s_1_0?content-id=amzn1.sym.78489f60-7584-4e4f-a0a9-1b053691012c%3Aamzn1.sym.78489f60-7584-4e4f-a0a9-1b053691012c\&crid=3430EUF4UQGOK\&cv_ct_cx=logitech%20webcam\&keywords=logitech%20webcam\&pd_rd_i=B01GRE7W9O\&pd_rd_r=284061e3-e364-428d-932e-007832fe4d88\&pd_rd_w=g5wHl\&pd_rd_wg=JAvno\&pf_rd_p=78489f60-7584-4e4f-a0a9-1b053691012c\&pf_rd_r=1NFFPMSZDA2VZ25SHVJ1\&psc=1\&qid=1665876942\&qu=eyJxc2MiOiI0LjE5IiwicXNhIjoiMy43MyIsInFzcCI6IjMuNjEifQ%3D%3D\&sprefix=logitech%20webca%2Caps%2C117\&sr=1-1-1890b328-3a40-4864-baa0-a8eddba1bf6a)
 *   [Bose QuietComfort earbuds](https://www.amazon.co.uk/dp/B08CJP6V6W/ref=asc_df_B08C4KWM9T1665615600000?tag=georiot-trd-21\&ascsubtag=trd-gb-2956678197275574000-21\&geniuslink=true\&th=1)
 
 ## Monitor
@@ -68,7 +556,7 @@ Speaking of which, you definitely want to mount your monitors. Not only will it 
 
 *   [PC Part Picker (List)](https://uk.pcpartpicker.com/products/monitor/#F=609600000\&r=192001080\&D=60000\&P=2)
 *   [ASUS VZ249HE Monitor](https://www.amazon.co.uk/ASUS-VZ249HE-Monitor-Ultra-Slim-Certified/dp/B07281PZWK/ref=psdc_340832031_t3_B0859YRX7C?th=1)
-*   [Amazon Basic Monitor Arm](https://www.amazon.co.uk/AmazonBasics-Single-Monitor-Display-Mounting/dp/B00MIBN16O/ref=sr_1_3?keywords=amazon+basics+monitor+arm\&qid=1665875343\&qu=eyJxc2MiOiIzLjE0IiwicXNhIjoiMi44MCIsInFzcCI6IjIuNTcifQ%3D%3D\&s=computers\&sprefix=amazon+basics%2Ccomputers%2C85\&sr=1-3)
+*   [Amazon Basic Monitor Arm](https://www.amazon.co.uk/AmazonBasics-Single-Monitor-Display-Mounting/dp/B00MIBN16O/ref=sr_1_3?keywords=amazon%20basics%20monitor%20arm\&qid=1665875343\&qu=eyJxc2MiOiIzLjE0IiwicXNhIjoiMi44MCIsInFzcCI6IjIuNTcifQ%3D%3D\&s=computers\&sprefix=amazon%20basics%2Ccomputers%2C85\&sr=1-3)
 
 ## Peripherals
 
@@ -83,7 +571,7 @@ For those that split their time between the office and working from home, a USB 
 *   [Logitech MX Master 2s mouse](https://www.amazon.co.uk/Logitech-Rechargeable-Multi-Device-Programmable-Productivity/dp/B071KZS3MF)
 *   [Keychron K8 keyboard](https://www.keychron.uk/products/keychron-k8-wireless-mechanical-keyboard-uk-iso-layout)
 *   [Powerline Adaptor](https://www.amazon.co.uk/dp/B08LW5VPPV?tag=pcad03-21\&linkCode=ogi\&th=1\&psc=1\&ascsubtag=4-1-723387-6-664724-14959)
-*   [Anker USB-C Hub](https://www.amazon.co.uk/Anker-PowerExpand-Adapter-Delivery-Ethernet-Gray/dp/B08NDGD2V5/ref=sr_1_15?crid=3JXOI78MP1MK1\&keywords=anker+usb+hub\&qid=1665878993\&qu=eyJxc2MiOiI0LjI0IiwicXNhIjoiMi45NCIsInFzcCI6IjIuNjUifQ%3D%3D\&sprefix=ankey+usb+hub%2Caps%2C102\&sr=8-15)
+*   [Anker USB-C Hub](https://www.amazon.co.uk/Anker-PowerExpand-Adapter-Delivery-Ethernet-Gray/dp/B08NDGD2V5/ref=sr_1_15?crid=3JXOI78MP1MK1\&keywords=anker%20usb%20hub\&qid=1665878993\&qu=eyJxc2MiOiI0LjI0IiwicXNhIjoiMi45NCIsInFzcCI6IjIuNjUifQ%3D%3D\&sprefix=ankey%20usb%20hub%2Caps%2C102\&sr=8-15)
 
 ## Ambience
 
@@ -93,8 +581,8 @@ I use a BenQ screen light that is mounted above my primary monitor. The back of 
 
 ### **Recommendation**
 
-*   [BenQ Screenbar](https://www.amazon.co.uk/BenQ-ScreenBar-Halo-Controller-Temperature/dp/B08WT889V3/ref=sr_1_5?crid=1N9LALPL4K7GI\&keywords=benq+screenbar\&qid=1665875930\&qu=eyJxc2MiOiIyLjM3IiwicXNhIjoiMi4zNyIsInFzcCI6IjIuMjUifQ%3D%3D\&sprefix=benq+screenbar%2Caps%2C94\&sr=8-5)
-*   [Philips Hue lightstrip](https://www.amazon.co.uk/Philips-Lightstrip-Ambiance-Bluetooth-Assistant/dp/B088RX9CSZ/ref=sr_1_4?crid=141DJPMWH7LF\&keywords=hue+lightstrip\&qid=1665875844\&qu=eyJxc2MiOiIyLjk4IiwicXNhIjoiMi4wNSIsInFzcCI6IjEuOTQifQ%3D%3D\&sprefix=hue+lightstrip%2Caps%2C102\&sr=8-4)
+*   [BenQ Screenbar](https://www.amazon.co.uk/BenQ-ScreenBar-Halo-Controller-Temperature/dp/B08WT889V3/ref=sr_1_5?crid=1N9LALPL4K7GI\&keywords=benq%20screenbar\&qid=1665875930\&qu=eyJxc2MiOiIyLjM3IiwicXNhIjoiMi4zNyIsInFzcCI6IjIuMjUifQ%3D%3D\&sprefix=benq%20screenbar%2Caps%2C94\&sr=8-5)
+*   [Philips Hue lightstrip](https://www.amazon.co.uk/Philips-Lightstrip-Ambiance-Bluetooth-Assistant/dp/B088RX9CSZ/ref=sr_1_4?crid=141DJPMWH7LF\&keywords=hue%20lightstrip\&qid=1665875844\&qu=eyJxc2MiOiIyLjk4IiwicXNhIjoiMi4wNSIsInFzcCI6IjEuOTQifQ%3D%3D\&sprefix=hue%20lightstrip%2Caps%2C102\&sr=8-4)
 
 ## Miscellaneous
 
@@ -114,7 +602,7 @@ Finally, cable tidies are great for removing clutter from your desk. They can re
 *   [Microfibre cloth & screen cleaner](https://www.amazon.co.uk/gp/product/B078QQRKWL/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8\&psc=1)
 *   [XXXL mouse mat](https://www.amazon.co.uk/Corsair-Anti-Fray-Anti-Skid-Optimised-High-Performance/dp/B0833PQPPG/ref=psdc_340832031_t2_B08JH8C5T5?th=1)
 *   [Keyboard wrist rest](https://www.amazon.co.uk/gp/product/B07HWKFQD6/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8\&psc=1)
-*   [Cable management](https://www.amazon.co.uk/Anker-PowerExpand-Adapter-Delivery-Ethernet-Gray/dp/B08NDGD2V5/ref=sr_1_15?crid=3JXOI78MP1MK1\&keywords=anker+usb+hub\&qid=1665878993\&qu=eyJxc2MiOiI0LjI0IiwicXNhIjoiMi45NCIsInFzcCI6IjIuNjUifQ%3D%3D\&sprefix=ankey+usb+hub%2Caps%2C102\&sr=8-15)
+*   [Cable management](https://www.amazon.co.uk/Anker-PowerExpand-Adapter-Delivery-Ethernet-Gray/dp/B08NDGD2V5/ref=sr_1_15?crid=3JXOI78MP1MK1\&keywords=anker%20usb%20hub\&qid=1665878993\&qu=eyJxc2MiOiI0LjI0IiwicXNhIjoiMi45NCIsInFzcCI6IjIuNjUifQ%3D%3D\&sprefix=ankey%20usb%20hub%2Caps%2C102\&sr=8-15)
 ]]></content:encoded>
             <author>contact@ajames.dev (Andrew James)</author>
             <category>Productivity</category>
@@ -1123,7 +1611,7 @@ That leaves us with this flexible React markup:
 
 Now, all that's left is to add extra logic for mouse pointer events, nested submenus, and a full suite of unit tests!
 
-Unfortunately, we'll consider these features out of scope for this article and they would warrant a follow-up post to cover. I've included all the extra logic and the unit tests in the [Code Sandbox demo](https://codesandbox.io/s/a11y-menubar-ej7kh?file=/src/App.js) at the top of the page.
+Unfortunately, we'll consider these features out of scope for this article and they would warrant a follow-up post to cover. I've included all the extra logic and the unit tests in the [Code Sandbox demo](https://codesandbox.io/s/a11y-menubar-ej7kh?file=%2Fsrc%2FApp.js) at the top of the page.
 
 Special thanks to [Jenna Smith](https://twitter.com/jjenzz) for her invaluable contributions to the initial API design.
 ]]></content:encoded>
@@ -1261,7 +1749,7 @@ You can find my current setup at [PC Part Picker](https://uk.pcpartpicker.com/us
 
 **Useful Resources**
 
-*   [PCPartPicker](https://pcpartpicker.com)
+*   [PCPartPicker](https://pcpartpicker.com/)
 *   [Discord](https://discordapp.com/invite/buildapc)
 *   [Reddit](https://www.reddit.com/r/buildapc/)
 
@@ -1443,8 +1931,8 @@ You can create multiple entry points in a Create React Application without eject
 ### **Resources**
 
 *   [GitHub Repository](/8b9f99a040c04225b4f5f2c19022420b)
-*   [**Entry point A**](https://multiple-entry-points-app.netlify.app)
-*   [**Entry point B**](https://multiple-entry-points-test.netlify.app)
+*   [**Entry point A**](https://multiple-entry-points-app.netlify.app/)
+*   [**Entry point B**](https://multiple-entry-points-test.netlify.app/)
 
 Special thanks to [Stephen Taylor](https://twitter.com/meandmycode) and [Robin Weston](https://twitter.com/robinweston) for their valuable input, and to [Jonathan Hawkes](https://twitter.com/jonathanhawkes) for his solution to all build target files appearing in the bundle.
 ]]></content:encoded>

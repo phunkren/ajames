@@ -26,7 +26,7 @@ import {
   TextTitle3,
 } from "../Text";
 import { Divider } from "../Divider";
-import { Button, FilterClearButton } from "../Button";
+import { Button, FilterClearButton, IconButton } from "../Button";
 import { BlogSubscriptionLink, BuyMeCoffeeLink, Link } from "../Link";
 import {
   TotalCategories,
@@ -36,6 +36,9 @@ import {
   PostTags,
 } from "../Frontmatter";
 import { Box } from "../Box";
+import { ArrowLeftIcon, ArrowRightIcon } from "@radix-ui/react-icons";
+import { Tooltip } from "../Tooltip";
+import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 
 export type Props = {
   posts: BlogPost[];
@@ -167,8 +170,13 @@ export const WRITING_ID = "writing";
 
 export const Writing = ({ posts, tags }: Props) => {
   const { replace, query } = useRouter();
-  const [display, setDisplay] = useState<"partial" | "all">("partial");
+  const page = Number(query.writingPage ?? 1);
   const queryTag = query.tag as string;
+
+  const [storageLayout, setStorageLayout] = useLocalStorage<string>(
+    "layout",
+    "rows"
+  );
 
   const featuredPost = posts.find(
     (post) =>
@@ -177,23 +185,22 @@ export const Writing = ({ posts, tags }: Props) => {
 
   const filteredPosts = filterPosts(posts, featuredPost, queryTag);
 
-  const displayedPosts =
-    display === "partial" ? filteredPosts.slice(0, 7) : filteredPosts;
-
-  const shouldShowMore = displayedPosts < filteredPosts;
-
-  const [storageLayout, setStorageLayout] = useLocalStorage<string>(
-    "layout",
-    "rows"
-  );
+  const perPage = page === 1 ? 7 : 8;
+  const items = (page - 1) * perPage;
+  const totalPages = Math.ceil(filteredPosts.length / perPage);
+  const displayedPosts = filteredPosts.slice(items, items + perPage);
 
   const handleTagChange = useCallback(
     (tagName: string) => {
+      const { writingPage, ...restOfQuery } = query;
       replace(
         {
           pathname: "/",
           hash: "writing",
-          query: { ...query, tag: tagName.toLowerCase() },
+          query: {
+            ...restOfQuery,
+            tag: tagName.toLowerCase(),
+          },
         },
         undefined,
         {
@@ -212,9 +219,53 @@ export const Writing = ({ posts, tags }: Props) => {
     [setStorageLayout]
   );
 
-  const handleDisplayChange = useCallback(() => {
-    setDisplay("all");
-  }, []);
+  const handlePageBack = useCallback(() => {
+    replace(
+      {
+        pathname: "/",
+        hash: "writing",
+        query: { ...query, writingPage: page - 1 },
+      },
+      undefined,
+      {
+        shallow: true,
+        scroll: false,
+      }
+    );
+  }, [query, replace, page]);
+
+  const handlePageChange = useCallback(
+    (newPage: number) => {
+      replace(
+        {
+          pathname: "/",
+          hash: "writing",
+          query: { ...query, writingPage: newPage },
+        },
+        undefined,
+        {
+          shallow: true,
+          scroll: false,
+        }
+      );
+    },
+    [query, replace]
+  );
+
+  const handlePageForward = useCallback(() => {
+    replace(
+      {
+        pathname: "/",
+        hash: "writing",
+        query: { ...query, writingPage: page + 1 },
+      },
+      undefined,
+      {
+        shallow: true,
+        scroll: false,
+      }
+    );
+  }, [query, replace, page]);
 
   return (
     <Box
@@ -268,8 +319,6 @@ export const Writing = ({ posts, tags }: Props) => {
             </Frontmatter>
 
             <ActionButtons css={{ flexBasis: "fit-content" }}>
-              <TagDrawer tags={tags} onClick={handleTagChange} />
-
               <LayoutToggle
                 aria-label="Articles layout"
                 defaultPressed={storageLayout === "grid"}
@@ -277,20 +326,30 @@ export const Writing = ({ posts, tags }: Props) => {
                 onPressedChange={handleLayoutChange}
               />
 
-              {queryTag ? (
-                <FilterClearButton filter={queryTag} />
-              ) : (
-                <TagSelect value={queryTag} onValueChange={handleTagChange}>
-                  {tags.map((tag) => (
-                    <TagSelectItem
-                      key={tag.id}
-                      id={tag.name}
-                      color={tag.color}
-                      value={tag.name}
-                    />
-                  ))}
-                </TagSelect>
-              )}
+              <Box display={{ "@initial": "flex", "@bp2": "none" }}>
+                {queryTag ? (
+                  <FilterClearButton filter={queryTag} />
+                ) : (
+                  <TagDrawer tags={tags} onClick={handleTagChange} />
+                )}
+              </Box>
+
+              <Box display={{ "@initial": "none", "@bp2": "flex" }}>
+                {queryTag ? (
+                  <FilterClearButton filter={queryTag} />
+                ) : (
+                  <TagSelect value={queryTag} onValueChange={handleTagChange}>
+                    {tags.map((tag) => (
+                      <TagSelectItem
+                        key={tag.id}
+                        id={tag.name}
+                        color={tag.color}
+                        value={tag.name}
+                      />
+                    ))}
+                  </TagSelect>
+                )}
+              </Box>
             </ActionButtons>
           </Box>
 
@@ -299,227 +358,155 @@ export const Writing = ({ posts, tags }: Props) => {
           </Box>
         </Box>
 
-        {featuredPost ? (
+        <Box direction="vertical" gap={11}>
+          {featuredPost ? (
+            <Box direction="vertical">
+              <Box spacingBottom={10}>
+                <TextTitle2>Featured</TextTitle2>
+              </Box>
+
+              <Box
+                gap={{ "@initial": 0, "@bp3": 11 }}
+                direction={{ "@initial": "vertical", "@bp3": "horizontal" }}
+              >
+                <Box
+                  direction="vertical"
+                  spacingBottom={{ "@initial": 10, "@bp3": 0 }}
+                  css={{
+                    "@bp3": { flexGrow: 0, flexShrink: 0, flexBasis: "50%" },
+                  }}
+                >
+                  <Link
+                    aria-label="Read the article"
+                    href={`/writing/${featuredPost.properties.slug.rich_text[0].plain_text}`}
+                    css={{ display: "block", width: "100%" }}
+                  >
+                    <AspectRatio.Root ratio={17 / 10}>
+                      <StyledImage
+                        src={featuredPost.cover.external.url}
+                        sizes="(max-width: 1020px) 100vw, 50vw"
+                        fill
+                        alt=""
+                      />
+                    </AspectRatio.Root>
+                  </Link>
+                </Box>
+
+                <Box direction="vertical" gap={4}>
+                  <Link
+                    href={`/writing/${featuredPost.properties.slug.rich_text[0].plain_text}`}
+                    variant="secondary"
+                  >
+                    <TextTitle3>
+                      <Balancer>
+                        {featuredPost.properties.page.title[0].plain_text}
+                      </Balancer>
+                    </TextTitle3>
+                  </Link>
+
+                  <Box>
+                    <PostTags
+                      as="div"
+                      tags={featuredPost.properties.tags.multi_select}
+                      compact
+                      onTagChange={handleTagChange}
+                    />
+                  </Box>
+
+                  <TextBody
+                    clamp={{ "@initial": 5, "@bp3": 3 }}
+                    css={{
+                      maxWidth: "none",
+                      "@bp2": { maxWidth: "75%" },
+                    }}
+                    color="secondary"
+                  >
+                    {featuredPost.properties.abstract.rich_text[0].plain_text}
+                  </TextBody>
+
+                  <Box>
+                    <Link
+                      href={`/writing/${featuredPost.properties.slug.rich_text[0].plain_text}`}
+                      variant="tertiary"
+                    >
+                      <TextAux>Read the article</TextAux>
+                    </Link>
+                  </Box>
+                </Box>
+              </Box>
+            </Box>
+          ) : null}
+
           <Box direction="vertical">
-            <Box spacingBottom={10}>
-              <TextTitle2>Featured</TextTitle2>
+            <Box
+              direction="vertical"
+              display={storageLayout === "grid" ? "flex" : "none"}
+            >
+              <StyledCardContainer display="grid">
+                {displayedPosts.map((post, i) => {
+                  return (
+                    <Fragment key={post.id}>
+                      <BlogCard
+                        url={`/writing/${post.properties.slug.rich_text[0].plain_text}`}
+                        image={post.cover.external.url}
+                        emoji={
+                          post.icon.type === "emoji" ? post.icon.emoji : "👨‍💻"
+                        }
+                        title={post.properties.page.title[0].plain_text}
+                        description={
+                          post.properties.abstract.rich_text[0].plain_text
+                        }
+                        publishDate={post.properties.date.date.start}
+                        tags={post.properties.tags.multi_select}
+                      />
+
+                      {page === 1 && i === 2 ? <BlogSponsored /> : null}
+                    </Fragment>
+                  );
+                })}
+              </StyledCardContainer>
             </Box>
 
             <Box
-              gap={{ "@initial": 0, "@bp3": 11 }}
-              direction={{ "@initial": "vertical", "@bp3": "horizontal" }}
+              as="ul"
+              direction="vertical"
+              gap={11}
+              display={storageLayout === "rows" ? "flex" : "none"}
             >
-              <Box
-                direction="vertical"
-                spacingBottom={{ "@initial": 10, "@bp3": 0 }}
-                css={{
-                  "@bp3": { flexGrow: 0, flexShrink: 0, flexBasis: "50%" },
-                }}
-              >
-                <Link
-                  aria-label="Read the article"
-                  href={`/writing/${featuredPost.properties.slug.rich_text[0].plain_text}`}
-                  css={{ display: "block", width: "100%" }}
-                >
-                  <AspectRatio.Root ratio={17 / 10}>
-                    <StyledImage
-                      src={featuredPost.cover.external.url}
-                      sizes="(max-width: 1020px) 100vw, 50vw"
-                      fill
-                      alt=""
-                    />
-                  </AspectRatio.Root>
-                </Link>
-              </Box>
-
-              <Box direction="vertical" gap={4}>
-                <Link
-                  href={`/writing/${featuredPost.properties.slug.rich_text[0].plain_text}`}
-                  variant="secondary"
-                >
-                  <TextTitle3>
-                    <Balancer>
-                      {featuredPost.properties.page.title[0].plain_text}
-                    </Balancer>
-                  </TextTitle3>
-                </Link>
-
-                <Box>
-                  <PostTags
-                    as="div"
-                    tags={featuredPost.properties.tags.multi_select}
-                    compact
-                    onTagChange={handleTagChange}
-                  />
-                </Box>
-
-                <TextBody
-                  clamp={{ "@initial": 5, "@bp3": 3 }}
-                  css={{
-                    maxWidth: "none",
-                    "@bp2": { maxWidth: "75%" },
-                  }}
-                  color="secondary"
-                >
-                  {featuredPost.properties.abstract.rich_text[0].plain_text}
-                </TextBody>
-
-                <Box>
-                  <Link
-                    href={`/writing/${featuredPost.properties.slug.rich_text[0].plain_text}`}
-                    variant="tertiary"
-                  >
-                    <TextAux>Read the article</TextAux>
-                  </Link>
-                </Box>
-              </Box>
-            </Box>
-          </Box>
-        ) : null}
-
-        <Box direction="vertical">
-          <Box
-            direction="vertical"
-            display={storageLayout === "grid" ? "flex" : "none"}
-          >
-            <StyledCardContainer display="grid">
               {displayedPosts.map((post, i) => {
                 return (
                   <Fragment key={post.id}>
-                    <BlogCard
-                      url={`/writing/${post.properties.slug.rich_text[0].plain_text}`}
-                      image={post.cover.external.url}
-                      emoji={
-                        post.icon.type === "emoji" ? post.icon.emoji : "👨‍💻"
-                      }
-                      title={post.properties.page.title[0].plain_text}
-                      description={
-                        post.properties.abstract.rich_text[0].plain_text
-                      }
-                      publishDate={post.properties.date.date.start}
-                      tags={post.properties.tags.multi_select}
-                    />
-
-                    {i === 2 ? <BlogSponsored /> : null}
-                  </Fragment>
-                );
-              })}
-
-              {shouldShowMore ? (
-                <Box
-                  direction="vertical"
-                  css={{
-                    gridColumnStart: "1 !important",
-                    gridColumnEnd: "-1 !important",
-                  }}
-                >
-                  <Button
-                    css={{
-                      flexGrow: 1,
-                    }}
-                    onClick={handleDisplayChange}
-                  >
-                    <TextHeadline color="secondary">
-                      Show all articles
-                    </TextHeadline>
-                  </Button>
-                </Box>
-              ) : null}
-            </StyledCardContainer>
-          </Box>
-
-          <Box
-            as="ul"
-            direction="vertical"
-            gap={11}
-            display={storageLayout === "rows" ? "flex" : "none"}
-            spacingRight={2}
-          >
-            {displayedPosts.map((post, i) => {
-              return (
-                <Fragment key={post.id}>
-                  <Box as="li" direction="vertical">
-                    <Box as="article" alignItems="baseline">
-                      <Box direction="vertical" flexGrow gap={2}>
-                        <Balancer>
-                          <Link
-                            href={`/writing/${post.properties.slug.rich_text[0].plain_text}`}
-                            variant="secondary"
-                          >
-                            <TextTitle3>
-                              {post.properties.page.title[0].plain_text}
-                            </TextTitle3>
-                          </Link>
-                        </Balancer>
-
-                        <TextBody
-                          color="secondary"
-                          css={{
-                            maxWidth: "none",
-                            spacingBottom: "$2",
-                            "@bp2": { maxWidth: "75%" },
-                            "@bp3": { maxWidth: "66%" },
-                          }}
-                        >
-                          {post.properties.abstract.rich_text[0].plain_text}
-                        </TextBody>
-
-                        <Link
-                          href={`/writing/${post.properties.slug.rich_text[0].plain_text}`}
-                          variant="tertiary"
-                        >
-                          <TextAux>Read the article</TextAux>
-                        </Link>
-                      </Box>
-
-                      <Box
-                        display={{
-                          "@initial": "none",
-                          "@bp2": "flex",
-                        }}
-                      >
-                        <PostTags
-                          as="div"
-                          tags={post.properties.tags.multi_select}
-                          compact
-                          end
-                          onTagChange={handleTagChange}
-                        />
-                      </Box>
-                    </Box>
-                  </Box>
-
-                  {i === 2 ? (
-                    <Box as="li" direction="vertical" key="advert">
+                    <Box as="li" direction="vertical">
                       <Box as="article" alignItems="baseline">
                         <Box direction="vertical" flexGrow gap={2}>
-                          <TextTitle3>Enjoying the blog?</TextTitle3>
+                          <Balancer>
+                            <Link
+                              href={`/writing/${post.properties.slug.rich_text[0].plain_text}`}
+                              variant="secondary"
+                            >
+                              <TextTitle3>
+                                {post.properties.page.title[0].plain_text}
+                              </TextTitle3>
+                            </Link>
+                          </Balancer>
 
                           <TextBody
                             color="secondary"
                             css={{
                               maxWidth: "none",
                               spacingBottom: "$2",
+                              "@bp2": { maxWidth: "75%" },
                               "@bp3": { maxWidth: "66%" },
                             }}
                           >
-                            You can support my work and stay updated by
-                            following the&nbsp;
-                            <Link href="/rss" variant="tertiary">
-                              RSS Feed
-                            </Link>
-                            .{" "}
-                            <Box
-                              as="br"
-                              display={{ "@initial": "none", "@bp2": "flex" }}
-                              css={{ content: "" }}
-                            />
-                            You can also&nbsp;
-                            <BuyMeCoffeeLink variant="text" />.
+                            {post.properties.abstract.rich_text[0].plain_text}
                           </TextBody>
 
-                          <Link href="/rss" variant="tertiary">
-                            <TextAux>Follow me</TextAux>
+                          <Link
+                            href={`/writing/${post.properties.slug.rich_text[0].plain_text}`}
+                            variant="tertiary"
+                          >
+                            <TextAux>Read the article</TextAux>
                           </Link>
                         </Box>
 
@@ -531,41 +518,126 @@ export const Writing = ({ posts, tags }: Props) => {
                         >
                           <PostTags
                             as="div"
-                            tags={[
-                              {
-                                id: "sponsored",
-                                name: "Sponsored",
-                                color: "default",
-                              },
-                            ]}
+                            tags={post.properties.tags.multi_select}
                             compact
+                            end
+                            onTagChange={handleTagChange}
                           />
                         </Box>
                       </Box>
                     </Box>
-                  ) : null}
-                </Fragment>
-              );
-            })}
 
-            {shouldShowMore ? (
-              <Box as="li">
-                <Button
-                  variant="tertiary"
-                  css={{
-                    width: "fit-content",
-                    transition:
-                      "color $transitions$durationDefault $transitions$functionDefault",
-                    "&:hover": {
-                      color: "$hover",
-                      transition:
-                        "color $transitions$durationQuick $transitions$functionDefault",
-                    },
-                  }}
-                  onClick={handleDisplayChange}
-                >
-                  <TextTitle3>Show all articles</TextTitle3>
-                </Button>
+                    {page === 1 && i === 2 ? (
+                      <Box as="li" direction="vertical" key="advert">
+                        <Box as="article" alignItems="baseline">
+                          <Box direction="vertical" flexGrow gap={2}>
+                            <TextTitle3 color="focus">
+                              Enjoying the blog?
+                            </TextTitle3>
+
+                            <TextBody
+                              color="secondary"
+                              css={{
+                                maxWidth: "none",
+                                spacingBottom: "$2",
+                                "@bp3": { maxWidth: "66%" },
+                              }}
+                            >
+                              You can support my work and stay updated by
+                              following the&nbsp;
+                              <Link href="/rss" variant="tertiary">
+                                RSS Feed
+                              </Link>
+                              .{" "}
+                              <Box
+                                as="br"
+                                display={{ "@initial": "none", "@bp2": "flex" }}
+                                css={{ content: "" }}
+                              />
+                              You can also&nbsp;
+                              <BuyMeCoffeeLink variant="text" />.
+                            </TextBody>
+
+                            <Link href="/rss" variant="tertiary">
+                              <TextAux>Follow me</TextAux>
+                            </Link>
+                          </Box>
+
+                          <Box
+                            display={{
+                              "@initial": "none",
+                              "@bp2": "flex",
+                            }}
+                          >
+                            <PostTags
+                              as="div"
+                              tags={[
+                                {
+                                  id: "sponsored",
+                                  name: "Sponsored",
+                                  color: "default",
+                                },
+                              ]}
+                              compact
+                            />
+                          </Box>
+                        </Box>
+                      </Box>
+                    ) : null}
+                  </Fragment>
+                );
+              })}
+            </Box>
+
+            {totalPages > 1 ? (
+              <Box
+                spacingTop={12}
+                gap={10}
+                alignItems="center"
+                justifyContent="center"
+              >
+                <Tooltip title="Previous page">
+                  <IconButton
+                    aria-disabled={page === 1}
+                    onClick={handlePageBack}
+                  >
+                    <VisuallyHidden.Root>Previous page</VisuallyHidden.Root>
+                    <ArrowLeftIcon />
+                  </IconButton>
+                </Tooltip>
+
+                {Array.from(
+                  { length: totalPages },
+                  (_, index) => index + 1
+                ).map((pageNumber) => (
+                  <Button
+                    key={pageNumber}
+                    variant="tertiary"
+                    onClick={() => handlePageChange(pageNumber)}
+                  >
+                    <TextHeadline
+                      spacing={2}
+                      css={{
+                        textDecoration:
+                          pageNumber === page ? "underline" : "none",
+                        textDecorationColor: "$focus",
+                        textUnderlineOffset: "$space$1",
+                      }}
+                    >
+                      {pageNumber}
+                    </TextHeadline>
+                  </Button>
+                ))}
+
+                <Tooltip title="Next page">
+                  <IconButton
+                    aria-disabled={page === totalPages}
+                    onClick={handlePageForward}
+                  >
+                    <VisuallyHidden.Root>Next page</VisuallyHidden.Root>
+                    <ArrowRightIcon />
+                  </IconButton>
+                </Tooltip>
               </Box>
             ) : null}
           </Box>

@@ -116,7 +116,18 @@ export const LayoutToggle = memo(function LayoutToggle({
 }: Props) {
   return (
     <Tooltip title="Layout">
-      <IconButton as={ToggleRoot} aria-label="Theme" {...props}>
+      <IconButton
+        as={ToggleRoot}
+        aria-label="Theme"
+        css={{
+          "@media(hover)": {
+            "&:hover > *": {
+              color: "$background",
+            },
+          },
+        }}
+        {...props}
+      >
         {value === "grid" ? (
           <StyledGridIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
         ) : null}
