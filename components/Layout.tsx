@@ -99,8 +99,8 @@ export const FooterLayout = memo(function FooterLayout() {
   return (
     <Box
       as="footer"
+      spacingTop={12}
       css={{
-        background: "$slate2",
         "@print": { display: "none !important" },
       }}
     >

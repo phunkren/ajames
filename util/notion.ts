@@ -148,9 +148,13 @@ export function getPublishedPosts(posts: BlogPost[]) {
   return publishedPosts;
 }
 
-export function filterPosts(posts: BlogPost[], queryTag: string) {
+export function filterPosts(
+  posts: BlogPost[],
+  featurePost: BlogPost,
+  queryTag: string
+) {
   if (!queryTag) {
-    return posts;
+    return posts.filter((post) => post.id !== featurePost.id);
   }
 
   return posts.filter((post) => {
@@ -160,7 +164,7 @@ export function filterPosts(posts: BlogPost[], queryTag: string) {
       ({ name }) => queryTag === name.toLowerCase()
     );
 
-    return isActive;
+    return post.id !== featurePost.id && isActive;
   });
 }
 

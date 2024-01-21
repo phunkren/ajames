@@ -120,6 +120,7 @@ export const StyledTag = styled(Box, {
   borderWidth: 2,
   textTransform: "uppercase",
   color: "$foregroundMuted",
+  minWidth: 75,
 
   "& > *": {
     zIndex: "$1",

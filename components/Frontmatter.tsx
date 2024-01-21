@@ -21,6 +21,7 @@ import { Box, BoxProps } from "./Box";
 import { TextAux, TextHeadline } from "./Text";
 import { StyledTag } from "./Tags";
 import { PERSONAL } from "../util/data";
+import { Button } from "./Button";
 
 type FrontMatterItemProps = BoxProps & {
   compact?: boolean;
@@ -29,6 +30,7 @@ type FrontMatterItemProps = BoxProps & {
 
 type PostTagProps = FrontMatterItemProps & {
   tags: Tag[];
+  onTagChange?: (tagName: string) => void;
 };
 
 type PublishDateProps = FrontMatterItemProps & {
@@ -86,6 +88,8 @@ export const PostTags = memo(function PostTags({
   icon = false,
   compact = false,
   mono = false,
+  end = false,
+  onTagChange,
   ...props
 }: PostTagProps) {
   return (
@@ -97,9 +101,26 @@ export const PostTags = memo(function PostTags({
         </Box>
       ) : null}
 
-      <Box as="ul" role="list" gap={4} flexWrap="wrap">
+      <Box
+        as="ul"
+        role="list"
+        gap={4}
+        flexWrap="wrap"
+        justifyContent={end ? "flex-end" : "flex-start"}
+      >
         {tags.map((tag) => {
-          return (
+          return onTagChange ? (
+            <li key={tag.id}>
+              <StyledTag
+                as={Button}
+                borderColor={!mono ? tag.color : undefined}
+                compact={compact}
+                onClick={() => onTagChange(tag.name)}
+              >
+                <TextAux>{tag.name}</TextAux>
+              </StyledTag>
+            </li>
+          ) : (
             <StyledTag
               as="li"
               key={tag.id}
@@ -137,7 +158,7 @@ export const ActiveTag = memo(function ActiveTag({
       ) : null}
 
       {activeTag ? (
-        <StyledTag borderColor={activeTag.color} active>
+        <StyledTag borderColor={activeTag.color} active compact>
           <TextAux>{activeTag.name}</TextAux>
         </StyledTag>
       ) : (

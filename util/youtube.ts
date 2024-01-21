@@ -193,9 +193,9 @@ export const sortPlaylists = (
     (playlist) => playlist.id === YOUTUBE_LIKED_VIDEOS_PLAYLIST_ID
   );
 
-  const otherPlaylists = playlists.filter(
-    (pl) => pl.id !== YOUTUBE_LIKED_VIDEOS_PLAYLIST_ID
-  );
+  const otherPlaylists = playlists
+    .slice(0, 3)
+    .filter((pl) => pl.id !== YOUTUBE_LIKED_VIDEOS_PLAYLIST_ID);
 
   return [...otherPlaylists, likedVideosPlaylist];
 };

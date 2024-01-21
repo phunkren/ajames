@@ -1,11 +1,9 @@
 import { useEffect, useRef } from "react";
-import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 import debounce from "lodash.debounce";
 import Balancer from "react-wrap-balancer";
 import LiteYouTubeEmbed from "react-lite-youtube-embed";
 import Image from "next/image";
 import { PlayIcon } from "@radix-ui/react-icons";
-import laptop from "../../public/images/laptop.png";
 import { YOUTUBE_CHANNEL_URL, YOUTUBE_SHARE_TEXT } from "../../util/youtube";
 import { css, styled } from "../../stitches.config";
 import { buildUrl } from "../../util/url";
@@ -211,7 +209,7 @@ export const Learning = ({
                 alignItems="baseline"
                 spacingBottom={8}
               >
-                <TextTitle2 as="h3">Latest Video</TextTitle2>
+                <TextTitle2 as="h3">Featured</TextTitle2>
 
                 <Link href={featuredVideo.url} variant="tertiary">
                   <PlayIcon
@@ -224,7 +222,7 @@ export const Learning = ({
               </Box>
 
               <Box
-                gap={{ "@initial": 0, "@bp3": 10 }}
+                gap={{ "@initial": 0, "@bp3": 11 }}
                 direction={{ "@initial": "vertical", "@bp3": "horizontal" }}
               >
                 <Box
@@ -237,7 +235,7 @@ export const Learning = ({
                   <LiteYouTubeEmbed
                     id={featuredVideo.videoId} // Default none, id of the video or playlist
                     title={featuredVideo.title} // a11y, always provide a title for iFrames: https://dequeuniversity.com/tips/provide-iframe-titles Help the web be accessible ;)
-                    params={`mute=1&modestbranding=1&rel=0&widget_referrer=${SITE.url}&controls=0`} // any params you want to pass to the URL, assume we already had '&' and pass your parameters string
+                    params={`start=300&mute=1&modestbranding=1&rel=0&widget_referrer=${SITE.url}&controls=0`} // any params you want to pass to the URL, assume we already had '&' and pass your parameters string
                     poster="hqdefault" // Defines the image size to call on first render as poster image. Possible values are "default","mqdefault",  "hqdefault", "sddefault" and "maxresdefault". Default value for this prop is "hqdefault". Please be aware that "sddefault" and "maxresdefault", high resolution images are not always avaialble for every video. See: https://stackoverflow.com/questions/2068344/how-do-i-get-a-youtube-video-thumbnail-from-the-youtube-api
                     playlist={false} // Use true when your ID be from a playlist
                     adNetwork={false} // Default true, to preconnect or not to doubleclick addresses called by YouTube iframe (the adnetwork from Google)

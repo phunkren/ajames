@@ -91,18 +91,6 @@ const GridItem = styled("li", {
   },
 });
 
-const mobileSection = css({
-  display: "flex !important",
-  "@bp3": { display: "none !important" },
-  "@print": { display: "none !important" },
-});
-
-const desktopSection = css({
-  display: "none !important",
-  "@bp3": { display: "flex !important" },
-  "@print": { display: "flex !important" },
-});
-
 export const CollapsibleSection = memo(function CollapsibleSection({
   title,
   children,
@@ -115,38 +103,42 @@ export const CollapsibleSection = memo(function CollapsibleSection({
 
   return (
     <>
-      <CollapsibleRoot className={mobileSection()}>
-        <Box as="section" direction="vertical">
-          <Box
-            justifyContent="space-between"
-            alignItems="center"
-            gap={2}
-            tabIndex={-1}
-            onClick={handleClick}
-          >
-            <TextTitle2>{title}</TextTitle2>
-
-            <CollapsibleTrigger asChild>
-              <CollapsibleButton ref={buttonRef} />
-            </CollapsibleTrigger>
-          </Box>
-
-          <Box spacingTop={2} spacingBottom={{ "@initial": 8, "@print": 4 }}>
-            <Divider />
-          </Box>
-
-          <CollapsibleContent asChild>
+      <Box
+        display={{ "@initial": "flex", "@bp2": "none", "@print": "none" }}
+        direction="vertical"
+      >
+        <CollapsibleRoot>
+          <Box as="section" direction="vertical">
             <Box
-              direction="vertical"
-              spacingBottom={{ "@initial": 11, "@print": 8 }}
+              justifyContent="space-between"
+              alignItems="center"
+              gap={2}
+              tabIndex={-1}
+              onClick={handleClick}
             >
-              {children}
-            </Box>
-          </CollapsibleContent>
-        </Box>
-      </CollapsibleRoot>
+              <TextTitle2>{title}</TextTitle2>
 
-      <Box className={desktopSection()} as="section" direction="vertical">
+              <CollapsibleTrigger asChild>
+                <CollapsibleButton ref={buttonRef} />
+              </CollapsibleTrigger>
+            </Box>
+
+            <Box spacingTop={2} spacingBottom={8}>
+              <Divider />
+            </Box>
+
+            <Box direction="vertical" spacingBottom={10}>
+              <CollapsibleContent asChild>{children}</CollapsibleContent>
+            </Box>
+          </Box>
+        </CollapsibleRoot>
+      </Box>
+
+      <Box
+        as="section"
+        direction="vertical"
+        display={{ "@initial": "none", "@bp2": "flex", "@print": "flex" }}
+      >
         <Box justifyContent="space-between" alignItems="center" gap={2}>
           <TextTitle2>{title}</TextTitle2>
         </Box>

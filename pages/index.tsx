@@ -1,5 +1,4 @@
 import { GetStaticProps } from "next";
-
 import { memo, ReactElement } from "react";
 import { Box } from "../components/Box";
 import { Layout } from "../components/Layout";
@@ -10,7 +9,6 @@ import {
   Props as LearningProps,
 } from "../components/sections/Learning";
 import { Writing, Props as WritingProps } from "../components/sections/Writing";
-import { SocialSponsored } from "../components/Social";
 import { getPosts } from "../lib/notion";
 import { getYoutubeData } from "../lib/youtube";
 import { ONE_MINUTE_IN_SECONDS } from "../util/date";
@@ -75,8 +73,6 @@ const Home: NextPageWithLayout = memo(function Home({
         <Writing {...writing} />
 
         <Learning {...learning} />
-
-        <SocialSponsored />
       </Box>
     </>
   );

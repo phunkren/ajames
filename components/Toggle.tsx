@@ -7,6 +7,7 @@ import { ICON_SIZE } from "../util/images";
 import { useTheme } from "../hooks/useTheme";
 import { Tooltip } from "./Tooltip";
 import { Theme } from "./Theme";
+import { IconButton } from "./Button";
 
 type Props = Toggle.ToggleProps & {
   compact?: boolean;
@@ -16,6 +17,12 @@ type Props = Toggle.ToggleProps & {
 const ICON_PROPS = {
   display: "flex",
   color: "$foreground",
+
+  "@media(hover)": {
+    "&:hover": {
+      color: "$background",
+    },
+  },
 };
 
 const HEADER_ICON_PROPS = {
@@ -109,15 +116,15 @@ export const LayoutToggle = memo(function LayoutToggle({
 }: Props) {
   return (
     <Tooltip title="Layout">
-      <ToggleRoot aria-label="Theme" {...props}>
+      <IconButton as={ToggleRoot} aria-label="Theme" {...props}>
         {value === "grid" ? (
-          <StyledGridIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
+          <StyledGridIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
         ) : null}
 
         {value === "rows" ? (
-          <StyledRowsIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
+          <StyledRowsIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
         ) : null}
-      </ToggleRoot>
+      </IconButton>
     </Tooltip>
   );
 });

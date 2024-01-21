@@ -170,32 +170,31 @@ export const Writing = ({ posts, tags }: Props) => {
   const [display, setDisplay] = useState<"partial" | "all">("partial");
   const queryTag = query.tag as string;
 
-  const filteredPosts = filterPosts(posts, queryTag);
+  const featuredPost = posts.find(
+    (post) =>
+      post.properties.slug.rich_text[0].plain_text === "synchronize-content"
+  );
+
+  const filteredPosts = filterPosts(posts, featuredPost, queryTag);
 
   const displayedPosts =
     display === "partial" ? filteredPosts.slice(0, 7) : filteredPosts;
 
   const shouldShowMore = displayedPosts < filteredPosts;
 
-  const featuredPost = posts.find(
-    (post) =>
-      post.properties.slug.rich_text[0].plain_text === "synchronize-content"
-  );
-
   const [storageLayout, setStorageLayout] = useLocalStorage<string>(
     "layout",
-    "grid"
+    "rows"
   );
 
   const handleTagChange = useCallback(
     (tagName: string) => {
-      const activeTag = query.tag as string;
-      const isTagActive = activeTag === tagName;
-
-      const tag = isTagActive ? undefined : tagName;
-
       replace(
-        { pathname: "/", hash: "writing", query: { ...query, tag } },
+        {
+          pathname: "/",
+          hash: "writing",
+          query: { ...query, tag: tagName.toLowerCase() },
+        },
         undefined,
         {
           shallow: true,
@@ -269,20 +268,29 @@ export const Writing = ({ posts, tags }: Props) => {
             </Frontmatter>
 
             <ActionButtons css={{ flexBasis: "fit-content" }}>
-              <FilterClearButton filter={queryTag} />
-
               <TagDrawer tags={tags} onClick={handleTagChange} />
 
-              <TagSelect value={queryTag} onValueChange={handleTagChange}>
-                {tags.map((tag) => (
-                  <TagSelectItem
-                    key={tag.id}
-                    id={tag.name}
-                    color={tag.color}
-                    value={tag.name}
-                  />
-                ))}
-              </TagSelect>
+              <LayoutToggle
+                aria-label="Articles layout"
+                defaultPressed={storageLayout === "grid"}
+                value={storageLayout}
+                onPressedChange={handleLayoutChange}
+              />
+
+              {queryTag ? (
+                <FilterClearButton filter={queryTag} />
+              ) : (
+                <TagSelect value={queryTag} onValueChange={handleTagChange}>
+                  {tags.map((tag) => (
+                    <TagSelectItem
+                      key={tag.id}
+                      id={tag.name}
+                      color={tag.color}
+                      value={tag.name}
+                    />
+                  ))}
+                </TagSelect>
+              )}
             </ActionButtons>
           </Box>
 
@@ -298,30 +306,36 @@ export const Writing = ({ posts, tags }: Props) => {
             </Box>
 
             <Box
-              gap={{ "@initial": 0, "@bp3": 10 }}
+              gap={{ "@initial": 0, "@bp3": 11 }}
               direction={{ "@initial": "vertical", "@bp3": "horizontal" }}
             >
               <Box
                 direction="vertical"
                 spacingBottom={{ "@initial": 10, "@bp3": 0 }}
                 css={{
-                  "@bp3": { flexGrow: 0, flexShrink: 0, flexBasis: "45%" },
+                  "@bp3": { flexGrow: 0, flexShrink: 0, flexBasis: "50%" },
                 }}
               >
-                <AspectRatio.Root ratio={16 / 9}>
-                  <StyledImage
-                    src={featuredPost.cover.external.url}
-                    sizes="(max-width: 1020px) 100vw, 50vw"
-                    fill
-                    alt=""
-                  />
-                </AspectRatio.Root>
+                <Link
+                  aria-label="Read the article"
+                  href={`/writing/${featuredPost.properties.slug.rich_text[0].plain_text}`}
+                  css={{ display: "block", width: "100%" }}
+                >
+                  <AspectRatio.Root ratio={17 / 10}>
+                    <StyledImage
+                      src={featuredPost.cover.external.url}
+                      sizes="(max-width: 1020px) 100vw, 50vw"
+                      fill
+                      alt=""
+                    />
+                  </AspectRatio.Root>
+                </Link>
               </Box>
 
               <Box direction="vertical" gap={4}>
                 <Link
                   href={`/writing/${featuredPost.properties.slug.rich_text[0].plain_text}`}
-                  variant="primary"
+                  variant="secondary"
                 >
                   <TextTitle3>
                     <Balancer>
@@ -334,6 +348,8 @@ export const Writing = ({ posts, tags }: Props) => {
                   <PostTags
                     as="div"
                     tags={featuredPost.properties.tags.multi_select}
+                    compact
+                    onTagChange={handleTagChange}
                   />
                 </Box>
 
@@ -362,24 +378,6 @@ export const Writing = ({ posts, tags }: Props) => {
         ) : null}
 
         <Box direction="vertical">
-          <Box
-            gap={4}
-            justifyContent="space-between"
-            alignItems="center"
-            spacingBottom={10}
-          >
-            <Box gap={4} alignItems="baseline">
-              <TextTitle2>Articles</TextTitle2>
-            </Box>
-
-            <LayoutToggle
-              aria-label="Articles layout"
-              defaultPressed={storageLayout === "grid"}
-              value={storageLayout}
-              onPressedChange={handleLayoutChange}
-            />
-          </Box>
-
           <Box
             direction="vertical"
             display={storageLayout === "grid" ? "flex" : "none"}
@@ -435,84 +433,114 @@ export const Writing = ({ posts, tags }: Props) => {
             direction="vertical"
             gap={11}
             display={storageLayout === "rows" ? "flex" : "none"}
+            spacingRight={2}
           >
             {displayedPosts.map((post, i) => {
               return (
                 <Fragment key={post.id}>
-                  <Box as="li">
-                    <Box as="article" direction="vertical" gap={1}>
-                      <Balancer>
-                        <Link
-                          href={`/writing/${post.properties.slug.rich_text[0].plain_text}`}
-                          variant="primary"
-                        >
-                          <TextTitle3>
-                            {post.properties.page.title[0].plain_text}
-                          </TextTitle3>
-                        </Link>
-                      </Balancer>
-
-                      <TextBody
-                        color="secondary"
-                        css={{
-                          maxWidth: "none",
-                          spacingBottom: "$2",
-                          "@bp2": { maxWidth: "75%" },
-                          "@bp3": { maxWidth: "66%" },
-                        }}
-                      >
-                        {post.properties.abstract.rich_text[0].plain_text}
-                      </TextBody>
-
-                      <PostTags
-                        as="div"
-                        tags={post.properties.tags.multi_select}
-                        compact
-                      />
-                    </Box>
-                  </Box>
-
-                  {i === 2 ? (
-                    <Box as="li" key="advert">
-                      <Box as="article" direction="vertical">
-                        <TextTitle3 css={{ color: "$focus" }}>
-                          Enjoying the blog?
-                        </TextTitle3>
+                  <Box as="li" direction="vertical">
+                    <Box as="article" alignItems="baseline">
+                      <Box direction="vertical" flexGrow gap={2}>
+                        <Balancer>
+                          <Link
+                            href={`/writing/${post.properties.slug.rich_text[0].plain_text}`}
+                            variant="secondary"
+                          >
+                            <TextTitle3>
+                              {post.properties.page.title[0].plain_text}
+                            </TextTitle3>
+                          </Link>
+                        </Balancer>
 
                         <TextBody
                           color="secondary"
                           css={{
                             maxWidth: "none",
                             spacingBottom: "$2",
+                            "@bp2": { maxWidth: "75%" },
                             "@bp3": { maxWidth: "66%" },
                           }}
                         >
-                          You can support my work and stay updated by following
-                          the&nbsp;
-                          <Link href="/rss" variant="tertiary">
-                            RSS Feed
-                          </Link>
-                          .{" "}
-                          <Box
-                            as="br"
-                            display={{ "@initial": "none", "@bp2": "flex" }}
-                            css={{ content: "" }}
-                          />
-                          You can also&nbsp;
-                          <BuyMeCoffeeLink variant="text" />.
+                          {post.properties.abstract.rich_text[0].plain_text}
                         </TextBody>
 
+                        <Link
+                          href={`/writing/${post.properties.slug.rich_text[0].plain_text}`}
+                          variant="tertiary"
+                        >
+                          <TextAux>Read the article</TextAux>
+                        </Link>
+                      </Box>
+
+                      <Box
+                        display={{
+                          "@initial": "none",
+                          "@bp2": "flex",
+                        }}
+                      >
                         <PostTags
                           as="div"
-                          tags={[
-                            {
-                              id: "sponsored",
-                              name: "Sponsored",
-                              color: "default",
-                            },
-                          ]}
+                          tags={post.properties.tags.multi_select}
                           compact
+                          end
+                          onTagChange={handleTagChange}
                         />
+                      </Box>
+                    </Box>
+                  </Box>
+
+                  {i === 2 ? (
+                    <Box as="li" direction="vertical" key="advert">
+                      <Box as="article" alignItems="baseline">
+                        <Box direction="vertical" flexGrow gap={2}>
+                          <TextTitle3>Enjoying the blog?</TextTitle3>
+
+                          <TextBody
+                            color="secondary"
+                            css={{
+                              maxWidth: "none",
+                              spacingBottom: "$2",
+                              "@bp3": { maxWidth: "66%" },
+                            }}
+                          >
+                            You can support my work and stay updated by
+                            following the&nbsp;
+                            <Link href="/rss" variant="tertiary">
+                              RSS Feed
+                            </Link>
+                            .{" "}
+                            <Box
+                              as="br"
+                              display={{ "@initial": "none", "@bp2": "flex" }}
+                              css={{ content: "" }}
+                            />
+                            You can also&nbsp;
+                            <BuyMeCoffeeLink variant="text" />.
+                          </TextBody>
+
+                          <Link href="/rss" variant="tertiary">
+                            <TextAux>Follow me</TextAux>
+                          </Link>
+                        </Box>
+
+                        <Box
+                          display={{
+                            "@initial": "none",
+                            "@bp2": "flex",
+                          }}
+                        >
+                          <PostTags
+                            as="div"
+                            tags={[
+                              {
+                                id: "sponsored",
+                                name: "Sponsored",
+                                color: "default",
+                              },
+                            ]}
+                            compact
+                          />
+                        </Box>
                       </Box>
                     </Box>
                   ) : null}
