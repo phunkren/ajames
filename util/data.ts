@@ -170,7 +170,7 @@ export const EMPLOYMENT: Employer[] = [
     id: "cohaeseus",
     displayName: "Cohaesus",
     url: "https://cohaesus.co.uk/",
-    position: "Junior Engineer",
+    position: "Junior Frontend Engineer",
     startDate: "2015-02-01",
     endDate: "2017-06-01",
     location: "London, UK",
