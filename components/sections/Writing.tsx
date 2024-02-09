@@ -606,28 +606,17 @@ export const Writing = ({ posts, tags }: Props) => {
                   </IconButton>
                 </Tooltip>
 
-                {Array.from(
-                  { length: totalPages },
-                  (_, index) => index + 1
-                ).map((pageNumber) => (
-                  <Button
-                    key={pageNumber}
-                    variant="tertiary"
-                    onClick={() => handlePageChange(pageNumber)}
+                <Button variant="tertiary">
+                  <TextHeadline
+                    spacing={2}
+                    css={{
+                      textDecorationColor: "$focus",
+                      textUnderlineOffset: "$space$1",
+                    }}
                   >
-                    <TextHeadline
-                      spacing={2}
-                      css={{
-                        textDecoration:
-                          pageNumber === page ? "underline" : "none",
-                        textDecorationColor: "$focus",
-                        textUnderlineOffset: "$space$1",
-                      }}
-                    >
-                      {pageNumber}
-                    </TextHeadline>
-                  </Button>
-                ))}
+                    {page}
+                  </TextHeadline>
+                </Button>
 
                 <Tooltip title="Next page">
                   <IconButton
