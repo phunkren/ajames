@@ -74,11 +74,11 @@ export const EMPLOYMENT: Employer[] = [
     id: "coinbase",
     displayName: "Coinbase",
     url: "https://www.coinbase.com/",
-    position: "Frontend Engineer (IC4)",
+    position: "Senior Software Engineer (IC5)",
     startDate: "2022-03-01",
     location: "Remote, EMEA",
     content:
-      "Currently working within a multidisciplinary team to create intuitive and trustworthy user experiences for institutional customers on Coinbase Prime, enabling them to execute trades and manage large portfolio positions across spot and derivative crypto markets. Recently was the lead UI developer for the build and launch of the Data Marketplace, which provides a collection of historical datasets from the Coinbase Exchange.",
+      "Currently working within a multi-disciplinary team to create intuitive and trustworthy user experiences for institutional customers on Coinbase Prime. Committed to technical integrity, I build and maintain robust frontend infrastructure to deliver high-performing, reliable user interfaces. I ensure seamless trade execution and efficient portfolio management over the Prime UI surfaces. Additionally, I previously led the UI development for the Data Marketplace.",
     notableWork: [
       {
         id: "insto-prime",
@@ -223,7 +223,7 @@ export const EXPERTISE = [
 ];
 
 export const INTERESTS = [
-  "UI Design",
+  "Infrastructure",
   "Design Systems",
   "Accessibility",
   "Content Creation",
@@ -234,9 +234,10 @@ export const PERSONAL = {
   name: "Andrew James",
   email: "contact@ajames.dev",
   initials: "AJ",
-  location: "Glasgow, UK",
-  occupation: "Web Engineer",
+  location: "Scotland, UK",
+  occupation: "Senior Software Engineer",
   keywords: [
+    "Senior",
     "Frontend",
     "Software",
     "Web",
@@ -246,9 +247,9 @@ export const PERSONAL = {
     "React",
   ],
   description:
-    "Andrew James is a web engineer and content creator, with a love for all things front-end.",
+    "Andrew James is a senior software engineer and content creator, with a love for all things front-end.",
   profile1:
-    "I'm a web engineer based in Glasgow, Scotland. My passion for frontend technologies continually drives me to advance my skill set and adopt the latest industry best practices. An analytical mindset and strong communication skills allow me to excel in environments where I can learn from others and inspire my peers.",
+    "I'm a senior software engineer based in Glasgow, Scotland. My passion for frontend technologies continually drives me to advance my skill set and adopt the latest industry best practices. An analytical mindset and strong communication skills allow me to excel in environments where I can learn from others and inspire my peers.",
   profile2:
     "Over the years I've refined a set of technical principles to strive towards, namely: complexity should only be introduced when it’s unavoidable; code should be easy to reason with and delete; avoid abstracting too early, and the top priority is always the best possible user experience.",
 };
