@@ -234,7 +234,7 @@ export const HomepageHero = memo(function HomepageHero() {
         </TextTitle>
 
         <TextSubtitle color="currentColor" css={{ textShadow: "$textShadow" }}>
-          {PERSONAL.occupation} / {PERSONAL.location}
+          {PERSONAL.occupation}
         </TextSubtitle>
 
         <Box position="relative" spacingTop={4} css={{ left: "-$1" }}>
