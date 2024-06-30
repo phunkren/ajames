@@ -189,6 +189,7 @@ export async function generateRSSFeed(posts: BlogPost[]) {
     const slug = post.properties.slug.rich_text[0].plain_text;
     const url = `${baseUrl}/blog/${slug}`;
     const { postData } = await getPostData(slug);
+
     const image = { url: post.cover.external.url };
     const category = post.properties.tags.multi_select.map(({ name }) => ({
       name,
