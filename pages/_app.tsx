@@ -8,6 +8,8 @@ import { ErrorFallback } from "../components/ErrorFallback";
 import { ThemeProvider } from "../components/Theme";
 import Head from "next/head";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next"
+
 
 const euclid = localFont({
   src: [
@@ -62,6 +64,8 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
       </ErrorBoundary>
 
       <Analytics />
+
+      <SpeedInsights />
     </>
   );
 }

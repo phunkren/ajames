@@ -471,6 +471,7 @@ export const Writing = ({ posts, tags }: Props) => {
               as="ul"
               direction="vertical"
               gap={11}
+              container="m"
               display={storageLayout === "rows" ? "flex" : "none"}
             >
               {displayedPosts.map((post, i) => {
