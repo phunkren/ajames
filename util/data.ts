@@ -312,20 +312,20 @@ export const SOCIAL: Record<string, Social> = {
 
 export const TESTIMONIALS: Testimonial[] = [
   {
+    id: "cb",
+    name: "Chafin Bryant",
+    url: "https://www.linkedin.com/in/chafin-bryant/",
+    position: "Engineering Manager",
+    quote:
+      "Andrew's exceptional customer focus is evident in every project he undertakes, consistently ensuring that user needs are not just met but exceeded. His technical expertise in front-end engineering demonstrates a deep understanding of both the fundamentals and the latest industry trends.",
+  },
+  {
     id: "ms",
     name: "Matthew Sinclair",
     url: "https://www.linkedin.com/in/matthewsinclair/",
     position: "VP, Engineering",
     quote:
       "Rarely have I had the opportunity to work with an engineer that combines Andrew's technical calibre, his exceptional citizenship, his ability to communicate and demonstrate his ideas to both team and client, and his commitment to coaching and mentoring the folks he works with.",
-  },
-  {
-    id: "pg",
-    name: "Paul Groves",
-    url: "https://www.linkedin.com/in/-paul-groves/",
-    position: "Engineering Director",
-    quote:
-      "Andrew brings exceptional technical competency to his work, applying the highest levels of detail and clarity to his code. [...] He brings a considered, positive attitude and has been an absolute pleasure to work with. I could not recommend him higher.",
   },
   {
     id: "ib",
