@@ -183,9 +183,11 @@ export const P_BLOG_STYLES = {
   letterSpacing: 0.36,
 
   "@bp2": {
-    fontSize: 24,
+    fontSize: 20,
     lineHeight: 1.5,
-    letterSpacing: 0.4,
+    letterSpacing: 0.2,
+    textAlign: "left",
+    hyphens: "none",
   },
 };
 

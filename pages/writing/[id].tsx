@@ -47,12 +47,7 @@ import {
 import { SITE } from "../../util/data";
 import { ShareButton } from "../../components/Button";
 import { darkTheme, styled } from "../../stitches.config";
-import {
-  H1_STYLES,
-  H2_STYLES,
-  H3_STYLES,
-  P_BLOG_STYLES,
-} from "../../styles/text";
+import { H1_STYLES, H2_STYLES, H3_STYLES, P_STYLES } from "../../styles/text";
 import { Box } from "../../components/Box";
 import { NextPageWithLayout } from "../_app";
 import dynamic from "next/dynamic";
@@ -150,7 +145,7 @@ const StyledContainer = styled(Box, {
   },
 
   p: {
-    ...P_BLOG_STYLES,
+    ...P_STYLES,
     color: "$foregroundMuted",
   },
 
