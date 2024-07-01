@@ -550,13 +550,7 @@ export const Writing = ({ posts, tags }: Props) => {
                               <Link href="/rss" variant="tertiary">
                                 RSS Feed
                               </Link>
-                              .{" "}
-                              <Box
-                                as="br"
-                                display={{ "@initial": "none", "@bp2": "flex" }}
-                                css={{ content: "" }}
-                              />
-                              You can also&nbsp;
+                              . You can also&nbsp;
                               <BuyMeCoffeeLink variant="text" />.
                             </TextBody>
 
