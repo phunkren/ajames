@@ -183,7 +183,6 @@ export const P_BLOG_STYLES = {
   fontWeight: 400,
   lineHeight: 1.6,
   letterSpacing: 0.36,
-  color: whiteA.whiteA12,
 
   "@bp2": {
     fontSize: 20,

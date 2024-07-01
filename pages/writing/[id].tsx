@@ -151,6 +151,7 @@ const StyledContainer = styled(Box, {
 
   p: {
     ...P_BLOG_STYLES,
+    color: "$foreground",
   },
 
   a: {
@@ -334,6 +335,8 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
   )}&description=${encodeURIComponent(
     frontmatter.description
   )}&image=${encodeURIComponent(frontmatter.cover)}`;
+
+  console.log({ metaContent });
 
   const relatedArticles = frontmatter.related.length
     ? getRandomPosts(frontmatter.related, 2)

@@ -21,7 +21,7 @@ export const NOTION_TAG_VARIANTS = {
     },
     orange: {
       [`.${lightTheme} &`]: {
-        borderColor: "$amber11",
+        borderColor: "$amber12",
       },
 
       [`.${darkTheme} &`]: {
