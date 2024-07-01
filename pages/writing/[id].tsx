@@ -335,8 +335,6 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
     frontmatter.description
   )}&image=${encodeURIComponent(frontmatter.cover)}`;
 
-  console.log({ metaContent });
-
   const relatedArticles = frontmatter.related.length
     ? getRandomPosts(frontmatter.related, 2)
     : null;

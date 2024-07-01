@@ -108,7 +108,7 @@ export const {
 
 export const lightTheme = createTheme({
   colors: {
-    foreground: gray.gray12,
+    foreground: blackA.blackA12,
     foregroundMuted: gray.gray12,
     background: slate.slate1,
     backgroundMuted: gray.gray1,
