@@ -136,8 +136,8 @@ export const lightTheme = createTheme({
 
 export const darkTheme = createTheme({
   colors: {
-    foreground: slateDark.slate12,
-    foregroundMuted: whiteA.whiteA11,
+    foreground: whiteA.whiteA12,
+    foregroundMuted: slateDark.slate11,
     background: slateDark.slate1,
     backgroundMuted: grayDark.gray2,
     focus: crimsonDark.crimson11,

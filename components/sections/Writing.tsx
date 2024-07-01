@@ -175,7 +175,7 @@ export const Writing = ({ posts, tags }: Props) => {
 
   const [storageLayout, setStorageLayout] = useLocalStorage<string>(
     "layout",
-    "rows"
+    "grid"
   );
 
   const featuredPost = posts.find(

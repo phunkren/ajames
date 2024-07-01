@@ -195,8 +195,6 @@ export async function generateRSSFeed(posts: BlogPost[]) {
       name,
     }));
 
-    console.log(post.cover.external);
-
     feed.addItem({
       title,
       id: url,
