@@ -64,7 +64,7 @@ const SOCIAL_REDIRECTS = [
   },
   {
     source: "/steam",
-    destination: "https://instagram.com/phunkren/",
+    destination: "https://steamcommunity.com/id/phunkren/",
     permanent: true,
   },
   {
