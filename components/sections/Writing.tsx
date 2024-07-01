@@ -521,6 +521,7 @@ export const Writing = ({ posts, tags }: Props) => {
                             as="div"
                             tags={post.properties.tags.multi_select}
                             compact
+                            mono
                             end
                             onTagChange={handleTagChange}
                           />
