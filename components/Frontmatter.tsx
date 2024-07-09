@@ -312,9 +312,10 @@ export const TotalPosts = memo(function TotalPosts({
 }: TotalProps) {
   const formattedFiltered = formatNumber(total);
   const formattedTotal = formatNumber(total);
-  const formattedValue = filtered
-    ? `${formattedFiltered}/${formattedTotal} articles`
-    : `${formattedTotal} articles`;
+  const formattedValue =
+    filtered && filtered !== total
+      ? `${formattedFiltered}/${formattedTotal} articles`
+      : `${formattedTotal} articles`;
 
   return (
     <FrontmatterItem {...props}>
