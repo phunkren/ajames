@@ -313,7 +313,7 @@ export const TotalPosts = memo(function TotalPosts({
   const formattedFiltered = formatNumber(total);
   const formattedTotal = formatNumber(total);
   const formattedValue =
-    filtered && filtered !== total
+    filtered && formattedFiltered !== formattedTotal
       ? `${formattedFiltered}/${formattedTotal} articles`
       : `${formattedTotal} articles`;
 
