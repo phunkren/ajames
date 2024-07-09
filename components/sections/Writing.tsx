@@ -1,4 +1,4 @@
-import { Fragment, useCallback, useState } from "react";
+import { Fragment, useCallback } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
@@ -234,24 +234,6 @@ export const Writing = ({ posts, tags }: Props) => {
     );
   }, [query, replace, page]);
 
-  const handlePageChange = useCallback(
-    (newPage: number) => {
-      replace(
-        {
-          pathname: "/",
-          hash: "writing",
-          query: { ...query, writingPage: newPage },
-        },
-        undefined,
-        {
-          shallow: true,
-          scroll: false,
-        }
-      );
-    },
-    [query, replace]
-  );
-
   const handlePageForward = useCallback(() => {
     replace(
       {
@@ -471,7 +453,6 @@ export const Writing = ({ posts, tags }: Props) => {
               as="ul"
               direction="vertical"
               gap={11}
-              container="m"
               display={storageLayout === "rows" ? "flex" : "none"}
             >
               {displayedPosts.map((post, i) => {
@@ -551,7 +532,7 @@ export const Writing = ({ posts, tags }: Props) => {
                                 RSS Feed
                               </Link>
                               . You can also&nbsp;
-                              <BuyMeCoffeeLink variant="text" />.
+                              <BuyMeCoffeeLink variant="text" />
                             </TextBody>
 
                             <Link href="/rss" variant="tertiary">
@@ -575,6 +556,7 @@ export const Writing = ({ posts, tags }: Props) => {
                                 },
                               ]}
                               compact
+                              mono
                             />
                           </Box>
                         </Box>
