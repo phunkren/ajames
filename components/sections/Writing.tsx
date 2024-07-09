@@ -175,7 +175,7 @@ export const Writing = ({ posts, tags }: Props) => {
 
   const [storageLayout, setStorageLayout] = useLocalStorage<string>(
     "layout",
-    "grid"
+    "rows"
   );
 
   const featuredPost = posts.find(
@@ -295,7 +295,11 @@ export const Writing = ({ posts, tags }: Props) => {
 
           <Box justifyContent="space-between" alignItems="flex-end" gap={4}>
             <Frontmatter flexGrow>
-              <TotalPosts total={posts.length} icon />
+              <TotalPosts
+                filtered={filteredPosts.length}
+                total={posts.length}
+                icon
+              />
               <TotalCategories total={tags.length} icon />
               <ActiveTag tags={tags} queryTag={queryTag} icon />
             </Frontmatter>

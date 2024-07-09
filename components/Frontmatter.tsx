@@ -47,6 +47,7 @@ type ReadingTimeProps = FrontMatterItemProps & {
 };
 
 type TotalProps = FrontMatterItemProps & {
+  filtered?: number;
   total: number;
 };
 
@@ -304,12 +305,16 @@ export const VideosTotalCount = memo(function VideosTotalCount({
 });
 
 export const TotalPosts = memo(function TotalPosts({
+  filtered,
   total,
   icon = false,
   ...props
 }: TotalProps) {
-  const formattedNumber = formatNumber(total);
-  const formattedTotal = `${formattedNumber} articles`;
+  const formattedFiltered = formatNumber(total);
+  const formattedTotal = formatNumber(total);
+  const formattedValue = filtered
+    ? `${formattedFiltered}/${formattedTotal} articles`
+    : `${formattedTotal} articles`;
 
   return (
     <FrontmatterItem {...props}>
@@ -319,7 +324,7 @@ export const TotalPosts = memo(function TotalPosts({
           <Pencil2Icon width={ICON_SIZE.l} height={ICON_SIZE.l} />
         </Box>
       ) : null}
-      <TextHeadline textTransform="capitalize">{formattedTotal}</TextHeadline>
+      <TextHeadline textTransform="capitalize">{formattedValue}</TextHeadline>
     </FrontmatterItem>
   );
 });
