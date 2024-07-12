@@ -6,7 +6,7 @@ import mdx from "remark-mdx";
 import rehypeInferReadingTimeMeta from "rehype-infer-reading-time-meta";
 import { Client } from "@notionhq/client";
 import { NotionToMarkdown } from "notion-to-md";
-import { addRelatedPosts, BlogPost, getTags } from "../util/notion";
+import { addRelatedPosts, BlogPost, InventoryPage } from "../util/notion";
 import { PERSONAL, SITE, SOCIAL } from "../util/data";
 import { Feed } from "feed";
 
@@ -18,6 +18,14 @@ const notionClient = new Client({
 
 // Ref: https://www.npmjs.com/package/notion-to-md
 const n2m = new NotionToMarkdown({ notionClient });
+
+export const getDatabase = async (databaseId: string) => {
+  const response = await notionClient.databases.query({
+    database_id: databaseId,
+  });
+
+  return response.results;
+};
 
 // Retrieve all blog posts from Notion
 export const getPosts = async () => {
@@ -40,6 +48,14 @@ export const getPosts = async () => {
   return relatedPosts;
 };
 
+export const getInventory = async () => {
+  const inventory = (await getDatabase(
+    process.env.NOTION_INVENTORY_DATABASE_ID
+  )) as InventoryPage[];
+
+  return inventory;
+};
+
 // Create markdown file from each Notion blog post
 export async function createPosts(posts: BlogPost[]) {
   if (!fs.existsSync(POSTS_DIR)) {
@@ -58,14 +74,6 @@ export async function createPosts(posts: BlogPost[]) {
     });
   }
 }
-
-export const getDatabase = async (databaseId: string) => {
-  const response = await notionClient.databases.query({
-    database_id: databaseId,
-  });
-
-  return response.results;
-};
 
 export const getPageData = async (slug: string) => {
   const posts = await getPosts();

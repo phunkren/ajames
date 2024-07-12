@@ -12,10 +12,11 @@ import Image, { StaticImageData } from "next/image";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 import { blackA, whiteA } from "@radix-ui/colors";
 import { darkTheme, lightTheme, styled } from "../stitches.config";
-import { PostTags, PublishDate, YoutubeChannel } from "./Frontmatter";
+import { PostTags, PublishDate, Retailer, YoutubeChannel } from "./Frontmatter";
 import { Box } from "./Box";
 import { Emoji, TextAux, TextBody, TextHeadline, TextTitle3 } from "./Text";
 import { BuyMeCoffeeLink, Link } from "./Link";
+import { StyledTag } from "./Tags";
 import { PreviewToggle } from "./Button";
 import { BLUR_DATA_URL } from "../util/images";
 import { YOUTUBE_LIKED_VIDEOS_PLAYLIST_ID } from "../util/youtube";
@@ -51,6 +52,14 @@ export type VideoCardProps = CSS & {
   channel?: string;
   description?: string;
   css: any;
+};
+
+export type InventoryCardProps = CSS & {
+  id: string;
+  retailer: string;
+  title: string;
+  url: string;
+  image: string;
 };
 
 const StyledLink = styled(Link, {
@@ -484,6 +493,48 @@ export const VideoCard = memo(function VideoCard({
                 pressed={isPreviewVisible}
                 onPressedChange={onPreviewToggle}
               />
+            ) : null}
+          </Box>
+        </Box>
+      )}
+    </Card>
+  );
+});
+
+export const InventoryCard = memo(function InventoryCard({
+  id,
+  url,
+  retailer,
+  title,
+  image,
+  affiliate,
+  ...props
+}: InventoryCardProps) {
+  return (
+    <Card image={image} {...props}>
+      {({ ref }) => (
+        <Box
+          direction="vertical"
+          spacingTop={4}
+          flexGrow
+          css={{ minHeight: 156 }}
+        >
+          <StyledLink href={url} ref={ref} variant="invisible">
+            <TextHeadline clamp={3}>{title}</TextHeadline>
+          </StyledLink>
+
+          <Box
+            spacingTop={7}
+            justifyContent="space-between"
+            alignItems="center"
+            css={{ marginTop: "auto" }}
+          >
+            <Retailer as="div" name={retailer} icon compact />
+
+            {affiliate ? (
+              <StyledTag borderColor="red" compact>
+                <TextAux>AFFILIATE</TextAux>
+              </StyledTag>
             ) : null}
           </Box>
         </Box>

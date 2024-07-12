@@ -2,10 +2,13 @@ import { memo } from "react";
 import {
   AvatarIcon,
   BellIcon,
+  BookmarkFilledIcon,
+  BookmarkIcon,
   CalendarIcon,
   ClockIcon,
   EyeOpenIcon,
   GlobeIcon,
+  HeartIcon,
   LaptopIcon,
   MixIcon,
   Pencil2Icon,
@@ -53,6 +56,10 @@ type TotalProps = FrontMatterItemProps & {
 
 type YoutubeChannelProps = FrontMatterItemProps & {
   channel: string;
+};
+
+type RetailerProps = FrontMatterItemProps & {
+  name: string;
 };
 
 export const Frontmatter = memo(function Frontmatter(props: BoxProps) {
@@ -441,6 +448,85 @@ export const Occupation = memo(function Occupation({
       <TextHeadline textTransform="capitalize">
         {formattedOccupation}
       </TextHeadline>
+    </FrontmatterItem>
+  );
+});
+
+export const Retailer = memo(function Retailer({
+  name,
+  icon = false,
+  compact = false,
+  ...props
+}: RetailerProps) {
+  if (compact) {
+    return (
+      <FrontmatterItem compact {...props}>
+        {icon ? (
+          <Box flexShrink={false}>
+            <VisuallyHidden.Root>Bookmark</VisuallyHidden.Root>
+            <BookmarkFilledIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
+          </Box>
+        ) : null}
+
+        <TextAux clamp={1} color="secondary">
+          {name}
+        </TextAux>
+      </FrontmatterItem>
+    );
+  }
+
+  return (
+    <FrontmatterItem {...props}>
+      {icon ? (
+        <Box flexShrink={false}>
+          <VisuallyHidden.Root>Bookmark</VisuallyHidden.Root>
+          <BookmarkFilledIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
+        </Box>
+      ) : null}
+
+      <TextHeadline textTransform="capitalize">{name}</TextHeadline>
+    </FrontmatterItem>
+  );
+});
+
+export const InventoryCount = memo(function VideosViewsCount({
+  total,
+  icon = false,
+  ...props
+}: TotalProps) {
+  const formattedNumber = formatNumber(total);
+  const formattedItems = `${formattedNumber} items*`;
+
+  return (
+    <FrontmatterItem {...props}>
+      {icon ? (
+        <Box flexShrink={false}>
+          <VisuallyHidden.Root>Heart</VisuallyHidden.Root>
+          <HeartIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
+        </Box>
+      ) : null}
+      <TextHeadline textTransform="capitalize">{formattedItems}</TextHeadline>
+    </FrontmatterItem>
+  );
+});
+
+export const RetailerCount = memo(function RetailerCount({
+  total,
+  icon = false,
+  ...props
+}: TotalProps) {
+  const formattedNumber = formatNumber(total);
+  const formattedItems = `${formattedNumber} retailers`;
+
+  return (
+    <FrontmatterItem {...props}>
+      {icon ? (
+        <Box flexShrink={false}>
+          <VisuallyHidden.Root>Bookmarks</VisuallyHidden.Root>
+          <BookmarkFilledIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
+        </Box>
+      ) : null}
+      <TextHeadline textTransform="capitalize">{formattedItems}</TextHeadline>
     </FrontmatterItem>
   );
 });

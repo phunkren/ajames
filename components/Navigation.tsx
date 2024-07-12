@@ -1,8 +1,6 @@
 import { memo, useCallback, useState } from "react";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 import { useRouter } from "next/router";
-import Image, { StaticImageData } from "next/image";
-import { grassDark } from "@radix-ui/colors";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import * as Dialog from "@radix-ui/react-dialog";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
@@ -26,7 +24,6 @@ export type NavigationProjectLinkProps = {
   name: string;
   url: string;
   description: string;
-  src: StaticImageData;
 };
 
 const dialogSlideIn = keyframes({
@@ -103,7 +100,6 @@ const StyledNavigationSubmenuLink = styled(Link, {
 });
 
 export const NavigationProjectLink = memo(function NavigationProjectLink({
-  src,
   name,
   description,
   url,
@@ -117,26 +113,13 @@ export const NavigationProjectLink = memo(function NavigationProjectLink({
           </TextAux>
         </VisuallyHidden.Root>
 
-        <Box flexGrow alignItems="center" gap={4} aria-hidden>
-          <Box
-            css={{
-              flexShrink: 0,
-              backgroundColor: grassDark.grass8,
-              borderRadius: "$1",
-              overflow: "hidden",
-            }}
-          >
-            <Image src={src} alt="" width={44} height={44} />
-          </Box>
-
-          <Box direction="vertical" flexGrow>
-            <TextHeadline as="span" color="secondary" css={{ lineHeight: 1 }}>
-              {name}
-            </TextHeadline>
-            <TextAux color="secondary" clamp={1}>
-              {description}
-            </TextAux>
-          </Box>
+        <Box direction="vertical" flexGrow>
+          <TextHeadline as="span" color="secondary" css={{ lineHeight: 1 }}>
+            {name}
+          </TextHeadline>
+          <TextAux color="secondary" clamp={1}>
+            {description}
+          </TextAux>
         </Box>
       </StyledNavigationSubmenuLink>
     </NavigationMenu.Link>
@@ -217,7 +200,7 @@ export const Navigation = memo(function Navigation() {
         <NavigationMenu.Item>
           <NavigationMenu.Trigger asChild>
             <Button variant="tertiary" css={{ padding: 0, gap: "$2" }}>
-              <TextHeadline>Projects</TextHeadline>
+              <TextHeadline>...props</TextHeadline>
               <ChevronDownIcon width={ICON_SIZE.s} height={ICON_SIZE.s} />
             </Button>
           </NavigationMenu.Trigger>

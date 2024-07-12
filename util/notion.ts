@@ -1,5 +1,6 @@
 import uniqWith from "lodash.uniqwith";
 import isEqual from "lodash.isequal";
+import sortBy from "lodash.sortby";
 import { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 
 type Cover = {
@@ -40,13 +41,13 @@ type Page = {
   }[];
 };
 
-type Published = {
+type Checkbox = {
   id: string;
   type: string;
   checkbox: boolean;
 };
 
-type Canonical = {
+type Url = {
   id: string;
   type: string;
   url: string;
@@ -66,7 +67,7 @@ type Abstract = {
   }[];
 };
 
-type Slug = {
+type Text = {
   id: string;
   type: string;
   rich_text: {
@@ -108,16 +109,40 @@ type Tags = {
 export type BlogPost = PageObjectResponse & {
   cover: Cover;
   properties: {
-    published: Published;
-    canonical: Canonical;
+    published: Checkbox;
+    canonical: Url;
     abstract: Abstract;
     page: Page;
     date: Date;
-    slug: Slug;
+    slug: Text;
     tags: Tags;
   };
   related?: BlogPost[];
 };
+
+export type InventoryPage = PageObjectResponse & {
+  properties: {
+    id: Text;
+    retailer: Text;
+    title: Page;
+    image: Url;
+    url: Url;
+    affiliate: Checkbox;
+    category: Tags;
+  };
+};
+
+type InventoryCategoryItem = {
+  id: string;
+  retailer: string;
+  title: string;
+  image: string;
+  url: string;
+  affiliate: boolean;
+  category: string;
+};
+
+export type Inventory = Record<string, InventoryCategoryItem[]>;
 
 export function getTags(posts: BlogPost[]): Tag[] {
   const allTags = posts.flatMap((post) => post.properties.tags.multi_select);
@@ -252,4 +277,55 @@ export function getRandomPosts(arr: BlogPost[], numElements: number): any[] {
   });
 
   return result;
+}
+
+export function getFormattedInventory(
+  inventoryPages: InventoryPage[]
+): Inventory {
+  return inventoryPages.reduce((acc: Inventory, item: InventoryPage) => {
+    const category = item.properties.category.multi_select[0].name;
+
+    if (!acc[`${category}`]) {
+      acc[`${category}`] = [];
+    }
+
+    const inventoryCategoryItem = {
+      id: item.properties.id.rich_text[0].text.content,
+      retailer: item.properties.retailer.rich_text[0].text.content,
+      title: item.properties.title.title[0].text.content,
+      image: item.properties.image.url,
+      url: item.properties.url.url,
+      affiliate: item.properties.affiliate.checkbox,
+      category,
+    };
+
+    acc[`${category}`].push(inventoryCategoryItem);
+
+    return acc;
+  }, {} as Inventory);
+}
+
+export function sortInventory(inventory: Inventory) {
+  const inventoryEntries = Object.entries(inventory);
+
+  const sortedInventoryEntries = inventoryEntries.map(
+    ([category, categoryItems]) => {
+      const sortedItems = sortBy(categoryItems, ["title"]);
+      return [category, sortedItems];
+    }
+  );
+
+  return Object.fromEntries(sortedInventoryEntries);
+}
+
+export function getUniqueRetailers(inventory: Inventory) {
+  const uniqueRetailers = new Set<string>();
+
+  for (const key in inventory) {
+    inventory[key].forEach((item) => {
+      uniqueRetailers.add(item.retailer);
+    });
+  }
+
+  return uniqueRetailers.size;
 }

@@ -1,6 +1,3 @@
-import { StaticImageData } from "next/image";
-import ooft from "../public/images/ooft.png";
-
 type Education = {
   id: string;
   qualification?: string;
@@ -48,7 +45,6 @@ type Project = {
   name: string;
   url: string;
   description: string;
-  src: StaticImageData;
 };
 
 export const EDUCATION: Education[] = [
@@ -339,10 +335,15 @@ export const TESTIMONIALS: Testimonial[] = [
 
 export const PROJECTS: Project[] = [
   {
+    id: "what-i-use",
+    name: "Inventory",
+    url: "/inventory",
+    description: "My professional loadout",
+  },
+  {
     id: "find-phunk",
     name: "Find Phunk",
     url: "https://findphunk.vercel.app/",
     description: "A daily game of 26 card Monte",
-    src: ooft,
   },
 ];

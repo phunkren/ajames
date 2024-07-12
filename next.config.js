@@ -149,6 +149,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "www.notion.so", // Notion
       },
+      {
+        protocol: "https",
+        hostname: "m.media-amazon.com", // Amazon (Images)
+      },
     ],
   },
   productionBrowserSourceMaps: true,

@@ -41,6 +41,11 @@ export type ChannelInfoPreview = {
   videoCount: string;
 };
 
+export const INVENTORY_URL = "https://ajames.dev/inventory";
+
+export const INVENTORY_SHARE_TEXT =
+  "Check out Andrew James' professional setup";
+
 export const YOUTUBE_API_URL = "https://youtube.googleapis.com/youtube/v3";
 
 export const YOUTUBE_URL = "https://www.youtube.com";
