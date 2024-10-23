@@ -20,6 +20,7 @@ import { Tooltip } from "./Tooltip";
 import { SpacingUnit } from "../styles/flex";
 import { styled } from "../stitches.config";
 import { ICON_SIZE } from "../util/images";
+import { PiButterfly } from "react-icons/pi";
 import { SiBuymeacoffee } from "react-icons/si";
 import { Divider } from "./Divider";
 import { TextAux, TextTitle2 } from "./Text";
@@ -58,18 +59,20 @@ export const Social = memo(function Social({
     <StyledBox as="nav" aria-label="Social Media" {...props}>
       <Box as="ul" role="list" gap={gap} alignItems="baseline">
         <Box as="li" alignItems="flex-end">
-          <Tooltip title={SOCIAL.twitter.displayName}>
+          <Tooltip title={SOCIAL.blueSky.displayName}>
             <Link
-              href={SOCIAL.twitter.url}
+              href={SOCIAL.blueSky.url}
               variant="icon"
               css={{ position: "relative", top: -1 }}
             >
               <VisuallyHidden.Root>
-                {SOCIAL.twitter.displayName}
+                {SOCIAL.blueSky.displayName}
               </VisuallyHidden.Root>
-              <TwitterLogoIcon
+
+              <PiButterfly
                 size={compact ? ICON_SIZE.l : ICON_SIZE.xl}
                 aria-hidden
+                focusable={false}
               />
             </Link>
           </Tooltip>
