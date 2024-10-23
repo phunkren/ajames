@@ -711,14 +711,13 @@ export const BlueskyShareLink = memo(function BlueskyShareLink({
   const formattedText = `${emoji} ${text}`;
   const formattedAuthor = `🙋‍♂️ ${SOCIAL.bluesky.handle}`;
 
-  const sanitisedText = encodeURIComponent(
-    `${formattedText}\n\n${formattedAuthor}\n\n`
-  );
-
   const sanitisedUrl = encodeURIComponent(url);
 
+  const sanitisedText = encodeURIComponent(
+    `${formattedText}\n\n${formattedAuthor}\n\n${sanitisedUrl}`
+  );
+
   const href = buildUrl("https://bsky.app/intent/compose", {
-    url: sanitisedUrl,
     text: sanitisedText,
   });
 
