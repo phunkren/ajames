@@ -156,8 +156,8 @@ export const Layout = memo(function Layout({ children }: LayoutProps) {
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:creator" content={SOCIAL.twitter.handle} />
-        <meta name="twitter:site" content={SOCIAL.twitter.handle} />
+        <meta name="twitter:creator" content={SOCIAL.x.handle} />
+        <meta name="twitter:site" content={SOCIAL.x.handle} />
         <meta key="twitter:title" name="twitter:title" content={metaTitle} />
         <meta
           key="twitter:description"
