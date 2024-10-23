@@ -274,11 +274,11 @@ export const SOCIAL: Record<string, Social> = {
     handle: "@ajamesdev",
     url: "https://www.youtube.com/@ajamesdev",
   },
-  twitter: {
-    id: "twitter",
-    displayName: "Ex-Twitter",
+  x: {
+    id: "x",
+    displayName: "X",
     handle: "@phunkren",
-    url: "https://twitter.com/phunkren",
+    url: "https://x.com/phunkren",
   },
   buyMeCoffee: {
     id: "buyMeCoffee",
