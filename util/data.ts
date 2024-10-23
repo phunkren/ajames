@@ -298,10 +298,10 @@ export const SOCIAL: Record<string, Social> = {
     handle: "phunkren",
     url: `https://codesandbox.io/u/phunkren`,
   },
-  blueSky: {
-    id: "blueSky",
+  bluesky: {
+    id: "bluesky",
     displayName: "Bluesky",
-    handle: "ajames",
+    handle: "ajames.dev",
     url: `https://bsky.app/profile/ajames.dev`,
   },
 };

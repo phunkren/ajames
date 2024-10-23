@@ -7,7 +7,7 @@ import remarkMdx from "remark-mdx";
 import remarkGfm from "remark-gfm";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 import {
-  BlogPost,
+  BlogPost as BlogPostType,
   getPublishedPosts,
   getRandomPosts,
   sortPosts,
@@ -28,7 +28,7 @@ import {
   BuyMeCoffeeLink,
   Link,
   MarkdownLink,
-  TwitterShareLink,
+  BlueskyShareLink,
 } from "../../components/Link";
 import {
   Emoji,
@@ -73,7 +73,7 @@ export type Frontmatter = {
   time: number;
   tags: Tag[];
   canonical?: string;
-  related?: BlogPost[];
+  related?: BlogPostType[];
 };
 
 type Props = {
@@ -436,7 +436,7 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
               </Frontmatter>
 
               <ActionButtons css={{ width: "auto" }}>
-                <TwitterShareLink
+                <BlueskyShareLink
                   url={metaUrl}
                   emoji={frontmatter.emoji}
                   text={frontmatter.title}
@@ -523,7 +523,7 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
               </Box>
 
               <Box justifyContent="space-around" alignItems="center" gap={8}>
-                <TwitterShareLink
+                <BlueskyShareLink
                   url={metaUrl}
                   emoji={frontmatter.emoji}
                   text={frontmatter.title}

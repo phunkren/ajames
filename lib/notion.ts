@@ -170,7 +170,7 @@ export async function generateRSSFeed(posts: BlogPost[]) {
   const author = {
     name: PERSONAL.name,
     email: PERSONAL.email,
-    link: SOCIAL.twitter.url,
+    link: SOCIAL.bluesky.url,
   };
 
   const feed = new Feed({

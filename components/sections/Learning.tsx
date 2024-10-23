@@ -22,7 +22,7 @@ import {
   VideosViewsCount,
 } from "../Frontmatter";
 import { ActionButtons } from "../Layout";
-import { Link, YoutubeSubscribeLink, TwitterShareLink } from "../Link";
+import { Link, YoutubeSubscribeLink, BlueskyShareLink } from "../Link";
 import { TextAux, TextBody, TextTitle1, TextTitle2, TextTitle3 } from "../Text";
 import { ShareButton } from "../Button";
 import { Box } from "../Box";
@@ -176,7 +176,7 @@ export const Learning = ({
                 </Frontmatter>
 
                 <ActionButtons css={{ width: "auto" }}>
-                  <TwitterShareLink
+                  <BlueskyShareLink
                     url={YOUTUBE_CHANNEL_URL}
                     text={YOUTUBE_SHARE_TEXT}
                     variant="icon"

@@ -11,7 +11,7 @@ import {
   TotalCategories,
 } from "../components/Frontmatter";
 import { ActionButtons, Layout } from "../components/Layout";
-import { TwitterShareLink, YoutubeSubscribeLink } from "../components/Link";
+import { BlueskyShareLink } from "../components/Link";
 import { TextAux, TextTitle1, TextTitle2 } from "../components/Text";
 import { getInventory } from "../lib/notion";
 import { styled } from "../stitches.config";
@@ -19,14 +19,14 @@ import { ONE_MINUTE_IN_SECONDS } from "../util/date";
 import {
   getFormattedInventory,
   getUniqueRetailers,
-  Inventory,
+  Inventory as InventoryType,
   sortInventory,
 } from "../util/notion";
 import { INVENTORY_SHARE_TEXT, INVENTORY_URL } from "../util/youtube";
 import { NextPageWithLayout } from "./_app";
 
 type Props = {
-  inventory: Inventory;
+  inventory: InventoryType;
 };
 
 const StyledInventoryCardContainer = styled(Box, {
@@ -106,7 +106,7 @@ const Inventory: NextPageWithLayout = memo(function Inventory({
             </Frontmatter>
 
             <ActionButtons css={{ width: "auto" }}>
-              <TwitterShareLink
+              <BlueskyShareLink
                 url={INVENTORY_URL}
                 text={INVENTORY_SHARE_TEXT}
                 variant="icon"

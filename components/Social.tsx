@@ -6,7 +6,6 @@ import {
   LinkedInLogoIcon,
   VideoIcon,
 } from "@radix-ui/react-icons";
-import { RiTwitterXLine as TwitterLogoIcon } from "react-icons/ri";
 import { MdRssFeed } from "react-icons/md";
 import { SOCIAL } from "../util/data";
 import { Box } from "./Box";
@@ -59,14 +58,14 @@ export const Social = memo(function Social({
     <StyledBox as="nav" aria-label="Social Media" {...props}>
       <Box as="ul" role="list" gap={gap} alignItems="baseline">
         <Box as="li" alignItems="flex-end">
-          <Tooltip title={SOCIAL.blueSky.displayName}>
+          <Tooltip title={SOCIAL.bluesky.displayName}>
             <Link
-              href={SOCIAL.blueSky.url}
+              href={SOCIAL.bluesky.url}
               variant="icon"
               css={{ position: "relative", top: -1 }}
             >
               <VisuallyHidden.Root>
-                {SOCIAL.blueSky.displayName}
+                {SOCIAL.bluesky.displayName}
               </VisuallyHidden.Root>
 
               <PiButterfly

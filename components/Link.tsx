@@ -16,7 +16,8 @@ import {
   VideoIcon,
 } from "@radix-ui/react-icons";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
-import { RiTwitterXLine as TwitterLogoIcon } from "react-icons/ri";
+import { PiButterfly as BlueskyLogoIcon } from "react-icons/pi";
+import { RiTwitterXLine as XLogoIcon } from "react-icons/ri";
 import {
   CSS,
   darkTheme,
@@ -40,7 +41,14 @@ export type LinkProps = CSS &
     variant?: "primary" | "secondary";
   };
 
-type TwitterShareProps = {
+type XShareProps = {
+  url: string;
+  text: string;
+  emoji?: string;
+  variant?: "default" | "icon";
+};
+
+type BlueskyShareProps = {
   url: string;
   text: string;
   emoji?: string;
@@ -653,14 +661,14 @@ export const BlogSubscriptionLink = memo(function BlogSubscribeLink({
   }
 });
 
-export const TwitterShareLink = memo(function TwitterShareLink({
+export const XShareLink = memo(function XShareLink({
   url,
   text,
   emoji = "👀",
   variant = "default",
-}: TwitterShareProps) {
+}: XShareProps) {
   const formattedText = `${emoji} ${text}`;
-  const formattedAuthor = `🙋‍♂️ ${SOCIAL.twitter.handle}`;
+  const formattedAuthor = `🙋‍♂️ ${SOCIAL.x.handle}`;
 
   const sanitisedText = encodeURIComponent(
     `${formattedText}\n\n${formattedAuthor}\n\n`
@@ -668,16 +676,16 @@ export const TwitterShareLink = memo(function TwitterShareLink({
 
   const sanitisedUrl = encodeURIComponent(url);
 
-  const href = buildUrl("https://twitter.com/intent/tweet", {
+  const href = buildUrl("https://x.com/intent/tweet", {
     url: sanitisedUrl,
     text: sanitisedText,
   });
 
   if (variant === "icon") {
     return (
-      <Tooltip title="Share on Twitter">
+      <Tooltip title={`Share on ${SOCIAL.x.displayName}`}>
         <StyledIconLink href={href}>
-          <TwitterLogoIcon size={ICON_SIZE.m} aria-hidden />
+          <XLogoIcon size={ICON_SIZE.m} aria-hidden />
           <VisuallyHidden.Root>Tweet</VisuallyHidden.Root>
         </StyledIconLink>
       </Tooltip>
@@ -687,8 +695,49 @@ export const TwitterShareLink = memo(function TwitterShareLink({
   return (
     <StyledLink href={href} variant="secondary">
       <Box alignItems="center" gap={4}>
-        <TwitterLogoIcon size={ICON_SIZE.xl} aria-hidden />
+        <XLogoIcon size={ICON_SIZE.xl} aria-hidden />
         <StyledHeadline>Tweet</StyledHeadline>
+      </Box>
+    </StyledLink>
+  );
+});
+
+export const BlueskyShareLink = memo(function BlueskyShareLink({
+  url,
+  text,
+  emoji = "👀",
+  variant = "default",
+}: BlueskyShareProps) {
+  const formattedText = `${emoji} ${text}`;
+  const formattedAuthor = `🙋‍♂️ ${SOCIAL.bluesky.handle}`;
+
+  const sanitisedText = encodeURIComponent(
+    `${formattedText}\n\n${formattedAuthor}\n\n`
+  );
+
+  const sanitisedUrl = encodeURIComponent(url);
+
+  const href = buildUrl("https://bsky.app/intent/compose", {
+    url: sanitisedUrl,
+    text: sanitisedText,
+  });
+
+  if (variant === "icon") {
+    return (
+      <Tooltip title={`Share on ${SOCIAL.bluesky.displayName}`}>
+        <StyledIconLink href={href}>
+          <BlueskyLogoIcon size={ICON_SIZE.m} aria-hidden />
+          <VisuallyHidden.Root>Skeet</VisuallyHidden.Root>
+        </StyledIconLink>
+      </Tooltip>
+    );
+  }
+
+  return (
+    <StyledLink href={href} variant="secondary">
+      <Box alignItems="center" gap={4}>
+        <BlueskyLogoIcon size={ICON_SIZE.xl} aria-hidden />
+        <StyledHeadline>Skeet</StyledHeadline>
       </Box>
     </StyledLink>
   );

@@ -33,8 +33,8 @@ const SOCIAL_REDIRECTS = [
     permanent: true,
   },
   {
-    source: "/twitter",
-    destination: "https://twitter.com/phunkren",
+    source: "/x",
+    destination: "https://x.com/phunkren",
     permanent: true,
   },
   {
