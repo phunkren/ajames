@@ -10,11 +10,6 @@ const PAGE_REDIRECTS = [
     permanent: true,
   },
   {
-    source: "/about",
-    destination: "/#about",
-    permanent: true,
-  },
-  {
     source: "/writing",
     destination: "/#writing",
     permanent: true,
@@ -22,6 +17,11 @@ const PAGE_REDIRECTS = [
   {
     source: "/learning",
     destination: "/#learning",
+    permanent: true,
+  },
+  {
+    source: "/social",
+    destination: "/#social",
     permanent: true,
   },
 ];
@@ -46,11 +46,6 @@ const SOCIAL_REDIRECTS = [
     source: "/youtube",
     destination: "https://www.youtube.com/@ajamesdev?sub_confirmation=1",
     permanent: true,
-  },
-  {
-    source: "/YouTubeEpic",
-    destination: "https://www.youtube.com/@ajamesdev?sub_confirmation=1",
-    permanent: false,
   },
   {
     source: "/linkedin",

@@ -139,19 +139,6 @@ const bg = css({
   position: "relative",
   background: `$slate1`,
 
-  "&::before": {
-    content: "",
-    position: "absolute",
-    top: 0,
-    left: 0,
-    width: "200%",
-    height: "50%",
-    backgroundColor: `$slate1`,
-    transform: "skewY(-2deg)",
-    transformOrigin: "left top",
-    zIndex: "$0",
-  },
-
   "&::after": {
     content: "",
     position: "absolute",

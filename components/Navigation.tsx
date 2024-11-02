@@ -18,6 +18,7 @@ import { ThemeToggle } from "./Toggle";
 import { ABOOT_ID } from "./sections/About";
 import { WRITING_ID } from "./sections/Writing";
 import { LEARNING_ID } from "./sections/Learning";
+import { SOCIAL_ID } from "./sections/Social";
 
 export type NavigationProjectLinkProps = {
   id: string;
@@ -143,21 +144,6 @@ export const Navigation = memo(function Navigation() {
         <NavigationMenu.Item>
           <NavigationMenu.Link
             asChild
-            active={isReady && asPath.includes(ABOOT_ID)}
-          >
-            <Link
-              variant="secondary"
-              href={`/#${ABOOT_ID}`}
-              nextLinkProps={{ scroll: false, shallow: true }}
-            >
-              <TextHeadline color="currentColor">About</TextHeadline>
-            </Link>
-          </NavigationMenu.Link>
-        </NavigationMenu.Item>
-
-        <NavigationMenu.Item>
-          <NavigationMenu.Link
-            asChild
             active={isReady && asPath.includes(WRITING_ID)}
           >
             <Link
@@ -186,13 +172,16 @@ export const Navigation = memo(function Navigation() {
         </NavigationMenu.Item>
 
         <NavigationMenu.Item>
-          <NavigationMenu.Link asChild>
+          <NavigationMenu.Link
+            asChild
+            active={isReady && asPath.includes(SOCIAL_ID)}
+          >
             <Link
               variant="secondary"
-              href={`mailto:${PERSONAL.email}`}
+              href={`/#${SOCIAL_ID}`}
               nextLinkProps={{ scroll: false, shallow: true }}
             >
-              <TextHeadline>Contact</TextHeadline>
+              <TextHeadline>Social</TextHeadline>
             </Link>
           </NavigationMenu.Link>
         </NavigationMenu.Item>
@@ -349,13 +338,17 @@ export const NavigationMobile = memo(function NavigationMobile() {
                     </Box>
 
                     <NavigationMenu.Item>
-                      <NavigationMenu.Link asChild>
+                      <NavigationMenu.Link
+                        asChild
+                        active={isReady && asPath.includes(SOCIAL_ID)}
+                      >
                         <Link
+                          href={`/#${SOCIAL_ID}`}
                           variant="secondary"
-                          href={`mailto:${PERSONAL.email}`}
                           nextLinkProps={{ scroll: false, shallow: true }}
+                          onClick={handleClose}
                         >
-                          <TextHeadline>Contact</TextHeadline>
+                          <TextHeadline>Social</TextHeadline>
                         </Link>
                       </NavigationMenu.Link>
                     </NavigationMenu.Item>

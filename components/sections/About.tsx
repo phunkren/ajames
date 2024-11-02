@@ -167,7 +167,6 @@ export const About = () => {
       spacingHorizontal={{ "@initial": 7, "@print": 0 }}
       direction="vertical"
       css={{
-        background: `$blackA4`,
         "@print": { overflowY: "hidden" },
       }}
     >

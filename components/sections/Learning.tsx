@@ -37,7 +37,7 @@ export type Props = {
 };
 
 const bg = css({
-  background: `$blackA4`,
+  background: `$blackA5`,
 });
 
 const StyledVideoCardContainer = styled(Box, {
@@ -51,12 +51,6 @@ const StyledVideoCardContainer = styled(Box, {
   bp2: {
     gridTemplateColumns: "repeat(12, 1fr)",
   },
-});
-
-const StyledHeroImage = styled(Image, {
-  objectFit: "contain",
-  position: "absolute",
-  pointerEvents: "none",
 });
 
 export const LEARNING_ID = "learning";
@@ -108,24 +102,6 @@ export const Learning = ({ featured, uploads, subscriptions, info }: Props) => {
           <Box direction="vertical">
             <Box direction="vertical" justifyContent="space-between" gap={10}>
               <Box direction="vertical">
-                {/* <Box
-                  css={{
-                    width: "100%",
-                    margin: "0 auto",
-                    "@bp2": { width: "50%" },
-                  }}
-                >
-                  <AspectRatio.Root ratio={1200 / 1150} asChild>
-                    <StyledHeroImage
-                      src={laptop}
-                      alt="A laptop with a multi-coloured cloud bursting out of the screen"
-                      sizes="(max-width: 720px) 100vw, (max-width: 1024px) 50vw, 600px"
-                      placeholder="blur"
-                      fill
-                    />
-                  </AspectRatio.Root>
-                </Box> */}
-
                 <Box
                   id={LEARNING_ID}
                   justifyContent="space-between"

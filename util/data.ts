@@ -335,6 +335,12 @@ export const TESTIMONIALS: Testimonial[] = [
 
 export const PROJECTS: Project[] = [
   {
+    id: "about",
+    name: "About",
+    url: "/about",
+    description: "My industry experience",
+  },
+  {
     id: "what-i-use",
     name: "Inventory",
     url: "/inventory",
