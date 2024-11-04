@@ -25,10 +25,6 @@ const StyledHeroLayout = styled(Box, {
   "@supports not (height: 100svh)": {
     height: "100vh",
   },
-
-  "@print": {
-    display: "none !important",
-  },
 });
 
 const StyledHeroContainer = styled(Box, {

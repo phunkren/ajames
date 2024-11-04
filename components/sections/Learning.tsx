@@ -85,10 +85,10 @@ export const Learning = ({ featured, uploads, subscriptions, info }: Props) => {
     <Box
       ref={parentRef}
       as="section"
-      display={{ print: "none", "@initial": "flex" }}
+      display="flex"
       direction="vertical"
       spacingTop={{ "@initial": 11, "@bp2": 10, "@bp3": 11 }}
-      spacingBottom={{ "@initial": 12, "@print": 0 }}
+      spacingBottom={12}
       spacingHorizontal={7}
       className={bg}
     >
@@ -96,7 +96,7 @@ export const Learning = ({ featured, uploads, subscriptions, info }: Props) => {
         direction="vertical"
         gap={12}
         container="l"
-        spacingBottom={{ "@print": 0, "@initial": 10, "@bp2": 11 }}
+        spacingBottom={{ "@initial": 10, "@bp2": 11 }}
         css={{ zIndex: "$1" }}
       >
         <Box direction="vertical">

@@ -241,10 +241,10 @@ export const Writing = ({ posts, tags }: Props) => {
   return (
     <Box
       as="section"
-      display={{ "@print": "none", "@initial": "flex" }}
+      display="flex"
       direction="vertical"
       spacingTop={{ "@initial": 11, "@bp2": 10, "@bp3": 11 }}
-      spacingBottom={{ "@print": 0, "@initial": 12 }}
+      spacingBottom={12}
       spacingHorizontal={7}
       className={bg}
     >
@@ -252,7 +252,7 @@ export const Writing = ({ posts, tags }: Props) => {
         direction="vertical"
         gap={12}
         container="l"
-        spacingBottom={{ "@print": 0, "@initial": 10, "@bp2": 11 }}
+        spacingBottom={{ "@initial": 10, "@bp2": 11 }}
         css={{ zIndex: "$1" }}
       >
         <Box direction="vertical" gap={10}>
