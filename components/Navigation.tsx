@@ -115,7 +115,7 @@ export const NavigationProjectLink = memo(function NavigationProjectLink({
         </VisuallyHidden.Root>
 
         <Box direction="vertical" flexGrow>
-          <TextHeadline as="span" color="secondary" css={{ lineHeight: 1 }}>
+          <TextHeadline as="span" css={{ lineHeight: 1 }}>
             {name}
           </TextHeadline>
           <TextAux color="secondary" clamp={1}>
