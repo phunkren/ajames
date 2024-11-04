@@ -20,8 +20,8 @@ export const Noise = memo(function Noise() {
       <filter id="noise-filter">
         <feTurbulence
           type="fractalNoise"
-          baseFrequency="10.9998"
-          numOctaves="200"
+          baseFrequency="1.9998"
+          numOctaves="20"
           stitchTiles="stitch"
         ></feTurbulence>
         <feColorMatrix type="saturate" values="0"></feColorMatrix>
