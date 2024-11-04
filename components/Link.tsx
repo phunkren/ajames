@@ -5,10 +5,14 @@ import {
   AnchorHTMLAttributes,
   useCallback,
   MouseEvent,
+  useState,
+  useEffect,
 } from "react";
 import NextLink, { LinkProps as NextLinkProps } from "next/link";
+import Image from "next/image";
 import { UrlObject } from "url";
 import { MdRssFeed } from "react-icons/md";
+import { PiButterfly } from "react-icons/pi";
 import { SiBuymeacoffee } from "react-icons/si";
 import {
   DownloadIcon,
@@ -31,8 +35,10 @@ import { ICON_SIZE } from "../util/images";
 import { SITE, SOCIAL } from "../util/data";
 import { Box } from "./Box";
 import { Tooltip } from "./Tooltip";
-import { TextAux, TextHeadline } from "./Text";
+import { TextAux, TextBody, TextHeadline } from "./Text";
 import { StyledCoffeeButton } from "./Button";
+import * as AspectRatio from "@radix-ui/react-aspect-ratio";
+import { blackA, whiteA } from "@radix-ui/colors";
 
 export type LinkProps = CSS &
   Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href"> & {
@@ -62,6 +68,13 @@ type SubscribeProps = CSS & {
 type CoffeeProps = CSS & {
   variant?: "button" | "text";
   icon?: boolean;
+};
+
+type LinkPreviewProps = {
+  href: string;
+  src: string;
+  title: string;
+  description: string;
 };
 
 const LINK_BUTTON_PROPS = {
@@ -95,6 +108,30 @@ const secondaryFade = keyframes({
   },
 });
 
+const StyledImage = styled(Image, {
+  objectFit: "cover",
+  pointerEvents: "none",
+});
+
+const StyledPreviewLinkContainer = styled(Box, {
+  borderRadius: "$1",
+  borderColor: "transparent",
+  borderWidth: 2,
+  borderStyle: "solid",
+  overflow: "hidden",
+  width: "100%",
+
+  [`.${darkTheme} &`]: {
+    borderColor: whiteA.whiteA5,
+    background: whiteA.whiteA4,
+  },
+
+  [`.${lightTheme} &`]: {
+    borderColor: blackA.blackA5,
+    background: blackA.blackA4,
+  },
+});
+
 const StyledLink = styled("a", {
   display: "inline-flex",
   alignItems: "center",
@@ -102,7 +139,6 @@ const StyledLink = styled("a", {
   color: "currentcolor",
   textDecorationLine: "none",
   textUnderlineOffset: "$space$1",
-  width: "fit-content",
 
   "& svg": {
     color: "currentcolor",
@@ -347,6 +383,71 @@ const StyledYoutubeSubscription = styled(Link, {
 });
 
 const StyledLinkedInConnect = styled(Link, {
+  display: "flex",
+  alignItems: "center",
+
+  variants: {
+    type: {
+      link: {},
+      button: {
+        minWidth: 125,
+        justifyContent: "center",
+        alignItems: "center",
+        padding: "$2 $4",
+        borderRadius: "$1",
+        ...LINK_BUTTON_PROPS,
+
+        [`.${lightTheme} &`]: {
+          backgroundImage: `linear-gradient(175deg, $blue9 0.04%, $blue10 100.04%)`,
+          color: "$blue1",
+        },
+
+        [`.${darkTheme} &`]: {
+          backgroundImage: `linear-gradient(175deg, $blue8 0.04%, $blue7 100.04%)`,
+          color: "$blue12",
+        },
+
+        "@media(hover)": {
+          color: "currentcolor",
+
+          "&:hover": {
+            [`.${lightTheme} &`]: {
+              backgroundImage: `linear-gradient(175deg, $blue10 0.04%, $blue9 100.04%)`,
+            },
+
+            [`.${darkTheme} &`]: {
+              backgroundImage: `linear-gradient(175deg, $blue7 0.04%, $blue8 100.04%)`,
+            },
+          },
+        },
+      },
+      icon: {
+        justifyContent: "center",
+        minWidth: 44,
+        minHeight: 44,
+        padding: "$2",
+        borderRadius: "50%",
+        borderStyle: "solid",
+        borderWidth: 2,
+        ...LINK_BUTTON_PROPS,
+
+        [`.${lightTheme} &`]: {
+          borderColor: "$blue10",
+          backgroundImage: `linear-gradient(175deg, $blue9 0.04%, $blue10 100.04%)`,
+          color: "$blue1",
+        },
+
+        [`.${darkTheme} &`]: {
+          borderColor: "$blue7",
+          backgroundImage: `linear-gradient(175deg, $blue8 0.04%, $blue7 100.04%)`,
+          color: "$blue12",
+        },
+      },
+    },
+  },
+});
+
+const StyledBlueskyFollow = styled(Link, {
   display: "flex",
   alignItems: "center",
 
@@ -742,6 +843,50 @@ export const BlueskyShareLink = memo(function BlueskyShareLink({
   );
 });
 
+export const BlueskyFollowLink = memo(function BlueskyFollowLink({
+  type = "link",
+  ...props
+}: SubscribeProps) {
+  if (type === "icon") {
+    return (
+      <Tooltip title="Follow">
+        <StyledBlueskyFollow
+          href={SOCIAL.bluesky.url}
+          type={type}
+          variant="invisible"
+          {...props}
+        >
+          <Box alignItems="center" gap={2}>
+            <PiButterfly size={ICON_SIZE.m} aria-hidden />
+            <VisuallyHidden.Root>Follow</VisuallyHidden.Root>
+          </Box>
+        </StyledBlueskyFollow>
+      </Tooltip>
+    );
+  }
+
+  return (
+    <StyledBlueskyFollow
+      href={SOCIAL.bluesky.url}
+      type={type}
+      variant={type === "link" ? "secondary" : "invisible"}
+      aria-label="Follow me on Bluesky"
+      {...props}
+    >
+      <Box alignItems="center" gap={type === "button" ? 3 : 4}>
+        <PiButterfly
+          size={type === "link" ? ICON_SIZE.xl : ICON_SIZE.m}
+          aria-hidden
+        />
+
+        {type === "button" && <TextAux color="primary">Follow</TextAux>}
+
+        {type === "link" && <StyledHeadline>Follow</StyledHeadline>}
+      </Box>
+    </StyledBlueskyFollow>
+  );
+});
+
 export const DownloadLink = memo(function DownloadLink(props: any) {
   return (
     <Tooltip title="Download CV">
@@ -795,6 +940,31 @@ export const BuyMeCoffeeLink = memo(function BuyMeCoffeeLink({
         {icon ? <SiBuymeacoffee size={ICON_SIZE.l} aria-hidden /> : null}
         <StyledHeadline>{SOCIAL.buyMeCoffee.displayName}</StyledHeadline>
       </Box>
+    </Link>
+  );
+});
+
+export const LinkPreview = memo(function LinkPreview({
+  href,
+  src,
+  title,
+}: LinkPreviewProps) {
+  return (
+    <Link href={href} variant="invisible">
+      <StyledPreviewLinkContainer direction="vertical">
+        <AspectRatio.Root ratio={16 / 9}>
+          <StyledImage
+            src={src}
+            sizes="(max-width: 1020px) 100vw, 50vw"
+            alt=""
+            fill
+          />
+        </AspectRatio.Root>
+
+        <Box direction="vertical" spacing={2}>
+          <TextAux clamp={2}>{title}</TextAux>
+        </Box>
+      </StyledPreviewLinkContainer>
     </Link>
   );
 });

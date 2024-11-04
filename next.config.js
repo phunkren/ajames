@@ -148,6 +148,14 @@ const nextConfig = {
         protocol: "https",
         hostname: "m.media-amazon.com", // Amazon (Images)
       },
+      {
+        protocol: "https",
+        hostname: "cdn.bsky.app", // Bluesky (Images)
+      },
+      {
+        protocol: "https",
+        hostname: "video.bsky.app", // Bluesky (Videos)
+      },
     ],
   },
   productionBrowserSourceMaps: true,
