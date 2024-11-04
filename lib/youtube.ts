@@ -61,8 +61,7 @@ export async function getYoutubeData() {
 
         return sortedUploads[0];
       } catch (error) {
-        console.error(error);
-
+        console.error(`Subscription playlist not found: ${playlistId}`);
         return null;
       }
     })

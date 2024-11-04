@@ -88,6 +88,7 @@ export const Learning = ({ featured, uploads, subscriptions, info }: Props) => {
       display={{ print: "none", "@initial": "flex" }}
       direction="vertical"
       spacingTop={{ "@initial": 11, "@bp2": 10, "@bp3": 11 }}
+      spacingBottom={{ "@initial": 12, "@print": 0 }}
       spacingHorizontal={7}
       className={bg}
     >
