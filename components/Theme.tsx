@@ -52,15 +52,18 @@ export const ThemeProvider = memo(function ThemeProvider({
       "(prefers-color-scheme: dark)"
     ).matches;
 
+    console.log({ prefersDarkMode });
     // Set initial theme based on user's system preference
     if (!theme && storageTheme) {
-      setTheme(storageTheme);
+      handleThemeChange(storageTheme);
     } else if (!theme && prefersDarkMode) {
-      setTheme(Theme.DARK);
+      handleThemeChange(Theme.DARK);
     } else if (!theme && !storageTheme && !prefersDarkMode) {
-      setTheme(Theme.LIGHT);
+      handleThemeChange(Theme.LIGHT);
     }
   }, [theme, storageTheme, setStorageTheme, handleThemeChange]);
+
+  console.log({ theme, value });
 
   // Return the context provider with the current theme value
   return (
