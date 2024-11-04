@@ -137,7 +137,6 @@ const StyledCardContainer = styled(Box, {
 
 const bg = css({
   position: "relative",
-  background: `$slate1`,
 
   "&::after": {
     content: "",
@@ -146,7 +145,6 @@ const bg = css({
     left: 0,
     width: "200%",
     height: "50%",
-    backgroundColor: `$slate1`,
     transform: "skewY(2deg)",
     transformOrigin: "left top",
     zIndex: "$0",
@@ -163,8 +161,6 @@ export const Writing = ({ posts, tags }: Props) => {
   const queryTag = query.tag as string;
 
   const [layout, setLayout] = useLayoutToggle();
-
-  console.log({ layout });
 
   const featuredPost = posts.find(
     (post) =>

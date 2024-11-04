@@ -26,6 +26,7 @@ const HeaderBox = styled(Box, {
   zIndex: "$2",
   width: "100%",
   position: "fixed",
+  color: "$foreground",
   top: 0,
   right: 0,
   left: 0,
@@ -38,7 +39,6 @@ const HeaderBox = styled(Box, {
     opaque: {
       true: {
         backgroundColor: "$background",
-        color: "$foreground",
         boxShadow: "$1",
       },
       false: {
@@ -101,7 +101,6 @@ export const FooterLayout = memo(function FooterLayout() {
       as="footer"
       spacingTop={12}
       css={{
-        background: `$blackA5`,
         "@print": { display: "none !important" },
       }}
     >

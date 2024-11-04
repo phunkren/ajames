@@ -268,12 +268,7 @@ export const TagDrawer = memo(function TagDrawer({
                       css={{ scrollSnapAlign: "center" }}
                     >
                       <Button variant="tertiary" onClick={handleClick}>
-                        <StyledTag
-                          id={tag.name}
-                          borderColor={tag.color}
-                          spacing={4}
-                          flexGrow
-                        >
+                        <StyledTag id={tag.name} spacing={4} flexGrow>
                           <TextAux
                             color="primary"
                             textTransform="uppercase"

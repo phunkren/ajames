@@ -47,6 +47,13 @@ type Project = {
   description: string;
 };
 
+type Page = {
+  id: string;
+  name: string;
+  url: string;
+  description: string;
+};
+
 export const EDUCATION: Education[] = [
   {
     id: "gcal-uk",
@@ -333,19 +340,22 @@ export const TESTIMONIALS: Testimonial[] = [
   },
 ];
 
-export const PROJECTS: Project[] = [
+export const PAGES: Page[] = [
   {
     id: "about",
     name: "About",
-    url: "/about",
+    url: "about",
     description: "My industry experience",
   },
   {
     id: "what-i-use",
     name: "Inventory",
-    url: "/inventory",
+    url: "inventory",
     description: "My professional loadout",
   },
+];
+
+export const PROJECTS: Project[] = [
   {
     id: "find-phunk",
     name: "Find Phunk",

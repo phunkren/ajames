@@ -19,11 +19,7 @@ import { BuyMeCoffeeLink, Link } from "./Link";
 import { StyledTag } from "./Tags";
 import { PreviewToggle } from "./Button";
 import { BLUR_DATA_URL } from "../util/images";
-import {
-  YOUTUBE_CHANNEL_PLAYLIST_ID,
-  YOUTUBE_CHANNEL_TITLE,
-  YOUTUBE_LIKED_VIDEOS_PLAYLIST_ID,
-} from "../util/youtube";
+import { YOUTUBE_CHANNEL_TITLE } from "../util/youtube";
 import { CSS } from "../stitches.config";
 import { Tag } from "../util/notion";
 import banner from "../public/images/banner.png";
@@ -99,6 +95,15 @@ const StyledCardOuter = styled(Box, {
     overflow: "hidden",
   },
 
+  [`.${lightTheme} &`]: {
+    background: whiteA.whiteA12,
+    borderColor: blackA.blackA2,
+    transition:
+      "background $transitions$durationDefault $transitions$functionDefault",
+    ["-webkit-transition"]:
+      "background $transitions$durationDefault $transitions$functionDefault",
+  },
+
   "& img": {
     position: "relative",
     left: "10px",
@@ -145,7 +150,7 @@ const StyledCardOuter = styled(Box, {
       },
 
       [`.${lightTheme} &`]: {
-        background: blackA.blackA3,
+        background: blackA.blackA2,
         transition:
           "background $transitions$durationDefault $transitions$functionDefault",
         ["-webkit-transition"]:
@@ -199,14 +204,6 @@ const StyledCardOuter = styled(Box, {
       "background $transitions$durationDefault $transitions$functionDefault",
     ["-webkit-transition"]:
       "background $transitions$durationDefault $transitions$functionDefault",
-  },
-
-  [`.${lightTheme} &`]: {
-    background: whiteA.whiteA12,
-    transition:
-      "background $transitions$durationDefault $transitions$functionDefault, border-color $transitions$durationDefault $transitions$functionDefault",
-    ["-webkit-transition"]:
-      "background $transitions$durationDefault $transitions$functionDefault, border-color $transitions$durationDefault $transitions$functionDefault",
   },
 
   [`.${lightTheme} &:has(a:focus)`]: {

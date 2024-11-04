@@ -115,7 +115,6 @@ export const LayoutToggle = memo(function LayoutToggle({
   pressed,
   ...props
 }: Props) {
-  console.log({ pressed });
   return (
     <Tooltip title="Layout">
       <IconButton

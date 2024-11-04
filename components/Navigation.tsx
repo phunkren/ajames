@@ -1,4 +1,4 @@
-import { memo, useCallback, useState } from "react";
+import React, { memo, useCallback, useState } from "react";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 import { useRouter } from "next/router";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
@@ -8,14 +8,13 @@ import { keyframes, styled } from "../stitches.config";
 import { ICON_SIZE } from "../util/images";
 import { useTheme } from "../hooks/useTheme";
 import { Divider } from "./Divider";
-import { PERSONAL, PROJECTS } from "../util/data";
+import { PAGES } from "../util/data";
 import { Link } from "./Link";
 import { TextAux, TextHeadline } from "./Text";
 import { Button, MobileNavigationButton } from "./Button";
 import { Social } from "./Social";
 import { Box } from "./Box";
 import { ThemeToggle } from "./Toggle";
-import { ABOOT_ID } from "./sections/About";
 import { WRITING_ID } from "./sections/Writing";
 import { LEARNING_ID } from "./sections/Learning";
 import { SOCIAL_ID } from "./sections/Social";
@@ -118,9 +117,7 @@ export const NavigationProjectLink = memo(function NavigationProjectLink({
           <TextHeadline as="span" css={{ lineHeight: 1 }}>
             {name}
           </TextHeadline>
-          <TextAux color="secondary" clamp={1}>
-            {description}
-          </TextAux>
+          <TextAux clamp={1}>{description}</TextAux>
         </Box>
       </StyledNavigationSubmenuLink>
     </NavigationMenu.Link>
@@ -129,7 +126,6 @@ export const NavigationProjectLink = memo(function NavigationProjectLink({
 
 export const Navigation = memo(function Navigation() {
   const { asPath, isReady } = useRouter();
-  const isRoot = isReady && (asPath === "/" || asPath.includes("/#"));
 
   return (
     <NavigationMenu.Root
@@ -196,9 +192,9 @@ export const Navigation = memo(function Navigation() {
 
           <StyledNavigationMenuContent asChild>
             <StyledNavigationSubmenu as="ul">
-              {PROJECTS.map((project) => (
-                <Box key={project.id} as="li" flexGrow>
-                  <NavigationProjectLink {...project} />
+              {PAGES.map((page) => (
+                <Box key={page.id} as="li" flexGrow>
+                  <NavigationProjectLink {...page} />
                 </Box>
               ))}
             </StyledNavigationSubmenu>
@@ -280,26 +276,6 @@ export const NavigationMobile = memo(function NavigationMobile() {
                     <NavigationMenu.Item>
                       <NavigationMenu.Link
                         asChild
-                        active={isReady && asPath.includes(ABOOT_ID)}
-                      >
-                        <Link
-                          href={`/#${ABOOT_ID}`}
-                          variant="secondary"
-                          nextLinkProps={{ scroll: false, shallow: true }}
-                          onClick={handleClose}
-                        >
-                          <TextHeadline>About</TextHeadline>
-                        </Link>
-                      </NavigationMenu.Link>
-                    </NavigationMenu.Item>
-
-                    <Box aria-hidden>
-                      <Divider />
-                    </Box>
-
-                    <NavigationMenu.Item>
-                      <NavigationMenu.Link
-                        asChild
                         active={isReady && asPath.includes(WRITING_ID)}
                       >
                         <Link
@@ -352,6 +328,30 @@ export const NavigationMobile = memo(function NavigationMobile() {
                         </Link>
                       </NavigationMenu.Link>
                     </NavigationMenu.Item>
+
+                    {PAGES.map((page) => (
+                      <React.Fragment key={page.id}>
+                        <Box aria-hidden>
+                          <Divider />
+                        </Box>
+
+                        <NavigationMenu.Item>
+                          <NavigationMenu.Link
+                            asChild
+                            active={isReady && asPath.includes(page.url)}
+                          >
+                            <Link
+                              href={`/${page.url}`}
+                              variant="secondary"
+                              nextLinkProps={{ scroll: false, shallow: true }}
+                              onClick={handleClose}
+                            >
+                              <TextHeadline>{page.name}</TextHeadline>
+                            </Link>
+                          </NavigationMenu.Link>
+                        </NavigationMenu.Item>
+                      </React.Fragment>
+                    ))}
                   </Box>
                 </NavigationMenu.List>
               </NavigationMenu.Root>

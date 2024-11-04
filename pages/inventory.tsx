@@ -42,6 +42,8 @@ const StyledInventoryCardContainer = styled(Box, {
   },
 });
 
+export const INVENTORY_ID = "inventory";
+
 export const getStaticProps: GetStaticProps = async () => {
   const inventory = await getInventory();
   const formattedInventory = getFormattedInventory(inventory);
@@ -74,17 +76,16 @@ const Inventory: NextPageWithLayout = memo(function Inventory({
   return (
     <Box
       as="section"
-      display={{ "@print": "none", "@initial": "flex" }}
       direction="vertical"
       spacingTop={{ "@initial": 11, "@bp2": 10, "@bp3": 11 }}
-      spacingBottom={{ "@print": 0, "@initial": 12 }}
+      spacingBottom={12}
       spacingHorizontal={7}
     >
       <Box
         direction="vertical"
         gap={12}
         container="l"
-        spacingBottom={{ "@print": 0, "@initial": 10, "@bp2": 11 }}
+        spacingBottom={{ "@initial": 10, "@bp2": 11 }}
         css={{ zIndex: "$1" }}
       >
         <Box direction="vertical" gap={10}>

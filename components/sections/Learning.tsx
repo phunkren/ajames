@@ -2,17 +2,14 @@ import { useEffect, useRef } from "react";
 import debounce from "lodash.debounce";
 import Balancer from "react-wrap-balancer";
 import LiteYouTubeEmbed from "react-lite-youtube-embed";
-import Image from "next/image";
 import { PlayIcon } from "@radix-ui/react-icons";
 import { YOUTUBE_CHANNEL_URL, YOUTUBE_SHARE_TEXT } from "../../util/youtube";
-import { css, styled } from "../../stitches.config";
-import { buildUrl } from "../../util/url";
+import { styled } from "../../stitches.config";
 import { ICON_SIZE } from "../../util/images";
 import { SITE } from "../../util/data";
 import {
   ChannelInfoPreview,
   PlaylistPreview,
-  PlaylistVideosPreview,
   VideoPreview,
 } from "../../util/youtube";
 import {
@@ -35,10 +32,6 @@ export type Props = {
   subscriptions: PlaylistPreview[];
   info: ChannelInfoPreview;
 };
-
-const bg = css({
-  background: `$blackA5`,
-});
 
 const StyledVideoCardContainer = styled(Box, {
   display: "grid",
@@ -90,7 +83,6 @@ export const Learning = ({ featured, uploads, subscriptions, info }: Props) => {
       spacingTop={{ "@initial": 11, "@bp2": 10, "@bp3": 11 }}
       spacingBottom={12}
       spacingHorizontal={7}
-      className={bg}
     >
       <Box
         direction="vertical"

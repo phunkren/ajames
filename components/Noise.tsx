@@ -6,9 +6,14 @@ const StyledSvg = styled("svg", {
   inset: 0,
   width: "100%",
   height: "100%",
+  display: "none !important",
 
   [`.${lightTheme} &`]: {
-    opacity: 0.25,
+    opacity: 0.05,
+  },
+
+  "@bp3": {
+    display: "block",
   },
 
   "@print": { display: "none !important" },

@@ -4,7 +4,7 @@
         <title>ajames.dev | Blogs</title>
         <link>https://ajames.dev</link>
         <description>I'm a senior software engineer based in Glasgow, Scotland. My passion for frontend technologies continually drives me to advance my skill set and adopt the latest industry best practices. An analytical mindset and strong communication skills allow me to excel in environments where I can learn from others and inspire my peers.Over the years I've refined a set of technical principles to strive towards, namely: complexity should only be introduced when it’s unavoidable; code should be easy to reason with and delete; avoid abstracting too early, and the top priority is always the best possible user experience.</description>
-        <lastBuildDate>Mon, 01 Jul 2024 10:07:46 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 04 Nov 2024 23:46:08 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -12,10 +12,10 @@
         <atom:link href="https://ajames.dev/rss.xml" rel="self" type="application/rss+xml"/>
         <item>
             <title><![CDATA[So you want to game the system and get promoted?]]></title>
-            <link>https://ajames.dev/blog/get-promoted</link>
-            <guid>https://ajames.dev/blog/get-promoted</guid>
+            <link>https://ajames.dev/writing/get-promoted</link>
+            <guid>https://ajames.dev/writing/get-promoted</guid>
             <pubDate>Thu, 27 Jun 2024 00:00:00 GMT</pubDate>
-            <description><![CDATA[A guide to stacking the odds in your favour when applying for promotion in the software industry]]></description>
+            <description><![CDATA[A guide to stacking the odds in your favour to get to the next level.]]></description>
             <content:encoded><![CDATA[Getting promoted can be a complex and often unpredictable process. Ideally, career promotions should be based solely on merit, where rewards are proportionate to your proven abilities and individual performance.
 
 However, demonstrating your capability to deliver at the next level involves more than just personal achievement. Factors largely beyond your control, such as the company’s and industry’s current performance, internal bureaucracy, and individual biases, can all have a negative influence on the final outcome.
@@ -66,7 +66,7 @@ Learn to solve the right problems. Focus on understanding and aligning your effo
 
 Learn to network. [Attend company and industry events](https://www.linkedin.com/pulse/why-attending-conferences-matters-eprglobal/), and build rapport with your wider network. Promotions are often decided by a committee of senior peers and managers. By collaborating with others, you’ll build presence within your company and become known within your professional sphere. Strengthen your relationship with line managers and senior peers by understanding their goals, requesting feedback, and showing appreciation for their efforts. Since they will likely champion you during the promotion cycle, help them see your true worth, both as a professional and an individual. Finally, I’ll leave you with one of my favourite quotes from [Sara Viera](https://x.com/nikkitaftw): ”You can teach someone to code, but you can’t undick a person”. Sage advice.
 
-If you enjoyed the article, please share it with others on [Twitter](https://ajames.dev/twitter) or [LinkedIn](https://ajames.dev/linkedin).
+If you enjoyed the article, please share it with others on [Bluesky](https://ajames.dev/bluesky) or [LinkedIn](https://ajames.dev/linkedin).
 ]]></content:encoded>
             <author>contact@ajames.dev (Andrew James)</author>
             <category>Self Improvement</category>
@@ -74,8 +74,8 @@ If you enjoyed the article, please share it with others on [Twitter](https://aja
         </item>
         <item>
             <title><![CDATA[Using Notion and Next.js ISR to sync content across platforms]]></title>
-            <link>https://ajames.dev/blog/synchronize-content</link>
-            <guid>https://ajames.dev/blog/synchronize-content</guid>
+            <link>https://ajames.dev/writing/synchronize-content</link>
+            <guid>https://ajames.dev/writing/synchronize-content</guid>
             <pubDate>Mon, 22 May 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[Create an optimised workflow that synchronises content across multiple platforms]]></description>
             <content:encoded><![CDATA[Publishing content across multiple platforms offers a number of advantages for content creators. Third-party platforms provide authors a wider reach and access to a dedicated user base. Publishing content on a personal website gives the author complete creative control over their content and its presentation.
@@ -562,8 +562,8 @@ Ultimately, this solution provides an optimized workflow for synchronizing conte
         </item>
         <item>
             <title><![CDATA[So you want to work remotely?]]></title>
-            <link>https://ajames.dev/blog/work-remote</link>
-            <guid>https://ajames.dev/blog/work-remote</guid>
+            <link>https://ajames.dev/writing/work-remote</link>
+            <guid>https://ajames.dev/writing/work-remote</guid>
             <pubDate>Sat, 01 Oct 2022 00:00:00 GMT</pubDate>
             <description><![CDATA[Tips and product suggestions for setting up an effective remote workstation. ]]></description>
             <content:encoded><![CDATA[Back in 2020, I put together a list of basic principles for [working from home](https://ajames.dev/writing/work-home). Where that focused on the ethos of working remotely, this time I’d like to discuss equipment that will allow you to be effective working in a remote environment.
@@ -672,8 +672,8 @@ Finally, cable tidies are great for removing clutter from your desk. They can re
         </item>
         <item>
             <title><![CDATA[Building an Accessible Menubar Component Using React]]></title>
-            <link>https://ajames.dev/blog/accessible-menubar</link>
-            <guid>https://ajames.dev/blog/accessible-menubar</guid>
+            <link>https://ajames.dev/writing/accessible-menubar</link>
+            <guid>https://ajames.dev/writing/accessible-menubar</guid>
             <pubDate>Fri, 01 Apr 2022 00:00:00 GMT</pubDate>
             <description><![CDATA[Create an accessible Menubar based on the WAI-ARIA design pattern for a menubar widget. ]]></description>
             <content:encoded><![CDATA[Last week I watched [Pedro Duarte](https://www.youtube.com/watch?v=lY-RQjWeweo)'s excellent *"So You Think You Can Build A Dropdown"* talk at Next.js Conf. It inspired me to write up an accessible component of my own that I recently worked on — the menubar widget.
@@ -1684,8 +1684,8 @@ Special thanks to [Jenna Smith](https://twitter.com/jjenzz) for her invaluable c
         </item>
         <item>
             <title><![CDATA[So you want to write a Groom’s speech?]]></title>
-            <link>https://ajames.dev/blog/wedding-speech</link>
-            <guid>https://ajames.dev/blog/wedding-speech</guid>
+            <link>https://ajames.dev/writing/wedding-speech</link>
+            <guid>https://ajames.dev/writing/wedding-speech</guid>
             <pubDate>Mon, 27 Sep 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[Advice for the groom to help him create a memorable and meaningful wedding speech.]]></description>
             <content:encoded><![CDATA[When it comes to giving a wedding speech, there are a few tips and tricks that I discovered while researching my own. I’ll provide some examples below of what I found to be particularly useful, and I’ll leave my speech afterwards.
@@ -1801,8 +1801,8 @@ Thank you.
         </item>
         <item>
             <title><![CDATA[So you want to build a PC?]]></title>
-            <link>https://ajames.dev/blog/build-pc</link>
-            <guid>https://ajames.dev/blog/build-pc</guid>
+            <link>https://ajames.dev/writing/build-pc</link>
+            <guid>https://ajames.dev/writing/build-pc</guid>
             <pubDate>Thu, 18 Mar 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[An overview of the main hardware components you will need to build a desktop PC. ]]></description>
             <content:encoded><![CDATA[A few people have recently asked for advice in building their own desktop PC, so I thought I'd throw together a quick introduction to the main pieces of hardware you'll need to get yourself up and running.
@@ -1865,8 +1865,8 @@ More important than people give it credit for. You want two things from a case: 
         </item>
         <item>
             <title><![CDATA[Multiple Entry Points in Create React App Without Ejecting]]></title>
-            <link>https://ajames.dev/blog/multiple-entry</link>
-            <guid>https://ajames.dev/blog/multiple-entry</guid>
+            <link>https://ajames.dev/writing/multiple-entry</link>
+            <guid>https://ajames.dev/writing/multiple-entry</guid>
             <pubDate>Tue, 02 Jun 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[Create multiple entry points without ejecting from the safety net of Create React App.]]></description>
             <content:encoded><![CDATA[I was recently tasked with building two applications in parallel. The first was a commercial web application, and a second that acted as a platform to A|B test content messaging, page layouts, and so on. To be ruthlessly efficient we wanted to reuse the majority of core components and styles for both applications, and interchange any branded assets (images, fonts, colour palette, etc) with a dummy brand using Styled Components' [theming](https://styled-components.com/docs/advanced#theming) capabilities.
@@ -2005,8 +2005,8 @@ Special thanks to [Stephen Taylor](https://twitter.com/meandmycode) and [Robin W
         </item>
         <item>
             <title><![CDATA[So you want to WFH?]]></title>
-            <link>https://ajames.dev/blog/work-home</link>
-            <guid>https://ajames.dev/blog/work-home</guid>
+            <link>https://ajames.dev/writing/work-home</link>
+            <guid>https://ajames.dev/writing/work-home</guid>
             <pubDate>Sun, 15 Mar 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[Tips maintaining focus and effective communication whilst working from home.]]></description>
             <content:encoded><![CDATA[After spending some time last year working from home, I’ve quickly written up ten rules that kept me sane and helped retain my focus throughout the day.
@@ -2049,7 +2049,7 @@ Spend the time you save commuting on yourself, spend time with family, etc.
 
 ## 10: Pimp yo ride.
 
-You’ll be spending 40+ hours per week working here, so try to make it as inviting as possible. Plants / artwork / lighting can really make a difference. I recently wrote about [my remote setup](https://ajames.dev/work-remote).
+You’ll be spending 40+ hours per week working here, so try to make it as inviting as possible. Plants / artwork / lighting can really make a difference. I recently wrote about [my remote setup](https://ajames.dev/writing/work-remote).
 ]]></content:encoded>
             <author>contact@ajames.dev (Andrew James)</author>
             <category>Productivity</category>
@@ -2057,8 +2057,8 @@ You’ll be spending 40+ hours per week working here, so try to make it as invit
         </item>
         <item>
             <title><![CDATA[Building a Responsive Camera Component Using React Hooks]]></title>
-            <link>https://ajames.dev/blog/responsive-camera</link>
-            <guid>https://ajames.dev/blog/responsive-camera</guid>
+            <link>https://ajames.dev/writing/responsive-camera</link>
+            <guid>https://ajames.dev/writing/responsive-camera</guid>
             <pubDate>Thu, 07 Nov 2019 00:00:00 GMT</pubDate>
             <description><![CDATA[Build a responsive frontend camera component using React hooks, and the getUserMedia API]]></description>
             <content:encoded><![CDATA[I was recently tasked with building a frontend camera component that allows users to upload images of their identification cards to a backend service. In this post I'll demonstrate how I created the component by explaining how to configure a live media stream and capture a snapshot with React hooks, and how to style and position the elements using Styled Components. As such, the article assumes a working knowledge of functional components in React 16.x and the Styled Components library. Below you can see a demo of the component in action, and feel free to play around with the complete solution on my [Code Sandbox](https://codesandbox.io/s/react-camera-component-with-hooks-mf1i2) as you read along. Enjoy!
@@ -2672,8 +2672,8 @@ For the moment the component serves to provide images as proof of authenticity, 
         </item>
         <item>
             <title><![CDATA[Mastering Modals in React with Context and Portals]]></title>
-            <link>https://ajames.dev/blog/custom-modal</link>
-            <guid>https://ajames.dev/blog/custom-modal</guid>
+            <link>https://ajames.dev/writing/custom-modal</link>
+            <guid>https://ajames.dev/writing/custom-modal</guid>
             <pubDate>Tue, 16 Jul 2019 00:00:00 GMT</pubDate>
             <description><![CDATA[Create modals, and trigger them using React context, hooks, and portals]]></description>
             <content:encoded><![CDATA[Modals are a useful tool for displaying information on top of your application, and are often used for notifications, alerts, or standalone dialogs such as registration or login forms. Before building a custom modal, it's a good idea to check if there are any pre-existing solutions that meet your needs ([Reach UI's Dialog](https://reacttraining.com/reach-ui/dialog/) and [react-modal](http://reactcommunity.org/react-modal/) are both popular options). If you don't find a suitable solution, let's explore creating a bespoke modal component in React.
@@ -2710,8 +2710,8 @@ With this approach, the `Modal` component can now be used anywhere within the `M
         </item>
         <item>
             <title><![CDATA[So you want to buy a puppy? ]]></title>
-            <link>https://ajames.dev/blog/buy-puppy</link>
-            <guid>https://ajames.dev/blog/buy-puppy</guid>
+            <link>https://ajames.dev/writing/buy-puppy</link>
+            <guid>https://ajames.dev/writing/buy-puppy</guid>
             <pubDate>Mon, 01 Jul 2019 00:00:00 GMT</pubDate>
             <description><![CDATA[Personal experiences of the responsibilities and challenges of owning a puppy.]]></description>
             <content:encoded><![CDATA[A few people have recently asked me about whether or not to buy a puppy, so I figured I’d collect my thoughts here as a point of reference. I mention advice from friends, family, and trainers throughout, but ultimately all opinions are my own and formulated from experience with my dog only.
@@ -2774,8 +2774,8 @@ I now fully understand this statement.
         </item>
         <item>
             <title><![CDATA[Streamlining State Management in Storybook with React]]></title>
-            <link>https://ajames.dev/blog/storybook-state</link>
-            <guid>https://ajames.dev/blog/storybook-state</guid>
+            <link>https://ajames.dev/writing/storybook-state</link>
+            <guid>https://ajames.dev/writing/storybook-state</guid>
             <pubDate>Sat, 29 Jun 2019 00:00:00 GMT</pubDate>
             <description><![CDATA[Simplify state management in Storybook with React.]]></description>
             <content:encoded><![CDATA[Storybook is an amazing tool for developing UI components in isolation. One of my current projects is a large form with controlled components that rely on their parent container as the source of truth. While Storybook is great for testing individual component state, I found myself writing repetitive code in each story to pass state to a parent container.
@@ -2891,8 +2891,8 @@ You can find the repository on [GitHub](https://github.com/phunkren/storybook-st
         </item>
         <item>
             <title><![CDATA[Elevating Your Tech Meetup with Live Streaming]]></title>
-            <link>https://ajames.dev/blog/livestream-meetup</link>
-            <guid>https://ajames.dev/blog/livestream-meetup</guid>
+            <link>https://ajames.dev/writing/livestream-meetup</link>
+            <guid>https://ajames.dev/writing/livestream-meetup</guid>
             <pubDate>Mon, 05 Nov 2018 00:00:00 GMT</pubDate>
             <description><![CDATA[Enhance the live streaming experience of your tech meetup and engage remote attendees]]></description>
             <content:encoded><![CDATA[One of my favourite parts of my job is being surrounded by creative professionals who are eager to openly discuss ideas and expand our collective understanding. Some of these professionals have been in the industry for over ten years and, while they have developed their own opinions, they remain open to outside ideas and criticism to continually improve their professional perspective. About a year ago, a group of developers organized the company's first "Egg Talk", an in-house meet-up where developers could discuss any topic they found interesting, such as project challenges, office diversity, emerging technologies, and even banana peeling techniques. These talks were well received, and now events are scheduled at least once a month with several speakers at each event. Recently, we have also started welcoming talks from other business disciplines.
@@ -2936,8 +2936,8 @@ Despite these issues, the stream still provided a significant improvement in qua
         </item>
         <item>
             <title><![CDATA[Bridging the Gap: Improving Collaboration Between Engineering and Design]]></title>
-            <link>https://ajames.dev/blog/grid-overlay</link>
-            <guid>https://ajames.dev/blog/grid-overlay</guid>
+            <link>https://ajames.dev/writing/grid-overlay</link>
+            <guid>https://ajames.dev/writing/grid-overlay</guid>
             <pubDate>Sun, 13 May 2018 00:00:00 GMT</pubDate>
             <description><![CDATA[Creating a visual grid overlay in a React to bridge the gap between engineering and design]]></description>
             <author>contact@ajames.dev (Andrew James)</author>

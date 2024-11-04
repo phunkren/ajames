@@ -31,7 +31,6 @@ import {
   indigo,
   indigoDark,
   violetDark,
-  sageDark,
   violet,
 } from "@radix-ui/colors";
 import { SPACING_UTILS } from "./styles/spacing";
@@ -108,9 +107,9 @@ export const {
 
 export const lightTheme = createTheme({
   colors: {
-    foreground: blackA.blackA12,
+    foreground: "rgb(5,5,5)",
     foregroundMuted: gray.gray12,
-    background: slate.slate1,
+    background: "rgb(250,250,250)",
     backgroundMuted: gray.gray1,
     focus: crimson.crimson10,
     hover: blue.blue9,

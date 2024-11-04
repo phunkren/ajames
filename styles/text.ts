@@ -1,5 +1,3 @@
-import { whiteA } from "@radix-ui/colors";
-
 export const TEXT_VARIANTS = {
   color: {
     primary: {
