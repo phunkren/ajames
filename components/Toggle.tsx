@@ -112,8 +112,10 @@ export const ThemeToggle = memo(function ThemeToggle({ opaque }: Props) {
 export const LayoutToggle = memo(function LayoutToggle({
   compact = false,
   value,
+  pressed,
   ...props
 }: Props) {
+  console.log({ pressed });
   return (
     <Tooltip title="Layout">
       <IconButton
@@ -126,15 +128,14 @@ export const LayoutToggle = memo(function LayoutToggle({
             },
           },
         }}
+        pressed={pressed}
         {...props}
       >
-        {value === "grid" ? (
+        {pressed ? (
           <StyledGridIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
-        ) : null}
-
-        {value === "rows" ? (
+        ) : (
           <StyledRowsIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
-        ) : null}
+        )}
       </IconButton>
     </Tooltip>
   );

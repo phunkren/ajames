@@ -6,7 +6,6 @@ import Balancer from "react-wrap-balancer";
 import { css, styled } from "../../stitches.config";
 import { BlogPost, Tag } from "../../util/notion";
 import { filterPosts } from "../../util/notion";
-import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { H2_STYLES, H3_STYLES } from "../../styles/text";
 import {
   BlogCard,
@@ -39,6 +38,7 @@ import { Box } from "../Box";
 import { ArrowLeftIcon, ArrowRightIcon } from "@radix-ui/react-icons";
 import { Tooltip } from "../Tooltip";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
+import { useLayoutToggle } from "../../hooks/useLayoutToggle";
 
 export type Props = {
   posts: BlogPost[];
@@ -162,10 +162,9 @@ export const Writing = ({ posts, tags }: Props) => {
   const page = Number(query.writingPage ?? 1);
   const queryTag = query.tag as string;
 
-  const [storageLayout, setStorageLayout] = useLocalStorage<string>(
-    "layout",
-    "grid"
-  );
+  const [layout, setLayout] = useLayoutToggle();
+
+  console.log({ layout });
 
   const featuredPost = posts.find(
     (post) =>
@@ -203,9 +202,9 @@ export const Writing = ({ posts, tags }: Props) => {
 
   const handleLayoutChange = useCallback(
     (checked: boolean) => {
-      setStorageLayout(checked ? "grid" : "rows");
+      setLayout(checked ? "grid" : "rows");
     },
-    [setStorageLayout]
+    [setLayout]
   );
 
   const handlePageBack = useCallback(() => {
@@ -296,8 +295,7 @@ export const Writing = ({ posts, tags }: Props) => {
             <ActionButtons css={{ flexBasis: "fit-content" }}>
               <LayoutToggle
                 aria-label="Articles layout"
-                defaultPressed={storageLayout === "grid"}
-                value={storageLayout}
+                pressed={layout === "grid"}
                 onPressedChange={handleLayoutChange}
               />
 
@@ -419,7 +417,7 @@ export const Writing = ({ posts, tags }: Props) => {
 
             <Box
               direction="vertical"
-              display={storageLayout === "grid" ? "flex" : "none"}
+              display={layout === "grid" ? "flex" : "none"}
             >
               <StyledCardContainer display="grid">
                 {displayedPosts.map((post, i) => {
@@ -450,7 +448,7 @@ export const Writing = ({ posts, tags }: Props) => {
               as="ul"
               direction="vertical"
               gap={11}
-              display={storageLayout === "rows" ? "flex" : "none"}
+              display={layout === "rows" ? "flex" : "none"}
             >
               {displayedPosts.map((post, i) => {
                 return (
