@@ -7,22 +7,43 @@ import {
   useState,
   ReactNode,
   Ref,
+  Suspense,
 } from "react";
 import Image, { StaticImageData } from "next/image";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 import { blackA, whiteA } from "@radix-ui/colors";
 import { darkTheme, lightTheme, styled } from "../stitches.config";
-import { PostTags, PublishDate, Retailer, YoutubeChannel } from "./Frontmatter";
+import {
+  LikeCount,
+  PostTags,
+  PublishDate,
+  ReplyCount,
+  RepostCount,
+  Retailer,
+  YoutubeChannel,
+} from "./Frontmatter";
 import { Box } from "./Box";
-import { Emoji, TextAux, TextBody, TextHeadline, TextTitle3 } from "./Text";
-import { BuyMeCoffeeLink, Link } from "./Link";
+import {
+  Emoji,
+  TextAux,
+  TextBody,
+  TextHeadline,
+  TextTitle2,
+  TextTitle3,
+} from "./Text";
+import { BuyMeCoffeeLink, Link, LinkPreview } from "./Link";
 import { StyledTag } from "./Tags";
 import { PreviewToggle } from "./Button";
-import { BLUR_DATA_URL } from "../util/images";
+import { BLUR_DATA_URL, ICON_SIZE } from "../util/images";
 import { YOUTUBE_CHANNEL_TITLE } from "../util/youtube";
 import { CSS } from "../stitches.config";
 import { Tag } from "../util/notion";
 import banner from "../public/images/banner.png";
+import { Avatar } from "./Avatar";
+import { getInitials } from "../util/atproto";
+import { ProfileViewBasic } from "@atproto/api/dist/client/types/app/bsky/actor/defs";
+import { SITE } from "../util/data";
+import { PlayIcon } from "@radix-ui/react-icons";
 
 export type CardChildProps = {
   ref: Ref<HTMLAnchorElement>;
@@ -31,7 +52,7 @@ export type CardChildProps = {
 };
 
 export type CardProps = {
-  image: string | StaticImageData;
+  image?: string | StaticImageData;
   children: (props: CardChildProps) => ReactNode;
 };
 
@@ -62,6 +83,23 @@ export type InventoryCardProps = CSS & {
   image: string;
 };
 
+export type SocialCardProps = CSS & {
+  id: string;
+  author: ProfileViewBasic;
+  text: string;
+  replies: number;
+  reposts: number;
+  likes: number;
+  images?: Record<string, unknown>[];
+  video?: {
+    src: string;
+    img: string;
+    aspectRatio: { width: number; height: number };
+  };
+  link?: string;
+  compact?: boolean;
+};
+
 const StyledLink = styled(Link, {
   "@media(hover)": {
     "&:hover": {
@@ -72,6 +110,25 @@ const StyledLink = styled(Link, {
   "&:focus": {
     outline: "none",
   },
+});
+
+const StyledImage = styled(Image, {
+  objectFit: "cover",
+  pointerEvents: "none",
+  width: "100%",
+});
+
+const StyledPlayIconContainer = styled(Box, {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  color: "white",
+  background: blackA.blackA10,
+  transform: "translate(-50%, -50%)",
+  borderWidth: 2,
+  borderColor: "white",
+  borderStyle: "solid",
+  borderRadius: "50%",
 });
 
 const StyledCardOuter = styled(Box, {
@@ -224,6 +281,11 @@ const StyledCardOuter = styled(Box, {
   },
 });
 
+const StyledSocialInteractions = styled(Box, {
+  maxWidth: 400,
+  width: "100%",
+});
+
 export const StyledCardInner = styled(Box, {
   position: "relative",
 });
@@ -289,18 +351,20 @@ export const Card = memo(function Card({
       onClick={handleClick}
       {...props}
     >
-      <AspectRatio.Root ratio={16 / 9}>
-        <StyledCardImage
-          placeholder="blur"
-          blurDataURL={BLUR_DATA_URL}
-          src={image}
-          alt=""
-          sizes="(max-width: 768px) 100vw,
+      {image ? (
+        <AspectRatio.Root ratio={16 / 9}>
+          <StyledCardImage
+            placeholder="blur"
+            blurDataURL={BLUR_DATA_URL}
+            src={image}
+            alt=""
+            sizes="(max-width: 768px) 100vw,
               (max-width: 1080px) 420px,
               330px"
-          fill
-        />
-      </AspectRatio.Root>
+            fill
+          />
+        </AspectRatio.Root>
+      ) : null}
 
       <StyledCardInner
         direction="vertical"
@@ -538,6 +602,170 @@ export const InventoryCard = memo(function InventoryCard({
                 <TextAux>AFFILIATE</TextAux>
               </StyledTag>
             ) : null}
+          </Box>
+        </Box>
+      )}
+    </Card>
+  );
+});
+
+export const SocialCard = memo(function SocialCard({
+  id,
+  author,
+  replies,
+  reposts,
+  images,
+  video,
+  likes,
+  link,
+  url,
+  text,
+  compact,
+  ...props
+}: SocialCardProps) {
+  const fallback = getInitials(author.displayName);
+
+  if (compact) {
+    return (
+      <Card {...props}>
+        {({ ref }) => (
+          <Box direction="vertical" spacingTop={4} flexGrow>
+            <Box direction="vertical" gap={4} flexGrow>
+              <Box direction="horizontal" gap={4}>
+                <Avatar
+                  src={author.avatar}
+                  alt={author.displayName}
+                  fallback={fallback}
+                  compact
+                />
+
+                <Box direction="vertical">
+                  <TextHeadline as="h3">{author.displayName}</TextHeadline>
+                  <TextAux>{author.handle}</TextAux>
+                </Box>
+
+                <StyledLink
+                  href={url}
+                  ref={ref}
+                  variant="invisible"
+                ></StyledLink>
+              </Box>
+
+              <Box spacingHorizontal={2} gap={4} direction="vertical">
+                <TextAux lang="en" as="pre" css={{ whiteSpace: "pre-wrap" }}>
+                  {text}
+                </TextAux>
+
+                {images?.length ? (
+                  <AspectRatio.Root
+                    ratio={
+                      images[0]?.aspectRatio.width /
+                      images[0]?.aspectRatio.height
+                    }
+                  >
+                    <StyledImage
+                      src={images[0]?.thumb}
+                      alt={images[0]?.alt}
+                      fill
+                    />
+                  </AspectRatio.Root>
+                ) : null}
+
+                {video ? (
+                  <AspectRatio.Root
+                    ratio={video?.aspectRatio.width / video?.aspectRatio.height}
+                  >
+                    <StyledImage src={video.img} alt="" fill />
+                    <StyledPlayIconContainer spacing={3}>
+                      <PlayIcon width={ICON_SIZE.xxl} height={ICON_SIZE.xxl} />
+                    </StyledPlayIconContainer>
+                  </AspectRatio.Root>
+                ) : null}
+
+                {link ? (
+                  <LinkPreview
+                    href={link.uri}
+                    src={link.thumb}
+                    title={link.title}
+                    description={link.description}
+                  />
+                ) : null}
+              </Box>
+
+              <Box
+                spacingHorizontal={2}
+                justifyContent="flex-end"
+                css={{ marginTop: "auto" }}
+              >
+                <StyledSocialInteractions justifyContent="space-between">
+                  <ReplyCount total={replies} compact icon />
+                  <RepostCount total={reposts} compact icon />
+                  <LikeCount total={likes} compact icon />
+                </StyledSocialInteractions>
+              </Box>
+            </Box>
+          </Box>
+        )}
+      </Card>
+    );
+  }
+
+  return (
+    <Card display="block" {...props}>
+      {({ ref }) => (
+        <Box direction="vertical" spacing={7} flexGrow css={{ minHeight: 156 }}>
+          <Box direction="vertical" gap={10}>
+            <Box direction="horizontal" gap={10}>
+              <Avatar
+                src={author.avatar}
+                alt={author.displayName}
+                fallback={fallback}
+              />
+
+              <Box direction="vertical">
+                <TextTitle2 as="h3">{author.displayName}</TextTitle2>
+                <TextBody>{author.handle}</TextBody>
+              </Box>
+
+              <StyledLink href={url} ref={ref} variant="invisible"></StyledLink>
+            </Box>
+
+            <Box spacingHorizontal={2} direction="vertical">
+              <TextBody
+                as="pre"
+                lang="en"
+                css={{ width: "max-content", whiteSpace: "pre-wrap" }}
+              >
+                {text}
+              </TextBody>
+
+              {images?.length
+                ? images.map((image) => (
+                    <AspectRatio.Root
+                      ratio={image.aspectRatio.width / image.aspectRatio.height}
+                    >
+                      <StyledImage
+                        src={image.thumb}
+                        sizes="(max-width: 1020px) 100vw, 50vw"
+                        alt={image.alt}
+                        fill
+                      />
+                    </AspectRatio.Root>
+                  ))
+                : null}
+            </Box>
+
+            <Box
+              spacingHorizontal={2}
+              justifyContent="flex-end"
+              css={{ marginTop: "auto" }}
+            >
+              <StyledSocialInteractions justifyContent="space-between">
+                <ReplyCount total={replies} icon />
+                <RepostCount total={reposts} icon />
+                <LikeCount total={likes} icon />
+              </StyledSocialInteractions>
+            </Box>
           </Box>
         </Box>
       )}

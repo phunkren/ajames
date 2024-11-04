@@ -3,18 +3,20 @@ import {
   AvatarIcon,
   BellIcon,
   BookmarkFilledIcon,
-  BookmarkIcon,
   CalendarIcon,
+  ChatBubbleIcon,
   ClockIcon,
   EyeOpenIcon,
   GlobeIcon,
   HeartIcon,
   LaptopIcon,
+  LoopIcon,
   MixIcon,
   Pencil2Icon,
   PersonIcon,
   VideoIcon,
 } from "@radix-ui/react-icons";
+import { CiAt } from "react-icons/ci";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { formatLongDate } from "../util/date";
 import { ICON_SIZE } from "../util/images";
@@ -23,7 +25,7 @@ import { formatReadingTime, Tag } from "../util/notion";
 import { Box, BoxProps } from "./Box";
 import { TextAux, TextHeadline } from "./Text";
 import { StyledTag } from "./Tags";
-import { PERSONAL } from "../util/data";
+import { PERSONAL, SOCIAL } from "../util/data";
 import { Button } from "./Button";
 
 type FrontMatterItemProps = BoxProps & {
@@ -265,6 +267,184 @@ export const SubscriberCount = memo(function SubscriberCount({
       <TextHeadline textTransform="capitalize">
         {formattedSubscribers}
       </TextHeadline>
+    </FrontmatterItem>
+  );
+});
+
+export const FollowerCount = memo(function FollowerCount({
+  total,
+  icon = false,
+  ...props
+}: TotalProps) {
+  const formattedNumber = formatNumber(total);
+  const formattedSubscribers = `${formattedNumber} followers`;
+
+  return (
+    <FrontmatterItem {...props}>
+      {icon ? (
+        <Box flexShrink={false}>
+          <VisuallyHidden.Root>Total Followers</VisuallyHidden.Root>
+          <PersonIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
+        </Box>
+      ) : null}
+      <TextHeadline textTransform="capitalize">
+        {formattedSubscribers}
+      </TextHeadline>
+    </FrontmatterItem>
+  );
+});
+
+export const PostCount = memo(function PostCount({
+  total,
+  icon = false,
+  ...props
+}: TotalProps) {
+  const formattedNumber = formatNumber(total);
+  const formattedPosts = `${formattedNumber} posts`;
+
+  return (
+    <FrontmatterItem {...props}>
+      {icon ? (
+        <Box flexShrink={false}>
+          <VisuallyHidden.Root>Total Posts</VisuallyHidden.Root>
+          <Pencil2Icon width={ICON_SIZE.l} height={ICON_SIZE.l} />
+        </Box>
+      ) : null}
+      <TextHeadline textTransform="capitalize">{formattedPosts}</TextHeadline>
+    </FrontmatterItem>
+  );
+});
+
+export const AtprotoHandle = memo(function AtprotoHandle({
+  icon = false,
+  ...props
+}: TotalProps) {
+  return (
+    <FrontmatterItem {...props}>
+      {icon ? (
+        <Box flexShrink={false}>
+          <VisuallyHidden.Root>@</VisuallyHidden.Root>
+          <CiAt size={ICON_SIZE.l} />
+        </Box>
+      ) : null}
+      <TextHeadline>{SOCIAL.bluesky.handle}</TextHeadline>
+    </FrontmatterItem>
+  );
+});
+
+export const LikeCount = memo(function LikeCount({
+  total,
+  icon = false,
+  compact = false,
+  ...props
+}: RetailerProps) {
+  const formattedNumber = formatNumber(total);
+
+  if (compact) {
+    return (
+      <FrontmatterItem compact {...props}>
+        {icon ? (
+          <Box flexShrink={false}>
+            <VisuallyHidden.Root>Likes</VisuallyHidden.Root>
+            <HeartIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
+          </Box>
+        ) : null}
+
+        <TextAux clamp={1} color="secondary">
+          {formattedNumber}
+        </TextAux>
+      </FrontmatterItem>
+    );
+  }
+
+  return (
+    <FrontmatterItem {...props}>
+      {icon ? (
+        <Box flexShrink={false}>
+          <VisuallyHidden.Root>Likes</VisuallyHidden.Root>
+          <HeartIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
+        </Box>
+      ) : null}
+
+      <TextHeadline textTransform="capitalize">{formattedNumber}</TextHeadline>
+    </FrontmatterItem>
+  );
+});
+
+export const ReplyCount = memo(function ReplyCount({
+  total,
+  icon = false,
+  compact = false,
+  ...props
+}: RetailerProps) {
+  const formattedNumber = formatNumber(total);
+
+  if (compact) {
+    return (
+      <FrontmatterItem compact alignItems="center" {...props}>
+        {icon ? (
+          <Box flexShrink={false}>
+            <VisuallyHidden.Root>Replies</VisuallyHidden.Root>
+            <ChatBubbleIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
+          </Box>
+        ) : null}
+
+        <TextAux clamp={1} color="secondary">
+          {formattedNumber}
+        </TextAux>
+      </FrontmatterItem>
+    );
+  }
+
+  return (
+    <FrontmatterItem {...props}>
+      {icon ? (
+        <Box flexShrink={false}>
+          <VisuallyHidden.Root>Replies</VisuallyHidden.Root>
+          <ChatBubbleIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
+        </Box>
+      ) : null}
+
+      <TextHeadline textTransform="capitalize">{formattedNumber}</TextHeadline>
+    </FrontmatterItem>
+  );
+});
+
+export const RepostCount = memo(function RepostCount({
+  total,
+  icon = false,
+  compact = false,
+  ...props
+}: RetailerProps) {
+  const formattedNumber = formatNumber(total);
+
+  if (compact) {
+    return (
+      <FrontmatterItem compact {...props}>
+        {icon ? (
+          <Box flexShrink={false}>
+            <VisuallyHidden.Root>Repost</VisuallyHidden.Root>
+            <LoopIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
+          </Box>
+        ) : null}
+
+        <TextAux clamp={1} color="secondary">
+          {formattedNumber}
+        </TextAux>
+      </FrontmatterItem>
+    );
+  }
+
+  return (
+    <FrontmatterItem {...props}>
+      {icon ? (
+        <Box flexShrink={false}>
+          <VisuallyHidden.Root>Repost</VisuallyHidden.Root>
+          <LoopIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
+        </Box>
+      ) : null}
+
+      <TextHeadline textTransform="capitalize">{formattedNumber}</TextHeadline>
     </FrontmatterItem>
   );
 });

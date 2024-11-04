@@ -8,17 +8,24 @@ import {
   Props as LearningProps,
 } from "../components/sections/Learning";
 import { Writing, Props as WritingProps } from "../components/sections/Writing";
-import { Social } from "../components/sections/Social";
+import { Social, Props as SocialProps } from "../components/sections/Social";
 import { getPosts } from "../lib/notion";
 import { getYoutubeData } from "../lib/youtube";
 import { ONE_MINUTE_IN_SECONDS } from "../util/date";
 import { getTags, sortPosts } from "../util/notion";
 import { formatChannelInfo, formatVideos } from "../util/youtube";
 import { NextPageWithLayout } from "./_app";
+import { getAtProtoData } from "../lib/atproto";
+import {
+  formatAtprotoFeed,
+  formatAtprotoPinnedPost,
+  formatAtprotoProfile,
+} from "../util/atproto";
 
 type Props = {
   writing: WritingProps;
   learning: LearningProps;
+  social: SocialProps;
 };
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -30,12 +37,16 @@ export const getStaticProps: GetStaticProps = async () => {
   // Learning
   const { channelUploads, channelSubscriptions, channelInfo } =
     await getYoutubeData();
-
   const [featured, ...uploads] = formatVideos(channelUploads.data.items);
-
   const subscriptions = formatVideos(channelSubscriptions);
+  const youtubeInfo = formatChannelInfo(channelInfo);
 
-  const info = formatChannelInfo(channelInfo);
+  // Social
+  const { myProfile, myPinnedPost, myFeed, myFollowingFeed } =
+    await getAtProtoData();
+  const atprotoProfile = formatAtprotoProfile(myProfile);
+  const atprotoFeed = formatAtprotoFeed(myFeed, myFollowingFeed);
+  const atprotoPinnedPost = formatAtprotoPinnedPost(myPinnedPost);
 
   return {
     props: {
@@ -47,7 +58,12 @@ export const getStaticProps: GetStaticProps = async () => {
         featured,
         uploads,
         subscriptions,
-        info,
+        info: youtubeInfo,
+      },
+      social: {
+        info: atprotoProfile,
+        feed: atprotoFeed,
+        pinnedPost: atprotoPinnedPost,
       },
     },
     revalidate: ONE_MINUTE_IN_SECONDS,
@@ -57,6 +73,7 @@ export const getStaticProps: GetStaticProps = async () => {
 const Home: NextPageWithLayout = memo(function Home({
   writing,
   learning,
+  social,
 }: Props) {
   return (
     <>
@@ -67,7 +84,7 @@ const Home: NextPageWithLayout = memo(function Home({
 
         <Learning {...learning} />
 
-        <Social />
+        <Social {...social} />
       </Box>
     </>
   );
