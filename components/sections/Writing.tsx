@@ -51,20 +51,28 @@ const StyledImage = styled(Image, {
   pointerEvents: "none",
 });
 
-const StyledCardContainer = styled(Box, {
+const StyledBlogCardContainer = styled(Box, {
   display: "grid",
-  gridTemplateColumns: "1fr",
-  gridTemplateRows: "1fr",
-  gridColumnGap: "$2",
-  gridRowGap: "$10",
+  gridTemplateColumns: "repeat(12, minmax(auto, 1fr))",
+  gridColumnGap: "$4",
+  gridRowGap: "$1",
   borderRadius: "$1",
+  padding: "$2",
+
+  overflowY: "hidden",
+  scrollSnapType: "x mandatory",
+  scrollPadding: "0 $1",
   width: "100%",
+  height: "100%",
+  perspective: 100,
+  transform: "translate3d(0,0,0)",
+  ["-webkit-transform"]: "translateZ(0,0,0)",
 
   "@bp2": {
     gridTemplateColumns: "repeat(2, 1fr)",
-
     gridColumnGap: "$6",
     gridRowGap: "$6",
+    padding: 0,
   },
 
   "@bp3": {
@@ -415,7 +423,21 @@ export const Writing = ({ posts, tags }: Props) => {
               direction="vertical"
               display={layout === "grid" ? "flex" : "none"}
             >
-              <StyledCardContainer display="grid">
+              <StyledBlogCardContainer
+                spacingVertical={10}
+                css={{
+                  overflowY: "hidden",
+                  scrollSnapType: "x mandatory",
+
+                  scrollPadding: "0 $1",
+                  width: "100%",
+                  height: "100%",
+
+                  perspective: 100,
+                  transform: "translate3d(0,0,0)",
+                  ["-webkit-transform"]: "translateZ(0,0,0)",
+                }}
+              >
                 {displayedPosts.map((post, i) => {
                   return (
                     <Fragment key={post.id}>
@@ -437,7 +459,7 @@ export const Writing = ({ posts, tags }: Props) => {
                     </Fragment>
                   );
                 })}
-              </StyledCardContainer>
+              </StyledBlogCardContainer>
             </Box>
 
             <Box
