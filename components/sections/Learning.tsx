@@ -80,26 +80,23 @@ export const Learning = ({ featured, uploads, subscriptions, info }: Props) => {
       as="section"
       display="flex"
       direction="vertical"
-      spacingTop={{ "@initial": 11, "@bp2": 10, "@bp3": 11 }}
-      spacingBottom={12}
       spacingHorizontal={7}
     >
       <Box
         direction="vertical"
-        gap={12}
+        gap={{ "@initial": 10, "@bp2": 11 }}
         container="l"
-        spacingBottom={{ "@initial": 10, "@bp2": 11 }}
+        spacingVertical={{ "@initial": 11, "@bp2": 12 }}
         css={{ zIndex: "$1" }}
       >
         <Box direction="vertical">
           <Box direction="vertical">
-            <Box direction="vertical" justifyContent="space-between" gap={10}>
+            <Box direction="vertical" justifyContent="space-between">
               <Box direction="vertical">
                 <Box
                   id={LEARNING_ID}
                   justifyContent="space-between"
-                  alignItems="center"
-                  spacingTop={12}
+                  alignItems="baseline"
                 >
                   <TextTitle1 as="h2">Learning</TextTitle1>
 
@@ -125,7 +122,12 @@ export const Learning = ({ featured, uploads, subscriptions, info }: Props) => {
                 </Box>
               </Box>
 
-              <Box alignItems="flex-end" justifyContent="space-between">
+              <Box
+                alignItems="flex-end"
+                justifyContent="space-between"
+                spacingTop={4}
+                spacingBottom={10}
+              >
                 <Frontmatter>
                   <VideosViewsCount total={info.viewCount} icon />
                   <SubscriberCount total={info.subscriberCount} icon />
@@ -154,7 +156,7 @@ export const Learning = ({ featured, uploads, subscriptions, info }: Props) => {
           </Box>
         </Box>
 
-        <Box direction="vertical" gap={12}>
+        <Box direction="vertical" gap={{ "@initial": 11, "@bp2": 12 }}>
           {featured ? (
             <Box direction="vertical">
               <Box
@@ -164,7 +166,7 @@ export const Learning = ({ featured, uploads, subscriptions, info }: Props) => {
                 }}
                 gap={10}
                 alignItems="baseline"
-                spacingBottom={8}
+                spacingBottom={{ "@initial": 8, "@bp2": 10 }}
               >
                 <TextTitle2 as="h3">Featured</TextTitle2>
 
@@ -232,7 +234,7 @@ export const Learning = ({ featured, uploads, subscriptions, info }: Props) => {
             </Box>
           ) : null}
 
-          <Box direction="vertical" gap={12}>
+          <Box direction="vertical" gap={{ "@initial": 11, "@bp2": 12 }}>
             <Box direction="vertical">
               <Box direction="vertical">
                 <Box
@@ -242,9 +244,9 @@ export const Learning = ({ featured, uploads, subscriptions, info }: Props) => {
                     "@bp2": "flex-start",
                   }}
                   alignItems="baseline"
-                  spacingVertical={2}
+                  spacingBottom={2}
                 >
-                  <Link href="#" variant="secondary">
+                  <Link href={YOUTUBE_CHANNEL_URL} variant="secondary">
                     <TextTitle2 as="h3">Uploads</TextTitle2>
                   </Link>
 
@@ -270,7 +272,7 @@ export const Learning = ({ featured, uploads, subscriptions, info }: Props) => {
                 </TextBody>
 
                 <StyledVideoCardContainer
-                  spacingVertical={10}
+                  spacingVertical={{ "@initial": 8, "@bp2": 10 }}
                   css={{
                     overflowY: "hidden",
                     scrollSnapType: "x mandatory",
@@ -312,20 +314,9 @@ export const Learning = ({ featured, uploads, subscriptions, info }: Props) => {
                     "@bp2": "flex-start",
                   }}
                   alignItems="baseline"
-                  spacingVertical={2}
+                  spacingBottom={2}
                 >
-                  <Link href="#" variant="secondary">
-                    <TextTitle2 as="h3">Subscriptions</TextTitle2>
-                  </Link>
-
-                  {/* <Link href={watchAllUrl} variant="tertiary">
-                    <PlayIcon
-                      width={ICON_SIZE.m}
-                      height={ICON_SIZE.m}
-                      aria-hidden
-                    />
-                    <TextAux>Watch all</TextAux>
-                  </Link> */}
+                  <TextTitle2 as="h3">Subscriptions</TextTitle2>
                 </Box>
 
                 <TextBody
@@ -341,7 +332,7 @@ export const Learning = ({ featured, uploads, subscriptions, info }: Props) => {
                 </TextBody>
 
                 <StyledVideoCardContainer
-                  spacingVertical={10}
+                  spacingVertical={{ "@initial": 8, "@bp2": 10 }}
                   css={{
                     overflowY: "hidden",
                     scrollSnapType: "x mandatory",

@@ -321,9 +321,10 @@ export const BlogCard = memo(function BlogCard({
   image,
   emoji,
   tags,
+  ...props
 }: BlogCardProps) {
   return (
-    <Card image={image}>
+    <Card image={image} {...props}>
       {({ ref, isPreviewVisible, onPreviewToggle }) => (
         <>
           <StyledBlogContent direction="vertical" css={{ minHeight: 180 }}>

@@ -52,7 +52,6 @@ const StyledImage = styled(Image, {
 });
 
 const StyledBlogCardContainer = styled(Box, {
-  display: "grid",
   gridTemplateColumns: "repeat(12, minmax(auto, 1fr))",
   gridColumnGap: "$4",
   gridRowGap: "$1",
@@ -246,25 +245,26 @@ export const Writing = ({ posts, tags }: Props) => {
       as="section"
       display="flex"
       direction="vertical"
-      spacingTop={{ "@initial": 11, "@bp2": 10, "@bp3": 11 }}
-      spacingBottom={12}
       spacingHorizontal={7}
       className={bg}
     >
       <Box
         direction="vertical"
-        gap={12}
+        gap={{ "@initial": 10, "@bp2": 11 }}
+        spacingVertical={{ "@initial": 11, "@bp2": 12 }}
         container="l"
-        spacingBottom={{ "@initial": 10, "@bp2": 11 }}
         css={{ zIndex: "$1" }}
       >
-        <Box direction="vertical" gap={10}>
-          <Box direction="vertical">
+        <Box direction="vertical">
+          <Box
+            direction="vertical"
+            spacingBottom={{ "@initial": 4, "@bp2": 10 }}
+          >
             <Box
               id={WRITING_ID}
               justifyContent="space-between"
-              alignItems="center"
-              spacingTop={12}
+              alignItems="baseline"
+              spacingTop={{ "@initial": 11, "@bp2": 12 }}
             >
               <TextTitle1 as="h2">Writing</TextTitle1>
 
@@ -330,7 +330,7 @@ export const Writing = ({ posts, tags }: Props) => {
             </ActionButtons>
           </Box>
 
-          <Box>
+          <Box spacingTop={10}>
             <Divider />
           </Box>
         </Box>
@@ -338,7 +338,7 @@ export const Writing = ({ posts, tags }: Props) => {
         <Box direction="vertical" gap={11}>
           {featuredPost ? (
             <Box direction="vertical">
-              <Box spacingBottom={10}>
+              <Box spacingBottom={{ "@initial": 8, "@bp2": 10 }}>
                 <TextTitle2 as="h3">Featured</TextTitle2>
               </Box>
 
@@ -372,7 +372,7 @@ export const Writing = ({ posts, tags }: Props) => {
                 <Box direction="vertical" gap={4}>
                   <Link
                     href={`/writing/${featuredPost.properties.slug.rich_text[0].plain_text}`}
-                    variant="secondary"
+                    variant="primary"
                   >
                     <TextTitle3>
                       <Balancer>
@@ -415,7 +415,7 @@ export const Writing = ({ posts, tags }: Props) => {
           ) : null}
 
           <Box direction="vertical" id={ARTICLES_ID}>
-            <Box spacingBottom={10}>
+            <Box spacingBottom={{ "@initial": 8, "@bp2": 10 }}>
               <TextTitle2 as="h3">Articles</TextTitle2>
             </Box>
 
@@ -424,6 +424,7 @@ export const Writing = ({ posts, tags }: Props) => {
               display={layout === "grid" ? "flex" : "none"}
             >
               <StyledBlogCardContainer
+                display="grid"
                 spacingVertical={10}
                 css={{
                   overflowY: "hidden",
@@ -453,6 +454,10 @@ export const Writing = ({ posts, tags }: Props) => {
                         }
                         publishDate={post.properties.date.date.start}
                         tags={post.properties.tags.multi_select}
+                        css={{
+                          scrollSnapAlign: "center",
+                          "@bp2": { scrollSnapAlign: "start" },
+                        }}
                       />
 
                       {page === 1 && i === 2 ? <BlogSponsored /> : null}
@@ -465,7 +470,7 @@ export const Writing = ({ posts, tags }: Props) => {
             <Box
               as="ul"
               direction="vertical"
-              gap={11}
+              gap={{ "@initial": 10, "@bp2": 11 }}
               display={layout === "rows" ? "flex" : "none"}
             >
               {displayedPosts.map((post, i) => {
@@ -477,7 +482,10 @@ export const Writing = ({ posts, tags }: Props) => {
                           <Balancer>
                             <Link
                               href={`/writing/${post.properties.slug.rich_text[0].plain_text}`}
-                              variant="secondary"
+                              variant={{
+                                "@initial": "primary",
+                                "@bp2": "secondary",
+                              }}
                             >
                               <TextTitle3>
                                 {post.properties.page.title[0].plain_text}
@@ -486,11 +494,12 @@ export const Writing = ({ posts, tags }: Props) => {
                           </Balancer>
 
                           <TextBody
-                            color="secondary"
+                            spacingBottom={{ "@initial": 10, "@bp2": 11 }}
                             css={{
+                              display: "none",
                               maxWidth: "none",
                               spacingBottom: "$2",
-                              "@bp2": { maxWidth: "75%" },
+                              "@bp2": { maxWidth: "75%", display: "flex" },
                               "@bp3": { maxWidth: "66%" },
                             }}
                           >
@@ -500,6 +509,10 @@ export const Writing = ({ posts, tags }: Props) => {
                           <Link
                             href={`/writing/${post.properties.slug.rich_text[0].plain_text}`}
                             variant="tertiary"
+                            css={{
+                              display: "none",
+                              "@bp2": { display: "flex" },
+                            }}
                           >
                             <TextAux>Read the article</TextAux>
                           </Link>
@@ -518,8 +531,10 @@ export const Writing = ({ posts, tags }: Props) => {
                             <TextBody
                               color="secondary"
                               css={{
+                                display: "none",
                                 maxWidth: "none",
                                 spacingBottom: "$2",
+                                "@bp2": { display: "block" },
                                 "@bp3": { maxWidth: "66%" },
                               }}
                             >
@@ -543,10 +558,9 @@ export const Writing = ({ posts, tags }: Props) => {
                 );
               })}
             </Box>
-
             {totalPages > 1 ? (
               <Box
-                spacingTop={12}
+                spacingVertical={{ "@initial": 10, "@bp2": 11 }}
                 gap={10}
                 alignItems="center"
                 justifyContent="center"
