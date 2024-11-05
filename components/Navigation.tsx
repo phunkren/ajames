@@ -106,7 +106,11 @@ export const NavigationProjectLink = memo(function NavigationProjectLink({
 }: NavigationProjectLinkProps) {
   return (
     <NavigationMenu.Link asChild>
-      <StyledNavigationSubmenuLink variant="secondary" href={`/${url}`}>
+      <StyledNavigationSubmenuLink
+        variant="secondary"
+        href={`/${url}`}
+        nextLinkProps={{ scroll: true, shallow: false }}
+      >
         <VisuallyHidden.Root>
           <TextAux>
             {name} - {description}

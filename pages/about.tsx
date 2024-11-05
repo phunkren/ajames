@@ -119,7 +119,7 @@ export const CollapsibleSection = memo(function CollapsibleSection({
             <Box
               justifyContent="space-between"
               alignItems="center"
-              gap={2}
+              gap={4}
               tabIndex={-1}
               onClick={handleClick}
             >
@@ -173,20 +173,11 @@ const About: NextPageWithLayout = memo(function About() {
       display="flex"
       direction="vertical"
       spacingTop={{ "@initial": 11, "@bp2": 10, "@bp3": 11 }}
-      spacingBottom={{ "@print": 0, "@initial": 12 }}
-      spacingHorizontal={7}
     >
-      <Box
-        direction="vertical"
-        gap={12}
-        container="l"
-        spacingBottom={{ "@print": 0, "@initial": 10, "@bp2": 11 }}
-        css={{ zIndex: "$1" }}
-      >
+      <Box direction="vertical" gap={12} container="l" css={{ zIndex: "$1" }}>
         <Box direction="vertical" gap={10}>
           <Box
             as="section"
-            spacingBottom={{ "@initial": 12, "@print": 0 }}
             spacingHorizontal={{ "@initial": 7, "@print": 0 }}
             direction="vertical"
             css={{
@@ -196,7 +187,6 @@ const About: NextPageWithLayout = memo(function About() {
             <Box
               direction="vertical"
               gap={{ "@initial": 11, "@print": 0 }}
-              spacingBottom={{ "@initial": 10, "@bp2": 12, "@print": 0 }}
               container="l"
               css={{ zIndex: "$1" }}
             >
