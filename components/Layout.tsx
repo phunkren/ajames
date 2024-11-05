@@ -11,6 +11,7 @@ import { Box, BoxProps } from "./Box";
 import { TextAux } from "./Text";
 import { Logo } from "./Logo";
 import { Tooltip } from "./Tooltip";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import { useScroll } from "../hooks/useScroll";
 import { useRouter } from "next/router";
@@ -191,6 +192,8 @@ export const Layout = memo(function Layout({ children }: LayoutProps) {
         <FooterLayout />
 
         <Noise />
+
+        <SpeedInsights />
       </Box>
     </>
   );
