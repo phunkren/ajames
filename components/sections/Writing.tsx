@@ -248,23 +248,15 @@ export const Writing = ({ posts, tags }: Props) => {
       spacingHorizontal={7}
       className={bg}
     >
-      <Box
-        direction="vertical"
-        gap={{ "@initial": 10, "@bp2": 11 }}
-        spacingVertical={{ "@initial": 11, "@bp2": 12 }}
-        container="l"
-        css={{ zIndex: "$1" }}
-      >
+      <Box direction="vertical" container="l" css={{ zIndex: "$1" }}>
         <Box direction="vertical">
-          <Box
-            direction="vertical"
-            spacingBottom={{ "@initial": 4, "@bp2": 10 }}
-          >
+          <Box direction="vertical">
             <Box
               id={WRITING_ID}
               justifyContent="space-between"
               alignItems="baseline"
               spacingTop={{ "@initial": 11, "@bp2": 12 }}
+              spacingBottom={{ "@initial": 4, "@bp2": 10 }}
             >
               <TextTitle1 as="h2">Writing</TextTitle1>
 
@@ -335,16 +327,20 @@ export const Writing = ({ posts, tags }: Props) => {
           </Box>
         </Box>
 
-        <Box direction="vertical" gap={11}>
+        <Box direction="vertical">
           {featuredPost ? (
             <Box direction="vertical">
-              <Box spacingBottom={{ "@initial": 8, "@bp2": 10 }}>
+              <Box
+                spacingTop={{ "@initial": 10, "@bp2": 11 }}
+                spacingBottom={{ "@initial": 8, "@bp2": 10 }}
+              >
                 <TextTitle2 as="h3">Featured</TextTitle2>
               </Box>
 
               <Box
                 gap={{ "@initial": 0, "@bp3": 11 }}
                 direction={{ "@initial": "vertical", "@bp3": "horizontal" }}
+                alignItems={{ "@initial": "flex-start", "@bp3": "center" }}
               >
                 <Box
                   direction="vertical"
@@ -414,8 +410,12 @@ export const Writing = ({ posts, tags }: Props) => {
             </Box>
           ) : null}
 
-          <Box direction="vertical" id={ARTICLES_ID}>
-            <Box spacingBottom={{ "@initial": 8, "@bp2": 10 }}>
+          <Box direction="vertical">
+            <Box
+              id={ARTICLES_ID}
+              spacingTop={{ "@initial": 10, "@bp2": 11 }}
+              spacingBottom={{ "@initial": 8, "@bp2": 10 }}
+            >
               <TextTitle2 as="h3">Articles</TextTitle2>
             </Box>
 
@@ -425,7 +425,6 @@ export const Writing = ({ posts, tags }: Props) => {
             >
               <StyledBlogCardContainer
                 display="grid"
-                spacingVertical={10}
                 css={{
                   overflowY: "hidden",
                   scrollSnapType: "x mandatory",
@@ -558,9 +557,10 @@ export const Writing = ({ posts, tags }: Props) => {
                 );
               })}
             </Box>
+
             {totalPages > 1 ? (
               <Box
-                spacingVertical={{ "@initial": 10, "@bp2": 11 }}
+                spacingTop={{ "@initial": 10, "@bp2": 11 }}
                 gap={10}
                 alignItems="center"
                 justifyContent="center"

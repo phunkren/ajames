@@ -82,13 +82,7 @@ export const Learning = ({ featured, uploads, subscriptions, info }: Props) => {
       direction="vertical"
       spacingHorizontal={7}
     >
-      <Box
-        direction="vertical"
-        gap={{ "@initial": 10, "@bp2": 11 }}
-        container="l"
-        spacingVertical={{ "@initial": 11, "@bp2": 12 }}
-        css={{ zIndex: "$1" }}
-      >
+      <Box direction="vertical" container="l" css={{ zIndex: "$1" }}>
         <Box direction="vertical">
           <Box direction="vertical">
             <Box direction="vertical" justifyContent="space-between">
@@ -97,6 +91,8 @@ export const Learning = ({ featured, uploads, subscriptions, info }: Props) => {
                   id={LEARNING_ID}
                   justifyContent="space-between"
                   alignItems="baseline"
+                  spacingTop={{ "@initial": 11, "@bp2": 12 }}
+                  spacingBottom={{ "@initial": 4, "@bp2": 10 }}
                 >
                   <TextTitle1 as="h2">Learning</TextTitle1>
 
@@ -125,7 +121,6 @@ export const Learning = ({ featured, uploads, subscriptions, info }: Props) => {
               <Box
                 alignItems="flex-end"
                 justifyContent="space-between"
-                spacingTop={4}
                 spacingBottom={10}
               >
                 <Frontmatter>
@@ -156,7 +151,7 @@ export const Learning = ({ featured, uploads, subscriptions, info }: Props) => {
           </Box>
         </Box>
 
-        <Box direction="vertical" gap={{ "@initial": 11, "@bp2": 12 }}>
+        <Box direction="vertical">
           {featured ? (
             <Box direction="vertical">
               <Box
@@ -164,8 +159,9 @@ export const Learning = ({ featured, uploads, subscriptions, info }: Props) => {
                   "@initial": "space-between",
                   "@bp2": "flex-start",
                 }}
-                gap={10}
                 alignItems="baseline"
+                gap={10}
+                spacingTop={{ "@initial": 10, "@bp2": 11 }}
                 spacingBottom={{ "@initial": 8, "@bp2": 10 }}
               >
                 <TextTitle2 as="h3">Featured</TextTitle2>
@@ -182,6 +178,7 @@ export const Learning = ({ featured, uploads, subscriptions, info }: Props) => {
 
               <Box
                 gap={{ "@initial": 0, "@bp3": 11 }}
+                alignItems={{ "@initial": "flex-start", "@bp3": "center" }}
                 direction={{ "@initial": "vertical", "@bp3": "horizontal" }}
               >
                 <Box
@@ -234,7 +231,7 @@ export const Learning = ({ featured, uploads, subscriptions, info }: Props) => {
             </Box>
           ) : null}
 
-          <Box direction="vertical" gap={{ "@initial": 11, "@bp2": 12 }}>
+          <Box direction="vertical">
             <Box direction="vertical">
               <Box direction="vertical">
                 <Box
@@ -244,6 +241,7 @@ export const Learning = ({ featured, uploads, subscriptions, info }: Props) => {
                     "@bp2": "flex-start",
                   }}
                   alignItems="baseline"
+                  spacingTop={{ "@initial": 10, "@bp2": 11 }}
                   spacingBottom={2}
                 >
                   <Link href={YOUTUBE_CHANNEL_URL} variant="secondary">
@@ -314,6 +312,7 @@ export const Learning = ({ featured, uploads, subscriptions, info }: Props) => {
                     "@bp2": "flex-start",
                   }}
                   alignItems="baseline"
+                  spacingTop={{ "@initial": 10, "@bp2": 11 }}
                   spacingBottom={2}
                 >
                   <TextTitle2 as="h3">Subscriptions</TextTitle2>

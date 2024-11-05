@@ -13,6 +13,7 @@ import { SiBuymeacoffee } from "react-icons/si";
 import {
   DownloadIcon,
   LinkedInLogoIcon,
+  NotionLogoIcon,
   VideoIcon,
 } from "@radix-ui/react-icons";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
@@ -33,6 +34,7 @@ import { Box } from "./Box";
 import { Tooltip } from "./Tooltip";
 import { TextAux, TextHeadline } from "./Text";
 import { StyledCoffeeButton } from "./Button";
+import { NOTION_INVENTORY_ID } from "../util/notion";
 
 export type LinkProps = CSS &
   Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href"> & {
@@ -56,6 +58,11 @@ type BlueskyShareProps = {
 };
 
 type SubscribeProps = CSS & {
+  type?: "link" | "icon" | "button";
+};
+
+type NotionViewProps = CSS & {
+  id: string;
   type?: "link" | "icon" | "button";
 };
 
@@ -411,6 +418,71 @@ const StyledLinkedInConnect = styled(Link, {
   },
 });
 
+const StyledViewInNotion = styled(Link, {
+  display: "flex",
+  alignItems: "center",
+
+  variants: {
+    type: {
+      link: {},
+      button: {
+        minWidth: 125,
+        justifyContent: "center",
+        alignItems: "center",
+        padding: "$2 $4",
+        borderRadius: "$1",
+        ...LINK_BUTTON_PROPS,
+
+        [`.${lightTheme} &`]: {
+          backgroundImage: `linear-gradient(175deg, $foreground 0.04%, $foregroundMuted 100.04%)`,
+          color: "$background",
+        },
+
+        [`.${darkTheme} &`]: {
+          backgroundImage: `linear-gradient(175deg, $foreground 0.04%, $foregroundMuted 100.04%)`,
+          color: "$background",
+        },
+
+        "@media(hover)": {
+          color: "currentcolor",
+
+          "&:hover": {
+            [`.${lightTheme} &`]: {
+              backgroundImage: `linear-gradient(175deg, $foregroundMuted 0.04%, $foreground 100.04%)`,
+            },
+
+            [`.${darkTheme} &`]: {
+              backgroundImage: `linear-gradient(175deg, $foregroundMuted 0.04%, $foreground 100.04%)`,
+            },
+          },
+        },
+      },
+      icon: {
+        justifyContent: "center",
+        minWidth: 44,
+        minHeight: 44,
+        padding: "$2",
+        borderRadius: "50%",
+        borderStyle: "solid",
+        borderWidth: 2,
+        ...LINK_BUTTON_PROPS,
+
+        [`.${lightTheme} &`]: {
+          borderColor: "$blue10",
+          backgroundImage: `linear-gradient(175deg, $blue9 0.04%, $blue10 100.04%)`,
+          color: "$blue1",
+        },
+
+        [`.${darkTheme} &`]: {
+          borderColor: "$blue7",
+          backgroundImage: `linear-gradient(175deg, $blue8 0.04%, $blue7 100.04%)`,
+          color: "$blue12",
+        },
+      },
+    },
+  },
+});
+
 const StyledBlogSubscription = styled(Link, {
   display: "flex",
   alignItems: "center",
@@ -602,6 +674,56 @@ export const LinkedInConnectLink = memo(function LinkedInConnectLink({
         {type === "link" && <StyledHeadline>Connect</StyledHeadline>}
       </Box>
     </StyledLinkedInConnect>
+  );
+});
+
+export const NotionViewLink = memo(function NotionViewLink({
+  id,
+  type = "link",
+  ...props
+}: NotionViewProps) {
+  if (type === "icon") {
+    return (
+      <Tooltip title="Connect">
+        <StyledViewInNotion
+          href={`https://phunkren.notion.site/${id}`}
+          type={type}
+          variant="invisible"
+          aria-label="View page in Notion"
+          {...props}
+        >
+          <Box alignItems="center" gap={2}>
+            <NotionLogoIcon
+              width={ICON_SIZE.m}
+              height={ICON_SIZE.m}
+              aria-hidden
+            />
+            <VisuallyHidden.Root>Notion</VisuallyHidden.Root>
+          </Box>
+        </StyledViewInNotion>
+      </Tooltip>
+    );
+  }
+
+  return (
+    <StyledViewInNotion
+      href={`https://phunkren.notion.site/${id}`}
+      type={type}
+      variant={type === "link" ? "secondary" : "invisible"}
+      {...props}
+    >
+      <Box alignItems="center" gap={type === "button" ? 3 : 4}>
+        <NotionLogoIcon
+          width={type === "link" ? ICON_SIZE.xl : ICON_SIZE.m}
+          height={type === "link" ? ICON_SIZE.xl : ICON_SIZE.m}
+          aria-hidden
+        />
+
+        {type === "button" && <TextAux color="primary">View</TextAux>}
+
+        {type === "link" && <StyledHeadline>View</StyledHeadline>}
+      </Box>
+    </StyledViewInNotion>
   );
 });
 

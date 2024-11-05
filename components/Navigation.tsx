@@ -79,6 +79,7 @@ const StyledNavigationSubmenu = styled(Box, {
   position: "absolute",
   top: "$10",
   background: "$backgroundMuted",
+  color: "$foreground",
   borderRadius: "$1",
   padding: "$1",
   minWidth: 350,

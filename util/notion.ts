@@ -144,6 +144,8 @@ type InventoryCategoryItem = {
 
 export type Inventory = Record<string, InventoryCategoryItem[]>;
 
+export const NOTION_INVENTORY_ID = "a495d9ec46614c7e8a725968b9611d15";
+
 export function getTags(posts: BlogPost[]): Tag[] {
   const allTags = posts.flatMap((post) => post.properties.tags.multi_select);
   const uniqueTags: Tag[] = uniqWith(allTags, isEqual);

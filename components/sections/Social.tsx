@@ -29,14 +29,16 @@ export const Social = () => {
       spacingHorizontal={7}
       className={bg}
     >
-      <Box
-        direction="vertical"
-        gap={12}
-        container="l"
-        spacingBottom={{ "@initial": 10, "@bp2": 11 }}
-        css={{ zIndex: "$1" }}
-      >
-        <TextTitle1>Social</TextTitle1>
+      <Box direction="vertical" gap={12} container="l" css={{ zIndex: "$1" }}>
+        <Box
+          id={SOCIAL_ID}
+          justifyContent="space-between"
+          alignItems="baseline"
+          spacingTop={{ "@initial": 11, "@bp2": 12 }}
+          spacingBottom={{ "@initial": 4, "@bp2": 10 }}
+        >
+          <TextTitle1 as="h2">Social</TextTitle1>
+        </Box>
 
         <Box id={SOCIAL_ID} justifyContent="center" flexGrow>
           <TextHeadline as="p">Coming Soon...</TextHeadline>

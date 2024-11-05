@@ -1,6 +1,6 @@
 import { memo, ReactElement } from "react";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
-import { slateDarkA } from "@radix-ui/colors";
+import { slateDarkA, whiteA } from "@radix-ui/colors";
 import { useTheme } from "../hooks/useTheme";
 import { styled } from "../stitches.config";
 import { Link } from "./Link";
@@ -27,7 +27,7 @@ const HeaderBox = styled(Box, {
   zIndex: "$2",
   width: "100%",
   position: "fixed",
-  color: "$foreground",
+  color: "currentcolor",
   top: 0,
   right: 0,
   left: 0,
@@ -39,12 +39,11 @@ const HeaderBox = styled(Box, {
   variants: {
     opaque: {
       true: {
-        backgroundColor: "$background",
+        backgroundColor: `$background`,
         boxShadow: "$1",
       },
       false: {
-        backgroundColor: `${slateDarkA.slateA1}`,
-        color: `${slateDarkA.slateA12}`,
+        color: `${whiteA.whiteA12}`,
       },
     },
   },
@@ -53,8 +52,12 @@ const HeaderBox = styled(Box, {
 export const HeaderLayout = memo(function HeaderLayout() {
   const { asPath } = useRouter();
   const { isHeaderActive } = useScroll();
-  const isBlogPost = asPath.includes("/writing/");
-  const isOpaque = isBlogPost || isHeaderActive;
+  const isBlogPost = asPath.includes("/writing");
+  const isInventory = asPath.includes("/inventory");
+  const isAbout = asPath.includes("/about");
+  const isOpaque = isBlogPost || isInventory || isAbout || isHeaderActive;
+
+  console.log({ asPath, isOpaque });
 
   return (
     <HeaderBox

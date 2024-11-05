@@ -11,7 +11,7 @@ import {
   TotalCategories,
 } from "../components/Frontmatter";
 import { ActionButtons, Layout } from "../components/Layout";
-import { BlueskyShareLink } from "../components/Link";
+import { BlueskyShareLink, NotionViewLink } from "../components/Link";
 import { TextAux, TextTitle1, TextTitle2 } from "../components/Text";
 import { getInventory } from "../lib/notion";
 import { styled } from "../stitches.config";
@@ -20,6 +20,7 @@ import {
   getFormattedInventory,
   getUniqueRetailers,
   Inventory as InventoryType,
+  NOTION_INVENTORY_ID,
   sortInventory,
 } from "../util/notion";
 import { INVENTORY_SHARE_TEXT, INVENTORY_URL } from "../util/youtube";
@@ -74,29 +75,37 @@ const Inventory: NextPageWithLayout = memo(function Inventory({
   const retailerCount = getUniqueRetailers(inventory);
 
   return (
-    <Box
-      as="section"
-      direction="vertical"
-      spacingTop={{ "@initial": 11, "@bp2": 10, "@bp3": 11 }}
-      spacingBottom={12}
-      spacingHorizontal={7}
-    >
-      <Box
-        direction="vertical"
-        gap={12}
-        container="l"
-        spacingBottom={{ "@initial": 10, "@bp2": 11 }}
-        css={{ zIndex: "$1" }}
-      >
-        <Box direction="vertical" gap={10}>
-          <Box direction="vertical">
+    <Box as="section" direction="vertical" spacingHorizontal={7}>
+      <Box direction="vertical" container="l" css={{ zIndex: "$1" }}>
+        <Box direction="vertical">
+          <Box
+            justifyContent="space-between"
+            alignItems="center"
+            spacingTop={{ "@initial": 11, "@bp2": 12 }}
+            spacingBottom={{ "@initial": 4, "@bp2": 10 }}
+          >
+            <TextTitle1 as="h1">Inventory</TextTitle1>
+
             <Box
-              justifyContent="space-between"
-              alignItems="center"
-              spacingTop={12}
+              position="relative"
+              css={{
+                display: "none",
+                "@bp2": { display: "flex", left: "-$1" },
+              }}
             >
-              <TextTitle1 as="h1">Inventory</TextTitle1>
+              <NotionViewLink id={NOTION_INVENTORY_ID} type="button" />
             </Box>
+
+            <NotionViewLink
+              id={NOTION_INVENTORY_ID}
+              type="icon"
+              css={{
+                display: "flex",
+                "@bp2": {
+                  display: "none",
+                },
+              }}
+            />
           </Box>
 
           <Box alignItems="flex-end" justifyContent="space-between">
@@ -121,7 +130,7 @@ const Inventory: NextPageWithLayout = memo(function Inventory({
             </ActionButtons>
           </Box>
 
-          <Box>
+          <Box spacingTop={10}>
             <Divider />
           </Box>
         </Box>
@@ -129,10 +138,14 @@ const Inventory: NextPageWithLayout = memo(function Inventory({
         {inventoryCategories.map(([category, categoryItems]) => {
           return (
             <Box key={category} direction="vertical">
-              <TextTitle2 as="h2">{category}</TextTitle2>
+              <Box
+                spacingTop={{ "@initial": 10, "@bp2": 11 }}
+                spacingBottom={{ "@initial": 8, "@bp2": 10 }}
+              >
+                <TextTitle2 as="h2">{category}</TextTitle2>
+              </Box>
 
               <StyledInventoryCardContainer
-                spacingVertical={10}
                 css={{
                   overflowY: "hidden",
                   scrollSnapType: "x mandatory",
@@ -166,11 +179,15 @@ const Inventory: NextPageWithLayout = memo(function Inventory({
             </Box>
           );
         })}
-
-        <TextAux as="p" textAlign="center" color="secondary">
-          * As an Amazon Associate, I earn from qualifying purchases (marked
-          Affiliate).
-        </TextAux>
+        <Box
+          spacingTop={{ "@initial": 10, "@bp2": 11 }}
+          justifyContent="center"
+        >
+          <TextAux as="p" textAlign="center" color="secondary">
+            * As an Amazon Associate, I earn from qualifying purchases (marked
+            Affiliate).
+          </TextAux>
+        </Box>
       </Box>
     </Box>
   );

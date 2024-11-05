@@ -168,12 +168,7 @@ const About: NextPageWithLayout = memo(function About() {
   const presentDate = new Date(currentDate).toISOString();
 
   return (
-    <Box
-      as="section"
-      display="flex"
-      direction="vertical"
-      spacingTop={{ "@initial": 11, "@bp2": 10, "@bp3": 11 }}
-    >
+    <Box as="section" display="flex" direction="vertical">
       <Box direction="vertical" gap={12} container="l" css={{ zIndex: "$1" }}>
         <Box direction="vertical" gap={10}>
           <Box
@@ -209,15 +204,15 @@ const About: NextPageWithLayout = memo(function About() {
               </Box>
 
               <Box
-                id={ABOOT_ID}
                 direction="vertical"
-                gap={10}
                 display={{ "@initial": "flex", "@print": "none" }}
               >
                 <Box
+                  id={ABOOT_ID}
                   justifyContent="space-between"
-                  alignItems="center"
-                  spacingTop={12}
+                  alignItems="baseline"
+                  spacingTop={{ "@initial": 11, "@bp2": 12 }}
+                  spacingBottom={{ "@initial": 4, "@bp2": 10 }}
                 >
                   <TextTitle1 as="h2">About</TextTitle1>
 
@@ -259,7 +254,10 @@ const About: NextPageWithLayout = memo(function About() {
                   </ActionButtons>
                 </Box>
 
-                <Box display={{ "@initial": "none", "@bp3": "flex" }}>
+                <Box
+                  display={{ "@initial": "none", "@bp3": "flex" }}
+                  spacingTop={10}
+                >
                   <Divider />
                 </Box>
               </Box>
