@@ -38,7 +38,7 @@ export const Social = () => {
       >
         <TextTitle1>Social</TextTitle1>
 
-        <Box justifyContent="center" flexGrow>
+        <Box id={SOCIAL_ID} justifyContent="center" flexGrow>
           <TextHeadline as="p">Coming Soon...</TextHeadline>
         </Box>
       </Box>
