@@ -39,7 +39,7 @@ import { CSS } from "../stitches.config";
 import { Tag } from "../util/notion";
 import banner from "../public/images/banner.png";
 import { Avatar } from "./Avatar";
-import { getInitials } from "../util/atproto";
+import { Embed, getInitials } from "../util/atproto";
 import { ProfileViewBasic } from "@atproto/api/dist/client/types/app/bsky/actor/defs";
 import { PlayIcon } from "@radix-ui/react-icons";
 
@@ -88,13 +88,7 @@ export type SocialCardProps = CSS & {
   replies: number;
   reposts: number;
   likes: number;
-  images?: Record<string, unknown>[];
-  video?: {
-    src: string;
-    img: string;
-    aspectRatio: { width: number; height: number };
-  };
-  link?: string;
+  embed?: Embed;
   compact?: boolean;
 };
 
@@ -612,10 +606,8 @@ export const SocialCard = memo(function SocialCard({
   author,
   replies,
   reposts,
-  images,
-  video,
   likes,
-  link,
+  embed,
   url,
   text,
   compact,
@@ -654,38 +646,38 @@ export const SocialCard = memo(function SocialCard({
                   {text}
                 </TextAux>
 
-                {images?.length ? (
+                {embed.images?.length ? (
                   <AspectRatio.Root
                     ratio={
-                      images[0]?.aspectRatio.width /
-                      images[0]?.aspectRatio.height
+                      embed.images[0]?.aspectRatio.width /
+                      embed.images[0]?.aspectRatio.height
                     }
                   >
                     <StyledImage
-                      src={images[0]?.thumb}
-                      alt={images[0]?.alt}
+                      src={embed.images[0]?.thumb}
+                      alt={embed.images[0]?.alt}
                       fill
                     />
                   </AspectRatio.Root>
                 ) : null}
 
-                {video ? (
+                {embed.playlist ? (
                   <AspectRatio.Root
-                    ratio={video?.aspectRatio.width / video?.aspectRatio.height}
+                    ratio={embed?.aspectRatio.width / embed?.aspectRatio.height}
                   >
-                    <StyledImage src={video.img} alt="" fill />
+                    <StyledImage src={embed.thumbnail} alt="" fill />
                     <StyledPlayIconContainer spacing={3}>
-                      <PlayIcon width={ICON_SIZE.xxl} height={ICON_SIZE.xxl} />
+                      <PlayIcon width={ICON_SIZE.xl} height={ICON_SIZE.xl} />
                     </StyledPlayIconContainer>
                   </AspectRatio.Root>
                 ) : null}
 
-                {link ? (
+                {embed.external ? (
                   <LinkPreview
-                    href={link.uri}
-                    src={link.thumb}
-                    title={link.title}
-                    description={link.description}
+                    href={embed.external.uri}
+                    src={embed.external.thumb}
+                    title={embed.external.title}
+                    description={embed.external.description}
                   />
                 ) : null}
               </Box>
@@ -737,8 +729,8 @@ export const SocialCard = memo(function SocialCard({
                 {text}
               </TextBody>
 
-              {images?.length
-                ? images.map((image) => (
+              {embed.images?.length
+                ? embed.images.map((image) => (
                     <AspectRatio.Root
                       ratio={image.aspectRatio.width / image.aspectRatio.height}
                     >

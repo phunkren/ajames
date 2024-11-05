@@ -1,5 +1,5 @@
 import { css, styled } from "../../stitches.config";
-import { TextAux, TextBody, TextTitle1, TextTitle2 } from "../Text";
+import { TextBody, TextTitle1, TextTitle2 } from "../Text";
 import { Box } from "../Box";
 import {
   AtprotoHandle,
@@ -14,14 +14,8 @@ import { YOUTUBE_CHANNEL_URL } from "../../util/youtube";
 import { SOCIAL } from "../../util/data";
 import { ActionButtons } from "../Layout";
 import { BlueskyFollowLink, BlueskyShareLink, Link } from "../Link";
-import { PlayIcon } from "@radix-ui/react-icons";
-import { ICON_SIZE } from "../../util/images";
 import { SocialCard } from "../Card";
-import {
-  ATPROTO_FOLLOW_FEED,
-  AtprotoProfileViewSimple,
-  ExtendedPostView,
-} from "../../util/atproto";
+import { AtprotoProfileViewSimple, ExtendedPostView } from "../../util/atproto";
 import useMasonry from "../../hooks/useMasonry";
 
 export type Props = {
@@ -199,17 +193,6 @@ export const Social = ({ feed, info, pinnedPost }: Props) => {
                   gap={7}
                 >
                   {feed.map((post) => {
-                    const video =
-                      post.embed?.playlist &&
-                      post.embed?.thumbnail &&
-                      post.embed?.aspectRatio
-                        ? {
-                            src: post.embed.playlist,
-                            img: post.embed.thumbnail,
-                            aspectRatio: post.embed.aspectRatio,
-                          }
-                        : null;
-
                     return (
                       <SocialCard
                         key={post.cid}
@@ -217,9 +200,7 @@ export const Social = ({ feed, info, pinnedPost }: Props) => {
                         author={post.author}
                         replies={post.replyCount}
                         reposts={post.repostCount}
-                        images={post.embed?.images}
-                        video={video}
-                        link={post.embed?.external}
+                        embed={post.embed}
                         likes={post.likeCount}
                         text={post.record.text}
                         url={post.uri}

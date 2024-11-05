@@ -4,18 +4,49 @@ import {
   PostView,
 } from "@atproto/api/dist/client/types/app/bsky/feed/defs";
 
+export type AspectRatio = {
+  width: number;
+  height: number;
+};
+
+export type Image = {
+  thumb: string;
+  alt: string;
+  aspectRatio: AspectRatio;
+};
+
+export type Video = {
+  playlist: string;
+  thumbnail: string;
+  aspectRatio: AspectRatio;
+};
+
+export type Repost = {};
+
+export type ExternalLink = {
+  uri: string;
+  thumb: string;
+  title: string;
+  description: string;
+};
+
+export type Embed = Video & {
+  images?: Image[];
+  external?: ExternalLink;
+};
+
 export type AtprotoProfileViewSimple = Pick<
   ProfileViewDetailed,
   "handle" | "followersCount" | "postsCount"
 >;
 
 export type PostRecord = {
-  embed?: Record<string, unknown>;
+  embed?: Embed;
   createdAt: string;
   text: string;
 };
 
-export type ExtendedPostView = PostView & { record: PostRecord };
+export type ExtendedPostView = PostView & { embed?: Embed; record: PostRecord };
 
 export type ExtendedFeedViewPost = FeedViewPost & {
   post: ExtendedPostView;
