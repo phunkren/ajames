@@ -645,12 +645,11 @@ export const SocialCard = memo(function SocialCard({
                 <TextAux lang="en" as="pre" css={{ whiteSpace: "pre-wrap" }}>
                   {text}
                 </TextAux>
-
-                {embed.images?.length ? (
+                {embed?.images?.length ? (
                   <AspectRatio.Root
                     ratio={
-                      embed.images[0]?.aspectRatio.width /
-                      embed.images[0]?.aspectRatio.height
+                      embed.images[0]?.aspectRatio?.width /
+                      embed.images[0]?.aspectRatio?.height
                     }
                   >
                     <StyledImage
@@ -661,18 +660,34 @@ export const SocialCard = memo(function SocialCard({
                   </AspectRatio.Root>
                 ) : null}
 
-                {embed.playlist ? (
+                {embed?.media?.images?.length ? (
                   <AspectRatio.Root
-                    ratio={embed?.aspectRatio.width / embed?.aspectRatio.height}
+                    ratio={
+                      embed?.media?.images?.[0]?.aspectRatio?.width /
+                      embed?.media?.images?.[0]?.aspectRatio?.height
+                    }
                   >
-                    <StyledImage src={embed.thumbnail} alt="" fill />
+                    <StyledImage
+                      src={embed?.media?.images?.[0]?.thumb}
+                      alt={embed?.media?.images?.[0]?.alt}
+                      fill
+                    />
+                  </AspectRatio.Root>
+                ) : null}
+
+                {embed?.playlist ? (
+                  <AspectRatio.Root
+                    ratio={
+                      embed?.aspectRatio?.width / embed?.aspectRatio?.height
+                    }
+                  >
+                    <StyledImage src={embed?.thumbnail} alt="" fill />
                     <StyledPlayIconContainer spacing={3}>
                       <PlayIcon width={ICON_SIZE.xl} height={ICON_SIZE.xl} />
                     </StyledPlayIconContainer>
                   </AspectRatio.Root>
                 ) : null}
-
-                {embed.external ? (
+                {embed?.external ? (
                   <LinkPreview
                     href={embed.external.uri}
                     src={embed.external.thumb}
@@ -729,7 +744,7 @@ export const SocialCard = memo(function SocialCard({
                 {text}
               </TextBody>
 
-              {embed.images?.length
+              {embed?.images?.length
                 ? embed.images.map((image) => (
                     <AspectRatio.Root
                       ratio={image.aspectRatio.width / image.aspectRatio.height}

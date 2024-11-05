@@ -150,11 +150,11 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "cdn.bsky.app", // Bluesky (Images)
+        hostname: "video.bsky.app", // Bluesky (Videos)
       },
       {
         protocol: "https",
-        hostname: "video.bsky.app", // Bluesky (Videos)
+        hostname: "cdn.bsky.app", // Bluesky (Images)
       },
     ],
   },

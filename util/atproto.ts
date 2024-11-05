@@ -4,6 +4,44 @@ import {
   PostView,
 } from "@atproto/api/dist/client/types/app/bsky/feed/defs";
 
+export type Author = {
+  did: string;
+  handle: string;
+  displayName: string;
+  avatar: string;
+  associated: Record<string, unknown>;
+  viewer: Record<string, unknown>;
+  labels: Record<string, unknown>[];
+  createdAt: string;
+};
+
+export type ViewRecord = {
+  uri: string;
+  cid: string;
+  author: Author;
+  value: string;
+  labels: Record<string, unknown>[];
+  replyCount: number;
+  repostCount: number;
+  likeCount: number;
+  quoteCount: number;
+  embeds: Embed;
+  indexedAt: string;
+  createdAt: string;
+  text: string;
+};
+
+export type ViewNotFound = {
+  uri: string;
+  notFound: boolean;
+};
+
+export type ViewBlocked = {
+  uri: string;
+  blocked: boolean;
+  author: Record<string, unknown>;
+};
+
 export type AspectRatio = {
   width: number;
   height: number;
@@ -11,27 +49,32 @@ export type AspectRatio = {
 
 export type Image = {
   thumb: string;
+  fullsize: string;
   alt: string;
   aspectRatio: AspectRatio;
 };
 
 export type Video = {
+  cid: string;
   playlist: string;
   thumbnail: string;
+  alt: string;
   aspectRatio: AspectRatio;
 };
 
-export type Repost = {};
-
 export type ExternalLink = {
   uri: string;
-  thumb: string;
   title: string;
+  thumb: string;
   description: string;
 };
 
 export type Embed = Video & {
+  video?: Video;
   images?: Image[];
+  media?: {
+    images: Image[];
+  };
   external?: ExternalLink;
 };
 
@@ -46,7 +89,10 @@ export type PostRecord = {
   text: string;
 };
 
-export type ExtendedPostView = PostView & { embed?: Embed; record: PostRecord };
+export type ExtendedPostView = PostView & {
+  embed?: Embed;
+  record: PostRecord;
+};
 
 export type ExtendedFeedViewPost = FeedViewPost & {
   post: ExtendedPostView;

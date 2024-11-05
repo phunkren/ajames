@@ -57,8 +57,6 @@ export const HeaderLayout = memo(function HeaderLayout() {
   const isAbout = asPath.includes("/about");
   const isOpaque = isBlogPost || isInventory || isAbout || isHeaderActive;
 
-  console.log({ asPath, isOpaque });
-
   return (
     <HeaderBox
       as="header"

@@ -19,11 +19,11 @@ export async function getAtProtoData() {
       agent.getAuthorFeed({
         actor: process.env.BLUESKY_IDENTIFIER,
         filter: "posts_no_replies",
-        limit: 2,
+        limit: 1,
       }),
       agent.app.bsky.feed.getFeed({
         feed: ATPROTO_FOLLOW_FEED_URI,
-        limit: 7,
+        limit: 9,
       }),
     ]);
 

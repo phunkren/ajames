@@ -1,5 +1,6 @@
-import { css, styled } from "../../stitches.config";
+import { css } from "../../stitches.config";
 import { TextBody, TextTitle1, TextTitle2 } from "../Text";
+import Masonry from "react-masonry-css";
 import { Box } from "../Box";
 import {
   AtprotoHandle,
@@ -16,7 +17,6 @@ import { ActionButtons } from "../Layout";
 import { BlueskyFollowLink, BlueskyShareLink, Link } from "../Link";
 import { SocialCard } from "../Card";
 import { AtprotoProfileViewSimple, ExtendedPostView } from "../../util/atproto";
-import useMasonry from "../../hooks/useMasonry";
 
 export type Props = {
   pinnedPost: ExtendedPostView;
@@ -40,15 +40,30 @@ const bg = css({
   },
 });
 
-const StyledMasonryContainer = styled(Box, {
-  gridTemplateColumns: "repeat(3, 1fr)",
+const masonryGrid = css({
+  display: "flex",
+  marginLeft: "-$10",
+  width: "auto",
 });
+
+const masonryGridColumn = css({
+  paddingLeft: "$10",
+  backgroundClip: "padding-box",
+
+  "& > article": {
+    marginBottom: "$10",
+  },
+});
+
+const masonryGridBreakpoints = {
+  default: 3,
+  720: 2,
+  480: 1,
+};
 
 export const SOCIAL_ID = "social";
 
 export const Social = ({ feed, info, pinnedPost }: Props) => {
-  const masonryContainer = useMasonry();
-
   return (
     <Box as="section" direction="vertical" spacingHorizontal={7} className={bg}>
       <Box direction="vertical" container="l" css={{ zIndex: "$1" }}>
@@ -174,28 +189,28 @@ export const Social = ({ feed, info, pinnedPost }: Props) => {
                   <TextTitle2 as="h3">My Feed</TextTitle2>
                 </Box>
 
-                <TextBody
-                  color="secondary"
-                  css={{
-                    textAlign: "justify",
-                    maxWidth: "none",
-                    "@bp3": { maxWidth: "66%" },
-                  }}
-                >
-                  The latest posts from myself and accounts that I follow on
-                  Bluesky
-                </TextBody>
+                <Box spacingBottom={{ "@initial": 8, "@bp2": 10 }}>
+                  <TextBody
+                    color="secondary"
+                    css={{
+                      textAlign: "justify",
+                      maxWidth: "none",
+                      "@bp3": { maxWidth: "66%" },
+                    }}
+                  >
+                    The latest posts from myself and accounts that I follow on
+                    Bluesky
+                  </TextBody>
+                </Box>
 
-                <StyledMasonryContainer
-                  ref={masonryContainer}
-                  display="grid"
-                  spacingTop={{ "@initial": 8, "@bp2": 10 }}
-                  gap={7}
+                <Masonry
+                  breakpointCols={masonryGridBreakpoints}
+                  className={masonryGrid()}
+                  columnClassName={masonryGridColumn()}
                 >
                   {feed.map((post) => {
                     return (
                       <SocialCard
-                        key={post.cid}
                         id={post.cid}
                         author={post.author}
                         replies={post.replyCount}
@@ -208,7 +223,7 @@ export const Social = ({ feed, info, pinnedPost }: Props) => {
                       />
                     );
                   })}
-                </StyledMasonryContainer>
+                </Masonry>
               </Box>
             </Box>
           </Box>
