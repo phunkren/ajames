@@ -7,7 +7,6 @@ import {
   useState,
   ReactNode,
   Ref,
-  Suspense,
 } from "react";
 import Image, { StaticImageData } from "next/image";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
@@ -42,7 +41,6 @@ import banner from "../public/images/banner.png";
 import { Avatar } from "./Avatar";
 import { getInitials } from "../util/atproto";
 import { ProfileViewBasic } from "@atproto/api/dist/client/types/app/bsky/actor/defs";
-import { SITE } from "../util/data";
 import { PlayIcon } from "@radix-ui/react-icons";
 
 export type CardChildProps = {

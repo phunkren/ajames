@@ -56,29 +56,18 @@ export const Social = ({ feed, info, pinnedPost }: Props) => {
   const masonryContainer = useMasonry();
 
   return (
-    <Box
-      as="section"
-      direction="vertical"
-      spacingTop={{ "@initial": 11, "@bp2": 10, "@bp3": 11 }}
-      spacingHorizontal={7}
-      className={bg}
-    >
-      <Box
-        direction="vertical"
-        gap={12}
-        container="l"
-        spacingBottom={{ "@print": 0, "@initial": 10, "@bp2": 11 }}
-        css={{ zIndex: "$1" }}
-      >
+    <Box as="section" direction="vertical" spacingHorizontal={7} className={bg}>
+      <Box direction="vertical" container="l" css={{ zIndex: "$1" }}>
         <Box direction="vertical">
           <Box direction="vertical">
-            <Box direction="vertical" justifyContent="space-between" gap={10}>
+            <Box direction="vertical" justifyContent="space-between">
               <Box direction="vertical">
                 <Box
                   id={SOCIAL_ID}
                   justifyContent="space-between"
-                  alignItems="center"
-                  spacingTop={12}
+                  alignItems="baseline"
+                  spacingTop={{ "@initial": 11, "@bp2": 12 }}
+                  spacingBottom={{ "@initial": 4, "@bp2": 10 }}
                 >
                   <TextTitle1 as="h2">Social</TextTitle1>
 
@@ -126,13 +115,14 @@ export const Social = ({ feed, info, pinnedPost }: Props) => {
                 </ActionButtons>
               </Box>
 
-              <Box>
+              <Box spacingTop={10}>
                 <Divider />
               </Box>
             </Box>
           </Box>
         </Box>
-        <Box direction="vertical" gap={12}>
+
+        <Box direction="vertical">
           {pinnedPost ? (
             <Box direction="vertical">
               <Box
@@ -140,20 +130,12 @@ export const Social = ({ feed, info, pinnedPost }: Props) => {
                   "@initial": "space-between",
                   "@bp2": "flex-start",
                 }}
-                gap={10}
                 alignItems="baseline"
-                spacingBottom={8}
+                gap={10}
+                spacingTop={{ "@initial": 10, "@bp2": 11 }}
+                spacingBottom={{ "@initial": 8, "@bp2": 10 }}
               >
                 <TextTitle2 as="h3">Featured</TextTitle2>
-
-                <Link href="#" variant="tertiary">
-                  <PlayIcon
-                    width={ICON_SIZE.m}
-                    height={ICON_SIZE.m}
-                    aria-hidden
-                  />
-                  <TextAux>View post</TextAux>
-                </Link>
               </Box>
 
               <Box
@@ -192,20 +174,10 @@ export const Social = ({ feed, info, pinnedPost }: Props) => {
                     "@bp2": "flex-start",
                   }}
                   alignItems="baseline"
-                  spacingVertical={2}
+                  spacingTop={{ "@initial": 10, "@bp2": 11 }}
+                  spacingBottom={2}
                 >
-                  <Link href="#" variant="secondary">
-                    <TextTitle2 as="h3">My Feed</TextTitle2>
-                  </Link>
-
-                  <Link href={ATPROTO_FOLLOW_FEED} variant="tertiary">
-                    <PlayIcon
-                      width={ICON_SIZE.m}
-                      height={ICON_SIZE.m}
-                      aria-hidden
-                    />
-                    <TextAux>View all</TextAux>
-                  </Link>
+                  <TextTitle2 as="h3">My Feed</TextTitle2>
                 </Box>
 
                 <TextBody
@@ -223,8 +195,7 @@ export const Social = ({ feed, info, pinnedPost }: Props) => {
                 <StyledMasonryContainer
                   ref={masonryContainer}
                   display="grid"
-                  alignItems="start"
-                  spacingVertical={10}
+                  spacingTop={{ "@initial": 8, "@bp2": 10 }}
                   gap={7}
                 >
                   {feed.map((post) => {
@@ -241,6 +212,7 @@ export const Social = ({ feed, info, pinnedPost }: Props) => {
 
                     return (
                       <SocialCard
+                        key={post.cid}
                         id={post.cid}
                         author={post.author}
                         replies={post.replyCount}
