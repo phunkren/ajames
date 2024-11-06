@@ -126,32 +126,33 @@ const StyledContainer = styled(Box, {
   textAlign: "justify",
   hyphens: "auto",
 
-  "@bp2": { padding: "0 $7" },
+  "@bp2": { padding: "0 $7", textAlign: "left" },
 
   h1: {
     ...H1_STYLES,
-    marginTop: "$10",
-    marginBottom: "$5",
+    marginTop: "$11",
     textAlign: "left",
   },
 
   h2: {
     ...H2_STYLES,
-    marginTop: "$8",
-    marginBottom: "$4",
+    marginTop: "$10",
     textAlign: "left",
   },
 
   h3: {
     ...H3_STYLES,
-    marginTop: "$4",
-    marginBottom: "$2",
+    marginTop: "$5",
     textAlign: "left",
   },
 
   p: {
     ...P_BLOG_STYLES,
     color: "$foreground",
+  },
+
+  li: {
+    textAlign: "left",
   },
 
   a: {
@@ -192,8 +193,8 @@ const StyledContainer = styled(Box, {
   },
 
   hr: {
-    marginTop: "$12",
-    marginBottom: "$12",
+    marginTop: "$8",
+    marginBottom: "$8",
   },
 
   img: {
@@ -260,7 +261,6 @@ const StyledCardContainer = styled(Box, {
 
   "@bp2": {
     gridTemplateColumns: "repeat(2, 1fr)",
-
     gridColumnGap: "$6",
     gridRowGap: "$6",
   },
@@ -382,12 +382,7 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
         />
       </Head>
 
-      <Box
-        as="article"
-        direction="vertical"
-        spacingVertical={12}
-        css={{ zIndex: "$1" }}
-      >
+      <Box as="article" direction="vertical" css={{ zIndex: "$1" }}>
         <Box direction="vertical" gap={10} container="l">
           <AspectRatio.Root ratio={2 / 1}>
             <StyledHero
@@ -403,7 +398,6 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
 
         <Box
           direction="vertical"
-          gap={10}
           position="relative"
           container="l"
           css={{ top: -22, "@bp2": { top: -32 } }}
@@ -458,8 +452,8 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
           <StyledContainer
             direction="vertical"
             container="m"
-            gap={8}
-            spacingTop={11}
+            gap={{ "@initial": 8, "@bp2": 10 }}
+            spacingTop={{ "@initial": 11, "@bp2": 12 }}
             spacingHorizontal={7}
           >
             <ReactMarkdown
@@ -485,30 +479,17 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
           </StyledContainer>
 
           <Box
-            container="l"
             direction="vertical"
-            gap={{
-              "@initial": 11,
-              "@bp2": 12,
-            }}
+            container="m"
+            spacingVertical={{ "@initial": 11, "@bp2": 12 }}
+            gap={{ "@initial": 11, "@bp2": 12 }}
             spacingHorizontal={7}
-            spacingVertical={{
-              "@initial": 10,
-              "@bp2": 12,
-            }}
           >
             <Divider variant="secondary" />
 
-            <Box
-              direction="vertical"
-              container="m"
-              gap={{
-                "@initial": 7,
-                "@bp2": 10,
-              }}
-            >
+            <Box direction="vertical" gap={{ "@initial": 8, "@bp2": 10 }}>
               <Box direction="vertical" alignItems="center">
-                <TextTitle2 css={{ color: "$focus" }}>
+                <TextTitle2 textAlign="center" css={{ color: "$focus" }}>
                   Enjoying the article?
                 </TextTitle2>
 
@@ -520,7 +501,7 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
                 </TextAux>
               </Box>
 
-              <Box justifyContent="space-around" alignItems="center" gap={8}>
+              <Box justifyContent="space-around" alignItems="center">
                 <BlueskyShareLink
                   url={metaUrl}
                   emoji={frontmatter.emoji}
@@ -539,8 +520,8 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
           <StyledContainer
             direction="vertical"
             container="m"
-            gap={8}
             spacingHorizontal={7}
+            gap={{ "@initial": 8, "@bp2": 10 }}
           >
             <ReactMarkdown
               components={{
@@ -568,21 +549,18 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
             <Box
               container="l"
               direction="vertical"
-              gap={{
-                "@initial": 11,
-                "@bp2": 12,
-              }}
+              spacingTop={12}
               spacingHorizontal={7}
-              spacingVertical={{
-                "@initial": 10,
-                "@bp2": 12,
-              }}
             >
               <Divider />
 
-              <Box direction="vertical" gap={8} container="l">
-                <TextTitle2>Related Articles</TextTitle2>
-
+              <Box direction="vertical" container="l">
+                <Box
+                  spacingTop={11}
+                  spacingBottom={{ "@initial": 8, "@bp2": 10 }}
+                >
+                  <TextTitle2>Related Articles</TextTitle2>
+                </Box>
                 <StyledCardContainer display="grid">
                   {relatedArticles.map((post) => {
                     return (
@@ -604,8 +582,6 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
                   })}
                 </StyledCardContainer>
               </Box>
-
-              <Divider />
             </Box>
           ) : null}
         </Box>

@@ -16,17 +16,11 @@ type Props = {
 };
 
 const StyledHeroLayout = styled(Box, {
-  height: "100dvh",
+  height: "100svh",
   width: "100vw",
   overflow: "hidden",
   position: "relative",
   color: "$foreground",
-
-  "@bp2": {
-    "@supports not (height: 100dvh)": {
-      height: "100vh",
-    },
-  },
 });
 
 const StyledHeroContainer = styled(Box, {

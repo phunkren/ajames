@@ -2,7 +2,7 @@ import { memo } from "react";
 import {
   AvatarIcon,
   BellIcon,
-  BookmarkFilledIcon,
+  BookmarkIcon,
   CalendarIcon,
   ChatBubbleIcon,
   ClockIcon,
@@ -27,6 +27,7 @@ import { TextAux, TextHeadline } from "./Text";
 import { StyledTag } from "./Tags";
 import { PERSONAL, SOCIAL } from "../util/data";
 import { Button } from "./Button";
+import { styled } from "../stitches.config";
 
 type FrontMatterItemProps = BoxProps & {
   compact?: boolean;
@@ -63,6 +64,22 @@ type YoutubeChannelProps = FrontMatterItemProps & {
 type RetailerProps = FrontMatterItemProps & {
   name: string;
 };
+
+const StyledHeadline = styled(TextHeadline, {
+  display: "none",
+
+  "@bp2": {
+    display: "initial",
+  },
+});
+
+const StyledShortHeadline = styled(TextHeadline, {
+  display: "initial",
+
+  "@bp2": {
+    display: "none",
+  },
+});
 
 export const Frontmatter = memo(function Frontmatter(props: BoxProps) {
   return (
@@ -611,12 +628,9 @@ export const Location = memo(function Location({
 });
 
 export const Occupation = memo(function Occupation({
-  total,
   icon = false,
   ...props
 }: TotalProps) {
-  const formattedOccupation = PERSONAL.occupation;
-
   return (
     <FrontmatterItem {...props}>
       {icon ? (
@@ -625,9 +639,14 @@ export const Occupation = memo(function Occupation({
           <LaptopIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
         </Box>
       ) : null}
-      <TextHeadline textTransform="capitalize">
-        {formattedOccupation}
-      </TextHeadline>
+
+      <StyledHeadline textTransform="capitalize">
+        {PERSONAL.occupation}
+      </StyledHeadline>
+
+      <StyledShortHeadline textTransform="capitalize">
+        {PERSONAL.occupationShort}
+      </StyledShortHeadline>
     </FrontmatterItem>
   );
 });
@@ -644,7 +663,7 @@ export const Retailer = memo(function Retailer({
         {icon ? (
           <Box flexShrink={false}>
             <VisuallyHidden.Root>Bookmark</VisuallyHidden.Root>
-            <BookmarkFilledIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
+            <BookmarkIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
           </Box>
         ) : null}
 
@@ -660,7 +679,7 @@ export const Retailer = memo(function Retailer({
       {icon ? (
         <Box flexShrink={false}>
           <VisuallyHidden.Root>Bookmark</VisuallyHidden.Root>
-          <BookmarkFilledIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
+          <BookmarkIcon width={ICON_SIZE.m} height={ICON_SIZE.m} />
         </Box>
       ) : null}
 
@@ -703,7 +722,7 @@ export const RetailerCount = memo(function RetailerCount({
       {icon ? (
         <Box flexShrink={false}>
           <VisuallyHidden.Root>Bookmarks</VisuallyHidden.Root>
-          <BookmarkFilledIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
+          <BookmarkIcon width={ICON_SIZE.l} height={ICON_SIZE.l} />
         </Box>
       ) : null}
       <TextHeadline textTransform="capitalize">{formattedItems}</TextHeadline>

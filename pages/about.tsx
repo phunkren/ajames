@@ -123,14 +123,14 @@ export const CollapsibleSection = memo(function CollapsibleSection({
               tabIndex={-1}
               onClick={handleClick}
             >
-              <TextTitle2>{title}</TextTitle2>
+              <TextTitle3 as="h2">{title}</TextTitle3>
 
               <CollapsibleTrigger asChild>
                 <CollapsibleButton ref={buttonRef} />
               </CollapsibleTrigger>
             </Box>
 
-            <Box spacingTop={2} spacingBottom={6}>
+            <Box spacingTop={2} spacingBottom={8}>
               <Divider />
             </Box>
 
@@ -150,7 +150,7 @@ export const CollapsibleSection = memo(function CollapsibleSection({
           <TextTitle2>{title}</TextTitle2>
         </Box>
 
-        <Box spacingTop={2} spacingBottom={{ "@initial": 8, "@print": 4 }}>
+        <Box spacingTop={2} spacingBottom={{ "@initial": 11, "@print": 4 }}>
           <Divider />
         </Box>
 
@@ -211,7 +211,7 @@ const About: NextPageWithLayout = memo(function About() {
                   id={ABOOT_ID}
                   justifyContent="space-between"
                   alignItems="baseline"
-                  spacingTop={{ "@initial": 11, "@bp2": 12 }}
+                  spacingTop={12}
                   spacingBottom={{ "@initial": 4, "@bp2": 10 }}
                 >
                   <TextTitle1 as="h2">About</TextTitle1>

@@ -239,6 +239,7 @@ export const PERSONAL = {
   initials: "AJ",
   location: "Scotland, UK",
   occupation: "Senior Software Engineer",
+  occupationShort: "IC5 Engineer",
   keywords: [
     "Senior",
     "Frontend",

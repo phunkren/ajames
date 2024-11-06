@@ -504,15 +504,15 @@ const StyledViewInNotion = styled(Link, {
         ...LINK_BUTTON_PROPS,
 
         [`.${lightTheme} &`]: {
-          borderColor: "$blue10",
-          backgroundImage: `linear-gradient(175deg, $blue9 0.04%, $blue10 100.04%)`,
-          color: "$blue1",
+          borderColor: "$foreground",
+          backgroundImage: `linear-gradient(175deg, $foreground 0.04%, $foregroundMuted 100.04%)`,
+          color: "$background",
         },
 
         [`.${darkTheme} &`]: {
-          borderColor: "$blue7",
-          backgroundImage: `linear-gradient(175deg, $blue8 0.04%, $blue7 100.04%)`,
-          color: "$blue12",
+          borderColor: "$foreground",
+          backgroundImage: `linear-gradient(175deg, $foreground 0.04%, $foregroundMuted 100.04%)`,
+          color: "$background",
         },
       },
     },

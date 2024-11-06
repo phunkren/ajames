@@ -81,7 +81,7 @@ const Inventory: NextPageWithLayout = memo(function Inventory({
           <Box
             justifyContent="space-between"
             alignItems="center"
-            spacingTop={{ "@initial": 11, "@bp2": 12 }}
+            spacingTop={12}
             spacingBottom={{ "@initial": 4, "@bp2": 10 }}
           >
             <TextTitle1 as="h1">Inventory</TextTitle1>
@@ -139,7 +139,7 @@ const Inventory: NextPageWithLayout = memo(function Inventory({
           return (
             <Box key={category} direction="vertical">
               <Box
-                spacingTop={{ "@initial": 10, "@bp2": 11 }}
+                spacingTop={11}
                 spacingBottom={{ "@initial": 8, "@bp2": 10 }}
               >
                 <TextTitle2 as="h2">{category}</TextTitle2>

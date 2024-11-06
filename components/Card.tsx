@@ -396,7 +396,7 @@ export const BlogCard = memo(function BlogCard({
 
             <StyledLink href={url} ref={ref} variant="invisible">
               {isPreviewVisible ? (
-                <TextBody as="p" clamp={4} textAlign="justify">
+                <TextBody as="p" clamp={4}>
                   {description}
                 </TextBody>
               ) : (
@@ -450,7 +450,14 @@ export const BlogSponsored = memo(function BlogSponsored() {
     <Card image={banner}>
       {({ ref }) => (
         <>
-          <StyledBlogContent direction="vertical" css={{ minHeight: 156 }}>
+          <StyledBlogContent
+            direction="vertical"
+            css={{
+              minHeight: 156,
+              scrollSnapAlign: "center",
+              "@bp2": { scrollSnapAlign: "start" },
+            }}
+          >
             <Emoji
               emoji="👋🏻"
               size="s"
@@ -514,9 +521,7 @@ export const VideoCard = memo(function VideoCard({
         >
           <StyledLink href={url} ref={ref} variant="invisible">
             {isPreviewVisible ? (
-              <TextAux clamp={4} textAlign="justify">
-                {description}
-              </TextAux>
+              <TextAux clamp={4}>{description}</TextAux>
             ) : (
               <TextHeadline clamp={3}>{title}</TextHeadline>
             )}

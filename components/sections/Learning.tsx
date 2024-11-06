@@ -91,7 +91,7 @@ export const Learning = ({ featured, uploads, subscriptions, info }: Props) => {
                   id={LEARNING_ID}
                   justifyContent="space-between"
                   alignItems="baseline"
-                  spacingTop={{ "@initial": 11, "@bp2": 12 }}
+                  spacingTop={12}
                   spacingBottom={{ "@initial": 4, "@bp2": 10 }}
                 >
                   <TextTitle1 as="h2">Learning</TextTitle1>
@@ -161,7 +161,7 @@ export const Learning = ({ featured, uploads, subscriptions, info }: Props) => {
                 }}
                 alignItems="baseline"
                 gap={10}
-                spacingTop={{ "@initial": 10, "@bp2": 11 }}
+                spacingTop={11}
                 spacingBottom={{ "@initial": 8, "@bp2": 10 }}
               >
                 <TextTitle2 as="h3">Featured</TextTitle2>
@@ -241,7 +241,7 @@ export const Learning = ({ featured, uploads, subscriptions, info }: Props) => {
                     "@bp2": "flex-start",
                   }}
                   alignItems="baseline"
-                  spacingTop={{ "@initial": 10, "@bp2": 11 }}
+                  spacingTop={11}
                   spacingBottom={2}
                 >
                   <Link href={YOUTUBE_CHANNEL_URL} variant="secondary">
@@ -261,7 +261,6 @@ export const Learning = ({ featured, uploads, subscriptions, info }: Props) => {
                 <TextBody
                   color="secondary"
                   css={{
-                    textAlign: "justify",
                     maxWidth: "none",
                     "@bp3": { maxWidth: "66%" },
                   }}
@@ -312,7 +311,7 @@ export const Learning = ({ featured, uploads, subscriptions, info }: Props) => {
                     "@bp2": "flex-start",
                   }}
                   alignItems="baseline"
-                  spacingTop={{ "@initial": 10, "@bp2": 11 }}
+                  spacingTop={11}
                   spacingBottom={2}
                 >
                   <TextTitle2 as="h3">Subscriptions</TextTitle2>
@@ -321,7 +320,6 @@ export const Learning = ({ featured, uploads, subscriptions, info }: Props) => {
                 <TextBody
                   color="secondary"
                   css={{
-                    textAlign: "justify",
                     maxWidth: "none",
                     "@bp3": { maxWidth: "66%" },
                   }}

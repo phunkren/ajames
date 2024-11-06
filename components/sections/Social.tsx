@@ -193,7 +193,6 @@ export const Social = ({ feed, info, pinnedPost }: Props) => {
                   <TextBody
                     color="secondary"
                     css={{
-                      textAlign: "justify",
                       maxWidth: "none",
                       "@bp3": { maxWidth: "66%" },
                     }}

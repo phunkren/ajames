@@ -255,7 +255,7 @@ export const Writing = ({ posts, tags }: Props) => {
               id={WRITING_ID}
               justifyContent="space-between"
               alignItems="baseline"
-              spacingTop={{ "@initial": 11, "@bp2": 12 }}
+              spacingTop={12}
               spacingBottom={{ "@initial": 4, "@bp2": 10 }}
             >
               <TextTitle1 as="h2">Writing</TextTitle1>
@@ -331,7 +331,7 @@ export const Writing = ({ posts, tags }: Props) => {
           {featuredPost ? (
             <Box direction="vertical">
               <Box
-                spacingTop={{ "@initial": 10, "@bp2": 11 }}
+                spacingTop={11}
                 spacingBottom={{ "@initial": 8, "@bp2": 10 }}
               >
                 <TextTitle2 as="h3">Featured</TextTitle2>
@@ -413,7 +413,7 @@ export const Writing = ({ posts, tags }: Props) => {
           <Box direction="vertical">
             <Box
               id={ARTICLES_ID}
-              spacingTop={{ "@initial": 10, "@bp2": 11 }}
+              spacingTop={11}
               spacingBottom={{ "@initial": 8, "@bp2": 10 }}
             >
               <TextTitle2 as="h3">Articles</TextTitle2>
