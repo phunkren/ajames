@@ -204,12 +204,13 @@ export const Social = ({ feed, info, pinnedPost }: Props) => {
 
                 <Masonry
                   breakpointCols={masonryGridBreakpoints}
-                  className={masonryGrid()}
-                  columnClassName={masonryGridColumn()}
+                  className={masonryGrid().toString()}
+                  columnClassName={masonryGridColumn().toString()}
                 >
                   {feed.map((post) => {
                     return (
                       <SocialCard
+                        key={post.cid}
                         id={post.cid}
                         author={post.author}
                         replies={post.replyCount}

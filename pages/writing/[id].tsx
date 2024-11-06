@@ -575,7 +575,6 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
                         description={
                           post.properties.abstract.rich_text[0].plain_text
                         }
-                        publishDate={post.properties.date.date.start}
                         tags={post.properties.tags.multi_select}
                       />
                     );

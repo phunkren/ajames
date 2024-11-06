@@ -451,7 +451,6 @@ export const Writing = ({ posts, tags }: Props) => {
                         description={
                           post.properties.abstract.rich_text[0].plain_text
                         }
-                        publishDate={post.properties.date.date.start}
                         tags={post.properties.tags.multi_select}
                         css={{
                           scrollSnapAlign: "center",
