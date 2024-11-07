@@ -23,6 +23,7 @@ import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { PiButterfly as BlueskyLogoIcon } from "react-icons/pi";
 import { RiTwitterXLine as XLogoIcon } from "react-icons/ri";
 import {
+  css,
   CSS,
   darkTheme,
   keyframes,
@@ -111,6 +112,27 @@ const secondaryFade = keyframes({
     backgroundImage: `linear-gradient(90deg, $blue11 0.04%, $hover 100.04%)`,
     backgroundClip: "text",
     ["-webkit-text-fill-color"]: "transparent",
+  },
+});
+
+const flutter = keyframes({
+  "10%": {
+    transform: "scale(calc(var(--flip) * 1), 0.9)",
+  },
+  "20%": {
+    transform: "scale(calc(var(--flip) * 0.5), 1)",
+  },
+  "40%": {
+    transform: "scale(calc(var(--flip) * 0.9), 0.95)",
+  },
+  "60%": {
+    transform: "scale(calc(var(--flip) * 0.3), 1)",
+  },
+  "80%": {
+    transform: "scale(calc(var(--flip) * 0.9), 0.95)",
+  },
+  "100%": {
+    transform: "scale(calc(var(--flip) * 1), 1)",
   },
 });
 
@@ -262,6 +284,53 @@ const StyledLink = styled("a", {
           ["-webkit-transition"]: `transform $transitions$durationDefault $transitions$functionDefault`,
         },
       },
+    },
+  },
+});
+
+const butterphli = css({
+  width: `${ICON_SIZE.l}`,
+  height: `${ICON_SIZE.l}`,
+
+  "&": {
+    display: "inline-flex",
+    gap: "0.5em",
+    alignItems: "center",
+  },
+
+  "& svg": {
+    width: "100%",
+    height: "100%",
+    transition: "200ms",
+  },
+
+  "& .left": {
+    transformOrigin: "center",
+  },
+
+  "& .right": {
+    transformOrigin: "center",
+    transform: "scale(-1, 1)",
+  },
+
+  "&:hover .left, &:focus .left": {
+    animation: `${flutter} 430ms ease-in-out`,
+    "--flip": 1,
+  },
+
+  "&:hover .right, &:focus .right": {
+    animation: `${flutter} 500ms ease-in-out`,
+    "--flip": -1,
+  },
+
+  "&:hover svg &:focus svg": {
+    transform: "rotate(-5deg)",
+    transition: 500,
+  },
+
+  "@media (prefers-reduced-motion)": {
+    "&:hover .left, &:focus .left, &:hover .right, &:focus .right": {
+      animation: "none",
     },
   },
 });
@@ -964,6 +1033,29 @@ export const BlueskyShareLink = memo(function BlueskyShareLink({
   );
 });
 
+const ButterPhli = memo(function ButterPhli(props: CSS) {
+  return (
+    <Box {...props}>
+      <svg
+        id="flutterby"
+        className="bluesky-flutter"
+        viewBox="0 0 566 500"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs>
+          <path
+            id="wing"
+            fill="currentColor"
+            d="M 123.244 35.008 C 188.248 83.809 283.836 176.879 283.836 235.857 C 283.836 316.899 283.879 235.845 283.836 376.038 C 283.889 375.995 282.67 376.544 280.212 383.758 C 266.806 423.111 214.487 576.685 94.841 453.913 C 31.843 389.269 61.013 324.625 175.682 305.108 C 110.08 316.274 36.332 297.827 16.093 225.504 C 10.271 204.699 0.343 76.56 0.343 59.246 C 0.343 -27.451 76.342 -0.206 123.244 35.008 Z"
+          />
+        </defs>
+        <use xlinkHref="#wing" className="left" />
+        <use xlinkHref="#wing" className="right" />
+      </svg>
+    </Box>
+  );
+});
+
 export const BlueskyFollowLink = memo(function BlueskyFollowLink({
   type = "link",
   ...props
@@ -973,12 +1065,13 @@ export const BlueskyFollowLink = memo(function BlueskyFollowLink({
       <Tooltip title="Follow">
         <StyledBlueskyFollow
           href={SOCIAL.bluesky.url}
+          className={butterphli}
           type={type}
           variant="invisible"
           {...props}
         >
           <Box alignItems="center" gap={2}>
-            <PiButterfly size={ICON_SIZE.m} aria-hidden />
+            <ButterPhli css={{ width: ICON_SIZE.xl, height: ICON_SIZE.xl }} />
             <VisuallyHidden.Root>Follow</VisuallyHidden.Root>
           </Box>
         </StyledBlueskyFollow>
@@ -990,15 +1083,13 @@ export const BlueskyFollowLink = memo(function BlueskyFollowLink({
     <StyledBlueskyFollow
       href={SOCIAL.bluesky.url}
       type={type}
+      className={butterphli}
       variant={type === "link" ? "secondary" : "invisible"}
       aria-label="Follow me on Bluesky"
       {...props}
     >
       <Box alignItems="center" gap={type === "button" ? 3 : 4}>
-        <PiButterfly
-          size={type === "link" ? ICON_SIZE.xl : ICON_SIZE.m}
-          aria-hidden
-        />
+        <ButterPhli css={{ width: ICON_SIZE.l, height: ICON_SIZE.l }} />
 
         {type === "button" && <TextAux color="primary">Follow</TextAux>}
 
@@ -1074,14 +1165,14 @@ export const LinkPreview = memo(function LinkPreview({
     <Link href={href} variant="invisible">
       <StyledPreviewLinkContainer direction="vertical">
         {src ? (
-        <AspectRatio.Root ratio={16 / 9}>
-          <StyledImage
-            src={src}
-            sizes="(max-width: 1020px) 100vw, 50vw"
-            alt=""
-            fill
-          />
-        </AspectRatio.Root>
+          <AspectRatio.Root ratio={16 / 9}>
+            <StyledImage
+              src={src}
+              sizes="(max-width: 1020px) 100vw, 50vw"
+              alt=""
+              fill
+            />
+          </AspectRatio.Root>
         ) : null}
         <Box direction="vertical" spacing={2}>
           <TextAux clamp={2}>{title}</TextAux>
