@@ -21,7 +21,6 @@ import {
   formatAtprotoPinnedPost,
   formatAtprotoProfile,
 } from "../util/atproto";
-import useViewportHeight from "../hooks/useViewportHeight";
 
 type Props = {
   writing: WritingProps;
@@ -76,8 +75,6 @@ const Home: NextPageWithLayout = memo(function Home({
   learning,
   social,
 }: Props) {
-  useViewportHeight();
-
   return (
     <>
       <Box direction="vertical">
