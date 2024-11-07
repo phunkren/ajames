@@ -49,7 +49,7 @@ export type CardChildProps = {
   onPreviewToggle: (pressed: boolean) => void;
 };
 
-export type CardProps = {
+export type CardProps = CSS & {
   image?: string | StaticImageData;
   children: (props: CardChildProps) => ReactNode;
 };
@@ -467,15 +467,19 @@ export const BlogSponsored = memo(function BlogSponsored() {
   };
 
   return (
-    <Card image={banner}>
+    <Card
+      image={banner}
+      css={{
+        scrollSnapAlign: "center",
+        "@bp2": { scrollSnapAlign: "start" },
+      }}
+    >
       {({ ref }) => (
         <>
           <StyledBlogContent
             direction="vertical"
             css={{
               minHeight: 156,
-              scrollSnapAlign: "center",
-              "@bp2": { scrollSnapAlign: "start" },
             }}
           >
             <Emoji

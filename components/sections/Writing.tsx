@@ -428,14 +428,8 @@ export const Writing = ({ posts, tags }: Props) => {
                 css={{
                   overflowY: "hidden",
                   scrollSnapType: "x mandatory",
-
                   scrollPadding: "0 $1",
                   width: "100%",
-                  height: "100%",
-
-                  perspective: 100,
-                  transform: "translate3d(0,0,0)",
-                  ["-webkit-transform"]: "translateZ(0,0,0)",
                 }}
               >
                 {displayedPosts.map((post, i) => {
