@@ -23,7 +23,7 @@ export async function getAtProtoData() {
       }),
       agent.app.bsky.feed.getFeed({
         feed: ATPROTO_FOLLOW_FEED_URI,
-        limit: 11,
+        limit: 7,
       }),
     ]);
 
