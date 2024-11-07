@@ -246,6 +246,7 @@ export const Writing = ({ posts, tags }: Props) => {
       display="flex"
       direction="vertical"
       spacingHorizontal={7}
+      spacingBottom={{ "@initial": 10, "@bp2": 12 }}
       className={bg}
     >
       <Box direction="vertical" container="l" css={{ zIndex: "$1" }}>

@@ -81,6 +81,7 @@ export const Learning = ({ featured, uploads, subscriptions, info }: Props) => {
       display="flex"
       direction="vertical"
       spacingHorizontal={7}
+      spacingBottom={{ "@initial": 10, "@bp2": 12 }}
     >
       <Box direction="vertical" container="l" css={{ zIndex: "$1" }}>
         <Box direction="vertical">
