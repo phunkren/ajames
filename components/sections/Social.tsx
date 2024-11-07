@@ -16,7 +16,11 @@ import { SOCIAL } from "../../util/data";
 import { ActionButtons } from "../Layout";
 import { BlueskyFollowLink, BlueskyShareLink, Link } from "../Link";
 import { SocialCard } from "../Card";
-import { AtprotoProfileViewSimple, ExtendedPostView } from "../../util/atproto";
+import {
+  AtprotoProfileViewSimple,
+  ExtendedPostView,
+  formatAtprotoLink,
+} from "../../util/atproto";
 
 export type Props = {
   pinnedPost: ExtendedPostView;
@@ -154,19 +158,19 @@ export const Social = ({ feed, info, pinnedPost }: Props) => {
                 <Box
                   direction="vertical"
                   spacingBottom={{ "@initial": 8, "@bp3": 0 }}
-                  css={{
-                    "@bp3": { flexGrow: 0, flexShrink: 0, flexBasis: "45%" },
-                  }}
                 >
                   <SocialCard
                     id={pinnedPost.cid}
                     author={pinnedPost.author}
-                    images={pinnedPost.embed?.images}
+                    embed={pinnedPost.embed}
                     replies={pinnedPost.replyCount}
                     reposts={pinnedPost.repostCount}
                     likes={pinnedPost.likeCount}
                     text={pinnedPost.record.text}
-                    url={pinnedPost.uri}
+                    url={formatAtprotoLink({
+                      uri: pinnedPost.uri,
+                      author: pinnedPost.author,
+                    })}
                   />
                 </Box>
               </Box>
@@ -197,7 +201,7 @@ export const Social = ({ feed, info, pinnedPost }: Props) => {
                       "@bp3": { maxWidth: "66%" },
                     }}
                   >
-                    The latest posts from myself and accounts that I follow on
+                    The latest posts from my account and others that I follow on
                     Bluesky
                   </TextBody>
                 </Box>
@@ -218,7 +222,10 @@ export const Social = ({ feed, info, pinnedPost }: Props) => {
                         embed={post.embed}
                         likes={post.likeCount}
                         text={post.record.text}
-                        url={post.uri}
+                        url={formatAtprotoLink({
+                          uri: post.uri,
+                          author: post.author,
+                        })}
                         compact
                       />
                     );

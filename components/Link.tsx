@@ -12,7 +12,6 @@ import NextLink, { LinkProps as NextLinkProps } from "next/link";
 import Image from "next/image";
 import { UrlObject } from "url";
 import { MdRssFeed } from "react-icons/md";
-import { PiButterfly } from "react-icons/pi";
 import { SiBuymeacoffee } from "react-icons/si";
 import {
   DownloadIcon,
@@ -36,9 +35,9 @@ import { ICON_SIZE } from "../util/images";
 import { SITE, SOCIAL } from "../util/data";
 import { Box } from "./Box";
 import { Tooltip } from "./Tooltip";
-import { TextAux, TextBody, TextHeadline } from "./Text";
+import { TextAux, TextHeadline } from "./Text";
 import { StyledCoffeeButton } from "./Button";
-import { NOTION_INVENTORY_ID } from "../util/notion";
+
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 import { blackA, whiteA } from "@radix-ui/colors";
 
@@ -949,7 +948,7 @@ export const BlueskyShareLink = memo(function BlueskyShareLink({
       <Tooltip title={`Share on ${SOCIAL.bluesky.displayName}`}>
         <StyledIconLink href={href}>
           <BlueskyLogoIcon size={ICON_SIZE.m} aria-hidden />
-          <VisuallyHidden.Root>Skeet</VisuallyHidden.Root>
+          <VisuallyHidden.Root>Post</VisuallyHidden.Root>
         </StyledIconLink>
       </Tooltip>
     );
@@ -959,7 +958,7 @@ export const BlueskyShareLink = memo(function BlueskyShareLink({
     <StyledLink href={href} variant="secondary">
       <Box alignItems="center" gap={4}>
         <BlueskyLogoIcon size={ICON_SIZE.xl} aria-hidden />
-        <StyledHeadline>Skeet</StyledHeadline>
+        <StyledHeadline>Post</StyledHeadline>
       </Box>
     </StyledLink>
   );
@@ -1074,6 +1073,7 @@ export const LinkPreview = memo(function LinkPreview({
   return (
     <Link href={href} variant="invisible">
       <StyledPreviewLinkContainer direction="vertical">
+        {src ? (
         <AspectRatio.Root ratio={16 / 9}>
           <StyledImage
             src={src}
@@ -1082,7 +1082,7 @@ export const LinkPreview = memo(function LinkPreview({
             fill
           />
         </AspectRatio.Root>
-
+        ) : null}
         <Box direction="vertical" spacing={2}>
           <TextAux clamp={2}>{title}</TextAux>
         </Box>

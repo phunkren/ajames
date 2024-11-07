@@ -1,4 +1,7 @@
-import { ProfileViewDetailed } from "@atproto/api/dist/client/types/app/bsky/actor/defs";
+import {
+  ProfileViewBasic,
+  ProfileViewDetailed,
+} from "@atproto/api/dist/client/types/app/bsky/actor/defs";
 import {
   FeedViewPost,
   PostView,
@@ -18,9 +21,9 @@ export type Author = {
 export type ViewRecord = {
   uri: string;
   cid: string;
-  author: Author;
-  value: string;
-  labels: Record<string, unknown>[];
+  author: ProfileViewBasic;
+  value: RecordValue;
+  labels: Record<string, string>[];
   replyCount: number;
   repostCount: number;
   likeCount: number;
@@ -74,6 +77,10 @@ export type Embed = Video & {
   images?: Image[];
   media?: {
     images: Image[];
+    external: ExternalLink;
+  };
+  record?: {
+    record?: ViewRecord;
   };
   external?: ExternalLink;
 };
@@ -86,6 +93,10 @@ export type AtprotoProfileViewSimple = Pick<
 export type PostRecord = {
   embed?: Embed;
   createdAt: string;
+  text: string;
+};
+
+export type RecordValue = {
   text: string;
 };
 
@@ -187,4 +198,21 @@ export function formatAtprotoFeed(
   const sortedTextPosts = sortPostsByDate(serializedEmbedPosts);
 
   return sortedTextPosts;
+}
+
+export function formatAtprotoLink({
+  uri,
+  author,
+}: {
+  uri: string;
+  author: ProfileViewBasic;
+}) {
+  const postIdMatch = uri.match(/\/([^/]+)$/);
+
+  if (!postIdMatch || !author.handle) {
+    return null;
+  }
+
+  const postId = postIdMatch[1];
+  return `https://bsky.app/profile/${author.handle}/post/${postId}`;
 }

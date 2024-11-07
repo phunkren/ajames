@@ -39,7 +39,7 @@ import { CSS } from "../stitches.config";
 import { Tag } from "../util/notion";
 import banner from "../public/images/banner.png";
 import { Avatar } from "./Avatar";
-import { Embed, getInitials } from "../util/atproto";
+import { Embed, formatAtprotoProfile, getInitials } from "../util/atproto";
 import { ProfileViewBasic } from "@atproto/api/dist/client/types/app/bsky/actor/defs";
 import { PlayIcon } from "@radix-ui/react-icons";
 
@@ -151,6 +151,11 @@ const StyledCardOuter = styled(Box, {
       "background $transitions$durationDefault $transitions$functionDefault",
     ["-webkit-transition"]:
       "background $transitions$durationDefault $transitions$functionDefault",
+
+    "& &": {
+      background: whiteA.whiteA3,
+      borderColor: whiteA.whiteA5,
+    },
   },
 
   "& img": {
@@ -196,6 +201,11 @@ const StyledCardOuter = styled(Box, {
           "background $transitions$durationDefault $transitions$functionDefault",
         ["-webkit-transition"]:
           "background $transitions$durationDefault $transitions$functionDefault",
+
+        "& &": {
+          background: whiteA.whiteA3,
+          borderColor: whiteA.whiteA5,
+        },
       },
 
       [`.${lightTheme} &`]: {
@@ -204,6 +214,11 @@ const StyledCardOuter = styled(Box, {
           "background $transitions$durationDefault $transitions$functionDefault",
         ["-webkit-transition"]:
           "background $transitions$durationDefault $transitions$functionDefault",
+
+        "& &": {
+          background: whiteA.whiteA12,
+          borderColor: blackA.blackA2,
+        },
       },
     },
   },
@@ -236,6 +251,11 @@ const StyledCardOuter = styled(Box, {
       "background $transitions$durationQuick $transitions$functionDefault, border-color $transitions$durationQuick $transitions$functionDefault",
     ["-webkit-transition"]:
       "background $transitions$durationQuick $transitions$functionDefault, border-color $transitions$durationQuick $transitions$functionDefault",
+
+    "& &": {
+      background: whiteA.whiteA3,
+      borderColor: whiteA.whiteA5,
+    },
   },
 
   [`.${darkTheme} &:has(a:focus)`]: {
@@ -620,36 +640,203 @@ export const SocialCard = memo(function SocialCard({
 }: SocialCardProps) {
   const fallback = getInitials(author.displayName);
 
-  if (compact) {
-    return (
-      <Card {...props}>
-        {({ ref }) => (
-          <Box direction="vertical" spacingTop={4} flexGrow>
-            <Box direction="vertical" gap={4} flexGrow>
-              <Box direction="horizontal" gap={4}>
-                <Avatar
-                  src={author.avatar}
-                  alt={author.displayName}
-                  fallback={fallback}
-                  compact
-                />
+  return (
+    <Card {...props}>
+      {({ ref }) => (
+        <Box
+          direction="vertical"
+          spacingTop={4}
+          flexGrow
+          css={{ width: "100%" }}
+        >
+          <Box direction="vertical" flexGrow>
+            <Box direction="horizontal" gap={6}>
+              <Avatar
+                src={author.avatar}
+                alt={author.displayName}
+                fallback={fallback}
+                compact
+              />
 
-                <Box direction="vertical">
-                  <TextHeadline as="h3">{author.displayName}</TextHeadline>
-                  <TextAux>{author.handle}</TextAux>
-                </Box>
-
-                <StyledLink
-                  href={url}
-                  ref={ref}
-                  variant="invisible"
-                ></StyledLink>
+              <Box direction="vertical" spacingTop={compact ? undefined : 1}>
+                <TextHeadline as="h3">{author.displayName}</TextHeadline>
+                <TextAux>{author.handle}</TextAux>
               </Box>
 
-              <Box spacingHorizontal={2} gap={4} direction="vertical">
-                <TextAux lang="en" as="pre" css={{ whiteSpace: "pre-wrap" }}>
+              <StyledLink href={url} ref={ref} variant="invisible"></StyledLink>
+            </Box>
+
+            <Box
+              spacingHorizontal={2}
+              spacingVertical={compact ? undefined : 7}
+              gap={compact ? 4 : 7}
+              direction="vertical"
+            >
+              {compact ? (
+                <TextAux
+                  lang="en"
+                  as="pre"
+                  css={{
+                    whiteSpace: "pre-wrap",
+                    lineBreak: "anywhere",
+                    hyphens: "auto",
+                  }}
+                >
                   {text}
                 </TextAux>
+              ) : (
+                <TextHeadline
+                  lang="en"
+                  as="pre"
+                  css={{
+                    whiteSpace: "pre-wrap",
+                    lineBreak: "anywhere",
+                    hyphens: "auto",
+                  }}
+                >
+                  {text}
+                </TextHeadline>
+              )}
+
+              {embed?.images?.length ? (
+                <AspectRatio.Root
+                  ratio={
+                    embed.images[0]?.aspectRatio?.width &&
+                    embed.images[0]?.aspectRatio?.height
+                      ? embed.images[0].aspectRatio.width /
+                        embed.images[0].aspectRatio.height
+                      : 40 / 21
+                  }
+                >
+                  <StyledImage
+                    src={embed.images[0]?.thumb}
+                    alt={embed.images[0]?.alt}
+                    fill
+                  />
+                </AspectRatio.Root>
+              ) : null}
+
+              {embed?.media?.images?.length ? (
+                <AspectRatio.Root
+                  ratio={
+                    embed?.media?.images?.[0]?.aspectRatio?.width /
+                    embed?.media?.images?.[0]?.aspectRatio?.height
+                  }
+                >
+                  <StyledImage
+                    src={embed?.media?.images?.[0]?.thumb}
+                    alt={embed?.media?.images?.[0]?.alt}
+                    fill
+                  />
+                </AspectRatio.Root>
+              ) : null}
+
+              {embed?.playlist ? (
+                <AspectRatio.Root
+                  ratio={embed?.aspectRatio?.width / embed?.aspectRatio?.height}
+                >
+                  <StyledImage src={embed?.thumbnail} alt="" fill />
+                  <StyledPlayIconContainer spacing={3}>
+                    <PlayIcon width={ICON_SIZE.xl} height={ICON_SIZE.xl} />
+                  </StyledPlayIconContainer>
+                </AspectRatio.Root>
+              ) : null}
+
+              {embed?.external ? (
+                <LinkPreview
+                  href={embed.external.uri}
+                  src={embed.external.thumb}
+                  title={embed.external.title}
+                  description={embed.external.description}
+                />
+              ) : null}
+
+              {embed?.media?.external ? (
+                <LinkPreview
+                  href={embed.media.external.uri}
+                  src={embed.media.external.thumb}
+                  title={embed.media.external.title}
+                  description={embed.media.external.description}
+                />
+              ) : null}
+
+              {embed?.record?.record ? (
+                <SocialCardQuote
+                  id={embed.record.record.cid}
+                  author={embed.record.record.author}
+                  replies={embed.record.record.replyCount}
+                  reposts={embed.record.record.repostCount}
+                  embed={embed.record.record.embeds[0]}
+                  likes={embed.record.record.likeCount}
+                  url={embed.record.record.uri}
+                  text={embed.record.record.value.text}
+                  compact
+                />
+              ) : null}
+            </Box>
+
+            <Box
+              spacingHorizontal={4}
+              spacingTop={4}
+              justifyContent="flex-end"
+              css={{ marginTop: "auto" }}
+            >
+              <StyledSocialInteractions justifyContent="space-between">
+                <ReplyCount total={replies} compact icon />
+                <RepostCount total={reposts} compact icon />
+                <LikeCount total={likes} compact icon />
+              </StyledSocialInteractions>
+            </Box>
+          </Box>
+        </Box>
+      )}
+    </Card>
+  );
+});
+
+export const SocialCardQuote = memo(function SocialCardQuote({
+  id,
+  author,
+  replies,
+  reposts,
+  likes,
+  embed,
+  url,
+  text,
+  compact,
+  ...props
+}: SocialCardProps) {
+  const fallback = getInitials(author.displayName);
+  return (
+    <Card {...props}>
+      {() => (
+        <Box direction="vertical" spacingTop={4} flexGrow>
+          <Box direction="vertical" gap={4} flexGrow>
+            <Box direction="horizontal" gap={6}>
+              <Avatar
+                src={author.avatar}
+                alt={author.displayName}
+                fallback={fallback}
+                compact
+              />
+
+              <Box direction="vertical">
+                <TextHeadline as="h3">{author.displayName}</TextHeadline>
+                <TextAux>{author.handle}</TextAux>
+              </Box>
+            </Box>
+
+            <Box spacingHorizontal={2} gap={4} direction="vertical">
+              <TextAux
+                lang="en"
+                as="pre"
+                clamp={3}
+                css={{ whiteSpace: "pre-wrap" }}
+              >
+                {text}
+              </TextAux>
+
+              <Box direction="vertical" gap={4}>
                 {embed?.images?.length ? (
                   <AspectRatio.Root
                     ratio={
@@ -692,6 +879,7 @@ export const SocialCard = memo(function SocialCard({
                     </StyledPlayIconContainer>
                   </AspectRatio.Root>
                 ) : null}
+
                 {embed?.external ? (
                   <LinkPreview
                     href={embed.external.uri}
@@ -701,68 +889,6 @@ export const SocialCard = memo(function SocialCard({
                   />
                 ) : null}
               </Box>
-
-              <Box
-                spacingHorizontal={2}
-                justifyContent="flex-end"
-                css={{ marginTop: "auto" }}
-              >
-                <StyledSocialInteractions justifyContent="space-between">
-                  <ReplyCount total={replies} compact icon />
-                  <RepostCount total={reposts} compact icon />
-                  <LikeCount total={likes} compact icon />
-                </StyledSocialInteractions>
-              </Box>
-            </Box>
-          </Box>
-        )}
-      </Card>
-    );
-  }
-
-  return (
-    <Card display="block" {...props}>
-      {({ ref }) => (
-        <Box direction="vertical" spacing={7} flexGrow css={{ minHeight: 156 }}>
-          <Box direction="vertical" gap={10}>
-            <Box direction="horizontal" gap={10}>
-              <Avatar
-                src={author.avatar}
-                alt={author.displayName}
-                fallback={fallback}
-              />
-
-              <Box direction="vertical">
-                <TextTitle2 as="h3">{author.displayName}</TextTitle2>
-                <TextBody>{author.handle}</TextBody>
-              </Box>
-
-              <StyledLink href={url} ref={ref} variant="invisible"></StyledLink>
-            </Box>
-
-            <Box spacingHorizontal={2} direction="vertical">
-              <TextBody
-                as="pre"
-                lang="en"
-                css={{ width: "max-content", whiteSpace: "pre-wrap" }}
-              >
-                {text}
-              </TextBody>
-
-              {embed?.images?.length
-                ? embed.images.map((image) => (
-                    <AspectRatio.Root
-                      ratio={image.aspectRatio.width / image.aspectRatio.height}
-                    >
-                      <StyledImage
-                        src={image.thumb}
-                        sizes="(max-width: 1020px) 100vw, 50vw"
-                        alt={image.alt}
-                        fill
-                      />
-                    </AspectRatio.Root>
-                  ))
-                : null}
             </Box>
 
             <Box
@@ -771,9 +897,9 @@ export const SocialCard = memo(function SocialCard({
               css={{ marginTop: "auto" }}
             >
               <StyledSocialInteractions justifyContent="space-between">
-                <ReplyCount total={replies} icon />
-                <RepostCount total={reposts} icon />
-                <LikeCount total={likes} icon />
+                <ReplyCount total={replies} compact icon />
+                <RepostCount total={reposts} compact icon />
+                <LikeCount total={likes} compact icon />
               </StyledSocialInteractions>
             </Box>
           </Box>
