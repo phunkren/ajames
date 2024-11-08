@@ -430,25 +430,28 @@ export const Writing = ({ posts, tags }: Props) => {
                   ["-webkit-transform"]: "translateZ(0,0,0)",
                 }}
               >
-                {displayedPosts.map((post) => {
+                {displayedPosts.map((post, i) => {
                   return (
-                    <BlogCard
-                      key={post.id}
-                      url={`/writing/${post.properties.slug.rich_text[0].plain_text}`}
-                      image={post.cover.external.url}
-                      emoji={
-                        post.icon.type === "emoji" ? post.icon.emoji : "👨‍💻"
-                      }
-                      title={post.properties.page.title[0].plain_text}
-                      description={
-                        post.properties.abstract.rich_text[0].plain_text
-                      }
-                      tags={post.properties.tags.multi_select}
-                      css={{
-                        scrollSnapAlign: "center",
-                        "@bp2": { scrollSnapAlign: "start" },
-                      }}
-                    />
+                    <Fragment key={post.id}>
+                      <BlogCard
+                        url={`/writing/${post.properties.slug.rich_text[0].plain_text}`}
+                        image={post.cover.external.url}
+                        emoji={
+                          post.icon.type === "emoji" ? post.icon.emoji : "👨‍💻"
+                        }
+                        title={post.properties.page.title[0].plain_text}
+                        description={
+                          post.properties.abstract.rich_text[0].plain_text
+                        }
+                        tags={post.properties.tags.multi_select}
+                        css={{
+                          scrollSnapAlign: "center",
+                          "@bp2": { scrollSnapAlign: "start" },
+                        }}
+                      />
+
+                      {page === 1 && i === 2 ? <BlogSponsored /> : null}
+                    </Fragment>
                   );
                 })}
               </StyledBlogCardContainer>
