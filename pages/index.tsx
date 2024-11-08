@@ -45,7 +45,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const { myProfile, myPinnedPost, myFeed, myFollowingFeed } =
     await getAtProtoData();
   const atprotoProfile = formatAtprotoProfile(myProfile);
-  const atprotoFeed = formatAtprotoFeed(myFeed, myFollowingFeed);
+  const atprotoFeed = formatAtprotoFeed(myFeed, myFollowingFeed, myPinnedPost);
   const atprotoPinnedPost = formatAtprotoPinnedPost(myPinnedPost);
 
   return {

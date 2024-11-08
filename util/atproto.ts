@@ -191,7 +191,8 @@ function serializeEmbedFromPosts(feed: ExtendedPostView[]) {
 
 export function formatAtprotoFeed(
   myFeed: FeedViewPost[],
-  followingFeed: FeedViewPost[]
+  followingFeed: FeedViewPost[],
+  pinnedPost: ExtendedPostView
 ) {
   const curatedTextPosts = [
     ...myFeed,
@@ -200,6 +201,7 @@ export function formatAtprotoFeed(
 
   const filteredPosts = curatedTextPosts
     .filter((textPost) => textPost.post.record.text)
+    .filter((p) => p.post.cid !== pinnedPost.cid)
     .map((filteredTextPost) => filteredTextPost.post);
 
   const serializedEmbedPosts = serializeEmbedFromPosts(filteredPosts);

@@ -1176,7 +1176,7 @@ export const LinkPreview = memo(function LinkPreview({
           </AspectRatio.Root>
         ) : null}
         <Box direction="vertical" spacing={2} gap={1}>
-          <TextAux clamp={description ? 1 : 2}>{title ?? href}</TextAux>
+          <TextAux clamp={description ? 1 : 2}>{title || href}</TextAux>
           {description ? <TextAux clamp={1}>{description}</TextAux> : null}
         </Box>
       </StyledPreviewLinkContainer>
