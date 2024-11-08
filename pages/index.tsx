@@ -82,9 +82,9 @@ const Home: NextPageWithLayout = memo(function Home({
 
         <Writing {...writing} />
 
-        {/* <Learning {...learning} />
+        <Learning {...learning} />
 
-        <Social {...social} /> */}
+        <Social {...social} />
       </Box>
     </>
   );
