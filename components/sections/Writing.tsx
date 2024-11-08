@@ -419,38 +419,39 @@ export const Writing = ({ posts, tags }: Props) => {
               <StyledBlogCardContainer
                 display="grid"
                 css={{
-                  scrollSnapType: "x mandatory",
-                  scrollPadding: "0 $1",
-                  overflowY: "hidden",
-                  width: "100%",
-                  height: "100%",
-                  perspective: 100,
-                  transform: "translate3d(0,0,0)",
-                  ["-webkit-transform"]: "translateZ(0,0,0)",
+                  "@bp1": {
+                    overflowY: "hidden",
+                    scrollSnapType: "x mandatory",
+
+                    scrollPadding: "0 $1",
+                    width: "100%",
+                    height: "100%",
+
+                    perspective: 100,
+                    transform: "translate3d(0,0,0)",
+                    ["-webkit-transform"]: "translateZ(0,0,0)",
+                  },
                 }}
               >
-                {displayedPosts.map((post, i) => {
+                {displayedPosts.map((post) => {
                   return (
-                    <Fragment key={post.id}>
-                      <BlogCard
-                        url={`/writing/${post.properties.slug.rich_text[0].plain_text}`}
-                        image={post.cover.external.url}
-                        emoji={
-                          post.icon.type === "emoji" ? post.icon.emoji : "👨‍💻"
-                        }
-                        title={post.properties.page.title[0].plain_text}
-                        description={
-                          post.properties.abstract.rich_text[0].plain_text
-                        }
-                        tags={post.properties.tags.multi_select}
-                        css={{
-                          scrollSnapAlign: "center",
-                          "@bp2": { scrollSnapAlign: "start" },
-                        }}
-                      />
-
-                      {page === 1 && i === 2 ? <BlogSponsored /> : null}
-                    </Fragment>
+                    <BlogCard
+                      key={post.id}
+                      url={`/writing/${post.properties.slug.rich_text[0].plain_text}`}
+                      image={post.cover.external.url}
+                      emoji={
+                        post.icon.type === "emoji" ? post.icon.emoji : "👨‍💻"
+                      }
+                      title={post.properties.page.title[0].plain_text}
+                      description={
+                        post.properties.abstract.rich_text[0].plain_text
+                      }
+                      tags={post.properties.tags.multi_select}
+                      css={{
+                        scrollSnapAlign: "center",
+                        "@bp2": { scrollSnapAlign: "start" },
+                      }}
+                    />
                   );
                 })}
               </StyledBlogCardContainer>

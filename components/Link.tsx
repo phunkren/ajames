@@ -628,8 +628,8 @@ const StyledBlueskyFollow = styled(Link, {
       },
       icon: {
         justifyContent: "center",
-        minWidth: 44,
-        minHeight: 44,
+        maxWidth: 44,
+        maxHeight: 44,
         padding: "$2",
         borderRadius: "50%",
         borderStyle: "solid",
@@ -1071,7 +1071,7 @@ export const BlueskyFollowLink = memo(function BlueskyFollowLink({
           {...props}
         >
           <Box alignItems="center" gap={2}>
-            <ButterPhli css={{ width: ICON_SIZE.xl, height: ICON_SIZE.xl }} />
+            <ButterPhli css={{ width: ICON_SIZE.m, height: ICON_SIZE.m }} />
             <VisuallyHidden.Root>Follow</VisuallyHidden.Root>
           </Box>
         </StyledBlueskyFollow>
