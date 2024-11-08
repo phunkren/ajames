@@ -52,20 +52,12 @@ const StyledImage = styled(Image, {
 });
 
 const StyledBlogCardContainer = styled(Box, {
+  display: "grid",
   gridTemplateColumns: "repeat(12, minmax(auto, 1fr))",
   gridColumnGap: "$4",
-  gridRowGap: "$1",
   borderRadius: "$1",
   padding: "$2",
-
-  overflowY: "hidden",
-  scrollSnapType: "x mandatory",
-  scrollPadding: "0 $1",
   width: "100%",
-  height: "100%",
-  perspective: 100,
-  transform: "translate3d(0,0,0)",
-  ["-webkit-transform"]: "translateZ(0,0,0)",
 
   "@bp2": {
     gridTemplateColumns: "repeat(2, 1fr)",
@@ -427,10 +419,18 @@ export const Writing = ({ posts, tags }: Props) => {
               <StyledBlogCardContainer
                 display="grid"
                 css={{
-                  overflowY: "hidden",
-                  scrollSnapType: "x mandatory",
-                  scrollPadding: "0 $1",
-                  width: "100%",
+                  "@bp1": {
+                    overflowY: "hidden",
+                    scrollSnapType: "x mandatory",
+
+                    scrollPadding: "0 $1",
+                    width: "100%",
+                    height: "100%",
+
+                    perspective: 100,
+                    transform: "translate3d(0,0,0)",
+                    ["-webkit-transform"]: "translateZ(0,0,0)",
+                  },
                 }}
               >
                 {displayedPosts.map((post, i) => {

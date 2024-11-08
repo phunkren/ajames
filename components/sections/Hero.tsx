@@ -16,7 +16,7 @@ type Props = {
 };
 
 const StyledHeroLayout = styled(Box, {
-  height: "calc(var(--vh))",
+  height: "100vh",
   width: "100vw",
   overflow: "hidden",
   position: "relative",
