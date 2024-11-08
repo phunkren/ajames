@@ -11,7 +11,7 @@ import { Writing, Props as WritingProps } from "../components/sections/Writing";
 import { Social, Props as SocialProps } from "../components/sections/Social";
 import { getPosts } from "../lib/notion";
 import { getYoutubeData } from "../lib/youtube";
-import { ONE_MINUTE_IN_SECONDS } from "../util/date";
+import { ONE_HOUR_IN_SECONDS } from "../util/date";
 import { getTags, sortPosts } from "../util/notion";
 import { formatChannelInfo, formatVideos } from "../util/youtube";
 import { NextPageWithLayout } from "./_app";
@@ -66,7 +66,7 @@ export const getStaticProps: GetStaticProps = async () => {
         pinnedPost: atprotoPinnedPost,
       },
     },
-    revalidate: ONE_MINUTE_IN_SECONDS,
+    revalidate: ONE_HOUR_IN_SECONDS,
   };
 };
 
