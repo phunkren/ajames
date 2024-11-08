@@ -628,8 +628,8 @@ const StyledBlueskyFollow = styled(Link, {
       },
       icon: {
         justifyContent: "center",
-        maxWidth: 44,
-        maxHeight: 44,
+        minWidth: 44,
+        minHeight: 44,
         padding: "$2",
         borderRadius: "50%",
         borderStyle: "solid",
