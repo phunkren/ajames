@@ -73,6 +73,7 @@ export type ExternalLink = {
 };
 
 export type Embed = Video & {
+  $type: string;
   video?: Video;
   images?: Image[];
   media?: {
@@ -80,7 +81,15 @@ export type Embed = Video & {
     external: ExternalLink;
   };
   record?: {
+    cid?: string;
+    uri?: string;
+    author?: ProfileViewBasic;
     record?: ViewRecord;
+    replyCount?: number;
+    repostCount?: number;
+    likeCount?: number;
+    value?: RecordValue;
+    embeds: Embed[];
   };
   external?: ExternalLink;
 };

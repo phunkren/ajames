@@ -1089,7 +1089,7 @@ export const BlueskyFollowLink = memo(function BlueskyFollowLink({
       {...props}
     >
       <Box alignItems="center" gap={type === "button" ? 3 : 4}>
-        <ButterPhli css={{ width: ICON_SIZE.l, height: ICON_SIZE.l }} />
+        <ButterPhli css={{ width: ICON_SIZE.m, height: ICON_SIZE.m }} />
 
         {type === "button" && <TextAux color="primary">Follow</TextAux>}
 
@@ -1160,6 +1160,7 @@ export const LinkPreview = memo(function LinkPreview({
   href,
   src,
   title,
+  description,
 }: LinkPreviewProps) {
   return (
     <Link href={href} variant="invisible">
@@ -1174,8 +1175,9 @@ export const LinkPreview = memo(function LinkPreview({
             />
           </AspectRatio.Root>
         ) : null}
-        <Box direction="vertical" spacing={2}>
-          <TextAux clamp={2}>{title}</TextAux>
+        <Box direction="vertical" spacing={2} gap={1}>
+          <TextAux clamp={description ? 1 : 2}>{title ?? href}</TextAux>
+          {description ? <TextAux clamp={1}>{description}</TextAux> : null}
         </Box>
       </StyledPreviewLinkContainer>
     </Link>

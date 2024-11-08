@@ -777,6 +777,29 @@ export const SocialCard = memo(function SocialCard({
                   compact
                 />
               ) : null}
+
+              {embed?.$type === "app.bsky.embed.record#view" ? (
+                <SocialCardQuote
+                  id={embed.record.cid}
+                  author={embed.record.author}
+                  replies={embed.record.replyCount}
+                  reposts={embed.record.repostCount}
+                  embed={embed.record.embeds[0]}
+                  likes={embed.record.likeCount}
+                  url={embed.record.uri}
+                  text={embed.record.value.text}
+                  compact
+                />
+              ) : null}
+
+              {embed.$type === "app.bsky.embed.external" ? (
+                <LinkPreview
+                  href={embed.external.uri}
+                  src={embed.external.thumb}
+                  title={embed.external.title}
+                  description={embed.external.description}
+                />
+              ) : null}
             </Box>
 
             <Box
