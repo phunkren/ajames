@@ -792,7 +792,7 @@ export const SocialCard = memo(function SocialCard({
                 />
               ) : null}
 
-              {embed.$type === "app.bsky.embed.external" ? (
+              {embed?.$type === "app.bsky.embed.external" ? (
                 <LinkPreview
                   href={embed.external.uri}
                   src={embed.external.thumb}
