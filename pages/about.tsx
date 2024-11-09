@@ -150,7 +150,10 @@ export const CollapsibleSection = memo(function CollapsibleSection({
           <TextTitle2>{title}</TextTitle2>
         </Box>
 
-        <Box spacingTop={2} spacingBottom={{ "@initial": 11, "@print": 4 }}>
+        <Box
+          spacingTop={2}
+          spacingBottom={{ "@initial": 11, "@bp2": 8, "@print": 4 }}
+        >
           <Divider />
         </Box>
 

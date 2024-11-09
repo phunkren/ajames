@@ -649,7 +649,8 @@ export const SocialCard = memo(function SocialCard({
       {({ ref }) => (
         <Box
           direction="vertical"
-          spacingTop={4}
+          spacingTop={compact ? 4 : 10}
+          spacingHorizontal={compact ? undefined : 4}
           flexGrow
           css={{ width: "100%" }}
         >
@@ -673,7 +674,7 @@ export const SocialCard = memo(function SocialCard({
             <Box
               spacingHorizontal={2}
               spacingVertical={compact ? undefined : 7}
-              gap={compact ? 4 : 7}
+              gap={compact ? 4 : 10}
               direction="vertical"
             >
               {compact ? (
@@ -682,8 +683,6 @@ export const SocialCard = memo(function SocialCard({
                   as="pre"
                   css={{
                     whiteSpace: "pre-wrap",
-                    lineBreak: "anywhere",
-                    hyphens: "auto",
                   }}
                 >
                   {text}
@@ -694,8 +693,6 @@ export const SocialCard = memo(function SocialCard({
                   as="pre"
                   css={{
                     whiteSpace: "pre-wrap",
-                    lineBreak: "anywhere",
-                    hyphens: "auto",
                   }}
                 >
                   {text}
@@ -805,7 +802,7 @@ export const SocialCard = memo(function SocialCard({
             <Box
               spacingHorizontal={4}
               spacingTop={4}
-              justifyContent="flex-end"
+              justifyContent="center"
               css={{ marginTop: "auto" }}
             >
               <StyledSocialInteractions justifyContent="space-between">
@@ -920,7 +917,7 @@ export const SocialCardQuote = memo(function SocialCardQuote({
 
             <Box
               spacingHorizontal={2}
-              justifyContent="flex-end"
+              justifyContent="center"
               css={{ marginTop: "auto" }}
             >
               <StyledSocialInteractions justifyContent="space-between">
