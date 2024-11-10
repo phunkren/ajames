@@ -651,6 +651,7 @@ export const SocialCard = memo(function SocialCard({
           direction="vertical"
           spacingTop={compact ? 4 : 10}
           spacingHorizontal={compact ? undefined : 4}
+          spacingBottom={compact ? undefined : 6}
           flexGrow
           css={{ width: "100%" }}
         >

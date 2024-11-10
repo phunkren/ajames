@@ -382,7 +382,13 @@ const BlogPost: NextPageWithLayout = memo(function BlogPost({
         />
       </Head>
 
-      <Box as="article" direction="vertical" css={{ zIndex: "$1" }}>
+      <Box
+        as="article"
+        direction="vertical"
+        spacingTop={{ "@initial": 11, "@bp2": 12 }}
+        spacingBottom={{ "@initial": 4, "@bp2": 10 }}
+        css={{ zIndex: "$1" }}
+      >
         <Box direction="vertical" gap={10} container="l">
           <AspectRatio.Root ratio={2 / 1}>
             <StyledHero
