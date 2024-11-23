@@ -9,13 +9,13 @@ type Props = Pick<RadixAvatar.AvatarImageProps, "src" | "alt"> & {
 };
 
 const StyledAvatarRoot = styled(RadixAvatar.Root, {
-  width: 100,
-  height: 100,
+  width: 75,
+  height: 75,
 });
 
 const StyledCompactAvatarRoot = styled(RadixAvatar.Root, {
-  width: 75,
-  height: 75,
+  width: 50,
+  height: 50,
 });
 
 const StyledAvatarImage = styled(RadixAvatar.Image, {

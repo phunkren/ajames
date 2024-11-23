@@ -22,14 +22,7 @@ import {
   YoutubeChannel,
 } from "./Frontmatter";
 import { Box } from "./Box";
-import {
-  Emoji,
-  TextAux,
-  TextBody,
-  TextHeadline,
-  TextTitle2,
-  TextTitle3,
-} from "./Text";
+import { Emoji, TextAux, TextBody, TextHeadline, TextTitle3 } from "./Text";
 import { BuyMeCoffeeLink, Link, LinkPreview } from "./Link";
 import { StyledTag } from "./Tags";
 import { PreviewToggle } from "./Button";
@@ -39,7 +32,7 @@ import { CSS } from "../stitches.config";
 import { Tag } from "../util/notion";
 import banner from "../public/images/banner.png";
 import { Avatar } from "./Avatar";
-import { Embed, formatAtprotoProfile, getInitials } from "../util/atproto";
+import { Embed, getInitials } from "../util/atproto";
 import { ProfileViewBasic } from "@atproto/api/dist/client/types/app/bsky/actor/defs";
 import { PlayIcon } from "@radix-ui/react-icons";
 
@@ -645,39 +638,47 @@ export const SocialCard = memo(function SocialCard({
   const fallback = getInitials(author.displayName);
 
   return (
-    <Card {...props}>
+    <Card css={{ width: "100%" }} {...props}>
       {({ ref }) => (
         <Box
           direction="vertical"
-          spacingTop={compact ? 4 : 10}
-          spacingHorizontal={compact ? undefined : 4}
-          spacingBottom={compact ? undefined : 6}
+          spacingHorizontal={{
+            "@initial": undefined,
+            "@bp3": compact ? undefined : 10,
+          }}
+          spacingTop={{ "@initial": 6, "@bp3": compact ? 4 : 10 }}
+          spacingBottom={{
+            "@initial": undefined,
+            "@bp3": compact ? undefined : 6,
+          }}
           flexGrow
           css={{ width: "100%" }}
         >
-          <Box direction="vertical" flexGrow>
-            <Box direction="horizontal" gap={6}>
-              <Avatar
-                src={author.avatar}
-                alt={author.displayName}
-                fallback={fallback}
-                compact
-              />
+          <Box direction="vertical" gap={6} flexGrow>
+            <Box direction="horizontal" gap={4}>
+              <Box position="relative" css={{ left: -10 }}>
+                <Avatar
+                  src={author.avatar}
+                  alt={author.displayName}
+                  fallback={fallback}
+                  compact
+                />
+              </Box>
 
-              <Box direction="vertical" spacingTop={compact ? undefined : 1}>
-                <TextHeadline as="h3">{author.displayName}</TextHeadline>
+              <Box direction="vertical">
+                <TextHeadline
+                  as="h3"
+                  clamp={{ "@initial": 1, "@bp2": undefined }}
+                >
+                  {author.displayName}
+                </TextHeadline>
                 <TextAux>{author.handle}</TextAux>
               </Box>
 
               <StyledLink href={url} ref={ref} variant="invisible"></StyledLink>
             </Box>
 
-            <Box
-              spacingHorizontal={2}
-              spacingVertical={compact ? undefined : 7}
-              gap={compact ? 4 : 10}
-              direction="vertical"
-            >
+            <Box gap={compact ? 4 : 10} direction="vertical">
               {compact ? (
                 <TextAux
                   lang="en"
@@ -801,8 +802,7 @@ export const SocialCard = memo(function SocialCard({
             </Box>
 
             <Box
-              spacingHorizontal={4}
-              spacingTop={4}
+              spacingHorizontal={compact ? 1 : 4}
               justifyContent="center"
               css={{ marginTop: "auto" }}
             >
@@ -833,25 +833,34 @@ export const SocialCardQuote = memo(function SocialCardQuote({
 }: SocialCardProps) {
   const fallback = getInitials(author.displayName);
   return (
-    <Card {...props}>
+    <Card
+      css={{
+        width: "100%",
+      }}
+      {...props}
+    >
       {() => (
         <Box direction="vertical" spacingTop={4} flexGrow>
           <Box direction="vertical" gap={4} flexGrow>
             <Box direction="horizontal" gap={6}>
-              <Avatar
-                src={author.avatar}
-                alt={author.displayName}
-                fallback={fallback}
-                compact
-              />
+              <Box>
+                <Avatar
+                  src={author.avatar}
+                  alt={author.displayName}
+                  fallback={fallback}
+                  compact
+                />
+              </Box>
 
               <Box direction="vertical">
-                <TextHeadline as="h3">{author.displayName}</TextHeadline>
+                <TextHeadline as="h3" clamp={1}>
+                  {author.displayName}
+                </TextHeadline>
                 <TextAux>{author.handle}</TextAux>
               </Box>
             </Box>
 
-            <Box spacingHorizontal={2} gap={4} direction="vertical">
+            <Box spacingHorizontal={2} direction="vertical">
               <TextAux
                 lang="en"
                 as="pre"
@@ -861,63 +870,65 @@ export const SocialCardQuote = memo(function SocialCardQuote({
                 {text}
               </TextAux>
 
-              <Box direction="vertical" gap={4}>
-                {embed?.images?.length ? (
-                  <AspectRatio.Root
-                    ratio={
-                      embed.images[0]?.aspectRatio?.width /
-                      embed.images[0]?.aspectRatio?.height
-                    }
-                  >
-                    <StyledImage
-                      src={embed.images[0]?.thumb}
-                      alt={embed.images[0]?.alt}
-                      fill
+              {embed ? (
+                <Box direction="vertical" spacingTop={4} gap={4}>
+                  {embed.images?.length ? (
+                    <AspectRatio.Root
+                      ratio={
+                        embed.images[0]?.aspectRatio?.width /
+                        embed.images[0]?.aspectRatio?.height
+                      }
+                    >
+                      <StyledImage
+                        src={embed.images[0]?.thumb}
+                        alt={embed.images[0]?.alt}
+                        fill
+                      />
+                    </AspectRatio.Root>
+                  ) : null}
+
+                  {embed.media?.images?.length ? (
+                    <AspectRatio.Root
+                      ratio={
+                        embed?.media?.images?.[0]?.aspectRatio?.width /
+                        embed?.media?.images?.[0]?.aspectRatio?.height
+                      }
+                    >
+                      <StyledImage
+                        src={embed?.media?.images?.[0]?.thumb}
+                        alt={embed?.media?.images?.[0]?.alt}
+                        fill
+                      />
+                    </AspectRatio.Root>
+                  ) : null}
+
+                  {embed.playlist ? (
+                    <AspectRatio.Root
+                      ratio={
+                        embed?.aspectRatio?.width / embed?.aspectRatio?.height
+                      }
+                    >
+                      <StyledImage src={embed?.thumbnail} alt="" fill />
+                      <StyledPlayIconContainer spacing={3}>
+                        <PlayIcon width={ICON_SIZE.xl} height={ICON_SIZE.xl} />
+                      </StyledPlayIconContainer>
+                    </AspectRatio.Root>
+                  ) : null}
+
+                  {embed.external ? (
+                    <LinkPreview
+                      href={embed.external.uri}
+                      src={embed.external.thumb}
+                      title={embed.external.title}
+                      description={embed.external.description}
                     />
-                  </AspectRatio.Root>
-                ) : null}
-
-                {embed?.media?.images?.length ? (
-                  <AspectRatio.Root
-                    ratio={
-                      embed?.media?.images?.[0]?.aspectRatio?.width /
-                      embed?.media?.images?.[0]?.aspectRatio?.height
-                    }
-                  >
-                    <StyledImage
-                      src={embed?.media?.images?.[0]?.thumb}
-                      alt={embed?.media?.images?.[0]?.alt}
-                      fill
-                    />
-                  </AspectRatio.Root>
-                ) : null}
-
-                {embed?.playlist ? (
-                  <AspectRatio.Root
-                    ratio={
-                      embed?.aspectRatio?.width / embed?.aspectRatio?.height
-                    }
-                  >
-                    <StyledImage src={embed?.thumbnail} alt="" fill />
-                    <StyledPlayIconContainer spacing={3}>
-                      <PlayIcon width={ICON_SIZE.xl} height={ICON_SIZE.xl} />
-                    </StyledPlayIconContainer>
-                  </AspectRatio.Root>
-                ) : null}
-
-                {embed?.external ? (
-                  <LinkPreview
-                    href={embed.external.uri}
-                    src={embed.external.thumb}
-                    title={embed.external.title}
-                    description={embed.external.description}
-                  />
-                ) : null}
-              </Box>
+                  ) : null}
+                </Box>
+              ) : null}
             </Box>
 
             <Box
-              spacingHorizontal={2}
+              spacingHorizontal={3}
               justifyContent="center"
               css={{ marginTop: "auto" }}
             >
