@@ -122,7 +122,7 @@ export const Social = ({ feed, info, pinnedPost }: Props) => {
 
                   <ShareButton
                     url={SOCIAL.bluesky.url}
-                    text={"TODO: Rich text"}
+                    text={"TODO"}
                     variant="icon"
                   />
                 </ActionButtons>
