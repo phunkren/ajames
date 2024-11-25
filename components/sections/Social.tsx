@@ -160,7 +160,6 @@ export const Social = ({ feed, info, pinnedPost }: Props) => {
                   spacingBottom={{ "@initial": 8, "@bp3": 0 }}
                 >
                   <SocialCard
-                    css={{ width: "fit-content" }}
                     id={pinnedPost.cid}
                     author={pinnedPost.author}
                     embed={pinnedPost.embed}
