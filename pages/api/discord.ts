@@ -14,8 +14,10 @@ export const config = {
   },
 };
 
-const SPIN_FRAME_COUNT = 4;
-const SPIN_FRAME_DELAY_MS = 500;
+const SPIN_TOTAL_DURATION_MS = 8000;
+const SPIN_FRAME_COUNT = 10;
+// Keeps edits comfortably under Discord's rate limit for editing a message.
+const SPIN_MIN_FRAME_DELAY_MS = 300;
 
 async function getRawBody(req: NextApiRequest): Promise<string> {
   const chunks: Buffer[] = [];
@@ -39,7 +41,22 @@ function formatSpinningContent(entries: string[], current: string) {
 }
 
 function formatSpinResultContent(entries: string[], result: string) {
-  return `🎡 **${entries.join(", ")}** → **${result}**`;
+  return `🎡 **${entries.join(", ")}** → **${result}** 🎉`;
+}
+
+// Quadratically increasing delays, so frames start fast and slow down
+// towards the end (like a wheel decelerating), roughly summing to
+// SPIN_TOTAL_DURATION_MS.
+function buildSpinFrameDelays(): number[] {
+  const weights = Array.from({ length: SPIN_FRAME_COUNT }, (_, i) => (i + 1) ** 2);
+  const weightTotal = weights.reduce((sum, weight) => sum + weight, 0);
+
+  return weights.map((weight) =>
+    Math.max(
+      SPIN_MIN_FRAME_DELAY_MS,
+      Math.round((weight / weightTotal) * SPIN_TOTAL_DURATION_MS)
+    )
+  );
 }
 
 async function editOriginalMessage(
@@ -64,9 +81,10 @@ async function animateSpin(
   result: string
 ) {
   let previous = entries[0];
+  const delays = buildSpinFrameDelays();
 
   for (let frame = 0; frame < SPIN_FRAME_COUNT; frame++) {
-    await sleep(SPIN_FRAME_DELAY_MS);
+    await sleep(delays[frame]);
 
     const isLastFrame = frame === SPIN_FRAME_COUNT - 1;
     const content = isLastFrame
