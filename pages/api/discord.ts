@@ -14,10 +14,12 @@ export const config = {
   },
 };
 
-const SPIN_TOTAL_DURATION_MS = 8000;
-const SPIN_FRAME_COUNT = 10;
+const SPIN_FRAME_COUNT = 15;
 // Keeps edits comfortably under Discord's rate limit for editing a message.
-const SPIN_MIN_FRAME_DELAY_MS = 300;
+const SPIN_MIN_FRAME_DELAY_MS = 350;
+// Caps how slow the final frames get, so the ending doesn't drag.
+const SPIN_MAX_FRAME_DELAY_MS = 1400;
+const SPIN_EASE_POWER = 6;
 
 async function getRawBody(req: NextApiRequest): Promise<string> {
   const chunks: Buffer[] = [];
@@ -44,19 +46,18 @@ function formatSpinResultContent(entries: string[], result: string) {
   return `🎡 **${entries.join(", ")}** → **${result}** 🎉`;
 }
 
-// Quartically increasing delays: frames stay fast for most of the spin,
-// then the slowdown itself ramps up sharply only in the final few frames,
-// roughly summing to SPIN_TOTAL_DURATION_MS.
+// Eased between a fast floor and a capped max delay: frames stay fast for
+// most of the spin, then ramp up sharply only in the final few frames,
+// without letting the ending drag out too long.
 function buildSpinFrameDelays(): number[] {
-  const weights = Array.from({ length: SPIN_FRAME_COUNT }, (_, i) => (i + 1) ** 4);
-  const weightTotal = weights.reduce((sum, weight) => sum + weight, 0);
-
-  return weights.map((weight) =>
-    Math.max(
-      SPIN_MIN_FRAME_DELAY_MS,
-      Math.round((weight / weightTotal) * SPIN_TOTAL_DURATION_MS)
-    )
-  );
+  return Array.from({ length: SPIN_FRAME_COUNT }, (_, i) => {
+    const t = i / (SPIN_FRAME_COUNT - 1);
+    const eased = t ** SPIN_EASE_POWER;
+    return Math.round(
+      SPIN_MIN_FRAME_DELAY_MS +
+        (SPIN_MAX_FRAME_DELAY_MS - SPIN_MIN_FRAME_DELAY_MS) * eased
+    );
+  });
 }
 
 async function editOriginalMessage(
