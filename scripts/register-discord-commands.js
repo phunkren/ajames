@@ -22,6 +22,25 @@ const commands = [
         required: true,
       },
     ],
+    // Allow both installing the app to a server (GUILD_INSTALL) and
+    // installing it to your own account (USER_INSTALL), so /roll works
+    // in servers, DMs, and group DMs the app hasn't been added to.
+    integration_types: [0, 1],
+    contexts: [0, 1, 2],
+  },
+  {
+    name: "wheel",
+    description: "Spin a wheel of comma-separated entries",
+    options: [
+      {
+        name: "entries",
+        description: "Comma-separated entries, e.g. pizza,tacos,sushi",
+        type: 3, // STRING
+        required: true,
+      },
+    ],
+    integration_types: [0, 1],
+    contexts: [0, 1, 2],
   },
 ];
 

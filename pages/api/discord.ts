@@ -5,6 +5,7 @@ import {
   verifyKey,
 } from "discord-interactions";
 import { DiceRollError, rollDice } from "../../util/dice";
+import { spinWheel, WheelSpinError } from "../../util/wheel";
 
 export const config = {
   api: {
@@ -54,28 +55,37 @@ export default async function handler(
   }
 
   if (interaction.type === InteractionType.APPLICATION_COMMAND) {
-    if (interaction.data?.name === "roll") {
-      const dice: string =
-        interaction.data.options?.find((option: any) => option.name === "dice")
-          ?.value ?? "1d20";
+    const getOption = (name: string) =>
+      interaction.data.options?.find((option: any) => option.name === name)
+        ?.value;
 
-      try {
+    try {
+      let content: string;
+
+      if (interaction.data?.name === "roll") {
+        const dice: string = getOption("dice") ?? "1d20";
         const { result, rolls } = rollDice(dice);
+        content = `🎲 **${dice}** → **${result}** (${rolls.join(", ")})`;
+      } else if (interaction.data?.name === "wheel") {
+        const entriesInput: string = getOption("entries");
+        const { entries, result } = spinWheel(entriesInput);
+        content = `🎡 **${entries.join(", ")}** → **${result}**`;
+      } else {
+        return res.status(400).end("Unknown command");
+      }
+
+      return res.status(200).json({
+        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+        data: { content },
+      });
+    } catch (error) {
+      if (error instanceof DiceRollError || error instanceof WheelSpinError) {
         return res.status(200).json({
           type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
-          data: {
-            content: `🎲 **${dice}** → **${result}** (${rolls.join(", ")})`,
-          },
+          data: { content: `⚠️ ${error.message}` },
         });
-      } catch (error) {
-        if (error instanceof DiceRollError) {
-          return res.status(200).json({
-            type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
-            data: { content: `⚠️ ${error.message}` },
-          });
-        }
-        throw error;
       }
+      throw error;
     }
   }
 

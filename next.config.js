@@ -176,6 +176,10 @@ const nextConfig = {
         source: "/roll",
         destination: "/api/roll",
       },
+      {
+        source: "/wheel",
+        destination: "/api/wheel",
+      },
     ];
   },
   webpack(config) {
