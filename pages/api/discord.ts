@@ -13,12 +13,67 @@ export const config = {
   },
 };
 
+const SPIN_FRAME_COUNT = 4;
+const SPIN_FRAME_DELAY_MS = 500;
+
 async function getRawBody(req: NextApiRequest): Promise<string> {
   const chunks: Buffer[] = [];
   for await (const chunk of req) {
     chunks.push(typeof chunk === "string" ? Buffer.from(chunk) : chunk);
   }
   return Buffer.concat(chunks).toString("utf8");
+}
+
+function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function randomEntry(entries: string[], exclude?: string) {
+  const choices = entries.length > 1 ? entries.filter((entry) => entry !== exclude) : entries;
+  return choices[Math.floor(Math.random() * choices.length)];
+}
+
+function formatSpinningContent(entries: string[], current: string) {
+  return `🎡 **${entries.join(", ")}**\n\nSpinning... **${current}**`;
+}
+
+function formatSpinResultContent(entries: string[], result: string) {
+  return `🎡 **${entries.join(", ")}** → **${result}**`;
+}
+
+async function editOriginalMessage(
+  applicationId: string,
+  token: string,
+  content: string
+) {
+  await fetch(
+    `https://discord.com/api/v10/webhooks/${applicationId}/${token}/messages/@original`,
+    {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ content }),
+    }
+  );
+}
+
+async function animateSpin(
+  applicationId: string,
+  token: string,
+  entries: string[],
+  result: string
+) {
+  let previous = entries[0];
+
+  for (let frame = 0; frame < SPIN_FRAME_COUNT; frame++) {
+    await sleep(SPIN_FRAME_DELAY_MS);
+
+    const isLastFrame = frame === SPIN_FRAME_COUNT - 1;
+    const content = isLastFrame
+      ? formatSpinResultContent(entries, result)
+      : formatSpinningContent(entries, (previous = randomEntry(entries, previous)));
+
+    await editOriginalMessage(applicationId, token, content);
+  }
 }
 
 export default async function handler(
@@ -59,34 +114,65 @@ export default async function handler(
       interaction.data.options?.find((option: any) => option.name === name)
         ?.value;
 
-    try {
-      let content: string;
-
-      if (interaction.data?.name === "roll") {
+    if (interaction.data?.name === "roll") {
+      try {
         const dice: string = getOption("dice") ?? "1d20";
         const { result, rolls } = rollDice(dice);
-        content = `🎲 **${dice}** → **${result}** (${rolls.join(", ")})`;
-      } else if (interaction.data?.name === "spin") {
-        const entriesInput: string = getOption("entries");
-        const { entries, result } = spin(entriesInput);
-        content = `🎡 **${entries.join(", ")}** → **${result}**`;
-      } else {
-        return res.status(400).end("Unknown command");
-      }
-
-      return res.status(200).json({
-        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
-        data: { content },
-      });
-    } catch (error) {
-      if (error instanceof DiceRollError || error instanceof SpinError) {
         return res.status(200).json({
           type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
-          data: { content: `⚠️ ${error.message}` },
+          data: {
+            content: `🎲 **${dice}** → **${result}** (${rolls.join(", ")})`,
+          },
         });
+      } catch (error) {
+        if (error instanceof DiceRollError) {
+          return res.status(200).json({
+            type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+            data: { content: `⚠️ ${error.message}` },
+          });
+        }
+        throw error;
       }
-      throw error;
     }
+
+    if (interaction.data?.name === "spin") {
+      let entries: string[];
+      let result: string;
+
+      try {
+        const entriesInput: string = getOption("entries");
+        ({ entries, result } = spin(entriesInput));
+      } catch (error) {
+        if (error instanceof SpinError) {
+          return res.status(200).json({
+            type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+            data: { content: `⚠️ ${error.message}` },
+          });
+        }
+        throw error;
+      }
+
+      res.status(200).json({
+        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+        data: {
+          content: formatSpinningContent(entries, randomEntry(entries)),
+        },
+      });
+
+      // Discord requires the initial ack within 3s, but the original
+      // message can be edited afterwards to animate the "spin" without
+      // posting extra messages to the channel.
+      await animateSpin(
+        interaction.application_id,
+        interaction.token,
+        entries,
+        result
+      );
+
+      return;
+    }
+
+    return res.status(400).end("Unknown command");
   }
 
   return res.status(400).end("Unknown interaction");
