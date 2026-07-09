@@ -44,11 +44,11 @@ function formatSpinResultContent(entries: string[], result: string) {
   return `🎡 **${entries.join(", ")}** → **${result}** 🎉`;
 }
 
-// Cubically increasing delays: frames stay fast for most of the spin, then
-// the slowdown itself ramps up sharply in the final few frames, roughly
-// summing to SPIN_TOTAL_DURATION_MS.
+// Quartically increasing delays: frames stay fast for most of the spin,
+// then the slowdown itself ramps up sharply only in the final few frames,
+// roughly summing to SPIN_TOTAL_DURATION_MS.
 function buildSpinFrameDelays(): number[] {
-  const weights = Array.from({ length: SPIN_FRAME_COUNT }, (_, i) => (i + 1) ** 3);
+  const weights = Array.from({ length: SPIN_FRAME_COUNT }, (_, i) => (i + 1) ** 4);
   const weightTotal = weights.reduce((sum, weight) => sum + weight, 0);
 
   return weights.map((weight) =>
