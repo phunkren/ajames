@@ -10,7 +10,7 @@
     "start": "next start",
     "lint": "next lint",
     "analyze": "ANALYZE=true next build",
-    "discord:register": "node scripts/register-discord-commands.js"
+    "discord:register": "node --env-file=.env.local scripts/register-discord-commands.js"
   },
   "dependencies": {
     "@atproto/api": "^0.13.14",
