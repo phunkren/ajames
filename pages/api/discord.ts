@@ -12,9 +12,6 @@ export const config = {
   api: {
     bodyParser: false,
   },
-  // The /spin animation sleeps for ~8s plus fetch latency across several
-  // edits, which exceeds the platform's default function timeout.
-  maxDuration: 15,
 };
 
 const SPIN_TOTAL_DURATION_MS = 8000;

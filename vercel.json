@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "pages/api/discord.ts": {
+      "maxDuration": 30
+    }
+  }
+}
