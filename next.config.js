@@ -180,6 +180,10 @@ const nextConfig = {
         source: "/spin",
         destination: "/api/spin",
       },
+      {
+        source: "/flip",
+        destination: "/api/flip",
+      },
     ];
   },
   webpack(config) {

@@ -42,6 +42,12 @@ const commands = [
     integration_types: [0, 1],
     contexts: [0, 1, 2],
   },
+  {
+    name: "flip",
+    description: "Flip a coin",
+    integration_types: [0, 1],
+    contexts: [0, 1, 2],
+  },
 ];
 
 async function main() {

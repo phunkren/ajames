@@ -7,6 +7,7 @@ import {
 import { waitUntil } from "@vercel/functions";
 import { DiceRollError, rollDice } from "../../util/dice";
 import { spin, SpinError } from "../../util/spin";
+import { flip } from "../../util/flip";
 
 export const config = {
   api: {
@@ -185,6 +186,14 @@ export default async function handler(
         data: {
           content: formatSpinningContent(entries, randomEntry(entries)),
         },
+      });
+    }
+
+    if (interaction.data?.name === "flip") {
+      const { result } = flip();
+      return res.status(200).json({
+        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+        data: { content: `🪙 **${result}**` },
       });
     }
 
