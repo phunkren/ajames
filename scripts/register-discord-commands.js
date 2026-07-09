@@ -29,7 +29,7 @@ const commands = [
     contexts: [0, 1, 2],
   },
   {
-    name: "wheel",
+    name: "spin",
     description: "Spin a wheel of comma-separated entries",
     options: [
       {

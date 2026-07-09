@@ -66,7 +66,7 @@ export default async function handler(
         const dice: string = getOption("dice") ?? "1d20";
         const { result, rolls } = rollDice(dice);
         content = `🎲 **${dice}** → **${result}** (${rolls.join(", ")})`;
-      } else if (interaction.data?.name === "wheel") {
+      } else if (interaction.data?.name === "spin") {
         const entriesInput: string = getOption("entries");
         const { entries, result } = spinWheel(entriesInput);
         content = `🎡 **${entries.join(", ")}** → **${result}**`;
