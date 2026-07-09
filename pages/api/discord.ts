@@ -4,6 +4,7 @@ import {
   InteractionType,
   verifyKey,
 } from "discord-interactions";
+import { waitUntil } from "@vercel/functions";
 import { DiceRollError, rollDice } from "../../util/dice";
 import { spin, SpinError } from "../../util/spin";
 
@@ -152,24 +153,20 @@ export default async function handler(
         throw error;
       }
 
-      res.status(200).json({
+      // Discord requires the initial ack within 3s, but the original
+      // message can be edited afterwards to animate the "spin" without
+      // posting extra messages to the channel. waitUntil keeps the
+      // function alive to finish those edits after this response returns.
+      waitUntil(
+        animateSpin(interaction.application_id, interaction.token, entries, result)
+      );
+
+      return res.status(200).json({
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
         data: {
           content: formatSpinningContent(entries, randomEntry(entries)),
         },
       });
-
-      // Discord requires the initial ack within 3s, but the original
-      // message can be edited afterwards to animate the "spin" without
-      // posting extra messages to the channel.
-      await animateSpin(
-        interaction.application_id,
-        interaction.token,
-        entries,
-        result
-      );
-
-      return;
     }
 
     return res.status(400).end("Unknown command");

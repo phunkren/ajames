@@ -37,6 +37,7 @@
     "@svgr/webpack": "^6.5.1",
     "@types/node": "^18.11.17",
     "@vercel/analytics": "^1.0.0",
+    "@vercel/functions": "^3.7.5",
     "@vercel/og": "^0.5.3",
     "@vercel/speed-insights": "^1.0.14",
     "date-fns": "^2.29.3",
