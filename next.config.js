@@ -177,8 +177,8 @@ const nextConfig = {
         destination: "/api/roll",
       },
       {
-        source: "/wheel",
-        destination: "/api/wheel",
+        source: "/spin",
+        destination: "/api/spin",
       },
     ];
   },

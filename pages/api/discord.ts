@@ -5,7 +5,7 @@ import {
   verifyKey,
 } from "discord-interactions";
 import { DiceRollError, rollDice } from "../../util/dice";
-import { spinWheel, WheelSpinError } from "../../util/wheel";
+import { spin, SpinError } from "../../util/spin";
 
 export const config = {
   api: {
@@ -68,7 +68,7 @@ export default async function handler(
         content = `🎲 **${dice}** → **${result}** (${rolls.join(", ")})`;
       } else if (interaction.data?.name === "spin") {
         const entriesInput: string = getOption("entries");
-        const { entries, result } = spinWheel(entriesInput);
+        const { entries, result } = spin(entriesInput);
         content = `🎡 **${entries.join(", ")}** → **${result}**`;
       } else {
         return res.status(400).end("Unknown command");
@@ -79,7 +79,7 @@ export default async function handler(
         data: { content },
       });
     } catch (error) {
-      if (error instanceof DiceRollError || error instanceof WheelSpinError) {
+      if (error instanceof DiceRollError || error instanceof SpinError) {
         return res.status(200).json({
           type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
           data: { content: `⚠️ ${error.message}` },

@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { spinWheel, WheelResult, WheelSpinError } from "../../util/wheel";
+import { spin, SpinError, SpinResult } from "../../util/spin";
 
 type ErrorResponse = {
   error: string;
@@ -7,7 +7,7 @@ type ErrorResponse = {
 
 export default function handler(
   req: NextApiRequest,
-  res: NextApiResponse<WheelResult | ErrorResponse>
+  res: NextApiResponse<SpinResult | ErrorResponse>
 ) {
   const entries = req.query.entries;
 
@@ -18,10 +18,10 @@ export default function handler(
   }
 
   try {
-    const spin = spinWheel(entries);
-    res.status(200).json(spin);
+    const result = spin(entries);
+    res.status(200).json(result);
   } catch (error) {
-    if (error instanceof WheelSpinError) {
+    if (error instanceof SpinError) {
       return res.status(400).json({ error: error.message });
     }
     throw error;
