@@ -12,6 +12,9 @@ export const config = {
   api: {
     bodyParser: false,
   },
+  // The /spin animation sleeps for ~8s plus fetch latency across several
+  // edits, which exceeds the platform's default function timeout.
+  maxDuration: 15,
 };
 
 const SPIN_TOTAL_DURATION_MS = 8000;
@@ -44,11 +47,11 @@ function formatSpinResultContent(entries: string[], result: string) {
   return `🎡 **${entries.join(", ")}** → **${result}** 🎉`;
 }
 
-// Quadratically increasing delays, so frames start fast and slow down
-// towards the end (like a wheel decelerating), roughly summing to
-// SPIN_TOTAL_DURATION_MS.
+// Cubically increasing delays: frames stay fast for most of the spin, then
+// the slowdown itself ramps up sharply in the final few frames, roughly
+// summing to SPIN_TOTAL_DURATION_MS.
 function buildSpinFrameDelays(): number[] {
-  const weights = Array.from({ length: SPIN_FRAME_COUNT }, (_, i) => (i + 1) ** 2);
+  const weights = Array.from({ length: SPIN_FRAME_COUNT }, (_, i) => (i + 1) ** 3);
   const weightTotal = weights.reduce((sum, weight) => sum + weight, 0);
 
   return weights.map((weight) =>
