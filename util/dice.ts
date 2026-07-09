@@ -1,4 +1,4 @@
-const DICE_PATTERN = /^(\d+)d(\d+)$/i;
+const DICE_PATTERN = /^(\d+)?d(\d+)$/i;
 const MAX_DICE = 100;
 const MAX_SIDES = 1000;
 
@@ -13,10 +13,10 @@ export class DiceRollError extends Error {}
 export function rollDice(dice: string): RollResult {
   const match = dice.match(DICE_PATTERN);
   if (!match) {
-    throw new DiceRollError("Invalid 'dice' format, expected e.g. 2d6");
+    throw new DiceRollError("Invalid 'dice' format, expected e.g. 2d6 or d20");
   }
 
-  const count = parseInt(match[1], 10);
+  const count = match[1] ? parseInt(match[1], 10) : 1;
   const sides = parseInt(match[2], 10);
 
   if (count < 1 || count > MAX_DICE) {
