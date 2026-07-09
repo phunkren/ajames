@@ -1,12 +1,16 @@
 {
   "private": true,
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "next lint",
-    "analyze": "ANALYZE=true next build"
+    "analyze": "ANALYZE=true next build",
+    "discord:register": "node scripts/register-discord-commands.js"
   },
   "dependencies": {
     "@atproto/api": "^0.13.14",
@@ -36,6 +40,7 @@
     "@vercel/og": "^0.5.3",
     "@vercel/speed-insights": "^1.0.14",
     "date-fns": "^2.29.3",
+    "discord-interactions": "^4.4.0",
     "feed": "^4.2.2",
     "googleapis": "^110.0.0",
     "gsap": "^3.11.5",

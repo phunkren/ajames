@@ -170,6 +170,14 @@ const nextConfig = {
       ...PROJECT_REDIRECTS,
     ];
   },
+  async rewrites() {
+    return [
+      {
+        source: "/roll",
+        destination: "/api/roll",
+      },
+    ];
+  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,

@@ -139,17 +139,7 @@ export function formatAtprotoProfile({
 }
 
 export function formatAtprotoPinnedPost(pinnedPost: ExtendedPostView) {
-  const { embed, record, ...pinnedPostWithoutEmbed } = pinnedPost;
-  const { embed: recordEmbed, ...recordWithoutEmbed } = record;
-
-  return {
-    ...pinnedPostWithoutEmbed,
-    embed: embed ? JSON.parse(JSON.stringify(embed)) : null,
-    record: {
-      embed: recordEmbed ? JSON.parse(JSON.stringify(recordEmbed)) : null,
-      ...recordWithoutEmbed,
-    },
-  };
+  return JSON.parse(JSON.stringify(pinnedPost));
 }
 
 export function getInitials(input: string): string {
@@ -172,21 +162,10 @@ function sortPostsByDate(posts: ExtendedPostView[], order = "asc") {
   });
 }
 
-// This prevents serialization errors on embed media.
+// This prevents serialization errors on embed media (e.g. BlobRef instances
+// nested anywhere in the post, including author.status.record.embed).
 function serializeEmbedFromPosts(feed: ExtendedPostView[]) {
-  return feed.map((item) => {
-    const { embed, record, ...itemWithoutEmbed } = item;
-    const { embed: recordEmbed, ...recordWithoutEmbed } = record;
-
-    return {
-      ...itemWithoutEmbed,
-      embed: embed ? JSON.parse(JSON.stringify(embed)) : null,
-      record: {
-        embed: recordEmbed ? JSON.parse(JSON.stringify(recordEmbed)) : null,
-        ...recordWithoutEmbed,
-      },
-    };
-  });
+  return feed.map((item) => JSON.parse(JSON.stringify(item)));
 }
 
 export function formatAtprotoFeed(

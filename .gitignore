@@ -2,3 +2,6 @@ node_modules
 .next
 posts
 .env.local
+.vercel
+.env*
+tsconfig.tsbuildinfo
