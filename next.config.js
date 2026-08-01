@@ -104,7 +104,7 @@ const PROJECT_REDIRECTS = [
   {
     source: "/budget-template",
     destination:
-      "https://docs.google.com/spreadsheets/d/1O2hXrd9bYa4u2sFC1vqd0O2WE-CMh4_AbIi5c1WlPF4/edit?usp=share_link",
+      "https://docs.google.com/spreadsheets/d/1ctBsP5p9Grr4zx68FT38TqbSeENo2McTvG_EwVtBxMo/edit?usp=sharing",
     permanent: true,
   },
   {
